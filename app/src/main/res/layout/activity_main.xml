@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+   
+    
+    <TextView
+        android:id="@+id/texto_usuario"
+        android:text="@string/usuario"
+        style="@style/text_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"/>
+    
+
+    <EditText
+        android:id="@+id/usuario"
+        android:layout_below="@id/texto_usuario"
+        style="@style/edit_text"
+        android:layout_width="@dimen/textologin"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:text="Login"
+        android:layout_below="@+id/usuario"
+        style="@style/boton" />
+
+</RelativeLayout>
