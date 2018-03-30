@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button b = (Button) findViewById(R.id.login);
+        Button b = (Button) findViewById(R.id.atras_login);
         /*Spinner spinner = (Spinner) findViewById(R.id.lista_usuarios);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.lista_usuarios, R.layout.spinner_item);
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
+                onBackPressed();
             }
         });
     }

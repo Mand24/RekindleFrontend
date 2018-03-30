@@ -3,11 +3,12 @@
     <string name="app_name">RekindleFrontEnd</string>
     <string name="usuario">Nom usuari:</string>
     <string name="password">Contrasenya:</string>
-    <string name="login">Accedir</string>
+    <string name="acceder">Accedir</string>
     <string name="registro">Registrar-se</string>
     <string name="tipo_usuario">Tipus usuari:</string>
     <string name="recuperar_password">Recuperar contrasenya</string>
     <string name="atras">Enrere</string>
+    <string name="login">Iniciar sessió</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>

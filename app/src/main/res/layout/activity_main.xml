@@ -11,8 +11,10 @@
         android:id="@+id/atras_login"
         android:text="@string/atras"
         style="@style/boton"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         />
 
     <TextView
@@ -62,11 +64,12 @@
 
     <Button
         android:id="@+id/login"
-        android:text="@string/login"
+        android:text="@string/acceder"
         style="@style/boton"
         android:layout_below="@id/password"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="250dp"
+        android:layout_marginRight="20dp"
         />
 
     <Button
@@ -76,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
 
