@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button b = (Button) findViewById(R.id.login);
-        Spinner spinner = (Spinner) findViewById(R.id.lista_usuarios);
+        /*Spinner spinner = (Spinner) findViewById(R.id.lista_usuarios);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.lista_usuarios, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter);*/
 
         b.setOnClickListener(new View.OnClickListener(){
 

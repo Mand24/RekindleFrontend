@@ -5,6 +5,8 @@
     <string name="login">Sign in</string>
     <string name="registro">Sign up</string>
     <string name="tipo_usuario">Type of user:</string>
+    <string name="recuperar_password">Recover password</string>
+    <string name="atras">Back</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
