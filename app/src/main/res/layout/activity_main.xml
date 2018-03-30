@@ -4,29 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".MainActivity">
 
-   
-    
+
+
+    <TextView
+        android:id="@+id/texto_tipo_usuario"
+        android:text="@string/tipo_usuario"
+        style="@style/text_view"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="10dp" />
+
+    <Spinner
+        android:id="@+id/lista_usuarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/botones"
+        android:popupBackground="@drawable/botones"
+        android:layout_toRightOf="@id/texto_tipo_usuario"
+        android:layout_marginTop="100dp"/>
+
     <TextView
         android:id="@+id/texto_usuario"
         android:text="@string/usuario"
         style="@style/text_view"
-        android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"/>
-    
+        android:layout_below="@id/texto_tipo_usuario"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp" />
+
 
     <EditText
         android:id="@+id/usuario"
-        android:layout_below="@id/texto_usuario"
         style="@style/edit_text"
         android:layout_width="@dimen/textologin"
-        />
+        android:layout_below="@id/lista_usuarios"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/texto_usuario" />
+
+    <TextView
+        android:id="@+id/texto_password"
+        android:text="@string/password"
+        style="@style/text_view"
+        android:layout_below="@id/texto_usuario"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="10dp" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/edit_text"
+        android:layout_width="@dimen/textologin"
+        android:layout_below="@+id/usuario"
+        android:layout_toRightOf="@id/texto_password"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/login"
-        android:text="Login"
-        android:layout_below="@+id/usuario"
-        style="@style/boton" />
+        android:text="@string/login"
+        style="@style/boton"
+        android:layout_below="@id/password"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="150dp"/>
+
+    <Button
+        android:id="@+id/registro"
+        android:text="@string/registro"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:layout_marginLeft="150dp"
+
+         />
+
 
 </RelativeLayout>
