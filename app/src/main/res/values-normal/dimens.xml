@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dim1">1dp</dimen>
+    <dimen name="dim6">6dp</dimen>
+    <dimen name="dim10">10dp</dimen>
+    <dimen name="dim20">20dp</dimen>
+    <dimen name="dim24">24dp</dimen>
+    <dimen name="dim50">50dp</dimen>
+    <dimen name="dim100">100dp</dimen>
+    <dimen name="textoPeq">16sp</dimen>
+    <dimen name="texto">24sp</dimen>
+
+
+
+</resources>

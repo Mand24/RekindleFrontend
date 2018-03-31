@@ -11,10 +11,8 @@
         android:id="@+id/titulo_PantallaInicio"
         android:text="@string/app_name"
         style="@style/text_view"
-        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/texto"
-        />
+        android:layout_marginTop="@dimen/dim100" />
 
     <Button
         android:id="@+id/login_PantallaInicio"
@@ -22,11 +20,10 @@
         style="@style/boton"
         android:layout_width="match_parent"
         android:layout_below="@id/titulo_PantallaInicio"
-        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
 
     <Button
         android:id="@+id/registrarse"
@@ -34,10 +31,9 @@
         style="@style/boton"
         android:layout_width="match_parent"
         android:layout_below="@id/login_PantallaInicio"
-        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+        android:layout_marginTop="@dimen/dim20"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
 
 </RelativeLayout>

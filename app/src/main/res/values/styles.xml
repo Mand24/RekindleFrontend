@@ -24,7 +24,7 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
         <item name="android:shadowColor">#f30d2d</item>
-        <item name="android:padding">@dimen/min</item>
+        <item name="android:padding">@dimen/dim6</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/texto</item>
         <item name="android:textColor">#000000</item>
@@ -39,11 +39,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:inputType">textPostalAddress</item>
         <item name="android:textColorHint">#000000</item>
-        <item name="android:minHeight">@dimen/med</item>
+        <item name="android:minHeight">@dimen/dim24</item>
         <item name="android:textSize">@dimen/texto</item>
         <item name="android:textColor">#000000</item>
         <item name="android:background">@drawable/botones</item>
-        <item name="android:padding">@dimen/min</item>
+        <item name="android:padding">@dimen/dim6</item>
 
     </style>
 
@@ -52,7 +52,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColorHint">#000000</item>
-        <item name="android:minHeight">@dimen/med</item>
+        <item name="android:minHeight">@dimen/dim24</item>
         <item name="android:textSize">@dimen/texto</item>
         <item name="android:textColor">#000000</item>
 

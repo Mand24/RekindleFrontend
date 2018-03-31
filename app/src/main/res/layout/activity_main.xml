@@ -13,54 +13,48 @@
         style="@style/boton"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        />
+        android:layout_marginTop="@dimen/dim10"
+        android:layout_marginLeft="@dimen/dim10" />
 
     <TextView
         android:id="@+id/titulo_login"
         android:text="@string/app_name"
         style="@style/text_view"
-        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/texto"
-        />
-
+        android:layout_marginTop="@dimen/dim50" />
 
     <TextView
         android:id="@+id/texto_usuario"
         android:text="@string/usuario"
         style="@style/text_view"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="20dp"
-         />
-
+        android:layout_marginTop="@dimen/dim100"
+        android:layout_marginLeft="@dimen/dim20" />
 
     <EditText
         android:id="@+id/usuario"
         style="@style/edit_text"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_below="@id/texto_usuario" />
+        android:layout_below="@id/texto_usuario"
+        android:layout_marginTop="@dimen/dim10"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
 
     <TextView
         android:id="@+id/texto_password"
         android:text="@string/password"
         style="@style/text_view"
         android:layout_below="@id/usuario"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginTop="@dimen/dim20"
+        android:layout_marginLeft="@dimen/dim20" />
 
     <EditText
         android:id="@+id/password"
         style="@style/edit_text"
         android:layout_width="match_parent"
         android:layout_below="@+id/texto_password"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginTop="@dimen/dim10"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
 
     <Button
         android:id="@+id/login"
@@ -68,9 +62,8 @@
         style="@style/boton"
         android:layout_below="@id/password"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        />
+        android:layout_marginTop="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
 
     <Button
         android:id="@+id/recuperar_password"
@@ -80,11 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-
-
-         />
+        android:layout_marginTop="@dimen/dim20"
+        android:layout_marginLeft="@dimen/dim20" />
 
 
 </RelativeLayout>
