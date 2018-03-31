@@ -9,6 +9,8 @@
     <string name="recuperar_password">Recuperar contrasenya</string>
     <string name="atras">Enrere</string>
     <string name="login">Iniciar sessió</string>
+    <string name="refugiado">Refugiat</string>
+    <string name="voluntario">Voluntari</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>

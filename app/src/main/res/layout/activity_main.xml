@@ -8,13 +8,13 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/atras_login"
-        android:text="@string/atras"
-        style="@style/boton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="@dimen/dim10"
-        android:layout_marginLeft="@dimen/dim10" />
+    android:id="@+id/atras_login"
+    android:text="@string/atras"
+    style="@style/boton"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginTop="@dimen/dim10"
+    android:layout_marginLeft="@dimen/dim10" />
 
     <TextView
         android:id="@+id/titulo_login"

@@ -8,6 +8,8 @@
     <string name="recuperar_password">Recover password</string>
     <string name="atras">Back</string>
     <string name="login">Log in</string>
+    <string name="refugiado">Refugee</string>
+    <string name="voluntario">Voluntary</string>
 
 
     <string-array name="lista_usuarios">
@@ -15,4 +17,9 @@
         <item>Voluntary</item>
         <item>Administrator</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
