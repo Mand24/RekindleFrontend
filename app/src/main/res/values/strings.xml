@@ -2,14 +2,33 @@
     <string name="app_name">RekindleFrontEnd</string>
     <string name="usuario">Username:</string>
     <string name="password">Password:</string>
+    <string name="password1">Password(*):</string>
+    <string name="repetir_password">Repeat password(*):</string>
+    <string name="texto_numero_telefono">Number phone:</string>
     <string name="acceder">Sign in</string>
     <string name="registro">Sign up</string>
     <string name="tipo_usuario">Type of user:</string>
     <string name="recuperar_password">Recover password</string>
     <string name="atras">Back</string>
     <string name="login">Log in</string>
+    <string name="enviar">Send</string>
     <string name="refugiado">Refugee</string>
     <string name="voluntario">Voluntary</string>
+    <string name="formulario_refugiado">Form refugee</string>
+    <string name="subtitulo_formulario_refugiado">Fill the next fields:</string>
+    <string name="texto_nombre_refugiado">Name(*):</string>
+    <string name="texto_1apellido_refugiado">Surname:</string>
+    <string name="texto_2apellido_refugiado">Second surname:</string>
+    <string name="texto_email_refugiado">Email(*):</string>
+    <string name="texto_nacimiento_refugiado">Birthdate:</string>
+    <string name="texto_sexo_refugiado">Sex:</string>
+    <string name="texto_procedencia_refugiado">Country of origin:</string>
+    <string name="texto_pueblo_refugiado">Town:</string>
+    <string name="texto_etnia_refugiado">Ethnic group:</string>
+    <string name="texto_grupo_sanguineo_refugiado">Blood type:</string>
+    <string name="texto_altura_refugiado">Height:</string>
+    <string name="texto_complexion_refugiado">Complexion:</string>
+    <string name="texto_ojos_refugiado">Eye color:</string>
 
 
     <string-array name="lista_usuarios">

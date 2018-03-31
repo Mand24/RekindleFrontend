@@ -27,6 +27,7 @@
         android:id="@+id/texto_usuario"
         android:text="@string/usuario"
         style="@style/text_view"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="@dimen/dim100"
         android:layout_marginLeft="@dimen/dim20" />
 
@@ -35,6 +36,7 @@
         style="@style/edit_text"
         android:layout_width="match_parent"
         android:layout_below="@id/texto_usuario"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dim10"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20" />
@@ -44,6 +46,7 @@
         android:text="@string/password"
         style="@style/text_view"
         android:layout_below="@id/usuario"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="@dimen/dim20"
         android:layout_marginLeft="@dimen/dim20" />
 
@@ -52,18 +55,19 @@
         style="@style/edit_text"
         android:layout_width="match_parent"
         android:layout_below="@+id/texto_password"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dim10"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20" />
 
     <Button
-        android:id="@+id/login"
-        android:text="@string/acceder"
-        style="@style/boton"
-        android:layout_below="@id/password"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/dim20"
-        android:layout_marginRight="@dimen/dim20" />
+    android:id="@+id/login"
+    android:text="@string/acceder"
+    style="@style/boton"
+    android:layout_below="@id/password"
+    android:layout_alignParentRight="true"
+    android:layout_marginTop="@dimen/dim20"
+    android:layout_marginRight="@dimen/dim20" />
 
     <Button
         android:id="@+id/recuperar_password"
