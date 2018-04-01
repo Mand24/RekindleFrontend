@@ -58,6 +58,13 @@
 
     </style>
 
+    <style name="espacio">
+
+        <item name="android:layout_width">@dimen/dim30</item>
+        <item name="android:layout_height">@dimen/dim1</item>
+
+    </style>
+
 
 
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".EleccionTipoServicio"
+    android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="1">
+
+        <ImageButton
+            android:id="@+id/boton_tipo_alojamiento"
+            style="@style/boton"
+            android:layout_width="@dimen/dim50"
+            android:layout_height="@dimen/dim50"
+            android:src="@drawable/icon_casa"
+            android:scaleType="fitCenter"
+             />
+
+        <Space style="@style/espacio" />
+
+        <ImageButton
+            android:id="@+id/boton_tipo_donacion"
+            style="@style/boton"
+            android:layout_width="@dimen/dim50"
+            android:layout_height="@dimen/dim50"
+            android:src="@drawable/icon_donacion"
+            android:scaleType="fitCenter"
+            />
+
+        <Space style="@style/espacio"/>
+
+        <ImageButton
+            android:id="@+id/boton_tipo_curso_educativo"
+            style="@style/boton"
+            android:layout_width="@dimen/dim50"
+            android:layout_height="@dimen/dim50"
+            android:src="@drawable/icon_libro"
+            android:scaleType="fitCenter"
+             />
+
+        <Space style="@style/espacio"/>
+
+        <ImageButton
+            android:id="@+id/boton_tipo_oferta_empleo"
+            style="@style/boton"
+            android:layout_width="@dimen/dim50"
+            android:layout_height="@dimen/dim50"
+            android:src="@drawable/icon_job"
+            android:scaleType="fitCenter"
+             />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

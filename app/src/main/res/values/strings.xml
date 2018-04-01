@@ -34,6 +34,15 @@
     <string name="listar_servicios">Listar Servicios</string>
     <string name="crear_servicio">Crear Servicio</string>
     <string name="ver_perfil">Ver Perfil</string>
+    <string name="alojamiento">Alojamiento</string>
+    <string name="donacion">Donación</string>
+    <string name="curso_educativo">Curso Educativo</string>
+    <string name="oferta_empleo">Oferta Empleo</string>
+    <string name="formulario_alojamiento">Formulario Alojamiento:</string>
+    <string name="limite_solicitudes">Límite de solicitudes(*):</string>
+    <string name="domicilio">Domicilio(*):</string>
+    <string name="fecha_limite">Fecha límite(*):</string>
+    <string name="descripcion">Descripción:</string>
 
 
     <string-array name="lista_usuarios">
@@ -41,6 +50,9 @@
         <item>Voluntary</item>
         <item>Administrator</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
