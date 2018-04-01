@@ -31,6 +31,14 @@
     <string name="texto_complexion_refugiado">Complexión:</string>
     <string name="texto_ojos_refugiado">Color de ojos:</string>
     <string name="formulario_voluntario">Formulario Voluntario:</string>
+    <string name="titulo_menu_principal">Menú Principal</string>
+    <string name="listar_servicios">Listar Servicios</string>
+    <string name="crear_servicio">Crear Servicio</string>
+    <string name="ver_perfil">Ver Perfil</string>
+    <string name="nombre_usuario_perfil">Nombre:</string>
+    <string name="email_usuario_perfil">Email:</string>
+    <string name="guardar">Guardar</string>
+    <string name="editar">Editar</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiado</item>

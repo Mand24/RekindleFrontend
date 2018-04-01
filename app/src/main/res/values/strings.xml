@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">RekindleFrontEnd</string>
     <string name="usuario">Username:</string>
@@ -11,7 +12,6 @@
     <string name="recuperar_password">Recover password</string>
     <string name="atras">Back</string>
     <string name="login">Log in</string>
-    <string name="editar">Edit</string>
     <string name="enviar">Send</string>
     <string name="refugiado">Refugee</string>
     <string name="voluntario">Voluntary</string>
@@ -31,13 +31,14 @@
     <string name="texto_complexion_refugiado">Complexion:</string>
     <string name="texto_ojos_refugiado">Eye color:</string>
     <string name="formulario_voluntario">Voluntary Form:</string>
-    <string name="titulo_menu_principal">Menú Principal</string>
-    <string name="listar_servicios">Listar Servicios</string>
-    <string name="crear_servicio">Crear Servicio</string>
-    <string name="ver_perfil">Ver Perfil</string>
+    <string name="titulo_menu_principal">Main Menu</string>
+    <string name="listar_servicios">List Services</string>
+    <string name="crear_servicio">Create Service</string>
+    <string name="ver_perfil">See Profile</string>
     <string name="nombre_usuario_perfil">Name:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
+    <string name="editar">Edit</string>
 
 
     <string-array name="lista_usuarios">
