@@ -3,12 +3,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroVoluntario">
+    tools:context=".RegistroVoluntario"
+    android:background="@drawable/fondo">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/voluntario" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titulo_registro_voluntario"
+                style="@style/text_view"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/formulario_voluntario" />
+
+            <TextView
+                android:id="@+id/subtitulo_registro_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/titulo_registro_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/subtitulo_formulario" />
+
+            <TextView
+                android:id="@+id/texto_nombre_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/subtitulo_registro_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/texto_nombre_formulario" />
+
+            <EditText
+                android:id="@+id/nombre_voluntario"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_nombre_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_email_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/nombre_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_email_formulario" />
+
+            <EditText
+                android:id="@+id/email_voluntario"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_email_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_password_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/email_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/password1" />
+
+            <EditText
+                android:id="@+id/password_voluntario"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_password_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_rpassword_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/password_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/repetir_password" />
+
+            <EditText
+                android:id="@+id/rpassword_voluntario"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_rpassword_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_1apellido_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/rpassword_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_1apellido_formulario" />
+
+            <EditText
+                android:id="@+id/p_apellido_voluntario"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_1apellido_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_2apellido_voluntario"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/p_apellido_voluntario"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_2apellido_formulario" />
+
+            <EditText
+                android:id="@+id/s_apellido_voluntario"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_2apellido_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <Button
+                android:id="@+id/enviar_registro_voluntario"
+                style="@style/boton"
+                android:layout_below="@id/s_apellido_voluntario"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/enviar" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

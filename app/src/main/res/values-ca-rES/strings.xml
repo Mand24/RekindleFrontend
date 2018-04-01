@@ -15,12 +15,12 @@
     <string name="enviar">Enviar</string>
     <string name="refugiado">Refugiat</string>
     <string name="voluntario">Voluntari</string>
+    <string name="subtitulo_formulario">Ompli els camps següents:</string>
+    <string name="texto_nombre_formulario">Nom(*):</string>
+    <string name="texto_1apellido_formulario">Primer cognom:</string>
+    <string name="texto_2apellido_formulario">Segon cognom:</string>
+    <string name="texto_email_formulario">Correu electrònic(*):</string>
     <string name="formulario_refugiado">Formulari refugiat</string>
-    <string name="subtitulo_formulario_refugiado">Ompli els camps següents:</string>
-    <string name="texto_nombre_refugiado">Nom(*):</string>
-    <string name="texto_1apellido_refugiado">Primer cognom:</string>
-    <string name="texto_2apellido_refugiado">Segon cognom:</string>
-    <string name="texto_email_refugiado">Correu electrònic(*):</string>
     <string name="texto_nacimiento_refugiado">Data de naixement:</string>
     <string name="texto_sexo_refugiado">Sexe:</string>
     <string name="texto_procedencia_refugiado">País de procedència:</string>

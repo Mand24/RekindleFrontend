@@ -11,6 +11,7 @@
         android:id="@+id/titulo_PantallaInicio"
         android:text="@string/app_name"
         style="@style/text_view"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dim100" />
 

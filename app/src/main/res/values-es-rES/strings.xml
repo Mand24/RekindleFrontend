@@ -15,12 +15,12 @@
     <string name="enviar">Enviar</string>
     <string name="refugiado">Refugiado</string>
     <string name="voluntario">Voluntario</string>
+    <string name="subtitulo_formulario">Rellene los campos siguientes:</string>
+    <string name="texto_nombre_formulario">Nombre(*):</string>
+    <string name="texto_1apellido_formulario">Primer apellido:</string>
+    <string name="texto_2apellido_formulario">Segundo apellido:</string>
+    <string name="texto_email_formulario">Correo electrónico(*):</string>
     <string name="formulario_refugiado">Formulario refugiado</string>
-    <string name="subtitulo_formulario_refugiado">Rellene los campos siguientes:</string>
-    <string name="texto_nombre_refugiado">Nombre(*):</string>
-    <string name="texto_1apellido_refugiado">Primer apellido:</string>
-    <string name="texto_2apellido_refugiado">Segundo apellido:</string>
-    <string name="texto_email_refugiado">Correo electrónico(*):</string>
     <string name="texto_nacimiento_refugiado">Fecha de nacimiento:</string>
     <string name="texto_sexo_refugiado">Sexo:</string>
     <string name="texto_procedencia_refugiado">País de procedencia:</string>

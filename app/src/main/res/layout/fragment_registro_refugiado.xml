@@ -7,10 +7,6 @@
     android:background="@drawable/fondo">
 
     <!-- TODO: Update blank fragment layout -->
-    <!--<TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/refugiado" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,6 +22,7 @@
                 android:id="@+id/titulo_registro_refugiado"
                 style="@style/text_view"
                 android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/formulario_refugiado" />
 
@@ -36,7 +33,7 @@
                 android:layout_below="@id/titulo_registro_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/subtitulo_formulario_refugiado" />
+                android:text="@string/subtitulo_formulario" />
 
             <TextView
                 android:id="@+id/texto_nombre_refugiado"
@@ -45,7 +42,7 @@
                 android:layout_below="@id/subtitulo_registro_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/texto_nombre_refugiado" />
+                android:text="@string/texto_nombre_formulario" />
 
             <EditText
                 android:id="@+id/nombre_refugiado"
@@ -64,7 +61,7 @@
                 android:layout_below="@id/nombre_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_email_refugiado" />
+                android:text="@string/texto_email_formulario" />
 
             <EditText
                 android:id="@+id/email_refugiado"
@@ -121,7 +118,7 @@
                 android:layout_below="@id/rpassword_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_1apellido_refugiado" />
+                android:text="@string/texto_1apellido_formulario" />
 
             <EditText
                 android:id="@+id/p_apellido_refugiado"
@@ -140,7 +137,7 @@
                 android:layout_below="@id/p_apellido_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_2apellido_refugiado" />
+                android:text="@string/texto_2apellido_formulario" />
 
             <EditText
                 android:id="@+id/s_apellido_refugiado"
