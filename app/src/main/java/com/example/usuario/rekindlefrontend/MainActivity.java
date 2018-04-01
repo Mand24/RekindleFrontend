@@ -1,5 +1,6 @@
 package com.example.usuario.rekindlefrontend;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        b = (Button) findViewById(R.id.login);
+        b.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                startActivity(i);
             }
         });
     }
