@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
-    tools:context=".VerPerfil">
+    tools:context="com.example.usuario.rekindlefrontend.EditarPerfil">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/atras_ver_perfil"
+                android:id="@+id/atras_editar_perfil"
                 android:text="@string/atras"
                 style="@style/boton"
                 android:layout_alignParentTop="true"
@@ -27,8 +27,8 @@
                 android:layout_marginLeft="@dimen/dim10" />
 
             <Button
-                android:id="@+id/editar_ver_perfil"
-                android:text="@string/editar"
+                android:id="@+id/guardar_editar_perfil"
+                android:text="@string/guardar"
                 style="@style/boton"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -49,7 +49,7 @@
                 android:id="@+id/label_tipo_usuario_perfil"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/atras_ver_perfil"
+                android:layout_below="@id/guardar_editar_perfil"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/tipo_usuario" />
@@ -72,11 +72,12 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/nombre_usuario_perfil" />
 
-            <TextView
+            <EditText
                 android:id="@+id/nombre_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_nombre_usuario_perfil"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener nombre()" />
@@ -90,12 +91,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_1apellido_formulario" />
 
-            <TextView
+            <EditText
                 android:id="@+id/apellido1_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido1_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener apellido1()" />
 
@@ -108,12 +110,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_2apellido_formulario" />
 
-            <TextView
+            <EditText
                 android:id="@+id/apellido2_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido2_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener apellido2()" />
 
@@ -126,12 +129,14 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/email_usuario_perfil" />
 
-            <TextView
+            <EditText
                 android:id="@+id/email_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
+                android:inputType="textEmailAddress"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_email_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener email()" />
 
@@ -144,12 +149,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_numero_telefono" />
 
-            <TextView
+            <EditText
                 android:id="@+id/telefono_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_telefono_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener telefono()" />
 
@@ -162,12 +168,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_nacimiento_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/naciminento_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_nacimiento_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener nacimiento()" />
 
@@ -180,12 +187,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_sexo_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/sexo_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_sexo_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener sexo()" />
 
@@ -198,12 +206,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_procedencia_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/pais_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_pais_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener pais()" />
 
@@ -216,12 +225,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_pueblo_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/pueblo_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_pueblo_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener pueblo()" />
 
@@ -234,12 +244,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_etnia_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/etnia_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_etnia_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener etnia()" />
 
@@ -252,12 +263,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_grupo_sanguineo_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/sangre_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_sangre_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:text="Obtener sangre()" />
 
@@ -270,12 +282,13 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_ojos_refugiado" />
 
-            <TextView
+            <EditText
                 android:id="@+id/ojos_usuario_perfil"
-                style="@style/text_view"
+                style="@style/edit_text"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_ojos_usuario_perfil"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:layout_marginBottom="@dimen/dim20"
                 android:text="Obtener ojos()" />
@@ -285,5 +298,6 @@
         </RelativeLayout>
 
     </ScrollView>
+
 
 </RelativeLayout>

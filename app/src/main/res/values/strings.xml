@@ -4,13 +4,14 @@
     <string name="password">Password:</string>
     <string name="password1">Password(*):</string>
     <string name="repetir_password">Repeat password(*):</string>
-    <string name="texto_numero_telefono">Number phone:</string>
+    <string name="texto_numero_telefono">Phone Number:</string>
     <string name="acceder">Sign in</string>
     <string name="registro">Sign up</string>
     <string name="tipo_usuario">Type of user:</string>
     <string name="recuperar_password">Recover password</string>
     <string name="atras">Back</string>
     <string name="login">Log in</string>
+    <string name="editar">Edit</string>
     <string name="enviar">Send</string>
     <string name="refugiado">Refugee</string>
     <string name="voluntario">Voluntary</string>
@@ -34,6 +35,9 @@
     <string name="listar_servicios">Listar Servicios</string>
     <string name="crear_servicio">Crear Servicio</string>
     <string name="ver_perfil">Ver Perfil</string>
+    <string name="nombre_usuario_perfil">Name:</string>
+    <string name="email_usuario_perfil">Email:</string>
+    <string name="guardar">Save</string>
 
 
     <string-array name="lista_usuarios">

@@ -6,14 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class VerPerfil extends AppCompatActivity {
+public class EditarPerfil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ver_perfil);
+        setContentView(R.layout.activity_editar_perfil);
 
-        Button b = (Button) findViewById(R.id.atras_ver_perfil);
+        Button b = (Button) findViewById(R.id.atras_editar_perfil);
         b.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -22,16 +22,14 @@ public class VerPerfil extends AppCompatActivity {
             }
         });
 
-        b = (Button) findViewById(R.id.editar_ver_perfil);
+        b = (Button) findViewById(R.id.guardar_editar_perfil);
         b.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
+                Intent i = new Intent(getApplicationContext(), VerPerfil.class);
                 startActivity(i);
             }
         });
     }
-
-
 }

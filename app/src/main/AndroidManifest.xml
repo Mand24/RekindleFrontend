@@ -26,7 +26,8 @@
         <activity android:name=".MenuPrincipal" />
         <activity android:name=".VerPerfil" />
         <activity android:name=".CrearServicio" />
-        <activity android:name=".ListarServicios"></activity>
+        <activity android:name=".ListarServicios" />
+        <activity android:name=".EditarPerfil"></activity>
     </application>
 
 </manifest>

@@ -294,49 +294,10 @@
                 android:layout_marginTop="@dimen/dim10" />
 
             <TextView
-                android:id="@+id/texto_altura_refugiado"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/grupo_sanguineo_refugiado"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_altura_refugiado" />
-
-            <EditText
-                android:id="@+id/altura_refugiado"
-                style="@style/edit_text"
-                android:inputType="numberDecimal"
-                android:layout_width="match_parent"
-                android:layout_below="@id/texto_altura_refugiado"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
-
-            <TextView
-                android:id="@+id/texto_complexion_refugiado"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/altura_refugiado"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_complexion_refugiado" />
-
-            <EditText
-                android:id="@+id/complexion_refugiado"
-                style="@style/edit_text"
-                android:layout_width="match_parent"
-                android:layout_below="@id/texto_complexion_refugiado"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
-
-            <TextView
                 android:id="@+id/texto_ojos_refugiado"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/complexion_refugiado"
+                android:layout_below="@id/grupo_sanguineo_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_ojos_refugiado" />
