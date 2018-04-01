@@ -47,6 +47,7 @@
             <EditText
                 android:id="@+id/nombre_voluntario"
                 style="@style/edit_text"
+                android:inputType="textCapWords"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_nombre_voluntario"
                 android:layout_centerHorizontal="true"
@@ -66,6 +67,7 @@
             <EditText
                 android:id="@+id/email_voluntario"
                 style="@style/edit_text"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_email_voluntario"
                 android:layout_centerHorizontal="true"
@@ -85,6 +87,7 @@
             <EditText
                 android:id="@+id/password_voluntario"
                 style="@style/edit_text"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_password_voluntario"
                 android:layout_centerHorizontal="true"
@@ -104,6 +107,7 @@
             <EditText
                 android:id="@+id/rpassword_voluntario"
                 style="@style/edit_text"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_rpassword_voluntario"
                 android:layout_centerHorizontal="true"
@@ -123,6 +127,7 @@
             <EditText
                 android:id="@+id/p_apellido_voluntario"
                 style="@style/edit_text"
+                android:inputType="textCapWords"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_1apellido_voluntario"
                 android:layout_centerHorizontal="true"
@@ -142,6 +147,7 @@
             <EditText
                 android:id="@+id/s_apellido_voluntario"
                 style="@style/edit_text"
+                android:inputType="textCapWords"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_2apellido_voluntario"
                 android:layout_centerHorizontal="true"
