@@ -39,6 +39,10 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
+    <string name="cambiar_password">Cambiar contraseña</string>
+    <string name="actual_password">Contraseña actual:</string>
+    <string name="nuevo_password">Contraseña nueva:</string>
+    <string name="repetir_password1">Repite contraseña:</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiado</item>

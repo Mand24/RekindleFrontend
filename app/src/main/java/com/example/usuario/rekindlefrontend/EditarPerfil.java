@@ -31,5 +31,15 @@ public class EditarPerfil extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        b = (Button) findViewById(R.id.cambiar_password);
+        b.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CambiarPassword.class);
+                startActivity(i);
+            }
+        });
     }
 }

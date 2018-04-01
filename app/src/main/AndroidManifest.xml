@@ -27,7 +27,8 @@
         <activity android:name=".VerPerfil" />
         <activity android:name=".CrearServicio" />
         <activity android:name=".ListarServicios" />
-        <activity android:name=".EditarPerfil"></activity>
+        <activity android:name=".EditarPerfil" />
+        <activity android:name=".CambiarPassword"></activity>
     </application>
 
 </manifest>

@@ -290,8 +290,20 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:layout_marginBottom="@dimen/dim20"
+
                 android:text="Obtener ojos()" />
+
+            <Button
+                android:id="@+id/cambiar_password"
+                android:text="@string/cambiar_password"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ojos_usuario_perfil"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginLeft="@dimen/dim20" />
 
 
 

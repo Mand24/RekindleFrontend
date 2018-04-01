@@ -1,4 +1,4 @@
-
+<!--Espacio a drede-->
 <resources>
     <string name="app_name">RekindleFrontEnd</string>
     <string name="usuario">Username:</string>
@@ -39,6 +39,11 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
     <string name="editar">Edit</string>
+    <string name="cambiar_password">Change password</string>
+    <string name="actual_password">Current password:</string>
+    <string name="nuevo_password">New password:</string>
+    <string name="repetir_password1">Repeat password:</string>
+
 
 
     <string-array name="lista_usuarios">
