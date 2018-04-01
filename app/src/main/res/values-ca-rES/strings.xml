@@ -30,6 +30,7 @@
     <string name="texto_altura_refugiado">Alçada:</string>
     <string name="texto_complexion_refugiado">Complexió:</string>
     <string name="texto_ojos_refugiado">Color de ulls:</string>
+    <string name="formulario_voluntario">Formulari Voluntari:</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>

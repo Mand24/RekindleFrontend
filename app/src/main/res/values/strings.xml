@@ -29,7 +29,7 @@
     <string name="texto_altura_refugiado">Height:</string>
     <string name="texto_complexion_refugiado">Complexion:</string>
     <string name="texto_ojos_refugiado">Eye color:</string>
-    <string name="formulario_voluntario">Formulario Voluntario:</string>
+    <string name="formulario_voluntario">Voluntary Form:</string>
 
 
     <string-array name="lista_usuarios">
