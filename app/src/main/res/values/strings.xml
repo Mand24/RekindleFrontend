@@ -30,6 +30,10 @@
     <string name="texto_complexion_refugiado">Complexion:</string>
     <string name="texto_ojos_refugiado">Eye color:</string>
     <string name="formulario_voluntario">Voluntary Form:</string>
+    <string name="titulo_menu_principal">Menú Principal</string>
+    <string name="listar_servicios">Listar Servicios</string>
+    <string name="crear_servicio">Crear Servicio</string>
+    <string name="ver_perfil">Ver Perfil</string>
 
 
     <string-array name="lista_usuarios">
@@ -37,7 +41,6 @@
         <item>Voluntary</item>
         <item>Administrator</item>
     </string-array>
-
 
 
 </resources>

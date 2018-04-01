@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuPrincipal"
+    android:background="@drawable/fondo">
+
+    <TextView
+        android:id="@+id/titulo_MenuPrincipal"
+        android:text="@string/titulo_menu_principal"
+        style="@style/text_view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dim100" />
+
+    <Button
+        android:id="@+id/listar_servicios_MenuPrincipal"
+        android:text="@string/listar_servicios"
+        style="@style/boton"
+        android:layout_width="match_parent"
+        android:layout_below="@id/titulo_MenuPrincipal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
+
+    <Button
+        android:id="@+id/crear_servicio_MenuPrincipal"
+        android:text="@string/crear_servicio"
+        style="@style/boton"
+        android:layout_width="match_parent"
+        android:layout_below="@id/listar_servicios_MenuPrincipal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
+
+    <Button
+        android:id="@+id/ver_perfil_MenuPrincipal"
+        android:text="@string/ver_perfil"
+        style="@style/boton"
+        android:layout_width="match_parent"
+        android:layout_below="@id/crear_servicio_MenuPrincipal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
+
+
+
+</RelativeLayout>
