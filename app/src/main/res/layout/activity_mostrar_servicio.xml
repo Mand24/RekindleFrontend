@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
+
+    <TextView
+        android:id="@+id/titulo_servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/descripcion_servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        android:layout_below="@+id/titulo_servicio"/>
+
+    <TextView
+        android:id="@+id/direccion_servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descripcion_servicio" />
+
+    <TextView
+        android:id="@+id/fecha_limite_servicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/direccion_servicio" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/google_mapView"
+        android:layout_width="324dp"
+        android:layout_height="199dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/fecha_limite_servicio"/>
+
+    <RelativeLayout
+        android:id="@+id/contacto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/google_mapView">
+
+        <TextView
+            android:id="@+id/numero_contacto_servicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+        <Button
+            android:id="@+id/Chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/numero_contacto_servicio"
+            android:text="@string/chat"
+            style="@style/boton"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/servicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contacto">
+
+        <TextView
+            android:id="@+id/valoracion_servicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/opiniones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/valoracion_servicio"
+            android:text="@string/opiniones"
+            style="@style/boton"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/inscribirse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/servicio"
+        android:text="@string/inscribir"
+        android:layout_alignParentRight="true"
+        style="@style/boton"/>
+
+
+
+</RelativeLayout>

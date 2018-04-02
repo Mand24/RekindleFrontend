@@ -43,7 +43,9 @@
     <string name="domicilio">Domicilio(*):</string>
     <string name="fecha_limite">Fecha límite(*):</string>
     <string name="descripcion">Descripción:</string>
-
+    <string name="opiniones">Reviews</string>
+    <string name="inscribir">Enrol</string>
+    <string name="chat">Chat</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>

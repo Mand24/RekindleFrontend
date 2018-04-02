@@ -31,6 +31,9 @@
     <string name="texto_complexion_refugiado">Complexió:</string>
     <string name="texto_ojos_refugiado">Color de ulls:</string>
     <string name="formulario_voluntario">Formulari Voluntari:</string>
+    <string name="opiniones">Opinions</string>
+    <string name="inscribir">Inscriure</string>
+    <string name="chat">Chat</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>
