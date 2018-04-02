@@ -21,6 +21,8 @@
             android:text="@string/refugiado"
             style="@style/boton" />
 
+        <Space style="@style/espacio"/>
+
         <Button
             android:id="@+id/boton_voluntario"
             android:text="@string/voluntario"
