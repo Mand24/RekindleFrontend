@@ -70,7 +70,9 @@
     <string name="ambito_curso_educativo">Ambito:</string>
     <string name="horario_curso_educativo">Horario:</string>
     <string name="precio">Precio:</string>
-
+    <string name="opiniones">Reviews</string>
+    <string name="inscribir">Enrol</string>
+    <string name="chat">Chat</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>

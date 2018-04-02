@@ -43,6 +43,9 @@
     <string name="actual_password">Contraseña actual:</string>
     <string name="nuevo_password">Contraseña nueva:</string>
     <string name="repetir_password1">Repite contraseña:</string>
+    <string name="opiniones">Opiniones</string>
+    <string name="inscribir">Inscribir</string>
+    <string name="chat">Chat</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiado</item>
