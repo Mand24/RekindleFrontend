@@ -51,8 +51,13 @@
     <string name="duracion_oferta_empleo">Duración estimada:</string>
     <string name="plazas_oferta_empleo">Plazas disponibles:</string>
     <string name="sueldo_oferta_empleo">Sueldo:</string>
-    <string name="telefono">Telefono de contacto:</string>
+    <string name="telefono">Teléfono de contacto:</string>
     <string name="direccion">Dirección:</string>
+    <string name="formulario_curso_educativo">Formulario Curso Educativo</string>
+    <string name="requisitos_curso_educativo">Requisitos previos:</string>
+    <string name="ambito_curso_educativo">Ámbito:</string>
+    <string name="horario_curso_educativo">Horario:</string>
+    <string name="precio">Precio:</string>
 
 
     <string-array name="lista_usuarios">
