@@ -36,6 +36,9 @@
     <string name="ver_perfil">Ver Perfil</string>
     <string name="alojamiento">Alojamiento</string>
     <string name="donacion">Donación</string>
+    <string name="formulario_donacion">Formulario Donacion:</string>
+    <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
+    <string name="franja_horaria_donacion">Hora de Recogida:</string>
     <string name="curso_educativo">Curso Educativo</string>
     <string name="oferta_empleo">Oferta Empleo</string>
     <string name="formulario_alojamiento">Formulario Alojamiento:</string>
