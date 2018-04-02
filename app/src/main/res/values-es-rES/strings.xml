@@ -31,6 +31,9 @@
     <string name="texto_complexion_refugiado">Complexión:</string>
     <string name="texto_ojos_refugiado">Color de ojos:</string>
     <string name="formulario_voluntario">Formulario Voluntario:</string>
+    <string name="opiniones">Opiniones</string>
+    <string name="inscribir">Inscribir</string>
+    <string name="chat">Chat</string>
     <string name="titulo_menu_principal">Menú Principal</string>
     <string name="listar_servicios">Listar Servicios</string>
     <string name="crear_servicio">Crear Servicio</string>

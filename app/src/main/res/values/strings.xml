@@ -55,6 +55,9 @@
     <string name="domicilio">Domicilio(*):</string>
     <string name="fecha_limite">Fecha límite(*):</string>
     <string name="descripcion">Descripción:</string>
+    <string name="opiniones">Reviews</string>
+    <string name="inscribir">Enrol</string>
+    <string name="chat">Chat</string>
     <string name="formulario_oferta_empleo">Formulario Oferta Empleo:</string>
     <string name="puesto_oferta_empleo">Puesto:</string>
     <string name="requisitos_oferta_empleo">Requisitos necesarios:</string>
