@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormularioCursoEducativo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titulo_formulario_curso_educativo"
+                style="@style/text_view"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/formulario_curso_educativo" />
+
+            <TextView
+                android:id="@+id/subtitulo_formulario_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/titulo_formulario_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/subtitulo_formulario" />
+
+            <TextView
+                android:id="@+id/texto_nombre_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/subtitulo_formulario_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/texto_nombre_formulario" />
+
+            <EditText
+                android:id="@+id/nombre_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="textCapWords"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_nombre_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_requisitos_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/nombre_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/requisitos_curso_educativo" />
+
+            <EditText
+                android:id="@+id/requisitos_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_requisitos_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_ambito_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/requisitos_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/ambito_curso_educativo" />
+
+            <EditText
+                android:id="@+id/ambito_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="textCapSentences"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_ambito_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_horario_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/ambito_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/horario_curso_educativo" />
+
+            <EditText
+                android:id="@+id/horario_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_horario_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_plazas_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/horario_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/plazas_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/plazas_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_plazas_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_direccion_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/plazas_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/direccion" />
+
+            <EditText
+                android:id="@+id/direccion_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_direccion_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_telefono_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/direccion_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/telefono" />
+
+            <EditText
+                android:id="@+id/telefono_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_telefono_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_precio_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/telefono_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/precio" />
+
+            <EditText
+                android:id="@+id/precio_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="numberDecimal"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_precio_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_correo_curso_educativo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/precio_curso_educativo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/texto_email_formulario" />
+
+            <EditText
+                android:id="@+id/correo_curso_educativo"
+                style="@style/edit_text"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_correo_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <Button
+                android:id="@+id/enviar_formulario_curso_educativo"
+                style="@style/boton"
+                android:layout_below="@id/correo_curso_educativo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/enviar" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

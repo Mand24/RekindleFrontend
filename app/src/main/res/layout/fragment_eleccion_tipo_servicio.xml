@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    tools:context=".EleccionTipoServicio"
+    android:weightSum="1">
+
+    <ImageButton
+        android:id="@+id/boton_tipo_alojamiento"
+        android:layout_width="@dimen/dim50"
+        android:layout_height="@dimen/dim50"
+        android:src="@drawable/icon_casa"
+        android:scaleType="fitCenter"
+        style="@style/boton" />
+
+    <Space style="@style/espacio"/>
+
+    <ImageButton
+        android:id="@+id/boton_tipo_donacion"
+        android:layout_width="@dimen/dim50"
+        android:layout_height="@dimen/dim50"
+        android:src="@drawable/icon_donacion"
+        android:scaleType="fitCenter"
+        style="@style/boton" />
+
+    <Space style="@style/espacio"/>
+
+    <ImageButton
+        android:id="@+id/boton_tipo_curso_educativo"
+        android:layout_width="@dimen/dim50"
+        android:layout_height="@dimen/dim50"
+        android:src="@drawable/icon_libro"
+        android:scaleType="fitCenter"
+        style="@style/boton" />
+
+    <Space style="@style/espacio"/>
+
+    <ImageButton
+        android:id="@+id/boton_tipo_oferta_empleo"
+        android:layout_width="@dimen/dim50"
+        android:layout_height="@dimen/dim50"
+        android:src="@drawable/icon_job"
+        android:scaleType="fitCenter"
+        style="@style/boton" />
+
+
+</LinearLayout>

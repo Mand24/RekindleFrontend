@@ -6,6 +6,7 @@
     <dimen name="dim10">20dp</dimen>
     <dimen name="dim20">40dp</dimen>
     <dimen name="dim24">48dp</dimen>
+    <dimen name="dim30">60dp</dimen>
     <dimen name="dim50">100dp</dimen>
     <dimen name="dim100">200dp</dimen>
     <dimen name="textoPeq">32sp</dimen>
