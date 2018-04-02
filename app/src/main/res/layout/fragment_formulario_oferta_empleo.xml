@@ -7,13 +7,259 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/titulo_formulario_oferta_empleo"
+                style="@style/text_view"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/formulario_oferta_empleo" />
 
+            <TextView
+                android:id="@+id/subtitulo_formulario_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/titulo_formulario_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/subtitulo_formulario" />
+
+            <TextView
+                android:id="@+id/texto_nombre_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/subtitulo_formulario_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/texto_nombre_formulario" />
+
+            <EditText
+                android:id="@+id/nombre_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="textCapWords"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_nombre_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_puesto_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/nombre_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/puesto_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/puesto_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="textCapSentences"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_puesto_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_requisitos_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/puesto_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/requisitos_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/requisitos_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_requisitos_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_jornada_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/requisitos_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/jornada_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/jornada_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_jornada_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_horas_semanales_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/jornada_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/horas_semanales_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/horas_semanales_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_horas_semanales_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_duracion_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/horas_semanales_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/duracion_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/duracion_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="textCapSentences"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_duracion_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_plazas_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/duracion_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/plazas_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/plazas_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_plazas_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_sueldo_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/plazas_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/sueldo_oferta_empleo" />
+
+            <EditText
+                android:id="@+id/sueldo_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_sueldo_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_telefono_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/sueldo_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/telefono" />
+
+            <EditText
+                android:id="@+id/telefono_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_telefono_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_direccion_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/telefono_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/direccion" />
+
+            <EditText
+                android:id="@+id/direccion_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_direccion_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <TextView
+                android:id="@+id/texto_correo_oferta_empleo"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/direccion_oferta_empleo"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/texto_email_formulario" />
+
+            <EditText
+                android:id="@+id/correo_oferta_empleo"
+                style="@style/edit_text"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_correo_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10" />
+
+            <Button
+                android:id="@+id/enviar_formulario_oferta_empleo"
+                style="@style/boton"
+                android:layout_below="@id/correo_oferta_empleo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/enviar" />
 
         </RelativeLayout>
     </ScrollView>

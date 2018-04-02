@@ -124,7 +124,7 @@
             <EditText
                 android:id="@+id/descripcion_alojamiento"
                 style="@style/edit_text"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_descripcion_alojamiento"
                 android:layout_centerHorizontal="true"

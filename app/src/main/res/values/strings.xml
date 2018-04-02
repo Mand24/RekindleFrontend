@@ -43,6 +43,16 @@
     <string name="domicilio">Domicilio(*):</string>
     <string name="fecha_limite">Fecha límite(*):</string>
     <string name="descripcion">Descripción:</string>
+    <string name="formulario_oferta_empleo">Formulario Oferta Empleo:</string>
+    <string name="puesto_oferta_empleo">Puesto:</string>
+    <string name="requisitos_oferta_empleo">Requisitos necesarios:</string>
+    <string name="jornada_oferta_empleo">Jornada laboral:</string>
+    <string name="horas_semanales_oferta_empleo">Horas semanales:</string>
+    <string name="duracion_oferta_empleo">Duración estimada:</string>
+    <string name="plazas_oferta_empleo">Plazas disponibles:</string>
+    <string name="sueldo_oferta_empleo">Sueldo:</string>
+    <string name="telefono">Telefono de contacto:</string>
+    <string name="direccion">Dirección:</string>
 
 
     <string-array name="lista_usuarios">
