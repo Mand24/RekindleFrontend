@@ -21,7 +21,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/formulario_alojamiento" />
+                android:text="@string/formulario_alojamiento"
+            />
 
             <TextView
                 android:id="@+id/subtitulo_formulario_alojamiento"
@@ -30,7 +31,8 @@
                 android:layout_below="@id/titulo_formulario_alojamiento"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/subtitulo_formulario" />
+                android:text="@string/subtitulo_formulario"
+            />
 
             <TextView
                 android:id="@+id/texto_nombre_alojamiento"
@@ -39,27 +41,96 @@
                 android:layout_below="@id/subtitulo_formulario_alojamiento"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/texto_nombre_formulario" />
+                android:text="@string/texto_nombre_formulario"
+            />
 
             <EditText
                 android:id="@+id/nombre_alojamiento"
                 style="@style/edit_text"
-                android:inputType="textCapWords"
+                android:inputType="textCapSentences"
                 android:layout_width="match_parent"
                 android:layout_below="@id/texto_nombre_alojamiento"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
-                android:id="@+id/texto_solicitudes_alojamiento"
+                android:id="@+id/texto_correo_alojamiento"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/nombre_alojamiento"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/limite_solicitudes" />
+                android:text="@string/texto_email_formulario"
+            />
+
+            <EditText
+                android:id="@+id/correo_alojamiento"
+                style="@style/edit_text"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_correo_alojamiento"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+            />
+
+            <TextView
+                android:id="@+id/texto_telefono_alojamiento"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/correo_alojamiento"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/telefono"
+            />
+
+            <EditText
+                android:id="@+id/telefono_alojamiento"
+                style="@style/edit_text"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_telefono_alojamiento"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+            />
+
+            <TextView
+                android:id="@+id/texto_direccion_alojamiento"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/telefono_alojamiento"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/direccion"
+            />
+
+            <EditText
+                android:id="@+id/direccion_alojamiento"
+                style="@style/edit_text"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_below="@id/texto_direccion_alojamiento"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+            />
+
+            <TextView
+                android:id="@+id/texto_solicitudes_alojamiento"
+                style="@style/text_view"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/direccion_alojamiento"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/limite_solicitudes"
+            />
 
             <EditText
                 android:id="@+id/solicitudes_alojamiento"
@@ -70,36 +141,18 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
-
-            <TextView
-                android:id="@+id/texto_domicilio_alojamiento"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/solicitudes_alojamiento"
-                android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/domicilio" />
-
-            <EditText
-                android:id="@+id/domicilio_alojamiento"
-                style="@style/edit_text"
-                android:inputType="textCapSentences"
-                android:layout_width="match_parent"
-                android:layout_below="@id/texto_domicilio_alojamiento"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+            />
 
             <TextView
                 android:id="@+id/texto_fecha_limite_alojamiento"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/domicilio_alojamiento"
+                android:layout_below="@id/solicitudes_alojamiento"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/fecha_limite" />
+                android:text="@string/fecha_limite"
+            />
 
             <EditText
                 android:id="@+id/fecha_limite_alojamiento"
@@ -110,7 +163,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_descripcion_alojamiento"
@@ -119,7 +173,8 @@
                 android:layout_below="@id/fecha_limite_alojamiento"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/descripcion" />
+                android:text="@string/descripcion"
+            />
 
             <EditText
                 android:id="@+id/descripcion_alojamiento"
@@ -130,7 +185,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <Button
                 android:id="@+id/enviar_formulario_alojamiento"
@@ -139,10 +195,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="@string/enviar" />
+                android:text="@string/enviar"
+            />
 
         </RelativeLayout>
-
 
     </ScrollView>
 
