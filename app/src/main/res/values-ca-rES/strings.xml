@@ -31,9 +31,6 @@
     <string name="texto_complexion_refugiado">Complexió:</string>
     <string name="texto_ojos_refugiado">Color de ulls:</string>
     <string name="formulario_voluntario">Formulari Voluntari:</string>
-    <string name="opiniones">Opinions</string>
-    <string name="inscribir">Inscriure</string>
-    <string name="chat">Chat</string>
     <string name="titulo_menu_principal">Menú Principal</string>
     <string name="listar_servicios">Llistar Serveis</string>
     <string name="crear_servicio">Crear Servei</string>
@@ -46,6 +43,39 @@
     <string name="actual_password">Contrasenya actual:</string>
     <string name="nuevo_password">Contrasenya nova:</string>
     <string name="repetir_password1">Repeteix contrasenya:</string>
+
+    <string name="opiniones">Opinions</string>
+    <string name="inscribir">Inscriure</string>
+    <string name="chat">Chat</string>
+
+    <string name="alojamiento">Alojamiento</string>
+    <string name="donacion">Donación</string>
+    <string name="formulario_donacion">Formulario Donacion:</string>
+    <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
+    <string name="franja_horaria_donacion">Hora de Recogida:</string>
+    <string name="curso_educativo">Curso Educativo</string>
+    <string name="oferta_empleo">Oferta Empleo</string>
+    <string name="formulario_alojamiento">Formulario Alojamiento:</string>
+    <string name="limite_solicitudes">Límite de solicitudes(*):</string>
+    <string name="domicilio">Domicilio(*):</string>
+    <string name="fecha_limite">Fecha límite(*):</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="formulario_oferta_empleo">Formulario Oferta Empleo:</string>
+    <string name="puesto_oferta_empleo">Puesto:</string>
+    <string name="requisitos_oferta_empleo">Requisitos necesarios:</string>
+    <string name="jornada_oferta_empleo">Jornada laboral:</string>
+    <string name="horas_semanales_oferta_empleo">Horas semanales:</string>
+    <string name="duracion_oferta_empleo">Duración estimada:</string>
+    <string name="plazas_oferta_empleo">Plazas disponibles:</string>
+    <string name="sueldo_oferta_empleo">Sueldo:</string>
+    <string name="telefono">Teléfono de contacto:</string>
+    <string name="direccion">Dirección:</string>
+    <string name="formulario_curso_educativo">Formulario Curso Educativo</string>
+    <string name="requisitos_curso_educativo">Requisitos previos:</string>
+    <string name="ambito_curso_educativo">Ambito:</string>
+    <string name="horario_curso_educativo">Horario:</string>
+    <string name="precio">Precio:</string>
+
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>
