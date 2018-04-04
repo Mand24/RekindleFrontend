@@ -1,5 +1,6 @@
 package com.example.usuario.rekindlefrontend;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,14 +12,11 @@ public class CambiarPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_password);
+    }
 
-        Button b = (Button) findViewById(R.id.atras_cambiar_password);
-        b.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
+        startActivity(i);
     }
 }

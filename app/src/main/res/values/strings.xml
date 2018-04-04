@@ -1,6 +1,6 @@
 <!--Espacio a drede-->
 <resources>
-    <string name="app_name">RekindleFrontEnd</string>
+    <string name="app_name">Rekindle</string>
     <string name="usuario">Username:</string>
     <string name="password">Password:</string>
     <string name="password1">Password(*):</string>
@@ -9,7 +9,7 @@
     <string name="acceder">Sign in</string>
     <string name="registro">Sign up</string>
     <string name="tipo_usuario">Type of user:</string>
-    <string name="recuperar_password">Recover password</string>
+    <string name="recuperar_password"><u>Recover password</u></string>
     <string name="atras">Back</string>
     <string name="login">Log in</string>
     <string name="enviar">Send</string>
@@ -39,10 +39,10 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
     <string name="editar">Edit</string>
-    <string name="cambiar_password">Change password</string>
-    <string name="actual_password">Current password:</string>
-    <string name="nuevo_password">New password:</string>
-    <string name="repetir_password1">Repeat password:</string>
+    <string name="cambiar_password"><b>Change password</b></string>
+    <string name="actual_password">Current password</string>
+    <string name="nuevo_password">New password</string>
+    <string name="repetir_password1">Repeat password</string>
 
     <string name="opiniones">Reviews</string>
     <string name="inscribir">Enrol</string>
@@ -51,32 +51,34 @@
     <string name="alojamiento">Hosting</string>
     <string name="donacion">Donations</string>
     <string name="formulario_donacion">Donation form:</string>
-    <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
-    <string name="franja_horaria_inicio_donacion">Hora inicio de Recogida:</string>
-    <string name="curso_educativo">Curso Educativo</string>
-    <string name="oferta_empleo">Oferta Empleo</string>
-    <string name="formulario_alojamiento">Formulario Alojamiento:</string>
-    <string name="limite_solicitudes">Limite de solicitudes:</string>
-    <string name="domicilio">Domicilio(*):</string>
-    <string name="fecha_limite">Fecha limite:</string>
-    <string name="descripcion">Descripcion:</string>
-    <string name="formulario_oferta_empleo">Formulario Oferta Empleo:</string>
-    <string name="puesto_oferta_empleo">Puesto(*):</string>
-    <string name="requisitos_oferta_empleo">Requisitos necesarios:</string>
-    <string name="jornada_oferta_empleo">Jornada laboral:</string>
-    <string name="horas_semanales_oferta_empleo">Horas semanales:</string>
-    <string name="duracion_oferta_empleo">Duracion contrato:</string>
-    <string name="plazas_oferta_empleo">Plazas disponibles:</string>
-    <string name="sueldo_oferta_empleo">Sueldo:</string>
-    <string name="telefono">Teléfono de contacto(*):</string>
-    <string name="direccion">Dirección(*):</string>
-    <string name="formulario_curso_educativo">Formulario Curso Educativo</string>
-    <string name="requisitos_curso_educativo">Requisitos previos:</string>
-    <string name="ambito_curso_educativo">Ámbito(*):</string>
-    <string name="horario_curso_educativo">Horario:</string>
-    <string name="precio">Precio:</string>
-    <string name="franja_horaria_fin_donacion">Hora final de Recogida:</string>
-    
+    <string name="lugar_recogida_donacion">Pick up location(*):</string>
+    <string name="franja_horaria_donacion">Pick up time:</string>
+    <string name="curso_educativo">Educational course</string>
+    <string name="oferta_empleo">Job offer</string>
+    <string name="formulario_alojamiento">Housing form:</string>
+    <string name="limite_solicitudes">Limit of requests(*):</string>
+    <string name="domicilio">Domicile(*):</string>
+    <string name="fecha_limite">Deadline(*):</string>
+    <string name="descripcion">Description:</string>
+    <string name="formulario_oferta_empleo">Job offer form:</string>
+    <string name="puesto_oferta_empleo">Job position:</string>
+    <string name="requisitos_oferta_empleo">Requirements:</string>
+    <string name="jornada_oferta_empleo">Workday:</string>
+    <string name="horas_semanales_oferta_empleo">Weekly hours:</string>
+    <string name="duracion_oferta_empleo">Estimated duration:</string>
+    <string name="plazas_oferta_empleo">Available places:</string>
+    <string name="sueldo_oferta_empleo">Salary:</string>
+    <string name="telefono">Contact telephone number:</string>
+    <string name="direccion">Address:</string>
+    <string name="formulario_curso_educativo">Educative course form</string>
+    <string name="requisitos_curso_educativo">Prerequisites:</string>
+    <string name="ambito_curso_educativo">Field:</string>
+    <string name="horario_curso_educativo">Schedule:</string>
+    <string name="precio">Price:</string>
+    <string name="email_usuario_login">Email</string>
+    <string name="password_usuario_login">Password</string>
+    <string name="go_to_signup"><b><u>No account yet? Create one</u></b></string>
+
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>

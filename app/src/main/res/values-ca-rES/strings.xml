@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">RekindleFrontEnd</string>
+    <string name="app_name">Rekindle</string>
     <string name="usuario">Nom usuari:</string>
     <string name="password">Contrasenya:</string>
     <string name="password1">Contrasenya(*):</string>
@@ -9,7 +9,7 @@
     <string name="acceder">Accedir</string>
     <string name="registro">Registrar-se</string>
     <string name="tipo_usuario">Tipus usuari:</string>
-    <string name="recuperar_password">Recuperar contrasenya</string>
+    <string name="recuperar_password"><u>Recuperar contrasenya</u></string>
     <string name="atras">Enrere</string>
     <string name="login">Iniciar sessió</string>
     <string name="enviar">Enviar</string>
@@ -39,7 +39,7 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
-    <string name="cambiar_password">Canviar contrasenya</string>
+    <string name="cambiar_password"><b>Canviar contrasenya</b></string>
     <string name="actual_password">Contrasenya actual:</string>
     <string name="nuevo_password">Contrasenya nova:</string>
     <string name="repetir_password1">Repeteix contrasenya:</string>
@@ -50,31 +50,34 @@
 
     <string name="alojamiento">Alojamiento</string>
     <string name="donacion">Donación</string>
-    <string name="formulario_donacion">Formulario Donacion:</string>
-    <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
-    <string name="franja_horaria_donacion">Hora de Recogida:</string>
-    <string name="curso_educativo">Curso Educativo</string>
-    <string name="oferta_empleo">Oferta Empleo</string>
-    <string name="formulario_alojamiento">Formulario Alojamiento:</string>
-    <string name="limite_solicitudes">Límite de solicitudes(*):</string>
-    <string name="domicilio">Domicilio(*):</string>
-    <string name="fecha_limite">Fecha límite(*):</string>
-    <string name="descripcion">Descripción:</string>
-    <string name="formulario_oferta_empleo">Formulario Oferta Empleo:</string>
-    <string name="puesto_oferta_empleo">Puesto:</string>
-    <string name="requisitos_oferta_empleo">Requisitos necesarios:</string>
+    <string name="formulario_donacion">Formulari donació:</string>
+    <string name="lugar_recogida_donacion">Lloc de recollida(*):</string>
+    <string name="franja_horaria_donacion">Hora de recollida:</string>
+    <string name="curso_educativo">Curs educatiu</string>
+    <string name="oferta_empleo">Oferta d\'ocupació</string>
+    <string name="formulario_alojamiento">Formulari allotjament:</string>
+    <string name="limite_solicitudes">Límit de sol·licituds(*):</string>
+    <string name="domicilio">Domicili(*):</string>
+    <string name="fecha_limite">Data límit(*):</string>
+    <string name="descripcion">Descripció:</string>
+    <string name="formulario_oferta_empleo">Formulari oferta d\'ocupació:</string>
+    <string name="puesto_oferta_empleo">Lloc de treball:</string>
+    <string name="requisitos_oferta_empleo">Requisits:</string>
     <string name="jornada_oferta_empleo">Jornada laboral:</string>
-    <string name="horas_semanales_oferta_empleo">Horas semanales:</string>
-    <string name="duracion_oferta_empleo">Duración estimada:</string>
-    <string name="plazas_oferta_empleo">Plazas disponibles:</string>
-    <string name="sueldo_oferta_empleo">Sueldo:</string>
-    <string name="telefono">Teléfono de contacto:</string>
-    <string name="direccion">Dirección:</string>
-    <string name="formulario_curso_educativo">Formulario Curso Educativo</string>
-    <string name="requisitos_curso_educativo">Requisitos previos:</string>
-    <string name="ambito_curso_educativo">Ambito:</string>
-    <string name="horario_curso_educativo">Horario:</string>
-    <string name="precio">Precio:</string>
+    <string name="horas_semanales_oferta_empleo">Hores setmanals:</string>
+    <string name="duracion_oferta_empleo">Duració estimada:</string>
+    <string name="plazas_oferta_empleo">Places disponibles:</string>
+    <string name="sueldo_oferta_empleo">Sou:</string>
+    <string name="telefono">Teléfon de contacte:</string>
+    <string name="direccion">Direcció:</string>
+    <string name="formulario_curso_educativo">Formulari curs educatiu</string>
+    <string name="requisitos_curso_educativo">Requisits previs:</string>
+    <string name="ambito_curso_educativo">Àmbit:</string>
+    <string name="horario_curso_educativo">Horari:</string>
+    <string name="precio">Preu:</string>
+    <string name="email_usuario_login">Correu</string>
+    <string name="password_usuario_login">Contrasenya</string>
+    <string name="go_to_signup"><b><u>Encara no tens compte? Crea un</u></b></string>
 
 
     <string-array name="lista_usuarios">

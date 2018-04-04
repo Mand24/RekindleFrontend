@@ -9,7 +9,7 @@
     <dimen name="dim30">60dp</dimen>
     <dimen name="dim50">100dp</dimen>
     <dimen name="dim100">200dp</dimen>
-    <dimen name="textoPeq">32sp</dimen>
-    <dimen name="texto">48sp</dimen>
+    <dimen name="tituloPeq">32sp</dimen>
+    <dimen name="titulo">48sp</dimen>
 
 </resources>

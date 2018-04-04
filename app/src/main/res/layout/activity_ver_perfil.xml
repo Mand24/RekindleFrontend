@@ -17,19 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/atras_ver_perfil"
-                android:text="@string/atras"
-                style="@style/boton"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="@dimen/dim10"
-                android:layout_marginLeft="@dimen/dim10" />
-
-            <Button
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/editar_ver_perfil"
                 android:text="@string/editar"
-                style="@style/boton"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dim10"
@@ -49,7 +41,7 @@
                 android:id="@+id/label_tipo_usuario_perfil"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/atras_ver_perfil"
+                android:layout_below="@id/editar_ver_perfil"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/tipo_usuario" />

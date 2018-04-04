@@ -13,8 +13,7 @@
         android:layout_width="@dimen/dim50"
         android:layout_height="@dimen/dim50"
         android:src="@drawable/icon_casa"
-        android:scaleType="fitCenter"
-        style="@style/boton" />
+        android:scaleType="fitCenter" />
 
     <Space style="@style/espacio"/>
 
@@ -23,8 +22,7 @@
         android:layout_width="@dimen/dim50"
         android:layout_height="@dimen/dim50"
         android:src="@drawable/icon_donacion"
-        android:scaleType="fitCenter"
-        style="@style/boton" />
+        android:scaleType="fitCenter" />
 
     <Space style="@style/espacio"/>
 
@@ -33,8 +31,7 @@
         android:layout_width="@dimen/dim50"
         android:layout_height="@dimen/dim50"
         android:src="@drawable/icon_libro"
-        android:scaleType="fitCenter"
-        style="@style/boton" />
+        android:scaleType="fitCenter" />
 
     <Space style="@style/espacio"/>
 
@@ -43,8 +40,7 @@
         android:layout_width="@dimen/dim50"
         android:layout_height="@dimen/dim50"
         android:src="@drawable/icon_job"
-        android:scaleType="fitCenter"
-        style="@style/boton" />
+        android:scaleType="fitCenter" />
 
 
 </LinearLayout>

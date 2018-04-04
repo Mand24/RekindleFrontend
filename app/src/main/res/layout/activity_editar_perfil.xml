@@ -8,308 +8,241 @@
     tools:context="com.example.usuario.rekindlefrontend.EditarPerfil">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_height="533dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/atras_editar_perfil"
-                android:text="@string/atras"
-                style="@style/boton"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="@dimen/dim10"
-                android:layout_marginLeft="@dimen/dim10" />
-
-            <Button
-                android:id="@+id/guardar_editar_perfil"
-                android:text="@string/guardar"
-                style="@style/boton"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/dim10"
-                android:layout_marginLeft="@dimen/dim10" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/foto_perfil"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/dim10"
-                android:layout_marginRight="@dimen/dim10"
                 android:layout_width="@dimen/dim100"
                 android:layout_height="@dimen/dim100"
+                android:layout_marginTop="@dimen/dim10"
+                android:layout_marginStart="@dimen/dim6"
                 android:src="@drawable/foto_perfil" />
 
-            <TextView
-                android:id="@+id/label_tipo_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/guardar_editar_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/tipo_usuario" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/label_tipo_usuario_perfil"
+                    style="@style/text_view"
+                    android:layout_marginTop="@dimen/dim20"
+                    android:text="@string/tipo_usuario" />
 
-            <TextView
-                android:id="@+id/tipo_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_tipo_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener tipo()" />
+                <TextView
+                    android:id="@+id/tipo_usuario_perfil"
+                    style="@style/text_view"
+                    android:layout_marginLeft="@dimen/dim1"
+                    android:layout_marginTop="@dimen/dim20"
+                    android:layout_toRightOf="@id/label_tipo_usuario_perfil"
+                    android:text="Obtener tipo()" />
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/label_nombre_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/tipo_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/nombre_usuario_perfil" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/nombre_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_nombre_usuario_perfil"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener nombre()" />
+                <EditText
+                    android:id="@+id/nombre_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_nombre_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener nombre()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_apellido1_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/nombre_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_1apellido_formulario" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/apellido1_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_apellido1_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener apellido1()" />
+                <EditText
+                    android:id="@+id/apellido1_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_apellido1_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener apellido1()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_apellido2_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/apellido1_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_2apellido_formulario" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/apellido2_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_apellido2_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener apellido2()" />
+                <EditText
+                    android:id="@+id/apellido2_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_apellido2_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener apellido2()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_email_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/apellido2_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/email_usuario_perfil" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/email_usuario_perfil"
-                style="@style/edit_text"
-                android:inputType="textEmailAddress"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_email_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener email()" />
+                <EditText
+                    android:id="@+id/email_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_email_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:inputType="textEmailAddress"
+                    android:text="Obtener email()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_telefono_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/email_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_numero_telefono" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/telefono_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_telefono_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener telefono()" />
+                <EditText
+                    android:id="@+id/telefono_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_telefono_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener telefono()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_nacimiento_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/telefono_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_nacimiento_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/naciminento_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_nacimiento_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener nacimiento()" />
+                <EditText
+                    android:id="@+id/naciminento_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_nacimiento_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener nacimiento()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_sexo_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/naciminento_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_sexo_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/sexo_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_sexo_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener sexo()" />
+                <EditText
+                    android:id="@+id/sexo_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_sexo_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener sexo()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_pais_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/sexo_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_procedencia_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/pais_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_pais_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener pais()" />
+                <EditText
+                    android:id="@+id/pais_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_pais_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener pais()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_pueblo_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/pais_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_pueblo_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/pueblo_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_pueblo_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener pueblo()" />
+                <EditText
+                    android:id="@+id/pueblo_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_pueblo_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener pueblo()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_etnia_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/pueblo_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_etnia_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/etnia_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_etnia_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener etnia()" />
+                <EditText
+                    android:id="@+id/etnia_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_etnia_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener etnia()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_sangre_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/etnia_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_grupo_sanguineo_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/sangre_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_sangre_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener sangre()" />
+                <EditText
+                    android:id="@+id/sangre_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_sangre_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
+                    android:text="Obtener sangre()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:id="@+id/label_ojos_usuario_perfil"
-                style="@style/text_view"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/sangre_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_ojos_refugiado" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/ojos_usuario_perfil"
-                style="@style/edit_text"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_ojos_usuario_perfil"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim6"
+                <EditText
+                    android:id="@+id/ojos_usuario_perfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_ojos_usuario_perfil"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim6"
 
-                android:text="Obtener ojos()" />
+                    android:text="Obtener ojos()" />
+            </android.support.design.widget.TextInputLayout>
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/cambiar_password"
-                android:text="@string/cambiar_password"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ojos_usuario_perfil"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
-                android:layout_marginLeft="@dimen/dim20" />
-
-
-
-        </RelativeLayout>
-
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/cambiar_password" />
+        </LinearLayout>
     </ScrollView>
 
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/guardar_editar_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dim10"
+            android:text="@string/guardar"
+            android:layout_below="@+id/scrollView"/>
 
 </RelativeLayout>

@@ -5,8 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MenuPrincipal extends AppCompatActivity {
+
+    private int backpress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +45,15 @@ public class MenuPrincipal extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        backpress = (backpress + 1);
+        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
+
+        if (backpress>1) {
+            this.finish();
+        }
     }
 }

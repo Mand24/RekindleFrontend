@@ -51,13 +51,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/Chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/numero_contacto_servicio"
-            android:text="@string/chat"
-            style="@style/boton"/>
+            android:text="@string/chat" />
 
     </RelativeLayout>
 
@@ -72,24 +71,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/opiniones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/valoracion_servicio"
-            android:text="@string/opiniones"
-            style="@style/boton"/>
+            android:text="@string/opiniones" />
 
     </RelativeLayout>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/inscribirse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/servicio"
         android:text="@string/inscribir"
-        android:layout_alignParentRight="true"
-        style="@style/boton"/>
+        android:layout_alignParentRight="true" />
 
 
 
