@@ -53,6 +53,8 @@
     <string name="formulario_donacion">Donation form:</string>
     <string name="lugar_recogida_donacion">Pick up location(*):</string>
     <string name="franja_horaria_donacion">Pick up time:</string>
+    <string name="franja_horaria_inicio_donacion">Starting pick up time:</string>
+    <string name="franja_horaria_fin_donacion">Ending pick up time:</string>
     <string name="curso_educativo">Educational course</string>
     <string name="oferta_empleo">Job offer</string>
     <string name="formulario_alojamiento">Housing form:</string>

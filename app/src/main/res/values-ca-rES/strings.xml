@@ -53,6 +53,8 @@
     <string name="formulario_donacion">Formulari donació:</string>
     <string name="lugar_recogida_donacion">Lloc de recollida(*):</string>
     <string name="franja_horaria_donacion">Hora de recollida:</string>
+    <string name="franja_horaria_inicio_donacion">Inici hora de recollida:</string>
+    <string name="franja_horaria_fin_donacion">Fi hora de recollida:</string>
     <string name="curso_educativo">Curs educatiu</string>
     <string name="oferta_empleo">Oferta d\'ocupació</string>
     <string name="formulario_alojamiento">Formulari allotjament:</string>
