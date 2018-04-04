@@ -190,8 +190,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@drawable/botones"
-                android:popupBackground="@drawable/botones"
+                android:background="@color/colorIron"
+                android:popupBackground="@color/colorIron"
             />
 
             <android.support.design.widget.TextInputLayout
@@ -263,8 +263,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@drawable/botones"
-                android:popupBackground="@drawable/botones"
+                android:background="@color/colorIron"
+                android:popupBackground="@color/colorIron"
             />
 
             <TextView
@@ -282,8 +282,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@drawable/botones"
-                android:popupBackground="@drawable/botones"
+                android:background="@color/colorIron"
+                android:popupBackground="@color/colorIron"
             />
 
             <android.support.v7.widget.AppCompatButton

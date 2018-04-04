@@ -13,16 +13,7 @@ public class VerPerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_perfil);
 
-        Button b = (Button) findViewById(R.id.atras_ver_perfil);
-        b.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        b = (Button) findViewById(R.id.editar_ver_perfil);
+        Button b = (Button) findViewById(R.id.editar_ver_perfil);
         b.setOnClickListener(new View.OnClickListener(){
 
             @Override

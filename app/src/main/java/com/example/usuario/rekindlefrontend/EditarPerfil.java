@@ -13,16 +13,7 @@ public class EditarPerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
-        Button b = (Button) findViewById(R.id.atras_editar_perfil);
-        b.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        b = (Button) findViewById(R.id.guardar_editar_perfil);
+        Button b = (Button) findViewById(R.id.guardar_editar_perfil);
         b.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -32,8 +23,8 @@ public class EditarPerfil extends AppCompatActivity {
             }
         });
 
-        b = (Button) findViewById(R.id.cambiar_password);
-        b.setOnClickListener(new View.OnClickListener(){
+        Button b2 = (Button) findViewById(R.id.cambiar_password);
+        b2.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
