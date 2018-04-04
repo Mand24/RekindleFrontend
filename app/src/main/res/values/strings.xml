@@ -17,10 +17,10 @@
     <string name="voluntario">Voluntary</string>
     <string name="subtitulo_formulario">Fill the next fields:</string>
     <string name="texto_nombre_formulario">Name(*):</string>
-    <string name="texto_1apellido_formulario">Surname:</string>
+    <string name="texto_1apellido_formulario">Surname(*):</string>
     <string name="texto_2apellido_formulario">Second surname:</string>
     <string name="texto_email_formulario">Email(*):</string>
-    <string name="formulario_refugiado">Form refugee</string>
+    <string name="formulario_refugiado">Refugee Form:</string>
     <string name="texto_nacimiento_refugiado">Birthdate:</string>
     <string name="texto_sexo_refugiado">Sex:</string>
     <string name="texto_procedencia_refugiado">Country of origin:</string>
@@ -52,35 +52,64 @@
     <string name="donacion">Donations</string>
     <string name="formulario_donacion">Donation form:</string>
     <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
-    <string name="franja_horaria_donacion">Hora de Recogida:</string>
+    <string name="franja_horaria_inicio_donacion">Hora inicio de Recogida:</string>
     <string name="curso_educativo">Curso Educativo</string>
     <string name="oferta_empleo">Oferta Empleo</string>
     <string name="formulario_alojamiento">Formulario Alojamiento:</string>
-    <string name="limite_solicitudes">Limite de solicitudes(*):</string>
+    <string name="limite_solicitudes">Limite de solicitudes:</string>
     <string name="domicilio">Domicilio(*):</string>
-    <string name="fecha_limite">Fecha limite(*):</string>
+    <string name="fecha_limite">Fecha limite:</string>
     <string name="descripcion">Descripcion:</string>
     <string name="formulario_oferta_empleo">Formulario Oferta Empleo:</string>
-    <string name="puesto_oferta_empleo">Puesto:</string>
+    <string name="puesto_oferta_empleo">Puesto(*):</string>
     <string name="requisitos_oferta_empleo">Requisitos necesarios:</string>
     <string name="jornada_oferta_empleo">Jornada laboral:</string>
     <string name="horas_semanales_oferta_empleo">Horas semanales:</string>
-    <string name="duracion_oferta_empleo">Duracion estimada:</string>
+    <string name="duracion_oferta_empleo">Duracion contrato:</string>
     <string name="plazas_oferta_empleo">Plazas disponibles:</string>
     <string name="sueldo_oferta_empleo">Sueldo:</string>
-    <string name="telefono">Telefono de contacto:</string>
-    <string name="direccion">Direccion:</string>
+    <string name="telefono">Teléfono de contacto(*):</string>
+    <string name="direccion">Dirección(*):</string>
     <string name="formulario_curso_educativo">Formulario Curso Educativo</string>
     <string name="requisitos_curso_educativo">Requisitos previos:</string>
-    <string name="ambito_curso_educativo">Ambito:</string>
+    <string name="ambito_curso_educativo">Ámbito(*):</string>
     <string name="horario_curso_educativo">Horario:</string>
     <string name="precio">Precio:</string>
+    <string name="franja_horaria_fin_donacion">Hora final de Recogida:</string>
     
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
         <item>Voluntary</item>
         <item>Administrator</item>
+    </string-array>
+
+    <string-array name="lista_sexo">
+        <item>-</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+    <string-array name="lista_grupo_sanguineo">
+        <item>-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>0+</item>
+        <item>0-</item>
+    </string-array>
+
+    <string-array name="lista_color_ojos">
+        <item>-</item>
+        <item>Castaño</item>
+        <item>Ámbar</item>
+        <item>Avellana</item>
+        <item>Verde</item>
+        <item>Azul</item>
+        <item>Gris</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -24,7 +24,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/formulario_refugiado" />
+                android:text="@string/formulario_refugiado"
+            />
 
             <TextView
                 android:id="@+id/subtitulo_registro_refugiado"
@@ -33,7 +34,8 @@
                 android:layout_below="@id/titulo_registro_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/subtitulo_formulario" />
+                android:text="@string/subtitulo_formulario"
+            />
 
             <TextView
                 android:id="@+id/texto_nombre_refugiado"
@@ -42,7 +44,8 @@
                 android:layout_below="@id/subtitulo_registro_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:text="@string/texto_nombre_formulario" />
+                android:text="@string/texto_nombre_formulario"
+            />
 
             <EditText
                 android:id="@+id/nombre_refugiado"
@@ -53,7 +56,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_email_refugiado"
@@ -62,7 +66,8 @@
                 android:layout_below="@id/nombre_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_email_formulario" />
+                android:text="@string/texto_email_formulario"
+            />
 
             <EditText
                 android:id="@+id/email_refugiado"
@@ -73,7 +78,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_password_refugiado"
@@ -82,7 +88,8 @@
                 android:layout_below="@id/email_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/password1" />
+                android:text="@string/password1"
+            />
 
             <EditText
                 android:id="@+id/password_refugiado"
@@ -93,7 +100,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_rpassword_refugiado"
@@ -102,7 +110,8 @@
                 android:layout_below="@id/password_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/repetir_password" />
+                android:text="@string/repetir_password"
+            />
 
             <EditText
                 android:id="@+id/rpassword_refugiado"
@@ -113,7 +122,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_1apellido_refugiado"
@@ -122,7 +132,8 @@
                 android:layout_below="@id/rpassword_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_1apellido_formulario" />
+                android:text="@string/texto_1apellido_formulario"
+            />
 
             <EditText
                 android:id="@+id/p_apellido_refugiado"
@@ -133,7 +144,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_2apellido_refugiado"
@@ -142,7 +154,8 @@
                 android:layout_below="@id/p_apellido_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_2apellido_formulario" />
+                android:text="@string/texto_2apellido_formulario"
+            />
 
             <EditText
                 android:id="@+id/s_apellido_refugiado"
@@ -153,7 +166,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_telefono_refugiado"
@@ -162,7 +176,8 @@
                 android:layout_below="@id/s_apellido_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_numero_telefono" />
+                android:text="@string/texto_numero_telefono"
+            />
 
             <EditText
                 android:id="@+id/telefono_refugiado"
@@ -173,7 +188,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_nacimiento_refugiado"
@@ -182,7 +198,8 @@
                 android:layout_below="@id/telefono_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_nacimiento_refugiado" />
+                android:text="@string/texto_nacimiento_refugiado"
+            />
 
             <EditText
                 android:id="@+id/nacimiento_refugiado"
@@ -193,7 +210,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_sexo_refugiado"
@@ -204,15 +222,18 @@
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_sexo_refugiado" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/sexo_refugiado"
-                style="@style/edit_text"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/texto_sexo_refugiado"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@drawable/botones"
+                android:popupBackground="@drawable/botones"
+            />
 
             <TextView
                 android:id="@+id/texto_procedencia_refugiado"
@@ -221,7 +242,8 @@
                 android:layout_below="@id/sexo_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_procedencia_refugiado" />
+                android:text="@string/texto_procedencia_refugiado"
+            />
 
             <EditText
                 android:id="@+id/procedencia_refugiado"
@@ -232,7 +254,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_pueblo_refugiado"
@@ -241,7 +264,8 @@
                 android:layout_below="@id/procedencia_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_pueblo_refugiado" />
+                android:text="@string/texto_pueblo_refugiado"
+            />
 
             <EditText
                 android:id="@+id/pueblo_refugiado"
@@ -252,7 +276,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_etnia_refugiado"
@@ -261,7 +286,8 @@
                 android:layout_below="@id/pueblo_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_etnia_refugiado" />
+                android:text="@string/texto_etnia_refugiado"
+            />
 
             <EditText
                 android:id="@+id/etnia_refugiado"
@@ -272,7 +298,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+            />
 
             <TextView
                 android:id="@+id/texto_grupo_sanguineo_refugiado"
@@ -281,17 +308,21 @@
                 android:layout_below="@id/etnia_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_grupo_sanguineo_refugiado" />
+                android:text="@string/texto_grupo_sanguineo_refugiado"
+            />
 
-            <EditText
+            <Spinner
                 android:id="@+id/grupo_sanguineo_refugiado"
-                style="@style/edit_text"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/texto_grupo_sanguineo_refugiado"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@drawable/botones"
+                android:popupBackground="@drawable/botones"
+            />
 
             <TextView
                 android:id="@+id/texto_ojos_refugiado"
@@ -300,17 +331,21 @@
                 android:layout_below="@id/grupo_sanguineo_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_ojos_refugiado" />
+                android:text="@string/texto_ojos_refugiado"
+            />
 
-            <EditText
+            <Spinner
                 android:id="@+id/ojos_refugiado"
-                style="@style/edit_text"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/texto_ojos_refugiado"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10" />
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@drawable/botones"
+                android:popupBackground="@drawable/botones"
+            />
 
             <Button
                 android:id="@+id/enviar_registro_refugiado"
@@ -319,7 +354,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="@string/enviar" />
+                android:text="@string/enviar"
+            />
 
         </RelativeLayout>
 

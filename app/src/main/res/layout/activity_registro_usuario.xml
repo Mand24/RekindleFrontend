@@ -16,18 +16,13 @@
         android:name="com.example.usuario.rekindlefrontend.EleccionTipoUsuario"
         tools:layout="@layout/fragment_eleccion_tipo_usuario">
 
-
-
     </fragment>
-
-
 
     <RelativeLayout
         android:id="@+id/formulario"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/eleccion_usuario"
-        >
+        android:layout_below="@+id/eleccion_usuario">
 
     </RelativeLayout>
 
