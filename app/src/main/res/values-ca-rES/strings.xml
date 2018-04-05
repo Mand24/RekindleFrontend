@@ -88,5 +88,33 @@
         <item>Administrador</item>
     </string-array>
 
+    <string-array name="lista_sexo">
+        <item>-</item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+    <string-array name="lista_grupo_sanguineo">
+        <item>-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>0+</item>
+        <item>0-</item>
+    </string-array>
+
+    <string-array name="lista_color_ojos">
+        <item>-</item>
+        <item>Castaño</item>
+        <item>Ámbar</item>
+        <item>Avellana</item>
+        <item>Verde</item>
+        <item>Azul</item>
+        <item>Gris</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
