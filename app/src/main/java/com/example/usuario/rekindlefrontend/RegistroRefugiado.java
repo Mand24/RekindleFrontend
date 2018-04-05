@@ -1,20 +1,26 @@
 package com.example.usuario.rekindlefrontend;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class RegistroRefugiado extends Fragment {
-
 
     public RegistroRefugiado() {
         // Required empty public constructor
@@ -57,7 +63,59 @@ public class RegistroRefugiado extends Fragment {
 
         spinner.setAdapter(adapter);
 
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
+                .enviar_registro_refugiado);
+        button_send.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //comprobar parametros
+                try {
+                    boolean result = new AsyncTaskCall().execute().get();
+                } catch (Exception e){
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
         return view;
+    }
+
+    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+
+        protected void onPreExecute() {
+            //showProgress(true);
+        }
+
+        protected Boolean doInBackground(String... urls) {
+            ArrayList<String> param = new ArrayList<String>();
+
+            param.add("pedrito");
+            param.add("pedrito@gmail.com");
+            param.add("sergimanel");
+            param.add("garcia");
+            param.add("monserrate");
+            param.add("53322863");
+            param.add("05/05/1995");
+            param.add("Femenino");
+            param.add("Senegal");
+            param.add("town");
+            param.add("senegalo");
+            param.add("AB+");
+            param.add("Gris");
+
+            String url = "10.4.41.147";
+            boolean result = false;
+            try {
+                result = Comunicacion.registrar_refugiado(url, param);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            return result;
+        }
     }
 
 }
