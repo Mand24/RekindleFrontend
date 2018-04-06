@@ -90,7 +90,6 @@ public class RegistroRefugiado extends Fragment {
 
         protected Boolean doInBackground(String... urls) {
             ArrayList<String> param = new ArrayList<String>();
-
             param.add("pedrito");
             param.add("pedrito@gmail.com");
             param.add("sergimanel");
@@ -108,7 +107,7 @@ public class RegistroRefugiado extends Fragment {
             String url = "10.4.41.147";
             boolean result = false;
             try {
-                result = Comunicacion.registrar_refugiado(url, param);
+                result = Comunicacion.registrarRefugiado(url, param);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
