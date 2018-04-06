@@ -134,20 +134,15 @@
                     android:text="Obtener nacimiento()" />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <Spinner
+                android:id="@+id/sexo_usuario_perfil"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/sexo_usuario_perfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/label_sexo_usuario_perfil"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim6"
-                    android:text="Obtener sexo()" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorIron"
+                android:popupBackground="@color/colorIron" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -194,43 +189,34 @@
                     android:text="Obtener etnia()" />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <Spinner
+                android:id="@+id/sangre_usuario_perfil"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:layout_below="@id/label_sangre_usuario_perfil"
+                android:background="@color/colorIron"
+                android:popupBackground="@color/colorIron" />
 
-                <EditText
-                    android:id="@+id/sangre_usuario_perfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/label_sangre_usuario_perfil"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim6"
-                    android:text="Obtener sangre()" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <Spinner
+                android:id="@+id/ojos_usuario_perfil"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/ojos_usuario_perfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/label_ojos_usuario_perfil"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim6"
-
-                    android:text="Obtener ojos()" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorIron"
+                android:popupBackground="@color/colorIron" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/cambiar_password"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
                 android:text="@string/cambiar_password" />
         </LinearLayout>
     </ScrollView>
