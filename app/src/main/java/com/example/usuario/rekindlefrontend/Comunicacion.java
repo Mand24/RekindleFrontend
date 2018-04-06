@@ -49,38 +49,6 @@ public class Comunicacion {
 
     }
 
-    /*public static boolean registrarRefugiado(String url, ArrayList<String> param)throws Exception{
-        //Conexion
-        url += "/registrarRefugiado";
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-        //Request header
-        con.setRequestMethod("POST");
-        con.setRequestProperty("Content-type", "application/json");
-
-        //Parametros
-        String urlparametros = "nombre="+param
-                .get(0)+"&email="+param.get(1)+"&password="+param.get(2)+"&apellido1"
-                + "="+param.get(3)+"&apellido2="+param.get(4)+"&tlf="+param.get(5)
-                +"&nacimiento="+param.get(6)+"&sexo="+param.get(7)+"&pais="+param.get(8)
-                +"&pueblo="+param.get(9)+"&etnica="+param.get(10)+"&gs="+param.get(11)
-                +"&eye="+param.get(12);
-
-        // Send post request
-        con.setDoOutput(true);
-        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(urlparametros);
-        wr.flush();
-        wr.close();
-
-        //Tratar Response Code
-        int responseCode = con.getResponseCode();
-        if (responseCode == 200) return true;
-        else return false;
-
-    }*/
-
     public static boolean registrarRefugiado(String url, ArrayList<String> param)throws Exception{
         //Conexion
         url += "/registrarRefugiado";

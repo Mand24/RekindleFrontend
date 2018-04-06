@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONException;
 
@@ -31,7 +32,7 @@ public class RegistroRefugiado extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_registro_refugiado, container, false);
+        final View view = inflater.inflate(R.layout.fragment_registro_refugiado, container, false);
 
         Spinner spinner = (Spinner) view.findViewById(R.id.sexo_refugiado);
 
@@ -72,6 +73,10 @@ public class RegistroRefugiado extends Fragment {
                 //comprobar parametros
                 try {
                     boolean result = new AsyncTaskCall().execute().get();
+                    if (result) Toast.makeText(getActivity().getApplicationContext(), "Registro "
+                            + "creado!", Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(getActivity().getApplicationContext(), "Registro "
+                            + "failed", Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
                     // TODO Auto-generated catch block
                     e.printStackTrace();
