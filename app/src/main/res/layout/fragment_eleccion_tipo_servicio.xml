@@ -6,41 +6,46 @@
     android:orientation="horizontal"
     android:gravity="center_horizontal"
     tools:context=".EleccionTipoServicio"
-    android:weightSum="1">
+    android:layout_marginLeft="@dimen/dim6"
+    android:layout_marginRight="@dimen/dim6">
 
     <ImageButton
         android:id="@+id/boton_tipo_alojamiento"
-        android:layout_width="@dimen/dim50"
-        android:layout_height="@dimen/dim50"
-        android:src="@drawable/icon_casa"
-        android:scaleType="fitCenter" />
+        android:layout_width="@dimen/dim70"
+        android:layout_height="@dimen/dim70"
+        android:src="@drawable/lodging"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/texto_nombre_formulario"/>
 
     <Space style="@style/espacio"/>
 
     <ImageButton
         android:id="@+id/boton_tipo_donacion"
-        android:layout_width="@dimen/dim50"
-        android:layout_height="@dimen/dim50"
-        android:src="@drawable/icon_donacion"
-        android:scaleType="fitCenter" />
+        android:layout_width="@dimen/dim70"
+        android:layout_height="@dimen/dim70"
+        android:src="@drawable/donation"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
     <Space style="@style/espacio"/>
 
     <ImageButton
         android:id="@+id/boton_tipo_curso_educativo"
-        android:layout_width="@dimen/dim50"
-        android:layout_height="@dimen/dim50"
-        android:src="@drawable/icon_libro"
-        android:scaleType="fitCenter" />
+        android:layout_width="@dimen/dim70"
+        android:layout_height="@dimen/dim70"
+        android:src="@drawable/education"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 
     <Space style="@style/espacio"/>
 
     <ImageButton
         android:id="@+id/boton_tipo_oferta_empleo"
-        android:layout_width="@dimen/dim50"
-        android:layout_height="@dimen/dim50"
-        android:src="@drawable/icon_job"
-        android:scaleType="fitCenter" />
-
+        android:layout_width="@dimen/dim70"
+        android:layout_height="@dimen/dim70"
+        android:src="@drawable/job"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
 
 </LinearLayout>

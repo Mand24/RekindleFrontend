@@ -8,6 +8,7 @@
     <dimen name="dim24">24dp</dimen>
     <dimen name="dim30">30dp</dimen>
     <dimen name="dim50">50dp</dimen>
+    <dimen name="dim70">70dp</dimen>
     <dimen name="dim75">75dp</dimen>
     <dimen name="dim100">100dp</dimen>
     <dimen name="textoPeq">16sp</dimen>
