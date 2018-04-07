@@ -17,41 +17,51 @@ import java.util.ArrayList;
 
 public class Comunicacion {
 
-    public static boolean registrarVoluntario(String url, String nombre, String email, String
-            password, String apellido1, String apellido2) throws Exception {
+    public static boolean registrarVoluntario(String url, ArrayList<String> param) throws
+            Exception {
 
-        //String url = "http://selfsolve.apple.com/wcResults.do";
-        url += "/registrarVoluntario";
+        //Conexion
+        url += "/registrarVoluntario/";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        //add reuqest header
+        //Request header
         con.setRequestMethod("POST");
-        //con.setRequestProperty("User-Agent", USER_AGENT);
-        //host???
-        //con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         con.setRequestProperty("Content-type", "application/json");
 
-        //String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
-        String urlparametros = "nombre="+nombre+"&email="+email+"&password="+password+"&apellido1"
-                + "="+apellido1+"&apellido2="+apellido2;
+        //Parametros
+        String data = URLEncoder.encode("nombre", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(0), "UTF-8");
+
+        data += "&" + URLEncoder.encode("email", "UTF-8") + "="
+                + URLEncoder.encode(param.get(1), "UTF-8");
+
+        data += "&" + URLEncoder.encode("password", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(2), "UTF-8");
+
+        data += "&" + URLEncoder.encode("apellido1", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(3), "UTF-8");
+
+        data += "&" + URLEncoder.encode("apellido2", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(4), "UTF-8");
 
         // Send post request
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-        wr.writeBytes(urlparametros);
+        wr.writeBytes(data);
         wr.flush();
         wr.close();
 
+        //Tratar Response Code
         int responseCode = con.getResponseCode();
         if (responseCode == 200) return true;
         else return false;
 
     }
 
-    public static boolean registrarRefugiado(String url, ArrayList<String> param)throws Exception{
+    public static boolean registrarRefugiado(String url, ArrayList<String> param) throws Exception{
         //Conexion
-        url += "/registrarRefugiado";
+        url += "/registrarRefugiado/";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -90,7 +100,7 @@ public class Comunicacion {
         data += "&" + URLEncoder.encode("pueblo", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(9), "UTF-8");
 
-        data += "&" + URLEncoder.encode("etnica", "UTF-8")
+        data += "&" + URLEncoder.encode("etnia", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(10), "UTF-8");
 
         data += "&" + URLEncoder.encode("gs", "UTF-8")
@@ -111,6 +121,213 @@ public class Comunicacion {
         if (responseCode == 200) return true;
         else return false;
 
+    }
+
+    public static boolean crearAlojamiento(String url, ArrayList<String> param) throws Exception{
+        //Conexion
+        url += "/crearAlojamiento/";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-type", "application/json");
+
+        //Parametros
+        String data = URLEncoder.encode("nombre", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(0), "UTF-8");
+
+        data += "&" + URLEncoder.encode("email", "UTF-8") + "="
+                + URLEncoder.encode(param.get(1), "UTF-8");
+
+        data += "&" + URLEncoder.encode("telefono", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(2), "UTF-8");
+
+        data += "&" + URLEncoder.encode("direccion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(3), "UTF-8");
+
+        data += "&" + URLEncoder.encode("limite-peticiones", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(4), "UTF-8");
+
+        data += "&" + URLEncoder.encode("fecha-limite", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("descripcion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(6), "UTF-8");
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(data);
+        wr.flush();
+        wr.close();
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
+    }
+
+    public static boolean crearDonacion(String url, ArrayList<String> param) throws Exception{
+        //Conexion
+        url += "/crearDonacion/";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-type", "application/json");
+
+        //Parametros
+        String data = URLEncoder.encode("nombre", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(0), "UTF-8");
+
+        data += "&" + URLEncoder.encode("email", "UTF-8") + "="
+                + URLEncoder.encode(param.get(1), "UTF-8");
+
+        data += "&" + URLEncoder.encode("telefono", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(2), "UTF-8");
+
+        data += "&" + URLEncoder.encode("direccion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(3), "UTF-8");
+
+        data += "&" + URLEncoder.encode("limite-peticiones", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(4), "UTF-8");
+
+        data += "&" + URLEncoder.encode("hora-inicio", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("hora-fin", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("descripcion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(6), "UTF-8");
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(data);
+        wr.flush();
+        wr.close();
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
+    }
+
+    public static boolean crearCursoEducativo(String url, ArrayList<String> param) throws Exception{
+        //Conexion
+        url += "/crearCursoEducativo/";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-type", "application/json");
+
+        //Parametros
+        String data = URLEncoder.encode("nombre", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(0), "UTF-8");
+
+        data += "&" + URLEncoder.encode("email", "UTF-8") + "="
+                + URLEncoder.encode(param.get(1), "UTF-8");
+
+        data += "&" + URLEncoder.encode("telefono", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(2), "UTF-8");
+
+        data += "&" + URLEncoder.encode("direccion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(3), "UTF-8");
+
+        data += "&" + URLEncoder.encode("ambito", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(4), "UTF-8");
+
+        data += "&" + URLEncoder.encode("requisitos-previos", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("horario", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("plazas-disponibles", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("precio", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("descripcion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(6), "UTF-8");
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(data);
+        wr.flush();
+        wr.close();
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
+    }
+
+    public static boolean crearOfertaEmpleo(String url, ArrayList<String> param) throws Exception{
+        //Conexion
+        url += "/crearOfertaEmpleo/";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-type", "application/json");
+
+        //Parametros
+        String data = URLEncoder.encode("nombre", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(0), "UTF-8");
+
+        data += "&" + URLEncoder.encode("email", "UTF-8") + "="
+                + URLEncoder.encode(param.get(1), "UTF-8");
+
+        data += "&" + URLEncoder.encode("telefono", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(2), "UTF-8");
+
+        data += "&" + URLEncoder.encode("direccion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(3), "UTF-8");
+
+        data += "&" + URLEncoder.encode("puesto", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(4), "UTF-8");
+
+        data += "&" + URLEncoder.encode("requisitos-necesarios", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("jornada", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("horas-semanales", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("duracion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("plazas-disponibles", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("sueldo", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(5), "UTF-8");
+
+        data += "&" + URLEncoder.encode("descripcion", "UTF-8")
+                + "=" + URLEncoder.encode(param.get(6), "UTF-8");
+
+        // Send post request
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(data);
+        wr.flush();
+        wr.close();
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
     }
 
 

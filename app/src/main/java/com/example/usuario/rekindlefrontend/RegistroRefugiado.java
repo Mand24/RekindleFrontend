@@ -121,5 +121,4 @@ public class RegistroRefugiado extends Fragment {
             return result;
         }
     }
-
 }
