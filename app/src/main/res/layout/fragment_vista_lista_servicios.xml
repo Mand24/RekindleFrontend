@@ -1,37 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dim6"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        app:cardBackgroundColor="@color/colorPrimaryDarker"
+        app:cardCornerRadius="4dp">
 
-        <TextView
-            android:id="@+id/titulo_servicio"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:textSize="36sp" />
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/direccion_servicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titulo_servicio" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/photo_layout">
 
-        <TextView
-            android:id="@+id/fecha_limite_servicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/direccion_servicio" />
+                <ImageView
+                    android:layout_width="@dimen/dim70"
+                    android:layout_height="@dimen/dim70"
+                    android:id="@+id/photo_cardView"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"/>
 
-        <TextView
-            android:id="@+id/valoracion_servicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/fecha_limite_servicio" />
+            </LinearLayout>
 
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dim70"
+                android:layout_toEndOf="@+id/photo_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titulo_servicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/texto" />
+
+                <TextView
+                    android:id="@+id/direccion_servicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/fecha_limite_servicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

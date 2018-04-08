@@ -6,8 +6,7 @@
     android:orientation="horizontal"
     android:gravity="center_horizontal"
     tools:context=".EleccionTipoServicio"
-    android:layout_marginLeft="@dimen/dim6"
-    android:layout_marginRight="@dimen/dim6">
+    >
 
     <ImageButton
         android:id="@+id/boton_tipo_alojamiento"
