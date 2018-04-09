@@ -30,6 +30,10 @@
         <activity android:name=".CambiarPassword" />
         <activity android:name=".MostrarServicio" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDkX8GiJpOBUvaF9Q5VQAGXpVM-Igx39wE" />
+
     </application>
 
 </manifest>

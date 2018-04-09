@@ -1,6 +1,8 @@
 package com.example.usuario.rekindlefrontend;
 
-public class Servicio {
+import java.io.Serializable;
+
+public class Servicio implements Serializable {
 
     private String nombre, descripcion, direccion, fecha, numero, valoracion;
     private int tipo, id;

@@ -5,39 +5,41 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo">
 
-    <TextView
-        android:id="@+id/titulo_servicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="36sp" />
+    <LinearLayout
+        android:id="@+id/info"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/descripcion_servicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="20sp"
-        android:layout_below="@+id/titulo_servicio"/>
+        <TextView
+            android:id="@+id/titulo_servicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp" />
 
-    <TextView
-        android:id="@+id/direccion_servicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/descripcion_servicio" />
+        <TextView
+            android:id="@+id/descripcion_servicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/fecha_limite_servicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/direccion_servicio" />
+        <TextView
+            android:id="@+id/direccion_servicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/fecha_limite_servicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/google_mapView"
         android:layout_width="324dp"
         android:layout_height="199dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/fecha_limite_servicio"/>
+        android:layout_below="@+id/info"/>
 
     <RelativeLayout
         android:id="@+id/contacto"
@@ -53,11 +55,11 @@
             android:layout_centerVertical="true" />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/Chat"
+            android:id="@+id/chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="@string/chat" />
+            android:text="@string/chat"/>
 
     </RelativeLayout>
 
@@ -89,7 +91,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="@string/inscribir" />
-
-
 
 </RelativeLayout>

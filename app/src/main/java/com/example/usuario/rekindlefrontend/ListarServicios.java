@@ -1,5 +1,6 @@
 package com.example.usuario.rekindlefrontend;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -43,8 +44,9 @@ public class ListarServicios extends AppCompatActivity {
                     @Override
                     public void onItemClick(View v, int position) {
                         //TODO:Algo al clicar
-                        //item = servicios.get(position)
-                        Toast.makeText(getApplicationContext(), Integer.toString(serviciosFiltrados.get(position).getId()), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
+                        intent.putExtra("Servicio", servicios.get(position));
+                        startActivity(intent);
                     }
                 });
         recyclerView.setAdapter(mAdapter);
