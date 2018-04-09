@@ -72,6 +72,8 @@ public class RegistroRefugiado extends Fragment {
             public void onClick(View v) {
                 //comprobar parametros
                 try {
+
+                    System.out.println("llamada async");
                     boolean result = new AsyncTaskCall().execute().get();
                     if (result) Toast.makeText(getActivity().getApplicationContext(), "Registro "
                             + "creado!", Toast.LENGTH_SHORT).show();
@@ -101,7 +103,7 @@ public class RegistroRefugiado extends Fragment {
             param.add("garcia");
             param.add("monserrate");
             param.add("53322863");
-            param.add("05/05/1995");
+            param.add("1995-05-05");
             param.add("Femenino");
             param.add("Senegal");
             param.add("town");
@@ -109,9 +111,10 @@ public class RegistroRefugiado extends Fragment {
             param.add("AB+");
             param.add("Gris");
 
-            String url = "10.4.41.147";
+            String url = "http://10.4.41.147:8080";
             boolean result = false;
             try {
+                System.out.println("background");
                 result = Comunicacion.registrarRefugiado(url, param);
             } catch (Exception e) {
                 // TODO Auto-generated catch block

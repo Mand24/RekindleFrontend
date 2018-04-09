@@ -21,15 +21,15 @@ public class Comunicacion {
             Exception {
 
         //Conexion
-        url += "/registrarVoluntario/";
+        url += "/test2/";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         //Request header
-        con.setRequestMethod("POST");
+        con.setRequestMethod("GET");
         con.setRequestProperty("Content-type", "application/json");
 
-        //Parametros
+        /*//Parametros
         String data = URLEncoder.encode("nombre", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(0), "UTF-8");
 
@@ -43,14 +43,27 @@ public class Comunicacion {
                 + "=" + URLEncoder.encode(param.get(3), "UTF-8");
 
         data += "&" + URLEncoder.encode("apellido2", "UTF-8")
-                + "=" + URLEncoder.encode(param.get(4), "UTF-8");
+                + "=" + URLEncoder.encode(param.get(4), "UTF-8");*/
 
         // Send post request
-        con.setDoOutput(true);
+        /*con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
         wr.writeBytes(data);
         wr.flush();
-        wr.close();
+        wr.close();*/
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        in.close();
+
+        String jsonString = sb.toString();
+
+        System.out.println("JSON: " + jsonString);
 
         //Tratar Response Code
         int responseCode = con.getResponseCode();
@@ -61,7 +74,7 @@ public class Comunicacion {
 
     public static boolean registrarRefugiado(String url, ArrayList<String> param) throws Exception{
         //Conexion
-        url += "/registrarRefugiado/";
+        //url += "/registrarRefugiado/";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -70,7 +83,9 @@ public class Comunicacion {
         con.setRequestProperty("Content-type", "application/json");
 
         //Parametros
-        String data = URLEncoder.encode("nombre", "UTF-8")
+        String data = "/registrarRefugiado/";
+
+        data += URLEncoder.encode("nombre", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(0), "UTF-8");
 
         data += "&" + URLEncoder.encode("email", "UTF-8") + "="
@@ -109,12 +124,27 @@ public class Comunicacion {
         data += "&" + URLEncoder.encode("color_ojos", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(12), "UTF-8");
 
+        System.out.println("DATA: " + data);
+
         // Send post request
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
         wr.writeBytes(data);
         wr.flush();
         wr.close();
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        in.close();
+
+        String jsonString = sb.toString();
+
+        System.out.println("JSON: " + jsonString);
 
         //Tratar Response Code
         int responseCode = con.getResponseCode();
@@ -323,6 +353,18 @@ public class Comunicacion {
         wr.writeBytes(data);
         wr.flush();
         wr.close();
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        in.close();
+
+        String jsonString = sb.toString();
+        System.out.println("JSON: " + jsonString);
 
         //Tratar Response Code
         int responseCode = con.getResponseCode();

@@ -37,6 +37,7 @@ public class RegistroVoluntario extends Fragment {
             public void onClick(View v) {
                 //comprobar parametros
                 try {
+                    System.out.println("registro voluntario");
                     boolean result = new AsyncTaskCall().execute().get();
                     if (result) Toast.makeText(getActivity().getApplicationContext(), "Registro "
                             + "creado!", Toast.LENGTH_SHORT).show();
@@ -66,7 +67,7 @@ public class RegistroVoluntario extends Fragment {
             param.add("garcia");
             param.add("monserrate");
 
-            String url = "10.4.41.147";
+            String url = "http://10.4.41.147:8080";
             boolean result = false;
             try {
                 result = Comunicacion.registrarVoluntario(url, param);

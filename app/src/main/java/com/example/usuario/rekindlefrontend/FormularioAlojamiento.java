@@ -1,11 +1,16 @@
 package com.example.usuario.rekindlefrontend;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -23,7 +28,55 @@ public class FormularioAlojamiento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_formulario_alojamiento, container, false);
+        View view = inflater.inflate(R.layout.fragment_formulario_alojamiento, container, false);
+
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_alojamiento);
+        button_send.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //comprobar parametros
+                try {
+                    boolean result = new AsyncTaskCall().execute().get();
+                    if (result) Toast.makeText(getActivity().getApplicationContext(), "Servicio "
+                            + "de alojamiento creado!", Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(getActivity().getApplicationContext(), "Servicio de "
+                            + "alojamiento failed", Toast.LENGTH_SHORT).show();
+                } catch (Exception e){
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        return view;
+    }
+
+    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+
+        protected void onPreExecute() {
+            //showProgress(true);
+        }
+
+        protected Boolean doInBackground(String... urls) {
+            ArrayList<String> param = new ArrayList<String>();
+            param.add("pedrito");
+            param.add("pedrito@gmail.com");
+            param.add("sergimanel");
+            param.add("garcia");
+            param.add("monserrate");
+
+            String url = "10.4.41.147";
+            boolean result = false;
+            try {
+                result = Comunicacion.registrarVoluntario(url, param);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            return result;
+        }
     }
 
 }
