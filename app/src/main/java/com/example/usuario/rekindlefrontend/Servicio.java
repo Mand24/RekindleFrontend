@@ -3,9 +3,9 @@ package com.example.usuario.rekindlefrontend;
 public class Servicio {
 
     private String nombre, descripcion, direccion, fecha, numero, valoracion;
-    private int tipo;
+    private int tipo, id;
 
-    Servicio(String nombre, String descripcion, String direccion, String fecha, String numero, String valoracion, int tipo) {
+    Servicio(int id , String nombre, String descripcion, String direccion, String fecha, String numero, String valoracion, int tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;
@@ -13,6 +13,11 @@ public class Servicio {
         this.numero = numero;
         this.valoracion = valoracion;
         this.tipo = tipo;
+        this.id = id;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getNombre() {
