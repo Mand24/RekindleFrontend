@@ -80,6 +80,9 @@
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
     <string name="go_to_signup"><b><u>No tienes cuenta todavía? Crea una</u></b></string>
+    <string name="url_server">http://10.4.41.147:8080</string>
+    <string name="registrado_correctamente">Registrado correctamente!</string>
+    <string name="registro_fallido">La inscripción ha fallado!</string>
 
 
     <string-array name="lista_usuarios">

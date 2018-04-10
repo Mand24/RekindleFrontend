@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ import java.util.ArrayList;
  */
 public class RegistroRefugiado extends Fragment {
 
+    private ArrayList<String> param;
+
     public RegistroRefugiado() {
         // Required empty public constructor
     }
@@ -30,6 +34,35 @@ public class RegistroRefugiado extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_registro_refugiado, container, false);
+
+        //establecer parametros a los spinners
+        setSpinners(view);
+
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
+                .enviar_registro_refugiado);
+        button_send.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if (comprobarCampos()) {
+                    try {
+                        obtenerParametros(view);
+                        boolean result = new AsyncTaskCall().execute().get();
+                        tratarResultadoPeticion(result);
+                    }catch (Exception e){
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }else {
+
+                }
+            }
+        });
+
+        return view;
+    }
+
+    public void setSpinners(View view){
 
         Spinner spinner = (Spinner) view.findViewById(R.id.sexo_refugiado);
 
@@ -60,30 +93,81 @@ public class RegistroRefugiado extends Fragment {
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
+    }
 
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
-                .enviar_registro_refugiado);
-        button_send.setOnClickListener(new View.OnClickListener(){
+    public boolean comprobarCampos(){
+        return true;
+    }
 
-            @Override
-            public void onClick(View v) {
-                //comprobar parametros
-                try {
+    public void obtenerParametros(View view){
 
-                    System.out.println("llamada async");
-                    boolean result = new AsyncTaskCall().execute().get();
-                    if (result) Toast.makeText(getActivity().getApplicationContext(), "Registro "
-                            + "creado!", Toast.LENGTH_SHORT).show();
-                    else Toast.makeText(getActivity().getApplicationContext(), "Registro "
-                            + "failed", Toast.LENGTH_SHORT).show();
-                } catch (Exception e){
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        });
+        param = new ArrayList<String>();
+        /*param.add("pedrito");
+        param.add("pedrito@gmail.com");
+        param.add("sergimanel");
+        param.add("garcia");
+        param.add("monserrate");
+        param.add("53322863");
+        param.add("1995-05-05");
+        param.add("Femenino");
+        param.add("Senegal");
+        param.add("town");
+        param.add("senegalo");
+        param.add("AB+");
+        param.add("Gris");*/
 
-        return view;
+        EditText editText = (EditText) view.findViewById(R.id.nombre_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.email_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.password_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.p_apellido_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.s_apellido_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.telefono_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.nacimiento_refugiado);
+        param.add(editText.getText().toString());
+
+        Spinner spinner = (Spinner) view.findViewById(R.id.sexo_refugiado);
+        param.add(spinner.getSelectedItem().toString());
+
+        editText = (EditText) view.findViewById(R.id.procedencia_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.pueblo_refugiado);
+        param.add(editText.getText().toString());
+
+        editText = (EditText) view.findViewById(R.id.etnia_refugiado);
+        param.add(editText.getText().toString());
+
+        spinner = (Spinner) view.findViewById(R.id.grupo_sanguineo_refugiado);
+        param.add(spinner.getSelectedItem().toString());
+
+        spinner = (Spinner) view.findViewById(R.id.ojos_refugiado);
+        param.add(spinner.getSelectedItem().toString());
+
+    }
+
+    public void tratarResultadoPeticion(boolean result){
+
+        if (result) {
+
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                            .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), PantallaInicio.class);
+            startActivity(i);
+
+        }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                .string.registro_fallido), Toast.LENGTH_SHORT).show();
     }
 
     private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
@@ -93,27 +177,13 @@ public class RegistroRefugiado extends Fragment {
         }
 
         protected Boolean doInBackground(String... urls) {
-            ArrayList<String> param = new ArrayList<String>();
-            param.add("pedrito");
-            param.add("pedrito@gmail.com");
-            param.add("sergimanel");
-            param.add("garcia");
-            param.add("monserrate");
-            param.add("53322863");
-            param.add("1995-05-05");
-            param.add("Femenino");
-            param.add("Senegal");
-            param.add("town");
-            param.add("senegalo");
-            param.add("AB+");
-            param.add("Gris");
 
-            String url = "http://10.4.41.147:8080";
+            String url = getResources().getString(R.string.url_server);
+            System.out.println("url servidor: " + url);
             boolean result = false;
             try {
-                System.out.println("background");
-                //result = ComunicacionUsuarios.registrarRefugiado(url, param);
-                result = ComunicacionUsuarios.test2(url);
+                result = ComunicacionUsuarios.registrarRefugiado(url, param);
+                //result = ComunicacionUsuarios.test2(url);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

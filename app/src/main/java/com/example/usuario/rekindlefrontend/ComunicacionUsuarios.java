@@ -63,6 +63,7 @@ public class ComunicacionUsuarios {
         con.setRequestProperty("Accept", "application/json");
         con.setRequestProperty("Content-type", "application/json");
 
+
         //Parametros
         /*String data = URLEncoder.encode("nombre", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(0), "UTF-8");
