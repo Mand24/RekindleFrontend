@@ -93,6 +93,8 @@
     <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
     <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
+    <string name="guardado_correctamente">Guardat correctement!</string>
+    <string name="guardado_fallido">Error al guardar!</string>
 
 
     <string-array name="lista_usuarios">
