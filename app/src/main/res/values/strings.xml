@@ -95,6 +95,8 @@
     <string name="oferta_empleo_correctamente">Job offer created
         successfully!</string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
+    <string name="guardado_correctamente">Save successfully!</string>
+    <string name="guardado_fallido">Save failed!</string>
 
 
     <string-array name="lista_usuarios">
