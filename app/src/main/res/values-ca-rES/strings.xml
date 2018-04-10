@@ -83,6 +83,16 @@
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registrat correctament!</string>
     <string name="registro_fallido">La inscripció ha fallat!</string>
+    <string name="servicio_alojamiento_creado_correctamente">Servei de allotjament creat
+        correctament!</string>
+    <string name="servicio_alojamiento_fallido">Ha fallat la creació del servei de
+        allotjament!</string>
+    <string name="curso_educativo_creado_correctamente">Curs educatiu creat correctament!</string>
+    <string name="curso_educativo_fallido">Ha fallat la creació del curs educatiu!</string>
+    <string name="donacion_creada_correctamente">Donació creada correctament!</string>
+    <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
+    <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
+    <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
 
 
     <string-array name="lista_usuarios">
