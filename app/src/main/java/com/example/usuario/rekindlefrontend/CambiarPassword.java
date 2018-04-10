@@ -16,7 +16,7 @@ public class CambiarPassword extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
+        Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
         startActivity(i);
     }
 }
