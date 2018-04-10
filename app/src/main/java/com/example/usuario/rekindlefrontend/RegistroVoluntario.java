@@ -70,7 +70,7 @@ public class RegistroVoluntario extends Fragment {
             String url = "http://10.4.41.147:8080";
             boolean result = false;
             try {
-                result = Comunicacion.registrarVoluntario(url, param);
+                result = ComunicacionUsuarios.registrarVoluntario(url, param);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

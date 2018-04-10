@@ -12,9 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -115,7 +112,8 @@ public class RegistroRefugiado extends Fragment {
             boolean result = false;
             try {
                 System.out.println("background");
-                result = Comunicacion.registrarRefugiado(url, param);
+                //result = ComunicacionUsuarios.registrarRefugiado(url, param);
+                result = ComunicacionUsuarios.test2(url);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

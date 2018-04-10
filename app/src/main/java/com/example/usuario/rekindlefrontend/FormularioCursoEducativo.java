@@ -71,7 +71,7 @@ public class FormularioCursoEducativo extends Fragment {
             String url = "10.4.41.147";
             boolean result = false;
             try {
-                result = Comunicacion.registrarVoluntario(url, param);
+                result = ComunicacionUsuarios.registrarVoluntario(url, param);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
