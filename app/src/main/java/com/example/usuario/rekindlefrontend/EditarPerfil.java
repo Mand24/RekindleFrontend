@@ -50,4 +50,10 @@ public class EditarPerfil extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+        startActivity(i);
+    }
 }

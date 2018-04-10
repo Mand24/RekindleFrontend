@@ -150,5 +150,11 @@ public class ListarServicios extends AppCompatActivity {
         servicios.add(new Servicio(3,"Empleo", "buena describicion", "dsadasd", "27/07/97","623623623","4.5", R.drawable.job));
         serviciosFiltrados = servicios;
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        startActivity(i);
+    }
 }
 
