@@ -232,6 +232,47 @@ public class ComunicacionUsuarios {
         String s = json.toString();
         byte[] outputBytes = s.getBytes("UTF-8");
 
+        // Send post request
+        con.setDoOutput(true);
+        OutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.write(outputBytes);
+        wr.flush();
+        wr.close();
+
+        //leer respuesta
+        String resp = "";
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            resp += inputLine;
+        }
+        in.close();
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
+    }
+
+    public static boolean cambiarPassword(String url, ArrayList<String> param) throws Exception{
+        //Conexion
+        url += "/cambiarPassword";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("Content-type", "application/json");
+
+        JSONObject json = new JSONObject();
+        json.put("actual", param.get(0));
+        json.put("nuevo", param.get(1));
+
+        String s = json.toString();
+        byte[] outputBytes = s.getBytes("UTF-8");
 
         // Send post request
         con.setDoOutput(true);
