@@ -60,8 +60,9 @@ public class PantallaInicio extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CambiarPassword.class);
-                startActivity(i);
+                //Intent i = new Intent(getApplicationContext(), CambiarPassword.class);
+                //startActivity(i);
+                Toast.makeText(getApplicationContext(), " Not implemented ", Toast.LENGTH_SHORT).show();
             }
         });
     }

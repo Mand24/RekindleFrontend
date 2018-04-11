@@ -53,7 +53,9 @@ public class MenuPrincipal extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
-            this.finish();
+            Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
+            startActivity(i);
         }
     }
+
 }
