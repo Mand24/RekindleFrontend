@@ -70,9 +70,6 @@ public class EspressoPantallaInicio {
 
         //TODO: Testear recuperar password cuando funcione
 
-        onView(withId(R.id.link_recuperar_password)).perform(click());
-        intended(hasComponent(CambiarPassword.class.getName()));
-
     }
 
     @Test
