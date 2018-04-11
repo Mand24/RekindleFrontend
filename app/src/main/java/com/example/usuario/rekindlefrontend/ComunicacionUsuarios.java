@@ -81,11 +81,11 @@ public class ComunicacionUsuarios {
                 + "=" + URLEncoder.encode(param.get(4), "UTF-8");*/
 
         JSONObject json = new JSONObject();
-        json.put("nombre", param.get(0));
-        json.put("email", param.get(1));
+        json.put("name", param.get(0));
+        json.put("mail", param.get(1));
         json.put("password", param.get(2));
-        json.put("apellido1", param.get(3));
-        json.put("apellido2", param.get(4));
+        json.put("surname1", param.get(3));
+        json.put("surname2", param.get(4));
 
         String s = json.toString();
         byte[] outputBytes = s.getBytes("UTF-8");
@@ -97,29 +97,47 @@ public class ComunicacionUsuarios {
         wr.write(outputBytes);
         wr.flush();
         wr.close();
-        try {
-            String resp = "";
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuilder sb = new StringBuilder();
 
-            while ((inputLine = in.readLine()) != null) {
-                resp += inputLine;
-            }
-            in.close();
+        //Write
+        /*OutputStream outputStream = urlConnection.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+        writer.write(data);
+        writer.close();
+        outputStream.close();*/
 
+        String resp = "";
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
 
-            System.out.println("resp: " + resp);
-
-            //Tratar Response Code
-            int responseCode = con.getResponseCode();
-            if (responseCode == 200) b = true;
-            else b = false;
-
-        } catch (Exception e){
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        while ((inputLine = in.readLine()) != null) {
+            resp += inputLine;
         }
+        in.close();
+
+
+        System.out.println("resp: " + resp);
+
+        /*BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        in.close();
+
+        String jsonString = sb.toString();
+
+        System.out.println("JSON: " + jsonString);*/
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        System.out.println("Response code = "+responseCode);
+        if (responseCode == 200) b = true;
+        else b = false;
+
+
         return b;
     }
 
@@ -203,6 +221,50 @@ public class ComunicacionUsuarios {
         else return false;
 
     }
+
+    public static boolean iniciarSesion(String url, String email, String password) throws
+            Exception{
+        //Conexion
+        url += "/login";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("Content-type", "application/json");
+
+        JSONObject json = new JSONObject();
+        json.put("email", email);
+        json.put("password", password);
+
+        String s = json.toString();
+        byte[] outputBytes = s.getBytes("UTF-8");
+
+        // Send post request
+        con.setDoOutput(true);
+        OutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.write(outputBytes);
+        wr.flush();
+        wr.close();
+
+        //leer respuesta
+        String resp = "";
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            resp += inputLine;
+        }
+        in.close();
+
+        //Tratar Response Code
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
+    }
+
 
     public static boolean modificarPerfil(String url, ArrayList<String> param) throws Exception{
         //Conexion

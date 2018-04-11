@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -144,12 +145,40 @@ public class ListarServicios extends AppCompatActivity {
 
     private void initializeData(){
         //TODO: Call API
+        /*try{
+            servicios = new AsyncTaskCall().execute().get();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
         servicios.add(new Servicio(0,"Alojamiento","buena describicion", "Calle 123", "27/07/97","623623623","4.5", R.drawable.lodging));
         servicios.add(new Servicio(2,"Educativo", "buena describicion", "Calle 123342432","27/07/97","623623623","4.5", R.drawable.education));
         servicios.add(new Servicio(1,"Donacion","buena describicion",  "dasdsddssdasd","27/07/97","623623623","4.5", R.drawable.donation));
         servicios.add(new Servicio(3,"Empleo", "buena describicion", "dsadasd", "27/07/97","623623623","4.5", R.drawable.job));
         serviciosFiltrados = servicios;
     }
+
+    /*private class AsyncTaskCall extends AsyncTask<Void, Void, ArrayList<Servicio>> {
+
+        protected void onPreExecute() {
+            //showProgress(true);
+        }
+        @Override
+        protected ArrayList<Servicio> doInBackground(Void...voids) {
+
+            String url = getResources().getString(R.string.url_server);
+            ArrayList<Servicio> result;
+            try {
+                result = ComunicacionServicios.listarServicios(url);
+                //result = ComunicacionUsuarios.test2(url);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            return result;
+        }
+    }*/
 
     @Override
     public void onBackPressed() {

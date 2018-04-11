@@ -102,7 +102,7 @@ public class RegistroRefugiado extends Fragment {
     public void obtenerParametros(View view){
 
         param = new ArrayList<String>();
-        /*param.add("pedrito");
+        param.add("pedrito");
         param.add("pedrito@gmail.com");
         param.add("sergimanel");
         param.add("garcia");
@@ -114,9 +114,9 @@ public class RegistroRefugiado extends Fragment {
         param.add("town");
         param.add("senegalo");
         param.add("AB+");
-        param.add("Gris");*/
+        param.add("Gris");
 
-        EditText editText = (EditText) view.findViewById(R.id.nombre_refugiado);
+        /*EditText editText = (EditText) view.findViewById(R.id.nombre_refugiado);
         param.add(editText.getText().toString());
 
         editText = (EditText) view.findViewById(R.id.email_refugiado);
@@ -153,7 +153,7 @@ public class RegistroRefugiado extends Fragment {
         param.add(spinner.getSelectedItem().toString());
 
         spinner = (Spinner) view.findViewById(R.id.ojos_refugiado);
-        param.add(spinner.getSelectedItem().toString());
+        param.add(spinner.getSelectedItem().toString());*/
 
     }
 

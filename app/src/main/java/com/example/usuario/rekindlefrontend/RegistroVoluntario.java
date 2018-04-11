@@ -64,13 +64,13 @@ public class RegistroVoluntario extends Fragment {
     public void obtenerParametros(View view){
 
         param = new ArrayList<String>();
-        /*param.add("pedrito");
-            param.add("pedrito@gmail.com");
-            param.add("sergimanel");
-            param.add("garcia");
-            param.add("monserrate");*/
+        param.add("rafael");
+        param.add("rafael@gmail.com");
+        param.add("sergimanel");
+        param.add("garcia");
+        param.add("monserrate");
 
-        EditText editText = (EditText) view.findViewById(R.id.nombre_voluntario);
+        /*EditText editText = (EditText) view.findViewById(R.id.nombre_voluntario);
         param.add(editText.getText().toString());
 
         editText = (EditText) view.findViewById(R.id.email_voluntario);
@@ -83,7 +83,7 @@ public class RegistroVoluntario extends Fragment {
         param.add(editText.getText().toString());
 
         editText = (EditText) view.findViewById(R.id.s_apellido_voluntario);
-        param.add(editText.getText().toString());
+        param.add(editText.getText().toString());*/
 
     }
 

@@ -268,4 +268,37 @@ public class ComunicacionServicios {
         if (responseCode == 200) return true;
         else return false;
     }
+
+    /*public ArrayList<Servicio> listarServicios(String url) throws Exception{
+
+        ArrayList<Servicio> result;
+        //Conexion
+        url += "/servicios";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Accept", "application/json");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        in.close();
+
+        String jsonString = sb.toString();
+
+        System.out.println("JSON: " + jsonString);
+
+        //Tratar Response Code
+        /*int responseCode = con.getResponseCode();
+        if (responseCode == 200) return true;
+        else return false;
+
+        return result;
+    }*/
 }
