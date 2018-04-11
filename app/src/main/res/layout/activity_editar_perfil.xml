@@ -141,8 +141,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@color/colorIron"
-                android:popupBackground="@color/colorIron" />
+                android:background="@color/colorWhite"
+                android:popupBackground="@color/colorWhite" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -197,8 +197,8 @@
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
                 android:layout_below="@id/label_sangre_usuario_perfil"
-                android:background="@color/colorIron"
-                android:popupBackground="@color/colorIron" />
+                android:background="@color/colorWhite"
+                android:popupBackground="@color/colorWhite" />
 
             <Spinner
                 android:id="@+id/ojos_usuario_perfil"
@@ -207,8 +207,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@color/colorIron"
-                android:popupBackground="@color/colorIron" />
+                android:background="@color/colorWhite"
+                android:popupBackground="@color/colorWhite" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/cambiar_password"

@@ -1,9 +1,11 @@
 package com.example.usuario.rekindlefrontend;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -22,28 +24,45 @@ import android.support.test.runner.AndroidJUnit4;
 import android.view.Menu;
 
 import static android.support.test.espresso.Espresso.closeSoftKeyboard;
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.pressBack;
+import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.action.ViewActions.typeTextIntoFocusedView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.init;
 import static android.support.test.espresso.intent.Intents.release;
+import static android.support.test.espresso.matcher.ViewMatchers.hasFocus;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.Intents.times;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+//import static org.hamcrest.core.AllOf.allOf;
+//import static org.hamcrest.core.Is.is;
+//import static org.hamcrest.core.IsInstanceOf.instanceOf;
+//import static org.hamcrest.core.AnyOf.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.not;
+
 
 import static org.junit.Assert.*;
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoPantallaInicio {
+public class EspressoCambiarPassword {
 
     @Rule
-    public ActivityTestRule<PantallaInicio> pantalla = new ActivityTestRule<PantallaInicio>
-            (PantallaInicio.class);
+    public ActivityTestRule<CambiarPassword> pantalla = new ActivityTestRule<CambiarPassword>
+            (CambiarPassword.class);
 
     @BeforeClass
     public static void setup(){
@@ -56,54 +75,27 @@ public class EspressoPantallaInicio {
     }
 
     @Test
-    public void testCambiosTexto() {
+    public void testCamposContraseña() {
 
-        onView(withId(R.id.input_email)).perform(typeText("testEmail"), ViewActions
-                .closeSoftKeyboard()).check(matches(withText("testEmail")));
+        onView(withId(R.id.actual_password)).perform(replaceText
+                ("testPasswordActual"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testPasswordActual")));
 
-        onView(withId(R.id.input_password)).perform(typeText("testPassword"), ViewActions
-                .closeSoftKeyboard()).check(matches(withText("testPassword")));
+        onView(withId(R.id.new_password)).perform(replaceText
+                ("testPasswordNuevo"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testPasswordNuevo")));
+
+        onView(withId(R.id.repeat_password)).perform(replaceText
+                ("testPasswordNuevo"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testPasswordNuevo")));
+
+
     }
 
     @Test
-    public void testBotonRecuperar() {
+    public void testBotonGuardar() {
 
-        //TODO: Testear recuperar password cuando funcione
-
-    }
-
-    @Test
-    public void testBotonLogin(){
-
-        //TODO: Testear Login cuando funcione
-        onView(withId(R.id.input_email)).perform(typeText("testEmail@est.com"), ViewActions
-                .closeSoftKeyboard());
-
-        onView(withId(R.id.input_password)).perform(typeText("testPassword"), ViewActions
-                .closeSoftKeyboard());
-
-        onView(withId(R.id.btn_login)).perform(click());
-        intended(hasComponent(MenuPrincipal.class.getName()));
-    }
-
-    @Test
-    public void testBotonLoginFail(){
-
-        onView(withId(R.id.input_email)).perform(typeText("testEmailMalo"), ViewActions
-                .closeSoftKeyboard());
-
-        onView(withId(R.id.input_password)).perform(typeText("testPassword"), ViewActions
-                .closeSoftKeyboard());
-
-        onView(withId(R.id.btn_login)).perform(click());
-        intended(hasComponent(PantallaInicio.class.getName()));
-    }
-
-    @Test
-    public void testLinkRegistro(){
-
-        onView(withId(R.id.link_signup)).perform(click());
-        intended(hasComponent(RegistroUsuario.class.getName()));
+        //TODO: Testear cuando funcione cambiar password
 
     }
 
