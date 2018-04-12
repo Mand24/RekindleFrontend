@@ -350,7 +350,7 @@ public class RegistroRefugiado extends Fragment {
     public void obtenerParametros(){
 
         param = new ArrayList<String>();
-        param.add("felipexxx@gmail.com");
+        param.add("manelico@gmail.com");
         param.add("sergimanel");
         param.add("pedrito");
         param.add("garcia");

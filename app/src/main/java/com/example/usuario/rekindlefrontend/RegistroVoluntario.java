@@ -198,15 +198,15 @@ public class RegistroVoluntario extends Fragment {
     public void obtenerParametros(){
 
         param = new ArrayList<String>();
-        param.add("refa");
         param.add("refa@gmail.com");
         param.add("sergimanel");
+        param.add("refa");
         param.add("garcia");
         param.add("monserrate");
 
-        /*param.add(nombre);
-        param.add(email);
+        /*param.add(email);
         param.add(pass);
+        param.add(nombre);
         param.add(primer_apellido);
         param.add(segundo_apellido);*/
 

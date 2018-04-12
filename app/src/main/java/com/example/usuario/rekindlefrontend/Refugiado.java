@@ -4,6 +4,10 @@ public class Refugiado extends Usuario {
 
     private String phoneNumber, birthDate, sex, country, town, ethnic, bloodType, eyeColor;
 
+    public Refugiado(){
+        super();
+    }
+
     public Refugiado(String mail, String password, String name, String surname1,
             String surname2, String phoneNumber, String birthDate, String sex, String country,
             String town, String ethnic, String bloodType, String eyeColor) {

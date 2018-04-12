@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,7 +31,7 @@ public class EditarPerfil extends AppCompatActivity {
 
         initializeData();
 
-        Button b = (Button) findViewById(R.id.guardar_editar_perfil);
+        AppCompatButton b = (AppCompatButton) findViewById(R.id.guardar_editar_perfil);
         b.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -49,7 +50,7 @@ public class EditarPerfil extends AppCompatActivity {
             }
         });
 
-        Button b2 = (Button) findViewById(R.id.cambiar_password);
+        AppCompatButton b2 = (AppCompatButton) findViewById(R.id.cambiar_password);
         b2.setOnClickListener(new View.OnClickListener(){
 
             @Override

@@ -6,6 +6,8 @@ public class Usuario implements Serializable {
 
     protected String mail, password, name, surname1, surname2;
 
+    public Usuario(){}
+
     public Usuario(String mail , String password, String name, String surname1, String surname2) {
         this.mail = mail;
         this.password = password;
