@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -21,6 +24,12 @@ import java.util.ArrayList;
 public class RegistroVoluntario extends Fragment {
 
     private ArrayList<String> param;
+
+    private String nombre;
+    private String email;
+    private String pass;
+    private String primer_apellido;
+    private String segundo_apellido;
 
     public RegistroVoluntario() {
         // Required empty public constructor
@@ -39,17 +48,17 @@ public class RegistroVoluntario extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if (comprobarCampos()) {
+                if (setCampos (view)) {
                     try {
-                        obtenerParametros(view);
-                        boolean result = new AsyncTaskCall().execute().get();
-                        tratarResultadoPeticion(result);
+                        obtenerParametros();
+                        //boolean result = new AsyncTaskCall().execute().get();
+                        //tratarResultadoPeticion(result);
                     }catch (Exception e){
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }else {
-
+                    // el mensaje de error lo saca la funcion set campos
                 }
             }
         });
@@ -57,33 +66,146 @@ public class RegistroVoluntario extends Fragment {
         return view;
     }
 
-    public boolean comprobarCampos(){
+    public boolean letras (String texto)
+    {
+        Pattern patron = Pattern.compile ("[a-zA-Z]");
+        Matcher valid  = patron.matcher  (texto);
+        if(valid.matches ()) return true;
+        else                 return false;
+    }
+
+    public boolean setCampos (View view)
+    {
+        EditText container_data;
+        Context context = getActivity().getApplicationContext();
+        String   texto;
+
+        container_data = view.findViewById (R.id.nombre_voluntario);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
+            Toast.makeText (context, "Nombre obligatorio", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (texto.length () > 20) {
+            Toast.makeText(context, "Nombre es demasiado largo, máximo 20 letras", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (!letras (texto)) {
+            Toast.makeText(context, "El nombre solo puede contener letras", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else { nombre = texto; }
+
+        // control email
+
+        container_data = view.findViewById (R.id.email_voluntario);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0 ) {
+            Toast.makeText(context, "Email obligatorio", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (texto.length () > 30) {
+            Toast.makeText(context, "Email demasiado largo, máximo 30 caracteres", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (!android.util.Patterns.EMAIL_ADDRESS
+                .matcher (texto).matches
+                        ()) {
+            Toast.makeText(context, "Formato de email no valido", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else { email = texto; }
+
+        // control password
+
+        container_data = view.findViewById (R.id.password_voluntario);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
+            Toast.makeText (context, "Contraseña obligatoria", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (texto.length () > 15) {
+            Toast.makeText(context, "Contraseña demasiada larga, máximo 15 caracteres", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (texto.length () < 15) {
+            Toast.makeText(context, "Contraseña demasiada corta, mínimo 4 caracteres", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else { pass = texto; }
+
+        // control primer apellido
+
+        container_data = view.findViewById (R.id.
+                p_apellido_voluntario);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
+            Toast.makeText (context, "Primer apellido obligatorio", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (texto.length () > 20) {
+            Toast.makeText(context, "Primer apellido demasiado largo, máximo 20 letras", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (!letras (texto)) {
+            Toast.makeText(context, "El primer apellido solo puede contener letras", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else { primer_apellido = texto; }
+
+        // control segundo apellido
+
+        container_data = view.findViewById (R.id.
+                s_apellido_voluntario);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () > 20) {
+            Toast.makeText(context, "Segundo apellido demasiado largo, máximo 20 letras", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (!letras (texto)) {
+            Toast.makeText(context, "El segundo apellido solo puede contener letras", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else { segundo_apellido = texto; }
+
         return true;
     }
 
-    public void obtenerParametros(View view){
+    public void obtenerParametros(){
 
         param = new ArrayList<String>();
-        param.add("rafael");
+        /*param.add("rafael");
         param.add("rafael@gmail.com");
         param.add("sergimanel");
         param.add("garcia");
-        param.add("monserrate");
+        param.add("monserrate");*/
 
-        /*EditText editText = (EditText) view.findViewById(R.id.nombre_voluntario);
-        param.add(editText.getText().toString());
+        param.add(nombre);
+        param.add(pass);
+        param.add(email);
+        param.add(primer_apellido);
+        param.add(segundo_apellido);
 
-        editText = (EditText) view.findViewById(R.id.email_voluntario);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.password_voluntario);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.p_apellido_voluntario);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.s_apellido_voluntario);
-        param.add(editText.getText().toString());*/
+        System.out.println("nombre: " + nombre);
 
     }
 
