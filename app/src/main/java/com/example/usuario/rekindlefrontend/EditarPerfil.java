@@ -15,15 +15,20 @@ import java.util.ArrayList;
 
 public class EditarPerfil extends AppCompatActivity {
 
-    private ArrayList<String> param;
+    private Refugiado refugiado;
+    ArrayAdapter<CharSequence> adapter1, adapter2, adapter3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
 
+        refugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
         //establecer parametros a los spinners
         setSpinners();
+
+        initializeData();
 
         Button b = (Button) findViewById(R.id.guardar_editar_perfil);
         b.setOnClickListener(new View.OnClickListener(){
@@ -32,7 +37,6 @@ public class EditarPerfil extends AppCompatActivity {
             public void onClick(View v) {
                 if (comprobarCampos()){
                     try{
-                        obtenerParametros();
                         boolean result = new AsyncTaskCall().execute().get();
                         tratarResultadoPeticion(result);
                     }catch (Exception e){
@@ -56,69 +60,77 @@ public class EditarPerfil extends AppCompatActivity {
         });
 
 
+
+
+
     }
 
     public void setSpinners(){
 
         Spinner spinner = (Spinner) findViewById(R.id.sexo_usuario_perfil);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.lista_sexo, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        adapter1 = ArrayAdapter.createFromResource(this, R.array
+                .lista_sexo, R.layout.spinner_item);
+        adapter1.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinner.setAdapter(adapter1);
 
         spinner = (Spinner) findViewById(R.id.sangre_usuario_perfil);
-        adapter = ArrayAdapter.createFromResource(this, R.array.lista_grupo_sanguineo, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.lista_grupo_sanguineo, R.layout
+                .spinner_item);
+        adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinner.setAdapter(adapter2);
 
         spinner = (Spinner) findViewById(R.id.ojos_usuario_perfil);
-        adapter = ArrayAdapter.createFromResource(this, R.array.lista_color_ojos, R.layout.spinner_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        adapter3 = ArrayAdapter.createFromResource(this, R.array.lista_color_ojos, R.layout
+                .spinner_item);
+        adapter3.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinner.setAdapter(adapter3);
     }
 
     public boolean comprobarCampos(){
         return true;
     }
 
-    public void obtenerParametros(){
-
-        param = new ArrayList<String>();
+    public void initializeData(){
 
         EditText editText = (EditText) findViewById(R.id.nombre_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getName());
 
         editText = (EditText) findViewById(R.id.apellido1_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getSurname1());
 
         editText = (EditText) findViewById(R.id.apellido2_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getSurname2());
 
         editText = (EditText) findViewById(R.id.email_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getMail());
 
         editText = (EditText) findViewById(R.id.telefono_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getPhoneNumber());
 
         editText = (EditText) findViewById(R.id.naciminento_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getBirthDate());
 
         Spinner spinner = (Spinner) findViewById(R.id.sexo_usuario_perfil);
-        param.add(spinner.getSelectedItem().toString());
+        int selectionPosition = adapter1.getPosition(refugiado.getSex());
+        spinner.setSelection(selectionPosition);
+
 
         editText = (EditText) findViewById(R.id.pais_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getCountry());
 
         editText = (EditText) findViewById(R.id.pueblo_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getTown());
 
         editText = (EditText) findViewById(R.id.etnia_usuario_perfil);
-        param.add(editText.getText().toString());
+        editText.setText(refugiado.getEthnic());
 
         spinner = (Spinner) findViewById(R.id.sangre_usuario_perfil);
-        param.add(spinner.getSelectedItem().toString());
+        selectionPosition = adapter2.getPosition(refugiado.getBloodType());
+        spinner.setSelection(selectionPosition);
 
         spinner = (Spinner) findViewById(R.id.ojos_usuario_perfil);
-        param.add(spinner.getSelectedItem().toString());
+        selectionPosition = adapter3.getPosition(refugiado.getEyeColor());
+        spinner.setSelection(selectionPosition);
 
     }
 
@@ -146,7 +158,7 @@ public class EditarPerfil extends AppCompatActivity {
             String url = getResources().getString(R.string.url_server);
             boolean result = false;
             try {
-                result = ComunicacionUsuarios.modificarPerfil(url, param);
+                result = ComunicacionUsuarios.modificarPerfil(url, refugiado);
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -163,3 +175,9 @@ public class EditarPerfil extends AppCompatActivity {
         startActivity(i);
     }
 }
+
+
+/*
+int selectionPosition= adapter.getPosition("YOUR_VALUE");
+spinner.setSelection(selectionPosition);
+ */
