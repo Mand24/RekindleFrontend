@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -82,20 +83,63 @@ public class PantallaInicio extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        //String email = _emailText.getText().toString();
+        //String password = _passwordText.getText().toString();
+
 
         // TODO: Llamar API
+        /*try{
+            //result = new AsyncTaskCall().execute(email, password).get();
+            //result = true;
+            //if (result) onLoginSuccess();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
+                        //onLoginSuccess();
                         // onLoginFailed();
+                        String email = _emailText.getText().toString();
+                        String password = _passwordText.getText().toString();
+                        boolean result = true;
+                        try {
+                            //result = new AsyncTaskCall().execute(email, password).get();
+                            if (result) onLoginSuccess();
+                            else onLoginFailed();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 1500);
+    }
+
+    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+
+        protected void onPreExecute() {
+            //showProgress(true);
+        }
+
+        protected Boolean doInBackground(String... params) {
+
+            String url = getResources().getString(R.string.url_server);
+            System.out.println("url servidor: " + url);
+            boolean result = false;
+            try {
+                result = ComunicacionUsuarios.iniciarSesion(url, params[0], params[1]);
+                //result = ComunicacionUsuarios.test2(url);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            return result;
+        }
     }
 
     @Override
