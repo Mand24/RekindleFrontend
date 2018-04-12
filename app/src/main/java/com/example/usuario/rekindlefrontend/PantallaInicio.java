@@ -2,7 +2,9 @@ package com.example.usuario.rekindlefrontend;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -107,7 +109,7 @@ public class PantallaInicio extends AppCompatActivity {
                         String password = _passwordText.getText().toString();
                         boolean result = true;
                         try {
-                            //result = new AsyncTaskCall().execute(email, password).get();
+                            result = new AsyncTaskCall().execute(email, password).get();
                             if (result) onLoginSuccess();
                             else onLoginFailed();
                         } catch (Exception e) {
@@ -154,6 +156,10 @@ public class PantallaInicio extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor miEditor = datos.edit();
+        miEditor.putString("email", _emailText.getText().toString());
+        miEditor.apply();
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         startActivity(i);

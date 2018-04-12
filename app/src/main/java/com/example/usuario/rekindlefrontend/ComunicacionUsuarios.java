@@ -154,7 +154,7 @@ public class ComunicacionUsuarios {
 
         //Parametros
 
-        String data = URLEncoder.encode("nombre", "UTF-8")
+        /*String data = URLEncoder.encode("nombre", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(0), "UTF-8");
 
         data += "&" + URLEncoder.encode("email", "UTF-8") + "="
@@ -193,14 +193,41 @@ public class ComunicacionUsuarios {
         data += "&" + URLEncoder.encode("color_ojos", "UTF-8")
                 + "=" + URLEncoder.encode(param.get(12), "UTF-8");
 
-        System.out.println("DATA: " + data);
+        System.out.println("DATA: " + data);*/
+
+        JSONObject json = new JSONObject();
+        json.put("mail", param.get(0));
+        json.put("password", param.get(1));
+        json.put("name", param.get(2));
+        json.put("surname1", param.get(3));
+        json.put("surname2", param.get(4));
+        json.put("phoneNumber", param.get(5));
+        json.put("birthdate", param.get(6));
+        json.put("sex", param.get(7));
+        json.put("country", param.get(8));
+        json.put("town", param.get(9));
+        json.put("ethnic", param.get(10));
+        json.put("bloodType", param.get(11));
+        json.put("eyeColor", param.get(12));
+
+        String s = json.toString();
+        byte[] outputBytes = s.getBytes("UTF-8");
+
 
         // Send post request
         con.setDoOutput(true);
+        OutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.write(outputBytes);
+        wr.flush();
+        wr.close();
+
+
+        // Send post request
+        /*con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
         wr.writeBytes(data);
         wr.flush();
-        wr.close();
+        wr.close();*/
 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -217,6 +244,7 @@ public class ComunicacionUsuarios {
 
         //Tratar Response Code
         int responseCode = con.getResponseCode();
+        System.out.println("Response code = "+responseCode);
         if (responseCode == 200) return true;
         else return false;
 
@@ -225,7 +253,7 @@ public class ComunicacionUsuarios {
     public static boolean iniciarSesion(String url, String email, String password) throws
             Exception{
         //Conexion
-        url += "/login";
+        url += "/inicioSesion";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -235,7 +263,7 @@ public class ComunicacionUsuarios {
         con.setRequestProperty("Content-type", "application/json");
 
         JSONObject json = new JSONObject();
-        json.put("email", email);
+        json.put("mail", email);
         json.put("password", password);
 
         String s = json.toString();
@@ -330,8 +358,9 @@ public class ComunicacionUsuarios {
         con.setRequestProperty("Content-type", "application/json");
 
         JSONObject json = new JSONObject();
-        json.put("actual", param.get(0));
-        json.put("nuevo", param.get(1));
+        json.put("mail", param.get(0));
+        json.put("password", param.get(1));
+        json.put("newPassword", param.get(2));
 
         String s = json.toString();
         byte[] outputBytes = s.getBytes("UTF-8");

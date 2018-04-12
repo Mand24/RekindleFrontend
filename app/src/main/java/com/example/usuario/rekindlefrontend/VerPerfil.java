@@ -13,6 +13,15 @@ public class VerPerfil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_perfil);
 
+        try {
+            obtenerParametros();
+            boolean result = new AsyncTaskCall().execute().get();
+            tratarResultadoPeticion(result);
+        }catch (Exception e){
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         Button b = (Button) findViewById(R.id.editar_ver_perfil);
         b.setOnClickListener(new View.OnClickListener() {
 
@@ -30,6 +39,11 @@ public class VerPerfil extends AppCompatActivity {
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         startActivity(i);
+    }
+
+    public void tratarResultadoPeticion(boolean result){
+
+        
     }
 
 

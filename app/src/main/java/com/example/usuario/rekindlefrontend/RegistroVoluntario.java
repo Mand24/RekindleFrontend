@@ -51,8 +51,8 @@ public class RegistroVoluntario extends Fragment {
                 if (setCampos (view)) {
                     try {
                         obtenerParametros();
-                        //boolean result = new AsyncTaskCall().execute().get();
-                        //tratarResultadoPeticion(result);
+                        boolean result = new AsyncTaskCall().execute().get();
+                        tratarResultadoPeticion(result);
                     }catch (Exception e){
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -82,8 +82,9 @@ public class RegistroVoluntario extends Fragment {
 
         container_data = view.findViewById (R.id.nombre_voluntario);
         texto = container_data.getText ().toString ();
+        nombre = texto;
 
-        if (texto.length () == 0) {
+        /*if (texto.length () == 0) {
             Toast.makeText (context, "Nombre obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -98,14 +99,15 @@ public class RegistroVoluntario extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { nombre = texto; }
+        else { nombre = texto; }*/
 
         // control email
 
         container_data = view.findViewById (R.id.email_voluntario);
         texto = container_data.getText ().toString ();
+        email = texto;
 
-        if (texto.length () == 0 ) {
+        /*if (texto.length () == 0 ) {
             Toast.makeText(context, "Email obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -122,14 +124,15 @@ public class RegistroVoluntario extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { email = texto; }
+        else { email = texto; }*/
 
         // control password
 
         container_data = view.findViewById (R.id.password_voluntario);
         texto = container_data.getText ().toString ();
+        pass = texto;
 
-        if (texto.length () == 0) {
+        /*if (texto.length () == 0) {
             Toast.makeText (context, "Contraseña obligatoria", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -144,15 +147,16 @@ public class RegistroVoluntario extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { pass = texto; }
+        else { pass = texto; }*/
 
         // control primer apellido
 
         container_data = view.findViewById (R.id.
                 p_apellido_voluntario);
         texto = container_data.getText ().toString ();
+        primer_apellido = texto;
 
-        if (texto.length () == 0) {
+        /*if (texto.length () == 0) {
             Toast.makeText (context, "Primer apellido obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -167,15 +171,16 @@ public class RegistroVoluntario extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { primer_apellido = texto; }
+        else { primer_apellido = texto; }*/
 
         // control segundo apellido
 
         container_data = view.findViewById (R.id.
                 s_apellido_voluntario);
         texto = container_data.getText ().toString ();
+        segundo_apellido = texto;
 
-        if (texto.length () > 20) {
+        /*if (texto.length () > 20) {
             Toast.makeText(context, "Segundo apellido demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -185,7 +190,7 @@ public class RegistroVoluntario extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { segundo_apellido = texto; }
+        else { segundo_apellido = texto; }*/
 
         return true;
     }
@@ -193,17 +198,17 @@ public class RegistroVoluntario extends Fragment {
     public void obtenerParametros(){
 
         param = new ArrayList<String>();
-        /*param.add("rafael");
-        param.add("rafael@gmail.com");
+        param.add("refa");
+        param.add("refa@gmail.com");
         param.add("sergimanel");
         param.add("garcia");
-        param.add("monserrate");*/
+        param.add("monserrate");
 
-        param.add(nombre);
-        param.add(pass);
+        /*param.add(nombre);
         param.add(email);
+        param.add(pass);
         param.add(primer_apellido);
-        param.add(segundo_apellido);
+        param.add(segundo_apellido);*/
 
         System.out.println("nombre: " + nombre);
 

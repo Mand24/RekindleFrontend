@@ -64,8 +64,8 @@ public class RegistroRefugiado extends Fragment {
                 if (setCampos(view)) {
                     try {
                         obtenerParametros();
-                        //boolean result = new AsyncTaskCall().execute().get();
-                        //tratarResultadoPeticion(result);
+                        boolean result = new AsyncTaskCall().execute().get();
+                        tratarResultadoPeticion(result);
                     }catch (Exception e){
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -148,8 +148,9 @@ public class RegistroRefugiado extends Fragment {
 
         container_data = view.findViewById (R.id.nombre_refugiado);
         texto = container_data.getText ().toString ();
+        nombre = texto;
 
-        if (texto.length () == 0) {
+        /*if (texto.length () == 0) {
             Toast.makeText (context, "Nombre obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -164,14 +165,15 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { nombre = texto; }
+        else { nombre = texto; }*/
 
         // control email
 
         container_data = view.findViewById (R.id.email_refugiado);
         texto = container_data.getText ().toString ();
+        email = texto;
 
-        if (texto.length () == 0 ) {
+        /*if (texto.length () == 0 ) {
             Toast.makeText(context, "Email obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -188,14 +190,15 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { email = texto; }
+        else { email = texto; }*/
 
         // control password
 
         container_data = view.findViewById (R.id.password_refugiado);
         texto = container_data.getText ().toString ();
+        pass = texto;
 
-        if (texto.length () == 0) {
+        /*if (texto.length () == 0) {
             Toast.makeText (context, "Contraseña obligatoria", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -210,15 +213,16 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { pass = texto; }
+        else { pass = texto; }*/
 
         // control primer apellido
 
         container_data = view.findViewById (R.id.
                 p_apellido_refugiado);
         texto = container_data.getText ().toString ();
+        primer_apellido = texto;
 
-        if (texto.length () == 0) {
+        /*if (texto.length () == 0) {
             Toast.makeText (context, "Primer apellido obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -233,15 +237,16 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { primer_apellido = texto; }
+        else { primer_apellido = texto; }*/
 
         // control segundo apellido
 
         container_data = view.findViewById (R.id.
                 s_apellido_refugiado);
         texto = container_data.getText ().toString ();
+        segundo_apellido = texto;
 
-        if (texto.length () > 20) {
+        /*if (texto.length () > 20) {
             Toast.makeText(context, "Segundo apellido demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -251,41 +256,44 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { segundo_apellido = texto; }
+        else { segundo_apellido = texto; }*/
 
         // control telefono
 
         container_data = view.findViewById (R.id.
                 telefono_refugiado);
         texto = container_data.getText ().toString ();
+        telefono = texto;
 
-        if (texto.length () > 40) {
+        /*if (texto.length () > 40) {
             Toast.makeText(context, "Teléfono demasiado largo, máximo 50 números", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { telefono = texto; }
+        else { telefono = texto; }*/
 
         // control nacimiento
 
         container_data = view.findViewById (R.id.
                 nacimiento_refugiado);
         texto = container_data.getText ().toString ();
+        nacimiento = texto;
 
-        if (!fecha_valida (texto)) {
+        /*if (!fecha_valida (texto)) {
             Toast.makeText(context, "Formato fecha incorrecto; formato correcto = dd-mm-aaaa", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { nacimiento = texto; }
+        else { nacimiento = texto; }*/
 
         // control procedencia
 
         container_data = view.findViewById (R.id.
                 procedencia_refugiado);
         texto = container_data.getText ().toString ();
+        procedencia = texto;
 
-        if (texto.length () > 20) {
+        /*if (texto.length () > 20) {
             Toast.makeText(context, "País de origen demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -296,15 +304,16 @@ public class RegistroRefugiado extends Fragment {
                             .LENGTH_LONG).show ();
             return false;
         }
-        else { procedencia = texto; }
+        else { procedencia = texto; }*/
 
         // control pueblo
 
         container_data = view.findViewById (R.id.
                 pueblo_refugiado);
         texto = container_data.getText ().toString ();
+        pueblo = texto;
 
-        if (texto.length () > 40) {
+        /*if (texto.length () > 40) {
             Toast.makeText(context, "Nombre del pueblo demasiado largo, máximo 40 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -314,15 +323,16 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { pueblo = texto; }
+        else { pueblo = texto; }*/
 
         // control etnia
 
         container_data = view.findViewById (R.id.
             etnia_refugiado);
         texto = container_data.getText ().toString ();
+        etnia = texto;
 
-        if (texto.length () > 20) {
+        /*if (texto.length () > 20) {
             Toast.makeText(context, "Nombre de la etnia demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -332,7 +342,7 @@ public class RegistroRefugiado extends Fragment {
                     Toast.LENGTH_LONG).show ();
             return false;
         }
-        else { etnia = texto; }
+        else { etnia = texto; }*/
 
         return true;
     }
@@ -340,9 +350,9 @@ public class RegistroRefugiado extends Fragment {
     public void obtenerParametros(){
 
         param = new ArrayList<String>();
-        /*param.add("pedrito");
-        param.add("pedrito@gmail.com");
+        param.add("felipexxx@gmail.com");
         param.add("sergimanel");
+        param.add("pedrito");
         param.add("garcia");
         param.add("monserrate");
         param.add("53322863");
@@ -352,11 +362,11 @@ public class RegistroRefugiado extends Fragment {
         param.add("town");
         param.add("senegalo");
         param.add("AB+");
-        param.add("Gris");*/
+        param.add("Gris");
 
-        param.add (nombre);
-        param.add (email);
+        /*param.add (email);
         param.add (pass);
+        param.add (nombre);
         param.add (primer_apellido);
         param.add (segundo_apellido);
         param.add (telefono);
@@ -366,7 +376,7 @@ public class RegistroRefugiado extends Fragment {
         param.add (pueblo);
         param.add (etnia);
         param.add(grupo_sanguineo);
-        param.add(ojos);
+        param.add(ojos);*/
 
         System.out.println("nombre: " + nombre);
 
