@@ -332,8 +332,9 @@ public class ComunicacionUsuarios {
         //Tratar Response Code
         int responseCode = con.getResponseCode();
         System.out.println("codigo = "+responseCode);
-        if (resp.equals("True")) return true;
-        else return false;
+
+        return true;
+
     }
 
     public static boolean cambiarPassword(String url, ArrayList<String> param) throws Exception{

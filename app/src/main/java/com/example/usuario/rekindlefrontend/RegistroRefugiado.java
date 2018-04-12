@@ -114,17 +114,23 @@ public class RegistroRefugiado extends Fragment {
 
     public boolean letras (String texto)
     {
-        Pattern patron = Pattern.compile ("[a-zA-Z]");
+        Pattern patron = Pattern.compile ("^[a-zA-Z]+$");
         Matcher valid  = patron.matcher  (texto);
-        return valid.matches();
+        return valid.matches ();
+    }
+
+    public boolean numeros (String texto)
+    {
+        Pattern patron = Pattern.compile ("^[0-9]+$");
+        Matcher valid  = patron.matcher  (texto);
+        return valid.matches ();
     }
 
     public boolean fecha_valida (String fecha)
     {
         Pattern patron = Pattern.compile ("^[0-9]{2}-[0-9]{2}-[0-9]{4}$");
         Matcher valid  = patron.matcher  (fecha);
-        if(valid.matches ()) return true;
-        else                 return false;
+        return valid.matches ();
     }
 
     public boolean setCampos (View view)
@@ -133,7 +139,7 @@ public class RegistroRefugiado extends Fragment {
         Context context = getActivity ().getApplicationContext ();
         Spinner  spinner;
         String   texto;
-
+        String   texto_aux;
 
         // no control: sexo, grupo sanguineo, ojos
 
@@ -148,9 +154,8 @@ public class RegistroRefugiado extends Fragment {
 
         container_data = view.findViewById (R.id.nombre_refugiado);
         texto = container_data.getText ().toString ();
-        nombre = texto;
 
-        /*if (texto.length () == 0) {
+        if (texto.length () == 0) {
             Toast.makeText (context, "Nombre obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -165,15 +170,14 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { nombre = texto; }*/
+        else { nombre = texto; }
 
         // control email
 
         container_data = view.findViewById (R.id.email_refugiado);
         texto = container_data.getText ().toString ();
-        email = texto;
 
-        /*if (texto.length () == 0 ) {
+        if (texto.length () == 0 ) {
             Toast.makeText(context, "Email obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -190,15 +194,17 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { email = texto; }*/
+        else { email = texto; }
 
         // control password
 
         container_data = view.findViewById (R.id.password_refugiado);
         texto = container_data.getText ().toString ();
-        pass = texto;
 
-        /*if (texto.length () == 0) {
+        container_data = view.findViewById (R.id.rpassword_refugiado);
+        texto_aux  = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
             Toast.makeText (context, "Contraseña obligatoria", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -208,21 +214,25 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else if (texto.length () < 15) {
+        else if (texto.length () < 4) {
             Toast.makeText(context, "Contraseña demasiada corta, mínimo 4 caracteres", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { pass = texto; }*/
+        else if (!texto.equals (texto_aux)) {
+            Toast.makeText(context, "Las contraseñas no coinciden", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else { pass = texto; }
 
         // control primer apellido
 
         container_data = view.findViewById (R.id.
                 p_apellido_refugiado);
         texto = container_data.getText ().toString ();
-        primer_apellido = texto;
 
-        /*if (texto.length () == 0) {
+        if (texto.length () == 0) {
             Toast.makeText (context, "Primer apellido obligatorio", Toast
                     .LENGTH_LONG).show ();
             return false;
@@ -237,119 +247,118 @@ public class RegistroRefugiado extends Fragment {
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { primer_apellido = texto; }*/
+        else { primer_apellido = texto; }
 
         // control segundo apellido
 
         container_data = view.findViewById (R.id.
                 s_apellido_refugiado);
         texto = container_data.getText ().toString ();
-        segundo_apellido = texto;
 
-        /*if (texto.length () > 20) {
+        if (texto.length () > 20) {
             Toast.makeText(context, "Segundo apellido demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else if (!letras (texto)) {
+        else if (!letras (texto) && texto.length () > 0) {
             Toast.makeText(context, "El segundo apellido solo puede contener letras", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { segundo_apellido = texto; }*/
+        else { segundo_apellido = texto; }
 
         // control telefono
 
         container_data = view.findViewById (R.id.
                 telefono_refugiado);
         texto = container_data.getText ().toString ();
-        telefono = texto;
 
-        /*if (texto.length () > 40) {
+        if (!numeros (texto) && texto.length () > 0) {
+            Toast.makeText(context, "Teléfono solo puede contener dígitos", Toast
+                    .LENGTH_LONG).show ();
+            return false;
+        }
+        else if (texto.length () > 40) {
             Toast.makeText(context, "Teléfono demasiado largo, máximo 50 números", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { telefono = texto; }*/
+        else { telefono = texto; }
 
         // control nacimiento
 
         container_data = view.findViewById (R.id.
                 nacimiento_refugiado);
         texto = container_data.getText ().toString ();
-        nacimiento = texto;
 
-        /*if (!fecha_valida (texto)) {
+        if (!fecha_valida (texto) && texto.length () > 0) {
             Toast.makeText(context, "Formato fecha incorrecto; formato correcto = dd-mm-aaaa", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { nacimiento = texto; }*/
+        else { nacimiento = texto; }
 
         // control procedencia
 
         container_data = view.findViewById (R.id.
                 procedencia_refugiado);
         texto = container_data.getText ().toString ();
-        procedencia = texto;
 
-        /*if (texto.length () > 20) {
+        if (texto.length () > 20) {
             Toast.makeText(context, "País de origen demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else if (!letras (texto)) {
+        else if (!letras (texto) && texto.length () > 0) {
             Toast.makeText(context, "El nombre del país de origen solo puede contener letras",
                     Toast
                             .LENGTH_LONG).show ();
             return false;
         }
-        else { procedencia = texto; }*/
+        else { procedencia = texto; }
 
         // control pueblo
 
         container_data = view.findViewById (R.id.
                 pueblo_refugiado);
         texto = container_data.getText ().toString ();
-        pueblo = texto;
 
-        /*if (texto.length () > 40) {
+        if (texto.length () > 40) {
             Toast.makeText(context, "Nombre del pueblo demasiado largo, máximo 40 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else if (!letras (texto)) {
+        else if (!letras (texto) && texto.length () > 0) {
             Toast.makeText(context, "El nombre del pueblo solo puede contener letras", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else { pueblo = texto; }*/
+        else { pueblo = texto; }
 
         // control etnia
 
         container_data = view.findViewById (R.id.
-            etnia_refugiado);
+                etnia_refugiado);
         texto = container_data.getText ().toString ();
-        etnia = texto;
 
-        /*if (texto.length () > 20) {
+        if (texto.length () > 20) {
             Toast.makeText(context, "Nombre de la etnia demasiado largo, máximo 20 letras", Toast
                     .LENGTH_LONG).show ();
             return false;
         }
-        else if (!letras (texto)) {
+        else if (!letras (texto) && texto.length () > 0) {
             Toast.makeText(context, "El nombre de la etnia de origen solo puede contener letras",
                     Toast.LENGTH_LONG).show ();
             return false;
         }
-        else { etnia = texto; }*/
+        else { etnia = texto; }
 
         return true;
     }
 
     public void obtenerParametros(){
 
-        param = new ArrayList<String>();
+        /*param = new ArrayList<String>();
         param.add("manelico@gmail.com");
         param.add("sergimanel");
         param.add("pedrito");
@@ -362,9 +371,9 @@ public class RegistroRefugiado extends Fragment {
         param.add("town");
         param.add("senegalo");
         param.add("AB+");
-        param.add("Gris");
+        param.add("Gris");*/
 
-        /*param.add (email);
+        param.add (email);
         param.add (pass);
         param.add (nombre);
         param.add (primer_apellido);
@@ -376,7 +385,7 @@ public class RegistroRefugiado extends Fragment {
         param.add (pueblo);
         param.add (etnia);
         param.add(grupo_sanguineo);
-        param.add(ojos);*/
+        param.add(ojos);
 
         System.out.println("nombre: " + nombre);
 

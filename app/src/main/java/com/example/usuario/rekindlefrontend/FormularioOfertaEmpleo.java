@@ -92,10 +92,10 @@ public class FormularioOfertaEmpleo extends Fragment {
         editText = (EditText) view.findViewById(R.id.duracion_oferta_empleo);
         param.add(editText.getText().toString());
 
-        editText = (EditText) view.findViewById(R.id.plazas_oferta_empleo);
+        editText = (EditText) view.findViewById(R.id.sueldo_oferta_empleo);
         param.add(editText.getText().toString());
 
-        editText = (EditText) view.findViewById(R.id.sueldo_oferta_empleo);
+        editText = (EditText) view.findViewById(R.id.plazas_oferta_empleo);
         param.add(editText.getText().toString());
 
         editText = (EditText) view.findViewById(R.id.descripcion_oferta_empleo);

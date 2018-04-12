@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -21,6 +24,14 @@ import java.util.ArrayList;
 public class FormularioAlojamiento extends Fragment {
 
     private ArrayList<String> param;
+
+    private String nombre;
+    private String correo;
+    private String telefono;
+    private String direccion;
+    private String solicitudes;
+    private String fecha_limite;
+    private String descripcion;
 
     public FormularioAlojamiento() {
         // Required empty public constructor
@@ -39,9 +50,9 @@ public class FormularioAlojamiento extends Fragment {
 
             @Override
             public void onClick(View v) {
-                if (comprobarCampos()) {
+                if (setCampos(view)) {
                     try {
-                        obtenerParametros(view);
+                        obtenerParametros();
                         boolean result = new AsyncTaskCall().execute().get();
                         tratarResultadoPeticion(result);
                     }catch (Exception e){
@@ -57,34 +68,182 @@ public class FormularioAlojamiento extends Fragment {
         return view;
     }
 
-    public boolean comprobarCampos(){
+    public boolean letras (String texto)
+    {
+        Pattern patron = Pattern.compile ("^[a-zA-Z]+$");
+        Matcher valid  = patron.matcher  (texto);
+        return  valid.matches ();
+    }
+
+    public boolean numeros (String texto)
+    {
+        Pattern patron = Pattern.compile ("^[0-9]+$");
+        Matcher valid  = patron.matcher  (texto);
+        return valid.matches ();
+    }
+
+    public boolean fecha_valida (String fecha)
+    {
+        Pattern patron = Pattern.compile ("^[0-9]{2}-[0-9]{2}-[0-9]{4}$");
+        Matcher valid  = patron.matcher  (fecha);
+        return valid.matches ();
+    }
+
+    public boolean setCampos (View view) {
+
+        EditText container_data;
+        Context context = getActivity().getApplicationContext();
+        String  texto;
+
+        // control nombre
+
+        container_data = view.findViewById (R.id.nombre_alojamiento);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
+            Toast.makeText (context, "Nombre obligatorio", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (texto.length () > 50) {
+            Toast.makeText(context, "Nombre es demasiado largo, máximo 50 letras", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (!letras (texto)) {
+            Toast.makeText(context, "El nombre solo puede contener letras", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { nombre = texto; }
+
+        // control correo
+
+        container_data = view.findViewById (R.id.correo_alojamiento);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0 ) {
+            Toast.makeText(context, "Email obligatorio", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (texto.length () > 30) {
+            Toast.makeText(context, "Email demasiado largo, máximo 30 caracteres", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (!android.util.Patterns.EMAIL_ADDRESS
+                .matcher (texto).matches
+                        ()) {
+            Toast.makeText(context, "Formato de email no valido", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { correo = texto; }
+
+        // control telefono
+
+        container_data = view.findViewById (R.id.
+                telefono_alojamiento);
+        texto = container_data.getText ().toString ();
+        if (texto.length () == 0) {
+            Toast.makeText(context, "Teléfono obligatorio", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (!numeros (texto) && texto.length () > 0) {
+            Toast.makeText(context, "Teléfono solo puede contener dígitos", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (texto.length () > 50) {
+            Toast.makeText(context, "Teléfono demasiado largo, máximo 50 números", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { telefono = texto; }
+
+        // control direccion
+
+        container_data = view.findViewById (R.id.direccion_alojamiento);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
+            Toast.makeText (context, "Dirección obligatoria", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (texto.length () > 50) {
+            Toast.makeText(context, "Dirección demasiada larga, máximo 50 caracteres", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { direccion = texto; }
+
+        // control solicitudes
+
+        container_data = view.findViewById (R.id.
+                solicitudes_alojamiento);
+        texto = container_data.getText ().toString ();
+
+        if (!numeros (texto) && texto.length () > 0) {
+            Toast.makeText(context, "El límite de solicitudes debe ser un número", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { solicitudes = texto; }
+
+        // control fecha_limite
+
+        container_data = view.findViewById (R.id.
+                fecha_limite_alojamiento);
+        texto = container_data.getText ().toString ();
+        fecha_limite = texto;
+
+        /*if (!fecha_valida (texto) && texto.length () > 0) {
+            Toast.makeText(context, "Formato fecha incorrecto; formato correcto = dd-mm-aaaa", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { fecha_limite = texto; }*/
+
+        // control descripción
+
+        container_data = view.findViewById (R.id.
+                descripcion_alojamiento);
+        texto = container_data.getText ().toString ();
+
+        if (texto.length () == 0) {
+            Toast.makeText (context, "Descripción obligatoria", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (texto.length () > 300) {
+            Toast.makeText(context, "Descripción es demasiada larga, máximo 50 letras", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else if (!letras (texto)) {
+            Toast.makeText(context, "La descripción solo puede contener letras", Toast
+                    .LENGTH_SHORT).show ();
+            return false;
+        }
+        else { descripcion = texto; }
+
         return true;
     }
 
-    public void obtenerParametros(View view){
+    public void obtenerParametros(){
 
         param = new ArrayList<String>();
 
-        EditText editText = (EditText) view.findViewById(R.id.nombre_alojamiento);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.correo_alojamiento);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.telefono_alojamiento);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.direccion_alojamiento);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.solicitudes_alojamiento);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.fecha_limite_alojamiento);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.descripcion_alojamiento);
-        param.add(editText.getText().toString());
+        param.add (nombre);
+        param.add (correo);
+        param.add (telefono);
+        param.add (direccion);
+        param.add (solicitudes);
+        param.add (fecha_limite);
+        param.add (descripcion);
 
     }
 
