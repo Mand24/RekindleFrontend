@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend;
 
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,10 +11,12 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,13 +36,17 @@ public class FormularioAlojamiento extends Fragment {
     private String fecha_limite;
     private String descripcion;
 
+    private EditText eDeadline;
+    private Calendar myCalendar;
+    private DatePickerDialog.OnDateSetListener date;
+
     public FormularioAlojamiento() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_formulario_alojamiento, container,
@@ -62,6 +69,29 @@ public class FormularioAlojamiento extends Fragment {
                 }else {
 
                 }
+            }
+        });
+
+        eDeadline = view.findViewById (R.id.fecha_limite_alojamiento);
+        myCalendar = Calendar.getInstance();
+        date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                    int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                eDeadline.setText(year + " - " + (monthOfYear + 1) + " - " + dayOfMonth);
+                fecha_limite = eDeadline.getText().toString();
+            }
+        };
+
+        eDeadline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(container.getContext(), date, myCalendar.get(Calendar.YEAR)
+                        , myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH))
+                        .show();
             }
         });
 
@@ -193,12 +223,6 @@ public class FormularioAlojamiento extends Fragment {
         }
         else { solicitudes = texto; }
 
-        // control fecha_limite
-
-        container_data = view.findViewById (R.id.
-                fecha_limite_alojamiento);
-        texto = container_data.getText ().toString ();
-        fecha_limite = texto;
 
         /*if (!fecha_valida (texto) && texto.length () > 0) {
             Toast.makeText(context, "Formato fecha incorrecto; formato correcto = dd-mm-aaaa", Toast

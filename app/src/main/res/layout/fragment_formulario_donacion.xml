@@ -142,6 +142,8 @@
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:hint="@string/franja_horaria_inicio_donacion"
                 />
             </android.support.design.widget.TextInputLayout>
@@ -161,6 +163,8 @@
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:hint="@string/franja_horaria_fin_donacion"
                 />
             </android.support.design.widget.TextInputLayout>

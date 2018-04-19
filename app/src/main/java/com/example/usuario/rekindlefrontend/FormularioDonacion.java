@@ -22,6 +22,8 @@ public class FormularioDonacion extends Fragment {
 
     private ArrayList<String> param;
 
+    EditText editStartingTime, editEndingTime;
+
     public FormularioDonacion() {
         // Required empty public constructor
     }
@@ -54,6 +56,12 @@ public class FormularioDonacion extends Fragment {
             }
         });
 
+        editStartingTime = (EditText) view.findViewById(R.id
+                .franja_horaria_inicio_donacion);
+        SetTime fromTime = new SetTime(editStartingTime, container.getContext());
+        editEndingTime = (EditText) view.findViewById(R.id
+                .franja_horaria_fin_donacion);
+        SetTime toTime = new SetTime(editEndingTime, container.getContext());
         return view;
     }
 
@@ -80,11 +88,9 @@ public class FormularioDonacion extends Fragment {
         editText = (EditText) view.findViewById(R.id.solicitudes_donacion);
         param.add(editText.getText().toString());
 
-        editText = (EditText) view.findViewById(R.id.franja_horaria_inicio_donacion);
-        param.add(editText.getText().toString());
+        param.add(editStartingTime.getText().toString());
 
-        editText = (EditText) view.findViewById(R.id.franja_horaria_fin_donacion);
-        param.add(editText.getText().toString());
+        param.add(editEndingTime.getText().toString());
 
         editText = (EditText) view.findViewById(R.id.descripcion_donacion);
         param.add(editText.getText().toString());

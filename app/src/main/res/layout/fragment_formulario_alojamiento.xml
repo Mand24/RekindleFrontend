@@ -137,6 +137,8 @@
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:hint="@string/fecha_limite"
                     android:layout_height="wrap_content" />
             </android.support.design.widget.TextInputLayout>

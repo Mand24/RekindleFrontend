@@ -172,8 +172,10 @@
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
                     android:hint="@string/texto_nacimiento_refugiado"
-                    android:inputType="date" />
+                    android:inputType="date"/>
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -190,8 +192,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@color/colorWhite"
-                android:popupBackground="@color/colorWhite"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
             />
 
             <android.support.design.widget.TextInputLayout
@@ -263,8 +265,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@color/colorWhite"
-                android:popupBackground="@color/colorWhite"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
             />
 
             <TextView
@@ -282,8 +284,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim10"
-                android:background="@color/colorWhite"
-                android:popupBackground="@color/colorWhite"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
             />
 
             <android.support.v7.widget.AppCompatButton

@@ -41,13 +41,15 @@ public class RegistroRefugiado extends Fragment {
     private String grupo_sanguineo;
     private String ojos;
 
+    private EditText eNacimiento;
+
     public RegistroRefugiado() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_registro_refugiado, container, false);
@@ -75,6 +77,9 @@ public class RegistroRefugiado extends Fragment {
                 }
             }
         });
+
+        eNacimiento = view.findViewById(R.id.nacimiento_refugiado);
+        SetDate setDate = new SetDate(eNacimiento, container.getContext());
 
         return view;
     }
@@ -136,7 +141,7 @@ public class RegistroRefugiado extends Fragment {
     public boolean setCampos (View view)
     {
         EditText container_data;
-        Context context = getActivity ().getApplicationContext ();
+        final Context context = getActivity ().getApplicationContext ();
         Spinner  spinner;
         String   texto;
         String   texto_aux;
@@ -287,16 +292,8 @@ public class RegistroRefugiado extends Fragment {
 
         // control nacimiento
 
-        container_data = view.findViewById (R.id.
+        eNacimiento = view.findViewById (R.id.
                 nacimiento_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (!fecha_valida (texto) && texto.length () > 0) {
-            Toast.makeText(context, "Formato fecha incorrecto; formato correcto = dd-mm-aaaa", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { nacimiento = texto; }
 
         // control procedencia
 
@@ -379,7 +376,7 @@ public class RegistroRefugiado extends Fragment {
         param.add (primer_apellido);
         param.add (segundo_apellido);
         param.add (telefono);
-        param.add (nacimiento);
+        param.add (eNacimiento.getText().toString());
         param.add (sexo);
         param.add (procedencia);
         param.add (pueblo);
