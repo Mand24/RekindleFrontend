@@ -1,7 +1,6 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.entity.Servicio;
+import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.usuarios;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,10 +8,12 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.entity.Refugiado;
 
 public class VerPerfil extends AppCompatActivity {
 

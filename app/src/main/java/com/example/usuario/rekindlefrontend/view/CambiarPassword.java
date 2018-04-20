@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.sql.Ref;
+import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.view.usuarios.EditarPerfil;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

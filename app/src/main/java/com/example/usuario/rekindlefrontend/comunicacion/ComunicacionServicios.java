@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.comunicacion;
 
 import org.json.JSONObject;
 

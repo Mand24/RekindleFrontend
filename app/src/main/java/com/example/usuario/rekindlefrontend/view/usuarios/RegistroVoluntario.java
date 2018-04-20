@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.usuarios;
 
 
 import android.content.Context;
@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
+import com.example.usuario.rekindlefrontend.R;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

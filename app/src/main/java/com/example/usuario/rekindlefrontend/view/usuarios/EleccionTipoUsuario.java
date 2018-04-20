@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.usuarios;
 
 
 import android.app.Activity;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
 
 
 /**

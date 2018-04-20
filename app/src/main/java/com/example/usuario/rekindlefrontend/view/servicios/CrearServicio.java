@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.servicios;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -6,6 +6,9 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.R;
 
 public class CrearServicio extends AppCompatActivity {
 

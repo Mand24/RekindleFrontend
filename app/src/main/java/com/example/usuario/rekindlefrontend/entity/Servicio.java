@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.entity;
 
 import java.io.Serializable;
 
@@ -7,7 +7,8 @@ public class Servicio implements Serializable {
     private String nombre, descripcion, direccion, fecha, numero, valoracion;
     private int tipo, id;
 
-    Servicio(int id , String nombre, String descripcion, String direccion, String fecha, String numero, String valoracion, int tipo) {
+    public Servicio(int id, String nombre, String descripcion, String direccion, String fecha,
+            String numero, String valoracion, int tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;

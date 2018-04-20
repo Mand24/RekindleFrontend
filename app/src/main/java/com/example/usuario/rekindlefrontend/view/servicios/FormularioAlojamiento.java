@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.servicios;
 
 
 import android.app.DatePickerDialog;
@@ -11,9 +11,13 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 
 import java.util.ArrayList;
 import java.util.Calendar;

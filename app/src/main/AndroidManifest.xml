@@ -18,21 +18,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Dark">
-        <activity android:name=".RegistroUsuario" />
-        <activity android:name=".PantallaInicio" android:theme="@style/AppTheme.Dark">
+        <activity android:name=".view.usuarios.RegistroUsuario" />
+        <activity android:name=".view.menu.PantallaInicio" android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuPrincipal" />
-        <activity android:name=".VerPerfil" />
-        <activity android:name=".CrearServicio" />
-        <activity android:name=".ListarServicios" />
-        <activity android:name=".EditarPerfil" />
-        <activity android:name=".CambiarPassword" />
-        <activity android:name=".MostrarServicio" />
+        <activity android:name=".view.menu.MenuPrincipal" />
+        <activity android:name=".view.usuarios.VerPerfil" />
+        <activity android:name=".view.servicios.CrearServicio" />
+        <activity android:name=".view.servicios.ListarServicios" />
+        <activity android:name=".view.usuarios.EditarPerfil" />
+        <activity android:name=".view.CambiarPassword" />
+        <activity android:name=".view.servicios.MostrarServicio" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

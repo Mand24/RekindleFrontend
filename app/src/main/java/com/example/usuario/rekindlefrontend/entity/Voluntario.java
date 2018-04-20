@@ -1,4 +1,6 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.entity;
+
+import com.example.usuario.rekindlefrontend.entity.Usuario;
 
 public class Voluntario extends Usuario {
 

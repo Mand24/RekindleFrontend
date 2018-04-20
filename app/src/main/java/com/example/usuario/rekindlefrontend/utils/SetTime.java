@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.utils;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-class SetTime implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
+public class SetTime implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
 
     private EditText editText;
     private Calendar myCalendar;

@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.menu;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
 
 
 public class PantallaInicio extends AppCompatActivity {

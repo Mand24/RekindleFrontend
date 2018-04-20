@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CrearServicio"
+    tools:context=".view.servicios.CrearServicio"
     android:background="@drawable/fondo">
 
     <fragment
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="@dimen/dim1"
         android:id="@+id/eleccion_tipo_servicio"
-        android:name="com.example.usuario.rekindlefrontend.EleccionTipoServicio"
+        android:name="com.example.usuario.rekindlefrontend.view.servicios.EleccionTipoServicio"
         tools:layout="@layout/fragment_eleccion_tipo_servicio">
 
     </fragment>

@@ -1,7 +1,6 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.servicios;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,7 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
+import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
+import com.example.usuario.rekindlefrontend.entity.Servicio;
 
 import java.util.ArrayList;
 import java.util.Arrays;

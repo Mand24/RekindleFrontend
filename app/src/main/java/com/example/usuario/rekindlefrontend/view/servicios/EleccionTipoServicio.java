@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend;
+package com.example.usuario.rekindlefrontend.view.servicios;
 
 
 import android.app.Activity;
@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
 
 
 /**
