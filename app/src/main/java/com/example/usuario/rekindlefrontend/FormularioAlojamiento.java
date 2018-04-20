@@ -72,28 +72,9 @@ public class FormularioAlojamiento extends Fragment {
             }
         });
 
-        eDeadline = view.findViewById (R.id.fecha_limite_alojamiento);
-        myCalendar = Calendar.getInstance();
-        date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                    int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                eDeadline.setText(year + " - " + (monthOfYear + 1) + " - " + dayOfMonth);
-                fecha_limite = eDeadline.getText().toString();
-            }
-        };
 
-        eDeadline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new DatePickerDialog(container.getContext(), date, myCalendar.get(Calendar.YEAR)
-                        , myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH))
-                        .show();
-            }
-        });
+        eDeadline = view.findViewById (R.id.fecha_limite_alojamiento);
+        SetDate setDate = new SetDate(eDeadline, container.getContext());
 
         return view;
     }
@@ -266,7 +247,7 @@ public class FormularioAlojamiento extends Fragment {
         param.add (telefono);
         param.add (direccion);
         param.add (solicitudes);
-        param.add (fecha_limite);
+        param.add (eDeadline.getText().toString());
         param.add (descripcion);
 
     }
