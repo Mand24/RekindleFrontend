@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
@@ -32,21 +33,20 @@ public class RegistroRefugiado extends Fragment {
 
     private ArrayList<String> param;
 
-    private String nombre;
-    private String email;
-    private String pass;
-    private String primer_apellido;
-    private String segundo_apellido;
-    private String telefono;
-    private String nacimiento;
-    private String sexo;
-    private String procedencia;
-    private String pueblo;
-    private String etnia;
-    private String grupo_sanguineo;
-    private String ojos;
-
+    private EditText eNombre;
+    private EditText eEmail;
+    private EditText ePassword;
+    private EditText eRPassword;
+    private EditText ePrimer_apellido;
+    private EditText eSegundo_apellido;
+    private EditText eTelefono;
     private EditText eNacimiento;
+    private Spinner sSexo;
+    private EditText eProcedencia;
+    private EditText ePueblo;
+    private EditText eEtnia;
+    private Spinner sGrupo_sanguineo;
+    private Spinner sOjos;
 
     public RegistroRefugiado() {
         // Required empty public constructor
@@ -55,310 +55,96 @@ public class RegistroRefugiado extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_registro_refugiado, container, false);
 
-        //establecer parametros a los spinners
-        setSpinners(view);
+        //establecer las vistas
+        setVistas(view);
 
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
                 .enviar_registro_refugiado);
-        button_send.setOnClickListener(new View.OnClickListener(){
+        button_send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (setCampos(view)) {
-                    try {
-                        obtenerParametros();
-                        boolean result = new AsyncTaskCall().execute().get();
-                        tratarResultadoPeticion(result);
-                    }catch (Exception e){
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }else {
-                    //el mensaje de error lo saca la función comprobarCampos
+
+                try {
+                    checkCampos(view);
+                    obtenerParametros();
+                    boolean result = new AsyncTaskCall().execute().get();
+                    tratarResultadoPeticion(result);
+                    //tratarResultadoPeticion(true);
+                } catch (Exception e) {
+                    Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
-        eNacimiento = view.findViewById(R.id.nacimiento_refugiado);
         SetDate setDate = new SetDate(eNacimiento, container.getContext());
 
         return view;
     }
 
-    public void setSpinners(View view){
+    public void setVistas(View view) {
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.sexo_refugiado);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity()
+        eNombre = view.findViewById(R.id.nombre_refugiado);
+        eEmail = view.findViewById(R.id.email_refugiado);
+        ePassword = view.findViewById(R.id.password_refugiado);
+        eRPassword = view.findViewById(R.id.rpassword_refugiado);
+        ePrimer_apellido = view.findViewById(R.id.p_apellido_refugiado);
+        eSegundo_apellido = view.findViewById(R.id.s_apellido_refugiado);
+        eTelefono = view.findViewById(R.id.telefono_refugiado);
+        eNacimiento = view.findViewById(R.id.nacimiento_refugiado);
+        sSexo = view.findViewById(R.id.sexo_refugiado);
+        ArrayAdapter<CharSequence> adapter_sexo = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_sexo, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter_sexo.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        spinner.setAdapter(adapter);
+        sSexo.setAdapter(adapter_sexo);
+        eProcedencia = view.findViewById(R.id.procedencia_refugiado);
+        ePueblo = view.findViewById(R.id.pueblo_refugiado);
+        eEtnia = view.findViewById(R.id.etnia_refugiado);
 
-        spinner = (Spinner) view.findViewById(R.id.grupo_sanguineo_refugiado);
+        sGrupo_sanguineo = view.findViewById(R.id.grupo_sanguineo_refugiado);
 
-        adapter = ArrayAdapter.createFromResource(getActivity()
+        ArrayAdapter<CharSequence> adapter_gs = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_grupo_sanguineo, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter_gs.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        spinner.setAdapter(adapter);
+        sGrupo_sanguineo.setAdapter(adapter_gs);
 
-        spinner = (Spinner) view.findViewById(R.id.ojos_refugiado);
+        sOjos = view.findViewById(R.id.ojos_refugiado);
 
-        adapter = ArrayAdapter.createFromResource(getActivity()
+        ArrayAdapter<CharSequence> adapter_ojos = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_color_ojos, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter_ojos.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        spinner.setAdapter(adapter);
+        sOjos.setAdapter(adapter_ojos);
     }
 
-    public boolean letras (String texto)
-    {
-        Pattern patron = Pattern.compile ("^[a-zA-Z]+$");
-        Matcher valid  = patron.matcher  (texto);
-        return valid.matches ();
+    public void checkCampos(View view) throws Exception {
+
+        FormatChecker.checkNombre(eNombre.getText().toString());
+        FormatChecker.checkEmail(eEmail.getText().toString());
+        FormatChecker.checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
+                ());
+        FormatChecker.checkPrimer_apellido(ePrimer_apellido.getText().toString());
+        FormatChecker.checkSegundo_apellido(eSegundo_apellido.getText().toString());
+        FormatChecker.checkTelefono(eTelefono.getText().toString());
+        FormatChecker.checkProcedencia(eProcedencia.getText().toString());
+        FormatChecker.checkPueblo(ePueblo.getText().toString());
+        FormatChecker.checkEtnia(eEtnia.getText().toString());
     }
 
-    public boolean numeros (String texto)
-    {
-        Pattern patron = Pattern.compile ("^[0-9]+$");
-        Matcher valid  = patron.matcher  (texto);
-        return valid.matches ();
-    }
-
-    public boolean fecha_valida (String fecha)
-    {
-        Pattern patron = Pattern.compile ("^[0-9]{2}-[0-9]{2}-[0-9]{4}$");
-        Matcher valid  = patron.matcher  (fecha);
-        return valid.matches ();
-    }
-
-    public boolean setCampos (View view)
-    {
-        EditText container_data;
-        final Context context = getActivity ().getApplicationContext ();
-        Spinner  spinner;
-        String   texto;
-        String   texto_aux;
-
-        // no control: sexo, grupo sanguineo, ojos
-
-        spinner         = view   .findViewById    (R.id.grupo_sanguineo_refugiado);
-        grupo_sanguineo = spinner.getSelectedItem ().toString ();
-        spinner         = view   .findViewById    (R.id.ojos_refugiado);
-        ojos            = spinner.getSelectedItem ().toString ();
-        spinner         = view   .findViewById    (R.id.sexo_refugiado);
-        sexo            = spinner.getSelectedItem ().toString ();
-
-        // control nombre
-
-        container_data = view.findViewById (R.id.nombre_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () == 0) {
-            Toast.makeText (context, "Nombre obligatorio", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (texto.length () > 20) {
-            Toast.makeText(context, "Nombre es demasiado largo, máximo 20 letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!letras (texto)) {
-            Toast.makeText(context, "El nombre solo puede contener letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { nombre = texto; }
-
-        // control email
-
-        container_data = view.findViewById (R.id.email_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () == 0 ) {
-            Toast.makeText(context, "Email obligatorio", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (texto.length () > 30) {
-            Toast.makeText(context, "Email demasiado largo, máximo 30 caracteres", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!android.util.Patterns.EMAIL_ADDRESS
-                .matcher (texto).matches
-                        ()) {
-            Toast.makeText(context, "Formato de email no valido", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { email = texto; }
-
-        // control password
-
-        container_data = view.findViewById (R.id.password_refugiado);
-        texto = container_data.getText ().toString ();
-
-        container_data = view.findViewById (R.id.rpassword_refugiado);
-        texto_aux  = container_data.getText ().toString ();
-
-        if (texto.length () == 0) {
-            Toast.makeText (context, "Contraseña obligatoria", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (texto.length () > 15) {
-            Toast.makeText(context, "Contraseña demasiada larga, máximo 15 caracteres", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (texto.length () < 4) {
-            Toast.makeText(context, "Contraseña demasiada corta, mínimo 4 caracteres", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!texto.equals (texto_aux)) {
-            Toast.makeText(context, "Las contraseñas no coinciden", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { pass = texto; }
-
-        // control primer apellido
-
-        container_data = view.findViewById (R.id.
-                p_apellido_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () == 0) {
-            Toast.makeText (context, "Primer apellido obligatorio", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (texto.length () > 20) {
-            Toast.makeText(context, "Primer apellido demasiado largo, máximo 20 letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!letras (texto)) {
-            Toast.makeText(context, "El primer apellido solo puede contener letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { primer_apellido = texto; }
-
-        // control segundo apellido
-
-        container_data = view.findViewById (R.id.
-                s_apellido_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () > 20) {
-            Toast.makeText(context, "Segundo apellido demasiado largo, máximo 20 letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!letras (texto) && texto.length () > 0) {
-            Toast.makeText(context, "El segundo apellido solo puede contener letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { segundo_apellido = texto; }
-
-        // control telefono
-
-        container_data = view.findViewById (R.id.
-                telefono_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (!numeros (texto) && texto.length () > 0) {
-            Toast.makeText(context, "Teléfono solo puede contener dígitos", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (texto.length () > 40) {
-            Toast.makeText(context, "Teléfono demasiado largo, máximo 50 números", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { telefono = texto; }
-
-        // control nacimiento
-
-        eNacimiento = view.findViewById (R.id.
-                nacimiento_refugiado);
-
-        // control procedencia
-
-        container_data = view.findViewById (R.id.
-                procedencia_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () > 20) {
-            Toast.makeText(context, "País de origen demasiado largo, máximo 20 letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!letras (texto) && texto.length () > 0) {
-            Toast.makeText(context, "El nombre del país de origen solo puede contener letras",
-                    Toast
-                            .LENGTH_LONG).show ();
-            return false;
-        }
-        else { procedencia = texto; }
-
-        // control pueblo
-
-        container_data = view.findViewById (R.id.
-                pueblo_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () > 40) {
-            Toast.makeText(context, "Nombre del pueblo demasiado largo, máximo 40 letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!letras (texto) && texto.length () > 0) {
-            Toast.makeText(context, "El nombre del pueblo solo puede contener letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else { pueblo = texto; }
-
-        // control etnia
-
-        container_data = view.findViewById (R.id.
-                etnia_refugiado);
-        texto = container_data.getText ().toString ();
-
-        if (texto.length () > 20) {
-            Toast.makeText(context, "Nombre de la etnia demasiado largo, máximo 20 letras", Toast
-                    .LENGTH_LONG).show ();
-            return false;
-        }
-        else if (!letras (texto) && texto.length () > 0) {
-            Toast.makeText(context, "El nombre de la etnia de origen solo puede contener letras",
-                    Toast.LENGTH_LONG).show ();
-            return false;
-        }
-        else { etnia = texto; }
-
-        return true;
-    }
-
-    public void obtenerParametros(){
+    public void obtenerParametros() {
 
         /*param = new ArrayList<String>();
         param.add("manelico@gmail.com");
@@ -375,35 +161,37 @@ public class RegistroRefugiado extends Fragment {
         param.add("AB+");
         param.add("Gris");*/
 
-        param.add (email);
-        param.add (pass);
-        param.add (nombre);
-        param.add (primer_apellido);
-        param.add (segundo_apellido);
-        param.add (telefono);
-        param.add (eNacimiento.getText().toString());
-        param.add (sexo);
-        param.add (procedencia);
-        param.add (pueblo);
-        param.add (etnia);
-        param.add(grupo_sanguineo);
-        param.add(ojos);
+        param.add(eEmail.getText().toString());
+        param.add(ePassword.getText().toString());
+        param.add(eNombre.getText().toString());
+        param.add(ePrimer_apellido.getText().toString());
+        param.add(eSegundo_apellido.getText().toString());
+        param.add(eTelefono.getText().toString());
+        param.add(eNacimiento.getText().toString());
+        param.add(sSexo.getSelectedItem().toString());
+        param.add(eProcedencia.getText().toString());
+        param.add(ePueblo.getText().toString());
+        param.add(eEtnia.getText().toString());
+        param.add(sGrupo_sanguineo.getSelectedItem().toString());
+        param.add(sOjos.getSelectedItem().toString());
 
-        System.out.println("nombre: " + nombre);
+        //System.out.println("nombre: " + nombre);
 
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void tratarResultadoPeticion(boolean result) {
 
         if (result) {
 
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                            .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
+                    .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), PantallaInicio.class);
             startActivity(i);
 
-        }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                .string.registro_fallido), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.registro_fallido), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
