@@ -18,7 +18,6 @@ public class MostrarServicio extends AppCompatActivity implements OnMapReadyCall
 
     TextView titulo, descripcion, direccion, fecha, numero, valoracion;
     SupportMapFragment mMapView;
-    GoogleMap mGoogleMap;
     AppCompatButton chat, opiniones, inscribirse;
 
     @Override
