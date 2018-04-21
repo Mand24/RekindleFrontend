@@ -64,7 +64,7 @@ public class FormatChecker {
     public static void checkTelefono(String texto) throws Exception {
         if (!numeros(texto) && texto.length() > 0) throw new Exception("Teléfono solo puede "
                 + "contener dígitos");
-        else if (texto.length() > 40) throw new Exception("Teléfono demasiado largo, máximo 50 "
+        else if (texto.length() > 40) throw new Exception("Teléfono demasiado largo, máximo 40 "
                 + "números");
     }
 
@@ -88,5 +88,91 @@ public class FormatChecker {
         else if (!letras(texto) && texto.length() > 0) throw new Exception("El nombre de la etnia"
                 + " de origen solo puede contener letras");
     }
+
+    public static void checkNombreServicio(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Nombre obligatorio");
+        else if (texto.length() > 50) throw new Exception("Nombre es demasiado largo, máximo 50 "
+                + "letras");
+        else if (!letras(texto)) throw new Exception("El nombre solo puede contener letras");
+    }
+
+    public static void checkTelefonoServicio(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Teléfono obligatorio");
+        else if (!numeros (texto) && texto.length () > 0) throw new Exception("Teléfono solo "
+                + "puede contener dígitos");
+        else if (texto.length() > 50) throw new Exception("Teléfono demasiado largo, máximo 50 "
+                + "números");
+    }
+    public static void checkSolicitudesServicio(String texto) throws Exception {
+        if (!numeros (texto) && texto.length () > 0) throw new Exception("El límite de "
+                + "solicitudes debe ser un número");
+    }
+
+    public static void checkDescripcionServicio(String texto) throws Exception {
+        if (texto.length () > 300) throw new Exception("Descripción es demasiada larga, "
+                + "máximo 300 letras");
+        else if (!letras (texto)) throw new Exception("La descripción solo puede contener letras");
+    }
+
+    public static void checkPuestoOfertaEmpleo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Indicar puesto de trabajo");
+        else if (texto.length() > 50) throw new Exception("Descripción puesto de trabajo "
+                + "demasiado largo, máximo 50 caracteres");
+    }
+
+    public static void checkRequisitosServicio(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Campo requisitos obligatorio");
+        else if (texto.length() > 100) throw new Exception("Descripción requisitos "
+                + "demasiado largo, máximo 100 caracteres");
+    }
+
+    public static void checkJornadaOfertaEmpleo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Indicar horas de la joranada");
+        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Formato incorrecto; "
+                + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
+                + "deciamales, uso del punto como separador");
+    }
+
+    public static void checkHorasOfertaEmpleo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Indicar horas semanales");
+        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Formato incorrecto; "
+                + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
+                + "deciamales, uso del punto como separador");
+    }
+
+    public static void checkDuracionOfertaEmpleo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Indicar duración del contrato");
+        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Duración solo puede "
+                + "contener dígitos");
+        else if (texto.length() > 3) throw new Exception("Duración demasiado larga, máximo 3 "
+                + "números");
+    }
+
+    public static void checkSueldoOfertaEmpleo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Indicar salario");
+        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Formato incorrecto; "
+                + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
+                + "deciamales, uso del punto como separador");
+    }
+
+    public static void checkPlazasServicio(String texto) throws Exception {
+        if (!numeros(texto) && texto.length() > 0) throw new Exception("Plazas solo puede "
+                + "contener dígitos");
+        else if (texto.length() > 5) throw new Exception("Demasiadas plazas, máximo 5 dígitos");
+    }
+
+    public static void checkAmbitoCursoEducativo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Ámbito obligatorio");
+        else if (texto.length() > 50) throw new Exception("Ámbito demasiado largo, máximo 50 "
+                + "caracteres");
+    }
+
+    public static void checkHorarioCursoEducativo(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception("Horario obligatorio");
+        else if (texto.length () > 30) throw new Exception("Horario demasiado largo, máximo 30 "
+                + "caracteres");
+    }
+
+
 
 }

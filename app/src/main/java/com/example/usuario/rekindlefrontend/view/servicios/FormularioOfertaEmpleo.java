@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 
@@ -26,6 +27,19 @@ public class FormularioOfertaEmpleo extends Fragment {
 
     private ArrayList<String> param;
 
+    private EditText eNombre;
+    private EditText eEmail;
+    private EditText eTelefono;
+    private EditText eDireccion;
+    private EditText ePuesto;
+    private EditText eRequisitos;
+    private EditText eJornada;
+    private EditText eHoras;
+    private EditText eDuracion;
+    private EditText eSueldo;
+    private EditText ePlazas;
+    private EditText eDescripcion;
+
     public FormularioOfertaEmpleo() {
         // Required empty public constructor
     }
@@ -38,22 +52,22 @@ public class FormularioOfertaEmpleo extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_formulario_oferta_empleo, container,
                 false);
 
+        //establecer las vistas
+        setVistas(view);
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_oferta_empleo);
         button_send.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                if (comprobarCampos()) {
-                    try {
-                        obtenerParametros(view);
-                        boolean result = new AsyncTaskCall().execute().get();
-                        tratarResultadoPeticion(result);
-                    }catch (Exception e){
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }else {
-
+                try {
+                    checkCampos(view);
+                    obtenerParametros();
+                    boolean result = new AsyncTaskCall().execute().get();
+                    tratarResultadoPeticion(result);
+                    //tratarResultadoPeticion(true);
+                } catch (Exception e) {
+                    Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -61,49 +75,55 @@ public class FormularioOfertaEmpleo extends Fragment {
         return view;
     }
 
-    public boolean comprobarCampos(){
-        return true;
+    public void setVistas(View view) {
+
+        eNombre = view.findViewById(R.id.nombre_oferta_empleo);
+        eEmail = view.findViewById(R.id.correo_oferta_empleo);
+        eTelefono = view.findViewById(R.id.telefono_oferta_empleo);
+        eDireccion = view.findViewById(R.id.direccion_oferta_empleo);
+        ePuesto = view.findViewById(R.id.puesto_oferta_empleo);
+        eRequisitos = view.findViewById(R.id.requisitos_oferta_empleo);
+        eJornada = view.findViewById(R.id.jornada_oferta_empleo);
+        eHoras = view.findViewById(R.id.horas_semanales_oferta_empleo);
+        eDuracion = view.findViewById(R.id.duracion_oferta_empleo);
+        eSueldo = view.findViewById(R.id.sueldo_oferta_empleo);
+        ePlazas = view.findViewById(R.id.plazas_oferta_empleo);
+        eDescripcion = view.findViewById(R.id.descripcion_oferta_empleo);
+
     }
 
-    public void obtenerParametros(View view){
+    public void checkCampos(View view) throws Exception {
+
+        FormatChecker.checkNombreServicio(eNombre.getText().toString());
+        FormatChecker.checkEmail(eEmail.getText().toString());
+        FormatChecker.checkTelefonoServicio(eTelefono.getText().toString());
+        FormatChecker.checkPuestoOfertaEmpleo(ePuesto.getText().toString());
+        FormatChecker.checkRequisitosServicio(eRequisitos.getText().toString());
+        FormatChecker.checkJornadaOfertaEmpleo(eJornada.getText().toString());
+        FormatChecker.checkHorasOfertaEmpleo(eHoras.getText().toString());
+        FormatChecker.checkDuracionOfertaEmpleo(eDuracion.getText().toString());
+        FormatChecker.checkSueldoOfertaEmpleo(eSueldo.getText().toString());
+        FormatChecker.checkPlazasServicio(ePlazas.getText().toString());
+        FormatChecker.checkDescripcionServicio(eDescripcion.getText().toString());
+
+    }
+
+    public void obtenerParametros(){
 
         param = new ArrayList<String>();
 
-        EditText editText = (EditText) view.findViewById(R.id.nombre_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.correo_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.telefono_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.direccion_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.puesto_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.requisitos_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.jornada_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.horas_semanales_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.duracion_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.sueldo_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.plazas_oferta_empleo);
-        param.add(editText.getText().toString());
-
-        editText = (EditText) view.findViewById(R.id.descripcion_oferta_empleo);
-        param.add(editText.getText().toString());
+        param.add (eNombre.getText().toString());
+        param.add (eEmail.getText().toString());
+        param.add (eTelefono.getText().toString());
+        param.add (eDireccion.getText().toString());
+        param.add (ePuesto.getText().toString());
+        param.add (eRequisitos.getText().toString());
+        param.add (eJornada.getText().toString());
+        param.add (eHoras.getText().toString());
+        param.add (eDuracion.getText().toString());
+        param.add (eSueldo.getText().toString());
+        param.add (ePlazas.getText().toString());
+        param.add (eDescripcion.getText().toString());
 
     }
 
