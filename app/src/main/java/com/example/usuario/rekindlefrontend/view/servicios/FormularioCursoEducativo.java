@@ -1,11 +1,15 @@
 package com.example.usuario.rekindlefrontend.view.servicios;
 
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,11 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 
@@ -25,6 +34,8 @@ import java.util.ArrayList;
 public class FormularioCursoEducativo extends Fragment {
 
     private ArrayList<String> param;
+    private EditText eDireccion;
+    private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     public FormularioCursoEducativo() {
         // Required empty public constructor
@@ -58,6 +69,21 @@ public class FormularioCursoEducativo extends Fragment {
             }
         });
 
+        eDireccion = view.findViewById(R.id.direccion_curso_educativo);
+        eDireccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
+                            .MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                }catch (GooglePlayServicesRepairableException e) {
+                    // TODO: Handle the error.
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    // TODO: Handle the error.
+                }
+            }
+        });
 
         return view;
     }
@@ -79,8 +105,7 @@ public class FormularioCursoEducativo extends Fragment {
         editText = (EditText) view.findViewById(R.id.telefono_curso_educativo);
         param.add(editText.getText().toString());
 
-        editText = (EditText) view.findViewById(R.id.direccion_curso_educativo);
-        param.add(editText.getText().toString());
+        param.add(eDireccion.getText().toString());
 
         editText = (EditText) view.findViewById(R.id.ambito_curso_educativo);
         param.add(editText.getText().toString());
@@ -112,6 +137,24 @@ public class FormularioCursoEducativo extends Fragment {
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                 .string.curso_educativo_fallido), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                Log.i("==================", "Place: " + place.getName());
+                eDireccion.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                // TODO: Handle the error.
+                Log.i("==================", status.getStatusMessage());
+
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
+            }
+        }
     }
 
 

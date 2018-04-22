@@ -297,12 +297,12 @@ public class FormularioAlojamiento extends Fragment {
         if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
-                Log.i("Create ride", "Place: " + place.getName());
+                Log.i("==================", "Place: " + place.getName());
                 eDireccion.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 // TODO: Handle the error.
-                Log.i("Create ride", status.getStatusMessage());
+                Log.i("==================", status.getStatusMessage());
 
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
