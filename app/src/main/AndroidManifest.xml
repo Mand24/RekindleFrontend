@@ -33,6 +33,8 @@
         <activity android:name=".view.usuarios.EditarPerfil" />
         <activity android:name=".view.CambiarPassword" />
         <activity android:name=".view.servicios.MostrarServicio" />
+        <activity android:name=".view.RecuperarPassword"/>
+        <activity android:name=".view.CodePasswordRequest"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

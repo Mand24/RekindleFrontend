@@ -96,6 +96,8 @@
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
 
+    <string name="enviar_correo">Enviar correu</string>
+    <string name="code_request">Demanar codi de recuperació</string>
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>
@@ -132,4 +134,5 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
