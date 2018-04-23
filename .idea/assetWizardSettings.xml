@@ -20,6 +20,7 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="imageAsset" value="C:\Users\Usuario\2n_quadrimestre\PES\usuari.png" />
+                                      <entry key="outputName" value="ic_usuario" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -63,6 +64,11 @@
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
