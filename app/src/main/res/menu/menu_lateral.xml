@@ -22,13 +22,18 @@
         <!--</item>-->
         <item
             android:id="@+id/ver_perfil"
-            android:checked="true"
+            android:checked="false"
             android:title="Editar perfil"
         />
 
         <item
             android:id="@+id/configuracion"
             android:title="Configuracion"
+        />
+
+        <item
+            android:id="@+id/ayuda"
+            android:title="help"
         />
 
         <item

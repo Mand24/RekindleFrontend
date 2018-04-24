@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/colorIron">
+    android:background="@color/colorPrimary">
 
     <!--<android.support.v4.widget.CircleImageView-->
         <!--android:id="@+id/imagen_usuario"-->
@@ -19,16 +19,18 @@
         android:id="@+id/profile_image"
         android:layout_width="96dp"
         android:layout_height="96dp"
+        android:layout_marginTop="@dimen/dim10"
         android:layout_marginBottom="@dimen/dim10"
-        android:src="@drawable/ic_usuario"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/imagen_usuario"
         app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
-
-
+        app:civ_border_color="@color/colorWhite"
+    />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="Nombre Usuario"
         android:layout_marginBottom="@dimen/dim10"
     />
@@ -36,6 +38,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="@dimen/dim10"
         android:text="email@usuario.com"
         android:layout_marginBottom="@dimen/dim10"
     />
