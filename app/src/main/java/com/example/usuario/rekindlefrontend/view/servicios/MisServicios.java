@@ -22,9 +22,7 @@ public class MisServicios extends ListarServicios {
         mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
                 new CustomItemClickListener() {
                     @Override
-                    public void onItemClick(View v, int position) {
-                        //TODO:Algo al clicar
-
+                    public void onItemLongClick(View v, int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
                                 (MisServicios.this);
                         alertDialog.setTitle("Elije una opcion").setItems(R.array.clic_servicio,
@@ -38,6 +36,33 @@ public class MisServicios extends ListarServicios {
                                             //TODO:Call API
                                             Toast.makeText(getApplicationContext(), "Not implemented ",
                                                     Toast.LENGTH_SHORT).show();
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(
+                                                    MisServicios.this);
+
+                                            builder.setMessage("Are you Sure you want to delete "
+                                                    + "the service?");
+                                            builder.setCancelable(false);
+                                            builder.setPositiveButton("Yes",
+                                                    new DialogInterface.OnClickListener() {
+
+                                                        public void onClick(DialogInterface dialog,
+                                                                int which) {
+                                                            // TODO API delete
+                                                            MisServicios.this.finish();
+                                                        }
+                                                    });
+
+                                            builder.setNegativeButton("No",
+                                                    new DialogInterface.OnClickListener() {
+
+                                                        public void onClick(DialogInterface dialog,
+                                                                int which) {
+                                                            dialog.cancel();
+                                                        }
+                                                    });
+
+                                            AlertDialog alert = builder.create();
+                                            alert.show();
                                         }
                                     }
                                 });
