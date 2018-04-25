@@ -153,10 +153,12 @@ public class PantallaInicio extends AppCompatActivity {
     public void onBackPressed() {
         // disable going back to the MainActivity
         backpress = (backpress + 1);
-        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
-            finish();
+            moveTaskToBack(true);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
         }
     }
 

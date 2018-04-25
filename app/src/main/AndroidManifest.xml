@@ -35,7 +35,7 @@
         <activity android:name=".view.servicios.MostrarServicio" />
         <activity android:name=".view.RecuperarPassword"/>
         <activity android:name=".view.CodePasswordRequest"/>
-        <activity android:name=".MisServicios"/>
+        <activity android:name=".view.servicios.MisServicios"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

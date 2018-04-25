@@ -69,7 +69,7 @@ public class MenuPrincipal extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
-            finish();
+            moveTaskToBack(true);
         }
     }
 
