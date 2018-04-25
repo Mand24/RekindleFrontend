@@ -28,10 +28,21 @@
 
     <android.support.v7.widget.AppCompatButton
         android:layout_height="wrap_content"
+        android:id="@+id/mis_servicios_MenuPrincipal"
+        android:text="@string/titulo_mis_servicios"
+        android:layout_width="match_parent"
+        android:layout_below="@id/listar_servicios_MenuPrincipal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:layout_height="wrap_content"
         android:id="@+id/crear_servicio_MenuPrincipal"
         android:text="@string/crear_servicio"
         android:layout_width="match_parent"
-        android:layout_below="@id/listar_servicios_MenuPrincipal"
+        android:layout_below="@id/mis_servicios_MenuPrincipal"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dim50"
         android:layout_marginLeft="@dimen/dim20"

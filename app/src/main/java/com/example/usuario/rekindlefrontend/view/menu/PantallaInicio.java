@@ -156,7 +156,7 @@ public class PantallaInicio extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
-            moveTaskToBack(true);
+            finish();
         }
     }
 

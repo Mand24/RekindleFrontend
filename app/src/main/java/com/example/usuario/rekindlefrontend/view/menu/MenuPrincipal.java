@@ -50,6 +50,16 @@ public class MenuPrincipal extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button button_mis_servicios = (Button) findViewById(R.id.mis_servicios_MenuPrincipal);
+        button_mis_servicios.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MisServicios.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -58,8 +68,7 @@ public class MenuPrincipal extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
-            Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
-            startActivity(i);
+            finish();
         }
     }
 

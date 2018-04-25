@@ -116,6 +116,13 @@
     <string name="back_to_login"><b><u>Back to the previous screen</u></b></string>
     <string name="introducir_codigo">Code(*):</string>
 
+    <string name="titulo_mis_servicios">My services</string>
+
+    <string-array name="clic_servicio">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
+
     <string-array name="lista_usuarios">
         <item>Refugee</item>
         <item>Voluntary</item>
