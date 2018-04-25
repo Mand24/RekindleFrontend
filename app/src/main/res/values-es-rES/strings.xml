@@ -101,6 +101,9 @@
 
     <string name="code_request">Pedir codigo de recuperación</string>
 
+    <string name="back_to_login"><b><u>Volver a la pantalla anterior</u></b></string>
+    <string name="introducir_codigo">Código(*):</string>
+
     <string-array name="lista_usuarios">
         <item>Refugiado</item>
         <item>Voluntario</item>
@@ -136,5 +139,6 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.CodeGenerator;
+import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 
 public class CodePasswordRequest extends AppCompatActivity {
 
@@ -61,5 +62,11 @@ public class CodePasswordRequest extends AppCompatActivity {
         else{
             _email.setError("Enter a valid email address");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
+        startActivity(i);
     }
 }

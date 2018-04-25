@@ -9,7 +9,9 @@
     <string name="acceder">Sign in</string>
     <string name="registro">Sign up</string>
     <string name="tipo_usuario">Type of user:</string>
-    <string name="recuperar_password"><u>Recover password</u></string>
+    <string name="recuperar_password">
+        <u>Recover password</u>
+    </string>
     <string name="atras">Back</string>
     <string name="login">Log in</string>
     <string name="enviar">Send</string>
@@ -39,7 +41,9 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
     <string name="editar">Edit</string>
-    <string name="cambiar_password"><b>Change password</b></string>
+    <string name="cambiar_password">
+        <b>Change password</b>
+    </string>
     <string name="actual_password">Current password</string>
     <string name="nuevo_password">New password</string>
     <string name="repetir_password1">Repeat password</string>
@@ -79,27 +83,38 @@
     <string name="precio">Price:</string>
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
-    <string name="go_to_signup"><b><u>No account yet? Create one</u></b></string>
+    <string name="go_to_signup">
+        <b>
+            <u>No account yet? Create one</u>
+        </b>
+    </string>
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registered successfully!</string>
     <string name="registro_fallido">Sign Up failed!</string>
     <string name="servicio_alojamiento_creado_correctamente">Accomodation service created
-        successfully!</string>
+        successfully!
+    </string>
     <string name="servicio_alojamiento_fallido">Accomodation service failed!</string>
     <string name="curso_educativo_creado_correctamente">Educational course created
-    successfully!</string>
+        successfully!
+    </string>
     <string name="curso_educativo_fallido">Educational course failed!</string>
     <string name="donacion_creada_correctamente">Donation created
-        successfully!</string>
+        successfully!
+    </string>
     <string name="donacion_fallida">Donation failed!</string>
     <string name="oferta_empleo_correctamente">Job offer created
-        successfully!</string>
+        successfully!
+    </string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
     <string name="guardado_correctamente">Save successfully!</string>
     <string name="guardado_fallido">Save failed!</string>
 
     <string name="enviar_correo">Send mail</string>
     <string name="code_request">Request recovery code</string>
+
+    <string name="back_to_login"><b><u>Back to the previous screen</u></b></string>
+    <string name="introducir_codigo">Code(*):</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>

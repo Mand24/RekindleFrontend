@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
-
-//TODO: onBackPressed
+import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 
 public class RecuperarPassword extends AppCompatActivity {
 
@@ -21,14 +21,20 @@ public class RecuperarPassword extends AppCompatActivity {
     EditText _passwordText;
     EditText _confirmPasswordText;
     EditText _codeText;
+    TextView _back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantalla_inicio);
+        setContentView(R.layout.activity_recuperar_password);
 
         final String email = getIntent().getExtras().getString("email");
         final String codeSystem = getIntent().getExtras().getString("code");
+
+        _passwordText = findViewById(R.id.contrasena);
+        _confirmPasswordText = findViewById(R.id.confirmar_contrasena);
+        _codeText = findViewById(R.id.codigo);
+        _changePassword = findViewById(R.id.cambiar_contrasena);
 
         _changePassword.setOnClickListener(new View.OnClickListener() {
 
@@ -67,6 +73,20 @@ public class RecuperarPassword extends AppCompatActivity {
                 }
             }
         });
+
+        _back = findViewById(R.id.back_to_menu);
+        _back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CodePasswordRequest.class);
+                startActivity(i);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
