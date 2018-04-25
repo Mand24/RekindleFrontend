@@ -102,7 +102,8 @@ public class RecuperarPassword extends AppCompatActivity {
             boolean result = false;
             boolean result2 = false;
             try {
-                result = ComunicacionUsuarios.setPassword(url, params[0], params[1]);
+                //TODO: descomentar
+                //result = ComunicacionUsuarios.setPassword(url, params[0], params[1]);
 
                 if (result){
                     result2 = ComunicacionUsuarios.iniciarSesion(url, params[0], params[1]);
