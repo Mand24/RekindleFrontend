@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
-import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistroRefugiado extends Fragment {
+public class RegistroRefugiado extends AbstractFormatChecker {
 
     private ArrayList<String> param = new ArrayList<String>();
 
@@ -132,16 +132,16 @@ public class RegistroRefugiado extends Fragment {
 
     public void checkCampos(View view) throws Exception {
 
-        FormatChecker.checkNombre(eNombre.getText().toString());
-        FormatChecker.checkEmail(eEmail.getText().toString());
-        FormatChecker.checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
+        checkNombre(eNombre.getText().toString());
+        checkEmail(eEmail.getText().toString());
+        checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
                 ());
-        FormatChecker.checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        FormatChecker.checkSegundo_apellido(eSegundo_apellido.getText().toString());
-        FormatChecker.checkTelefono(eTelefono.getText().toString());
-        FormatChecker.checkProcedencia(eProcedencia.getText().toString());
-        FormatChecker.checkPueblo(ePueblo.getText().toString());
-        FormatChecker.checkEtnia(eEtnia.getText().toString());
+        checkPrimer_apellido(ePrimer_apellido.getText().toString());
+        checkSegundo_apellido(eSegundo_apellido.getText().toString());
+        checkTelefono(eTelefono.getText().toString());
+        checkProcedencia(eProcedencia.getText().toString());
+        checkPueblo(ePueblo.getText().toString());
+        checkEtnia(eEtnia.getText().toString());
     }
 
     public void obtenerParametros() {

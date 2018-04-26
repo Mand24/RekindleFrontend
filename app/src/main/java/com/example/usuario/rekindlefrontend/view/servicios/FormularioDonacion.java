@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
-import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormularioDonacion extends Fragment {
+public class FormularioDonacion extends AbstractFormatChecker {
 
     private ArrayList<String> param;
 
@@ -90,11 +90,11 @@ public class FormularioDonacion extends Fragment {
 
     public void checkCampos(View view) throws Exception {
 
-        FormatChecker.checkNombreServicio(eNombre.getText().toString());
-        FormatChecker.checkEmail(eEmail.getText().toString());
-        FormatChecker.checkTelefonoServicio(eTelefono.getText().toString());
-        FormatChecker.checkSolicitudesServicio(eSolicitudes.getText().toString());
-        FormatChecker.checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eNombre.getText().toString());
+        checkEmail(eEmail.getText().toString());
+        checkTelefonoServicio(eTelefono.getText().toString());
+        checkSolicitudesServicio(eSolicitudes.getText().toString());
+        checkDescripcionServicio(eDescripcion.getText().toString());
 
     }
 
