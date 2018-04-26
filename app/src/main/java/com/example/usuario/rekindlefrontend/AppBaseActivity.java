@@ -47,19 +47,21 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
                 drawerLayout.closeDrawers();
 
+                Intent i;
+
                 switch (menuItem.getItemId())
                 {
                     /*Se define la lógica de casos que puedan producirse al seleccionar cualquier elemento del menú.*/
                     case R.id.ver_perfil:
-                        Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+                        i = new Intent(getApplicationContext(), VerPerfil.class);
                         startActivity(i);
                         break;
                     case R.id.configuracion:
 //                        Toast.makeText(getApplicationContext(), "configuracion!", Toast
 //                                .LENGTH_SHORT)
 //                                .show();
-                        Intent ii = new Intent(getApplicationContext(), PantallaAjustes.class);
-                        startActivity(ii);
+                        i = new Intent(getApplicationContext(), PantallaAjustes.class);
+                        startActivity(i);
                         break;
 
                     case R.id.ayuda:

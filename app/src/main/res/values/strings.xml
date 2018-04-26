@@ -115,6 +115,8 @@
     <string name="cerrar_sesion">Log out</string>
     <string name="mis_servicios">My services</string>
     <string name="buscar_personas">Search people</string>
+    <string name="ajustes_generales">General settings</string>
+    <string name="idioma">Language:</string>
 
 
     <string-array name="lista_usuarios">
@@ -149,6 +151,12 @@
         <item>Verde</item>
         <item>Azul</item>
         <item>Gris</item>
+    </string-array>
+
+    <string-array name="lista_idiomas">
+        <item>English</item>
+        <item>Catalan</item>
+        <item>Spanish</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

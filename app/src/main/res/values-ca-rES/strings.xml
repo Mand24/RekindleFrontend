@@ -101,6 +101,8 @@
     <string name="cerrar_sesion">Tancar sessió</string>
     <string name="mis_servicios">Els meus serveis</string>
     <string name="buscar_personas">Buscar persones</string>
+    <string name="ajustes_generales">Configuració general</string>
+    <string name="idioma">Idioma:</string>
 
 
     <string-array name="lista_usuarios">
@@ -135,6 +137,12 @@
         <item>Verde</item>
         <item>Azul</item>
         <item>Gris</item>
+    </string-array>
+
+    <string-array name="lista_idiomas">
+        <item>Anglès</item>
+        <item>Català</item>
+        <item>Espanyol</item>
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
