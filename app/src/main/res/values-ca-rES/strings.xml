@@ -99,6 +99,8 @@
     <string name="ayuda">Ajuda</string>
     <string name="about">Sobre Rekindle</string>
     <string name="cerrar_sesion">Tancar sessió</string>
+    <string name="mis_servicios">Els meus serveis</string>
+    <string name="buscar_personas">Buscar persones</string>
 
 
     <string-array name="lista_usuarios">

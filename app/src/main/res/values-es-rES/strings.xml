@@ -100,6 +100,8 @@
     <string name="ayuda">Ayuda</string>
     <string name="about">Acerca de Rekindle</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="mis_servicios">Mis servicios</string>
+    <string name="buscar_personas">Buscar personas</string>
 
 
     <string-array name="lista_usuarios">

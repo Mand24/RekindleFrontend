@@ -1,5 +1,8 @@
 package com.example.usuario.rekindlefrontend.view.menu;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -23,41 +26,27 @@ import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
 public class MenuPrincipal extends AppBaseActivity {
 
     private int backpress = 0;
+    Fragment[] tipos_menu_principal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        Button button_listar_servicios = (Button) findViewById(R.id.listar_servicios_MenuPrincipal);
-        button_listar_servicios.setOnClickListener(new View.OnClickListener(){
+        tipos_menu_principal = new Fragment[2];
 
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ListarServicios.class);
-                startActivity(i);
-            }
-        });
+        tipos_menu_principal[0] = new MenuPrincipalVoluntario();
+        tipos_menu_principal[1] = new MenuPrincipalRefugiado();
 
-        Button button_crear_servicio = (Button) findViewById(R.id.crear_servicio_MenuPrincipal);
-        button_crear_servicio.setOnClickListener(new View.OnClickListener(){
+        elegir_tipo_menu_principal(1);
 
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CrearServicio.class);
-                startActivity(i);
-            }
-        });
+    }
 
-        Button button_ver_perfil = (Button) findViewById(R.id.ver_perfil_MenuPrincipal);
-        button_ver_perfil.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VerPerfil.class);
-                startActivity(i);
-            }
-        });
+    public void elegir_tipo_menu_principal(int tipo_usuario){
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.tipo_menu_principal, tipos_menu_principal[tipo_usuario]);
+        transaction.commit();
     }
 
     @Override

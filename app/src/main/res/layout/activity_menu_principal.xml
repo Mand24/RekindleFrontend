@@ -16,41 +16,13 @@
             android:layout_marginTop="@dimen/dim100"
         />
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_height="wrap_content"
-            android:id="@+id/listar_servicios_MenuPrincipal"
-            android:text="@string/listar_servicios"
+        <RelativeLayout
+            android:id="@+id/tipo_menu_principal"
             android:layout_width="match_parent"
-            android:layout_below="@id/titulo_MenuPrincipal"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dim50"
-            android:layout_marginLeft="@dimen/dim20"
-            android:layout_marginRight="@dimen/dim20"
-        />
+            android:layout_height="match_parent"
+            android:layout_below="@+id/titulo_MenuPrincipal" >
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_height="wrap_content"
-            android:id="@+id/crear_servicio_MenuPrincipal"
-            android:text="@string/crear_servicio"
-            android:layout_width="match_parent"
-            android:layout_below="@id/listar_servicios_MenuPrincipal"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dim50"
-            android:layout_marginLeft="@dimen/dim20"
-            android:layout_marginRight="@dimen/dim20"
-        />
-
-        <android.support.v7.widget.AppCompatButton
-            android:layout_height="wrap_content"
-            android:id="@+id/ver_perfil_MenuPrincipal"
-            android:text="@string/ver_perfil"
-            android:layout_width="match_parent"
-            android:layout_below="@id/crear_servicio_MenuPrincipal"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dim50"
-            android:layout_marginLeft="@dimen/dim20"
-            android:layout_marginRight="@dimen/dim20"
-        />
+        </RelativeLayout>
 
 </RelativeLayout>
 
