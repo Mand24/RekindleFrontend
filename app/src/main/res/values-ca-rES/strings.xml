@@ -95,6 +95,10 @@
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
+    <string name="ajustes">Configuració</string>
+    <string name="ayuda">Ajuda</string>
+    <string name="about">Sobre Rekindle</string>
+    <string name="cerrar_sesion">Tancar sessió</string>
 
 
     <string-array name="lista_usuarios">
