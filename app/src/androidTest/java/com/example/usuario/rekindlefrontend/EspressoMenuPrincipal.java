@@ -21,7 +21,7 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasCom
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
 import com.example.usuario.rekindlefrontend.view.servicios.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
+import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -60,7 +60,7 @@ public class EspressoMenuPrincipal {
     public void testBotonVerPerfil(){
 
         onView(withId(R.id.ver_perfil_MenuPrincipal)).perform(click());
-        intended(hasComponent(VerPerfil.class.getName()));
+        intended(hasComponent(VerPerfilRefugiado.class.getName()));
     }
 
     @Test

@@ -38,7 +38,7 @@ import static org.hamcrest.Matchers.not;
 
 import com.example.usuario.rekindlefrontend.view.CambiarPassword;
 import com.example.usuario.rekindlefrontend.view.usuarios.EditarPerfil;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
+import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -143,7 +143,7 @@ public class EspressoEditarPerfil {
 
         onView(withId(R.id.guardar_editar_perfil)).perform(click());
 
-        intended(hasComponent(VerPerfil.class.getName()));
+        intended(hasComponent(VerPerfilRefugiado.class.getName()));
 
     }
 
@@ -154,7 +154,7 @@ public class EspressoEditarPerfil {
 
 //        onView(isRoot()).perform(ViewActions.closeSoftKeyboard());
 //        onView(isRoot()).perform(pressBack());
-//        intended(hasComponent(VerPerfil.class.getName()));
+//        intended(hasComponent(VerPerfilRefugiado.class.getName()));
 
     }
 

@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.example.usuario.rekindlefrontend.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.entity.Voluntario;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -201,7 +202,7 @@ public class ComunicacionUsuarios {
         else return false;
     }
 
-    public static Refugiado verPerfil(String url, String param) throws Exception {
+    public static Refugiado verPerfilRefugiado(String url, String param) throws Exception {
 
         //Conexion
         url += "/verPerfilRefugiado";
@@ -271,6 +272,75 @@ public class ComunicacionUsuarios {
             nuevo.setEthnic(valArray.getString(10));
             nuevo.setBloodType(valArray.getString(11));
             nuevo.setEyeColor(valArray.getString(12));
+            return nuevo;
+        }else {
+            return null;
+        }
+
+    }
+
+    public static Voluntario verPerfilVoluntario(String url, String param) throws Exception {
+
+        //Conexion
+        url += "/verPerfilVoluntario";
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        //Request header
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("Content-type", "application/json");
+
+        JSONObject json = new JSONObject();
+        json.put("mail", param);
+
+        String s = json.toString();
+        byte[] outputBytes = s.getBytes("UTF-8");
+
+        // Send post request
+        con.setDoOutput(true);
+        OutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.write(outputBytes);
+        wr.flush();
+        wr.close();
+
+        //leer respuesta
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder sb = new StringBuilder();
+
+        while ((inputLine = in.readLine()) != null) {
+            sb.append(inputLine);
+        }
+        in.close();
+
+        String jsonString = sb.toString();
+
+        System.out.println("resp: "+sb.toString());
+
+        /*
+
+        String[] arr = jsonArray.toString().replace("},{", " ,").split(" ");
+        String s = "{\"mail\":\"rogerio@gmail.com\",\"password\":\"12345\",\"name\":\"rogerio\","
+                + "\"surname1\":\"poch\",\"surname2\":null,\"phoneNumber\":null,\"birthdate\":null,\"sex\":null,\"country\":null,\"town\":null,\"ethnic\":null,\"bloodType\":null,\"eyeColor\":null}";
+        String[] arr = sb.replace("},{", " ,").split(" ");
+        {"mail":"rogerio@gmail.com","password":"12345","name":"rogerio","surname1":"poch",
+                "surname2":null,"phoneNumber":null,"birthdate":null,"sex":null,"country":null,"town":null,"ethnic":null,"bloodType":null,"eyeColor":null}
+
+        System.out.println("JSON: " + jsonString);*/
+
+        Voluntario nuevo = new Voluntario();
+
+        JSONObject myjson = new JSONObject(jsonString);
+
+        if (con.getResponseCode() == 200) {
+            JSONArray nameArray = myjson.names();
+            JSONArray valArray = myjson.toJSONArray(nameArray);
+            nuevo.setMail(valArray.getString(0));
+            nuevo.setPassword(valArray.getString(1));
+            nuevo.setName(valArray.getString(2));
+            nuevo.setSurname1(valArray.getString(3));
+            nuevo.setSurname2(valArray.getString(4));
             return nuevo;
         }else {
             return null;

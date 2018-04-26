@@ -358,7 +358,7 @@ public class EditarPerfil extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.guardado_correctamente), Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+            Intent i = new Intent(getApplicationContext(), VerPerfilRefugiado.class);
             startActivity(i);
 
         }else Toast.makeText(getApplicationContext(), getResources().getString(R
@@ -389,7 +389,7 @@ public class EditarPerfil extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+        Intent i = new Intent(getApplicationContext(), VerPerfilRefugiado.class);
         startActivity(i);
     }
 }
