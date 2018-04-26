@@ -44,7 +44,6 @@ public class VerPerfilRefugiado extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_ver_perfil_refugiado, container,
                 false);
-//TODO: SE HA DE TENER UN OBJETO REFUGIADO CON EL USUARIO (y sus datos)
         try {
             refugiado = new AsyncTaskCall().execute().get();
 
@@ -56,8 +55,9 @@ public class VerPerfilRefugiado extends Fragment {
         setVistas(view);
 
         llenarTextViews();
+
 //TODO: EditarPerfilRefugiado
-        AppCompatButton b = (AppCompatButton) view.findViewById(R.id.editar_ver_perfil);
+        AppCompatButton b = (AppCompatButton) view.findViewById(R.id.editar_ver_perfil_refugiado);
         b.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -75,19 +75,19 @@ public class VerPerfilRefugiado extends Fragment {
 
     public void setVistas(View view) {
 
-        tipoUsuario = view.findViewById(R.id.tipo_usuario_perfil);
-        nombreUsuario = view.findViewById(R.id.nombre_usuario_perfil);
-        apellido1 = view.findViewById(R.id.apellido1_usuario_perfil);
-        apellido2 = view.findViewById(R.id.apellido2_usuario_perfil);
-        emailUsuario = view.findViewById(R.id.email_usuario_perfil);
-        telefonoUsuario = view.findViewById(R.id.telefono_usuario_perfil);
-        nacimientoUsuario = view.findViewById(R.id.naciminento_usuario_perfil);
-        sexoUsuario = view.findViewById(R.id.sexo_usuario_perfil);
-        paisUsuario = view.findViewById(R.id.pais_usuario_perfil);
-        puebloUsuario = view.findViewById(R.id.pueblo_usuario_perfil);
-        etniaUsuario = view.findViewById(R.id.etnia_usuario_perfil);
-        sangreUsuario = view.findViewById(R.id.sangre_usuario_perfil);
-        ojosUsuario = view.findViewById(R.id.ojos_usuario_perfil);
+        tipoUsuario = view.findViewById(R.id.tipo_usuario_perfil_refugiado);
+        nombreUsuario = view.findViewById(R.id.nombre_usuario_perfil_refugiado);
+        apellido1 = view.findViewById(R.id.apellido1_usuario_perfil_refugiado);
+        apellido2 = view.findViewById(R.id.apellido2_usuario_perfil_refugiado);
+        emailUsuario = view.findViewById(R.id.email_usuario_perfil_refugiado);
+        telefonoUsuario = view.findViewById(R.id.telefono_usuario_perfil_refugiado);
+        nacimientoUsuario = view.findViewById(R.id.naciminento_usuario_perfil_refugiado);
+        sexoUsuario = view.findViewById(R.id.sexo_usuario_perfil_refugiado);
+        paisUsuario = view.findViewById(R.id.pais_usuario_perfil_refugiado);
+        puebloUsuario = view.findViewById(R.id.pueblo_usuario_perfil_refugiado);
+        etniaUsuario = view.findViewById(R.id.etnia_usuario_perfil_refugiado);
+        sangreUsuario = view.findViewById(R.id.sangre_usuario_perfil_refugiado);
+        ojosUsuario = view.findViewById(R.id.ojos_usuario_perfil_refugiado);
     }
 
     public void llenarTextViews(){

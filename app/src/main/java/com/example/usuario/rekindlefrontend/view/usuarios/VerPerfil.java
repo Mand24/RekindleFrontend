@@ -34,9 +34,12 @@ public class VerPerfil extends AppCompatActivity {
         tiposPerfil = new Fragment[2];
 
         tiposPerfil[0] = new VerPerfilRefugiado();
-//TODO: CREAR VerPerfilVOluntario
-        //tiposPerfil[1] = new VerPerfilVoluntario();
+        tiposPerfil[1] = new VerPerfilVoluntario();
+
 //TODO: PONER EN FUNCION DEL TIPO DE USUARIO
+
+
+
         menu(0);
     }
 
