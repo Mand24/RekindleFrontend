@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.menu.MenuPrincipal" />
-        <activity android:name=".view.usuarios.VerPerfilRefugiado" />
+        <activity android:name=".view.usuarios.VerPerfil" />
         <activity android:name=".view.servicios.CrearServicio" />
         <activity android:name=".view.servicios.ListarServicios" />
         <activity android:name=".view.usuarios.EditarPerfil" />

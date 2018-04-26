@@ -29,7 +29,7 @@ public class VerPerfil extends AppCompatActivity {
 
 
 
-        setContentView(R.layout.activity_registro_usuario);
+        setContentView(R.layout.activity_ver_perfil);
 
         tiposPerfil = new Fragment[2];
 
@@ -40,14 +40,14 @@ public class VerPerfil extends AppCompatActivity {
 
 
 
-        menu(0);
+        menu(1);
     }
 
     public void menu(int tipo){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.PerfilUsuario, tiposPerfil[tipo]);
+        transaction.replace(R.id.perfilUsuario, tiposPerfil[tipo]);
         transaction.commit();
     }
 

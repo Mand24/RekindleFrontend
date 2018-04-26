@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
 import com.example.usuario.rekindlefrontend.view.servicios.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfilRefugiado;
+import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
 
 public class MenuPrincipal extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class MenuPrincipal extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VerPerfilRefugiado.class);
+                Intent i = new Intent(getApplicationContext(), VerPerfil.class);
                 startActivity(i);
             }
         });

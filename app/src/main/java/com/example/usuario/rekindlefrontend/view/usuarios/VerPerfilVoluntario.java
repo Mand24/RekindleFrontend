@@ -76,7 +76,7 @@ public class VerPerfilVoluntario extends Fragment {
 
     public void llenarTextViews(){
 
-        tipoUsuario.setText("Refugiado");
+        tipoUsuario.setText("Voluntario");
         nombreUsuario.setText(voluntario.getName());
         apellido1.setText(voluntario.getSurname1());
         apellido2.setText(voluntario.getSurname2());

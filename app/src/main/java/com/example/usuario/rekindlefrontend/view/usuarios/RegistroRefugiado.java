@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  */
 public class RegistroRefugiado extends Fragment {
 
-    private ArrayList<String> param;
+    private ArrayList<String> param = new ArrayList<String>();
 
     private EditText eNombre;
     private EditText eEmail;
