@@ -12,7 +12,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({   EspressoMenuPrincipal.class,
                         EspressoPantallaInicio.class,
                         EspressoRegistroUsuario.class,
-                        EspressoVerPerfil.class,
+                        EspressoVerPerfilRefugiado.class,
                         EspressoCambiarPassword.class,
                         EspressoEditarPerfil.class,
                         EspressoCrearServicioAlojamiento.class,

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -54,7 +56,7 @@
                     android:id="@+id/nombre_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_nombre_usuario_perfil"
+                    android:layout_below="@id/tipo_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:hint="@string/texto_nombre_formulario"
@@ -72,7 +74,7 @@
                     android:id="@+id/apellido1_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_apellido1_usuario_perfil"
+                    android:layout_below="@id/nombre_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -91,7 +93,7 @@
                     android:id="@+id/apellido2_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_apellido2_usuario_perfil"
+                    android:layout_below="@id/apellido1_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -110,7 +112,7 @@
                     android:id="@+id/email_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_email_usuario_perfil"
+                    android:layout_below="@id/apellido2_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -130,7 +132,7 @@
                     android:id="@+id/telefono_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_telefono_usuario_perfil"
+                    android:layout_below="@id/email_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -149,7 +151,7 @@
                     android:id="@+id/naciminento_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_nacimiento_usuario_perfil"
+                    android:layout_below="@id/telefono_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -184,7 +186,7 @@
                     android:id="@+id/pais_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_pais_usuario_perfil"
+                    android:layout_below="@id/naciminento_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -201,7 +203,7 @@
                     android:id="@+id/pueblo_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_pueblo_usuario_perfil"
+                    android:layout_below="@id/pais_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -219,7 +221,7 @@
                     android:id="@+id/etnia_usuario_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/label_etnia_usuario_perfil"
+                    android:layout_below="@id/pueblo_usuario_perfil"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim6"
@@ -270,18 +272,21 @@
                 android:layout_marginTop="@dimen/dim10"
                 android:text="@string/cambiar_password" />
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/guardar_editar_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim10"
+                android:text="@string/guardar"
+                android:layout_below="@+id/scrollView"/>
+
         </LinearLayout>
 
     </ScrollView>
 
-    <android.support.v7.widget.AppCompatButton
-            android:id="@+id/guardar_editar_perfil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dim10"
-            android:text="@string/guardar"
-            android:layout_below="@+id/scrollView"/>
+
 
 </RelativeLayout>
+

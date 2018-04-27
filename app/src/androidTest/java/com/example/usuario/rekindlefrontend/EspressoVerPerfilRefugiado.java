@@ -19,15 +19,15 @@ import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
 import com.example.usuario.rekindlefrontend.view.usuarios.EditarPerfil;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
+import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoVerPerfil {
+public class EspressoVerPerfilRefugiado {
 
     @Rule
-    public ActivityTestRule<VerPerfil> pantalla = new ActivityTestRule<VerPerfil>
-            (VerPerfil.class);
+    public ActivityTestRule<VerPerfilRefugiado> pantalla = new ActivityTestRule<VerPerfilRefugiado>
+            (VerPerfilRefugiado.class);
 
     @BeforeClass
     public static void setup(){
