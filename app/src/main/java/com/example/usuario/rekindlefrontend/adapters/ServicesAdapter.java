@@ -15,11 +15,12 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
-public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ServiceViewHolder>{
+public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ServiceViewHolder> {
 
     private List<Servicio> servicios;
-    Context mContext;
-    CustomItemClickListener listener;
+    private List<Servicio> serviciosFiltered;
+    private Context mContext;
+    private CustomItemClickListener listener;
 
     public class ServiceViewHolder extends RecyclerView.ViewHolder{
         CardView cv;
