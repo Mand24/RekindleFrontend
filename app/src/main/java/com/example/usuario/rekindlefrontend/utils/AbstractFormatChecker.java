@@ -7,7 +7,7 @@ import com.example.usuario.rekindlefrontend.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class AbstractFormatCheckerFragment extends Fragment {
+public abstract class AbstractFormatChecker extends Fragment {
     public  boolean letras(String texto) {
         Pattern patron = Pattern.compile("^[a-zA-Z]+$");
         Matcher valid  = patron.matcher(texto);
