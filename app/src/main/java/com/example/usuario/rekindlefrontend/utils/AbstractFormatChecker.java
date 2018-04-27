@@ -2,13 +2,15 @@ package com.example.usuario.rekindlefrontend.utils;
 
 import android.app.Fragment;
 
+import com.example.usuario.rekindlefrontend.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class AbstractFormatChecker extends Fragment {
+public abstract class AbstractFormatCheckerFragment extends Fragment {
     public  boolean letras(String texto) {
         Pattern patron = Pattern.compile("^[a-zA-Z]+$");
-        Matcher valid = patron.matcher(texto);
+        Matcher valid  = patron.matcher(texto);
         return valid.matches();
     }
 
@@ -18,114 +20,109 @@ public abstract class AbstractFormatChecker extends Fragment {
         return valid.matches();
     }
 
-    public  boolean fecha_valida(String fecha) {
-        Pattern patron = Pattern.compile("^[0-9]{2}-[0-9]{2}-[0-9]{4}$");
-        Matcher valid = patron.matcher(fecha);
-        return valid.matches();
+    public  boolean preuFormat(String texto)
+    {
+        Pattern patron = Pattern.compile ("^\\d+(.\\d{1,2})?$");
+        Matcher valid  = patron.matcher (texto);
+        return valid.matches ();
     }
 
-    public  void checkNombre(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Nombre obligatorio");
-        else if (texto.length() > 20) throw new Exception("Nombre es demasiado largo, máximo 20 "
-                + "letras");
-        else if (!letras(texto)) throw new Exception("El nombre solo puede contener letras");
+    public void checkNombre(String texto) throws Exception {
+        if (texto.length() == 0) throw new Exception(getString(R.string
+                .nombre_obligatorio));
+        else if (texto.length() > 20) throw new Exception(getString(R.string
+                .nombre_largo));
+        else if (!letras(texto)) throw new Exception(getString(R.string.nombre_letras));
     }
 
     public  void checkEmail(String texto) throws Exception {
-        if (texto.length () == 0) throw new Exception("Email obligatorio");
-        else if (texto.length () > 30) throw new Exception("Email demasiado largo, máximo 30 "
-                + "caracteres");
+        if (texto.length () == 0) throw new Exception(getString(R.string.email_obligatorio));
+        else if (texto.length () > 30) throw new Exception(getString(R.string.email_largo));
         else if (!android.util.Patterns.EMAIL_ADDRESS.matcher (texto).matches()) throw new
-                Exception("Formato de email no valido");
+                Exception(getString(R.string.email_formato));
     }
 
     public  void checkPassword(String texto, String texto_aux) throws Exception{
-        if (texto.length() == 0) throw new Exception("Contraseña obligatoria");
-        else if (texto.length() > 15) throw new Exception("Contraseña demasiada larga, máximo 15 "
-                + "caracteres");
-        else if (texto.length() < 4) throw new Exception("Contraseña demasiada corta, mínimo 4 "
-                + "caracteres");
-        else if (!texto.equals(texto_aux)) throw new Exception("Las contraseñas no coinciden");
+        if (texto.length() == 0) throw new Exception(getString(R.string.contraseña_obligatoria));
+        else if (texto.length() > 15) throw new Exception(getString(R.string.contraseña_larga));
+        else if (texto.length() < 4) throw new Exception(getString(R.string.contraseña_corta));
+        else if (!texto.equals(texto_aux)) throw new Exception(getString(R.string
+                .contraseña_distinta));
     }
 
     public  void checkPrimer_apellido(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Primer apellido obligatorio");
-        else if (texto.length() > 20) throw new Exception("Primer apellido demasiado largo, "
-                + "máximo 20 letras");
-        else if (!letras(texto)) throw new Exception("El primer apellido solo puede contener "
-                + "letras");
+        if (texto.length() == 0) throw new Exception(getString(R.string.apellido1_obligatorio));
+        else if (texto.length() > 20) throw new Exception(getString(R.string.apellido1_largo));
+        else if (!letras(texto)) throw new Exception(getString(R.string.apellido1_letras));
     }
 
     public  void checkSegundo_apellido(String texto) throws Exception {
-        if (texto.length() > 20) throw new Exception("Segundo apellido demasiado largo, máximo 20"
-                + " letras");
-        else if (!letras(texto)) throw new Exception("El segundo apellido solo puede contener "
-                + "letras");
+        if (texto.length() > 20) throw new Exception(getString(R.string.apellido2_largo));
+        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
+                .apellido2_letras));
     }
 
     public  void checkTelefono(String texto) throws Exception {
-        if (!numeros(texto) && texto.length() > 0) throw new Exception("Teléfono solo puede "
-                + "contener dígitos");
-        else if (texto.length() > 40) throw new Exception("Teléfono demasiado largo, máximo 40 "
-                + "números");
+        if (!numeros(texto) && texto.length() > 0) throw new Exception(getString(R.string
+                .telefonoUsuario_numeros));
+        else if (texto.length() > 40) throw new Exception(getString(R.string.telefonoUsuario_largo));
     }
 
     public  void checkProcedencia(String texto) throws Exception {
-        if (!letras(texto) && texto.length() > 0) throw new Exception("El nombre del país de "
-                + "origen solo puede contener letras");
-        else if (texto.length() > 20) throw new Exception("País de origen demasiado largo, máximo"
-                + " 20 letras");
+        if (!letras(texto) && texto.length() > 0) throw new Exception
+                (getString(R.string.procedencia_letras));
+        else if (texto.length() > 20) throw new Exception
+                (getString(R.string.procedencia_largo));
     }
 
     public  void checkPueblo(String texto) throws Exception {
-        if (texto.length() > 40) throw new Exception("Nombre del pueblo demasiado largo, máximo "
-                + "40 letras");
-        else if (!letras(texto) && texto.length() > 0) throw new Exception("El nombre del pueblo "
-                + "solo puede contener letras");
+        if (texto.length() > 40) throw new Exception(getString(R.string.pueblo_largo));
+        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
+                .pueblo_letras));
     }
 
     public  void checkEtnia(String texto) throws Exception {
-        if (texto.length() > 20) throw new Exception("Nombre de la etnia demasiado largo, máximo "
-                + "20 letras");
-        else if (!letras(texto) && texto.length() > 0) throw new Exception("El nombre de la etnia"
-                + " de origen solo puede contener letras");
+        if (texto.length() > 20) throw new Exception(getString(R.string.etnia_largo));
+        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
+                .etnia_letras));
     }
 
     public  void checkNombreServicio(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Nombre obligatorio");
-        else if (texto.length() > 50) throw new Exception("Nombre es demasiado largo, máximo 50 "
-                + "letras");
-        else if (!letras(texto)) throw new Exception("El nombre solo puede contener letras");
+        if (texto.length() == 0) throw new Exception(getString(R.string
+                .nombreServicio_obligatorio));
+        else if (texto.length() > 50) throw new Exception(getString(R.string.nombreServicio_largo));
+        else if (!letras(texto)) throw new Exception(getString(R.string.nombreServicio_letras));
     }
 
     public  void checkTelefonoServicio(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Teléfono obligatorio");
-        else if (!numeros (texto) && texto.length () > 0) throw new Exception("Teléfono solo "
-                + "puede contener dígitos");
-        else if (texto.length() > 50) throw new Exception("Teléfono demasiado largo, máximo 50 "
-                + "números");
+        if (texto.length() == 0) throw new Exception(getString(R.string
+                .telefonoServicio_obligatorio));
+        else if (!numeros (texto) && texto.length () > 0) throw new Exception(getString(R.string
+                .telefonoUsuario_numeros));
+        else if (texto.length() > 40) throw new Exception(getString(R.string
+                .telefonoUsuario_largo));
     }
     public  void checkSolicitudesServicio(String texto) throws Exception {
-        if (!numeros (texto) && texto.length () > 0) throw new Exception("El límite de "
-                + "solicitudes debe ser un número");
+        if (!numeros (texto) && texto.length () > 0) throw new Exception(getString(R.string
+                .solicitudes_numeros));
     }
 
     public  void checkDescripcionServicio(String texto) throws Exception {
-        if (texto.length () > 300) throw new Exception("Descripción es demasiada larga, "
-                + "máximo 300 letras");
-        else if (!letras (texto)) throw new Exception("La descripción solo puede contener letras");
+        if (texto.length () == 0) throw new Exception(getString(R.string.descripcion_obligatoria));
+        else if (texto.length () > 300) throw new Exception
+                (getString(R.string.descricpion_larga));
+        else if (!letras (texto)) throw new Exception(getString(R.string.descripcion_letras));
     }
 
     public  void checkPuestoOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Indicar puesto de trabajo");
-        else if (texto.length() > 50) throw new Exception("Descripción puesto de trabajo "
-                + "demasiado largo, máximo 50 caracteres");
+        if (texto.length() == 0) throw new Exception(getString(R.string
+                .puestoTrabajo_obligatorio));
+        else if (texto.length() > 50) throw new Exception(getString(R.string.puestoTrabajo_largo));
     }
 
     public  void checkRequisitosServicio(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Campo requisitos obligatorio");
-        else if (texto.length() > 100) throw new Exception("Descripción requisitos "
-                + "demasiado largo, máximo 100 caracteres");
+        if (texto.length() == 0) throw new Exception(getString(R.string.requisitos_obligatorios));
+        else if (texto.length() > 100) throw new Exception(getString(R.string.requisitos_largo));
     }
 
     public  void checkJornadaOfertaEmpleo(String texto) throws Exception {
@@ -151,29 +148,30 @@ public abstract class AbstractFormatChecker extends Fragment {
     }
 
     public  void checkSueldoOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Indicar salario");
-        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Formato incorrecto; "
-                + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
-                + "deciamales, uso del punto como separador");
+        if (texto.length() == 0) throw new Exception(getString(R.string.sueldo_obligatorio));
+        else if (!preuFormat(texto) && texto.length() > 0) throw new Exception(getString(R.string
+                .sueldo_formto));
     }
 
     public  void checkPlazasServicio(String texto) throws Exception {
-        if (!numeros(texto) && texto.length() > 0) throw new Exception("Plazas solo puede "
-                + "contener dígitos");
-        else if (texto.length() > 5) throw new Exception("Demasiadas plazas, máximo 5 dígitos");
+        if (!numeros(texto) && texto.length() > 0) throw new Exception(getString(R.string
+                .plazas_numeros));
+        else if (texto.length() > 5) throw new Exception(getString(R.string.plazas_largo));
     }
 
     public  void checkAmbitoCursoEducativo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Ámbito obligatorio");
-        else if (texto.length() > 50) throw new Exception("Ámbito demasiado largo, máximo 50 "
-                + "caracteres");
+        if (texto.length() == 0) throw new Exception(getString(R.string.ambito_obligatorio));
+        else if (texto.length() > 50) throw new Exception(getString(R.string.ambito_largo));
     }
 
     public  void checkHorarioCursoEducativo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Horario obligatorio");
-        else if (texto.length () > 30) throw new Exception("Horario demasiado largo, máximo 30 "
-                + "caracteres");
+        if (texto.length() == 0) throw new Exception(getString(R.string.horario_obligatorio));
+        else if (texto.length () > 30) throw new Exception(getString(R.string.horario_largo));
     }
 
+    public  void checkPrice (String texto) throws Exception {
+        if (texto.length () > 0 && !preuFormat(texto)) throw new Exception (getString(R.string
+                .precio_formato));
+    }
 
 }
