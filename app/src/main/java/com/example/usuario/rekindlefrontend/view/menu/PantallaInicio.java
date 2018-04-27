@@ -58,7 +58,7 @@ public class PantallaInicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                Intent i = new Intent(getApplicationContext(), RegistroUsuario.class);
                 startActivity(i);
             }
         });

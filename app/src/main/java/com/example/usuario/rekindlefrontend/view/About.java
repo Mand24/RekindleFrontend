@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 
 /**
  * Created by Manel Fernandez on 27-Apr-18.
@@ -25,4 +26,9 @@ public class About extends AppBaseActivity {
         startActivity(i);
     }
 
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(About.this, PantallaInicio.class);
+        startActivity(i);
+    }
 }

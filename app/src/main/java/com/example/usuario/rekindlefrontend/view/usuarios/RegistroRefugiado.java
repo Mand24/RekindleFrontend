@@ -161,6 +161,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         param.add("AB+");
         param.add("Gris");*/
 
+        param = new ArrayList<String>();
         param.add(eEmail.getText().toString());
         param.add(ePassword.getText().toString());
         param.add(eNombre.getText().toString());

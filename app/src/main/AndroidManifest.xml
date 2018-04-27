@@ -34,8 +34,9 @@
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!-- <activity android:name=".AppBaseActivity"></activity> -->
+        <!--<activity android:name=".AppBaseActivity"></activity> -->
         <activity android:name=".view.PantallaAjustes"></activity>
+        <activity android:name=".view.About"></activity>
     </application>
 
 </manifest>

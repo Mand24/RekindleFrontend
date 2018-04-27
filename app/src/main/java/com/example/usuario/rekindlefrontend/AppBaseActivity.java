@@ -22,6 +22,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.view.About;
 import com.example.usuario.rekindlefrontend.view.PantallaAjustes;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
@@ -77,8 +78,10 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                                 .show();
                         break;
                     case R.id.about:
-                        Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
-                                .show();
+//                        Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
+//                                .show();
+                        i = new Intent(getApplicationContext(), About.class);
+                        startActivity(i);
                         break;
                     case R.id.cerrar_sesion:
                         openDialog();

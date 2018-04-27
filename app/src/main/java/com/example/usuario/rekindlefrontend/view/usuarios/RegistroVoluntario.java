@@ -96,13 +96,14 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     public void obtenerParametros(){
 
-        param = new ArrayList<String>();
+
         /*param.add("refa@gmail.com");
         param.add("sergimanel");
         param.add("refa");
         param.add("garcia");
         param.add("monserrate");*/
 
+        param = new ArrayList<String>();
         param.add(eEmail.getText().toString());
         param.add(ePassword.getText().toString());
         param.add(eNombre.getText().toString());
