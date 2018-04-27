@@ -118,6 +118,12 @@
     <string name="ajustes_generales">General settings</string>
     <string name="idioma">Language:</string>
 
+    <string name="title_about">About Rekindle App</string>
+    <string name="version">Version 0.2</string>
+    <string name="company">2018-2018 Rekindle Team</string>
+    <string name="rights">All rights reserved</string>
+
+
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
