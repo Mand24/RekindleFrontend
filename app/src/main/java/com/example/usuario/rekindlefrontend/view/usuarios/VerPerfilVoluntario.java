@@ -38,7 +38,7 @@ public class VerPerfilVoluntario extends Fragment {
             voluntario = new AsyncTaskCall().execute().get();
 
         }catch (Exception e){
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 
@@ -46,7 +46,6 @@ public class VerPerfilVoluntario extends Fragment {
 
         llenarTextViews();
 
-//TODO: EditarPerfilRefugiado
         AppCompatButton b = (AppCompatButton) view.findViewById(R.id.editar_ver_perfil_voluntario);
         b.setOnClickListener(new View.OnClickListener() {
 
