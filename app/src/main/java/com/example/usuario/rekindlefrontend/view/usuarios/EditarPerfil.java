@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.Refugiado;
 import com.example.usuario.rekindlefrontend.view.CambiarPassword;
 
 import java.util.regex.Matcher;

@@ -19,7 +19,7 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.entity.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.Servicio;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -14,10 +14,8 @@ import android.widget.TextView;
 
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
-import com.example.usuario.rekindlefrontend.entity.Usuario;
-import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.entity.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.Voluntario;
 
 public class VerPerfilVoluntario extends Fragment {
 

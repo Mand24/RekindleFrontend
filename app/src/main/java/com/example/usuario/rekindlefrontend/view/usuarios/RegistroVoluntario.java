@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.data.entity.Voluntario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
@@ -21,6 +24,10 @@ import com.example.usuario.rekindlefrontend.R;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -36,6 +43,9 @@ public class RegistroVoluntario extends AbstractFormatChecker {
     private EditText eRPassword;
     private EditText ePrimer_apellido;
     private EditText eSegundo_apellido;
+
+    private APIService mAPIService;
+    private Voluntario voluntario;
 
     public RegistroVoluntario() {
         // Required empty public constructor
@@ -60,12 +70,13 @@ public class RegistroVoluntario extends AbstractFormatChecker {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
+                    /*boolean result = new AsyncTaskCall().execute().get();
                     tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
+                    //tratarResultadoPeticion(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCreateVoluntario();
             }
         });
 
@@ -80,6 +91,8 @@ public class RegistroVoluntario extends AbstractFormatChecker {
         eRPassword = view.findViewById(R.id.rpassword_voluntario);
         ePrimer_apellido = view.findViewById(R.id.p_apellido_voluntario);
         eSegundo_apellido = view.findViewById(R.id.s_apellido_voluntario);
+
+        mAPIService = APIUtils.getAPIService();
 
     }
 
@@ -103,15 +116,40 @@ public class RegistroVoluntario extends AbstractFormatChecker {
         param.add("garcia");
         param.add("monserrate");*/
 
-        param = new ArrayList<String>();
+       /* param = new ArrayList<String>();
         param.add(eEmail.getText().toString());
         param.add(ePassword.getText().toString());
         param.add(eNombre.getText().toString());
         param.add(ePrimer_apellido.getText().toString());
-        param.add(eSegundo_apellido.getText().toString());
+        param.add(eSegundo_apellido.getText().toString());*/
 
         //System.out.println("nombre: " + nombre);
 
+        voluntario = new Voluntario(eEmail.getText().toString(), ePassword.getText().toString(),
+                eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
+                eSegundo_apellido.getText().toString());
+
+    }
+
+    public void sendCreateVoluntario(){
+
+        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Voluntario>() {
+            @Override
+            public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+
+                if(response.isSuccessful()) {
+                    tratarResultadoPeticion(true);
+//                    showResponse(response.body().toString());
+//                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Voluntario> call, Throwable t) {
+//                Log.e(TAG, "Unable to submit post to API.");
+                tratarResultadoPeticion(false);
+            }
+        });
     }
 
     public void tratarResultadoPeticion(boolean result){
@@ -127,7 +165,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
                 .string.registro_fallido), Toast.LENGTH_SHORT).show();
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+   /* private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -148,5 +186,5 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
             return result;
         }
-    }
+    }*/
 }

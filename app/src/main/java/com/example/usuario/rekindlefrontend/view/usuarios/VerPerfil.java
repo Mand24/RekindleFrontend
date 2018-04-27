@@ -4,15 +4,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
-import com.example.usuario.rekindlefrontend.entity.Usuario;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 
 /**
