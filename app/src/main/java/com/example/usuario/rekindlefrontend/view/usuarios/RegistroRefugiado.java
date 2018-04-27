@@ -16,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.data.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
@@ -24,6 +27,10 @@ import com.example.usuario.rekindlefrontend.utils.SetDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -48,6 +55,9 @@ public class RegistroRefugiado extends AbstractFormatChecker {
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
 
+    private APIService mAPIService;
+    private Refugiado refugiado;
+
     public RegistroRefugiado() {
         // Required empty public constructor
     }
@@ -62,6 +72,8 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         //establecer las vistas
         setVistas(view);
 
+
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
                 .enviar_registro_refugiado);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +84,14 @@ public class RegistroRefugiado extends AbstractFormatChecker {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
+                    /*boolean result = new AsyncTaskCall().execute().get();
                     tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
+                    //tratarResultadoPeticion(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCreateRefugiado();
+
 
             }
         });
@@ -128,6 +142,8 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         adapter_ojos.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
         sOjos.setAdapter(adapter_ojos);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void checkCampos(View view) throws Exception {
@@ -161,6 +177,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         param.add("AB+");
         param.add("Gris");*/
 
+        /*param = new ArrayList<String>();
         param.add(eEmail.getText().toString());
         param.add(ePassword.getText().toString());
         param.add(eNombre.getText().toString());
@@ -173,11 +190,47 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         param.add(ePueblo.getText().toString());
         param.add(eEtnia.getText().toString());
         param.add(sGrupo_sanguineo.getSelectedItem().toString());
-        param.add(sOjos.getSelectedItem().toString());
+        param.add(sOjos.getSelectedItem().toString());*/
 
         //System.out.println("nombre: " + nombre);
 
+        refugiado = new Refugiado(eEmail.getText().toString(), ePassword.getText().toString(),
+                eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
+                eSegundo_apellido.getText().toString(), eTelefono.getText().toString(),
+                eNacimiento.getText().toString(), sSexo.getSelectedItem().toString(),
+                eProcedencia.getText().toString(), ePueblo.getText().toString(), eEtnia.getText()
+                .toString(), sGrupo_sanguineo.getSelectedItem().toString(), sOjos.getSelectedItem
+                ().toString());
+
     }
+
+    public void sendCreateRefugiado(){
+
+        mAPIService.createRefugiado(refugiado).enqueue(new Callback<Refugiado>() {
+            @Override
+            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+
+                if(response.isSuccessful()) {
+                    tratarResultadoPeticion(true);
+//                    showResponse(response.body().toString());
+//                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Refugiado> call, Throwable t) {
+//                Log.e(TAG, "Unable to submit post to API.");
+                tratarResultadoPeticion(false);
+            }
+        });
+    }
+
+//    public void showResponse(String response) {
+//        if(mResponseTv.getVisibility() == View.GONE) {
+//            mResponseTv.setVisibility(View.VISIBLE);
+//        }
+//        mResponseTv.setText(response);
+//    }
 
     public void tratarResultadoPeticion(boolean result) {
 
@@ -194,7 +247,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         }
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -215,5 +268,5 @@ public class RegistroRefugiado extends AbstractFormatChecker {
 
             return result;
         }
-    }
+    }*/
 }

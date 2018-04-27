@@ -5,7 +5,7 @@
     <string name="password">Contrasenya:</string>
     <string name="password1">Contrasenya(*):</string>
     <string name="repetir_password">Repetir contrasenya(*):</string>
-    <string name="texto_numero_telefono">Número de telèfon:</string>
+    <string name="texto_numero_telefono">Número de telèfon(*):</string>
     <string name="acceder">Accedir</string>
     <string name="registro">Registrar-se</string>
     <string name="tipo_usuario">Tipus usuari:</string>
@@ -17,7 +17,7 @@
     <string name="voluntario">Voluntari</string>
     <string name="subtitulo_formulario">Ompli els camps següents:</string>
     <string name="texto_nombre_formulario">Nom(*):</string>
-    <string name="texto_1apellido_formulario">Primer cognom:</string>
+    <string name="texto_1apellido_formulario">Primer cognom(*):</string>
     <string name="texto_2apellido_formulario">Segon cognom:</string>
     <string name="texto_email_formulario">Correu electrònic(*):</string>
     <string name="formulario_refugiado">Formulari refugiat</string>
@@ -53,29 +53,29 @@
     <string name="formulario_donacion">Formulari donació:</string>
     <string name="lugar_recogida_donacion">Lloc de recollida(*):</string>
     <string name="franja_horaria_donacion">Hora de recollida:</string>
-    <string name="franja_horaria_inicio_donacion">Inici hora de recollida:</string>
-    <string name="franja_horaria_fin_donacion">Fi hora de recollida:</string>
+    <string name="franja_horaria_inicio_donacion">Inici hora de recollida(*):</string>
+    <string name="franja_horaria_fin_donacion">Fi hora de recollida(*):</string>
     <string name="curso_educativo">Curs educatiu</string>
     <string name="oferta_empleo">Oferta d\'ocupació</string>
     <string name="formulario_alojamiento">Formulari allotjament:</string>
-    <string name="limite_solicitudes">Límit de sol·licituds(*):</string>
+    <string name="limite_solicitudes">Límit de només·licituds:</string>
     <string name="domicilio">Domicili(*):</string>
-    <string name="fecha_limite">Data límit(*):</string>
-    <string name="descripcion">Descripció:</string>
+    <string name="fecha_limite">Data límit:</string>
+    <string name="descripcion">Descripció(*):</string>
     <string name="formulario_oferta_empleo">Formulari oferta d\'ocupació:</string>
-    <string name="puesto_oferta_empleo">Lloc de treball:</string>
-    <string name="requisitos_oferta_empleo">Requisits:</string>
-    <string name="jornada_oferta_empleo">Jornada laboral:</string>
-    <string name="horas_semanales_oferta_empleo">Hores setmanals:</string>
-    <string name="duracion_oferta_empleo">Duració estimada:</string>
+    <string name="puesto_oferta_empleo">Lloc de treball(*):</string>
+    <string name="requisitos_oferta_empleo">Requisits(*):</string>
+    <string name="jornada_oferta_empleo">Jornada laboral(*):</string>
+    <string name="horas_semanales_oferta_empleo">Hores setmanals(*):</string>
+    <string name="duracion_oferta_empleo">Duració estimada(*):</string>
     <string name="plazas_oferta_empleo">Places disponibles:</string>
-    <string name="sueldo_oferta_empleo">Sou:</string>
-    <string name="telefono">Teléfon de contacte:</string>
-    <string name="direccion">Direcció:</string>
+    <string name="sueldo_oferta_empleo">Sou(*):</string>
+    <string name="telefono">Teléfon de contacte(*):</string>
+    <string name="direccion">Direcció(*):</string>
     <string name="formulario_curso_educativo">Formulari curs educatiu</string>
-    <string name="requisitos_curso_educativo">Requisits previs:</string>
-    <string name="ambito_curso_educativo">Àmbit:</string>
-    <string name="horario_curso_educativo">Horari:</string>
+    <string name="requisitos_curso_educativo">Requisits previs(*):</string>
+    <string name="ambito_curso_educativo">Àmbit(*):</string>
+    <string name="horario_curso_educativo">Horari(*):</string>
     <string name="precio">Preu:</string>
     <string name="email_usuario_login">Correu</string>
     <string name="password_usuario_login">Contrasenya</string>
@@ -101,7 +101,56 @@
     <string name="cerrar_sesion">Tancar sessió</string>
     <string name="mis_servicios">Els meus serveis</string>
     <string name="buscar_personas">Buscar persones</string>
+    <string name="ajustes_generales">Configuració general</string>
+    <string name="idioma">Idioma:</string>
 
+    <string name="nombre_obligatorio">Nom obligatori</string>
+    <string name="nombre_largo">Nom massa llarg, màxim 20 lletres</string>
+    <string name="nombre_letras">El nom només pot conetenir lletres</string>
+    <string name="email_obligatorio">Email obligatori</string>
+    <string name="email_largo">Email massa llarg, màxim 30 caràcters</string>
+    <string name="email_formato">El format del email és incorrecte; format correcte = x@x.x</string>
+    <string name="contraseña_obligatoria">Contrasenya obligatoria</string>
+    <string name="contraseña_larga">Contrasenya massa llarga, máxim 15 caràcters</string>
+    <string name="contraseña_corta">Contrasenya massa curta, mínim 4 caràcters</string>
+    <string name="contraseña_distinta">Les contrasenyas no coincideixen</string>
+    <string name="apellido1_obligatorio">Primer cognom obligatori</string>
+    <string name="apellido1_largo">Primer cognom massa llarg, màxim 20 lletres</string>
+    <string name="apellido1_letras">El primer cognom només pot contenir lletres</string>
+    <string name="apellido2_largo">Segon cognom massa llarg, màxim 20 lletres</string>
+    <string name="apellido2_letras">El segon cognom només pot contenir lletres</string>
+    <string name="telefonoUsuario_numeros">El telèfon només pot contenir dígits</string>
+    <string name="telefonoUsuario_largo">Telèfon massa llarg, màxim 40 dígits</string>
+    <string name="procedencia_letras">El nom del país d\'origen només pot contenir lletres</string>
+    <string name="procedencia_largo">El nom del país d\'origen és massa llarg, màxim 20 lletres</string>
+    <string name="pueblo_largo">El nom del poble és massa llarg, màxim 40 lletres</string>
+    <string name="pueblo_letras">El nom del poble només pot contenir lletres</string>
+    <string name="etnia_largo">El nom de l\'ètnia és massa llarg, màxim 20 lletres</string>
+    <string name="etnia_letras">El nom de l\'ètnia només pot contenir lletres</string>
+    <string name="nombreServicio_obligatorio">Nom del servei obligatori</string>
+    <string name="nombreServicio_largo">El nom del servei és massa llarg, màxim 50 lletres</string>
+    <string name="nombreServicio_letras">El nom del servei només pot contenir lletres</string>
+    <string name="telefonoServicio_obligatorio">Telèfon obligatori</string>
+    <string name="solicitudes_numeros">El límit de sol·licituds ha de ser un nombre</string>
+    <string name="descripcion_obligatoria">Descripció obligatoria</string>
+    <string name="descricpion_larga">La descripció és massa llarga, màxim 300 lletres</string>
+    <string name="descripcion_letras">La descripció només pot contenir lletres</string>
+    <string name="puestoTrabajo_obligatorio">Lloc de treball obligatori</string>
+    <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50 caràcters</string>
+    <string name="requisitos_obligatorios">Requisits obligatoris</string>
+    <string name="requisitos_largo">La descripció dels requisits és massa llarga, màxim 100 caràcters</string>
+    <string name="enviar_correo">Enviar correu</string>
+    <string name="code_request">Demanar codi de recuperació</string>
+
+    <string name="back_to_login"><b><u>Tornar a la pantalla anterior</u></b></string>
+    <string name="introducir_codigo">Codi(*):</string>
+
+    <string name="titulo_mis_servicios">Els meus serveiss</string>
+
+    <string-array name="clic_servicio">
+        <item>Editar</item>
+        <item>Eliminar</item>
+    </string-array>
 
     <string-array name="lista_usuarios">
         <item>Refugiat</item>
@@ -137,5 +186,13 @@
         <item>Gris</item>
     </string-array>
 
+    <string-array name="lista_idiomas">
+        <item>Anglès</item>
+        <item>Català</item>
+        <item>Espanyol</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

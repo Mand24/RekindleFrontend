@@ -28,14 +28,18 @@
         <activity android:name=".view.usuarios.EditarPerfil" />
         <activity android:name=".view.CambiarPassword" />
         <activity android:name=".view.servicios.MostrarServicio" />
+        <activity android:name=".view.RecuperarPassword"/>
+        <activity android:name=".view.CodePasswordRequest"/>
+        <activity android:name=".view.servicios.MisServicios"/>
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!-- <activity android:name=".AppBaseActivity"></activity> -->
+        <!--<activity android:name=".AppBaseActivity"></activity> -->
         <activity android:name=".view.PantallaAjustes"></activity>
+        <activity android:name=".view.About"></activity>
     </application>
 
 </manifest>
