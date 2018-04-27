@@ -39,6 +39,7 @@ public class PantallaInicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        comprobar_login();
         setContentView(R.layout.activity_pantalla_inicio);
 
         bind();
@@ -71,6 +72,18 @@ public class PantallaInicio extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), " Not implemented ", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void comprobar_login(){
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String param = datos.getString("email", "");
+        if (param.isEmpty()){
+            return;
+        }
+        else {
+            Intent i = new Intent(this, MenuPrincipal.class);
+            startActivity(i);
+        }
     }
 
     public void login() {

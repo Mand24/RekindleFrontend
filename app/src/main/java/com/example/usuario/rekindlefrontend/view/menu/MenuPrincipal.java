@@ -3,9 +3,13 @@ package com.example.usuario.rekindlefrontend.view.menu;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -55,9 +59,13 @@ public class MenuPrincipal extends AppBaseActivity {
         Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
-            Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
-            startActivity(i);
+            moveTaskToBack(true);
         }
     }
 
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(MenuPrincipal.this, PantallaInicio.class);
+        startActivity(i);
+    }
 }

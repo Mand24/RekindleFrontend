@@ -1,11 +1,17 @@
 package com.example.usuario.rekindlefrontend;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.view.PantallaAjustes;
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
@@ -24,15 +32,14 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 //    private ListView listView;
 //    private String[] opciones = { "Opción 1", "Opción 2", "Opción 3", "Opción 4" };
 
-    private RelativeLayout view_stub; //This is the framelayout to keep your content view
-    private NavigationView navigationView; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
-    private DrawerLayout drawerLayout;
+    protected RelativeLayout view_stub; //This is the framelayout to keep your content view
+    protected NavigationView navigationView; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
+    protected DrawerLayout drawerLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_app_base);// The base layout that contains your navigation drawer.
-
 //      listView = (ListView) findViewById(R.id.list_view);
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,9 +81,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                                 .show();
                         break;
                     case R.id.cerrar_sesion:
-                        Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
-                                .LENGTH_SHORT)
-                                .show();
+                        openDialog();
                         break;
                 }
                 return true;
@@ -102,6 +107,33 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 //getActionBar().setDisplayHomeAsUpEnabled(true);
         // and so on...
     }
+
+    private void openDialog() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor miEditor = datos.edit();
+                        miEditor.putString("email","");
+                        miEditor.apply();
+                        Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
+                                .LENGTH_SHORT)
+                                .show();
+                        gotoInicio();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    protected abstract void gotoInicio();
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
