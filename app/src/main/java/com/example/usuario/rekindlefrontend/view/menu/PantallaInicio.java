@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
 
 
@@ -58,7 +59,7 @@ public class PantallaInicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent i = new Intent(getApplicationContext(), RegistroUsuario.class);
+                Intent i = new Intent(getApplicationContext(), CrearServicio.class);
                 startActivity(i);
             }
         });

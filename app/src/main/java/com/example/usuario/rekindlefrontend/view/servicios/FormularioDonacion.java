@@ -1,11 +1,15 @@
 package com.example.usuario.rekindlefrontend.view.servicios;
 
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +21,11 @@ import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 
@@ -28,6 +37,9 @@ public class FormularioDonacion extends AbstractFormatChecker {
 
     private ArrayList<String> param;
 
+    private EditText editStartingTime, editEndingTime;
+    private EditText eDireccion;
+    private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private EditText eNombre;
     private EditText eEmail;
     private EditText eTelefono;
@@ -69,7 +81,24 @@ public class FormularioDonacion extends AbstractFormatChecker {
             }
         });
 
+        eDireccion = view.findViewById(R.id.direccion_donacion);
+        eDireccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
+                            .MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                }catch (GooglePlayServicesRepairableException e) {
+                    // TODO: Handle the error.
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    // TODO: Handle the error.
+                }
+            }
+        });
 
+        editStartingTime = (EditText) view.findViewById(R.id
+                .franja_horaria_inicio_donacion);
         SetTime fromTime = new SetTime(editStartingTime, container.getContext());
         SetTime toTime = new SetTime(editEndingTime, container.getContext());
         return view;
@@ -99,6 +128,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
     }
 
     public void obtenerParametros(){
+        param.add(eDireccion.getText().toString());
 
         param = new ArrayList<String>();
 
@@ -124,6 +154,24 @@ public class FormularioDonacion extends AbstractFormatChecker {
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                 .string.donacion_fallida), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                Log.i("==================", "Place: " + place.getName());
+                eDireccion.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                // TODO: Handle the error.
+                Log.i("==================", status.getStatusMessage());
+
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
+            }
+        }
     }
 
     private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {

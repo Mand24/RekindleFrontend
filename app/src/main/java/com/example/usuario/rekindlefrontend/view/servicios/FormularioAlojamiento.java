@@ -1,29 +1,35 @@
 package com.example.usuario.rekindlefrontend.view.servicios;
 
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+
 import android.app.DatePickerDialog;
-import android.content.Context;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
-import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 /**
@@ -39,6 +45,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     private EditText eDireccion;
     private EditText eSolicitudes;
     private EditText eDeadline;
+    private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
     private EditText eDescripcion;
@@ -50,16 +57,14 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_formulario_alojamiento, container,
                 false);
 
-        //establecer las vistas
-        setVistas(view);
-
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_alojamiento);
-        button_send.setOnClickListener(new View.OnClickListener(){
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(
+                R.id.enviar_formulario_alojamiento);
+        button_send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -75,6 +80,24 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             }
         });
 
+        eDireccion = view.findViewById(R.id.direccion_alojamiento);
+        eDireccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
+                            .MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                }catch (GooglePlayServicesRepairableException e) {
+                    // TODO: Handle the error.
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    // TODO: Handle the error.
+                }
+            }
+        });
+
+
+        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         SetDate setDate = new SetDate(eDeadline, container.getContext());
 
         return view;
@@ -87,9 +110,8 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         eTelefono = view.findViewById(R.id.telefono_alojamiento);
         eDireccion = view.findViewById(R.id.direccion_alojamiento);
         eSolicitudes = view.findViewById(R.id.solicitudes_alojamiento);
-        eDeadline = view.findViewById (R.id.fecha_limite_alojamiento);
+        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         eDescripcion = view.findViewById(R.id.descripcion_alojamiento);
-
     }
 
     public void checkCampos(View view) throws Exception {
@@ -102,7 +124,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
 
     }
 
-    public void obtenerParametros(){
+    public void obtenerParametros() {
 
         param = new ArrayList<String>();
 
@@ -116,7 +138,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
 
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void tratarResultadoPeticion(boolean result) {
 
         if (result) {
 
@@ -125,8 +147,28 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
             startActivity(i);
 
-        }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                .string.servicio_alojamiento_fallido), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.servicio_alojamiento_fallido), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                Log.i("==================", "Place: " + place.getName());
+                eDireccion.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                // TODO: Handle the error.
+                Log.i("==================", status.getStatusMessage());
+
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
+            }
+        }
     }
 
     private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
