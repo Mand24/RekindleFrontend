@@ -57,29 +57,29 @@
     <string name="formulario_donacion">Donation form:</string>
     <string name="lugar_recogida_donacion">Pick up location(*):</string>
     <string name="franja_horaria_donacion">Pick up time:</string>
-    <string name="franja_horaria_inicio_donacion">Starting pick up time:</string>
-    <string name="franja_horaria_fin_donacion">Ending pick up time:</string>
+    <string name="franja_horaria_inicio_donacion">Starting pick up time(*):</string>
+    <string name="franja_horaria_fin_donacion">Ending pick up time(*):</string>
     <string name="curso_educativo">Educational course</string>
     <string name="oferta_empleo">Job offer</string>
     <string name="formulario_alojamiento">Housing form:</string>
-    <string name="limite_solicitudes">Limit of requests(*):</string>
+    <string name="limite_solicitudes">Limit of requests:</string>
     <string name="domicilio">Domicile(*):</string>
-    <string name="fecha_limite">Deadline(*):</string>
-    <string name="descripcion">Description:</string>
+    <string name="fecha_limite">Deadline:</string>
+    <string name="descripcion">Description(*):</string>
     <string name="formulario_oferta_empleo">Job offer form:</string>
-    <string name="puesto_oferta_empleo">Job position:</string>
-    <string name="requisitos_oferta_empleo">Requirements:</string>
-    <string name="jornada_oferta_empleo">Workday:</string>
-    <string name="horas_semanales_oferta_empleo">Weekly hours:</string>
-    <string name="duracion_oferta_empleo">Estimated duration:</string>
+    <string name="puesto_oferta_empleo">Job position(*):</string>
+    <string name="requisitos_oferta_empleo">Requirements(*):</string>
+    <string name="jornada_oferta_empleo">Workday(*):</string>
+    <string name="horas_semanales_oferta_empleo">Weekly hours(*):</string>
+    <string name="duracion_oferta_empleo">Estimated duration(*):</string>
     <string name="plazas_oferta_empleo">Available places:</string>
-    <string name="sueldo_oferta_empleo">Salary:</string>
-    <string name="telefono">Contact telephone number:</string>
-    <string name="direccion">Address:</string>
+    <string name="sueldo_oferta_empleo">Salary(*):</string>
+    <string name="telefono">Contact telephone number(*):</string>
+    <string name="direccion">Address(*):</string>
     <string name="formulario_curso_educativo">Educative course form</string>
-    <string name="requisitos_curso_educativo">Prerequisites:</string>
+    <string name="requisitos_curso_educativo">Prerequisites(*):</string>
     <string name="ambito_curso_educativo">Field:</string>
-    <string name="horario_curso_educativo">Schedule:</string>
+    <string name="horario_curso_educativo">Schedule(*):</string>
     <string name="precio">Price:</string>
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
@@ -124,6 +124,50 @@
     <string name="rights">All rights reserved</string>
 
 
+    <string name="nombre_obligatorio">Name required</string>
+    <string name="nombre_largo">Name is too long, maximum 20 letters</string>
+    <string name="nombre_letras">The name can only contain letters</string>
+    <string name="email_obligatorio">Email required</string>
+    <string name="email_largo">Email is too long, maximum 30 characters</string>
+    <string name="email_formato">Email format is incorrect; correct format = x@x.x</string>
+    <string name="contraseña_obligatoria">Password is required</string>
+    <string name="contraseña_larga">Password is too long, maximum 15 characters</string>
+    <string name="contraseña_corta">Password too short, minimum 4 characters</string>
+    <string name="contraseña_distinta">Passwords do not match</string>
+    <string name="apellido1_obligatorio">First last name required</string>
+    <string name="apellido1_largo">First last name too long, maximum 20 letters</string>
+    <string name="apellido1_letras">First last name can only contains letters</string>
+    <string name="apellido2_largo">Second last name too long, maximum 20 letters</string>
+    <string name="apellido2_letras">Second last name can only contains letters</string>
+    <string name="telefonoUsuario_numeros">Phone only can contains digits</string>
+    <string name="telefonoUsuario_largo">Phone too long, maximum 40 digits</string>
+    <string name="procedencia_letras">The name of the country of origin can only contain letters</string>
+    <string name="procedencia_largo">The name of the country of origin cis too long, maximum 20 letters</string>
+    <string name="pueblo_largo">The name of the town is too long, maximum 40 letters</string>
+    <string name="pueblo_letras">The name os the towns can only contain letters</string>
+    <string name="etnia_largo">The name of the ethnic group is too long, maximum 20 letters</string>
+    <string name="etnia_letras">The name of the ethnic group can only contain letters</string>
+    <string name="nombreServicio_obligatorio">Name of service required</string>
+    <string name="nombreServicio_largo">The name of the service is too long, maximum 50 letters</string>
+    <string name="nombreServicio_letras">The name of the service can only contain letters</string>
+    <string name="telefonoServicio_obligatorio">Phone required</string>
+    <string name="solicitudes_numeros">The request limit must be a number</string>
+    <string name="descripcion_obligatoria">Description is required</string>
+    <string name="descricpion_larga">The description is too long, maximum 300 letters</string>
+    <string name="descripcion_letras">The description can only contain letters</string>
+    <string name="puestoTrabajo_obligatorio">Job required</string>
+    <string name="puestoTrabajo_largo">The name of the job is too long, maximum 50 characters</string>
+    <string name="requisitos_obligatorios">Requirements are required</string>
+    <string name="requisitos_largo">The description of the requirements is too long, maximum 100 characters</string>
+    <string name="sueldo_obligatorio">Salary is required</string>
+    <string name="sueldo_formto">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
+    <string name="plazas_numeros">Places only can contain digits</string>
+    <string name="plazas_largo">The number of places is too long, maximum 5 digits</string>
+    <string name="ambito_obligatorio">Ambit required</string>
+    <string name="ambito_largo">Ambit is too long, maximum 50 characters</string>
+    <string name="horario_obligatorio">Schedule requiered</string>
+    <string name="horario_largo">The schedule is too long, maximum 30 characters</string>
+    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
