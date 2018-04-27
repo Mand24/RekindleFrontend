@@ -27,13 +27,13 @@ import java.util.List;
 
 public class ListarServicios extends AppCompatActivity implements Filterable {
 
-    private List<Servicio> servicios = new ArrayList<>();
-    private List<Servicio> serviciosFiltrados = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private ServicesAdapter mAdapter;
+    protected List<Servicio> servicios = new ArrayList<>();
+    protected List<Servicio> serviciosFiltrados = new ArrayList<>();
+    protected RecyclerView recyclerView;
+    protected ServicesAdapter mAdapter;
 
-    private ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
-    private List<Boolean> filters = new ArrayList<>(
+    protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
+    protected List<Boolean> filters = new ArrayList<>(
             Arrays.asList(true, true, true, true));
 
     @Override
@@ -53,16 +53,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
-                new CustomItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
-                        //TODO:Algo al clicar
-                        Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("Servicio", servicios.get(position));
-                        startActivity(intent);
-                    }
-                });
+        setAdapterListener();
+
         recyclerView.setAdapter(mAdapter);
 
         filtrarAlojamiento = (ImageButton) findViewById(R.id.boton_tipo_alojamiento);
@@ -140,6 +132,19 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
     }
 
+    protected void setAdapterListener() {
+        mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
+                new CustomItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        //TODO:Algo al clicar
+                        Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
+                        intent.putExtra("Servicio", servicios.get(position));
+                        startActivity(intent);
+                    }
+                });
+    }
+
     private void filtrar() {
         String output = "";
         serviciosFiltrados = new ArrayList<>();
@@ -151,7 +156,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
         refreshItems();
     }
 
-    private void refreshItems() {
+    protected void refreshItems() {
 
         mAdapter.setServicios(serviciosFiltrados);
         mAdapter.notifyDataSetChanged();

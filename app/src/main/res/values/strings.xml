@@ -118,10 +118,22 @@
     <string name="ajustes_generales">General settings</string>
     <string name="idioma">Language:</string>
 
+    <string name="enviar_correo">Send mail</string>
+    <string name="code_request">Request recovery code</string>
     <string name="title_about">About Rekindle App</string>
     <string name="version">Version 0.2</string>
     <string name="company">2018-2018 Rekindle Team</string>
     <string name="rights">All rights reserved</string>
+
+    <string name="back_to_login"><b><u>Back to the previous screen</u></b></string>
+    <string name="introducir_codigo">Code(*):</string>
+
+    <string name="titulo_mis_servicios">My services</string>
+
+    <string-array name="clic_servicio">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
 
 
     <string name="nombre_obligatorio">Name required</string>
@@ -211,6 +223,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 
 </resources>

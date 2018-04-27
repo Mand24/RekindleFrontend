@@ -151,6 +151,19 @@
     <string name="horario_largo">El horario es demasiado largo, máximo 30 caracteres</string>
     <string name="precio_formato">Formato de precio incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
 
+    <string name="enviar_correo">Enviar correo</string>
+
+    <string name="code_request">Pedir codigo de recuperación</string>
+
+    <string name="back_to_login"><b><u>Volver a la pantalla anterior</u></b></string>
+    <string name="introducir_codigo">Código(*):</string>
+
+    <string name="titulo_mis_servicios">Mis servicios</string>
+
+    <string-array name="clic_servicio">
+        <item>Editar</item>
+        <item>Eliminar</item>
+    </string-array>
 
     <string-array name="lista_usuarios">
         <item>Refugiado</item>
@@ -192,4 +205,6 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

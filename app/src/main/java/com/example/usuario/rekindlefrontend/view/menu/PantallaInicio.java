@@ -17,6 +17,9 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.CambiarPassword;
+import com.example.usuario.rekindlefrontend.view.CodePasswordRequest;
+import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
 
 
@@ -68,9 +71,8 @@ public class PantallaInicio extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(getApplicationContext(), CambiarPassword.class);
-                //startActivity(i);
-                Toast.makeText(getApplicationContext(), " Not implemented ", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), CodePasswordRequest.class);
+                startActivity(i);
             }
         });
     }
@@ -165,10 +167,12 @@ public class PantallaInicio extends AppCompatActivity {
     public void onBackPressed() {
         // disable going back to the MainActivity
         backpress = (backpress + 1);
-        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
             moveTaskToBack(true);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
         }
     }
 
