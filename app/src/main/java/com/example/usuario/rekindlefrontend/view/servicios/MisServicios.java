@@ -22,7 +22,7 @@ public class MisServicios extends ListarServicios {
         mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
                 new CustomItemClickListener() {
                     @Override
-                    public void onItemLongClick(View v, int position) {
+                    public void onItemClick(View v, int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
                                 (MisServicios.this);
                         alertDialog.setTitle("Elije una opcion").setItems(R.array.clic_servicio,

@@ -42,7 +42,6 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
     private EditText eNombre;
     private EditText eEmail;
     private EditText eTelefono;
-    private EditText eDireccion;
     private EditText eAmbito;
     private EditText eRequisitos;
     private EditText eHorario;

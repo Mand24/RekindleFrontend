@@ -41,7 +41,6 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     private EditText eNombre;
     private EditText eEmail;
     private EditText eTelefono;
-    private EditText eDireccion;
     private EditText ePuesto;
     private EditText eRequisitos;
     private EditText eJornada;

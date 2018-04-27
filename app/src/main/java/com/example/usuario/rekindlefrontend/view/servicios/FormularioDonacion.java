@@ -43,10 +43,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
     private EditText eNombre;
     private EditText eEmail;
     private EditText eTelefono;
-    private EditText eDireccion;
     private EditText eSolicitudes;
-    private EditText editStartingTime;
-    private EditText editEndingTime;
     private EditText eDescripcion;
 
     public FormularioDonacion() {
