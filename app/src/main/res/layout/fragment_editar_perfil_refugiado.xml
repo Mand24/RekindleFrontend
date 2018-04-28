@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.usuarios.EditarPerfilRefugiado"
+>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/dim100"
+                android:layout_height="@dimen/dim100"
+                android:src="@drawable/foto_perfil"
+                android:layout_marginLeft="@dimen/dim10"
+                android:layout_marginTop="@dimen/dim10"
+            />
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/label_tipo_usuario"
+                    style="@style/text_view"
+                    android:layout_marginStart="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:text="@string/tipo_usuario"
+                />
+
+                <TextView
+                    android:id="@+id/titulo_registro_refugiado"
+                    style="@style/text_view"
+                    android:layout_marginStart="@dimen/dim10"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:text="@string/refugiado"
+                />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/subtitulo_registro_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/subtitulo_formulario"
+            />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/nombre_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_nombre_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/email_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_email_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/apellido1_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_1apellido_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/apellido2_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_2apellido_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/telefono_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_numero_telefono"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/naciminento_usuario_perfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/texto_nacimiento_refugiado"
+                    android:inputType="date"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/texto_sexo_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_sexo_refugiado" />
+
+            <Spinner
+                android:id="@+id/sexo_usuario_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
+            />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/pais_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_procedencia_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/pueblo_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_pueblo_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/etnia_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_etnia_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/texto_grupo_sanguineo_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_grupo_sanguineo_refugiado"
+            />
+
+            <Spinner
+                android:id="@+id/sangre_usuario_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
+            />
+
+            <TextView
+                android:id="@+id/texto_ojos_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_ojos_refugiado"
+            />
+
+            <Spinner
+                android:id="@+id/ojos_usuario_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
+            />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/cambiar_password"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/cambiar_password"
+            />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/guardar_editar_perfil"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/guardar"
+            />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

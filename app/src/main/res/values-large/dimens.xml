@@ -9,8 +9,9 @@
     <dimen name="dim30">60dp</dimen>
     <dimen name="dim50">100dp</dimen>
     <dimen name="dim100">200dp</dimen>
-    <dimen name="dim200">200dp</dimen>
-    <dimen name="dim300">300dp</dimen>
+    <dimen name="dim125">250dp</dimen>
+    <dimen name="dim200">400dp</dimen>
+    <dimen name="dim300">600dp</dimen>
     <dimen name="tituloPeq">32sp</dimen>
     <dimen name="titulo">48sp</dimen>
 

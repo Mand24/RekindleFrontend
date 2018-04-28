@@ -16,7 +16,7 @@
     <string name="login">Log in</string>
     <string name="enviar">Send</string>
     <string name="refugiado">Refugee</string>
-    <string name="voluntario">Voluntary</string>
+    <string name="voluntario">Volunteer</string>
     <string name="subtitulo_formulario">Fill the next fields:</string>
     <string name="texto_nombre_formulario">Name(*):</string>
     <string name="texto_1apellido_formulario">Surname(*):</string>

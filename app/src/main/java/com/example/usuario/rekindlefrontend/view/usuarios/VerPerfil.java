@@ -35,7 +35,7 @@ public class VerPerfil extends AppCompatActivity {
 
 
 
-        menu(1);
+        menu(0);
     }
 
     public void menu(int tipo){
