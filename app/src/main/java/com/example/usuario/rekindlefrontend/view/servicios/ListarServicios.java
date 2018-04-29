@@ -31,6 +31,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
     protected List<Servicio> serviciosFiltrados = new ArrayList<>();
     protected RecyclerView recyclerView;
     protected ServicesAdapter mAdapter;
+    protected SearchView searchView;
 
     protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
     protected List<Boolean> filters = new ArrayList<>(
@@ -72,7 +73,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     filtrarAlojamiento.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
-                filtrar();
+                getFilter().filter(searchView.getQuery());
             }
         });
 
@@ -90,7 +91,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     filtrarDonacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
-                filtrar();
+                getFilter().filter(searchView.getQuery());
             }
         });
 
@@ -108,7 +109,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     filtrarEducacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
-                filtrar();
+                getFilter().filter(searchView.getQuery());
             }
         });
 
@@ -126,7 +127,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     filtrarEmpleo.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
-                filtrar();
+                getFilter().filter(searchView.getQuery());
             }
         });
 
@@ -145,7 +146,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                 });
     }
 
-    private void filtrar() {
+    /*private void filtrar() {
         String output = "";
         serviciosFiltrados = new ArrayList<>();
         for (Servicio s : servicios) {
@@ -154,7 +155,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             }
         }
         refreshItems();
-    }
+    }*/
 
     protected void refreshItems() {
 
@@ -183,28 +184,6 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
         serviciosFiltrados = servicios;
     }
 
-    /*private class AsyncTaskCall extends AsyncTask<Void, Void, ArrayList<Servicio>> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-        @Override
-        protected ArrayList<Servicio> doInBackground(Void...voids) {
-
-            String url = getResources().getString(R.string.url_server);
-            ArrayList<Servicio> result;
-            try {
-                result = ComunicacionServicios.listarServicios(url);
-                //result = ComunicacionUsuarios.test2(url);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
-
     @Override
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
@@ -217,7 +196,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         MenuItem search = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) search.getActionView();
+        searchView = (SearchView) search.getActionView();
         search(searchView);
         return true;
     }
@@ -249,24 +228,24 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
                 String charString = charSequence.toString();
 
-                if (charString.isEmpty()) {
+                ArrayList<Servicio> filteredList = new ArrayList<>();
 
-                    serviciosFiltrados = servicios;
-                } else {
+                for (Servicio s : servicios) {
+                    if (filters.get(s.getId())) {
+                        if(!charString.isEmpty()) {
+                            if (s.getNombre().toLowerCase().contains(charString) || s
+                                    .getDireccion().toLowerCase().contains(charString)) {
 
-                    ArrayList<Servicio> filteredList = new ArrayList<>();
-
-                    for (Servicio row : servicios) {
-
-                        if (row.getNombre().toLowerCase().contains(charString) || row
-                                .getDireccion().toLowerCase().contains(charString)) {
-
-                            filteredList.add(row);
+                                filteredList.add(s);
+                            }
+                        }
+                        else{
+                            filteredList.add(s);
                         }
                     }
-
-                    serviciosFiltrados = filteredList;
                 }
+
+                serviciosFiltrados = filteredList;
 
                 FilterResults filterResults = new FilterResults();
                 filterResults.values = serviciosFiltrados;
