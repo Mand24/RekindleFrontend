@@ -13,6 +13,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.entity.Servicio;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -20,7 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MostrarAlojamiento extends Fragment {
+public class MostrarAlojamiento extends Fragment implements OnMapReadyCallback {
 
 
     public MostrarAlojamiento() {
@@ -42,19 +43,18 @@ public class MostrarAlojamiento extends Fragment {
                 false);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_mostrar_alojamiento);
 
-        titulo = (TextView) findViewById(R.id.titulo_alojamiento);
-        descripcion = (TextView) findViewById(R.id.descripcion_alojamiento);
-        direccion = (TextView) findViewById(R.id.direccion_alojamiento);
-        fecha = (TextView) findViewById(R.id.fecha_limite_alojamiento);
+        titulo = (TextView) view.findViewById(R.id.titulo_alojamiento);
+        descripcion = (TextView) view.findViewById(R.id.descripcion_alojamiento);
+        direccion = (TextView) view.findViewById(R.id.direccion_alojamiento);
+        fecha = (TextView) view.findViewById(R.id.fecha_limite_alojamiento);
         mMapView = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_mapView);
-        numero = (TextView) findViewById(R.id.numero_contacto_servicio);
-        chat = (AppCompatButton) findViewById(R.id.chat);
-        valoracion = (TextView) findViewById(R.id.valoracion_servicio);
-        opiniones = (AppCompatButton) findViewById(R.id.opiniones);
-        inscribirse = (AppCompatButton) findViewById(R.id.inscribirse);
+        numero = (TextView) view.findViewById(R.id.numero_contacto_servicio);
+        chat = (AppCompatButton) view.findViewById(R.id.chat);
+        valoracion = (TextView) view.findViewById(R.id.valoracion_servicio);
+        opiniones = (AppCompatButton) view.findViewById(R.id.opiniones);
+        inscribirse = (AppCompatButton) view.findViewById(R.id.inscribirse);
 
         Servicio servicio = (Servicio) getIntent().getSerializableExtra("Servicio");
 
@@ -66,6 +66,7 @@ public class MostrarAlojamiento extends Fragment {
         valoracion.setText("Valoracion: " + servicio.getValoracion());
 
         mMapView.getMapAsync(this);
+        return view;
     }
 
     @Override

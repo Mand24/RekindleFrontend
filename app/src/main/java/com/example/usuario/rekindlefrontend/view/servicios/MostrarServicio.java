@@ -1,18 +1,16 @@
 package com.example.usuario.rekindlefrontend.view.servicios;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.entity.Servicio;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 
-public class MostrarServicio extends AppCompatActivity implements OnMapReadyCallback {
+public class MostrarServicio extends AppCompatActivity {
 
     Fragment tipoServicio;
 
@@ -21,9 +19,22 @@ public class MostrarServicio extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_servicio);
 
+        menu();
+    }
 
-        Servicio servicio = (Servicio) getIntent().getSerializableExtra("Servicio");
+    public void menu(){
 
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        tipoServicio = new MostrarAlojamiento();
+        transaction.replace(R.id.formulario, tipoServicio);
+        transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        startActivity(i);
     }
 
 }
