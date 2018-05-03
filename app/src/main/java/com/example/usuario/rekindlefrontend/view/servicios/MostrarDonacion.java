@@ -1,8 +1,8 @@
 package com.example.usuario.rekindlefrontend.view.servicios;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +13,15 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.entity.Servicio;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MostrarDonacion extends Fragment {
+public class MostrarDonacion extends Fragment implements OnMapReadyCallback {
 
 
     public MostrarDonacion() {
@@ -29,7 +30,7 @@ public class MostrarDonacion extends Fragment {
 
 
     TextView titulo, descripcion, direccion, inicio, fin, numero, valoracion;
-    SupportMapFragment mMapView;
+    MapFragment mMapView;
     GoogleMap mGoogleMap;
     AppCompatButton chat, opiniones, inscribirse;
 
@@ -48,20 +49,18 @@ public class MostrarDonacion extends Fragment {
         direccion = (TextView) view.findViewById(R.id.direccion_donacion);
         inicio = (TextView) view.findViewById(R.id.hora_inicio_donacion);
         fin = (TextView) view.findViewById(R.id.hora_fin_donacion);
-        mMapView = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.google_mapView);
+        mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
         numero = (TextView) view.findViewById(R.id.numero_contacto_servicio);
         chat = (AppCompatButton) view.findViewById(R.id.chat);
         valoracion = (TextView) view.findViewById(R.id.valoracion_servicio);
         opiniones = (AppCompatButton) view.findViewById(R.id.opiniones);
         inscribirse = (AppCompatButton) view.findViewById(R.id.inscribirse);
 
-        Servicio servicio = (Servicio) getIntent().getSerializableExtra("Servicio");
+        Servicio servicio = (Servicio) getActivity().getIntent().getSerializableExtra("Servicio");
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
-        fecha.setText(servicio.getFecha());
         numero.setText(servicio.getNumero());
         valoracion.setText("Valoracion: " + servicio.getValoracion());
 

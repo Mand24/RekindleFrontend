@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".view.servicios.MostrarCursoEducativo">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+            tools:context=".view.servicios.MostrarCursoEducativo">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,12 +57,11 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/cl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/info">
+            android:layout_height="wrap_content">
 
             <fragment
                 android:id="@+id/google_mapView"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:name="com.google.android.gms.maps.MapFragment"
                 android:layout_width="match_parent"
                 android:layout_margin="@dimen/dim6"
                 android:layout_height="0dp"

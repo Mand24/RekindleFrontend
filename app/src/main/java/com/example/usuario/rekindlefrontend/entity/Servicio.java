@@ -4,15 +4,19 @@ import java.io.Serializable;
 
 public class Servicio implements Serializable {
 
-    private String nombre, descripcion, direccion, fecha, numero, valoracion;
-    private int tipo, id;
+    private String nombre;
+    private String descripcion;
+    private String direccion;
+    private String numero;
+    private String valoracion;
+    private int tipo;
+    private int id;
 
-    public Servicio(int id, String nombre, String descripcion, String direccion, String fecha,
+    public Servicio(int id, String nombre, String descripcion, String direccion,
             String numero, String valoracion, int tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;
-        this.fecha = fecha;
         this.numero = numero;
         this.valoracion = valoracion;
         this.tipo = tipo;
@@ -33,10 +37,6 @@ public class Servicio implements Serializable {
 
     public String getDireccion() {
         return direccion;
-    }
-
-    public String getFecha() {
-        return fecha;
     }
 
     public String getNumero() {
