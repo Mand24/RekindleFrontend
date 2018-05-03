@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.menu.MenuPrincipalVoluntario">
+    tools:context=".view.menu.menuPrincipal.MenuPrincipalVoluntario">
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/listar_servicios_MenuPrincipalVoluntario"

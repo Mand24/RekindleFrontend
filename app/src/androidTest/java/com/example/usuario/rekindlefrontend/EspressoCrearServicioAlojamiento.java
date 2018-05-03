@@ -33,7 +33,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 
 
-import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
 
 
 @RunWith(AndroidJUnit4.class)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.usuarios.RegistroUsuario"
+    tools:context=".view.usuarios.registro.RegistroUsuario"
     android:background="@drawable/fondo">
 
     <fragment
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="@dimen/dim1"
         android:id="@+id/eleccion_usuario"
-        android:name="com.example.usuario.rekindlefrontend.view.usuarios.EleccionTipoUsuario"
+        android:name="com.example.usuario.rekindlefrontend.view.usuarios.registro.EleccionTipoUsuario"
         tools:layout="@layout/fragment_eleccion_tipo_usuario">
 
     </fragment>

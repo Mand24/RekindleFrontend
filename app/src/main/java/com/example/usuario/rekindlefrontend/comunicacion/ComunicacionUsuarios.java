@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.example.usuario.rekindlefrontend.data.entity.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;

@@ -13,24 +13,24 @@
     <application android:allowBackup="true" android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true" android:theme="@style/AppTheme.Dark">
-        <activity android:name=".view.usuarios.RegistroUsuario" />
-        <activity android:name=".view.menu.PantallaInicio" android:theme="@style/AppTheme.Dark">
+        <activity android:name=".view.usuarios.registro.RegistroUsuario" />
+        <activity android:name=".view.menu.login.Login" android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.menu.MenuPrincipal" />
-        <activity android:name=".view.usuarios.VerPerfil" />
-        <activity android:name=".view.servicios.CrearServicio" />
-        <activity android:name=".view.servicios.ListarServicios" />
-        <activity android:name=".view.usuarios.EditarPerfil" />
-        <activity android:name=".view.CambiarPassword" />
-        <activity android:name=".view.servicios.MostrarServicio" />
-        <activity android:name=".view.RecuperarPassword"/>
-        <activity android:name=".view.CodePasswordRequest"/>
-        <activity android:name=".view.servicios.MisServicios"/>
+        <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
+        <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
+        <activity android:name=".view.servicios.crear.CrearServicio" />
+        <activity android:name=".view.servicios.listar.ListarServicios" />
+        <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
+        <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />
+        <activity android:name=".view.servicios.mostrar.MostrarServicio" />
+        <activity android:name=".view.menu.login.RecuperarPassword"/>
+        <activity android:name=".view.menu.login.CodePasswordRequest"/>
+        <activity android:name=".view.servicios.listar.MisServicios"/>
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
@@ -38,8 +38,8 @@
             android:value="@integer/google_play_services_version" />
 
         <!--<activity android:name=".AppBaseActivity"></activity> -->
-        <activity android:name=".view.PantallaAjustes"></activity>
-        <activity android:name=".view.About"></activity>
+        <activity android:name=".view.menu.menuLateral.Ajustes"></activity>
+        <activity android:name=".view.menu.menuLateral.About"></activity>
     </application>
 
 </manifest>

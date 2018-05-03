@@ -1,7 +1,5 @@
 package com.example.usuario.rekindlefrontend;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,24 +8,19 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.Usuario;
-import com.example.usuario.rekindlefrontend.view.About;
-import com.example.usuario.rekindlefrontend.view.PantallaAjustes;
-import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
+import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
+import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
@@ -75,7 +68,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), "configuracion!", Toast
 //                                .LENGTH_SHORT)
 //                                .show();
-                        i = new Intent(getApplicationContext(), PantallaAjustes.class);
+                        i = new Intent(getApplicationContext(), Ajustes.class);
                         startActivity(i);
                         break;
 

@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
 // Runs all unit tests.
 @RunWith(Suite.class)
 @Suite.SuiteClasses({   EspressoMenuPrincipal.class,
-                        EspressoPantallaInicio.class,
+                        EspressoLogin.class,
                         EspressoRegistroUsuario.class,
                         EspressoVerPerfilRefugiado.class,
                         EspressoCambiarPassword.class,

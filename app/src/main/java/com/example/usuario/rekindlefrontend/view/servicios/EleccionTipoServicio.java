@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
 
 
 /**

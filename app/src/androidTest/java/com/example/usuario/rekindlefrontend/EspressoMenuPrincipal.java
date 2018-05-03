@@ -18,10 +18,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
-import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
-import com.example.usuario.rekindlefrontend.view.servicios.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfilRefugiado;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
+import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)

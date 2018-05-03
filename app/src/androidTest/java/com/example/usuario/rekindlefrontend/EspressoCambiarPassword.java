@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 
 
-import com.example.usuario.rekindlefrontend.view.CambiarPassword;
+import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.CambiarPassword;
 
 
 @RunWith(AndroidJUnit4.class)

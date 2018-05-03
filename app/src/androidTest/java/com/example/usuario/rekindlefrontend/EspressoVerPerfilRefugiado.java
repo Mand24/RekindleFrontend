@@ -18,8 +18,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
-import com.example.usuario.rekindlefrontend.view.usuarios.EditarPerfil;
-import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfilRefugiado;
+import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
+import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)

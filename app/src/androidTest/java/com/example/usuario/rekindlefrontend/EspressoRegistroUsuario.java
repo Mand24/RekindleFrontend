@@ -35,7 +35,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.not;
 
 
-import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
+import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 
 
 @RunWith(AndroidJUnit4.class)
