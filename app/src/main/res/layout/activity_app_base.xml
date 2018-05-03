@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/view_stub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
+    <!--<ListView-->
+    <!--android:id="@+id/list_view"-->
+    <!--android:layout_width="300dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="left"-->
+    <!--android:background="#007095"-->
+    <!--android:choiceMode="singleChoice"-->
+    <!--android:divider="#005875"-->
+    <!--android:dividerHeight="2dp" />-->
+
+    <!--<android.support.design.widget.NavigationView-->
+    <!--android:id="@+id/navigation"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="start"-->
+    <!--app:headerLayout="@layout/header"-->
+    <!--app:menu="@menu/menu_lateral" />-->
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/menu_lateral"
+    />
+</android.support.v4.widget.DrawerLayout>

@@ -85,7 +85,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">@dimen/dim24</item>
-        <item name="android:textSize">@dimen/texto</item>
+        <item name="android:textSize">@dimen/textoPeq</item>
 
     </style>
 
@@ -102,7 +102,7 @@
         <item name="android:dividerHeight">0.5dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/texto</item>
+        <item name="android:textSize">@dimen/textoPeq</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:padding">@dimen/dim6</item>
 
@@ -111,5 +111,8 @@
     <style name="TextLabel" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">@dimen/dim30</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

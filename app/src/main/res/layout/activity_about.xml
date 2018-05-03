@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.About">
+
+    <TextView
+        android:id="@+id/about_titulo"
+        style="@style/text_view"
+        android:layout_marginStart="@dimen/dim20"
+        android:layout_marginTop="@dimen/dim100"
+        android:layout_centerHorizontal="true"
+        android:text="@string/title_about"
+        />
+
+    <TextView
+        android:id="@+id/about_version"
+        style="@style/text_view"
+        android:layout_marginTop="@dimen/dim24"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/about_titulo"
+        android:text="@string/version"
+        />
+
+    <ImageView
+        android:id="@+id/about_logo"
+        android:layout_width="@dimen/dim300"
+        android:layout_height="@dimen/dim100"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/about_version"
+        android:layout_marginTop="@dimen/dim30"
+        android:src="@drawable/logo"
+        />
+
+    <TextView
+        android:id="@+id/about_company"
+        style="@style/text_view"
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/about_logo"
+        android:text="@string/company"
+        />
+
+    <TextView
+        android:id="@+id/about_rights"
+        style="@style/text_view"
+        android:layout_marginTop="@dimen/dim24"
+        android:layout_centerHorizontal="true"
+        android:text="@string/rights"
+        android:layout_below="@+id/about_company"
+        />
+
+
+
+</RelativeLayout>

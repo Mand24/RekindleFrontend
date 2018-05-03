@@ -14,19 +14,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
-import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.data.entity.Voluntario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistroVoluntario extends Fragment {
+public class RegistroVoluntario extends AbstractFormatChecker {
 
     private ArrayList<String> param;
 
@@ -36,6 +44,9 @@ public class RegistroVoluntario extends Fragment {
     private EditText eRPassword;
     private EditText ePrimer_apellido;
     private EditText eSegundo_apellido;
+
+    private APIService mAPIService;
+    private Voluntario voluntario;
 
     public RegistroVoluntario() {
         // Required empty public constructor
@@ -60,12 +71,13 @@ public class RegistroVoluntario extends Fragment {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
+                    /*boolean result = new AsyncTaskCall().execute().get();
                     tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
+                    //tratarResultadoPeticion(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCreateVoluntario();
             }
         });
 
@@ -81,36 +93,85 @@ public class RegistroVoluntario extends Fragment {
         ePrimer_apellido = view.findViewById(R.id.p_apellido_voluntario);
         eSegundo_apellido = view.findViewById(R.id.s_apellido_voluntario);
 
+        mAPIService = APIUtils.getAPIService();
+
     }
 
     public void checkCampos(View view) throws Exception {
 
-        FormatChecker.checkNombre(eNombre.getText().toString());
-        FormatChecker.checkEmail(eEmail.getText().toString());
-        FormatChecker.checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
+        checkNombre(eNombre.getText().toString());
+        checkEmail(eEmail.getText().toString());
+        checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
                 ());
-        FormatChecker.checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        FormatChecker.checkSegundo_apellido(eSegundo_apellido.getText().toString());
+        checkPrimer_apellido(ePrimer_apellido.getText().toString());
+        checkSegundo_apellido(eSegundo_apellido.getText().toString());
 
     }
 
     public void obtenerParametros(){
 
-        param = new ArrayList<String>();
+
         /*param.add("refa@gmail.com");
         param.add("sergimanel");
         param.add("refa");
         param.add("garcia");
         param.add("monserrate");*/
 
+       /* param = new ArrayList<String>();
         param.add(eEmail.getText().toString());
         param.add(ePassword.getText().toString());
         param.add(eNombre.getText().toString());
         param.add(ePrimer_apellido.getText().toString());
-        param.add(eSegundo_apellido.getText().toString());
+        param.add(eSegundo_apellido.getText().toString());*/
 
         //System.out.println("nombre: " + nombre);
 
+        voluntario = new Voluntario(eEmail.getText().toString(), ePassword.getText().toString(),
+                eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
+                eSegundo_apellido.getText().toString());
+
+    }
+
+    public void sendCreateVoluntario(){
+
+        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Voluntario>() {
+            @Override
+            public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+
+                if(response.isSuccessful()) {
+                    System.out.println("dentro respuesta ok");
+                    tratarResultadoPeticion(true);
+//                    showResponse(response.body().toString());
+//                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+                else {
+                    if (response.body() != null) System.out.println("Resposta: "+response.toString
+                            ());
+                    else System.out.println("voluntario null");
+                    System.out.println("Mensaje: "+response.message());
+                    System.out.println("codi: "+response.code());
+                    System.out.println("dentro respuesta failed");
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Voluntario> call, Throwable t) {
+//                Log.e(TAG, "Unable to submit post to API.");
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }
+                tratarResultadoPeticion(false);
+            }
+        });
     }
 
     public void tratarResultadoPeticion(boolean result){
@@ -126,7 +187,7 @@ public class RegistroVoluntario extends Fragment {
                 .string.registro_fallido), Toast.LENGTH_SHORT).show();
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+   /* private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -147,5 +208,5 @@ public class RegistroVoluntario extends Fragment {
 
             return result;
         }
-    }
+    }*/
 }

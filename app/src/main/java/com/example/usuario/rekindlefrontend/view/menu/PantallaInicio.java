@@ -16,7 +16,21 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.Usuario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.CambiarPassword;
+import com.example.usuario.rekindlefrontend.view.CodePasswordRequest;
+import com.example.usuario.rekindlefrontend.view.servicios.CrearServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class PantallaInicio extends AppCompatActivity {
@@ -28,17 +42,23 @@ public class PantallaInicio extends AppCompatActivity {
     TextView _recuperarPasswordLink;
     Button _loginButton;
 
+    private APIService mAPIService;
+    private Usuario usuario;
+
     private void bind(){
         _loginButton = (Button) findViewById(R.id.btn_login);
         _signupLink = (TextView) findViewById(R.id.link_signup);
         _recuperarPasswordLink = (TextView) findViewById(R.id.link_recuperar_password);
         _emailText = (EditText) findViewById(R.id.input_email);
         _passwordText = (EditText) findViewById(R.id.input_password);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        comprobar_login();
         setContentView(R.layout.activity_pantalla_inicio);
 
         bind();
@@ -66,11 +86,25 @@ public class PantallaInicio extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(getApplicationContext(), CambiarPassword.class);
-                //startActivity(i);
-                Toast.makeText(getApplicationContext(), " Not implemented ", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), CodePasswordRequest.class);
+                startActivity(i);
             }
         });
+    }
+
+    public void comprobar_login(){
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        if (json.isEmpty()){
+            return;
+        }
+        else {
+            usuario = gson.fromJson(json, Usuario.class);
+            Intent i = new Intent(this, MenuPrincipal.class);
+            i.putExtra("tipo", usuario.getTipo());
+            startActivity(i);
+        }
     }
 
     public void login() {
@@ -108,23 +142,45 @@ public class PantallaInicio extends AppCompatActivity {
                         // On complete call either onLoginSuccess or onLoginFailed
                         //onLoginSuccess();
                         // onLoginFailed();
-                        String email = _emailText.getText().toString();
-                        String password = _passwordText.getText().toString();
-                        boolean result = true;
-                        try {
-                            result = new AsyncTaskCall().execute(email, password).get();
-                            if (result) onLoginSuccess();
-                            else onLoginFailed();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
+                        sendLogin();
 
                         progressDialog.dismiss();
                     }
                 }, 1500);
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+    public void sendLogin(){
+        String email = _emailText.getText().toString();
+        String password = _passwordText.getText().toString();
+        mAPIService.login(email, password).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    usuario = response.body();
+                    onLoginSuccess();
+                }
+                else onLoginFailed();
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }
+            }
+        });
+    }
+
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -145,26 +201,31 @@ public class PantallaInicio extends AppCompatActivity {
 
             return result;
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
         // disable going back to the MainActivity
         backpress = (backpress + 1);
-        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
             moveTaskToBack(true);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void onLoginSuccess() {
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor miEditor = datos.edit();
-        miEditor.putString("email", _emailText.getText().toString());
+        Gson gson = new Gson();
+        String json = gson.toJson(usuario);
+        miEditor.putString("usuario", json);
         miEditor.apply();
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        i.putExtra("tipo", usuario.getTipo());
         startActivity(i);
     }
 

@@ -16,22 +16,30 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
-import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.data.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistroRefugiado extends Fragment {
+public class RegistroRefugiado extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
+    private ArrayList<String> param = new ArrayList<String>();
 
     private EditText eNombre;
     private EditText eEmail;
@@ -48,6 +56,9 @@ public class RegistroRefugiado extends Fragment {
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
 
+    private APIService mAPIService;
+    private Refugiado refugiado;
+
     public RegistroRefugiado() {
         // Required empty public constructor
     }
@@ -62,6 +73,8 @@ public class RegistroRefugiado extends Fragment {
         //establecer las vistas
         setVistas(view);
 
+
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
                 .enviar_registro_refugiado);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -72,12 +85,14 @@ public class RegistroRefugiado extends Fragment {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
+                    /*boolean result = new AsyncTaskCall().execute().get();
                     tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
+                    //tratarResultadoPeticion(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCreateRefugiado();
+
 
             }
         });
@@ -128,20 +143,22 @@ public class RegistroRefugiado extends Fragment {
         adapter_ojos.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
         sOjos.setAdapter(adapter_ojos);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void checkCampos(View view) throws Exception {
 
-        FormatChecker.checkNombre(eNombre.getText().toString());
-        FormatChecker.checkEmail(eEmail.getText().toString());
-        FormatChecker.checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
+        checkNombre(eNombre.getText().toString());
+        checkEmail(eEmail.getText().toString());
+        checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
                 ());
-        FormatChecker.checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        FormatChecker.checkSegundo_apellido(eSegundo_apellido.getText().toString());
-        FormatChecker.checkTelefono(eTelefono.getText().toString());
-        FormatChecker.checkProcedencia(eProcedencia.getText().toString());
-        FormatChecker.checkPueblo(ePueblo.getText().toString());
-        FormatChecker.checkEtnia(eEtnia.getText().toString());
+        checkPrimer_apellido(ePrimer_apellido.getText().toString());
+        checkSegundo_apellido(eSegundo_apellido.getText().toString());
+        checkTelefono(eTelefono.getText().toString());
+        checkProcedencia(eProcedencia.getText().toString());
+        checkPueblo(ePueblo.getText().toString());
+        checkEtnia(eEtnia.getText().toString());
     }
 
     public void obtenerParametros() {
@@ -161,6 +178,7 @@ public class RegistroRefugiado extends Fragment {
         param.add("AB+");
         param.add("Gris");*/
 
+        /*param = new ArrayList<String>();
         param.add(eEmail.getText().toString());
         param.add(ePassword.getText().toString());
         param.add(eNombre.getText().toString());
@@ -173,11 +191,117 @@ public class RegistroRefugiado extends Fragment {
         param.add(ePueblo.getText().toString());
         param.add(eEtnia.getText().toString());
         param.add(sGrupo_sanguineo.getSelectedItem().toString());
-        param.add(sOjos.getSelectedItem().toString());
+        param.add(sOjos.getSelectedItem().toString());*/
 
         //System.out.println("nombre: " + nombre);
 
+        refugiado = new Refugiado(eEmail.getText().toString(), ePassword.getText().toString(),
+                eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
+                eSegundo_apellido.getText().toString(), eTelefono.getText().toString(),
+                eNacimiento.getText().toString(), sSexo.getSelectedItem().toString(),
+                eProcedencia.getText().toString(), ePueblo.getText().toString(), eEtnia.getText()
+                .toString(), sGrupo_sanguineo.getSelectedItem().toString(), sOjos.getSelectedItem
+                ().toString());
+        System.out.println("crear refugiado");
+
     }
+
+    public void sendCreateRefugiado(){
+
+        mAPIService.createRefugiado(refugiado).enqueue(new Callback<Refugiado>() {
+            @Override
+            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+
+                if(response.isSuccessful()) {
+                    System.out.println("dentro respuesta ok");
+                    tratarResultadoPeticion(true);
+//                    showResponse(response.body().toString());
+//                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+                else {
+                    if (response.body() != null) System.out.println("Resposta: "+response.toString
+                            ());
+                    else System.out.println("refugiado null");
+                    System.out.println("Mensaje: "+response.message());
+                    System.out.println("codi: "+response.code());
+                    System.out.println("dentro respuesta failed");
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Refugiado> call, Throwable t) {
+//                Log.e(TAG, "Unable to submit post to API.");
+                /*if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }*/
+                tratarResultadoPeticion(false);
+            }
+        });
+
+//        mAPIService.createRefugiado(refugiado.getMail(), refugiado.getPassword(), refugiado
+//                .getName(), refugiado.getSurname1(), refugiado.getSurname2(), refugiado
+//                .getPhoneNumber(), refugiado.getBirthDate(), refugiado.getSex(), refugiado
+//                .getCountry(), refugiado.getTown(), refugiado.getEthnic(), refugiado.getBloodType
+//                (), refugiado.getEyeColor()).enqueue(new Callback<Refugiado>() {
+//            @Override
+//            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+//
+//                if(response.isSuccessful()) {
+//                    tratarResultadoPeticion(true);
+////                    showResponse(response.body().toString());
+////                    Log.i(TAG, "post submitted to API." + response.body().toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Refugiado> call, Throwable t) {
+////                Log.e(TAG, "Unable to submit post to API.");
+//                tratarResultadoPeticion(false);
+//            }
+//        });
+       /* mAPIService.prueba().enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()) {
+                    Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                            .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }
+            }
+        });*/
+
+
+    }
+
+//    public void showResponse(String response) {
+//        if(mResponseTv.getVisibility() == View.GONE) {
+//            mResponseTv.setVisibility(View.VISIBLE);
+//        }
+//        mResponseTv.setText(response);
+//    }
 
     public void tratarResultadoPeticion(boolean result) {
 
@@ -194,7 +318,7 @@ public class RegistroRefugiado extends Fragment {
         }
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -215,5 +339,5 @@ public class RegistroRefugiado extends Fragment {
 
             return result;
         }
-    }
+    }*/
 }
