@@ -11,15 +11,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VerPerfilRefugiado extends Fragment {
-
-    private Refugiado refugiado;
 
     private TextView tipoUsuario;
     private TextView nombreUsuario;
@@ -35,6 +42,9 @@ public class VerPerfilRefugiado extends Fragment {
     private TextView sangreUsuario;
     private TextView ojosUsuario;
 
+    private APIService mAPIService;
+    private Refugiado refugiado;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -42,17 +52,18 @@ public class VerPerfilRefugiado extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_ver_perfil_refugiado, container,
                 false);
-        try {
+
+        setVistas(view);
+
+        /*try {
             refugiado = new AsyncTaskCall().execute().get();
 
         }catch (Exception e){
 
             e.printStackTrace();
-        }
+        }*/
 
-        setVistas(view);
-
-        llenarTextViews();
+        sendObtenerRefugiado();
 
 
         AppCompatButton b = (AppCompatButton) view.findViewById(R.id.editar_ver_perfil_refugiado);
@@ -61,6 +72,7 @@ public class VerPerfilRefugiado extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
+                i.putExtra("tipo", 0);
                 i.putExtra("Refugiado", refugiado);
                 startActivity(i);
             }
@@ -86,6 +98,64 @@ public class VerPerfilRefugiado extends Fragment {
         etniaUsuario = view.findViewById(R.id.etnia_usuario_perfil_refugiado);
         sangreUsuario = view.findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = view.findViewById(R.id.ojos_usuario_perfil_refugiado);
+
+        mAPIService = APIUtils.getAPIService();
+    }
+
+    public void sendObtenerRefugiado(){
+
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+                (getActivity().getApplicationContext());
+        String mail = datos.getString("email", "email");
+
+        mAPIService.obtenerRefugiado(mail).enqueue(new Callback<Refugiado>() {
+            @Override
+            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+                if (response.isSuccessful()){
+                    System.out.println("dentro respuesta");
+                    if (response.body() != null) System.out.println("dentro respuesta ok");
+                    refugiado = response.body();
+                    tratarResultadoPeticion(true);
+                }
+                else {
+                    System.out.println("refugiado null");
+                    System.out.println("Mensaje: "+response.message());
+                    System.out.println("codi: "+response.code());
+                    System.out.println("dentro respuesta failed");
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Refugiado> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+            llenarTextViews();
+
+            Toast.makeText(getActivity().getApplicationContext(), "ver perfil correctamente",
+                    Toast
+                    .LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), "ver perfil fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
     }
 
     public void llenarTextViews(){
@@ -106,7 +176,7 @@ public class VerPerfilRefugiado extends Fragment {
 
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Refugiado> {
+   /* private class AsyncTaskCall extends AsyncTask<String, Void, Refugiado> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -129,7 +199,7 @@ public class VerPerfilRefugiado extends Fragment {
 
             return result;
         }
-    }
+    }*/
 
 
 }

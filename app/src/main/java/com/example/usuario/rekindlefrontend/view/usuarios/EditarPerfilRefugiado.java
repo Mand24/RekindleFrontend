@@ -26,6 +26,8 @@ import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.CambiarPassword;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,6 +54,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
 
+    private APIService mAPIService;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -59,18 +63,13 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_editar_perfil_refugiado, container,
                 false);
-        try {
 
-            setVistas(view);
+        setVistas(view);
 
-            refugiado = new EditarPerfilRefugiado.AsyncTaskCall().execute().get();
+        refugiado = (Refugiado) getActivity().getIntent().getSerializableExtra("Refugiado");
 
-            initializeData(view);
+        initializeData(view);
 
-        }catch (Exception e){
-
-            e.printStackTrace();
-        }
 
         AppCompatButton b = (AppCompatButton) view.findViewById(R.id.guardar_editar_perfil);
         b.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +83,9 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                 catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-//TODO: llamar para editar el perfil con los nuevos datos
+
+                sendActualizarRefugiado();
+
             }
 
         });
@@ -144,6 +145,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         sOjos.setAdapter(adapter_ojos);
 
+        mAPIService = APIUtils.getAPIService();
+
     }
 
 
@@ -182,7 +185,52 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         checkEtnia(eEtnia.getText().toString());
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Refugiado> {
+    public void sendActualizarRefugiado() {
+        mAPIService.actualizarRefugiado(refugiado.getMail(), refugiado).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            tratarResultadoPeticion(true);
+                        } else {
+                            tratarResultadoPeticion(false);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+            Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
+                    Toast
+                            .LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
+            startActivity(i);
+
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
+    }
+
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Refugiado> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -206,6 +254,6 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
             return result;
         }
-    }
+    }*/
 
 }

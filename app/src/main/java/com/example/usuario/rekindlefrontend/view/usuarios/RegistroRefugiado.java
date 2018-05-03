@@ -24,6 +24,7 @@ import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -201,6 +202,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
                 eProcedencia.getText().toString(), ePueblo.getText().toString(), eEtnia.getText()
                 .toString(), sGrupo_sanguineo.getSelectedItem().toString(), sOjos.getSelectedItem
                 ().toString());
+        System.out.println("crear refugiado");
 
     }
 
@@ -211,18 +213,87 @@ public class RegistroRefugiado extends AbstractFormatChecker {
             public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
 
                 if(response.isSuccessful()) {
+                    System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+                else {
+                    if (response.body() != null) System.out.println("Resposta: "+response.toString
+                            ());
+                    else System.out.println("refugiado null");
+                    System.out.println("Mensaje: "+response.message());
+                    System.out.println("codi: "+response.code());
+                    System.out.println("dentro respuesta failed");
+                    tratarResultadoPeticion(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Refugiado> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
+                /*if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }*/
                 tratarResultadoPeticion(false);
             }
         });
+
+//        mAPIService.createRefugiado(refugiado.getMail(), refugiado.getPassword(), refugiado
+//                .getName(), refugiado.getSurname1(), refugiado.getSurname2(), refugiado
+//                .getPhoneNumber(), refugiado.getBirthDate(), refugiado.getSex(), refugiado
+//                .getCountry(), refugiado.getTown(), refugiado.getEthnic(), refugiado.getBloodType
+//                (), refugiado.getEyeColor()).enqueue(new Callback<Refugiado>() {
+//            @Override
+//            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+//
+//                if(response.isSuccessful()) {
+//                    tratarResultadoPeticion(true);
+////                    showResponse(response.body().toString());
+////                    Log.i(TAG, "post submitted to API." + response.body().toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Refugiado> call, Throwable t) {
+////                Log.e(TAG, "Unable to submit post to API.");
+//                tratarResultadoPeticion(false);
+//            }
+//        });
+       /* mAPIService.prueba().enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()) {
+                    Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                            .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }
+            }
+        });*/
+
+
     }
 
 //    public void showResponse(String response) {

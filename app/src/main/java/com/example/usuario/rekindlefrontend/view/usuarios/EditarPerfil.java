@@ -41,11 +41,9 @@ public class EditarPerfil extends AppCompatActivity {
         tiposPerfil[0] = new EditarPerfilRefugiado();
         tiposPerfil[1] = new EditarPerfilVoluntario();
 
-//TODO: PONER EN FUNCION DEL TIPO DE USUARIO
+        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
 
-
-
-        menu(0);
+        menu(tipo_usuario);
     }
 
     public void menu(int tipo){

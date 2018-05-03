@@ -27,6 +27,8 @@ import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.CambiarPassword;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,7 +46,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
     private EditText ePrimer_apellido;
     private EditText eSegundo_apellido;
 
-
+    private APIService mAPIService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -52,18 +54,14 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_editar_perfil_voluntario, container,
                 false);
-        try {
 
-            setVistas(view);
 
-            voluntario = new EditarPerfilVoluntario.AsyncTaskCall().execute().get();
+        setVistas(view);
 
-            initializeData(view);
+        voluntario = (Voluntario) getActivity().getIntent().getSerializableExtra("Voluntario");
 
-        }catch (Exception e){
+        initializeData(view);
 
-            e.printStackTrace();
-        }
 
         AppCompatButton b = (AppCompatButton) view.findViewById(R.id.guardar_editar_perfil);
         b.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +75,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                 catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-//TODO: llamar para editar el perfil con los nuevos datos
+                sendActualizarVoluntario();
             }
 
         });
@@ -104,6 +102,8 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         ePrimer_apellido = view.findViewById(R.id.apellido1_usuario_perfil);
         eSegundo_apellido = view.findViewById(R.id.apellido2_usuario_perfil);
 
+        mAPIService = APIUtils.getAPIService();
+
     }
 
 
@@ -125,7 +125,52 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Voluntario> {
+    public void sendActualizarVoluntario(){
+        mAPIService.actualizarVoluntario(voluntario.getMail(), voluntario).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            tratarResultadoPeticion(true);
+                        } else {
+                            tratarResultadoPeticion(false);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+            Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
+                    Toast
+                            .LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
+            startActivity(i);
+
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
+    }
+
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Voluntario> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -148,6 +193,6 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
             return result;
         }
-    }
+    }*/
 
 }

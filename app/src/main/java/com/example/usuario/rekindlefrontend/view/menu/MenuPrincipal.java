@@ -43,7 +43,9 @@ public class MenuPrincipal extends AppBaseActivity {
         tipos_menu_principal[0] = new MenuPrincipalVoluntario();
         tipos_menu_principal[1] = new MenuPrincipalRefugiado();
 
-        elegir_tipo_menu_principal(1);
+        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
+
+        elegir_tipo_menu_principal(tipo_usuario);
 
     }
 

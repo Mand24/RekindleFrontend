@@ -22,11 +22,13 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.data.entity.Usuario;
 import com.example.usuario.rekindlefrontend.view.About;
 import com.example.usuario.rekindlefrontend.view.PantallaAjustes;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.VerPerfil;
+import com.google.gson.Gson;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
@@ -62,6 +64,11 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                     /*Se define la lógica de casos que puedan producirse al seleccionar cualquier elemento del menú.*/
                     case R.id.ver_perfil:
                         i = new Intent(getApplicationContext(), VerPerfil.class);
+                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        Gson gson = new Gson();
+                        String json = datos.getString("usuario", "");
+                        Usuario usuario = gson.fromJson(json, Usuario.class);
+                        i.putExtra("tipo", usuario.getTipo());
                         startActivity(i);
                         break;
                     case R.id.configuracion:
@@ -122,7 +129,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         SharedPreferences.Editor miEditor = datos.edit();
-                        miEditor.putString("email","");
+                        miEditor.putString("usuario","");
                         miEditor.apply();
                         Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
                                 .LENGTH_SHORT)

@@ -21,6 +21,7 @@ import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 import com.example.usuario.rekindlefrontend.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -138,15 +139,36 @@ public class RegistroVoluntario extends AbstractFormatChecker {
             public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
 
                 if(response.isSuccessful()) {
+                    System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+                else {
+                    if (response.body() != null) System.out.println("Resposta: "+response.toString
+                            ());
+                    else System.out.println("voluntario null");
+                    System.out.println("Mensaje: "+response.message());
+                    System.out.println("codi: "+response.code());
+                    System.out.println("dentro respuesta failed");
+                    tratarResultadoPeticion(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Voluntario> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    // todo log to some central bug tracking service
+                }
                 tratarResultadoPeticion(false);
             }
         });

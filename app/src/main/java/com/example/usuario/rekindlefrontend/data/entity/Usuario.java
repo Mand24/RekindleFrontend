@@ -7,31 +7,40 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
+    @SerializedName("tipo")
+    @Expose
+    private int tipo;
     @SerializedName("mail")
     @Expose
-    protected String mail;
+    private String mail;
     @SerializedName("password")
     @Expose
-    protected String password;
+    private String password;
     @SerializedName("name")
     @Expose
-    protected String name;
+    private String name;
     @SerializedName("surname1")
     @Expose
-    protected String surname1;
+    private String surname1;
     @SerializedName("surname2")
     @Expose
-    protected String surname2;
+    private String surname2;
 
     public Usuario(){}
 
-    public Usuario(String mail , String password, String name, String surname1, String surname2) {
+    public Usuario(int tipo, String mail, String password, String name, String surname1, String
+            surname2) {
+        this.tipo = tipo;
         this.mail = mail;
         this.password = password;
         this.name = name;
         this.surname1 = surname1;
         this.surname2 = surname2;
     }
+
+    public int getTipo() { return tipo; }
+
+    public void setTipo(int tipo) { this.tipo = tipo; }
 
     public String getMail() {
         return mail;
@@ -76,7 +85,8 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "Usuario{" +
-                "mail='" + mail + '\'' +
+                "tipo='" + tipo + '\'' +
+                ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", surname1='" + surname1 + '\'' +

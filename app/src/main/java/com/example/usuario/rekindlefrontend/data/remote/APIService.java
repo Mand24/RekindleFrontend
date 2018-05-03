@@ -1,17 +1,22 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
 import com.example.usuario.rekindlefrontend.data.entity.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.Voluntario;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface APIService {
-
-    /*Call<Refugiado> createRefugiado(@Field("mail") String mail,
+    /*@POST("/refugiados")
+    @FormUrlEncoded
+    Call<Refugiado> createRefugiado(@Field("mail") String mail,
             @Field("password") String password,
             @Field("name") String name,
             @Field("surname1") String surname1,
@@ -25,11 +30,31 @@ public interface APIService {
             @Field("bloodType") String bloodType,
             @Field("eyeColor") String eyeColor);*/
 
+    //LLAMADAS RELACIONADAS CON EL LOGIN
+    @POST("/login")
+    Call<Usuario> login(@Field("mail") String mail, @Field("password") String password);
+
+    //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @POST("/refugiados")
-    @FormUrlEncoded
     Call<Refugiado> createRefugiado(@Body Refugiado refugiado);
 
+    @GET("/refugiados/{mail}")
+    Call<Refugiado> obtenerRefugiado(@Path("mail") String mail);
+
+    @PUT("/refugiados/{mail}")
+    Call<Void> actualizarRefugiado(@Path("mail") String mail, @Body Refugiado refugiado);
+
+    //LLAMADAS RELACIONADAS CON USUARIOS VOLUNTARIOS
     @POST("/voluntarios")
-    @FormUrlEncoded
     Call<Voluntario> createVoluntario(@Body Voluntario voluntario);
+
+    @GET("/voluntarios/{mail}")
+    Call<Voluntario> obtenerVoluntario(@Path("mail") String mail);
+
+    @PUT("/voluntarios/{mail}")
+    Call<Void> actualizarVoluntario(@Path("mail") String mail, @Body Voluntario voluntario);
+
+
+    @GET("/test2")
+    Call<Refugiado> prueba();
 }

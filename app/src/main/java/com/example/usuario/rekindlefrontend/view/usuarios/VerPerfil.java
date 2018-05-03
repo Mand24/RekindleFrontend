@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.Usuario;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 
 /**
@@ -31,11 +32,9 @@ public class VerPerfil extends AppCompatActivity {
         tiposPerfil[0] = new VerPerfilRefugiado();
         tiposPerfil[1] = new VerPerfilVoluntario();
 
-//TODO: PONER EN FUNCION DEL TIPO DE USUARIO
+        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
 
-
-
-        menu(0);
+        menu(tipo_usuario);
     }
 
     public void menu(int tipo){
