@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.entity.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -44,23 +44,25 @@ public class MostrarDonacion extends Fragment implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        titulo = (TextView) view.findViewById(R.id.titulo_donacion);
-        descripcion = (TextView) view.findViewById(R.id.descripcion_donacion);
-        direccion = (TextView) view.findViewById(R.id.direccion_donacion);
-        inicio = (TextView) view.findViewById(R.id.hora_inicio_donacion);
-        fin = (TextView) view.findViewById(R.id.hora_fin_donacion);
+        titulo = view.findViewById(R.id.titulo_donacion);
+        descripcion = view.findViewById(R.id.descripcion_donacion);
+        direccion = view.findViewById(R.id.direccion_donacion);
+        inicio = view.findViewById(R.id.hora_inicio_donacion);
+        fin = view.findViewById(R.id.hora_fin_donacion);
         mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
-        numero = (TextView) view.findViewById(R.id.numero_contacto_servicio);
-        chat = (AppCompatButton) view.findViewById(R.id.chat);
-        valoracion = (TextView) view.findViewById(R.id.valoracion_servicio);
-        opiniones = (AppCompatButton) view.findViewById(R.id.opiniones);
-        inscribirse = (AppCompatButton) view.findViewById(R.id.inscribirse);
+        numero = view.findViewById(R.id.numero_contacto_servicio);
+        chat = view.findViewById(R.id.chat);
+        valoracion = view.findViewById(R.id.valoracion_servicio);
+        opiniones = view.findViewById(R.id.opiniones);
+        inscribirse = view.findViewById(R.id.inscribirse);
 
-        Servicio servicio = (Servicio) getActivity().getIntent().getSerializableExtra("Servicio");
+        Donacion servicio = (Donacion) getActivity().getIntent().getSerializableExtra("Servicio");
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
+        inicio.setText(servicio.getHoraInicio());
+        fin.setText(servicio.getHoraFin());
         numero.setText(servicio.getNumero());
         valoracion.setText("Valoracion: " + servicio.getValoracion());
 

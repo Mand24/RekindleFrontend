@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.entity.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -43,25 +43,30 @@ public class MostrarCursoEducativo extends Fragment implements OnMapReadyCallbac
 
         super.onCreate(savedInstanceState);
 
-        titulo = (TextView) view.findViewById(R.id.titulo_curso_educativo);
-        descripcion = (TextView) view.findViewById(R.id.descripcion_curso_educativo);
-        direccion = (TextView) view.findViewById(R.id.direccion_curso_educativo);
-        ambito = (TextView) view.findViewById(R.id.ambito_curso_educativo);
-        requisitos = (TextView) view.findViewById(R.id.requisitos_curso_educativo);
-        horario = (TextView) view.findViewById(R.id.horario_curso_educativo);
-        precio = (TextView) view.findViewById(R.id.precio_curso_educativo);
+        titulo = view.findViewById(R.id.titulo_curso_educativo);
+        descripcion = view.findViewById(R.id.descripcion_curso_educativo);
+        direccion = view.findViewById(R.id.direccion_curso_educativo);
+        ambito = view.findViewById(R.id.ambito_curso_educativo);
+        requisitos = view.findViewById(R.id.requisitos_curso_educativo);
+        horario = view.findViewById(R.id.horario_curso_educativo);
+        precio = view.findViewById(R.id.precio_curso_educativo);
         mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
-        numero = (TextView) view.findViewById(R.id.numero_contacto_servicio);
-        chat = (AppCompatButton) view.findViewById(R.id.chat);
-        valoracion = (TextView) view.findViewById(R.id.valoracion_servicio);
-        opiniones = (AppCompatButton) view.findViewById(R.id.opiniones);
-        inscribirse = (AppCompatButton) view.findViewById(R.id.inscribirse);
+        numero = view.findViewById(R.id.numero_contacto_servicio);
+        chat = view.findViewById(R.id.chat);
+        valoracion = view.findViewById(R.id.valoracion_servicio);
+        opiniones = view.findViewById(R.id.opiniones);
+        inscribirse = view.findViewById(R.id.inscribirse);
 
-        Servicio servicio = (Servicio) getActivity().getIntent().getSerializableExtra("Servicio");
+        CursoEducativo servicio = (CursoEducativo) getActivity().getIntent().getSerializableExtra
+                ("Servicio");
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
+        ambito.setText(servicio.getDireccion());
+        requisitos.setText(servicio.getRequisitos());
+        horario.setText(servicio.getHorario());
+        precio.setText(servicio.getPrecio());
         numero.setText(servicio.getNumero());
         valoracion.setText("Valoracion: " + servicio.getValoracion());
 

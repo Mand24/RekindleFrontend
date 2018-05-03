@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.entity.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -45,27 +45,32 @@ public class MostrarOfertaEmpleo extends Fragment implements OnMapReadyCallback 
 
         super.onCreate(savedInstanceState);
 
-        titulo = (TextView) view.findViewById(R.id.titulo_oferta_empleo);
-        descripcion = (TextView) view.findViewById(R.id.descripcion_oferta_empleo);
-        direccion = (TextView) view.findViewById(R.id.direccion_oferta_empleo);
-        puesto = (TextView) view.findViewById(R.id.puesto_oferta_empleo);
-        requisitos = (TextView) view.findViewById(R.id.requisitos_oferta_empleo);
-        jornada = (TextView) view.findViewById(R.id.jornada_oferta_empleo);
-        horas = (TextView) view.findViewById(R.id.horas_semanales_oferta_empleo);
-        duracion = (TextView) view.findViewById(R.id.duracion_oferta_empleo);
+        titulo = view.findViewById(R.id.titulo_oferta_empleo);
+        descripcion = view.findViewById(R.id.descripcion_oferta_empleo);
+        direccion = view.findViewById(R.id.direccion_oferta_empleo);
+        puesto = view.findViewById(R.id.puesto_oferta_empleo);
+        requisitos = view.findViewById(R.id.requisitos_oferta_empleo);
+        jornada = view.findViewById(R.id.jornada_oferta_empleo);
+        horas = view.findViewById(R.id.horas_semanales_oferta_empleo);
+        duracion = view.findViewById(R.id.duracion_oferta_empleo);
         mMapView = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.google_mapView);
-        numero = (TextView) view.findViewById(R.id.numero_contacto_servicio);
-        chat = (AppCompatButton) view.findViewById(R.id.chat);
-        valoracion = (TextView) view.findViewById(R.id.valoracion_servicio);
-        opiniones = (AppCompatButton) view.findViewById(R.id.opiniones);
-        inscribirse = (AppCompatButton) view.findViewById(R.id.inscribirse);
+        numero = view.findViewById(R.id.numero_contacto_servicio);
+        chat = view.findViewById(R.id.chat);
+        valoracion = view.findViewById(R.id.valoracion_servicio);
+        opiniones = view.findViewById(R.id.opiniones);
+        inscribirse = view.findViewById(R.id.inscribirse);
 
-        Servicio servicio = (Servicio) getActivity().getIntent().getSerializableExtra("Servicio");
+        OfertaEmpleo servicio = (OfertaEmpleo) getActivity().getIntent().getSerializableExtra("Servicio");
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
+        puesto.setText(servicio.getPuesto());
+        requisitos.setText(servicio.getRequisitos());
+        jornada.setText(servicio.getJornada());
+        horas.setText(servicio.getHorasSemana());
+        duracion.setText(servicio.getDuracion());
         numero.setText(servicio.getNumero());
         valoracion.setText("Valoracion: " + servicio.getValoracion());
 

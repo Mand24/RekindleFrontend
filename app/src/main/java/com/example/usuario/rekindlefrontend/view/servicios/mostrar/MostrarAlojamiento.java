@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.entity.Servicio;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -45,22 +44,24 @@ public class MostrarAlojamiento extends Fragment implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        titulo = (TextView) view.findViewById(R.id.titulo_alojamiento);
-        descripcion = (TextView) view.findViewById(R.id.descripcion_alojamiento);
-        direccion = (TextView) view.findViewById(R.id.direccion_alojamiento);
-        fecha = (TextView) view.findViewById(R.id.fecha_limite_alojamiento);
+        titulo = view.findViewById(R.id.titulo_alojamiento);
+        descripcion = view.findViewById(R.id.descripcion_alojamiento);
+        direccion = view.findViewById(R.id.direccion_alojamiento);
+        fecha = view.findViewById(R.id.fecha_limite_alojamiento);
         mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
-        numero = (TextView) view.findViewById(R.id.numero_contacto_servicio);
-        chat = (AppCompatButton) view.findViewById(R.id.chat);
-        valoracion = (TextView) view.findViewById(R.id.valoracion_servicio);
-        opiniones = (AppCompatButton) view.findViewById(R.id.opiniones);
-        inscribirse = (AppCompatButton) view.findViewById(R.id.inscribirse);
+        numero = view.findViewById(R.id.numero_contacto_servicio);
+        chat = view.findViewById(R.id.chat);
+        valoracion = view.findViewById(R.id.valoracion_servicio);
+        opiniones = view.findViewById(R.id.opiniones);
+        inscribirse = view.findViewById(R.id.inscribirse);
 
-        Alojamiento servicio = (Servicio) getActivity().getIntent().getSerializableExtra("Servicio");
+        Alojamiento servicio = (Alojamiento) getActivity().getIntent().getSerializableExtra
+                ("Servicio");
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
+        fecha.setText(servicio.getFecha());
         numero.setText(servicio.getNumero());
         valoracion.setText("Valoracion: " + servicio.getValoracion());
 
