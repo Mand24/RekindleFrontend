@@ -172,7 +172,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
         }catch (Exception e){
             e.printStackTrace();
         }*/
-        servicios.add(new Servicio(0, "Alojamiento", "buena describicion", "Calle 123", "27/07/97",
+
+        /*servicios.add(new Servicio(0, "Alojamiento", "buena describicion", "Calle 123", "27/07/97",
                 "623623623", "4.5", R.drawable.lodging));
         servicios.add(
                 new Servicio(2, "Educativo", "buena describicion", "Calle 123342432", "27/07/97",
@@ -182,7 +183,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
         servicios.add(
                 new Servicio(3, "Empleo", "buena describicion", "dsadasd", "27/07/97", "623623623",
                         "4.5", R.drawable.job));
-        serviciosFiltrados = servicios;
+        serviciosFiltrados = servicios;*/
     }
 
     @Override

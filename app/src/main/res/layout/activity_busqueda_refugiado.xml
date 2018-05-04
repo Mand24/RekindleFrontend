@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.usuarios.busqueda.BusquedaRefugiado"
+>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titulo_registro_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/formulario_refugiado"
+            />
+
+            <TextView
+                android:id="@+id/subtitulo_registro_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/subtitulo_formulario"
+            />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/nombre_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_nombre_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/email_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_email_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/password_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/password1"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/rpassword_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/repetir_password"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/p_apellido_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_1apellido_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/s_apellido_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_2apellido_formulario"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/telefono_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_numero_telefono"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/nacimiento_refugiado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/texto_nacimiento_refugiado"
+                    android:inputType="date"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/texto_sexo_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_sexo_refugiado" />
+
+            <Spinner
+                android:id="@+id/sexo_refugiado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
+            />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/procedencia_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_procedencia_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/pueblo_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_pueblo_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/etnia_refugiado"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_etnia_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/texto_grupo_sanguineo_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_grupo_sanguineo_refugiado"
+            />
+
+            <Spinner
+                android:id="@+id/grupo_sanguineo_refugiado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
+            />
+
+            <TextView
+                android:id="@+id/texto_ojos_refugiado"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/texto_ojos_refugiado"
+            />
+
+            <Spinner
+                android:id="@+id/ojos_refugiado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"
+                android:background="@color/colorPrimaryDarker"
+                android:popupBackground="@color/colorPrimaryDarker"
+            />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/enviar_registro_refugiado"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/enviar"
+            />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
