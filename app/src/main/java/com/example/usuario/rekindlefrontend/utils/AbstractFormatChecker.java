@@ -88,9 +88,7 @@ public abstract class AbstractFormatChecker extends Fragment {
     }
 
     public  void checkBiografia(String texto) throws Exception {
-        if (texto.length() > 300) throw new Exception(getString(R.string.etnia_largo));
-        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
-                .etnia_letras));
+        if (texto.length() > 300) throw new Exception(getString(R.string.biografia_largo));
     }
 
     public  void checkNombreServicio(String texto) throws Exception {

@@ -198,7 +198,7 @@ public class Refugiado extends Usuario {
         return biography;
     }
 
-    public void setBiography(String eyeColor) {
+    public void setBiography(String biography) {
         this.biography = biography;
     }
 

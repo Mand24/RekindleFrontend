@@ -288,15 +288,6 @@
                 android:popupBackground="@color/colorPrimaryDarker"
             />
 
-            <android.support.v7.widget.AppCompatButton
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:id="@+id/enviar_registro_refugiado"
-                android:layout_marginTop="@dimen/dim20"
-                android:layout_marginBottom="@dimen/dim20"
-                android:text="@string/enviar"
-            />
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -314,6 +305,15 @@
                     android:hint="@string/texto_biografia_refugiado"
                 />
             </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/enviar_registro_refugiado"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginBottom="@dimen/dim20"
+                android:text="@string/enviar"
+            />
 
         </LinearLayout>
 

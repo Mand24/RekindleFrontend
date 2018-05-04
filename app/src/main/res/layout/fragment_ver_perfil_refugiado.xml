@@ -53,7 +53,8 @@
                 android:layout_below="@id/label_tipo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener tipo()" />
+                android:text="Obtener tipo()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_nombre_usuario_perfil_refugiado"
@@ -71,7 +72,8 @@
                 android:layout_below="@id/label_nombre_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener nombre()" />
+                android:text="Obtener nombre()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_apellido1_usuario_perfil_refugiado"
@@ -89,7 +91,8 @@
                 android:layout_below="@id/label_apellido1_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener apellido1()" />
+                android:text="Obtener apellido1()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_apellido2_usuario_perfil_refugiado"
@@ -107,7 +110,8 @@
                 android:layout_below="@id/label_apellido2_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener apellido2()" />
+                android:text="Obtener apellido2()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_email_usuario_perfil_refugiado"
@@ -125,7 +129,8 @@
                 android:layout_below="@id/label_email_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener email()" />
+                android:text="Obtener email()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_telefono_usuario_perfil_refugiado"
@@ -143,7 +148,8 @@
                 android:layout_below="@id/label_telefono_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener telefono()" />
+                android:text="Obtener telefono()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_nacimiento_usuario_perfil_refugiado"
@@ -161,7 +167,8 @@
                 android:layout_below="@id/label_nacimiento_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener nacimiento()" />
+                android:text="Obtener nacimiento()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_sexo_usuario_perfil_refugiado"
@@ -179,7 +186,8 @@
                 android:layout_below="@id/label_sexo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener sexo()" />
+                android:text="Obtener sexo()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_pais_usuario_perfil_refugiado"
@@ -197,7 +205,8 @@
                 android:layout_below="@id/label_pais_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener pais()" />
+                android:text="Obtener pais()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_pueblo_usuario_perfil_refugiado"
@@ -215,7 +224,8 @@
                 android:layout_below="@id/label_pueblo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener pueblo()" />
+                android:text="Obtener pueblo()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_etnia_usuario_perfil_refugiado"
@@ -233,7 +243,8 @@
                 android:layout_below="@id/label_etnia_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener etnia()" />
+                android:text="Obtener etnia()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_sangre_usuario_perfil_refugiado"
@@ -251,7 +262,8 @@
                 android:layout_below="@id/label_sangre_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener sangre()" />
+                android:text="Obtener sangre()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_ojos_usuario_perfil_refugiado"
@@ -270,7 +282,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="Obtener ojos()" />
+                android:text="Obtener ojos()"
+                android:background="@drawable/back"/>
 
             <TextView
                 android:id="@+id/label_biografia_usuario_perfil_refugiado"
@@ -289,7 +302,8 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="Obtener ojos()" />
+                android:text="Obtener biografia()"
+                android:background="@drawable/back"/>
 
 
 
