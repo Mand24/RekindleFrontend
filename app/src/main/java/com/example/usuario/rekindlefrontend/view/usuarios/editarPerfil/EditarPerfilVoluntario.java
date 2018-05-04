@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
@@ -32,7 +32,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
     private Voluntario voluntario;
 
     private EditText eNombre;
-    private EditText eEmail;
+    private TextView eEmail;
     private EditText ePrimer_apellido;
     private EditText eSegundo_apellido;
 
@@ -108,8 +108,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     public void checkCampos(View view) throws Exception {
 
-        checkNombre(eNombre.getText().toString());
-        checkEmail(eEmail.getText().toString());
+        checkNombre(eNombre.getText().toString());;
         checkPrimer_apellido(ePrimer_apellido.getText().toString());
         checkSegundo_apellido(eSegundo_apellido.getText().toString());
 
