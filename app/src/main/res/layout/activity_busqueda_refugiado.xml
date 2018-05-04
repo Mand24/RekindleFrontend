@@ -18,11 +18,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/titulo_registro_refugiado"
+                android:id="@+id/titulo_buscar_refugiado"
                 style="@style/text_view"
                 android:layout_marginStart="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/formulario_refugiado"
+                android:text="@string/titulo_busqueda"
             />
 
             <TextView
@@ -30,7 +30,7 @@
                 style="@style/text_view"
                 android:layout_marginStart="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/subtitulo_formulario"
+                android:text="@string/subtitulo_busqueda"
             />
 
             <android.support.design.widget.TextInputLayout
@@ -69,41 +69,6 @@
                 />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <EditText
-                    android:id="@+id/password_refugiado"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim10"
-                    android:hint="@string/password1"
-                />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <EditText
-                    android:id="@+id/rpassword_refugiado"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim10"
-                    android:hint="@string/repetir_password"
-                />
-            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -141,23 +106,6 @@
                 />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <EditText
-                    android:id="@+id/telefono_refugiado"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim10"
-                    android:hint="@string/texto_numero_telefono"
-                />
-            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -291,10 +239,10 @@
             <android.support.v7.widget.AppCompatButton
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:id="@+id/enviar_registro_refugiado"
+                android:id="@+id/enviar_buscar_personas"
                 android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="@string/enviar"
+                android:text="@string/buscar"
             />
 
         </LinearLayout>

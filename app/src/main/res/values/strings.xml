@@ -181,6 +181,13 @@
     <string name="horario_largo">The schedule is too long, maximum 30 characters</string>
     <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
 
+    <string name="titulo_busqueda">Search people</string>
+    <string name="subtitulo_busqueda">Please, fill all the info you know about the person
+        that you are looking for</string>
+    <string name="buscar">Find</string>
+    <string name="busqueda_correcta">Finding succesfull</string>
+    <string name="busqueda_fallida">Error on finding</string>
+
     <string-array name="lista_usuarios">
         <item>Refugee</item>
         <item>Voluntary</item>
@@ -221,7 +228,6 @@
         <item>Spanish</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

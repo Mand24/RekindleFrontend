@@ -238,7 +238,6 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                 SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                         (getActivity().getApplicationContext());
                 String param = datos.getString("email", "email");
-//TODO: Es esto correcto?
                 result = ComunicacionUsuarios.verPerfilRefugiado(url, param);
             } catch (Exception e) {
 

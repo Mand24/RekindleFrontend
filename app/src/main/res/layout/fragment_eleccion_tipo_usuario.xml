@@ -7,8 +7,6 @@
     tools:context=".view.usuarios.registro.EleccionTipoUsuario"
     android:layout_gravity="center_horizontal">
 
-    <!-- TODO: Update blank fragment layout -->
-    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

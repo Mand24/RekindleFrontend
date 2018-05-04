@@ -198,7 +198,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
             try {
                 result = ComunicacionServicios.crearOfertaEmpleo(url, param);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
 

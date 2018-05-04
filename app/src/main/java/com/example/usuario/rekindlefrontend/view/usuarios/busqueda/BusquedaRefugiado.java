@@ -1,5 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
@@ -17,8 +18,14 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by ORION on 04/05/2018.
@@ -40,8 +47,19 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
 
+    private String eNombreString;
+    private String ePrimer_apellidoString;
+    private String eSegundo_apellidoString;
+    private String eNacimientoString;
+    private String sSexoString;
+    private String eProcedenciaString;
+    private String ePuebloString;
+    private String eEtniaString;
+    private String sGrupo_sanguineoString;
+    private String sOjosString;
+
     private APIService mAPIService;
-    private Refugiado refugiado;
+    private List<Refugiado> listRefugiados;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -55,7 +73,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
 
 
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
-                .enviar_registro_refugiado);
+                .enviar_buscar_personas);
         button_send.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -63,7 +81,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
 
                 try {
                     checkCampos(view);
-//                    obtenerParametros();
+                    obtenerParametros();
                     /*boolean result = new AsyncTaskCall().execute().get();
                     tratarResultadoPeticion(result);
                     //tratarResultadoPeticion(true);*/
@@ -124,6 +142,20 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
         mAPIService = APIUtils.getAPIService();
     }
 
+    public void obtenerParametros() {
+
+        eNombreString = eNombre.getText().toString();
+        ePrimer_apellidoString = ePrimer_apellido.getText().toString();
+        eSegundo_apellidoString = eSegundo_apellido.getText().toString();
+        eNacimientoString = eNacimiento.getText().toString();
+        sSexoString = sSexo.getSelectedItem().toString();
+        eProcedenciaString = eProcedencia.getText().toString();
+        ePuebloString = ePueblo.getText().toString();
+        eEtniaString = eEtnia.getText().toString();
+        sGrupo_sanguineoString = sGrupo_sanguineo.getSelectedItem().toString();
+        sOjosString = sOjos.getSelectedItem().toString();
+    }
+
     public void checkCampos(View view) throws Exception {
 
         checkNombre(eNombre.getText().toString());
@@ -132,6 +164,71 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
         checkProcedencia(eProcedencia.getText().toString());
         checkPueblo(ePueblo.getText().toString());
         checkEtnia(eEtnia.getText().toString());
+    }
+
+    public void sendCreateRefugiado() {
+
+        mAPIService.buscarRefugiados(
+                eNacimientoString,
+                ePrimer_apellidoString,
+                eSegundo_apellidoString,
+                eNacimientoString,
+                sSexoString,
+                eProcedenciaString,
+                ePuebloString,
+                eEtniaString,
+                sGrupo_sanguineoString,
+                sOjosString).enqueue(new Callback<List<Refugiado>>() {
+            @Override
+            public void onResponse(Call<List<Refugiado>> call, Response<List<Refugiado>> response) {
+
+                if (response.isSuccessful()) {
+                    System.out.println("dentro respuesta ok");
+                    tratarResultadoPeticion(true);
+//                    showResponse(response.body().toString());
+//                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                } else {
+                    if (response.body() != null) System.out.println("Resposta: " + response.toString
+                            ());
+                    else System.out.println("refugiado null");
+                    System.out.println("Mensaje: " + response.message());
+                    System.out.println("codi: " + response.code());
+                    System.out.println("dentro respuesta failed");
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Refugiado>> call, Throwable t) {
+//                Log.e(TAG, "Unable to submit post to API.");
+                /*if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                }*/
+                tratarResultadoPeticion(false);
+            }
+        });
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), Login.class);
+            startActivity(i);
+
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.registro_fallido), Toast.LENGTH_SHORT).show();
+        }
     }
 
 
