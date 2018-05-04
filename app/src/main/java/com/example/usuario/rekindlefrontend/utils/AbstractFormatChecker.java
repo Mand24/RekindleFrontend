@@ -111,7 +111,6 @@ public abstract class AbstractFormatChecker extends Fragment {
         if (texto.length () == 0) throw new Exception(getString(R.string.descripcion_obligatoria));
         else if (texto.length () > 300) throw new Exception
                 (getString(R.string.descricpion_larga));
-        else if (!letras (texto)) throw new Exception(getString(R.string.descripcion_letras));
     }
 
     public  void checkPuestoOfertaEmpleo(String texto) throws Exception {
