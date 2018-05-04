@@ -59,7 +59,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
     private String sOjosString;
 
     private APIService mAPIService;
-    private List<Refugiado> listRefugiados;
+    private ArrayList<Refugiado> listRefugiados;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -88,7 +88,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-//                sendCreateRefugiado();
+                sendBuscarRefugiados();
 
 
             }
@@ -166,7 +166,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
         checkEtnia(eEtnia.getText().toString());
     }
 
-    public void sendCreateRefugiado() {
+    public void sendBuscarRefugiados() {
 
         mAPIService.buscarRefugiados(
                 eNacimientoString,
@@ -178,12 +178,14 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
                 ePuebloString,
                 eEtniaString,
                 sGrupo_sanguineoString,
-                sOjosString).enqueue(new Callback<List<Refugiado>>() {
+                sOjosString).enqueue(new Callback<ArrayList<Refugiado>>() {
             @Override
-            public void onResponse(Call<List<Refugiado>> call, Response<List<Refugiado>> response) {
+            public void onResponse(Call<ArrayList<Refugiado>> call, Response<ArrayList<Refugiado>> response) {
 
                 if (response.isSuccessful()) {
                     System.out.println("dentro respuesta ok");
+                    listRefugiados = response.body();
+
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
@@ -199,7 +201,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
             }
 
             @Override
-            public void onFailure(Call<List<Refugiado>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Refugiado>> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
                 /*if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
@@ -223,6 +225,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), Login.class);
+            i.putExtra("listRefugiados", listRefugiados);
             startActivity(i);
 
         } else {

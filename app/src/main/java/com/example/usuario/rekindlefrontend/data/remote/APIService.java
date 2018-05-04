@@ -4,6 +4,7 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -13,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIService {
     /*@POST("/refugiados")
@@ -37,17 +39,17 @@ public interface APIService {
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
-    Call<List<Refugiado>> buscarRefugiados(
-            @Field("name") String name,
-            @Field("surname1") String surname1,
-            @Field("surname2") String surname2,
-            @Field("birthdate") String birthdate,
-            @Field("sex") String sex,
-            @Field("country") String country,
-            @Field("town") String town,
-            @Field("ethnic") String ethnic,
-            @Field("blood") String blood,
-            @Field("eye") String eye);
+    Call<ArrayList<Refugiado>> buscarRefugiados(
+            @Query("name") String name,
+            @Query("surname1") String surname1,
+            @Query("surname2") String surname2,
+            @Query("birthdate") String birthdate,
+            @Query("sex") String sex,
+            @Query("country") String country,
+            @Query("town") String town,
+            @Query("ethnic") String ethnic,
+            @Query("blood") String blood,
+            @Query("eye") String eye);
 
     @POST("/refugiados")
     Call<Refugiado> createRefugiado(@Body Refugiado refugiado);
