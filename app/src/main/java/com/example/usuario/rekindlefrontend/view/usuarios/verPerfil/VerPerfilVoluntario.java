@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -90,13 +92,18 @@ public class VerPerfilVoluntario extends Fragment {
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
-        String mail = datos.getString("email", "email");
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
+        System.out.println("tipo app: "+ usuario.getMail());
+        String mail = usuario.getMail();
 
         mAPIService.obtenerVoluntario(mail).enqueue(new Callback<Voluntario>() {
             @Override
             public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
                 if (response.isSuccessful()){
                     voluntario = response.body();
+                    voluntario.setTipo(1);
                     tratarResultadoPeticion(true);
                 }
                 else {
@@ -149,7 +156,7 @@ public class VerPerfilVoluntario extends Fragment {
 
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Voluntario> {
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Voluntario> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -172,7 +179,7 @@ public class VerPerfilVoluntario extends Fragment {
 
             return result;
         }
-    }
+    }*/
 
 
 }

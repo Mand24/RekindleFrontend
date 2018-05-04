@@ -13,14 +13,24 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CambiarPassword extends AppCompatActivity {
 
+    private int tipo;
     private Refugiado refugiado;
+    private Voluntario voluntario;
 
     private ArrayList<String> param;
 
@@ -28,14 +38,25 @@ public class CambiarPassword extends AppCompatActivity {
     private String new_pass;
     private String email;
 
+    private APIService mAPIService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_password);
 
-        refugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+        mAPIService = APIUtils.getAPIService();
 
-        email = refugiado.getMail();
+        tipo = getIntent().getIntExtra("tipo", 3);
+
+        if (tipo == 0) {
+            refugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+            email = refugiado.getMail();
+        }
+        else {
+            voluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
+            email = voluntario.getMail();
+        }
 
 
         AppCompatButton b = (AppCompatButton) findViewById(R.id.guardar_cambiar_password);
@@ -44,14 +65,15 @@ public class CambiarPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (setCampos()){
-                    try{
+                    /*try{
                         obtenerParametros();
                         boolean result = new AsyncTaskCall().execute().get();
                         tratarResultadoPeticion(result);
                     }catch (Exception e){
                         // TODO Auto-generated catch block
                         e.printStackTrace();
-                    }
+                    }*/
+                   sendCambiarPassword();
                 }else {
 
                 }
@@ -120,21 +142,61 @@ public class CambiarPassword extends AppCompatActivity {
 
     }
 
+    public void sendCambiarPassword() {
+        mAPIService.cambiarPassword(email, actual, new_pass).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    tratarResultadoPeticion(true);
+                }
+                else {
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+    }
+
     public void tratarResultadoPeticion(boolean result){
 
         if (result) {
-            refugiado.setPassword(new_pass);
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.guardado_correctamente), Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
-            i.putExtra("Refugiado", refugiado);
-            startActivity(i);
+            if (tipo == 0) {
+                refugiado.setPassword(new_pass);
+                Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
+                i.putExtra("Refugiado", refugiado);
+                i.putExtra("tipo", 0);
+                startActivity(i);
+            }
+            else {
+                voluntario.setPassword(new_pass);
+                Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
+                i.putExtra("Voluntario", voluntario);
+                i.putExtra("tipo", 1);
+                startActivity(i);
+            }
+
 
         }else Toast.makeText(getApplicationContext(), getResources().getString(R
                 .string.guardado_fallido), Toast.LENGTH_SHORT).show();
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -154,7 +216,7 @@ public class CambiarPassword extends AppCompatActivity {
             return result;
 
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {

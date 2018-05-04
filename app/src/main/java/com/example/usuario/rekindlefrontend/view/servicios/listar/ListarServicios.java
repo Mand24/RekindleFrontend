@@ -184,6 +184,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                 new Servicio(3, "Empleo", "buena describicion", "dsadasd", "27/07/97", "623623623",
                         "4.5", R.drawable.job));
         serviciosFiltrados = servicios;*/
+
     }
 
     @Override

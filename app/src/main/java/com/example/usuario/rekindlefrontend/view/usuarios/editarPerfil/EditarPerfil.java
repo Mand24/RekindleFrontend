@@ -4,11 +4,15 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
+import com.google.gson.Gson;
 
 public class EditarPerfil extends AppCompatActivity {
 
@@ -43,6 +47,11 @@ public class EditarPerfil extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
+        i.putExtra("tipo", usuario.getTipo());
         startActivity(i);
     }
 }

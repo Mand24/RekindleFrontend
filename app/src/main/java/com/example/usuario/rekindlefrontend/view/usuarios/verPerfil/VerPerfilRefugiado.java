@@ -15,9 +15,12 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -107,7 +110,11 @@ public class VerPerfilRefugiado extends Fragment {
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
-        String mail = datos.getString("email", "email");
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
+        System.out.println("tipo app: "+ usuario.getMail());
+        String mail = usuario.getMail();
 
         mAPIService.obtenerRefugiado(mail).enqueue(new Callback<Refugiado>() {
             @Override
@@ -116,6 +123,7 @@ public class VerPerfilRefugiado extends Fragment {
                     System.out.println("dentro respuesta");
                     if (response.body() != null) System.out.println("dentro respuesta ok");
                     refugiado = response.body();
+                    refugiado.setTipo(0);
                     tratarResultadoPeticion(true);
                 }
                 else {

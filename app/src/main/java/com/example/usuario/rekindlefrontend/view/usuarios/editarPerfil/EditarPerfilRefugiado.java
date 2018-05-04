@@ -1,7 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +16,12 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -62,6 +66,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         refugiado = (Refugiado) getActivity().getIntent().getSerializableExtra("Refugiado");
 
+        System.out.println(refugiado.toString());
+
         initializeData(view);
 
 
@@ -73,6 +79,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
                 try{
                     checkCampos(view);
+                    obtenerCampos();
                 }
                 catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -91,6 +98,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
                 i.putExtra("Refugiado", refugiado);
+                i.putExtra("tipo", refugiado.getTipo());
                 startActivity(i);
             }
 
@@ -108,36 +116,36 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         eTelefono = view.findViewById(R.id.telefono_usuario_perfil);
         eNacimiento = view.findViewById(R.id.naciminento_usuario_perfil);
         sSexo = view.findViewById(R.id.sexo_usuario_perfil);
-        ArrayAdapter<CharSequence> adapter_sexo = ArrayAdapter.createFromResource(getActivity()
+        adapter1 = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_sexo, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter_sexo.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sSexo.setAdapter(adapter_sexo);
+        sSexo.setAdapter(adapter1);
         eProcedencia = view.findViewById(R.id.pais_usuario_perfil);
         ePueblo = view.findViewById(R.id.pueblo_usuario_perfil);
         eEtnia = view.findViewById(R.id.etnia_usuario_perfil);
 
         sGrupo_sanguineo = view.findViewById(R.id.sangre_usuario_perfil);
 
-        ArrayAdapter<CharSequence> adapter_gs = ArrayAdapter.createFromResource(getActivity()
+        adapter2 = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_grupo_sanguineo, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter_gs.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sGrupo_sanguineo.setAdapter(adapter_gs);
+        sGrupo_sanguineo.setAdapter(adapter2);
 
         sOjos = view.findViewById(R.id.ojos_usuario_perfil);
 
-        ArrayAdapter<CharSequence> adapter_ojos = ArrayAdapter.createFromResource(getActivity()
+        adapter3 = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_color_ojos, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter_ojos.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sOjos.setAdapter(adapter_ojos);
+        sOjos.setAdapter(adapter3);
 
         eBiografia = view.findViewById(R.id.biografia_usuario_perfil);
 
@@ -183,6 +191,19 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         checkBiografia(eBiografia.getText().toString());
     }
 
+    public void obtenerCampos() {
+        refugiado.setName(eNombre.getText().toString());
+        refugiado.setSurname1(ePrimer_apellido.getText().toString());
+        refugiado.setSurname2(eSegundo_apellido.getText().toString());
+        refugiado.setPhoneNumber(eTelefono.getText().toString());
+        refugiado.setCountry(eProcedencia.getText().toString());
+        refugiado.setTown(ePueblo.getText().toString());
+        refugiado.setEthnic(eEtnia.getText().toString());
+        refugiado.setBirthDate(sSexo.getSelectedItem().toString());
+        refugiado.setBloodType(sGrupo_sanguineo.getSelectedItem().toString());
+        refugiado.setEyeColor(sOjos.getSelectedItem().toString());
+    }
+
     public void sendActualizarRefugiado() {
         mAPIService.actualizarRefugiado(refugiado.getMail(), refugiado).enqueue(
                 new Callback<Void>() {
@@ -220,6 +241,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
+            i.putExtra("tipo", 0);
             startActivity(i);
 
         } else {
