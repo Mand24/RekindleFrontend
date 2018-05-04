@@ -38,8 +38,9 @@
             android:value="@integer/google_play_services_version" />
 
         <!--<activity android:name=".AppBaseActivity"></activity> -->
-        <activity android:name=".view.PantallaAjustes"></activity>
-        <activity android:name=".view.About"></activity>
+        <activity android:name=".view.PantallaAjustes"/>
+        <activity android:name=".view.About"/>
+        <activity android:name=".view.Help"/>
     </application>
 
 </manifest>

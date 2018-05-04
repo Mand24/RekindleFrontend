@@ -34,6 +34,7 @@
     <string name="texto_ojos_refugiado">Eye color:</string>
     <string name="formulario_voluntario">Voluntary Form:</string>
     <string name="titulo_menu_principal">Main Menu</string>
+    <string name="titulo_help">Help</string>
     <string name="listar_servicios">List Services</string>
     <string name="crear_servicio">Create Service</string>
     <string name="ver_perfil">See Profile</string>
@@ -221,9 +222,93 @@
         <item>Spanish</item>
     </string-array>
 
+    <string name="texto_help"><b><u>Log In \n</u></b>Pantalla donde podrá iniciar
+        sesión en caso de que ya se haya registrado anteriormente. Para iniciar sesión necesita
+        introducir el correo con el que se registró, la contraseña asociada, y después
+        pulsar en \"Iniciar sesión\". En caso de no estar registrado puede pulsar en \"No tienes
+        cuenta todavía? Crea una\" para registrarte como refugiado o como voluntario. En caso de no
+        recordar la contraseña asociada a su email de inició de sesión puede pulsar en
+        \"Recuperar contraseña\".\n \n
+
+        <b><u>Registro \n</u></b>Aquí podrá registrarse como refugiado, o bien como
+        voluntario, seleccionando el valor deseado mediante los botones \"Refugiado\" y
+        \"Voluntario\" situados en la parte superior de la pantalla. Para completar el registro
+        introduzca como mínimo todos los campos obligatorios (marcados con un \"*\" al final del
+        campo). Para enviar la solicitud de registro pulsa \"Enviar\". \n \n
+
+        <b><u>Pedir código de recuperación \n</u></b>Introduzca el correo asociado a su
+        cuenta y pulse \"Enviar Correo\", a continuación se le enviará un código de recuperación
+        que será necesario para la siguiente operación. \n \n
+
+        <b><u>Cambiar contraseña con código \n</u></b>Introduzca el código recibido por
+        correo electrónico e introduzca la nueva contraseña deseada y su confirmación.
+        En caso de no querer cambiar la contraseña o cambiar la dirección de correo, puede volver a
+        la pantalla anterior pulsando \"Volver a la pantalla anterior\" situado en la esquina
+        inferior izquierda. \n \n
+
+        <b><u>Menú principal \n</u></b>Una vez iniciada la sesión este será su menu
+        principal, donde tendrá botones en mitad de la pantalla donde podrá ver la acciones
+        principales del sistema. Manteniendo una pulsación en la parte izquierda de la pantalla y
+        deslizando el movimiento hacia la derecha podrá acceder al menú lateral donde habrá
+        opciones como Ver Perfil, Ajustes, Ayuda, About, Cerrar sesión, etc. \n \n
+
+        <b><u>Listar servicios \n</u></b>Lista donde apareceran todos los servicios
+        disponibles en ese momento. Pulsando en la barra superior podrá escribir, filtrando el
+        listado haciendo que solo aparezcan aquellos servicios que coincidan con el texto
+        introducido. Para ayudar al filtrado por tipo dispone de cuatro botones encima del
+        listado de servicios, si todos están activos, significa que la lista está mostrando todos
+        los tipos de servicio, cuando un botón es clicado se altera el filtrado, es decir, si un
+        botón se muestra con un color gris, significa que ese tipo de servicio no se mostrará en la
+        lista, más de un botón puede ser pulsado. Para volver a activar el tipo de servicio de
+        simplemente tiene que volver a pulsar el botón del servicio. Además dispone de un botón
+        de ajustes que le permitirá ajustar la búsqueda de manera más  precisa, disponiendo de
+        varios atributos por cada tipo de servicio como por ejemplo precio,  distáncia, idioma,
+        etc. Al pulsar en un servicio, se mostrará toda su información. \n \n
+
+        <b><u>Mostrar servicio \n</u></b>En esta pantalla se muestra toda la información
+        asociada al servicio, incluyendo un mapa con la localización del servicio. Clicar en el
+        marcador rojo le permitirá trazar una ruta desde su localización actual hasta el servicio
+        o abrir la aplicación GoogleMaps para más opciones. Si le surge cualquier duda con el
+        servicio, puede contactar con el voluntario pulsando en \"Chat\" e iniciará una
+        conversación con él. Si otros usuarios han hecho uso de este servicio anteriormente y han
+        dado su valoración, podrá verla pulsando \"Opiniones\". Y finalmente para inscribirse al
+        servicio solo tiene que pulsar en \"Inscribir\". \n \n
+
+        <b><u>(Voluntario) Mis servicios \n</u></b>Aquí podrá ver la lista de servicios
+        que ha creado. Haciendo una pulsación corta puede obtener una lista de todos los usuarios
+        que se han inscrito en ella. Realizar una pulsación larga seleccionando un servicio le
+        permitirá editar dicho servicio o eliminarlo. \n \n
+
+        <b><u>(Refugiado) Mis servicios \n</u></b>Aquí podrá ver la lista de servicios en
+        los que se ha inscrito, clicar en uno de ellos mostrará de nuevo su información, y
+        realizar una pulsación larga le permitirá darse de baja del servicio. \n \n
+
+        <b><u>(Solo voluntarios) Crear servicio \n</u></b>Formulario donde se le pedirá
+        introducir unos ciertos datos, dependietes del tipo de servicio seleccionado mediante los
+        cuatro botones situados en la parte superior de la pantalla. Pulsar en "Enviar" dará de
+        alta su servicio. \n \n
+
+        <b><u>(Solo refugiados) Buscar personas \n</u></b>Formulario donde introduciendo
+        ciertos datos podrá realizar una búsqueda de otros refugiados con tal de mantener una
+        comunicación con ellos. \n \n
+
+        <b><u>Ver perfil \n</u></b>A partir del menú lateral podrá acceder a su perfil y
+        ver su información asociada. Desde esta pantalla también podrá acceder a "Editar perfil".
+        \n \n
+
+        <b><u>Editar perfil \n</u></b>Pantalla donde podrá modificar su información de
+        perfil así como su contraseña. \n \n
+
+        <b><u>Cambiar contraseña \n</u></b>Podrá cambiar su contraseña actual por una nueva. \n \n
+
+        <b><u>Ajustes \n</u></b>A partir del menú lateral podrá acceder a ajustes, donde
+        podrá seleccionar idioma, distáncia máxima de búsqueda de servicios, etc. \n \n
+
+        <b><u>About \n</u></b>Pantalla para conocer más acerca de nosotros.
+    </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 
 </resources>

@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.view.About;
+import com.example.usuario.rekindlefrontend.view.Help;
 import com.example.usuario.rekindlefrontend.view.PantallaAjustes;
 import com.example.usuario.rekindlefrontend.view.menu.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
@@ -73,12 +74,14 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         break;
 
                     case R.id.ayuda:
-                        Toast.makeText(getApplicationContext(), "help!", Toast
-                                .LENGTH_SHORT)
-                                .show();
+//                        Toast.makeText(getApplicationContext(), "help!", Toast
+//                                .LENGTH_SHORT)
+//                                .show();
+                        i = new Intent(getApplicationContext(), Help.class);
+                        startActivity(i);
                         break;
                     case R.id.about:
-//                        Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
+//                      Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
 //                                .show();
                         i = new Intent(getApplicationContext(), About.class);
                         startActivity(i);
