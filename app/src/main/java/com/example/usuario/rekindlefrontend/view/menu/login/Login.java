@@ -7,7 +7,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,21 +18,15 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.usuarios.ListarRefugiados;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
-import com.google.android.gms.common.util.Strings;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Header;
-import retrofit2.http.Headers;
 
 
 public class Login extends AppCompatActivity {

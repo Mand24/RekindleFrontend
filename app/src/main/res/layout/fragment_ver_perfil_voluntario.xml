@@ -43,12 +43,15 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/editar_ver_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim50"
                 android:text="@string/tipo_usuario" />
 
             <TextView
                 android:id="@+id/tipo_usuario_perfil_voluntario"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_tipo_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
@@ -68,6 +71,9 @@
             <TextView
                 android:id="@+id/nombre_usuario_perfil_voluntario"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_nombre_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
@@ -87,6 +93,9 @@
             <TextView
                 android:id="@+id/apellido1_usuario_perfil_voluntario"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido1_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
@@ -106,6 +115,9 @@
             <TextView
                 android:id="@+id/apellido2_usuario_perfil_voluntario"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido2_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
@@ -125,6 +137,9 @@
             <TextView
                 android:id="@+id/email_usuario_perfil_voluntario"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_email_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"

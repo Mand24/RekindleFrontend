@@ -42,7 +42,7 @@
         <!-- <activity android:name=".AppBaseActivity"></activity> -->
         <activity android:name=".view.menu.menuLateral.Ajustes" />
         <activity android:name=".view.menu.menuLateral.About" />
-        <activity android:name=".view.usuarios.ListarRefugiados"></activity>
+        <activity android:name=".view.usuarios.busqueda.ListarRefugiados"></activity>
     </application>
 
 </manifest>

@@ -43,12 +43,15 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/editar_ver_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim50"
                 android:text="@string/tipo_usuario" />
 
             <TextView
                 android:id="@+id/tipo_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_tipo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -68,6 +71,9 @@
             <TextView
                 android:id="@+id/nombre_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_nombre_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -87,6 +93,9 @@
             <TextView
                 android:id="@+id/apellido1_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido1_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -106,6 +115,9 @@
             <TextView
                 android:id="@+id/apellido2_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido2_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -116,6 +128,9 @@
             <TextView
                 android:id="@+id/label_email_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/apellido2_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -125,6 +140,9 @@
             <TextView
                 android:id="@+id/email_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_email_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -144,6 +162,9 @@
             <TextView
                 android:id="@+id/telefono_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_telefono_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -163,6 +184,9 @@
             <TextView
                 android:id="@+id/naciminento_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_nacimiento_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -182,6 +206,9 @@
             <TextView
                 android:id="@+id/sexo_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_sexo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -201,6 +228,9 @@
             <TextView
                 android:id="@+id/pais_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_pais_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -220,6 +250,9 @@
             <TextView
                 android:id="@+id/pueblo_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_pueblo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -239,6 +272,9 @@
             <TextView
                 android:id="@+id/etnia_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_etnia_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -258,6 +294,9 @@
             <TextView
                 android:id="@+id/sangre_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_sangre_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
@@ -277,11 +316,14 @@
             <TextView
                 android:id="@+id/ojos_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_ojos_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:layout_marginBottom="@dimen/dim20"
+
                 android:text="Obtener ojos()"
                 android:background="@drawable/back"/>
 
@@ -297,6 +339,9 @@
             <TextView
                 android:id="@+id/biografia_usuario_perfil_refugiado"
                 style="@style/text_view"
+                android:padding="@dimen/dim6"
+                android:layout_width="match_parent"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_biografia_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
