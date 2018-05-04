@@ -32,8 +32,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     protected RelativeLayout view_stub; //This is the framelayout to keep your content view
     protected NavigationView navigationView; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
-//    private TextView nombreUsuario;
-//    private TextView emailUsuario;
+    private TextView nombreUsuario;
+    private TextView emailUsuario;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -43,16 +43,19 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation);
-        /*nombreUsuario = (TextView) findViewById(R.layout.navigation_header);
-        emailUsuario = (TextView) findViewById(R.id.email_header);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
+        emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
         nombreUsuario.setText(usuario.getName());
-        emailUsuario.setText(usuario.getMail());*/
-
+        emailUsuario.setText(usuario.getMail());
+        
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
