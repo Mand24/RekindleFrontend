@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
@@ -39,7 +39,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     ArrayAdapter<CharSequence> adapter1, adapter2, adapter3;
 
     private EditText eNombre;
-    private EditText eEmail;
+    private TextView eEmail;
     private EditText ePrimer_apellido;
     private EditText eSegundo_apellido;
     private EditText eTelefono;
@@ -50,6 +50,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     private EditText eEtnia;
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
+    private EditText eBiografia;
 
     private APIService mAPIService;
 
@@ -146,6 +147,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         sOjos.setAdapter(adapter3);
 
+        eBiografia = view.findViewById(R.id.biografia_usuario_perfil);
+
         mAPIService = APIUtils.getAPIService();
 
     }
@@ -172,18 +175,20 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         selectionPosition = adapter3.getPosition(refugiado.getEyeColor());
         sOjos.setSelection(selectionPosition);
+
+        eBiografia.setText(refugiado.getBiography());
     }
 
     public void checkCampos(View view) throws Exception {
 
         checkNombre(eNombre.getText().toString());
-        checkEmail(eEmail.getText().toString());
         checkPrimer_apellido(ePrimer_apellido.getText().toString());
         checkSegundo_apellido(eSegundo_apellido.getText().toString());
         checkTelefono(eTelefono.getText().toString());
         checkProcedencia(eProcedencia.getText().toString());
         checkPueblo(ePueblo.getText().toString());
         checkEtnia(eEtnia.getText().toString());
+        checkBiografia(eBiografia.getText().toString());
     }
 
     public void obtenerCampos() {

@@ -49,6 +49,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
     private EditText eEtnia;
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
+    private EditText eBiografia;
 
     private APIService mAPIService;
     private Refugiado refugiado;
@@ -138,6 +139,8 @@ public class RegistroRefugiado extends AbstractFormatChecker {
 
         sOjos.setAdapter(adapter_ojos);
 
+        eBiografia = view.findViewById(R.id.biografia_refugiado);
+
         mAPIService = APIUtils.getAPIService();
     }
 
@@ -153,6 +156,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         checkProcedencia(eProcedencia.getText().toString());
         checkPueblo(ePueblo.getText().toString());
         checkEtnia(eEtnia.getText().toString());
+        checkBiografia(eBiografia.getText().toString());
     }
 
     public void obtenerParametros() {
@@ -195,7 +199,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
                 eNacimiento.getText().toString(), sSexo.getSelectedItem().toString(),
                 eProcedencia.getText().toString(), ePueblo.getText().toString(), eEtnia.getText()
                 .toString(), sGrupo_sanguineo.getSelectedItem().toString(), sOjos.getSelectedItem
-                ().toString());
+                ().toString(),eBiografia.getText().toString());
         System.out.println("crear refugiado");
 
     }

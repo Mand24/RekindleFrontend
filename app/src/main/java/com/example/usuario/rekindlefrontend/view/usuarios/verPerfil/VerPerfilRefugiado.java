@@ -43,6 +43,7 @@ public class VerPerfilRefugiado extends Fragment {
     private TextView etniaUsuario;
     private TextView sangreUsuario;
     private TextView ojosUsuario;
+    private TextView biografiaUsuario;
 
     private APIService mAPIService;
     private Refugiado refugiado;
@@ -100,6 +101,7 @@ public class VerPerfilRefugiado extends Fragment {
         etniaUsuario = view.findViewById(R.id.etnia_usuario_perfil_refugiado);
         sangreUsuario = view.findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = view.findViewById(R.id.ojos_usuario_perfil_refugiado);
+        biografiaUsuario = view.findViewById(R.id.biografia_usuario_perfil_refugiado);
 
         mAPIService = APIUtils.getAPIService();
     }
@@ -180,6 +182,7 @@ public class VerPerfilRefugiado extends Fragment {
         etniaUsuario.setText(refugiado.getEthnic());
         sangreUsuario.setText(refugiado.getBloodType());
         ojosUsuario.setText(refugiado.getEyeColor());
+        biografiaUsuario.setText(refugiado.getBiography());
 
     }
 

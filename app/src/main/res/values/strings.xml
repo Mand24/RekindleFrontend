@@ -192,9 +192,11 @@
     <string name="ambito_largo">Ambit is too long, maximum 50 characters</string>
     <string name="horario_obligatorio">Schedule requiered</string>
     <string name="horario_largo">The schedule is too long, maximum 30 characters</string>
-    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two
-        digits of precision
-    </string>
+
+    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
+    <string name="texto_biografia_refugiado">Biography:</string>
+    <string name="biografia_largo">The biography is too long, maximum 300 letters</string>
+
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
