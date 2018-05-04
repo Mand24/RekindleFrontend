@@ -125,7 +125,11 @@
     <string name="company">2018-2018 Rekindle Team</string>
     <string name="rights">All rights reserved</string>
 
-    <string name="back_to_login"><b><u>Back to the previous screen</u></b></string>
+    <string name="back_to_login">
+        <b>
+            <u>Back to the previous screen</u>
+        </b>
+    </string>
     <string name="introducir_codigo">Code(*):</string>
 
     <string name="titulo_mis_servicios">My services</string>
@@ -153,14 +157,18 @@
     <string name="apellido2_letras">Second last name can only contains letters</string>
     <string name="telefonoUsuario_numeros">Phone only can contains digits</string>
     <string name="telefonoUsuario_largo">Phone too long, maximum 40 digits</string>
-    <string name="procedencia_letras">The name of the country of origin can only contain letters</string>
-    <string name="procedencia_largo">The name of the country of origin cis too long, maximum 20 letters</string>
+    <string name="procedencia_letras">The name of the country of origin can only contain letters
+    </string>
+    <string name="procedencia_largo">The name of the country of origin cis too long, maximum 20
+        letters
+    </string>
     <string name="pueblo_largo">The name of the town is too long, maximum 40 letters</string>
     <string name="pueblo_letras">The name os the towns can only contain letters</string>
     <string name="etnia_largo">The name of the ethnic group is too long, maximum 20 letters</string>
     <string name="etnia_letras">The name of the ethnic group can only contain letters</string>
     <string name="nombreServicio_obligatorio">Name of service required</string>
-    <string name="nombreServicio_largo">The name of the service is too long, maximum 50 letters</string>
+    <string name="nombreServicio_largo">The name of the service is too long, maximum 50 letters
+    </string>
     <string name="nombreServicio_letras">The name of the service can only contain letters</string>
     <string name="telefonoServicio_obligatorio">Phone required</string>
     <string name="solicitudes_numeros">The request limit must be a number</string>
@@ -168,18 +176,25 @@
     <string name="descricpion_larga">The description is too long, maximum 300 letters</string>
     <string name="descripcion_letras">The description can only contain letters</string>
     <string name="puestoTrabajo_obligatorio">Job required</string>
-    <string name="puestoTrabajo_largo">The name of the job is too long, maximum 50 characters</string>
+    <string name="puestoTrabajo_largo">The name of the job is too long, maximum 50 characters
+    </string>
     <string name="requisitos_obligatorios">Requirements are required</string>
-    <string name="requisitos_largo">The description of the requirements is too long, maximum 100 characters</string>
+    <string name="requisitos_largo">The description of the requirements is too long, maximum 100
+        characters
+    </string>
     <string name="sueldo_obligatorio">Salary is required</string>
-    <string name="sueldo_formto">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
+    <string name="sueldo_formto">Incorrect price format; correct format = decimal with maximum two
+        digits of precision
+    </string>
     <string name="plazas_numeros">Places only can contain digits</string>
     <string name="plazas_largo">The number of places is too long, maximum 5 digits</string>
     <string name="ambito_obligatorio">Ambit required</string>
     <string name="ambito_largo">Ambit is too long, maximum 50 characters</string>
     <string name="horario_obligatorio">Schedule requiered</string>
     <string name="horario_largo">The schedule is too long, maximum 30 characters</string>
-    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
+    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two
+        digits of precision
+    </string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
@@ -223,7 +238,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 
 </resources>

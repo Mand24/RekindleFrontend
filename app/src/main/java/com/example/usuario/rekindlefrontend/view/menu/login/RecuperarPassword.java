@@ -12,7 +12,15 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RecuperarPassword extends AppCompatActivity {
 
@@ -22,10 +30,14 @@ public class RecuperarPassword extends AppCompatActivity {
     EditText _codeText;
     TextView _back;
 
+    private APIService mAPIService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_password);
+
+        mAPIService = APIUtils.getAPIService();
 
         final String email = getIntent().getExtras().getString("email");
         final String codeSystem = getIntent().getExtras().getString("code");
@@ -49,27 +61,54 @@ public class RecuperarPassword extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         boolean result = true;
-                        try {
-                            result = new AsyncTaskCall().execute(email, password).get();
-                            if (result) {
-                                Toast.makeText(getApplicationContext(), " Password changed ",
-                                        Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                                startActivity(i);
-                            } else {
-                                Toast.makeText(getApplicationContext(),
-                                        " Could not change password ",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+//                            result = new AsyncTaskCall().execute(email, password).get();
+                        result = sendRecuperarPassword(email, password);
+
+                        if (result) {
+                            Toast.makeText(getApplicationContext(), " Password changed ",
+                                    Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(),
+                                    " Could not change password ",
+                                    Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),
                             " Wrong code ",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+
+            public boolean sendRecuperarPassword(String email, String password){
+                final boolean[] b = new boolean[1];
+                mAPIService.recuperarPassword(email, password).enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) b[0] = true;
+                        else b[0] = false;
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+
+                return b[0];
             }
         });
 
@@ -88,7 +127,7 @@ public class RecuperarPassword extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
+    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
 
         protected void onPreExecute() {
             //showProgress(true);
@@ -113,5 +152,5 @@ public class RecuperarPassword extends AppCompatActivity {
             }
             return result;
         }
-    }
+    }*/
 }
