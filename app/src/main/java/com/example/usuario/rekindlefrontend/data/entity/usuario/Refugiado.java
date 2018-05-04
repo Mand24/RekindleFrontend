@@ -45,6 +45,9 @@ public class Refugiado extends Usuario {
     @SerializedName("eyeColor")
     @Expose
     private String eyeColor;
+    @SerializedName("eyeColor")
+    @Expose
+    private String biography;
 
 
     public Refugiado(){
@@ -69,7 +72,7 @@ public class Refugiado extends Usuario {
 
     public Refugiado(String mail, String password, String name, String surname1,
             String surname2, String phoneNumber, String birthDate, String sex, String country,
-            String town, String ethnic, String bloodType, String eyeColor) {
+            String town, String ethnic, String bloodType, String eyeColor, String biography) {
         super(0, mail, password, name, surname1, surname2);
         /*this.mail = mail;
         this.password = password;
@@ -84,6 +87,7 @@ public class Refugiado extends Usuario {
         this.ethnic = ethnic;
         this.bloodType = bloodType;
         this.eyeColor = eyeColor;
+        this.biography = biography;
     }
 
     /*public String getMail() {
@@ -190,6 +194,14 @@ public class Refugiado extends Usuario {
         this.eyeColor = eyeColor;
     }
 
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String eyeColor) {
+        this.biography = biography;
+    }
+
     /*@Override
     public String toString() {
         return "Refugiado{" +
@@ -221,6 +233,7 @@ public class Refugiado extends Usuario {
                 ", ethnic='" + ethnic + '\'' +
                 ", bloodType='" + bloodType + '\'' +
                 ", eyeColor='" + eyeColor + '\'' +
+                ", biography='" + biography + '\'' +
                 '}';
     }
 }

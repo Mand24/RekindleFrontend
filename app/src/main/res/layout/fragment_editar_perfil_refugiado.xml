@@ -276,6 +276,24 @@
                 android:popupBackground="@color/colorPrimaryDarker"
             />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/biografia_usuario_perfil"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_biografia_refugiado"
+                />
+            </android.support.design.widget.TextInputLayout>
+
             <android.support.v7.widget.AppCompatButton
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"

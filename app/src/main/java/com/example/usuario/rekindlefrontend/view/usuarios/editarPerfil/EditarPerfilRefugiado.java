@@ -46,6 +46,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     private EditText eEtnia;
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
+    private EditText eBiografia;
 
     private APIService mAPIService;
 
@@ -138,6 +139,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         sOjos.setAdapter(adapter_ojos);
 
+        eBiografia = view.findViewById(R.id.biografia_usuario_perfil);
+
         mAPIService = APIUtils.getAPIService();
 
     }
@@ -164,6 +167,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         selectionPosition = adapter3.getPosition(refugiado.getEyeColor());
         sOjos.setSelection(selectionPosition);
+
+        eBiografia.setText(refugiado.getBiography());
     }
 
     public void checkCampos(View view) throws Exception {
@@ -175,6 +180,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         checkProcedencia(eProcedencia.getText().toString());
         checkPueblo(ePueblo.getText().toString());
         checkEtnia(eEtnia.getText().toString());
+        checkBiografia(eBiografia.getText().toString());
     }
 
     public void sendActualizarRefugiado() {
