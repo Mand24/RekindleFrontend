@@ -134,6 +134,8 @@ public class RegistroVoluntario extends AbstractFormatChecker {
             public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
 
                 if(response.isSuccessful()) {
+                    Voluntario voluntario = response.body();
+                    System.out.println(voluntario.toString());
                     System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());

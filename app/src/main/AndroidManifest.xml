@@ -28,18 +28,19 @@
         <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
         <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />
         <activity android:name=".view.servicios.mostrar.MostrarServicio" />
-        <activity android:name=".view.menu.login.RecuperarPassword"/>
-        <activity android:name=".view.menu.login.CodePasswordRequest"/>
-        <activity android:name=".view.servicios.listar.MisServicios"/>
+        <activity android:name=".view.menu.login.RecuperarPassword" />
+        <activity android:name=".view.menu.login.CodePasswordRequest" />
+        <activity android:name=".view.servicios.listar.MisServicios" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <!--<activity android:name=".AppBaseActivity"></activity> -->
-        <activity android:name=".view.menu.menuLateral.Ajustes"></activity>
-        <activity android:name=".view.menu.menuLateral.About"></activity>
+        <!-- <activity android:name=".AppBaseActivity"></activity> -->
+        <activity android:name=".view.menu.menuLateral.Ajustes" />
+        <activity android:name=".view.menu.menuLateral.About" />
+        <activity android:name=".view.usuarios.ListarRefugiados"></activity>
     </application>
 
 </manifest>

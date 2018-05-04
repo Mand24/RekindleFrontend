@@ -61,6 +61,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
                 try{
                     checkCampos(view);
+                    obtenerCampos();
                 }
                 catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -115,6 +116,12 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     }
 
+    public void obtenerCampos() {
+        voluntario.setName(eNombre.getText().toString());
+        voluntario.setSurname1(ePrimer_apellido.getText().toString());
+        voluntario.setSurname2(eSegundo_apellido.getText().toString());
+    }
+
     public void sendActualizarVoluntario(){
         mAPIService.actualizarVoluntario(voluntario.getMail(), voluntario).enqueue(
                 new Callback<Void>() {
@@ -152,6 +159,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
+            i.putExtra("tipo", 1);
             startActivity(i);
 
         } else {

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
@@ -31,6 +32,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     protected RelativeLayout view_stub; //This is the framelayout to keep your content view
     protected NavigationView navigationView; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
+//    private TextView nombreUsuario;
+//    private TextView emailUsuario;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -40,6 +43,17 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation);
+        /*nombreUsuario = (TextView) findViewById(R.layout.navigation_header);
+        emailUsuario = (TextView) findViewById(R.id.email_header);
+
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
+        nombreUsuario.setText(usuario.getName());
+        emailUsuario.setText(usuario.getMail());*/
+
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
@@ -62,6 +76,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         String json = datos.getString("usuario", "");
                         Usuario usuario = gson.fromJson(json, Usuario.class);
                         i.putExtra("tipo", usuario.getTipo());
+                        System.out.println("tipo app: "+ usuario.getTipo());
                         startActivity(i);
                         break;
                     case R.id.configuracion:

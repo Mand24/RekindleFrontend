@@ -66,7 +66,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
         serviceViewHolder.serviceName.setText(servicio.getNombre());
         serviceViewHolder.serviceAddress.setText(servicio.getDireccion());
-        serviceViewHolder.expirationDate.setText(servicio.getFecha());
+        serviceViewHolder.expirationDate.setText(servicio.getTipo());
         serviceViewHolder.serviceType.setImageResource(servicio.getTipo());
     }
 
