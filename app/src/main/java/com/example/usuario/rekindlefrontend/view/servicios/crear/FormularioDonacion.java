@@ -184,7 +184,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
             try {
                 result = ComunicacionServicios.crearDonacion(url, param);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
 

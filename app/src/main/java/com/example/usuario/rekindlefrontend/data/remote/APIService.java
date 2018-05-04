@@ -4,6 +4,9 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -34,6 +37,19 @@ public interface APIService {
             password);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
+    @GET("/refugiados")
+    Call<ArrayList<Refugiado>> buscarRefugiados(
+            @Query("name") String name,
+            @Query("surname1") String surname1,
+            @Query("surname2") String surname2,
+            @Query("birthdate") String birthdate,
+            @Query("sex") String sex,
+            @Query("country") String country,
+            @Query("town") String town,
+            @Query("ethnic") String ethnic,
+            @Query("blood") String blood,
+            @Query("eye") String eye);
+
     @POST("/refugiados")
     Call<Refugiado> createRefugiado(@Body Refugiado refugiado);
 

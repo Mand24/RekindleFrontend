@@ -190,7 +190,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
             try {
                 result = ComunicacionServicios.crearCursoEducativo(url, param);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
 

@@ -183,7 +183,7 @@ public class Login extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
-                    // todo log to some central bug tracking service
+
                 }
             }
         });
@@ -204,7 +204,7 @@ public class Login extends AppCompatActivity {
                 result = ComunicacionUsuarios.iniciarSesion(url, params[0], params[1]);
                 //result = ComunicacionUsuarios.test2(url);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
 

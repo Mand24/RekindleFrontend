@@ -184,7 +184,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             try {
                 result = ComunicacionServicios.crearAlojamiento(url, param);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
 
