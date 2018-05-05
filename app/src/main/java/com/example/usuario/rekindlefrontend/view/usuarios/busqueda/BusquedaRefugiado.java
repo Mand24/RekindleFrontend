@@ -101,8 +101,7 @@ public class BusquedaRefugiado extends AppCompatActivity{
         });
 
 
-        //SetDate setDate = new SetDate(eNacimiento, container.getContext());
-
+        SetDate setDate = new SetDate(eNacimiento, this);
 
     }
 
@@ -156,7 +155,7 @@ public class BusquedaRefugiado extends AppCompatActivity{
         ePrimer_apellidoString = ePrimer_apellido.getText().toString();
         eSegundo_apellidoString = eSegundo_apellido.getText().toString();
         eNacimientoString = eNacimiento.getText().toString();
-        eNacimientoString = "1890-01-01";
+        if (eNacimientoString.equals("")) eNacimientoString = "1890-01-01";
         sSexoString = sSexo.getSelectedItem().toString();
         eProcedenciaString = eProcedencia.getText().toString();
         ePuebloString = ePueblo.getText().toString();

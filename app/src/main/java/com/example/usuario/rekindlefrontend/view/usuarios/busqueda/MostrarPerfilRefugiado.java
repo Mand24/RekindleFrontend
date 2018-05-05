@@ -50,6 +50,13 @@ public class MostrarPerfilRefugiado extends AppCompatActivity {
         setContentView(R.layout.activity_mostrar_perfil_refugiado);
 
         setVistas();
+
+        refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
+        System.out.println(refugiado.toString());
+
+        llenarTextViews();
+
+
     }
 
     public void setVistas(){
@@ -67,71 +74,9 @@ public class MostrarPerfilRefugiado extends AppCompatActivity {
         sangreUsuario = findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = findViewById(R.id.ojos_usuario_perfil_refugiado);
         biografiaUsuario = findViewById(R.id.biografia_usuario_perfil_refugiado);
-        mAPIService = APIUtils.getAPIService();
 
-        sendObtenerRefugiado();
     }
 
-    public void sendObtenerRefugiado(){
-
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                (getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
-        System.out.println("tipo app: "+ usuario.getMail());
-        String mail = usuario.getMail();
-
-        mAPIService.obtenerRefugiado(mail).enqueue(new Callback<Refugiado>() {
-            @Override
-            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
-                if (response.isSuccessful()){
-                    System.out.println("dentro respuesta");
-                    if (response.body() != null) System.out.println("dentro respuesta ok");
-                    refugiado = response.body();
-                    refugiado.setTipo(0);
-                    tratarResultadoPeticion(true);
-                }
-                else {
-                    System.out.println("refugiado null");
-                    System.out.println("Mensaje: "+response.message());
-                    System.out.println("codi: "+response.code());
-                    System.out.println("dentro respuesta failed");
-                    tratarResultadoPeticion(false);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Refugiado> call, Throwable t) {
-                if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), "this is an actual network failure"
-                            + " :( inform "
-                            + "the user and "
-                            + "possibly retry", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        });
-    }
-
-    public void tratarResultadoPeticion(boolean result) {
-
-        if (result) {
-
-            llenarTextViews();
-
-            Toast.makeText(getApplicationContext(), "ver perfil correctamente",
-                    Toast
-                            .LENGTH_SHORT).show();
-
-        } else {
-            Toast.makeText(getApplicationContext(), "ver perfil fallida", Toast
-                    .LENGTH_SHORT).show();
-        }
-    }
 
     public void llenarTextViews(){
 
@@ -154,8 +99,6 @@ public class MostrarPerfilRefugiado extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        i.putExtra("tipo", 0);
-        startActivity(i);
+        finish();
     }
 }

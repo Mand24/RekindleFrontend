@@ -205,6 +205,8 @@ public class RegistroRefugiado extends AbstractFormatChecker {
     }
 
     public void sendCreateRefugiado(){
+        System.out.println(refugiado.toString());
+
 
         mAPIService.createRefugiado(refugiado).enqueue(new Callback<Refugiado>() {
             @Override
@@ -217,9 +219,6 @@ public class RegistroRefugiado extends AbstractFormatChecker {
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
                 }
                 else {
-                    if (response.body() != null) System.out.println("Resposta: "+response.toString
-                            ());
-                    else System.out.println("refugiado null");
                     System.out.println("Mensaje: "+response.message());
                     System.out.println("codi: "+response.code());
                     System.out.println("dentro respuesta failed");

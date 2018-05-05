@@ -223,7 +223,7 @@ public class Refugiado extends Usuario {
     public String toString() {
         return "Refugiado{" +
                 "tipo='" + getTipo() + '\'' +
-                "mail='" + getMail() + '\'' +
+                ", mail='" + getMail() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", name='" + getName() + '\'' +
                 ", surname1='" + getSurname1() + '\'' +

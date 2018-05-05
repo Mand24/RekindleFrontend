@@ -15,6 +15,7 @@ import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.RefugiadoViewHolder> {
