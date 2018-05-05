@@ -96,6 +96,7 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
 
         refugiadosFiltrados = refugiados;
 
+
     }
 
     @Override
@@ -125,7 +126,6 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
                 getFilter().filter(newText);
                 return true;
             }
@@ -145,11 +145,13 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
 
                 for (Refugiado s : refugiados) {
                     if(!charString.isEmpty()) {
-                        if (s.getName().toLowerCase().contains(charString) || s
-                                .getSurname1().toLowerCase().contains(charString) || s
-                                .getSurname2().toLowerCase().contains(charString) || s
-                                .getSex().toLowerCase().contains(charString) || s
-                                .getBirthDate().toLowerCase().contains(charString)) {
+                        if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
+                        )|| (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
+                                (charString)) || (s.getSurname2() != null && s
+                                .getSurname2().toLowerCase().contains(charString)) || (s.getSex()
+                                != null && s.getSex().toLowerCase().contains(charString)) || (s
+                                .getBirthDate() != null && s.getBirthDate().toLowerCase()
+                                .contains(charString))) {
 
                             filteredList.add(s);
                         }
