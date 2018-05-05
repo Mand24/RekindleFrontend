@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.CodeGenerator;
+import com.example.usuario.rekindlefrontend.utils.SendMailTask;
 import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
 
 public class CodePasswordRequest extends AppCompatActivity {
@@ -42,22 +44,26 @@ public class CodePasswordRequest extends AppCompatActivity {
                 (email).matches()) {
             CodeGenerator code = new CodeGenerator(5);
             String codeString = code.getCode();
-            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-            emailIntent.setData(Uri.parse("mailto:" + email));
+
+            /*Intent emailIntent = new Intent(Intent.ACTION_SEND, Uri.fromParts("mailto", email,
+                    "null"));
+            emailIntent.putExtra(Intent.EXTRA_EMAIL, email);
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Password recovery code");
             emailIntent.putExtra(Intent.EXTRA_TEXT,
                     "Your password recovery code is: " + codeString);
+            emailIntent.setType("message/rfc822");*/
 
-            try {
-                startActivity(Intent.createChooser(emailIntent, "Send email using..."));
-                Intent i = new Intent(getApplicationContext(), RecuperarPassword.class);
-                i.putExtra("email", email);
-                i.putExtra("code", codeString);
-                startActivity(i);
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(CodePasswordRequest.this, "No email clients installed.",
-                        Toast.LENGTH_SHORT).show();
-            }
+            Log.i("SendMailActivity", "Send Button Clicked.");
+
+            new SendMailTask(CodePasswordRequest.this).execute("apprekindle@gmail.com",
+                    "12rekindle34", email, "Password recovery code", "Your password recovery code"
+                            + " is: " + codeString);
+
+            Intent i = new Intent(getApplicationContext(), RecuperarPassword.class);
+            i.putExtra("email", email);
+            i.putExtra("code", codeString);
+            startActivity(i);
+
         }
         else{
             _email.setError("Enter a valid email address");
