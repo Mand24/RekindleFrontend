@@ -1,5 +1,8 @@
 package com.example.usuario.rekindlefrontend.data.entity.usuario;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -236,4 +239,50 @@ public class Refugiado extends Usuario {
                 ", biography='" + biography + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeString(this.phoneNumber);
+        dest.writeString(this.birthDate);
+        dest.writeString(this.sex);
+        dest.writeString(this.country);
+        dest.writeString(this.town);
+        dest.writeString(this.ethnic);
+        dest.writeString(this.bloodType);
+        dest.writeString(this.eyeColor);
+        dest.writeString(this.biography);
+    }
+
+    protected Refugiado(Parcel in) {
+        super(in);
+        this.phoneNumber = in.readString();
+        this.birthDate = in.readString();
+        this.sex = in.readString();
+        this.country = in.readString();
+        this.town = in.readString();
+        this.ethnic = in.readString();
+        this.bloodType = in.readString();
+        this.eyeColor = in.readString();
+        this.biography = in.readString();
+    }
+
+    public static final Parcelable.Creator<Refugiado> CREATOR =
+            new Parcelable.Creator<Refugiado>() {
+                @Override
+                public Refugiado createFromParcel(Parcel source) {
+                    return new Refugiado(source);
+                }
+
+                @Override
+                public Refugiado[] newArray(int size) {
+                    return new Refugiado[size];
+                }
+            };
 }

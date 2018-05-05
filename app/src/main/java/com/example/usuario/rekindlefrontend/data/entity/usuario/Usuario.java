@@ -1,11 +1,14 @@
 package com.example.usuario.rekindlefrontend.data.entity.usuario;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public class Usuario implements Parcelable {
 
     @SerializedName("tipo")
     @Expose
@@ -36,6 +39,43 @@ public class Usuario implements Serializable {
         this.name = name;
         this.surname1 = surname1;
         this.surname2 = surname2;
+    }
+
+
+    protected Usuario(Parcel in) {
+        tipo = in.readInt();
+        mail = in.readString();
+        password = in.readString();
+        name = in.readString();
+        surname1 = in.readString();
+        surname2 = in.readString();
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(tipo);
+        dest.writeString(mail);
+        dest.writeString(password);
+        dest.writeString(name);
+        dest.writeString(surname1);
+        dest.writeString(surname2);
     }
 
     public int getTipo() { return tipo; }

@@ -1,8 +1,14 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +25,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +38,7 @@ import retrofit2.Response;
  * Created by ORION on 04/05/2018.
  */
 
-public class BusquedaRefugiado extends AbstractFormatChecker{
+public class BusquedaRefugiado extends AppCompatActivity{
 
 
     private ArrayList<String> param = new ArrayList<String>();
@@ -61,18 +68,17 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
     private APIService mAPIService;
     private ArrayList<Refugiado> listRefugiados;
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
-            Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.activity_busqueda_refugiado, container, false);
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_busqueda_refugiado);
         //establecer las vistas
-        setVistas(view);
+        setVistas();
 
 
 
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
+        AppCompatButton button_send = (AppCompatButton) findViewById(R.id
                 .enviar_buscar_personas);
         button_send.setOnClickListener(new View.OnClickListener() {
 
@@ -80,7 +86,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
             public void onClick(View v) {
 
                 try {
-                    checkCampos(view);
+                    //checkCampos(view);
                     obtenerParametros();
                     /*boolean result = new AsyncTaskCall().execute().get();
                     tratarResultadoPeticion(result);
@@ -94,33 +100,35 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
             }
         });
 
-        SetDate setDate = new SetDate(eNacimiento, container.getContext());
 
-        return view;
+        //SetDate setDate = new SetDate(eNacimiento, container.getContext());
+
+
     }
 
-    public void setVistas(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_refugiado);
-        ePrimer_apellido = view.findViewById(R.id.p_apellido_refugiado);
-        eSegundo_apellido = view.findViewById(R.id.s_apellido_refugiado);
-        eNacimiento = view.findViewById(R.id.nacimiento_refugiado);
-        sSexo = view.findViewById(R.id.sexo_refugiado);
+    public void setVistas() {
+
+        eNombre = findViewById(R.id.nombre_refugiado);
+        ePrimer_apellido = findViewById(R.id.p_apellido_refugiado);
+        eSegundo_apellido = findViewById(R.id.s_apellido_refugiado);
+        eNacimiento = findViewById(R.id.nacimiento_refugiado);
+        sSexo = findViewById(R.id.sexo_refugiado);
         ArrayAdapter<CharSequence> adapter_sexo = ArrayAdapter.createFromResource
-                (getActivity().getApplicationContext(), R.array.lista_sexo, R.layout.spinner_item);
+                (getApplicationContext(), R.array.lista_sexo, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter_sexo.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
         sSexo.setAdapter(adapter_sexo);
-        eProcedencia = view.findViewById(R.id.procedencia_refugiado);
-        ePueblo = view.findViewById(R.id.pueblo_refugiado);
-        eEtnia = view.findViewById(R.id.etnia_refugiado);
+        eProcedencia = findViewById(R.id.procedencia_refugiado);
+        ePueblo = findViewById(R.id.pueblo_refugiado);
+        eEtnia = findViewById(R.id.etnia_refugiado);
 
-        sGrupo_sanguineo = view.findViewById(R.id.grupo_sanguineo_refugiado);
+        sGrupo_sanguineo = findViewById(R.id.grupo_sanguineo_refugiado);
 
         ArrayAdapter<CharSequence> adapter_gs = ArrayAdapter.createFromResource
-                (getActivity().getApplicationContext(), R.array.lista_grupo_sanguineo, R.layout
+                (getApplicationContext(), R.array.lista_grupo_sanguineo, R.layout
                         .spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -128,10 +136,10 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
 
         sGrupo_sanguineo.setAdapter(adapter_gs);
 
-        sOjos = view.findViewById(R.id.ojos_refugiado);
+        sOjos = findViewById(R.id.ojos_refugiado);
 
         ArrayAdapter<CharSequence> adapter_ojos = ArrayAdapter.createFromResource
-                (getActivity().getApplicationContext(), R.array.lista_color_ojos, R.layout
+                (getApplicationContext(), R.array.lista_color_ojos, R.layout
                         .spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -148,6 +156,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
         ePrimer_apellidoString = ePrimer_apellido.getText().toString();
         eSegundo_apellidoString = eSegundo_apellido.getText().toString();
         eNacimientoString = eNacimiento.getText().toString();
+        eNacimientoString = "1890-01-01";
         sSexoString = sSexo.getSelectedItem().toString();
         eProcedenciaString = eProcedencia.getText().toString();
         ePuebloString = ePueblo.getText().toString();
@@ -156,7 +165,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
         sOjosString = sOjos.getSelectedItem().toString();
     }
 
-    public void checkCampos(View view) throws Exception {
+    /*public void checkCampos(View view) throws Exception {
 
         checkNombre(eNombre.getText().toString());
         checkPrimer_apellido(ePrimer_apellido.getText().toString());
@@ -164,12 +173,12 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
         checkProcedencia(eProcedencia.getText().toString());
         checkPueblo(ePueblo.getText().toString());
         checkEtnia(eEtnia.getText().toString());
-    }
+    }*/
 
     public void sendBuscarRefugiados() {
 
         mAPIService.buscarRefugiados(
-                eNacimientoString,
+                eNombreString,
                 ePrimer_apellidoString,
                 eSegundo_apellidoString,
                 eNacimientoString,
@@ -181,6 +190,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
                 sOjosString).enqueue(new Callback<ArrayList<Refugiado>>() {
             @Override
             public void onResponse(Call<ArrayList<Refugiado>> call, Response<ArrayList<Refugiado>> response) {
+                System.out.println("url " +call.request().url());
 
                 if (response.isSuccessful()) {
                     System.out.println("dentro respuesta ok");
@@ -202,6 +212,7 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
 
             @Override
             public void onFailure(Call<ArrayList<Refugiado>> call, Throwable t) {
+                System.out.println("url " +call.request().url());
 //                Log.e(TAG, "Unable to submit post to API.");
                 /*if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
@@ -222,16 +233,24 @@ public class BusquedaRefugiado extends AbstractFormatChecker{
 
         if (result) {
 
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                    .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getActivity().getApplicationContext(), Login.class);
-            i.putExtra("listRefugiados", listRefugiados);
+            Toast.makeText(getApplicationContext(), getResources().getString(R
+                    .string.busqueda_correcta), Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(), ListarRefugiados.class);
+//            i.putExtra("listRefugiados", listRefugiados);
+            i.putParcelableArrayListExtra("listRefugiados", listRefugiados);
             startActivity(i);
 
         } else {
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                    .string.registro_fallido), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R
+                    .string.busqueda_fallida), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        i.putExtra("tipo", 0);
+        startActivity(i);
     }
 
 
