@@ -63,13 +63,14 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        /*Intent intent = new Intent(getApplicationContext(), VerPerfil.class);
+                        Intent intent = new Intent(getApplicationContext(), MostrarPerfilRefugiado.class);
                         intent.putExtra("Refugiado", refugiados.get(position));
-                        startActivity(intent);*/
+                        System.out.println(refugiados.get(position).toString());
+                        startActivity(intent);
 
-                        Toast.makeText(getApplicationContext(), "Mostrar Perfil!!!", Toast
+                       /* Toast.makeText(getApplicationContext(), "Mostrar Perfil!!!", Toast
                                 .LENGTH_SHORT)
-                                .show();
+                                .show();*/
                     }
                 });
     }
@@ -94,13 +95,12 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
         refugiados = getIntent().getParcelableArrayListExtra("listRefugiados");
 
         refugiadosFiltrados = refugiados;
+
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        i.putExtra("tipo", 0);
-        startActivity(i);
+        finish();
     }
 
     @Override

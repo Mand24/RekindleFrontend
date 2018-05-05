@@ -51,6 +51,7 @@ public class SetDate implements View.OnClickListener, DatePickerDialog.OnDateSet
             day = String.valueOf(dayOfMonth);
         }
 
-        this.editText.setText(day + "-" + month + "-" + year);
+        //this.editText.setText(day + "-" + month + "-" + year);
+        this.editText.setText(year + "-" + month + "-" + day);
     }
 }

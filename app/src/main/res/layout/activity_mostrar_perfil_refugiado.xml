@@ -33,7 +33,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/editar_ver_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim50"
+                android:layout_marginTop="@dimen/dim100"
                 android:text="@string/tipo_usuario" />
 
             <TextView
