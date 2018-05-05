@@ -13,7 +13,8 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.CodeGenerator;
 import com.example.usuario.rekindlefrontend.utils.SendMailTask;
-import com.example.usuario.rekindlefrontend.view.menu.PantallaInicio;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.menu.login.RecuperarPassword;
 
 public class CodePasswordRequest extends AppCompatActivity {
 
@@ -72,7 +73,7 @@ public class CodePasswordRequest extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), PantallaInicio.class);
+        Intent i = new Intent(getApplicationContext(), Login.class);
         startActivity(i);
     }
 }
