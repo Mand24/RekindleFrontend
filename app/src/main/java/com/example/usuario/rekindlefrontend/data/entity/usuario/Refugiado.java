@@ -45,7 +45,7 @@ public class Refugiado extends Usuario {
     @SerializedName("eyeColor")
     @Expose
     private String eyeColor;
-    @SerializedName("eyeColor")
+    @SerializedName("biography")
     @Expose
     private String biography;
 
