@@ -50,9 +50,9 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
         this.refugiados = refugiados;
     }
 
-    @NonNull
+
     @Override
-    public RefugiadosAdapter.RefugiadoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup,
+    public RefugiadoViewHolder onCreateViewHolder(ViewGroup viewGroup,
             int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_vista_lista_refugiados,
                 viewGroup,

@@ -156,6 +156,7 @@ public class BusquedaRefugiado extends AppCompatActivity{
         ePrimer_apellidoString = ePrimer_apellido.getText().toString();
         eSegundo_apellidoString = eSegundo_apellido.getText().toString();
         eNacimientoString = eNacimiento.getText().toString();
+        eNacimientoString = "1890-01-01";
         sSexoString = sSexo.getSelectedItem().toString();
         eProcedenciaString = eProcedencia.getText().toString();
         ePuebloString = ePueblo.getText().toString();
@@ -233,7 +234,7 @@ public class BusquedaRefugiado extends AppCompatActivity{
         if (result) {
 
             Toast.makeText(getApplicationContext(), getResources().getString(R
-                    .string.registrado_correctamente), Toast.LENGTH_SHORT).show();
+                    .string.busqueda_correcta), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), ListarRefugiados.class);
 //            i.putExtra("listRefugiados", listRefugiados);
             i.putParcelableArrayListExtra("listRefugiados", listRefugiados);
@@ -241,7 +242,7 @@ public class BusquedaRefugiado extends AppCompatActivity{
 
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R
-                    .string.registro_fallido), Toast.LENGTH_SHORT).show();
+                    .string.busqueda_fallida), Toast.LENGTH_SHORT).show();
         }
     }
 

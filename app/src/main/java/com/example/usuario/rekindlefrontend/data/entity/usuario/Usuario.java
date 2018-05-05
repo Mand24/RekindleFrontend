@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable, Parcelable {
+public class Usuario implements Parcelable {
 
     @SerializedName("tipo")
     @Expose
@@ -41,6 +41,7 @@ public class Usuario implements Serializable, Parcelable {
         this.surname2 = surname2;
     }
 
+
     protected Usuario(Parcel in) {
         tipo = in.readInt();
         mail = in.readString();
@@ -48,21 +49,6 @@ public class Usuario implements Serializable, Parcelable {
         name = in.readString();
         surname1 = in.readString();
         surname2 = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(tipo);
-        dest.writeString(mail);
-        dest.writeString(password);
-        dest.writeString(name);
-        dest.writeString(surname1);
-        dest.writeString(surname2);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
@@ -76,6 +62,21 @@ public class Usuario implements Serializable, Parcelable {
             return new Usuario[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(tipo);
+        dest.writeString(mail);
+        dest.writeString(password);
+        dest.writeString(name);
+        dest.writeString(surname1);
+        dest.writeString(surname2);
+    }
 
     public int getTipo() { return tipo; }
 
