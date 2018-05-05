@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
+import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.BusquedaRefugiado;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +61,8 @@ public class MenuPrincipalRefugiado extends Fragment {
 
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), BusquedaRefugiado.class);
+                startActivity(i);
                 Toast.makeText(getActivity().getApplicationContext(), "buscar personas!", Toast
                         .LENGTH_SHORT)
                         .show();

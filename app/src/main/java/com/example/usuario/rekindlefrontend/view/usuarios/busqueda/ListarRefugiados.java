@@ -63,7 +63,6 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        //TODO:Algo al clicar
                         /*Intent intent = new Intent(getApplicationContext(), VerPerfil.class);
                         intent.putExtra("Refugiado", refugiados.get(position));
                         startActivity(intent);*/
@@ -82,9 +81,7 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
     }
 
     private void initializeData() {
-        //TODO: Call API
-
-        refugiados.add(new Refugiado("mail@gmail.com", "1234", "nombre", "apellido1",
+        /*refugiados.add(new Refugiado("mail@gmail.com", "1234", "nombre", "apellido1",
                 "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
                 "", "", ""));
         refugiados.add(new Refugiado("mail1@gmail.com", "1234", "nombre1", "apellido1",
@@ -92,7 +89,10 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
                 "", "", ""));
         refugiados.add(new Refugiado("mail2@gmail.com", "1234", "nombre2", "apellido1",
                 "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));
+                "", "", ""));*/
+
+        refugiados = getIntent().getParcelableArrayListExtra("listRefugiados");
+
         refugiadosFiltrados = refugiados;
     }
 
