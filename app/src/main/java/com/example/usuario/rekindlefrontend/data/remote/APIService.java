@@ -33,8 +33,8 @@ public interface APIService {
 
     @PUT("/recuperarPassword/{mail}")
     @FormUrlEncoded
-    Call<Void> recuperarPassword(@Path("mail") String mail, @Field("passwordOld") String
-            password);
+    Call<Void> recuperarPassword(@Path("mail") String mail, @Field("passwordNew") String
+                    password);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")

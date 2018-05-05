@@ -33,7 +33,6 @@
         <activity android:name=".view.menu.login.CodePasswordRequest"/>
         <activity android:name=".view.servicios.listar.MisServicios"/>
         <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado"/>
-        <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
@@ -44,6 +43,7 @@
         <activity android:name=".view.menu.menuLateral.Ajustes" />
         <activity android:name=".view.menu.menuLateral.About" />
         <activity android:name=".view.usuarios.busqueda.ListarRefugiados"></activity>
+        <activity android:name=".view.Help"/>
     </application>
 
 </manifest>

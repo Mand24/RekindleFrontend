@@ -23,6 +23,7 @@ import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
+import com.example.usuario.rekindlefrontend.view.Help;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
@@ -91,12 +92,14 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         break;
 
                     case R.id.ayuda:
-                        Toast.makeText(getApplicationContext(), "help!", Toast
-                                .LENGTH_SHORT)
-                                .show();
+//                        Toast.makeText(getApplicationContext(), "help!", Toast
+//                                .LENGTH_SHORT)
+//                                .show();
+                        i = new Intent(getApplicationContext(), Help.class);
+                        startActivity(i);
                         break;
                     case R.id.about:
-//                        Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
+//                      Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
 //                                .show();
                         i = new Intent(getApplicationContext(), About.class);
                         startActivity(i);
