@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
+import android.util.Pair;
+
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
@@ -11,6 +13,7 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -83,7 +86,7 @@ public interface APIService {
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
     @GET("/servicios")
-    Call<List<Servicio>> obtenerServicios();
+    Call<Pair<String,Set<Object>>> obtenerServicios();
 
     @GET("/servicios/{email}")
     Call<List<Servicio>> obtenerMisServicios(@Path("email") String email);
