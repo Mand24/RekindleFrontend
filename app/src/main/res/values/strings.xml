@@ -205,6 +205,7 @@
     <string name="buscar">Find</string>
     <string name="busqueda_correcta">Finding succesfull</string>
     <string name="busqueda_fallida">Error on finding</string>
+    <string name="error">Error!</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>

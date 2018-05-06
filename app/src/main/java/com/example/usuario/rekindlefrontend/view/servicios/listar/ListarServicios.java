@@ -14,17 +14,25 @@ import android.view.View;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
+import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugiados;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListarServicios extends AppCompatActivity implements Filterable {
 
@@ -33,6 +41,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
     protected RecyclerView recyclerView;
     protected ServicesAdapter mAdapter;
     protected SearchView searchView;
+
+    protected APIService mAPIService;
 
     protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
     protected List<Boolean> filters = new ArrayList<>(
@@ -132,6 +142,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             }
         });
 
+        mAPIService = APIUtils.getAPIService();
+
     }
 
     protected void setAdapterListener() {
@@ -143,6 +155,10 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
                         intent.putExtra("Servicio", servicios.get(position));
                         startActivity(intent);
+                    }
+                    @Override
+                    public void onItemLongClick(View v, int position) {
+
                     }
                 });
     }
@@ -165,13 +181,6 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
     }
 
     private void initializeData() {
-        //TODO: Call API
-        /*try{
-            servicios = new AsyncTaskCall().execute().get();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
 
         /*servicios.add(new Servicio(0, "Alojamiento", "buena describicion", "Calle 123", "27/07/97",
                 "623623623", "4.5", R.drawable.lodging));
@@ -185,6 +194,22 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                         "4.5", R.drawable.job));
         serviciosFiltrados = servicios;*/
 
+        mAPIService.obtenerServicios().enqueue(new Callback<List<Servicio>>() {
+            @Override
+            public void onResponse(Call<List<Servicio>> call, Response<List<Servicio>> response) {
+                if(response.isSuccessful()){
+                    servicios = response.body();
+                }
+                else{
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Servicio>> call, Throwable t) {
+                tratarResultadoPeticion(false);
+            }
+        });
     }
 
     @Override
@@ -261,6 +286,16 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                 refreshItems();
             }
         };
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+        } else {
+            Toast.makeText(getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

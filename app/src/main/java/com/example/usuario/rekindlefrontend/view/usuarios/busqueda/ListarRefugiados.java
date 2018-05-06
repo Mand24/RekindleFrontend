@@ -72,6 +72,9 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
                                 .LENGTH_SHORT)
                                 .show();*/
                     }
+                    @Override
+                    public void onItemLongClick(View v, int position) {
+                    }
                 });
     }
 

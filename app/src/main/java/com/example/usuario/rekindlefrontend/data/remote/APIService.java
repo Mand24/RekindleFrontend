@@ -1,5 +1,10 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
@@ -9,6 +14,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -76,7 +82,38 @@ public interface APIService {
     @GET("/refugiados/{mail}")
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
+    @GET("/servicios")
+    Call<List<Servicio>> obtenerServicios();
 
+    @GET("/servicios/{email}")
+    Call<List<Servicio>> obtenerMisServicios(@Path("email") String email);
+
+    @GET("/alojamientos/{id}")
+    Call<Alojamiento> getAlojamiento(@Path("id") int id);
+
+    @GET("/cursos/{id}")
+    Call<CursoEducativo> getCurso(@Path("id") int id);
+
+    @GET("/donaciones/{id}")
+    Call<Donacion> getDonacion(@Path("id") int id);
+
+    @GET("/empleos/{id}")
+    Call<OfertaEmpleo> getEmpleo(@Path("id") int id);
+
+    @PUT("/alojamientos/{id}")
+    Call<Void> editarAlojamiento(@Path("id") int id, @Body Alojamiento alojamiento);
+
+    @PUT("/cursos/{id}")
+    Call<Void> editarCurso(@Path("id") int id, @Body CursoEducativo curso);
+
+    @PUT("/donaciones/{id}")
+    Call<Void> editarDonacion(@Path("id") int id, @Body Donacion donacion);
+
+    @PUT("/empleos/{id}")
+    Call<Void> editarEmpleo(@Path("id") int id, @Body OfertaEmpleo empleo);
+
+    @DELETE("/servicios/{id}/{tipo}")
+    Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") char tipo);
 
     @GET("/test2")
     Call<Refugiado> prueba();

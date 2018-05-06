@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.servicios.listar;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 
 public class MisServicios extends ListarServicios {
 
@@ -23,6 +25,12 @@ public class MisServicios extends ListarServicios {
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
+                        Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
+                        intent.putExtra("tipo", servicios.get(position).getTipo());
+                        startActivity(intent);
+                    }
+                    @Override
+                    public void onItemLongClick(View v, int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
                                 (MisServicios.this);
                         alertDialog.setTitle("Elije una opcion").setItems(R.array.clic_servicio,
