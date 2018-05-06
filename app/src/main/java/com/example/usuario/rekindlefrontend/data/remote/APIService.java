@@ -13,6 +13,7 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import retrofit2.Call;
@@ -86,10 +87,10 @@ public interface APIService {
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
     @GET("/servicios")
-    Call<Pair<String,Set<Object>>> obtenerServicios();
+    Call<Map<String,Set<Object>>> obtenerServicios();
 
     @GET("/servicios/{mail}/{tipo}")
-    Call<List<Servicio>> obtenerMisServicios(@Path("mail") String mail, @Path("tipo") int tipo);
+    Call<Map<String,Set<Object>>> obtenerMisServicios(@Path("mail") String mail, @Path("tipo") int tipo);
 
     @GET("/alojamientos/{id}")
     Call<Alojamiento> getAlojamiento(@Path("id") int id);
