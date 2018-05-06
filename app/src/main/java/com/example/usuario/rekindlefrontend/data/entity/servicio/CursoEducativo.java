@@ -4,23 +4,23 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class CursoEducativo extends Servicio {
-    @SerializedName("ambito")
+    @SerializedName("ambit")
     @Expose
     private String ambito;
-    @SerializedName("requisitos")
+    @SerializedName("requirements")
     @Expose
     private String requisitos;
-    @SerializedName("horario")
+    @SerializedName("schedule")
     @Expose
     private String horario;
-    @SerializedName("plazas")
+    @SerializedName("places")
     @Expose
     private String plazas;
-    @SerializedName("precio")
+    @SerializedName("price")
     @Expose
     private String precio;
 
-    public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion, String fecha,
+    public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion,
             String ambito, String requisitos, String horario, String plazas, String precio,
             String numero){
         super(id, 2, email, nombre, descripcion, direccion, numero);

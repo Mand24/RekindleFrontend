@@ -4,25 +4,25 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class OfertaEmpleo extends Servicio {
-    @SerializedName("puesto")
+    @SerializedName("charge")
     @Expose
     public String puesto;
-    @SerializedName("requisitos")
+    @SerializedName("requirements")
     @Expose
     public String requisitos;
-    @SerializedName("jornada")
+    @SerializedName("hoursDay")
     @Expose
     public String jornada;
-    @SerializedName("horasSemana")
+    @SerializedName("hoursWeek")
     @Expose
     public String horasSemana;
-    @SerializedName("duracion")
+    @SerializedName("contractDuration")
     @Expose
     public String duracion;
-    @SerializedName("plazasDisponibles")
+    @SerializedName("places")
     @Expose
     public String plazasDisponibles;
-    @SerializedName("sueldo")
+    @SerializedName("salary")
     @Expose
     public String sueldo;
 

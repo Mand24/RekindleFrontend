@@ -5,9 +5,11 @@ import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
@@ -25,8 +31,13 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -34,7 +45,6 @@ import java.util.ArrayList;
  */
 public class FormularioOfertaEmpleo extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
     private EditText eDireccion;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -48,6 +58,9 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     private EditText eSueldo;
     private EditText ePlazas;
     private EditText eDescripcion;
+
+    private OfertaEmpleo mOfertaEmpleo;
+    private APIService mAPIService;
 
     public FormularioOfertaEmpleo() {
         // Required empty public constructor
@@ -72,12 +85,10 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCrearOferta();
             }
         });
 
@@ -114,6 +125,8 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
         ePlazas = view.findViewById(R.id.plazas_oferta_empleo);
         eDescripcion = view.findViewById(R.id.descripcion_oferta_empleo);
 
+        mAPIService = APIUtils.getAPIService();
+
     }
 
     public void checkCampos(View view) throws Exception {
@@ -132,22 +145,40 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     }
 
     public void obtenerParametros(){
-        param.add(eDireccion.getText().toString());
 
-        param = new ArrayList<String>();
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+                (getActivity().getApplicationContext());
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
 
-        param.add (eNombre.getText().toString());
-        param.add (eTelefono.getText().toString());
-        param.add (eDireccion.getText().toString());
-        param.add (ePuesto.getText().toString());
-        param.add (eRequisitos.getText().toString());
-        param.add (eJornada.getText().toString());
-        param.add (eHoras.getText().toString());
-        param.add (eDuracion.getText().toString());
-        param.add (eSueldo.getText().toString());
-        param.add (ePlazas.getText().toString());
-        param.add (eDescripcion.getText().toString());
+        mOfertaEmpleo = new OfertaEmpleo(0, usuario.getMail(), eNombre.getText().toString(),
+                eDescripcion.getText().toString(), eDireccion.getText().toString(),ePuesto
+                .getText().toString(), eRequisitos.getText().toString(), eJornada.getText()
+                .toString(), eHoras.getText().toString(), eDuracion.getText().toString(), ePlazas
+                .getText().toString(), eSueldo.getText().toString(), eTelefono.getText().toString
+                ());
 
+    }
+
+    public void sendCrearOferta(){
+        mAPIService.crearOferta(mOfertaEmpleo).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    tratarResultadoPeticion(true);
+                }else {
+                    System.out.println("codi "+response.code());
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                tratarResultadoPeticion(false);
+
+            }
+        });
     }
 
     public void tratarResultadoPeticion(boolean result){
@@ -157,6 +188,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.servicio_alojamiento_creado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
+            i.putExtra("tipo", 1);
             startActivity(i);
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
@@ -178,27 +210,6 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
             }
-        }
-    }
-
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            boolean result = false;
-            try {
-                result = ComunicacionServicios.crearOfertaEmpleo(url, param);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
         }
     }
 

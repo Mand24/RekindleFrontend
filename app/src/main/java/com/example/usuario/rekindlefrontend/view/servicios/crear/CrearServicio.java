@@ -43,7 +43,6 @@ public class CrearServicio extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        startActivity(i);
+        finish();
     }
 }

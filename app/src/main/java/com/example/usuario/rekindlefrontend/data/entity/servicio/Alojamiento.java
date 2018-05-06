@@ -4,10 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Alojamiento extends Servicio {
-    @SerializedName("limiteSolicitudes")
+    @SerializedName("places")
     @Expose
     private String limiteSolicitudes;
-    @SerializedName("fecha")
+    @SerializedName("dateLimit")
     @Expose
     private String fecha;
 
@@ -38,7 +38,14 @@ public class Alojamiento extends Servicio {
     @Override
     public String toString() {
         return "Alojamiento{" +
-                "limiteSolicitudes='" + limiteSolicitudes + '\'' +
+                "id=" + getId() +
+                ", tipo=" + getTipo() +
+                ", volunteer='" + getEmail() + '\'' +
+                ", name='" + getNombre() + '\'' +
+                ", description='" + getDescripcion() + '\'' +
+                ", adress='" + getDireccion() + '\'' +
+                ", phoneNumber='" + getNumero() + '\'' +
+                ", limiteSolicitudes='" + limiteSolicitudes + '\'' +
                 ", fecha='" + fecha + '\'' +
                 '}';
     }

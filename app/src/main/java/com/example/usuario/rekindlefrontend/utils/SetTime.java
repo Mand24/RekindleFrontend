@@ -30,7 +30,7 @@ public class SetTime implements View.OnClickListener, TimePickerDialog.OnTimeSet
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        this.editText.setText( hourOfDay + ":" + minute);
+        this.editText.setText( hourOfDay + ":" + minute+":00");
     }
 
 }
