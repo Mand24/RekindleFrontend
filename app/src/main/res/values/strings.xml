@@ -207,6 +207,24 @@
     <string name="busqueda_fallida">Error on finding</string>
     <string name="error">Error!</string>
 
+    <string name="nomap">Connect to the internet to see the service location!</string>
+    <string name="nointernet">Check your Internet connection</string>
+
+    <string name="autentificacion">Authenticating...</string>
+    <string name="network_fail">Netowrk failure</string>
+    <string name="conversation_fail">Conversation problem, inform the administrator</string>
+    <string name="back_exit">Press back again to close Rekindle</string>
+    <string name="login_fail">Login failed</string>
+    <string name="contraseña_actualizada">Password changed</string>
+    <string name="contraseña_fail">Could not change password</string>
+    <string name="wrong_code">Wrong code</string>
+
+    <string name="editar_alojamiento">Edit housing:</string>
+    <string name="editar_donacion">Editar donation:</string>
+    <string name="editar_empleo">Editar job offer:</string>
+    <string name="editar_curso">Edit educative curs:</string>
+
+
     <string-array name="lista_usuarios">
         <item>Refugee</item>
         <item>Voluntary</item>
