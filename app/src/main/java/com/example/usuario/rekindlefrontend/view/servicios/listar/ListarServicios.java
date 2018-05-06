@@ -186,19 +186,6 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
     private void initializeData() {
 
-        /*servicios.add(new Servicio(0, "Alojamiento", "buena describicion", "Calle 123",
-        "27/07/97",
-                "623623623", "4.5", R.drawable.lodging));
-        servicios.add(
-                new Servicio(2, "Educativo", "buena describicion", "Calle 123342432", "27/07/97",
-                        "623623623", "4.5", R.drawable.education));
-        servicios.add(new Servicio(1, "Donacion", "buena describicion", "dasdsddssdasd", "27/07/97",
-                "623623623", "4.5", R.drawable.donation));
-        servicios.add(
-                new Servicio(3, "Empleo", "buena describicion", "dsadasd", "27/07/97", "623623623",
-                        "4.5", R.drawable.job));
-        serviciosFiltrados = servicios;*/
-
         mAPIService.obtenerServicios().enqueue(new Callback<Map<Integer, ArrayList<Servicio>>>
                 () {
             @Override
@@ -315,6 +302,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             }
             servicios.addAll(aux);
         }
+        serviciosFiltrados = servicios;
+        refreshItems();
     }
 
     public void tratarResultadoPeticion(boolean result) {

@@ -31,9 +31,6 @@ import retrofit2.Response;
  */
 public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
-    private Servicio mServicio;
-    private APIService mAPIService;
-
     public MostrarOfertaEmpleo() {
         // Required empty public constructor
     }
@@ -57,9 +54,7 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        mAPIService = APIUtils.getAPIService();
-
-        mServicio = (Servicio) getArguments().getSerializable("servicioFrag");
+        servicio = (OfertaEmpleo) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_oferta_empleo);
         descripcion = view.findViewById(R.id.descripcion_oferta_empleo);
@@ -69,13 +64,11 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
         jornada = view.findViewById(R.id.jornada_oferta_empleo);
         horas = view.findViewById(R.id.horas_semanales_oferta_empleo);
         duracion = view.findViewById(R.id.duracion_oferta_empleo);
-        mMapView = (MapFragment) getFragmentManager()
+        mMapView = (MapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.google_mapView);
         numero = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
-
-        sendGetEmpleo();
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
@@ -89,33 +82,6 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         mMapView.getMapAsync(this);
         return view;
-    }
-
-    public void sendGetEmpleo(){
-        mAPIService.getEmpleo(mServicio.getId()).enqueue(new Callback<OfertaEmpleo>() {
-            @Override
-            public void onResponse(Call<OfertaEmpleo> call, Response<OfertaEmpleo> response) {
-                if (response.isSuccessful()){
-                    servicio = response.body();
-                }
-                else tratarResultadoPeticion(false);
-            }
-
-            @Override
-            public void onFailure(Call<OfertaEmpleo> call, Throwable t) {
-                tratarResultadoPeticion(false);
-            }
-        });
-    }
-
-    public void tratarResultadoPeticion(boolean result) {
-
-        if (result) {
-
-        } else {
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                    .string.error), Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent" android:layout_height="match_parent"
             tools:context=".view.servicios.mostrar.MostrarOfertaEmpleo">
 
     <RelativeLayout
@@ -12,15 +12,15 @@
 
         <LinearLayout
             android:id="@+id/info_oferta_empleo"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/titulo_oferta_empleo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="36sp" />
+                android:textSize="36sp"/>
 
             <TextView
                 android:id="@+id/descripcion_oferta_empleo"
@@ -68,14 +68,15 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/cl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/info_oferta_empleo">
 
             <fragment
                 android:id="@+id/google_mapView"
                 android:name="com.google.android.gms.maps.MapFragment"
                 android:layout_width="match_parent"
-                android:layout_margin="@dimen/dim6"
                 android:layout_height="0dp"
+                android:layout_margin="@dimen/dim6"
                 app:layout_constraintDimensionRatio="1:1"/>
 
         </android.support.constraint.ConstraintLayout>
@@ -90,8 +91,8 @@
                 android:id="@+id/numero_contacto_servicio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"/>
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/chat"
@@ -128,9 +129,9 @@
             android:id="@+id/inscribirse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/inscribir"
+            android:layout_alignParentBottom="true"
             android:layout_below="@+id/contacto"
-            android:layout_alignParentBottom="true"/>
+            android:text="@string/inscribir"/>
 
     </RelativeLayout>
 

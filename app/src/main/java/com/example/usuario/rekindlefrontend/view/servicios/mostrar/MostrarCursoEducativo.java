@@ -31,9 +31,6 @@ import retrofit2.Response;
  */
 public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
-    private Servicio mServicio;
-    private APIService mAPIService;
-
     public MostrarCursoEducativo() {
         // Required empty public constructor
     }
@@ -56,9 +53,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        mAPIService = APIUtils.getAPIService();
-
-        mServicio = (Servicio) getArguments().getSerializable("servicioFrag");
+        servicio = (CursoEducativo) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_curso_educativo);
         descripcion = view.findViewById(R.id.descripcion_curso_educativo);
@@ -67,12 +62,10 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
         requisitos = view.findViewById(R.id.requisitos_curso_educativo);
         horario = view.findViewById(R.id.horario_curso_educativo);
         precio = view.findViewById(R.id.precio_curso_educativo);
-        mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
+        mMapView = (MapFragment) getChildFragmentManager().findFragmentById(R.id.google_mapView);
         numero = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
-
-        sendGetCurso();
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
@@ -85,33 +78,6 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
         mMapView.getMapAsync(this);
         return view;
-    }
-
-    public void sendGetCurso(){
-        mAPIService.getCurso(mServicio.getId()).enqueue(new Callback<CursoEducativo>() {
-            @Override
-            public void onResponse(Call<CursoEducativo> call, Response<CursoEducativo> response) {
-                if (response.isSuccessful()){
-                    servicio = response.body();
-                }
-                else tratarResultadoPeticion(false);
-            }
-
-            @Override
-            public void onFailure(Call<CursoEducativo> call, Throwable t) {
-                tratarResultadoPeticion(false);
-            }
-        });
-    }
-
-    public void tratarResultadoPeticion(boolean result) {
-
-        if (result) {
-
-        } else {
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                    .string.error), Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override

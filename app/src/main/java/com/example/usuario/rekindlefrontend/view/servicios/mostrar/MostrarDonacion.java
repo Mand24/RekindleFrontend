@@ -31,9 +31,6 @@ import retrofit2.Response;
  */
 public class MostrarDonacion extends Maps implements OnMapReadyCallback {
 
-    private Servicio mServicio;
-    private APIService mAPIService;
-
     public MostrarDonacion() {
         // Required empty public constructor
     }
@@ -57,21 +54,18 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        mAPIService = APIUtils.getAPIService();
 
-        mServicio = (Servicio) getArguments().getSerializable("servicioFrag");
+        servicio = (Donacion) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_donacion);
         descripcion = view.findViewById(R.id.descripcion_donacion);
         direccion = view.findViewById(R.id.direccion_donacion);
         inicio = view.findViewById(R.id.hora_inicio_donacion);
         fin = view.findViewById(R.id.hora_fin_donacion);
-        mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
+        mMapView = (MapFragment) getChildFragmentManager().findFragmentById(R.id.google_mapView);
         numero = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
-
-        sendGetDonacion();
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
@@ -82,33 +76,6 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
 
         mMapView.getMapAsync(this);
         return view;
-    }
-
-    public void sendGetDonacion(){
-        mAPIService.getDonacion(mServicio.getId()).enqueue(new Callback<Donacion>() {
-            @Override
-            public void onResponse(Call<Donacion> call, Response<Donacion> response) {
-                if (response.isSuccessful()){
-                    servicio = response.body();
-                }
-                else tratarResultadoPeticion(false);
-            }
-
-            @Override
-            public void onFailure(Call<Donacion> call, Throwable t) {
-                tratarResultadoPeticion(false);
-            }
-        });
-    }
-
-    public void tratarResultadoPeticion(boolean result) {
-
-        if (result) {
-
-        } else {
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                    .string.error), Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
