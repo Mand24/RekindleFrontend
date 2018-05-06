@@ -61,7 +61,8 @@ public class MenuPrincipalVoluntario extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "mis servicios!", Toast
+                Toast.makeText(getActivity().getApplicationContext(), getString (R.string.titulo_mis_servicios),
+                        Toast
                         .LENGTH_SHORT)
                         .show();
             }

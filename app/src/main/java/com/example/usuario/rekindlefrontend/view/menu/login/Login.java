@@ -3,10 +3,9 @@ package com.example.usuario.rekindlefrontend.view.menu.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,7 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -73,7 +72,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent i = new Intent(getApplicationContext(), RegistroUsuario.class);
+                Intent i = new Intent(getApplicationContext(), EditarServicio.class); //HERE
                 startActivity(i);
             }
         });
@@ -115,7 +114,7 @@ public class Login extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(Login.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
+        progressDialog.setMessage(getString (R.string.autentificacion));
         progressDialog.show();
 
         //String email = _emailText.getText().toString();
@@ -175,14 +174,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), "this is an actual network failure"
-                            + " :( inform "
-                            + "the user and "
-                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
+                            .LENGTH_SHORT).show();
                     // logging probably not necessary
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString (R.string.conversation_fail), Toast
+                            .LENGTH_SHORT).show();
 
                 }
             }
@@ -221,7 +219,8 @@ public class Login extends AppCompatActivity {
             moveTaskToBack(true);
         }
         else{
-            Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString (R.string.back_exit), Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
@@ -240,7 +239,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), getString (R.string.login_fail), Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
@@ -252,14 +251,14 @@ public class Login extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
+            _emailText.setError(getString (R.string.email_formato));
             valid = false;
         } else {
             _emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4) {
-            _passwordText.setError("Password has to be at least 4 characters long");
+            _passwordText.setError(getString (R.string.contraseña_corta));
             valid = false;
         } else {
             _passwordText.setError(null);

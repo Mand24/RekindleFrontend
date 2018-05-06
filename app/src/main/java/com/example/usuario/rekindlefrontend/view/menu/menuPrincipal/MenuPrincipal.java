@@ -44,7 +44,7 @@ public class MenuPrincipal extends AppBaseActivity {
     @Override
     public void onBackPressed(){
         backpress = (backpress + 1);
-        Toast.makeText(getApplicationContext(), " Press Back again to Exit ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), getString (R.string.back_exit), Toast.LENGTH_SHORT).show();
 
         if (backpress>1) {
             moveTaskToBack(true);

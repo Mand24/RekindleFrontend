@@ -193,17 +193,35 @@
     <string name="horario_obligatorio">Schedule requiered</string>
     <string name="horario_largo">The schedule is too long, maximum 30 characters</string>
 
-    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two digits of precision</string>
+    <string name="precio_formato">Incorrect price format; correct format = decimal with maximum two
+        digits of precision
+    </string>
     <string name="texto_biografia_refugiado">Biography:</string>
     <string name="biografia_largo">The biography is too long, maximum 300 letters</string>
 
 
     <string name="titulo_busqueda">Search people</string>
     <string name="subtitulo_busqueda">Please, fill all the info you know about the person
-        that you are looking for</string>
+        that you are looking for
+    </string>
     <string name="buscar">Find</string>
     <string name="busqueda_correcta">Finding succesfull</string>
     <string name="busqueda_fallida">Error on finding</string>
+
+    <string name="nomap">Connect to the internet to see the service location!</string>
+    <string name="nointernet">Check your Internet connection</string>
+
+    <string name="autentificacion">Authenticating...</string>
+    <string name="network_fail">Netowrk failure</string>
+    <string name="conversation_fail">Conversation problem, inform the administrator</string>
+    <string name="back_exit">Press back again to close Rekindle</string>
+    <string name="login_fail">Login failed</string>
+    <string name="contraseña_actualizada">Password changed</string>
+    <string name="contraseña_fail">Could not change password</string>
+    <string name="wrong_code">Wrong code</string>
+
+    <string name="editar_alojamiento">Editar alojamiento:</string>
+
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
@@ -246,6 +264,7 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_editar_servicio">EditarServicio</string>
 
 
 </resources>

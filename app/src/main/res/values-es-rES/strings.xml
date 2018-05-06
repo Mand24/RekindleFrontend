@@ -160,6 +160,18 @@
 
     <string name="titulo_mis_servicios">Mis servicios</string>
 
+    <string name="nomap">Conectate a internet para ver la localización del servicio</string>
+    s<string name="nointernet">Comprueba tu conexión a Internet</string>
+
+    <string name="autentificacion">Verificando...</string>
+    <string name="network_fail">Fallo de red</string>
+    <string name="conversation_fail">Problema de conversación, informe al administrador</string>
+    <string name="back_exit">Pulse atrás otra vez para cerrar Rekindle</string>
+    <string name="login_fail">Fallo en iniciar sesión</string>
+    <string name="contraseña_actualizada">Contraseña actualizada</string>
+    <string name="contraseña_fail">No se ha podido actualizar la contraseña</string>
+    <string name="wrong_code">Código equivocaddo</string>
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>
