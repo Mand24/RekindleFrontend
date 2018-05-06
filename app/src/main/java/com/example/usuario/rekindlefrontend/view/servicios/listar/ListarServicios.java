@@ -269,7 +269,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                 ArrayList<Servicio> filteredList = new ArrayList<>();
 
                 for (Servicio s : servicios) {
-                    if (filters.get(s.getId())) {
+                    if (filters.get(s.getTipo())) {
                         if (!charString.isEmpty()) {
                             if (s.getNombre().toLowerCase().contains(charString) || s
                                     .getDireccion().toLowerCase().contains(charString)) {
@@ -315,6 +315,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             }
             servicios.addAll(aux);
         }
+        serviciosFiltrados = servicios;
     }
 
     public void tratarResultadoPeticion(boolean result) {

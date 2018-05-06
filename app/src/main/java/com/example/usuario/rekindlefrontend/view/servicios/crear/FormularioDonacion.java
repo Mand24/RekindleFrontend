@@ -5,9 +5,11 @@ import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
@@ -26,8 +32,13 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -35,7 +46,6 @@ import java.util.ArrayList;
  */
 public class FormularioDonacion extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
 
     private EditText editStartingTime, editEndingTime;
     private EditText eDireccion;
@@ -44,6 +54,9 @@ public class FormularioDonacion extends AbstractFormatChecker {
     private EditText eTelefono;
     private EditText eSolicitudes;
     private EditText eDescripcion;
+
+    private Donacion mDonacion;
+    private APIService mAPIService;
 
     public FormularioDonacion() {
         // Required empty public constructor
@@ -68,12 +81,10 @@ public class FormularioDonacion extends AbstractFormatChecker {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCrearDonacion();
             }
         });
 
@@ -110,6 +121,8 @@ public class FormularioDonacion extends AbstractFormatChecker {
         editEndingTime = view.findViewById(R.id.franja_horaria_fin_donacion);
         eDescripcion = view.findViewById(R.id.descripcion_donacion);
 
+        mAPIService = APIUtils.getAPIService();
+
     }
 
     public void checkCampos(View view) throws Exception {
@@ -122,18 +135,37 @@ public class FormularioDonacion extends AbstractFormatChecker {
     }
 
     public void obtenerParametros(){
-        param.add(eDireccion.getText().toString());
 
-        param = new ArrayList<String>();
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+                (getActivity().getApplicationContext());
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
 
-        param.add (eNombre.getText().toString());
-        param.add (eTelefono.getText().toString());
-        param.add (eDireccion.getText().toString());
-        param.add (eSolicitudes.getText().toString());
-        param.add(editStartingTime.getText().toString());
-        param.add(editEndingTime.getText().toString());
-        param.add (eDescripcion.getText().toString());
+        mDonacion = new Donacion(0, usuario.getMail(), eNombre.getText().toString(),
+                eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
+                .getText().toString(), editStartingTime.getText().toString(), editEndingTime
+                .getText().toString(), eTelefono.getText().toString());
 
+    }
+
+    public void sendCrearDonacion(){
+        mAPIService.crearDonacion(mDonacion).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    tratarResultadoPeticion(true);
+                }else {
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                tratarResultadoPeticion(false);
+
+            }
+        });
     }
 
     public void tratarResultadoPeticion(boolean result){
@@ -164,27 +196,6 @@ public class FormularioDonacion extends AbstractFormatChecker {
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
             }
-        }
-    }
-
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            boolean result = false;
-            try {
-                result = ComunicacionServicios.crearDonacion(url, param);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
         }
     }
 

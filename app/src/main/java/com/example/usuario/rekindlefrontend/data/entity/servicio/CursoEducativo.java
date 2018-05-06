@@ -20,7 +20,7 @@ public class CursoEducativo extends Servicio {
     @Expose
     private String precio;
 
-    public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion, String fecha,
+    public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion,
             String ambito, String requisitos, String horario, String plazas, String precio,
             String numero){
         super(id, 2, email, nombre, descripcion, direccion, numero);

@@ -7,8 +7,10 @@ import static android.app.Activity.RESULT_OK;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +21,10 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
@@ -27,17 +33,21 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FormularioAlojamiento extends AbstractFormatChecker {
-
-    private ArrayList<String> param;
 
     private EditText eNombre;
     private EditText eTelefono;
@@ -48,6 +58,8 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
     private EditText eDescripcion;
+    private Alojamiento alojamiento;
+    private APIService mAPIService;
 
     public FormularioAlojamiento() {
         // Required empty public constructor
@@ -61,6 +73,8 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         final View view = inflater.inflate(R.layout.fragment_formulario_alojamiento, container,
                 false);
 
+        setVistas(view);
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_formulario_alojamiento);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +84,10 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                sendCrearAlojamiento();
             }
         });
 
@@ -110,6 +122,8 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         eSolicitudes = view.findViewById(R.id.solicitudes_alojamiento);
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         eDescripcion = view.findViewById(R.id.descripcion_alojamiento);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void checkCampos(View view) throws Exception {
@@ -123,15 +137,50 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
 
     public void obtenerParametros() {
 
-        param = new ArrayList<String>();
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+                (getActivity().getApplicationContext());
+        Gson gson = new Gson();
+        String json = datos.getString("usuario", "");
+        Usuario usuario = gson.fromJson(json, Usuario.class);
 
-        param.add (eNombre.getText().toString());
-        param.add (eTelefono.getText().toString());
-        param.add (eDireccion.getText().toString());
-        param.add (eSolicitudes.getText().toString());
-        param.add (eDeadline.getText().toString());
-        param.add (eDescripcion.getText().toString());
+        alojamiento = new Alojamiento(0, usuario.getMail(), eNombre.getText().toString(),
+                eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
+                .getText().toString(), eDeadline.getText().toString(), eTelefono.getText()
+                .toString());
 
+
+
+    }
+
+    public void sendCrearAlojamiento(){
+        System.out.println(alojamiento.toString());
+        mAPIService.crearAlojamiento(alojamiento).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println("llamada "+call.toString());
+                if (response.isSuccessful()){
+                    tratarResultadoPeticion(true);
+                }else {
+                    System.out.println("codi "+response.code());
+                    tratarResultadoPeticion(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
+                            + " :( inform "
+                            + "the user and "
+                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 
     public void tratarResultadoPeticion(boolean result) {
@@ -164,27 +213,6 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
             }
-        }
-    }
-
-    private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            boolean result = false;
-            try {
-                result = ComunicacionServicios.crearAlojamiento(url, param);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
         }
     }
 
