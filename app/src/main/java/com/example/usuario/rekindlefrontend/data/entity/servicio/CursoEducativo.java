@@ -20,10 +20,10 @@ public class CursoEducativo extends Servicio {
     @Expose
     private String precio;
 
-    public CursoEducativo (int id, String nombre, String descripcion, String direccion, String fecha,
+    public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion, String fecha,
             String ambito, String requisitos, String horario, String plazas, String precio,
-            String numero, String valoracion, int tipo){
-        super(id, nombre, descripcion, direccion, numero, valoracion, 2);
+            String numero, String valoracion){
+        super(id, 2, email, nombre, descripcion, direccion, numero, valoracion);
         this.ambito = ambito;
         this.requisitos = requisitos;
         this.horario = horario;
@@ -31,41 +31,45 @@ public class CursoEducativo extends Servicio {
         this.precio = precio;
     }
 
-    public int getId(){ return super.getId(); }
-
-    public String getNombre() {
-        return super.getNombre();
+    public String getAmbito() {
+        return ambito;
     }
 
-    public String getDescripcion(){
-        return super.getDescripcion();
+    public void setAmbito(String ambito) {
+        this.ambito = ambito;
     }
 
-    public String getDireccion() {
-        return super.getDireccion();
+    public String getRequisitos() {
+        return requisitos;
     }
 
-    public String getNumero() {
-        return super.getNumero();
+    public void setRequisitos(String requisitos) {
+        this.requisitos = requisitos;
     }
 
-    public int getTipo() {
-        return super.getTipo();
+    public String getHorario() {
+        return horario;
     }
 
-    public String getValoracion() {
-        return super.getValoracion();
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-    public String getAmbito() { return ambito; }
+    public String getPlazas() {
+        return plazas;
+    }
 
-    public String getRequisitos() { return requisitos; }
+    public void setPlazas(String plazas) {
+        this.plazas = plazas;
+    }
 
-    public String getHorario() { return horario; }
+    public String getPrecio() {
+        return precio;
+    }
 
-    public String getPlazas() { return plazas; }
-
-    public String getPrecio() { return precio; }
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
 
     @Override
     public String toString() {

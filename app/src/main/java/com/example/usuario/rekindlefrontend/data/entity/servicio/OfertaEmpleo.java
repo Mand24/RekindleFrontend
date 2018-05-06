@@ -26,10 +26,10 @@ public class OfertaEmpleo extends Servicio {
     @Expose
     public String sueldo;
 
-    public OfertaEmpleo (int id, String nombre, String descripcion, String direccion, String puesto,
+    public OfertaEmpleo (int id, String email, String nombre, String descripcion, String direccion, String puesto,
             String requisitos, String jornada, String horasSemana, String duracion, String
-            plazasDisponibles, String sueldo, String numero, String valoracion, int tipo){
-        super(id, nombre, descripcion, direccion, numero, valoracion, 3);
+            plazasDisponibles, String sueldo, String numero, String valoracion){
+        super(id, 3, email, nombre, descripcion, direccion, numero, valoracion);
         this.puesto = puesto;
         this.requisitos = requisitos;
         this.jornada = jornada;
@@ -39,45 +39,61 @@ public class OfertaEmpleo extends Servicio {
         this.sueldo = sueldo;
     }
 
-    public int getId(){ return super.getId(); }
-
-    public String getNombre() {
-        return super.getNombre();
+    public String getPuesto() {
+        return puesto;
     }
 
-    public String getDescripcion(){
-        return super.getDescripcion();
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
     }
 
-    public String getDireccion() {
-        return super.getDireccion();
+    public String getRequisitos() {
+        return requisitos;
     }
 
-    public String getNumero() {
-        return super.getNumero();
+    public void setRequisitos(String requisitos) {
+        this.requisitos = requisitos;
     }
 
-    public int getTipo() {
-        return super.getTipo();
+    public String getJornada() {
+        return jornada;
     }
 
-    public String getValoracion() {
-        return super.getValoracion();
+    public void setJornada(String jornada) {
+        this.jornada = jornada;
     }
 
-    public String getDuracion() { return duracion; }
+    public String getHorasSemana() {
+        return horasSemana;
+    }
 
-    public String getHorasSemana() { return horasSemana; }
+    public void setHorasSemana(String horasSemana) {
+        this.horasSemana = horasSemana;
+    }
 
-    public String getJornada() { return jornada; }
+    public String getDuracion() {
+        return duracion;
+    }
 
-    public String getPlazasDisponibles() { return plazasDisponibles; }
+    public void setDuracion(String duracion) {
+        this.duracion = duracion;
+    }
 
-    public String getPuesto() { return puesto; }
+    public String getPlazasDisponibles() {
+        return plazasDisponibles;
+    }
 
-    public String getRequisitos() { return requisitos; }
+    public void setPlazasDisponibles(String plazasDisponibles) {
+        this.plazasDisponibles = plazasDisponibles;
+    }
 
-    public String getSueldo() { return sueldo; }
+    public String getSueldo() {
+        return sueldo;
+    }
+
+    public void setSueldo(String sueldo) {
+        this.sueldo = sueldo;
+    }
 
     @Override
     public String toString() {
