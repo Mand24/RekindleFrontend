@@ -220,7 +220,10 @@
     <string name="contraseña_fail">Could not change password</string>
     <string name="wrong_code">Wrong code</string>
 
-    <string name="editar_alojamiento">Editar alojamiento:</string>
+    <string name="editar_alojamiento">Edit housing:</string>
+    <string name="editar_donacion">Editar donation:</string>
+    <string name="editar_empleo">Editar job offer:</string>
+    <string name="editar_curso">Edit educative curs:</string>
 
 
     <string-array name="lista_usuarios">

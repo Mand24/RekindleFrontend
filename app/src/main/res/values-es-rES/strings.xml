@@ -172,6 +172,11 @@
     <string name="contraseña_fail">No se ha podido actualizar la contraseña</string>
     <string name="wrong_code">Código equivocaddo</string>
 
+    <string name="editar_alojamiento">Editar alojamiento:</string>
+    <string name="editar_donacion">Editar donación:</string>
+    <string name="editar_empleo">Editar empleo:</string>
+    <string name="editar_curso">Editar curso educativo:</string>
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>

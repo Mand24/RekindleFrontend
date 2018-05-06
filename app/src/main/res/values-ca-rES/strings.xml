@@ -159,6 +159,11 @@
     <string name="contraseña_fail">No s\'ha pogut actualitzar la contrasenya</string>
     <string name="wrong_code">Codi equivocat</string>
 
+    <string name="editar_alojamiento">Editar allotjament:</string>
+    <string name="editar_donacion">Editar donación</string>
+    <string name="editar_empleo">Editar feina:</string>
+    <string name="editar_curso">Editar curs educatiu:</string>
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>
