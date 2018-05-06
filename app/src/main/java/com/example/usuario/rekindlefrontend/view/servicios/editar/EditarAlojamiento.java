@@ -53,9 +53,9 @@ public class EditarAlojamiento extends AbstractFormatChecker {
         final View view = inflater.inflate (R.layout.fragment_editar_alojamiento, container, false);
 
         // set : SERVICIO_ALOJAMIENTO
-
-        servicio =  new Alojamiento (12345, "nombrePD", "descrPD", "direccionPD", "soliciPD",
-                "21-03-2018PD", "123456789PD", "valoracionPD", 0);
+        //TODO: new Alojamiento
+        //servicio =  new Alojamiento (12345, "nombrePD", "descrPD", "direccionPD", "soliciPD",
+          //      "21-03-2018PD", "123456789PD", "valoracionPD", 0);
 
         setVistas (view);
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
@@ -101,7 +101,7 @@ public class EditarAlojamiento extends AbstractFormatChecker {
     public void setVistas (View view) {
 
         eNombre = view.findViewById(R.id.nombre_alojamiento);
-        eEmail = view.findViewById(R.id.correo_alojamiento);
+      //TODO:  eEmail = view.findViewById(R.id.correo_alojamiento);
         eTelefono = view.findViewById(R.id.telefono_alojamiento);
         eDireccion = view.findViewById(R.id.direccion_alojamiento);
         eSolicitudes = view.findViewById(R.id.solicitudes_alojamiento);

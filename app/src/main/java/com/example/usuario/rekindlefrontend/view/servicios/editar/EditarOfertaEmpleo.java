@@ -53,10 +53,11 @@ public class EditarOfertaEmpleo extends AbstractFormatChecker {
             // set : SERVICIO_EMPLEO
 
             /**/
-
-            servicio = new OfertaEmpleo (111, "nombrePD", "descripPD", "direccionPD", "puestoPD",
+            //TODO: que esté bien
+            /*servicio = new OfertaEmpleo (111, "nombrePD", "descripPD", "direccionPD",
+                "puestoPD",
                     "requisitosPD", "joranadaPD", "horasSemanaPD", "duracionPD", "plazasPD",
-                    "sueldoPD", "numeroPD", "valoracionPD", 3);
+                    "sueldoPD", "numeroPD", "valoracionPD", 3);*/
 
             setVistas (view);
 
