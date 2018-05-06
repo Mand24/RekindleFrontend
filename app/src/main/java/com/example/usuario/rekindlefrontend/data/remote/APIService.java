@@ -112,6 +112,18 @@ public interface APIService {
     @PUT("/empleos/{id}")
     Call<Void> editarEmpleo(@Path("id") int id, @Body OfertaEmpleo empleo);
 
+    @POST("/alojamientos")
+    Call<Void> crearAlojamiento(@Body Alojamiento alojamiento);
+
+    @POST("/donaciones")
+    Call<Void> crearDonacion(@Body Donacion donacion);
+
+    @POST("/empleos")
+    Call<Void> crearOferta(@Body OfertaEmpleo empleo);
+
+    @POST("/cursos")
+    Call<Void> crearEducacion(@Body CursoEducativo educacion);
+
     @DELETE("/servicios/{id}/{tipo}")
     Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") char tipo);
 
