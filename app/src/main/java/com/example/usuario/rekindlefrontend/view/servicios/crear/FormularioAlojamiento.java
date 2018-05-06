@@ -40,7 +40,6 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     private ArrayList<String> param;
 
     private EditText eNombre;
-    private EditText eEmail;
     private EditText eTelefono;
     private EditText eDireccion;
     private EditText eSolicitudes;
@@ -106,7 +105,6 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     public void setVistas(View view) {
 
         eNombre = view.findViewById(R.id.nombre_alojamiento);
-        eEmail = view.findViewById(R.id.correo_alojamiento);
         eTelefono = view.findViewById(R.id.telefono_alojamiento);
         eDireccion = view.findViewById(R.id.direccion_alojamiento);
         eSolicitudes = view.findViewById(R.id.solicitudes_alojamiento);
@@ -117,7 +115,6 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     public void checkCampos(View view) throws Exception {
 
         checkNombreServicio(eNombre.getText().toString());
-        checkEmail(eEmail.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkSolicitudesServicio(eSolicitudes.getText().toString());
         checkDescripcionServicio(eDescripcion.getText().toString());
@@ -129,7 +126,6 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         param = new ArrayList<String>();
 
         param.add (eNombre.getText().toString());
-        param.add (eEmail.getText().toString());
         param.add (eTelefono.getText().toString());
         param.add (eDireccion.getText().toString());
         param.add (eSolicitudes.getText().toString());
