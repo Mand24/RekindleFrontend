@@ -83,6 +83,7 @@
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/direccion"
+                    android:focusable="false"
                 />
             </android.support.design.widget.TextInputLayout>
 
