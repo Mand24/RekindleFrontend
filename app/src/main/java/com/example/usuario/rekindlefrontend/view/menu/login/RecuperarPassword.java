@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
@@ -57,7 +55,7 @@ public class RecuperarPassword extends AppCompatActivity {
 
                 if(!code.isEmpty() && codeSystem.equals(code)) {
                     if (!password.equals(confirmPassword)) {
-                        Toast.makeText(getApplicationContext(), " Passwords do not match ",
+                        Toast.makeText(getApplicationContext(), getString (R.string.contraseña_distinta),
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         boolean result = true;
@@ -65,20 +63,20 @@ public class RecuperarPassword extends AppCompatActivity {
                         result = sendRecuperarPassword(email, password);
 
                         if (result) {
-                            Toast.makeText(getApplicationContext(), " Password changed ",
+                            Toast.makeText(getApplicationContext(), getString (R.string.contraseña_actualizada),
                                     Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
                             startActivity(i);
                         } else {
                             Toast.makeText(getApplicationContext(),
-                                    " Could not change password ",
+                                    getString (R.string.contraseña_fail),
                                     Toast.LENGTH_SHORT).show();
                         }
 
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),
-                            " Wrong code ",
+                            getString (R.string.wrong_code),
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -95,14 +93,14 @@ public class RecuperarPassword extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         if (t instanceof IOException) {
-                            Toast.makeText(getApplicationContext(),
-                                    "this is an actual network failure"
-                                            + " :( inform "
-                                            + "the user and "
-                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
+                                    .LENGTH_SHORT)
+                                    .show();
                         } else {
-                            Toast.makeText(getApplicationContext(),
-                                    "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString (R.string.conversation_fail),
+                                    Toast
+                                    .LENGTH_SHORT)
+                                    .show();
 
                         }
                     }

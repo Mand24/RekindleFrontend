@@ -2,26 +2,28 @@ package com.example.usuario.rekindlefrontend.view.servicios.mostrar;
 
 
 import android.app.Fragment;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.google.android.gms.maps.CameraUpdateFactory;
+import com.example.usuario.rekindlefrontend.utils.Maps;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MostrarAlojamiento extends Fragment implements OnMapReadyCallback {
+public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
 
     public MostrarAlojamiento() {
@@ -30,9 +32,13 @@ public class MostrarAlojamiento extends Fragment implements OnMapReadyCallback {
 
 
     TextView titulo, descripcion, direccion, fecha, numero, valoracion;
-    MapFragment mMapView;
-    GoogleMap mGoogleMap;
     AppCompatButton chat, opiniones, inscribirse;
+
+    public Alojamiento servicio;
+    public MapFragment mMapView;
+    public GoogleMap mGoogleMap;
+    public Marker myMarker;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -55,7 +61,7 @@ public class MostrarAlojamiento extends Fragment implements OnMapReadyCallback {
         opiniones = view.findViewById(R.id.opiniones);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        Alojamiento servicio = (Alojamiento) getActivity().getIntent().getSerializableExtra
+        servicio = (Alojamiento) getActivity().getIntent().getSerializableExtra
                 ("Servicio");
 
         titulo.setText(servicio.getNombre());
@@ -71,9 +77,24 @@ public class MostrarAlojamiento extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
 
+        mGoogleMap = googleMap;
+
+        NetworkInfo network = getNetworkInfo ();
+
+        if (network != null && network.isConnectedOrConnecting ()) {
+            try {
+                //setMarker(servicio.getDireccion (), myMarker, mGoogleMap);
+                myMarker = setMarker("Carrer de l'Estronci, 41, 08906 L'Hospitalet de Llobregat, "
+                        + "Barcelona", myMarker, mGoogleMap);
+            } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
+            {
+                Toast.makeText(getActivity ().getApplicationContext (), getString(R.string
+                        .nointernet), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getActivity ().getApplicationContext (), getString (R.string.nomap),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
 }

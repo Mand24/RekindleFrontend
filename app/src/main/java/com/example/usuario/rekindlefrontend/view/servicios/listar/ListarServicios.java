@@ -30,6 +30,7 @@ import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugia
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import retrofit2.Call;
@@ -196,14 +197,14 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                         "4.5", R.drawable.job));
         serviciosFiltrados = servicios;*/
 
-        mAPIService.obtenerServicios().enqueue(new Callback<Pair<String,Set<Object>>>
+        mAPIService.obtenerServicios().enqueue(new Callback<Map<String,Set<Object>>>
                 () {
             @Override
-            public void onResponse(Call<Pair<String,Set<Object>>> call,
-                    Response<Pair<String, Set<Object>>>
+            public void onResponse(Call<Map<String,Set<Object>>> call,
+                    Response<Map<String, Set<Object>>>
                     response) {
                 if(response.isSuccessful()){
-                    Pair<String, Set<Object>> respuesta = response.body();
+                    Map<String, Set<Object>> respuesta = response.body();
                     //TODO: parsear
                     //servicios = response.body();
                 }
@@ -213,7 +214,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             }
 
             @Override
-            public void onFailure(Call<Pair<String, Set<Object>>> call, Throwable t) {
+            public void onFailure(Call<Map<String, Set<Object>>> call, Throwable t) {
                 tratarResultadoPeticion(false);
             }
         });

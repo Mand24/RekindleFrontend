@@ -51,7 +51,8 @@ public class MenuPrincipalRefugiado extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), "mis servicios!", Toast
+                Toast.makeText(getActivity().getApplicationContext(), getString (R.string.titulo_mis_servicios),
+                        Toast
                         .LENGTH_SHORT)
                         .show();
             }
@@ -63,9 +64,8 @@ public class MenuPrincipalRefugiado extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), BusquedaRefugiado.class);
                 startActivity(i);
-                Toast.makeText(getActivity().getApplicationContext(), "buscar personas!", Toast
-                        .LENGTH_SHORT)
-                        .show();
+                Toast.makeText(getActivity().getApplicationContext(), getString (R.string
+                        .buscar_personas), Toast.LENGTH_SHORT).show();
             }
         });
 
