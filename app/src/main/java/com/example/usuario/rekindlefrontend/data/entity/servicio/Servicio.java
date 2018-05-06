@@ -6,12 +6,15 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Servicio implements Serializable {
-    @SerializedName("tipo")
-    @Expose
-    private int tipo;
     @SerializedName("id")
     @Expose
     private int id;
+    @SerializedName("tipo")
+    @Expose
+    private int tipo;
+    @SerializedName("email")
+    @Expose
+    private String email;
     @SerializedName("nombre")
     @Expose
     private String nombre;
@@ -29,50 +32,88 @@ public class Servicio implements Serializable {
     private String valoracion;
 
 
-    public Servicio(int id, String nombre, String descripcion, String direccion,
-            String numero, String valoracion, int tipo) {
+    public Servicio(int id, int tipo, String email, String nombre, String descripcion, String
+            direccion, String numero, String valoracion) {
+        this.id = id;
+        this.tipo = tipo;
+        this.email = email;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;
         this.numero = numero;
         this.valoracion = valoracion;
-        this.tipo = tipo;
-        this.id = id;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDescripcion(){
-        return descripcion;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public String getNumero() {
-        return numero;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getTipo() {
         return tipo;
     }
 
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
     public String getValoracion() {
         return valoracion;
+    }
+
+    public void setValoracion(String valoracion) {
+        this.valoracion = valoracion;
     }
 
     @Override
     public String toString() {
         return "Servicio{" +
-                "tipo=" + tipo +
-                ", id=" + id +
+                "id=" + id +
+                ", tipo=" + tipo +
+                ", email='" + email + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", direccion='" + direccion + '\'' +

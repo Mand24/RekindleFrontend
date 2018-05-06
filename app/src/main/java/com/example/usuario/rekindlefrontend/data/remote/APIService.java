@@ -88,8 +88,8 @@ public interface APIService {
     @GET("/servicios")
     Call<Pair<String,Set<Object>>> obtenerServicios();
 
-    @GET("/servicios/{email}")
-    Call<List<Servicio>> obtenerMisServicios(@Path("email") String email);
+    @GET("/servicios/{mail}/{tipo}")
+    Call<List<Servicio>> obtenerMisServicios(@Path("mail") String mail, @Path("tipo") int tipo);
 
     @GET("/alojamientos/{id}")
     Call<Alojamiento> getAlojamiento(@Path("id") int id);
