@@ -156,6 +156,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
                 if (response.isSuccessful()){
                     tratarResultadoPeticion(true);
                 }else {
+                    System.out.println("codi "+response.code());
                     tratarResultadoPeticion(false);
                 }
             }
@@ -175,6 +176,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.donacion_creada_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
+            i.putExtra("tipo", 1);
             startActivity(i);
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R

@@ -4,13 +4,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Donacion extends Servicio {
-    @SerializedName("limiteSolicitudes")
+    @SerializedName("places")
     @Expose
     private String limiteSolicitudes;
-    @SerializedName("horaInicio")
+    @SerializedName("startTime")
     @Expose
     private String horaInicio;
-    @SerializedName("horaFin")
+    @SerializedName("endTime")
     @Expose
     private String horaFin;
 

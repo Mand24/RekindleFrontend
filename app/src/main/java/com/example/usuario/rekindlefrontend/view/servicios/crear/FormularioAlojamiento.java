@@ -153,7 +153,6 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     }
 
     public void sendCrearAlojamiento(){
-        System.out.println(alojamiento.toString());
         mAPIService.crearAlojamiento(alojamiento).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -190,6 +189,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.servicio_alojamiento_creado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
+            i.putExtra("tipo", 1);
             startActivity(i);
 
         } else {

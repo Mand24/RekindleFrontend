@@ -161,6 +161,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
                     tratarResultadoPeticion(true);
                 }
                 else {
+                    System.out.println("codi "+response.code());
                     tratarResultadoPeticion(false);
                 }
             }
@@ -180,6 +181,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.curso_educativo_creado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
+            i.putExtra("tipo", 1);
             startActivity(i);
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
