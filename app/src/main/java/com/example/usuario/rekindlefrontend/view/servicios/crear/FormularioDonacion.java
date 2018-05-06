@@ -41,7 +41,6 @@ public class FormularioDonacion extends AbstractFormatChecker {
     private EditText eDireccion;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private EditText eNombre;
-    private EditText eEmail;
     private EditText eTelefono;
     private EditText eSolicitudes;
     private EditText eDescripcion;
@@ -104,7 +103,6 @@ public class FormularioDonacion extends AbstractFormatChecker {
     public void setVistas(View view) {
 
         eNombre = view.findViewById(R.id.nombre_donacion);
-        eEmail = view.findViewById(R.id.correo_donacion);
         eTelefono = view.findViewById(R.id.telefono_donacion);
         eDireccion = view.findViewById(R.id.direccion_donacion);
         eSolicitudes = view.findViewById(R.id.solicitudes_donacion);
@@ -117,7 +115,6 @@ public class FormularioDonacion extends AbstractFormatChecker {
     public void checkCampos(View view) throws Exception {
 
         checkNombreServicio(eNombre.getText().toString());
-        checkEmail(eEmail.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkSolicitudesServicio(eSolicitudes.getText().toString());
         checkDescripcionServicio(eDescripcion.getText().toString());
@@ -130,7 +127,6 @@ public class FormularioDonacion extends AbstractFormatChecker {
         param = new ArrayList<String>();
 
         param.add (eNombre.getText().toString());
-        param.add (eEmail.getText().toString());
         param.add (eTelefono.getText().toString());
         param.add (eDireccion.getText().toString());
         param.add (eSolicitudes.getText().toString());

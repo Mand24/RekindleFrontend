@@ -39,7 +39,6 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     private EditText eNombre;
-    private EditText eEmail;
     private EditText eTelefono;
     private EditText ePuesto;
     private EditText eRequisitos;
@@ -104,7 +103,6 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     public void setVistas(View view) {
 
         eNombre = view.findViewById(R.id.nombre_oferta_empleo);
-        eEmail = view.findViewById(R.id.correo_oferta_empleo);
         eTelefono = view.findViewById(R.id.telefono_oferta_empleo);
         eDireccion = view.findViewById(R.id.direccion_oferta_empleo);
         ePuesto = view.findViewById(R.id.puesto_oferta_empleo);
@@ -121,7 +119,6 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     public void checkCampos(View view) throws Exception {
 
         checkNombreServicio(eNombre.getText().toString());
-        checkEmail(eEmail.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkPuestoOfertaEmpleo(ePuesto.getText().toString());
         checkRequisitosServicio(eRequisitos.getText().toString());
@@ -140,7 +137,6 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
         param = new ArrayList<String>();
 
         param.add (eNombre.getText().toString());
-        param.add (eEmail.getText().toString());
         param.add (eTelefono.getText().toString());
         param.add (eDireccion.getText().toString());
         param.add (ePuesto.getText().toString());

@@ -39,7 +39,6 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     private EditText eNombre;
-    private EditText eEmail;
     private EditText eTelefono;
     private EditText eAmbito;
     private EditText eRequisitos;
@@ -102,7 +101,6 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
     public void setVistas(View view) {
 
         eNombre = view.findViewById(R.id.nombre_curso_educativo);
-        eEmail = view.findViewById(R.id.correo_curso_educativo);
         eTelefono = view.findViewById(R.id.telefono_curso_educativo);
         eDireccion = view.findViewById(R.id.direccion_curso_educativo);
         eAmbito = view.findViewById(R.id.ambito_curso_educativo);
@@ -117,7 +115,6 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
     public void checkCampos(View view) throws Exception {//FALTA CHECK PRECIO!!!
 
         checkNombreServicio(eNombre.getText().toString());
-        checkEmail(eEmail.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkAmbitoCursoEducativo(eAmbito.getText().toString());
         checkRequisitosServicio(eRequisitos.getText().toString());
@@ -133,7 +130,6 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
         param = new ArrayList<String>();
 
         param.add (eNombre.getText().toString());
-        param.add (eEmail.getText().toString());
         param.add (eTelefono.getText().toString());
         param.add (eDireccion.getText().toString());
         param.add (eAmbito.getText().toString());
