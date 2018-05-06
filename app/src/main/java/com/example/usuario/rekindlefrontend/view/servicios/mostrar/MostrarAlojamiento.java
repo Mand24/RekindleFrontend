@@ -13,11 +13,18 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Maps;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -25,14 +32,16 @@ import com.google.android.gms.maps.model.Marker;
  */
 public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
+    private Servicio mServicio;
+    private APIService mAPIService;
 
     public MostrarAlojamiento() {
         // Required empty public constructor
     }
 
 
-    TextView titulo, descripcion, direccion, fecha, numero, valoracion;
-    AppCompatButton chat, opiniones, inscribirse;
+    TextView titulo, descripcion, direccion, fecha, numero;
+    AppCompatButton chat, inscribirse;
 
     public Alojamiento servicio;
     public MapFragment mMapView;
@@ -50,6 +59,12 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
+        mAPIService = APIUtils.getAPIService();
+
+        mServicio = (Servicio) getArguments().getSerializable("servicioFrag");
+
+
+
         titulo = view.findViewById(R.id.titulo_alojamiento);
         descripcion = view.findViewById(R.id.descripcion_alojamiento);
         direccion = view.findViewById(R.id.direccion_alojamiento);
@@ -57,22 +72,45 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
         mMapView = (MapFragment) getFragmentManager().findFragmentById(R.id.google_mapView);
         numero = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
-        valoracion = view.findViewById(R.id.valoracion_servicio);
-        opiniones = view.findViewById(R.id.opiniones);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        servicio = (Alojamiento) getActivity().getIntent().getSerializableExtra
-                ("Servicio");
+        sendGetAlojamiento();
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
         fecha.setText(servicio.getFecha());
         numero.setText(servicio.getNumero());
-        valoracion.setText("Valoracion: " + servicio.getValoracion());
 
         mMapView.getMapAsync(this);
         return view;
+    }
+
+    public void sendGetAlojamiento(){
+        mAPIService.getAlojamiento(mServicio.getId()).enqueue(new Callback<Alojamiento>() {
+            @Override
+            public void onResponse(Call<Alojamiento> call, Response<Alojamiento> response) {
+                if (response.isSuccessful()){
+                    servicio = response.body();
+                }
+                else tratarResultadoPeticion(false);
+            }
+
+            @Override
+            public void onFailure(Call<Alojamiento> call, Throwable t) {
+                tratarResultadoPeticion(false);
+            }
+        });
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                            .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -84,9 +122,7 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                //setMarker(servicio.getDireccion (), myMarker, mGoogleMap);
-                myMarker = setMarker("Carrer de l'Estronci, 41, 08906 L'Hospitalet de Llobregat, "
-                        + "Barcelona", myMarker, mGoogleMap);
+                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap);
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string

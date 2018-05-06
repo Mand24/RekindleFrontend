@@ -102,7 +102,7 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:id="@+id/servicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -122,14 +122,14 @@
                 android:layout_alignParentEnd="true"
                 android:text="@string/opiniones" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/inscribirse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/inscribir"
-            android:layout_below="@+id/servicio"
+            android:layout_below="@+id/contacto"
             android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>

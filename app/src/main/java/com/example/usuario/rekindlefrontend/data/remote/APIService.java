@@ -87,10 +87,11 @@ public interface APIService {
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
     @GET("/servicios")
-    Call<Map<String,Set<Object>>> obtenerServicios();
+    Call<Map<Integer,ArrayList<Servicio>>> obtenerServicios();
 
     @GET("/servicios/{mail}/{tipo}")
-    Call<Map<String,Set<Object>>> obtenerMisServicios(@Path("mail") String mail, @Path("tipo") int tipo);
+    Call<Map<Integer,ArrayList<Servicio>>> obtenerMisServicios(@Path("mail") String mail, @Path
+            ("tipo") int tipo);
 
     @GET("/alojamientos/{id}")
     Call<Alojamiento> getAlojamiento(@Path("id") int id);

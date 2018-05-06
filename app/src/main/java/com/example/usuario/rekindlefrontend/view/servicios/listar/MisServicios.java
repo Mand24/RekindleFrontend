@@ -26,7 +26,7 @@ public class MisServicios extends ListarServicios {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("tipo", servicios.get(position).getTipo());
+                        intent.putExtra("Servicio", servicios.get(position));
                         startActivity(intent);
                     }
                     @Override
@@ -56,6 +56,7 @@ public class MisServicios extends ListarServicios {
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
                                                             // TODO API delete
+                                                            sendEliminarServicio();
                                                             MisServicios.this.finish();
                                                         }
                                                     });
@@ -77,6 +78,10 @@ public class MisServicios extends ListarServicios {
                         alertDialog.show();
                     }
                 });
+    }
+
+    public void sendEliminarServicio(){
+
     }
 }
 

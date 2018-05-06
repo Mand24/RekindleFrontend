@@ -55,6 +55,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_servicios);
+
+        mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
         initializeData();
@@ -145,8 +147,6 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             }
         });
 
-        mAPIService = APIUtils.getAPIService();
-
     }
 
     protected void setAdapterListener() {
@@ -159,6 +159,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                         intent.putExtra("Servicio", servicios.get(position));
                         startActivity(intent);
                     }
+
                     @Override
                     public void onItemLongClick(View v, int position) {
 
@@ -185,7 +186,8 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
     private void initializeData() {
 
-        /*servicios.add(new Servicio(0, "Alojamiento", "buena describicion", "Calle 123", "27/07/97",
+        /*servicios.add(new Servicio(0, "Alojamiento", "buena describicion", "Calle 123",
+        "27/07/97",
                 "623623623", "4.5", R.drawable.lodging));
         servicios.add(
                 new Servicio(2, "Educativo", "buena describicion", "Calle 123342432", "27/07/97",
@@ -197,24 +199,25 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                         "4.5", R.drawable.job));
         serviciosFiltrados = servicios;*/
 
-        mAPIService.obtenerServicios().enqueue(new Callback<Map<String,Set<Object>>>
+        mAPIService.obtenerServicios().enqueue(new Callback<Map<Integer, ArrayList<Servicio>>>
                 () {
             @Override
-            public void onResponse(Call<Map<String,Set<Object>>> call,
-                    Response<Map<String, Set<Object>>>
-                    response) {
-                if(response.isSuccessful()){
-                    Map<String, Set<Object>> respuesta = response.body();
+            public void onResponse(Call<Map<Integer, ArrayList<Servicio>>> call,
+                    Response<Map<Integer, ArrayList<Servicio>>>
+                            response) {
+                if (response.isSuccessful()) {
+                    Map<Integer, ArrayList<Servicio>> respuesta = response.body();
                     //TODO: parsear
                     //servicios = response.body();
-                }
-                else{
+                    tratarRespuesta(respuesta);
+
+                } else {
                     tratarResultadoPeticion(false);
                 }
             }
 
             @Override
-            public void onFailure(Call<Map<String, Set<Object>>> call, Throwable t) {
+            public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
                 tratarResultadoPeticion(false);
             }
         });
@@ -222,8 +225,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        startActivity(i);
+        finish();
     }
 
     @Override
@@ -268,14 +270,13 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
                 for (Servicio s : servicios) {
                     if (filters.get(s.getId())) {
-                        if(!charString.isEmpty()) {
+                        if (!charString.isEmpty()) {
                             if (s.getNombre().toLowerCase().contains(charString) || s
                                     .getDireccion().toLowerCase().contains(charString)) {
 
                                 filteredList.add(s);
                             }
-                        }
-                        else{
+                        } else {
                             filteredList.add(s);
                         }
                     }
@@ -294,6 +295,26 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                 refreshItems();
             }
         };
+    }
+
+    public void tratarRespuesta(Map<Integer, ArrayList<Servicio>> respuesta) {
+        ArrayList<Servicio> aux = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            aux = respuesta.get(i);
+            for (Servicio s : aux) {
+                s.setTipo(i);
+                if (i == 0) {
+                    s.setImage(R.drawable.lodging);
+                } else if (i == 1) {
+                    s.setImage(R.drawable.donation);
+                } else if (i == 2) {
+                    s.setImage(R.drawable.education);
+                } else {
+                    s.setImage(R.drawable.job);
+                }
+            }
+            servicios.addAll(aux);
+        }
     }
 
     public void tratarResultadoPeticion(boolean result) {

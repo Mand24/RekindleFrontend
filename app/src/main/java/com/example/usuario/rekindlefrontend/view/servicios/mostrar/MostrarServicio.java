@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
@@ -22,14 +23,23 @@ public class MostrarServicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_servicio);
 
+        Servicio servicio = (Servicio) getIntent().getSerializableExtra("Servicio");
+
+        int tipo_servicio = servicio.getTipo();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("servicioFrag", servicio);
+
         tipoServicio = new Fragment[2];
 
         tipoServicio[0] = new MostrarAlojamiento();
+        tipoServicio[0].setArguments(bundle);
         tipoServicio[1] = new MostrarDonacion();
+        tipoServicio[1].setArguments(bundle);
         tipoServicio[2] = new MostrarCursoEducativo();
+        tipoServicio[2].setArguments(bundle);
         tipoServicio[3] = new MostrarOfertaEmpleo();
-
-        int tipo_servicio = getIntent().getIntExtra("tipo", 0);
+        tipoServicio[3].setArguments(bundle);
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

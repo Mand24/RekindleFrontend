@@ -17,8 +17,8 @@ public class Donacion extends Servicio {
 
     public Donacion (int id, String email, String nombre, String descripcion, String direccion,
             String limiteSolicitudes,
-            String horaInicio, String horaFin, String numero, String valoracion, int tipo){
-        super(id, 1, email, nombre, descripcion, direccion, numero, valoracion);
+            String horaInicio, String horaFin, String numero){
+        super(id, 1, email, nombre, descripcion, direccion, numero);
         this.limiteSolicitudes = limiteSolicitudes;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;

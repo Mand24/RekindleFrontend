@@ -32,7 +32,6 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
             cv = (CardView) itemView.findViewById(R.id.cv);
             serviceName = (TextView) itemView.findViewById(R.id.titulo_servicio);
             serviceAddress = (TextView) itemView.findViewById(R.id.direccion_servicio);
-            expirationDate = (TextView) itemView.findViewById(R.id.fecha_limite_servicio);
             serviceType = (ImageView) itemView.findViewById(R.id.photo_cardView);
         }
     }
@@ -66,8 +65,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
         serviceViewHolder.serviceName.setText(servicio.getNombre());
         serviceViewHolder.serviceAddress.setText(servicio.getDireccion());
-        //serviceViewHolder.expirationDate.setText(servicio.getFecha());
-        serviceViewHolder.serviceType.setImageResource(servicio.getTipo());
+        serviceViewHolder.serviceType.setImageResource(servicio.getImage());
     }
 
     @Override
