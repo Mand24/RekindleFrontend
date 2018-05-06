@@ -13,26 +13,34 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Maps;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
+    private Servicio mServicio;
+    private APIService mAPIService;
 
     public MostrarOfertaEmpleo() {
         // Required empty public constructor
     }
 
 
-    TextView titulo, descripcion, direccion, numero, puesto, requisitos, jornada, horas, duracion,
-            valoracion;
-    AppCompatButton chat, opiniones, inscribirse;
+    TextView titulo, descripcion, direccion, numero, puesto, requisitos, jornada, horas, duracion;
+    AppCompatButton chat, inscribirse;
 
     public OfertaEmpleo servicio;
     public MapFragment mMapView;
@@ -49,6 +57,10 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
+        mAPIService = APIUtils.getAPIService();
+
+        mServicio = (Servicio) getArguments().getSerializable("servicioFrag");
+
         titulo = view.findViewById(R.id.titulo_oferta_empleo);
         descripcion = view.findViewById(R.id.descripcion_oferta_empleo);
         direccion = view.findViewById(R.id.direccion_oferta_empleo);
@@ -61,11 +73,9 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
                 .findFragmentById(R.id.google_mapView);
         numero = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
-        valoracion = view.findViewById(R.id.valoracion_servicio);
-        opiniones = view.findViewById(R.id.opiniones);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        OfertaEmpleo servicio = (OfertaEmpleo) getActivity().getIntent().getSerializableExtra("Servicio");
+        sendGetEmpleo();
 
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
@@ -76,10 +86,36 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
         horas.setText(servicio.getHorasSemana());
         duracion.setText(servicio.getDuracion());
         numero.setText(servicio.getNumero());
-        valoracion.setText("Valoracion: " + servicio.getValoracion());
 
         mMapView.getMapAsync(this);
         return view;
+    }
+
+    public void sendGetEmpleo(){
+        mAPIService.getEmpleo(mServicio.getId()).enqueue(new Callback<OfertaEmpleo>() {
+            @Override
+            public void onResponse(Call<OfertaEmpleo> call, Response<OfertaEmpleo> response) {
+                if (response.isSuccessful()){
+                    servicio = response.body();
+                }
+                else tratarResultadoPeticion(false);
+            }
+
+            @Override
+            public void onFailure(Call<OfertaEmpleo> call, Throwable t) {
+                tratarResultadoPeticion(false);
+            }
+        });
+    }
+
+    public void tratarResultadoPeticion(boolean result) {
+
+        if (result) {
+
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -90,9 +126,7 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                //setMarker(servicio.getDireccion (), myMarker, mGoogleMap);
-                myMarker = setMarker("Carrer de l'Estronci, 41, 08906 L'Hospitalet de Llobregat, "
-                        + "Barcelona", myMarker, mGoogleMap);
+                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap);
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string

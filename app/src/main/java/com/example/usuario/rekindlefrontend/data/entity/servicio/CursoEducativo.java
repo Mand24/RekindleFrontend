@@ -22,8 +22,8 @@ public class CursoEducativo extends Servicio {
 
     public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion, String fecha,
             String ambito, String requisitos, String horario, String plazas, String precio,
-            String numero, String valoracion){
-        super(id, 2, email, nombre, descripcion, direccion, numero, valoracion);
+            String numero){
+        super(id, 2, email, nombre, descripcion, direccion, numero);
         this.ambito = ambito;
         this.requisitos = requisitos;
         this.horario = horario;
