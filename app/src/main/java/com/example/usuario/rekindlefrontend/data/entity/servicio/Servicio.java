@@ -11,7 +11,7 @@ public class Servicio implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("serviceType")
+    @SerializedName("tipo")
     @Expose
     private int tipo;
     @SerializedName("volunteer")

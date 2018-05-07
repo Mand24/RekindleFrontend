@@ -207,6 +207,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
             @Override
             public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
+                Log.e("on Failure", t.toString());
                 tratarResultadoPeticion(false);
                 Log.i(t.getClass().toString(), "========================");
                 if (t instanceof IOException) {
