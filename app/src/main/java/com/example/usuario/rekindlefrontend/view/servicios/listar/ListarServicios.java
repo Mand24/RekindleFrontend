@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugiados;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -206,6 +208,15 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
             @Override
             public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
                 tratarResultadoPeticion(false);
+                Log.i(t.getClass().toString(), "========================");
+                if (t instanceof IOException) {
+                    Log.i( "NETWORK ERROR", "=======================================");
+                    // logging probably not necessary
+                }
+                else {
+                    Log.i( "CONVERSION ERROR", "=======================================");
+                    // todo log to some central bug tracking service
+                }
             }
         });
     }
