@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -207,16 +208,16 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
 
             @Override
             public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
+                Log.e("on Failure", t.toString());
+                tratarResultadoPeticion(false);
+                Log.i(t.getClass().toString(), "========================");
                 if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
-                            .LENGTH_SHORT)
-                            .show();
-                } else {
-                    Toast.makeText(getApplicationContext(), getString (R.string.conversation_fail),
-                            Toast
-                                    .LENGTH_SHORT)
-                            .show();
-
+                    Log.i( "NETWORK ERROR", "=======================================");
+                    // logging probably not necessary
+                }
+                else {
+                    Log.i( "CONVERSION ERROR", "=======================================");
+                    // todo log to some central bug tracking service
                 }
             }
         });

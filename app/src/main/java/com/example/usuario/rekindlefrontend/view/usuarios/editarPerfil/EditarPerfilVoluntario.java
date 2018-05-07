@@ -48,7 +48,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
         setVistas(view);
 
-        voluntario = (Voluntario) getActivity().getIntent().getSerializableExtra("Voluntario");
+        voluntario = (Voluntario) getActivity().getIntent().getParcelableExtra("Voluntario");
 
         initializeData(view);
 

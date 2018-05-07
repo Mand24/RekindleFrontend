@@ -10,13 +10,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
 
 public class EditarPerfil extends AppCompatActivity {
 
     Fragment[] tiposPerfil;
+    Voluntario mVoluntario;
+    Refugiado mRefugiado;
+
+    private Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,6 +39,8 @@ public class EditarPerfil extends AppCompatActivity {
         tiposPerfil[1] = new EditarPerfilVoluntario();
 
         int tipo_usuario = getIntent().getIntExtra("tipo", 3);
+        mVoluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
+        mRefugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
 
         menu(tipo_usuario);
     }
@@ -40,6 +49,8 @@ public class EditarPerfil extends AppCompatActivity {
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
+        bundle.putParcelable("Voluntario", mVoluntario);
+        bundle.putParcelable("Refugiado", mRefugiado);
         transaction.replace(R.id.perfilUsuario, tiposPerfil[tipo]);
         transaction.commit();
     }

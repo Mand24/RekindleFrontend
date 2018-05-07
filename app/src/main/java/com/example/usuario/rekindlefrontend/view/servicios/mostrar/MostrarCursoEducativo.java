@@ -70,7 +70,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
         titulo.setText(servicio.getNombre());
         descripcion.setText(servicio.getDescripcion());
         direccion.setText(servicio.getDireccion());
-        ambito.setText(servicio.getDireccion());
+        ambito.setText(servicio.getAmbito());
         requisitos.setText(servicio.getRequisitos());
         horario.setText(servicio.getHorario());
         precio.setText(servicio.getPrecio());
