@@ -27,6 +27,7 @@ import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugiados;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -199,13 +200,24 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     tratarRespuesta(respuesta);
 
                 } else {
+                    System.out.println("CODIGO "+response.code());
                     tratarResultadoPeticion(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
-                tratarResultadoPeticion(false);
+                if (t instanceof IOException) {
+                    Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
+                            .LENGTH_SHORT)
+                            .show();
+                } else {
+                    Toast.makeText(getApplicationContext(), getString (R.string.conversation_fail),
+                            Toast
+                                    .LENGTH_SHORT)
+                            .show();
+
+                }
             }
         });
     }
