@@ -50,11 +50,11 @@ public class CambiarPassword extends AppCompatActivity {
         tipo = getIntent().getIntExtra("tipo", 3);
 
         if (tipo == 0) {
-            refugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+            refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
             email = refugiado.getMail();
         }
         else {
-            voluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
+            voluntario = (Voluntario) getIntent().getParcelableExtra("Voluntario");
             email = voluntario.getMail();
         }
 

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,9 +18,11 @@ import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
@@ -27,6 +30,7 @@ import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugiados;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListarServicios extends AppCompatActivity implements Filterable {
+public class ListarServicios extends AppBaseActivity implements Filterable {
 
     protected List<Servicio> servicios = new ArrayList<>();
     protected List<Servicio> serviciosFiltrados = new ArrayList<>();
@@ -156,7 +160,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     public void onItemClick(View v, int position) {
                         //TODO:Algo al clicar
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("Servicio", servicios.get(position));
+                        intent.putExtra("Servicio", serviciosFiltrados.get(position));
                         startActivity(intent);
                     }
 
@@ -199,13 +203,24 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     tratarRespuesta(respuesta);
 
                 } else {
+                    System.out.println("CODIGO "+response.code());
                     tratarResultadoPeticion(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
+                Log.e("on Failure", t.toString());
                 tratarResultadoPeticion(false);
+                Log.i(t.getClass().toString(), "========================");
+                if (t instanceof IOException) {
+                    Log.i( "NETWORK ERROR", "=======================================");
+                    // logging probably not necessary
+                }
+                else {
+                    Log.i( "CONVERSION ERROR", "=======================================");
+                    // todo log to some central bug tracking service
+                }
             }
         });
     }
@@ -213,6 +228,12 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,9 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -58,20 +62,9 @@ public class RecuperarPassword extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), getString (R.string.contraseña_distinta),
                                 Toast.LENGTH_SHORT).show();
                     } else {
-                        boolean result = true;
-//                            result = new AsyncTaskCall().execute(email, password).get();
-                        result = sendRecuperarPassword(email, password);
-
-                        if (result) {
-                            Toast.makeText(getApplicationContext(), getString (R.string.contraseña_actualizada),
-                                    Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                            startActivity(i);
-                        } else {
-                            Toast.makeText(getApplicationContext(),
-                                    getString (R.string.contraseña_fail),
-                                    Toast.LENGTH_SHORT).show();
-                        }
+//                        boolean result = true;
+//                        result = new AsyncTaskCall().execute(email, password).get();
+                        sendRecuperarPassword(email, password);
 
                     }
                 }else{
@@ -81,13 +74,18 @@ public class RecuperarPassword extends AppCompatActivity {
                 }
             }
 
-            public boolean sendRecuperarPassword(String email, String password){
-                final boolean[] b = new boolean[1];
+            public void sendRecuperarPassword(String email, String password){
                 mAPIService.recuperarPassword(email, password).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()) b[0] = true;
-                        else b[0] = false;
+                        if (response.isSuccessful()) {
+                            System.out.println("CODI1 "+response.code());
+                            tratarResultadoRecuperarPassword(true);
+                        }
+                        else {
+                            System.out.println("CODI1 "+response.code());
+                            tratarResultadoRecuperarPassword(false);
+                        }
                     }
 
                     @Override
@@ -105,9 +103,78 @@ public class RecuperarPassword extends AppCompatActivity {
                         }
                     }
                 });
-
-                return b[0];
             }
+
+            public void tratarResultadoRecuperarPassword(boolean result){
+                if (result) {
+                    Toast.makeText(getApplicationContext(), getString (R.string.contraseña_actualizada),
+                            Toast.LENGTH_SHORT).show();
+                    sendLogin(email, _passwordText.getText().toString());
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            getString (R.string.contraseña_fail),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            public void sendLogin(String email, String password){
+                System.out.println("EMAIL "+email);
+                mAPIService.login(email, password).enqueue(new Callback<Usuario>() {
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                        if (response.isSuccessful()){
+                            System.out.println("CODI2 "+response.code());
+                            System.out.println("BODY "+response.body().toString());
+                            String header1 = response.headers().get("Tipo");
+                            int i = Integer.parseInt(header1);
+                            Usuario usuario = response.body();
+                            usuario.setTipo(i);
+                            tratarResultadoLogin(true, usuario);
+                        }else {
+                            System.out.println("CODI2 "+response.code());
+                            tratarResultadoLogin(false, response.body());
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
+                                    .LENGTH_SHORT)
+                                    .show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), getString (R.string.conversation_fail),
+                                    Toast
+                                            .LENGTH_SHORT)
+                                    .show();
+
+                        }
+
+                    }
+                });
+            }
+
+            public void tratarResultadoLogin(boolean result, Usuario usuario){
+                if (result){
+                    System.out.println("USUARIO1 "+usuario.toString());
+                    SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences.Editor miEditor = datos.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(usuario);
+                    miEditor.putString("usuario", json);
+                    miEditor.apply();
+                    System.out.println("USUARIO2 "+usuario.toString());
+                    Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+                    i.putExtra("tipo", usuario.getTipo());
+                    System.out.println("TIPO "+usuario.getTipo());
+                    startActivity(i);
+                }
+                else {
+                    Toast.makeText(getBaseContext(), getString (R.string.login_fail), Toast.LENGTH_LONG).show();
+                }
+            }
+
+
         });
 
         _back = findViewById(R.id.back_to_menu);

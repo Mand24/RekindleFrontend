@@ -54,7 +54,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
-        nombreUsuario.setText(usuario.getName());
+        nombreUsuario.setText(usuario.getName() + " " + usuario.getSurname1());
         emailUsuario.setText(usuario.getMail());
         
 

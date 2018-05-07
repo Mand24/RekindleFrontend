@@ -235,6 +235,7 @@ public class Login extends AppCompatActivity {
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         i.putExtra("tipo", usuario.getTipo());
+        System.out.println("USUARIOL "+usuario.toString());
         System.out.println("tipo1: "+usuario.getTipo());
         startActivity(i);
     }

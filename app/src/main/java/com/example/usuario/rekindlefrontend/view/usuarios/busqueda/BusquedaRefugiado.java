@@ -38,7 +38,7 @@ import retrofit2.Response;
  * Created by ORION on 04/05/2018.
  */
 
-public class BusquedaRefugiado extends AppCompatActivity{
+public class BusquedaRefugiado extends AppBaseActivity{
 
 
     private ArrayList<String> param = new ArrayList<String>();
@@ -249,6 +249,12 @@ public class BusquedaRefugiado extends AppCompatActivity{
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         i.putExtra("tipo", 0);
+        startActivity(i);
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
         startActivity(i);
     }
 

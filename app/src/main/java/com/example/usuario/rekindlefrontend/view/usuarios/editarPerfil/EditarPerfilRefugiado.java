@@ -64,7 +64,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         setVistas(view);
 
-        refugiado = (Refugiado) getActivity().getIntent().getSerializableExtra("Refugiado");
+        refugiado = (Refugiado) getActivity().getIntent().getParcelableExtra("Refugiado");
 
         System.out.println(refugiado.toString());
 
