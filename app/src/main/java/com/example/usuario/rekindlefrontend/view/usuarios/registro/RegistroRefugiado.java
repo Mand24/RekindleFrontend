@@ -21,6 +21,7 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -77,18 +78,25 @@ public class RegistroRefugiado extends AbstractFormatChecker {
             @Override
             public void onClick(View v) {
 
+                boolean b = true;
+
                 try {
+                    System.out.println("dentro try");
                     checkCampos(view);
+
                     obtenerParametros();
-                    /*boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);*/
+                    System.out.println("final try");
                 } catch (Exception e) {
+                    b = false;
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                /*if (b) {
+                    System.out.println("obtener");
+                    obtenerParametros();
+                    System.out.println("peticion");
+                    sendCreateRefugiado();
+                }*/
                 sendCreateRefugiado();
-
-
             }
         });
 
@@ -161,38 +169,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
 
     public void obtenerParametros() {
 
-        /*param = new ArrayList<String>();
-        param.add("manelico@gmail.com");
-        param.add("sergimanel");
-        param.add("pedrito");
-        param.add("garcia");
-        param.add("monserrate");
-        param.add("53322863");
-        param.add("1995-05-05");
-        param.add("Femenino");
-        param.add("Senegal");
-        param.add("town");
-        param.add("senegalo");
-        param.add("AB+");
-        param.add("Gris");*/
-
-        /*param = new ArrayList<String>();
-        param.add(eEmail.getText().toString());
-        param.add(ePassword.getText().toString());
-        param.add(eNombre.getText().toString());
-        param.add(ePrimer_apellido.getText().toString());
-        param.add(eSegundo_apellido.getText().toString());
-        param.add(eTelefono.getText().toString());
-        param.add(eNacimiento.getText().toString());
-        param.add(sSexo.getSelectedItem().toString());
-        param.add(eProcedencia.getText().toString());
-        param.add(ePueblo.getText().toString());
-        param.add(eEtnia.getText().toString());
-        param.add(sGrupo_sanguineo.getSelectedItem().toString());
-        param.add(sOjos.getSelectedItem().toString());*/
-
-        //System.out.println("nombre: " + nombre);
-
+        System.out.println("dentro obtener");
         refugiado = new Refugiado(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
                 eSegundo_apellido.getText().toString(), eTelefono.getText().toString(),
@@ -205,6 +182,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
     }
 
     public void sendCreateRefugiado(){
+        System.out.println("dentro send");
         System.out.println(refugiado.toString());
 
 
@@ -229,7 +207,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
             @Override
             public void onFailure(Call<Refugiado> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
-                /*if (t instanceof IOException) {
+                if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
                             + " :( inform "
                             + "the user and "
@@ -239,7 +217,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
                 else {
                     Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
                     // todo log to some central bug tracking service
-                }*/
+                }
                 tratarResultadoPeticion(false);
             }
         });
@@ -315,26 +293,4 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         }
     }
 
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            boolean result = false;
-            try {
-                result = ComunicacionUsuarios.registrarRefugiado(url, param);
-                //result = ComunicacionUsuarios.test2(url);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
 }

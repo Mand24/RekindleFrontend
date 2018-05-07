@@ -15,18 +15,20 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.RefugiadosAdapter;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListarRefugiados extends AppCompatActivity  implements Filterable {
+public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
     protected List<Refugiado> refugiados = new ArrayList<>();
     protected List<Refugiado> refugiadosFiltrados = new ArrayList<>();
@@ -105,6 +107,12 @@ public class ListarRefugiados extends AppCompatActivity  implements Filterable {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     @Override

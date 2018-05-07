@@ -18,9 +18,11 @@ import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
@@ -39,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListarServicios extends AppCompatActivity implements Filterable {
+public class ListarServicios extends AppBaseActivity implements Filterable {
 
     protected List<Servicio> servicios = new ArrayList<>();
     protected List<Servicio> serviciosFiltrados = new ArrayList<>();
@@ -158,7 +160,7 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
                     public void onItemClick(View v, int position) {
                         //TODO:Algo al clicar
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("Servicio", servicios.get(position));
+                        intent.putExtra("Servicio", serviciosFiltrados.get(position));
                         startActivity(intent);
                     }
 
@@ -226,6 +228,12 @@ public class ListarServicios extends AppCompatActivity implements Filterable {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     @Override

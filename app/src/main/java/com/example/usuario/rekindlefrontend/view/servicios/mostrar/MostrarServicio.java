@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
@@ -17,6 +18,7 @@ import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 
 import retrofit2.Call;
@@ -24,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MostrarServicio extends AppCompatActivity {
+public class MostrarServicio extends AppBaseActivity {
 
     Fragment[] tipoServicio;
     private APIService mAPIService;
@@ -127,6 +129,11 @@ public class MostrarServicio extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     public void tratarResultadoPeticion(boolean result, int tipo) {

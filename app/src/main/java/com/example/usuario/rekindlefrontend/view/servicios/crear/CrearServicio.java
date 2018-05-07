@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 
-public class CrearServicio extends AppCompatActivity {
+public class CrearServicio extends AppBaseActivity {
 
     Fragment[] tiposFormulario;
 
@@ -44,5 +46,11 @@ public class CrearServicio extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 }

@@ -3,12 +3,15 @@ package com.example.usuario.rekindlefrontend.view.servicios.editar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
-public class EditarServicio extends AppCompatActivity {
+public class EditarServicio extends AppBaseActivity {
 
     Fragment[] tipoServicios;
 
@@ -41,7 +44,13 @@ public class EditarServicio extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // implementar
+        finish();
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
 }

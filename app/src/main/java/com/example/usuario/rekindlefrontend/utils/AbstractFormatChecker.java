@@ -152,7 +152,7 @@ public abstract class AbstractFormatChecker extends Fragment {
 
     public  void checkSueldoOfertaEmpleo(String texto) throws Exception {
         if (texto.length() == 0) throw new Exception(getString(R.string.sueldo_obligatorio));
-        //else if (!preuFormat(texto) && texto.length() > 0) throw new Exception(getString(R.string.sueldo_formto));
+        else if (!preuFormat(texto) && texto.length() > 0) throw new Exception(getString(R.string.sueldo_formto));
     }
 
     public  void checkPlazasServicio(String texto) throws Exception {

@@ -66,9 +66,6 @@ public class RegistroVoluntario extends AbstractFormatChecker {
                 try {
                     checkCampos(view);
                     obtenerParametros();
-                    /*boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -104,22 +101,6 @@ public class RegistroVoluntario extends AbstractFormatChecker {
     }
 
     public void obtenerParametros(){
-
-
-        /*param.add("refa@gmail.com");
-        param.add("sergimanel");
-        param.add("refa");
-        param.add("garcia");
-        param.add("monserrate");*/
-
-       /* param = new ArrayList<String>();
-        param.add(eEmail.getText().toString());
-        param.add(ePassword.getText().toString());
-        param.add(eNombre.getText().toString());
-        param.add(ePrimer_apellido.getText().toString());
-        param.add(eSegundo_apellido.getText().toString());*/
-
-        //System.out.println("nombre: " + nombre);
 
         voluntario = new Voluntario(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
@@ -183,27 +164,4 @@ public class RegistroVoluntario extends AbstractFormatChecker {
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                 .string.registro_fallido), Toast.LENGTH_SHORT).show();
     }
-
-   /* private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            boolean result = false;
-            try {
-                result = ComunicacionUsuarios.registrarVoluntario(url, param);
-                //result = ComunicacionUsuarios.test2(url);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
 }
