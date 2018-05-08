@@ -20,6 +20,7 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
 
@@ -103,6 +104,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
             }
 
         });
+
+        SetDate setDate = new SetDate(eNacimiento, container.getContext());
 
         return view;
     }
@@ -199,9 +202,11 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         refugiado.setCountry(eProcedencia.getText().toString());
         refugiado.setTown(ePueblo.getText().toString());
         refugiado.setEthnic(eEtnia.getText().toString());
-        refugiado.setBirthDate(sSexo.getSelectedItem().toString());
+        refugiado.setBirthDate(eNacimiento.getText().toString());
+        refugiado.setSex(sSexo.getSelectedItem().toString());
         refugiado.setBloodType(sGrupo_sanguineo.getSelectedItem().toString());
         refugiado.setEyeColor(sOjos.getSelectedItem().toString());
+        refugiado.setBiography(eBiografia.getText().toString());
     }
 
     public void sendActualizarRefugiado() {
