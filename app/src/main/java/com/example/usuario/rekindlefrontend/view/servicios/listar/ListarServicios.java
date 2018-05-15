@@ -33,6 +33,7 @@ import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugia
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,13 +53,17 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
     protected APIService mAPIService;
 
     protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
-    protected List<Boolean> filters = new ArrayList<>(
-            Arrays.asList(true, true, true, true));
+    protected HashMap<String, Boolean> filters = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_servicios);
+
+        filters.put("Lodge", true);
+        filters.put("Donation", true);
+        filters.put("Course", true);
+        filters.put("Job", true);
 
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
@@ -84,12 +89,12 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(0)) {
-                    filters.set(0, false);
+                if (filters.get("Lodge")) {
+                    filters.put("Lodge", false);
                     filtrarAlojamiento.setBackgroundColor(
                             getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(0, true);
+                    filters.put("Lodge", true);
                     filtrarAlojamiento.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -103,11 +108,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(1)) {
-                    filters.set(1, false);
+                if (filters.get("Donation")) {
+                    filters.put("Donation", false);
                     filtrarDonacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(1, true);
+                    filters.put("Donation", true);
                     filtrarDonacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -121,11 +126,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(2)) {
-                    filters.set(2, false);
+                if (filters.get("Course")) {
+                    filters.put("Course", false);
                     filtrarEducacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(2, true);
+                    filters.put("Course", true);
                     filtrarEducacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -139,11 +144,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(3)) {
-                    filters.set(3, false);
+                if (filters.get("Job")) {
+                    filters.put("Job", false);
                     filtrarEmpleo.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(3, true);
+                    filters.put("Job", true);
                     filtrarEmpleo.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -310,14 +315,17 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         for (int i = 0; i < 4; i++) {
             aux = respuesta.get(i);
             for (Servicio s : aux) {
-                s.setTipo(i);
                 if (i == 0) {
+                    s.setTipo("Lodge");
                     s.setImage(R.drawable.lodging);
                 } else if (i == 1) {
+                    s.setTipo("Donation");
                     s.setImage(R.drawable.donation);
                 } else if (i == 2) {
+                    s.setTipo("Course");
                     s.setImage(R.drawable.education);
                 } else {
+                    s.setTipo("Job");
                     s.setImage(R.drawable.job);
                 }
             }

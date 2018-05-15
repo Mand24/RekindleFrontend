@@ -14,7 +14,7 @@ public class Alojamiento extends Servicio {
     public Alojamiento (int id, String email, String nombre, String descripcion, String
             direccion, String
             limiteSolicitudes, String fecha, String numero){
-        super(id, 0, email, nombre, descripcion, direccion, numero);
+        super(id, "Lodge", email, nombre, descripcion, direccion, numero);
         this.limiteSolicitudes = limiteSolicitudes;
         this.fecha = fecha;
     }

@@ -7,10 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -18,12 +22,11 @@ import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
  */
 public class EleccionTipoServicio extends Fragment {
 
-    private final int[] BOTONESMENU = {R.id.boton_tipo_alojamiento, R.id.boton_tipo_donacion, R.id.boton_tipo_curso_educativo, R.id.boton_tipo_oferta_empleo};
+    private final HashMap<String, Integer> BOTONESMENU = new HashMap<>();
 
     public EleccionTipoServicio() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,9 +36,15 @@ public class EleccionTipoServicio extends Fragment {
 
         ImageButton botonmenu;
 
-        for (int i = 0; i < BOTONESMENU.length; i++){
-            botonmenu = (ImageButton) menu_tipo.findViewById(BOTONESMENU[i]);
-            final int tipo = i;
+        BOTONESMENU.put("Lodge", R.id.boton_tipo_alojamiento);
+        BOTONESMENU.put("Donation", R.id.boton_tipo_donacion);
+        BOTONESMENU.put("Course", R.id.boton_tipo_curso_educativo);
+        BOTONESMENU.put("Job", R.id.boton_tipo_oferta_empleo);
+
+        for(Map.Entry<String, Integer> entry : BOTONESMENU.entrySet()) {
+            final String key = entry.getKey();
+            int value = entry.getValue();
+            botonmenu = (ImageButton) menu_tipo.findViewById(value);
 
             botonmenu.setOnClickListener(new View.OnClickListener(){
 
@@ -43,7 +52,7 @@ public class EleccionTipoServicio extends Fragment {
                 public void onClick(View v) {
 
                     Activity actividad = getActivity();
-                    ((CrearServicio)actividad).menu(tipo);
+                    ((CrearServicio)actividad).menu(key);
                 }
             });
         }

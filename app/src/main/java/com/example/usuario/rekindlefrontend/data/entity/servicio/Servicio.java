@@ -13,7 +13,7 @@ public class Servicio implements Serializable {
     private int id;
     @SerializedName("tipo")
     @Expose
-    private int tipo;
+    private String tipo;
     @SerializedName("volunteer")
     @Expose
     private String volunteer;
@@ -34,7 +34,7 @@ public class Servicio implements Serializable {
 
 
 
-    public Servicio(int id, int tipo, String email, String nombre, String descripcion, String
+    public Servicio(int id, String tipo, String email, String nombre, String descripcion, String
             direccion, String numero) {
         this.id = id;
         this.tipo = tipo;
@@ -53,11 +53,11 @@ public class Servicio implements Serializable {
         this.id = id;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
