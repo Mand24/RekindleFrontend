@@ -152,18 +152,9 @@ public class MostrarServicio extends AppBaseActivity {
 
             FragmentManager manager = getFragmentManager();
             transaction = manager.beginTransaction();
-            if(tipo.equals("Lodge")){
-                transaction.replace(R.id.servicio, tipoServicio.get(tipo));
-            }
-            else if(tipo.equals("Donation")){
-                transaction.replace(R.id.servicio, tipoServicio.get(tipo));
-            }
-            else if(tipo.equals("Education")){
-                transaction.replace(R.id.servicio, tipoServicio.get(tipo));
-            }
-            else{
-                transaction.replace(R.id.servicio, tipoServicio.get(tipo));
-            }
+
+            transaction.replace(R.id.servicio, tipoServicio.get(tipo));
+
             transaction.commit();
 
         } else {
