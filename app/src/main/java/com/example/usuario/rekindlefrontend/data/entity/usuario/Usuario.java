@@ -12,7 +12,7 @@ public class Usuario implements Parcelable {
 
     @SerializedName("tipo")
     @Expose
-    private int tipo;
+    private String tipo;
     @SerializedName("mail")
     @Expose
     private String mail;
@@ -31,7 +31,7 @@ public class Usuario implements Parcelable {
 
     public Usuario(){}
 
-    public Usuario(int tipo, String mail, String password, String name, String surname1, String
+    public Usuario(String tipo, String mail, String password, String name, String surname1, String
             surname2) {
         this.tipo = tipo;
         this.mail = mail;
@@ -43,7 +43,7 @@ public class Usuario implements Parcelable {
 
 
     protected Usuario(Parcel in) {
-        tipo = in.readInt();
+        tipo = in.readString();
         mail = in.readString();
         password = in.readString();
         name = in.readString();
@@ -70,7 +70,7 @@ public class Usuario implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(tipo);
+        dest.writeString(tipo);
         dest.writeString(mail);
         dest.writeString(password);
         dest.writeString(name);
@@ -78,9 +78,9 @@ public class Usuario implements Parcelable {
         dest.writeString(surname2);
     }
 
-    public int getTipo() { return tipo; }
+    public String getTipo() { return tipo; }
 
-    public void setTipo(int tipo) { this.tipo = tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
     public String getMail() {
         return mail;

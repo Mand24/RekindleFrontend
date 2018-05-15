@@ -16,37 +16,37 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+
 /**
  * Created by Manel Fernandez on 24-Apr-18.
  */
 
 public class VerPerfil extends AppBaseActivity {
 
-    Fragment[] tiposPerfil;
+    HashMap<String, Fragment> tiposPerfil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_ver_perfil);
 
-        tiposPerfil = new Fragment[2];
+        tiposPerfil = new HashMap<>();
 
-        tiposPerfil[0] = new VerPerfilRefugiado();
-        tiposPerfil[1] = new VerPerfilVoluntario();
+        tiposPerfil.put("Refugee", new VerPerfilRefugiado());
+        tiposPerfil.put("Volunteer", new VerPerfilVoluntario());
 
-        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
+        String tipo_usuario = getIntent().getStringExtra("tipo");
 
         menu(tipo_usuario);
     }
 
-    public void menu(int tipo){
+    public void menu(String tipo){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.perfilUsuario, tiposPerfil[tipo]);
+        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo));
         transaction.commit();
     }
 

@@ -34,8 +34,6 @@ import retrofit2.Response;
  */
 public class RegistroRefugiado extends AbstractFormatChecker {
 
-    private ArrayList<String> param = new ArrayList<String>();
-
     private EditText eNombre;
     private EditText eEmail;
     private EditText ePassword;

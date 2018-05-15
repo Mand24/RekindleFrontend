@@ -103,7 +103,7 @@ public class VerPerfilVoluntario extends Fragment {
             public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
                 if (response.isSuccessful()){
                     voluntario = response.body();
-                    voluntario.setTipo(1);
+//                    voluntario.setTipo(1);
                     tratarResultadoPeticion(true);
                 }
                 else {
