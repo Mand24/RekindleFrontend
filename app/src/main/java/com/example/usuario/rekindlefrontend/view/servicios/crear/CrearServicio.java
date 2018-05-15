@@ -29,7 +29,7 @@ public class CrearServicio extends AppBaseActivity {
 
         tiposFormulario.put("Donation", new FormularioDonacion());
 
-        tiposFormulario.put("Course", new FormularioCursoEducativo());
+        tiposFormulario.put("Education", new FormularioCursoEducativo());
 
         tiposFormulario.put("Job", new FormularioOfertaEmpleo());
 

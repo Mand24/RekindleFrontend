@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class Usuario implements Parcelable {
 
-    @SerializedName("tipo")
+    @SerializedName("userType")
     @Expose
     private String tipo;
     @SerializedName("mail")

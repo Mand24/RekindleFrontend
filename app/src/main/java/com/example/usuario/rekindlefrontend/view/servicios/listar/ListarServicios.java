@@ -62,7 +62,7 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
         filters.put("Lodge", true);
         filters.put("Donation", true);
-        filters.put("Course", true);
+        filters.put("Education", true);
         filters.put("Job", true);
 
         mAPIService = APIUtils.getAPIService();
@@ -126,11 +126,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get("Course")) {
-                    filters.put("Course", false);
+                if (filters.get("Education")) {
+                    filters.put("Education", false);
                     filtrarEducacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.put("Course", true);
+                    filters.put("Education", true);
                     filtrarEducacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -195,28 +195,27 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
     private void initializeData() {
 
-        mAPIService.obtenerServicios().enqueue(new Callback<Map<Integer, ArrayList<Servicio>>>
+        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Servicio>>
                 () {
             @Override
-            public void onResponse(Call<Map<Integer, ArrayList<Servicio>>> call,
-                    Response<Map<Integer, ArrayList<Servicio>>>
+            public void onResponse(Call<ArrayList<Servicio>> call,
+                    Response<ArrayList<Servicio>>
                             response) {
                 if (response.isSuccessful()) {
-                    Map<Integer, ArrayList<Servicio>> respuesta = response.body();
-                    //TODO: parsear
+                    ArrayList<Servicio> respuesta = response.body();
                     //servicios = response.body();
-                    tratarRespuesta(respuesta);
+                    tratarResultadoPeticion(true, respuesta);
 
                 } else {
                     System.out.println("CODIGO "+response.code());
-                    tratarResultadoPeticion(false);
+                    tratarResultadoPeticion(false, null);
                 }
             }
 
             @Override
-            public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
                 Log.e("on Failure", t.toString());
-                tratarResultadoPeticion(false);
+                tratarResultadoPeticion(false, null);
                 Log.i(t.getClass().toString(), "========================");
                 if (t instanceof IOException) {
                     Log.i( "NETWORK ERROR", "=======================================");
@@ -224,7 +223,6 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                 }
                 else {
                     Log.i( "CONVERSION ERROR", "=======================================");
-                    // todo log to some central bug tracking service
                 }
             }
         });
@@ -310,7 +308,7 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         };
     }
 
-    public void tratarRespuesta(Map<Integer, ArrayList<Servicio>> respuesta) {
+    /*public void tratarRespuesta(Map<Integer, ArrayList<Servicio>> respuesta) {
         ArrayList<Servicio> aux = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             aux = respuesta.get(i);
@@ -322,7 +320,7 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                     s.setTipo("Donation");
                     s.setImage(R.drawable.donation);
                 } else if (i == 2) {
-                    s.setTipo("Course");
+                    s.setTipo("Education");
                     s.setImage(R.drawable.education);
                 } else {
                     s.setTipo("Job");
@@ -333,11 +331,14 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         }
         serviciosFiltrados = servicios;
         refreshItems();
-    }
+    }*/
 
-    public void tratarResultadoPeticion(boolean result) {
+    public void tratarResultadoPeticion(boolean result, List<Servicio> respuesta) {
 
         if (result) {
+            servicios = respuesta;
+            serviciosFiltrados = servicios;
+            refreshItems();
 
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R

@@ -38,7 +38,7 @@ public class EleccionTipoServicio extends Fragment {
 
         BOTONESMENU.put("Lodge", R.id.boton_tipo_alojamiento);
         BOTONESMENU.put("Donation", R.id.boton_tipo_donacion);
-        BOTONESMENU.put("Course", R.id.boton_tipo_curso_educativo);
+        BOTONESMENU.put("Education", R.id.boton_tipo_curso_educativo);
         BOTONESMENU.put("Job", R.id.boton_tipo_oferta_empleo);
 
         for(Map.Entry<String, Integer> entry : BOTONESMENU.entrySet()) {

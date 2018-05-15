@@ -145,8 +145,8 @@ public class MostrarServicio extends AppBaseActivity {
             tipoServicio.get("Lodge").setArguments(bundle);
             tipoServicio.put("Donation", new MostrarDonacion());
             tipoServicio.get("Donation").setArguments(bundle);
-            tipoServicio.put("Course", new MostrarCursoEducativo());
-            tipoServicio.get("Course").setArguments(bundle);
+            tipoServicio.put("Education", new MostrarCursoEducativo());
+            tipoServicio.get("Education").setArguments(bundle);
             tipoServicio.put("Job", new MostrarOfertaEmpleo());
             tipoServicio.get("Job").setArguments(bundle);
 
@@ -158,7 +158,7 @@ public class MostrarServicio extends AppBaseActivity {
             else if(tipo.equals("Donation")){
                 transaction.replace(R.id.servicio, tipoServicio.get(tipo));
             }
-            else if(tipo.equals("Course")){
+            else if(tipo.equals("Education")){
                 transaction.replace(R.id.servicio, tipoServicio.get(tipo));
             }
             else{

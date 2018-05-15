@@ -23,7 +23,7 @@ public class CursoEducativo extends Servicio {
     public CursoEducativo (int id, String email, String nombre, String descripcion, String direccion,
             String ambito, String requisitos, String horario, String plazas, String precio,
             String numero){
-        super(id, "Course", email, nombre, descripcion, direccion, numero);
+        super(id, "Education", email, nombre, descripcion, direccion, numero);
         this.ambito = ambito;
         this.requisitos = requisitos;
         this.horario = horario;

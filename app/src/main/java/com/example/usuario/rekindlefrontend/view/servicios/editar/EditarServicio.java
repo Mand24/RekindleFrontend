@@ -28,7 +28,7 @@ public class EditarServicio extends AppBaseActivity {
 
         tipoServicios.put("Donation", new EditarDonacion ());
 
-        tipoServicios.put("Course", new EditarCursoEducativo ());
+        tipoServicios.put("Education", new EditarCursoEducativo ());
 
         tipoServicios.put("Job", new EditarOfertaEmpleo ());
 
