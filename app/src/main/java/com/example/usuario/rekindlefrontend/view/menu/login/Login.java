@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -89,6 +91,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void comprobar_login(){
+        //TODO mirar sharedpreference (ConsistencyUtils)
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
@@ -192,12 +195,16 @@ public class Login extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+
+        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor miEditor = datos.edit();
         Gson gson = new Gson();
         String json = gson.toJson(usuario);
         miEditor.putString("usuario", json);
-        miEditor.apply();
+        miEditor.apply();*/
+
+        saveUser(usuario,this);
+
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         i.putExtra("tipo", usuario.getTipo());

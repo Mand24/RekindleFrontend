@@ -1,8 +1,8 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.verPerfil;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.preference.PreferenceManager;
@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionUsuarios;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
@@ -50,14 +49,6 @@ public class VerPerfilVoluntario extends Fragment {
 
         setVistas(view);
 
-        /*try {
-            voluntario = new AsyncTaskCall().execute().get();
-
-        }catch (Exception e){
-
-            e.printStackTrace();
-        }*/
-
         sendObtenerVoluntario();
 
         AppCompatButton b = (AppCompatButton) view.findViewById(R.id.editar_ver_perfil_voluntario);
@@ -90,11 +81,14 @@ public class VerPerfilVoluntario extends Fragment {
 
     public void sendObtenerVoluntario(){
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
+        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+
+        Usuario usuario = getUser(getActivity().getApplicationContext());
+
         System.out.println("tipo app: "+ usuario.getMail());
         String mail = usuario.getMail();
 
@@ -155,31 +149,5 @@ public class VerPerfilVoluntario extends Fragment {
         emailUsuario.setText(voluntario.getMail());
 
     }
-
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Voluntario> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Voluntario doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            Voluntario result = new Voluntario();
-            try {
-                SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                        (getActivity().getApplicationContext());
-                String param = datos.getString("email", "email");
-                result = ComunicacionUsuarios.verPerfilVoluntario(url, param);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
-
 
 }

@@ -67,13 +67,15 @@ public class EditarPerfil extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+        /*Intent i = new Intent(getApplicationContext(), VerPerfil.class);
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
         i.putExtra("tipo", usuario.getTipo());
-        startActivity(i);
+        startActivity(i);*/
+        //TODO testear esto
+        finish();
     }
 
     @Override

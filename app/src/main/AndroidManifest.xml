@@ -43,7 +43,7 @@
         <activity android:name=".view.menu.menuLateral.Ajustes" />
         <activity android:name=".view.menu.menuLateral.About" />
         <activity android:name=".view.usuarios.busqueda.ListarRefugiados"></activity>
-        <activity android:name=".view.Help"/>
+        <activity android:name=".view.menu.menuLateral.Help"/>
         <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"></activity>
     </application>
 

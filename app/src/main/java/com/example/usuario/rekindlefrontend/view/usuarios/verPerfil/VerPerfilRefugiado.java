@@ -1,7 +1,8 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.verPerfil;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.preference.PreferenceManager;
@@ -58,14 +59,6 @@ public class VerPerfilRefugiado extends Fragment {
 
         setVistas(view);
 
-        /*try {
-            refugiado = new AsyncTaskCall().execute().get();
-
-        }catch (Exception e){
-
-            e.printStackTrace();
-        }*/
-
         sendObtenerRefugiado();
 
 
@@ -108,11 +101,14 @@ public class VerPerfilRefugiado extends Fragment {
 
     public void sendObtenerRefugiado(){
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
+        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+
+        Usuario usuario = getUser(getActivity().getApplicationContext());
+
         System.out.println("tipo app: "+ usuario.getMail());
         String mail = usuario.getMail();
 
@@ -185,31 +181,5 @@ public class VerPerfilRefugiado extends Fragment {
         biografiaUsuario.setText(refugiado.getBiography());
 
     }
-
-   /* private class AsyncTaskCall extends AsyncTask<String, Void, Refugiado> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Refugiado doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            Refugiado result = new Refugiado();
-            try {
-                SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                (getActivity().getApplicationContext());
-                String param = datos.getString("email", "email");
-                result = ComunicacionUsuarios.verPerfilRefugiado(url, param);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
-
 
 }

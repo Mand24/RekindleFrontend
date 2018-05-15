@@ -1,5 +1,8 @@
 package com.example.usuario.rekindlefrontend;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,7 +26,7 @@ import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
-import com.example.usuario.rekindlefrontend.view.Help;
+import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Help;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
@@ -50,10 +53,13 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
         emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+       /* SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
+        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+
+        Usuario usuario = getUser(this);
+
         nombreUsuario.setText(usuario.getName() + " " + usuario.getSurname1());
         emailUsuario.setText(usuario.getMail());
         
@@ -75,10 +81,13 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                     /*Se define la lógica de casos que puedan producirse al seleccionar cualquier elemento del menú.*/
                     case R.id.ver_perfil:
                         i = new Intent(getApplicationContext(), VerPerfil.class);
-                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         Gson gson = new Gson();
                         String json = datos.getString("usuario", "");
-                        Usuario usuario = gson.fromJson(json, Usuario.class);
+                        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+
+                        Usuario usuario = getUser(getApplicationContext());
+
                         i.putExtra("tipo", usuario.getTipo());
                         System.out.println("tipo app: "+ usuario.getTipo());
                         startActivity(i);
@@ -141,10 +150,13 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         SharedPreferences.Editor miEditor = datos.edit();
                         miEditor.putString("usuario","");
-                        miEditor.apply();
+                        miEditor.apply();*/
+
+                        saveUser(null, getApplicationContext());
+
                         Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
                                 .LENGTH_SHORT)
                                 .show();

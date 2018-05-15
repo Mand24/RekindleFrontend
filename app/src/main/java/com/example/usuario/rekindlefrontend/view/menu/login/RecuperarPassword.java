@@ -16,6 +16,7 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -157,12 +158,15 @@ public class RecuperarPassword extends AppCompatActivity {
             public void tratarResultadoLogin(boolean result, Usuario usuario){
                 if (result){
                     System.out.println("USUARIO1 "+usuario.toString());
-                    SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor miEditor = datos.edit();
                     Gson gson = new Gson();
                     String json = gson.toJson(usuario);
                     miEditor.putString("usuario", json);
-                    miEditor.apply();
+                    miEditor.apply();*/
+
+                    saveUser(usuario, getApplicationContext());
+
                     System.out.println("USUARIO2 "+usuario.toString());
                     Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
                     i.putExtra("tipo", usuario.getTipo());

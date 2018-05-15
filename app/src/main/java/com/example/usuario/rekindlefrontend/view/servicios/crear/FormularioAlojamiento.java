@@ -4,6 +4,8 @@ package com.example.usuario.rekindlefrontend.view.servicios.crear;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Intent;
@@ -20,7 +22,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -137,11 +138,13 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
 
     public void obtenerParametros() {
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
+        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+
+        Usuario usuario = getUser(getActivity().getApplicationContext());
 
         alojamiento = new Alojamiento(0, usuario.getMail(), eNombre.getText().toString(),
                 eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
