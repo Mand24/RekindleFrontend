@@ -123,7 +123,7 @@ public class VerPerfilRefugiado extends Fragment {
                     System.out.println("dentro respuesta");
                     if (response.body() != null) System.out.println("dentro respuesta ok");
                     refugiado = response.body();
-                    refugiado.setTipo(0);
+//                    refugiado.setTipo(0);
                     tratarResultadoPeticion(true);
                 }
                 else {

@@ -122,12 +122,12 @@ public class RecuperarPassword extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                         if (response.isSuccessful()){
-                            System.out.println("CODI2 "+response.code());
+                            /*System.out.println("CODI2 "+response.code());
                             System.out.println("BODY "+response.body().toString());
                             String header1 = response.headers().get("Tipo");
-                            int i = Integer.parseInt(header1);
+                            int i = Integer.parseInt(header1);*/
                             Usuario usuario = response.body();
-                            usuario.setTipo(i);
+//                            usuario.setTipo(i);
                             tratarResultadoLogin(true, usuario);
                         }else {
                             System.out.println("CODI2 "+response.code());
@@ -192,30 +192,4 @@ public class RecuperarPassword extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... params) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            boolean result = false;
-            boolean result2 = false;
-            try {
-                //TODO: descomentar
-                //result = ComunicacionUsuarios.setPassword(url, params[0], params[1]);
-
-                if (result){
-                    result2 = ComunicacionUsuarios.iniciarSesion(url, params[0], params[1]);
-                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return result;
-        }
-    }*/
 }

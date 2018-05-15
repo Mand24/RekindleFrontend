@@ -10,28 +10,30 @@ import android.os.Bundle;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.R;
 
+import java.util.HashMap;
+
 public class RegistroUsuario extends AppCompatActivity {
 
-    Fragment [] tiposRegistro;
+    HashMap<String, Fragment> tiposRegistro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
-        tiposRegistro = new Fragment[2];
+        tiposRegistro = new HashMap<>();
 
-        tiposRegistro[0] = new RegistroRefugiado();
+        tiposRegistro.put("Refugee", new RegistroRefugiado());
 
-        tiposRegistro[1] = new RegistroVoluntario();
+        tiposRegistro.put("Volunteer", new RegistroVoluntario());
 
-        menu(0);
+        menu("Refugee");
     }
 
-    public void menu(int tipo){
+    public void menu(String tipo){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.formulario, tiposRegistro[tipo]);
+        transaction.replace(R.id.formulario, tiposRegistro.get(tipo));
         transaction.commit();
     }
 

@@ -189,7 +189,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.servicio_alojamiento_creado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
-            i.putExtra("tipo", 1);
+            i.putExtra("tipo", "Volunteer");
             startActivity(i);
 
         } else {

@@ -18,9 +18,11 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+
 public class EditarPerfil extends AppBaseActivity {
 
-    Fragment[] tiposPerfil;
+    HashMap<String, Fragment> tiposPerfil;
     Voluntario mVoluntario;
     Refugiado mRefugiado;
 
@@ -35,25 +37,31 @@ public class EditarPerfil extends AppBaseActivity {
 
         setContentView(R.layout.activity_editar_perfil);
 
-        tiposPerfil = new Fragment[2];
+        tiposPerfil = new HashMap<>();
 
-        tiposPerfil[0] = new EditarPerfilRefugiado();
-        tiposPerfil[1] = new EditarPerfilVoluntario();
+        tiposPerfil.put("Refugee", new EditarPerfilRefugiado());
+        tiposPerfil.put("Volunteer", new EditarPerfilVoluntario());
 
-        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
+        String tipo_usuario = getIntent().getStringExtra("tipo");
+        /////////////////////
+        //MILLOR IF ELSE?????
+        /////////////////////
         mVoluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
         mRefugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
 
         menu(tipo_usuario);
     }
 
-    public void menu(int tipo){
+    public void menu(String tipo){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
+        /////////////////////
+        //MILLOR IF ELSE?????
+        /////////////////////
         bundle.putParcelable("Voluntario", mVoluntario);
         bundle.putParcelable("Refugiado", mRefugiado);
-        transaction.replace(R.id.perfilUsuario, tiposPerfil[tipo]);
+        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo));
         transaction.commit();
     }
 

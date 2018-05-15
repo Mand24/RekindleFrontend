@@ -248,7 +248,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
     @Override
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        i.putExtra("tipo", 0);
+        i.putExtra("tipo", "Refugee");
         startActivity(i);
     }
 

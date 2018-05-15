@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class CambiarPassword extends AppCompatActivity {
 
-    private int tipo;
+    private String tipo;
     private Refugiado refugiado;
     private Voluntario voluntario;
 
@@ -47,9 +47,9 @@ public class CambiarPassword extends AppCompatActivity {
 
         mAPIService = APIUtils.getAPIService();
 
-        tipo = getIntent().getIntExtra("tipo", 3);
+        tipo = getIntent().getStringExtra("tipo");
 
-        if (tipo == 0) {
+        if (tipo.equals("Refugee")) {
             refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
             email = refugiado.getMail();
         }
@@ -176,18 +176,18 @@ public class CambiarPassword extends AppCompatActivity {
         if (result) {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.guardado_correctamente), Toast.LENGTH_SHORT).show();
-            if (tipo == 0) {
+            if (tipo.equals("Refugee")) {
                 refugiado.setPassword(new_pass);
                 Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
                 i.putExtra("Refugiado", refugiado);
-                i.putExtra("tipo", 0);
+                i.putExtra("tipo", "Refugee");
                 startActivity(i);
             }
             else {
                 voluntario.setPassword(new_pass);
                 Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
                 i.putExtra("Voluntario", voluntario);
-                i.putExtra("tipo", 1);
+                i.putExtra("tipo", "Volunteer");
                 startActivity(i);
             }
 
@@ -195,28 +195,6 @@ public class CambiarPassword extends AppCompatActivity {
         }else Toast.makeText(getApplicationContext(), getResources().getString(R
                 .string.guardado_fallido), Toast.LENGTH_SHORT).show();
     }
-
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            boolean result = false;
-            try {
-                result = ComunicacionUsuarios.cambiarPassword(url, param);
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            return result;
-
-        }
-    }*/
 
     @Override
     public void onBackPressed() {

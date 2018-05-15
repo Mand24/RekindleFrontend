@@ -121,17 +121,6 @@ public class Login extends AppCompatActivity {
         //String email = _emailText.getText().toString();
         //String password = _passwordText.getText().toString();
 
-
-        // TODO: Llamar API
-        /*try{
-            //result = new AsyncTaskCall().execute(email, password).get();
-            //result = true;
-            //if (result) onLoginSuccess();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
@@ -152,18 +141,18 @@ public class Login extends AppCompatActivity {
         mAPIService.login(email, password).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Set<String> headers = response.headers().names();
+                /*Set<String> headers = response.headers().names();
                 for(String header : headers) {
                     System.out.println("cabecera: "+header);
-                }
+                }*/
 
-                System.out.println(response.code());
+//                System.out.println(response.code());
 
                 if (response.isSuccessful()) {
-                    String header1 = response.headers().get("Tipo");
-                    int i = Integer.parseInt(header1);
+                    /*String header1 = response.headers().get("Tipo");
+                    int i = Integer.parseInt(header1);*/
                     usuario = response.body();
-                    usuario.setTipo(i);
+//                    usuario.setTipo(i);
                     System.out.println("tipo: "+usuario.getTipo());
                     onLoginSuccess();
                 }
@@ -187,29 +176,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... params) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            boolean result = false;
-            try {
-                result = ComunicacionUsuarios.iniciarSesion(url, params[0], params[1]);
-                //result = ComunicacionUsuarios.test2(url);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
 
     @Override
     public void onBackPressed() {

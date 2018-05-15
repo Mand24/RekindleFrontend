@@ -11,34 +11,36 @@ import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
+import java.util.HashMap;
+
 public class EditarServicio extends AppBaseActivity {
 
-    Fragment[] tipoServicios;
+    HashMap<String, Fragment> tipoServicios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_servicio);
 
-        tipoServicios = new Fragment[4];
+        tipoServicios = new HashMap<>();
 
-        tipoServicios[0] = new EditarAlojamiento ();
+        tipoServicios.put("Lodge", new EditarAlojamiento ());
 
-        tipoServicios[1] = new EditarDonacion ();
+        tipoServicios.put("Donation", new EditarDonacion ());
 
-        tipoServicios[2] = new EditarCursoEducativo ();
+        tipoServicios.put("Education", new EditarCursoEducativo ());
 
-        tipoServicios[3] = new EditarOfertaEmpleo ();
+        tipoServicios.put("Job", new EditarOfertaEmpleo ());
 
-        menu (3);
+        menu ("Lodge");
 
     }
 
-    public void menu(int tipo_servicio){
+    public void menu(String tipo_servicio){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace (R.id.editar_servicio, tipoServicios[tipo_servicio]);
+        transaction.replace (R.id.editar_servicio, tipoServicios.get(tipo_servicio));
         transaction.commit();
     }
 

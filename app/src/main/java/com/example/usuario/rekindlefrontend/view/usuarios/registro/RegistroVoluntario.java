@@ -31,8 +31,6 @@ import retrofit2.Response;
  */
 public class RegistroVoluntario extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
-
     private EditText eNombre;
     private EditText eEmail;
     private EditText ePassword;
