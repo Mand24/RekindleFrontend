@@ -57,7 +57,6 @@ public class VerPerfilVoluntario extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
-                i.putExtra("tipo", 1);
                 i.putExtra("Voluntario", voluntario);
                 startActivity(i);
             }

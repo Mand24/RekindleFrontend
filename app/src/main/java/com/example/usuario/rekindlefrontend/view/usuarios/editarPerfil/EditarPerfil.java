@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -42,26 +44,29 @@ public class EditarPerfil extends AppBaseActivity {
         tiposPerfil.put("Refugee", new EditarPerfilRefugiado());
         tiposPerfil.put("Volunteer", new EditarPerfilVoluntario());
 
-        String tipo_usuario = getIntent().getStringExtra("tipo");
-        /////////////////////
-        //MILLOR IF ELSE?????
-        /////////////////////
-        mVoluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
-        mRefugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+        Usuario user = getUser(this);
 
+        String tipo_usuario = user.getTipo();
+
+        if(tipo_usuario.equals("Refugee")){
+            mRefugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+        } else {
+            mVoluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
+        }
         menu(tipo_usuario);
     }
 
-    public void menu(String tipo){
+    public void menu(String tipo_usuario){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        /////////////////////
-        //MILLOR IF ELSE?????
-        /////////////////////
-        bundle.putParcelable("Voluntario", mVoluntario);
-        bundle.putParcelable("Refugiado", mRefugiado);
-        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo));
+        if(tipo_usuario.equals("Refugee")){
+            bundle.putParcelable("Refugiado", mRefugiado);
+        } else {
+            bundle.putParcelable("Voluntario", mVoluntario);
+        }
+
+        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo_usuario));
         transaction.commit();
     }
 

@@ -91,7 +91,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void comprobar_login(){
-        //TODO mirar sharedpreference (ConsistencyUtils)
+        //TODO sharepreference consistencyutils?
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
@@ -101,7 +101,6 @@ public class Login extends AppCompatActivity {
         else {
             usuario = gson.fromJson(json, Usuario.class);
             Intent i = new Intent(this, MenuPrincipal.class);
-            i.putExtra("tipo", usuario.getTipo());
             startActivity(i);
         }
     }
@@ -207,7 +206,6 @@ public class Login extends AppCompatActivity {
 
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        i.putExtra("tipo", usuario.getTipo());
         System.out.println("USUARIOL "+usuario.toString());
         System.out.println("tipo1: "+usuario.getTipo());
         startActivity(i);
@@ -219,6 +217,7 @@ public class Login extends AppCompatActivity {
         _loginButton.setEnabled(true);
     }
 
+    //TODO pasar estas comprovaciones a AbstractFormatChecker
     public boolean validate() {
         boolean valid = true;
 

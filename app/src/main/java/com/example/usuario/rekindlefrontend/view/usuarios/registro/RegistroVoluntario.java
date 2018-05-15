@@ -1,9 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.registro;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +11,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.R;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +47,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_registro_voluntario, container,
                 false);
@@ -56,8 +55,9 @@ public class RegistroVoluntario extends AbstractFormatChecker {
         //establecer las vistas
         setVistas(view);
 
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_registro_voluntario);
-        button_send.setOnClickListener(new View.OnClickListener(){
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(
+                R.id.enviar_registro_voluntario);
+        button_send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -98,7 +98,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     }
 
-    public void obtenerParametros(){
+    public void obtenerParametros() {
 
         voluntario = new Voluntario(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
@@ -106,26 +106,28 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     }
 
-    public void sendCreateVoluntario(){
+    public void sendCreateVoluntario() {
 
         mAPIService.createVoluntario(voluntario).enqueue(new Callback<Voluntario>() {
             @Override
             public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
 
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Voluntario voluntario = response.body();
                     System.out.println(voluntario.toString());
                     System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
-                }
-                else {
-                    if (response.body() != null) System.out.println("Resposta: "+response.toString
-                            ());
-                    else System.out.println("voluntario null");
-                    System.out.println("Mensaje: "+response.message());
-                    System.out.println("codi: "+response.code());
+                } else {
+                    if (response.body() != null) {
+                        System.out.println("Resposta: " + response.toString
+                                ());
+                    } else {
+                        System.out.println("voluntario null");
+                    }
+                    System.out.println("Mensaje: " + response.message());
+                    System.out.println("codi: " + response.code());
                     System.out.println("dentro respuesta failed");
                     tratarResultadoPeticion(false);
                 }
@@ -135,14 +137,15 @@ public class RegistroVoluntario extends AbstractFormatChecker {
             public void onFailure(Call<Voluntario> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
                 if (t instanceof IOException) {
-                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
-                            + " :( inform "
-                            + "the user and "
-                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
                     // logging probably not necessary
-                }
-                else {
-                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
                     // todo log to some central bug tracking service
                 }
                 tratarResultadoPeticion(false);
@@ -150,7 +153,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
         });
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void tratarResultadoPeticion(boolean result) {
 
         if (result) {
 
@@ -159,7 +162,9 @@ public class RegistroVoluntario extends AbstractFormatChecker {
             Intent i = new Intent(getActivity().getApplicationContext(), Login.class);
             startActivity(i);
 
-        }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                .string.registro_fallido), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.registro_fallido), Toast.LENGTH_SHORT).show();
+        }
     }
 }

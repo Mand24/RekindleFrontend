@@ -5,10 +5,8 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
@@ -24,9 +22,8 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
-import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
-import com.google.gson.Gson;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Help;
+import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
@@ -34,7 +31,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 //    private String[] opciones = { "Opción 1", "Opción 2", "Opción 3", "Opción 4" };
 
     protected RelativeLayout view_stub; //This is the framelayout to keep your content view
-    protected NavigationView navigationView; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
+    protected NavigationView navigationView;
+            // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
     private TextView nombreUsuario;
     private TextView emailUsuario;
@@ -42,7 +40,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_app_base);// The base layout that contains your navigation drawer.
+        super.setContentView(
+                R.layout.activity_app_base);// The base layout that contains your navigation drawer.
 //      listView = (ListView) findViewById(R.id.list_view);
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -53,7 +52,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
         emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
 
-       /* SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+       /* SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+       (getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);*/
@@ -62,34 +62,27 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         nombreUsuario.setText(usuario.getName() + " " + usuario.getSurname1());
         emailUsuario.setText(usuario.getMail());
-        
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+                if (menuItem.isChecked()) {
+                    menuItem.setChecked(false);
+                } else {
+                    menuItem.setChecked(true);
+                }
 
                 drawerLayout.closeDrawers();
 
                 Intent i;
 
-                switch (menuItem.getItemId())
-                {
-                    /*Se define la lógica de casos que puedan producirse al seleccionar cualquier elemento del menú.*/
+                switch (menuItem.getItemId()) {
+                    /*Se define la lógica de casos que puedan producirse al seleccionar cualquier
+                     elemento del menú.*/
                     case R.id.ver_perfil:
                         i = new Intent(getApplicationContext(), VerPerfil.class);
-                        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        Gson gson = new Gson();
-                        String json = datos.getString("usuario", "");
-                        Usuario usuario = gson.fromJson(json, Usuario.class);*/
-
-                        Usuario usuario = getUser(getApplicationContext());
-
-                        i.putExtra("tipo", usuario.getTipo());
-                        System.out.println("tipo app: "+ usuario.getTipo());
                         startActivity(i);
                         break;
                     case R.id.configuracion:
@@ -136,8 +129,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 //            }
 //        });
 
-                // Mostramos el botón en la barra de la aplicación
-                //getActionBar().setDisplayHomeAsUpEnabled(true);
+        // Mostramos el botón en la barra de la aplicación
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
         // and so on...
     }
 
@@ -146,11 +139,11 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Logout")
                 .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+                        (getApplicationContext());
                         SharedPreferences.Editor miEditor = datos.edit();
                         miEditor.putString("usuario","");
                         miEditor.apply();*/

@@ -87,15 +87,6 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
     }
 
     private void initializeData() {
-        /*refugiados.add(new Refugiado("mail@gmail.com", "1234", "nombre", "apellido1",
-                "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));
-        refugiados.add(new Refugiado("mail1@gmail.com", "1234", "nombre1", "apellido1",
-                "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));
-        refugiados.add(new Refugiado("mail2@gmail.com", "1234", "nombre2", "apellido1",
-                "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));*/
 
         refugiados = getIntent().getParcelableArrayListExtra("listRefugiados");
 

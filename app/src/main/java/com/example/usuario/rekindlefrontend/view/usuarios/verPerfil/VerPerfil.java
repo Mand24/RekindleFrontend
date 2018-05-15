@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.verPerfil;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -37,16 +39,18 @@ public class VerPerfil extends AppBaseActivity {
         tiposPerfil.put("Refugee", new VerPerfilRefugiado());
         tiposPerfil.put("Volunteer", new VerPerfilVoluntario());
 
-        String tipo_usuario = getIntent().getStringExtra("tipo");
+        Usuario user = getUser(this);
+
+        String tipo_usuario = user.getTipo();
 
         menu(tipo_usuario);
     }
 
-    public void menu(String tipo){
+    public void menu(String tipo_usuario){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo));
+        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo_usuario));
         transaction.commit();
     }
 

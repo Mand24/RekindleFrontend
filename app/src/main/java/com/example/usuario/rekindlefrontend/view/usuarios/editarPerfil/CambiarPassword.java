@@ -69,7 +69,7 @@ public class CambiarPassword extends AppCompatActivity {
                         boolean result = new AsyncTaskCall().execute().get();
                         tratarResultadoPeticion(result);
                     }catch (Exception e){
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }*/
                    sendCambiarPassword();
@@ -179,14 +179,12 @@ public class CambiarPassword extends AppCompatActivity {
                 refugiado.setPassword(new_pass);
                 Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
                 i.putExtra("Refugiado", refugiado);
-                i.putExtra("tipo", "Refugee");
                 startActivity(i);
             }
             else {
                 voluntario.setPassword(new_pass);
                 Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
                 i.putExtra("Voluntario", voluntario);
-                i.putExtra("tipo", "Volunteer");
                 startActivity(i);
             }
 
@@ -197,7 +195,6 @@ public class CambiarPassword extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
-        startActivity(i);
+        finish();
     }
 }

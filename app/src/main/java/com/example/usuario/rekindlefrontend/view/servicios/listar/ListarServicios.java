@@ -308,31 +308,6 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         };
     }
 
-    /*public void tratarRespuesta(Map<Integer, ArrayList<Servicio>> respuesta) {
-        ArrayList<Servicio> aux = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            aux = respuesta.get(i);
-            for (Servicio s : aux) {
-                if (i == 0) {
-                    s.setTipo("Lodge");
-                    s.setImage(R.drawable.lodging);
-                } else if (i == 1) {
-                    s.setTipo("Donation");
-                    s.setImage(R.drawable.donation);
-                } else if (i == 2) {
-                    s.setTipo("Education");
-                    s.setImage(R.drawable.education);
-                } else {
-                    s.setTipo("Job");
-                    s.setImage(R.drawable.job);
-                }
-            }
-            servicios.addAll(aux);
-        }
-        serviciosFiltrados = servicios;
-        refreshItems();
-    }*/
-
     public void tratarResultadoPeticion(boolean result, List<Servicio> respuesta) {
 
         if (result) {

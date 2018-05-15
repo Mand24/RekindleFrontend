@@ -125,7 +125,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
 
     }
 
-    public void checkCampos(View view) throws Exception {//FALTA CHECK PRECIO!!!
+    public void checkCampos(View view) throws Exception {//TODO FALTA CHECK PRECIO!!!
 
         checkNombreServicio(eNombre.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
@@ -183,7 +183,6 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.curso_educativo_creado_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
-            i.putExtra("tipo", "Volunteer");
             startActivity(i);
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R

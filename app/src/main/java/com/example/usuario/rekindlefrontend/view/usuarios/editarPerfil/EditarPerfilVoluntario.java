@@ -158,7 +158,6 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
-            i.putExtra("tipo", "Volunteer");
             startActivity(i);
 
         } else {

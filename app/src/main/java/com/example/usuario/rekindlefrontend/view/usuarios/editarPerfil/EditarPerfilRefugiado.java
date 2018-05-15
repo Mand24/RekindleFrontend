@@ -245,7 +245,6 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
-            i.putExtra("tipo", "Refugee");
             startActivity(i);
 
         } else {

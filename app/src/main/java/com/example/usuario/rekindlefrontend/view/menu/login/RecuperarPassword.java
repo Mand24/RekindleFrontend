@@ -169,7 +169,6 @@ public class RecuperarPassword extends AppCompatActivity {
 
                     System.out.println("USUARIO2 "+usuario.toString());
                     Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                    i.putExtra("tipo", usuario.getTipo());
                     System.out.println("TIPO "+usuario.getTipo());
                     startActivity(i);
                 }

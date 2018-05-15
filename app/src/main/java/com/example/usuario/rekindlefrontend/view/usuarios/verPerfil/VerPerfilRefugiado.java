@@ -68,7 +68,6 @@ public class VerPerfilRefugiado extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
-                i.putExtra("tipo", 0);
                 i.putExtra("Refugiado", refugiado);
                 startActivity(i);
             }

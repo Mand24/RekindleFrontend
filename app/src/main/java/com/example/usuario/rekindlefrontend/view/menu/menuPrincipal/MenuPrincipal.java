@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.menu.menuPrincipal;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.HashMap;
@@ -28,7 +31,9 @@ public class MenuPrincipal extends AppBaseActivity {
         tipos_menu_principal.put("Refugee", new MenuPrincipalRefugiado());
         tipos_menu_principal.put("Volunteer", new MenuPrincipalVoluntario());
 
-        String tipo_usuario = getIntent().getStringExtra("tipo");
+        Usuario usuario = getUser(this);
+
+        String tipo_usuario = usuario.getTipo();
 
         System.out.println("tipo: "+tipo_usuario);
 
