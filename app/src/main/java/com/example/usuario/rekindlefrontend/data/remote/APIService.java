@@ -136,9 +136,10 @@ public interface APIService {
     @GET("/test2")
     Call<Refugiado> prueba();
 
-    @GET("/chats/{idChat}/messages")
-    Call<ArrayList<Message>> getMessagesChat(@Path("idChat") int idChat);
+    @GET("/usuarios/{mail}/chats/{idChat}/messages")
+    Call<ArrayList<Message>> getMessagesChat(@Path("mail") String mail, @Path("idChat") int idChat);
 
-    @POST("/chats/{idChat}/messages")
-    Call<Void> sendMessage(@Path("idChat") int idChat, @Body Message message);
+    @POST("/usuarios/{mail}/chats/{idChat}/messages")
+    Call<Void> sendMessage(@Path("mail") String mail, @Path("idChat") int idChat, @Body Message
+            message);
 }
