@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.BusquedaRefugiado;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +23,7 @@ public class MenuPrincipalRefugiado extends Fragment {
     private AppCompatButton button_listar_servicios;
     private AppCompatButton button_mis_servicios;
     private AppCompatButton button_buscar_personas;
+    private AppCompatButton button_chat;
 
 
     public MenuPrincipalRefugiado() {
@@ -69,6 +71,15 @@ public class MenuPrincipalRefugiado extends Fragment {
             }
         });
 
+        button_chat.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), ListChats.class);
+                startActivity(i);
+            }
+        });
+
 
         return view;
     }
@@ -77,6 +88,7 @@ public class MenuPrincipalRefugiado extends Fragment {
         button_listar_servicios = view.findViewById(R.id.listar_servicios_MenuPrincipalRefugiado);
         button_mis_servicios = view.findViewById(R.id.mis_servicios_MenuPrincipalRefugiado);
         button_buscar_personas = view.findViewById(R.id.buscar_personas_MenuPrincipalRefugiado);
+        button_chat = view.findViewById(R.id.chat);
     }
 
 }

@@ -69,7 +69,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
 
     private void initializeData() {
         currentUser = getUser(getApplicationContext());
-        mAPIService.obtenerChats(currentUser.getMail()).enqueue(new Callback<ArrayList<Chat>>() {
+        mAPIService.getChats(currentUser.getMail()).enqueue(new Callback<ArrayList<Chat>>() {
             @Override
             public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
                 if (response.isSuccessful()){
