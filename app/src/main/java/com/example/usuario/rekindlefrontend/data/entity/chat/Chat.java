@@ -11,7 +11,6 @@ public class Chat implements Parcelable{
 
     @SerializedName("idChat")
     @Expose
-
     private int idChat;
 
     @SerializedName("user1")

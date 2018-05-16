@@ -27,11 +27,21 @@
                 android:layout_height="@dimen/dim100"
                 android:src="@drawable/foto_perfil" />
 
+            <android.support.v7.widget.AppCompatButton
+                android:layout_height="wrap_content"
+                android:id="@+id/chat"
+                android:text="@string/chat"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim20"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+            />
+
             <TextView
                 android:id="@+id/label_tipo_usuario_perfil_refugiado"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/editar_ver_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim100"
                 android:text="@string/tipo_usuario" />
