@@ -12,7 +12,6 @@ import java.util.Date;
 public class Message implements Parcelable{
     @SerializedName("idMessage")
     @Expose
-
     private int idMessage;
 
     @SerializedName("owner")

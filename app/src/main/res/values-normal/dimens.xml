@@ -2,8 +2,10 @@
 <resources>
 
     <dimen name="dim1">1dp</dimen>
+    <dimen name="dim4">4dp</dimen>
     <dimen name="dim6">6dp</dimen>
     <dimen name="dim10">10dp</dimen>
+    <dimen name="dim16">16dp</dimen>
     <dimen name="dim20">20dp</dimen>
     <dimen name="dim24">24dp</dimen>
     <dimen name="dim30">30dp</dimen>

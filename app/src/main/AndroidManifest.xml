@@ -28,17 +28,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.menu.menuPrincipal.MenuPrincipal"/>
-        <activity android:name=".view.usuarios.verPerfil.VerPerfil"/>
-        <activity android:name=".view.servicios.crear.CrearServicio"/>
-        <activity android:name=".view.servicios.listar.ListarServicios"/>
-        <activity android:name=".view.usuarios.editarPerfil.EditarPerfil"/>
-        <activity android:name=".view.usuarios.editarPerfil.CambiarPassword"/>
-        <activity android:name=".view.servicios.mostrar.MostrarServicio"/>
-        <activity android:name=".view.menu.login.RecuperarPassword"/>
-        <activity android:name=".view.menu.login.CodePasswordRequest"/>
-        <activity android:name=".view.servicios.listar.MisServicios"/>
-        <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado"/>
+
+        <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
+        <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
+        <activity android:name=".view.servicios.crear.CrearServicio" />
+        <activity android:name=".view.servicios.listar.ListarServicios" />
+        <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
+        <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />
+        <activity android:name=".view.servicios.mostrar.MostrarServicio" />
+        <activity android:name=".view.menu.login.RecuperarPassword" />
+        <activity android:name=".view.menu.login.CodePasswordRequest" />
+        <activity android:name=".view.servicios.listar.MisServicios" />
+        <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -48,13 +49,16 @@
             android:value="@integer/google_play_services_version"/>
 
         <!-- <activity android:name=".AppBaseActivity"></activity> -->
+
         <activity android:name=".view.menu.menuLateral.Ajustes"/>
         <activity android:name=".view.menu.menuLateral.About"/>
         <activity android:name=".view.usuarios.busqueda.ListarRefugiados"/>
         <activity android:name=".view.menu.menuLateral.Help"/>
         <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
         <activity android:name=".view.usuarios.chat.ShowChat">
+        <activity android:name=".view.usuarios.chat.ListChats">
         </activity>
+
     </application>
 
 </manifest>
