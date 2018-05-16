@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend.data.remote;
 
 import android.util.Pair;
 
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
@@ -45,6 +46,9 @@ public interface APIService {
     @FormUrlEncoded
     Call<Void> recuperarPassword(@Path("mail") String mail, @Field("passwordNew") String
                     password);
+
+    @GET("/usuarios/{mail}/chats")
+    Call<ArrayList<Chat>> obtenerChats(@Path("mail") String mail);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
