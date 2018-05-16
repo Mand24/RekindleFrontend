@@ -1,12 +1,18 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -22,6 +29,9 @@ import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipa
 import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
+import com.pusher.client.Pusher;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
 import java.util.Set;
@@ -203,12 +213,48 @@ public class Login extends AppCompatActivity {
         miEditor.apply();*/
 
         saveUser(usuario,this);
-
+        setUpPusher();
+        runPusher();
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         System.out.println("USUARIOL "+usuario.toString());
         System.out.println("tipo1: "+usuario.getTipo());
         startActivity(i);
+    }
+
+    public void runPusher() {
+        Pusher pusher = getPusher();
+        Channel channel = getChannel();
+
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCompat.Builder mBuilder;
+                        NotificationManager mNotifyMgr =(NotificationManager)
+                                getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+
+                        int icono = R.mipmap.ic_launcher;
+                        /*Intent i=new Intent(MainActivity.this, MensajeActivity.class);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, i, 0);*/
+
+                        mBuilder = new NotificationCompat.Builder(getApplicationContext())
+                                .setSmallIcon(icono)
+                                .setContentTitle("Titulo")
+                                .setContentText("Hola que tal?")
+                                .setVibrate(new long[] {100, 250, 100, 500})
+                                .setAutoCancel(true);
+
+                        mNotifyMgr.notify(1, mBuilder.build());
+                    }
+
+                });
+            }
+        });
+
+        pusher.connect();
     }
 
     public void onLoginFailed() {
