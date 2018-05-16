@@ -67,7 +67,7 @@ public class CambiarPassword extends AppCompatActivity {
                     /*try{
                         obtenerParametros();
                         boolean result = new AsyncTaskCall().execute().get();
-                        tratarResultadoPeticion(result);
+                        manageRequestResult(result);
                     }catch (Exception e){
 
                         e.printStackTrace();

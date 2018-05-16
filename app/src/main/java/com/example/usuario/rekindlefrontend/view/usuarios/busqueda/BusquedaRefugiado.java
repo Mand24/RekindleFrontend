@@ -89,8 +89,8 @@ public class BusquedaRefugiado extends AppBaseActivity{
                     //checkCampos(view);
                     obtenerParametros();
                     /*boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);*/
+                    manageRequestResult(result);
+                    //manageRequestResult(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }

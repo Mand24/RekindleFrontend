@@ -2,6 +2,8 @@ package com.example.usuario.rekindlefrontend.data.remote;
 
 import android.util.Pair;
 
+
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
@@ -145,4 +147,11 @@ public interface APIService {
 
     @GET("/test2")
     Call<Refugiado> prueba();
+
+    @GET("/usuarios/{mail}/chats/{idChat}/messages")
+    Call<ArrayList<Message>> getMessagesChat(@Path("mail") String mail, @Path("idChat") int idChat);
+
+    @POST("/usuarios/{mail}/chats/{idChat}/messages")
+    Call<Void> sendMessage(@Path("mail") String mail, @Path("idChat") int idChat, @Body Message
+            message);
 }
