@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.adapters.MessagesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -30,6 +32,7 @@ public class ShowChat extends AppBaseActivity {
     private Chat chat;
     private List<Message> messages;
     private Message message;
+    private MessagesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class ShowChat extends AppBaseActivity {
         sendGetMessagesChat();
 
         //TODO recyclerView + adapter
+        
 
         AppCompatButton btnSend = (AppCompatButton) findViewById(R.id.btnSendMessage);
         final EditText txtMessage = (EditText) findViewById(R.id.txtMessage);

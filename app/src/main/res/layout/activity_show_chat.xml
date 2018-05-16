@@ -54,7 +54,7 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnSendMessage"
-            android:text="SEND"
+            android:text="@string/enviar"
             android:textSize="14dp"
             android:clickable="true"
             android:layout_width="64dp"
