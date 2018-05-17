@@ -124,6 +124,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
                 new Callback<Chat>() {
                     @Override
                     public void onResponse(Call<Chat> call, Response<Chat> response) {
+                        System.out.println("getchat code: " + response.code());
                         if (response.isSuccessful()){
                             tratarResultadoPeticion(true, response.body());
                         }
@@ -156,6 +157,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         mAPIService.newChat(currentUser.getMail(), newChat).enqueue(new Callback<Chat>() {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
+                System.out.println("newchat code: " + response.code());
                 if (response.isSuccessful()){
                     manageResult(true, response.body());
                 }

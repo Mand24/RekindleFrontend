@@ -23,9 +23,9 @@ public class Comm {
 
         PusherOptions options = new PusherOptions();
         options.setCluster("eu");
-        Pusher pusher = new Pusher("743a4fb4a1370f0ca9a4", options);
+        pusher = new Pusher("743a4fb4a1370f0ca9a4", options);
 
-        Channel channel = pusher.subscribe("my-channel");
+        channel = pusher.subscribe("my-channel");
 
     }
 
@@ -38,6 +38,7 @@ public class Comm {
     }
 
     public static Channel getChannel() {
+        System.out.println("getchannel: " + channel.getName());
         return channel;
     }
 
