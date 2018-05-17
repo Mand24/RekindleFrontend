@@ -108,12 +108,11 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     public void sendCreateVoluntario() {
 
-        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Voluntario>() {
+        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
 
                 if (response.isSuccessful()) {
-                    Voluntario voluntario = response.body();
                     System.out.println(voluntario.toString());
                     System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
@@ -134,7 +133,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
             }
 
             @Override
-            public void onFailure(Call<Voluntario> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
                 if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(),

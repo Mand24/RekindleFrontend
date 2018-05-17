@@ -100,18 +100,18 @@ public class ListChats extends AppBaseActivity implements Filterable {
     }
 
     private void setAdapterListener() {
-        mAdapter = new ChatsAdapter(getApplicationContext(), filteredChats,
-                new CustomItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
-                        Intent intent = new Intent(getApplicationContext(), ShowChat.class);
-                        intent.putExtra("Chat", chats.get(position));
-                        startActivity(intent);
-                    }
-                    @Override
-                    public void onItemLongClick(View v, int position) {
-                    }
-                });
+        mAdapter = new ChatsAdapter(filteredChats, new CustomItemClickListener() {
+                            @Override
+                            public void onItemClick(View v, int position) {
+                                Intent intent = new Intent(getApplicationContext(), ShowChat.class);
+                                intent.putExtra("Chat", chats.get(position));
+                                startActivity(intent);
+                            }
+                            @Override
+                            public void onItemLongClick(View v, int position) {
+                            }
+                        },
+                getApplicationContext());
     }
 
     protected void refreshItems() {

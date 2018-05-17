@@ -48,18 +48,21 @@ public class ShowChat extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_chat);
 
-        RecyclerView.LayoutManager mLayoutManager =
-                new LinearLayoutManager(this.getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-
         mAPIService = APIUtils.getAPIService();
 
         chat = getIntent().getParcelableExtra("Chat");
 
         sendGetMessagesChat();
 
+        recyclerView = findViewById(R.id.messageList);
+        mAdapter = new MessagesAdapter(messages,this);
+
+        RecyclerView.LayoutManager mLayoutManager =
+                new LinearLayoutManager(this.getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+      
         initializeData();
 
         AppCompatButton btnSend = (AppCompatButton) findViewById(R.id.btnSendMessage);
@@ -69,8 +72,7 @@ public class ShowChat extends AppBaseActivity {
             @Override
             public void onClick(View v) {
 
-                message = new Message(chat.getIdChat(), getUser(getApplicationContext()),
-                        txtMessage.getText().toString());
+                message = new Message(chat.getIdChat(),getUser(getApplicationContext()),txtMessage.getText().toString());
                 sendSendMessage();
                 txtMessage.getText().clear();
             }

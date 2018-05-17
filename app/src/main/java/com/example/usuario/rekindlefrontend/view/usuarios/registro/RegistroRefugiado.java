@@ -172,9 +172,9 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         System.out.println(refugiado.toString());
 
 
-        mAPIService.createRefugiado(refugiado).enqueue(new Callback<Refugiado>() {
+        mAPIService.createRefugiado(refugiado).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
 
                 if (response.isSuccessful()) {
                     System.out.println("dentro respuesta ok");
@@ -190,7 +190,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
             }
 
             @Override
-            public void onFailure(Call<Refugiado> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
                 if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(), "this is an actual "

@@ -113,6 +113,7 @@ public class Message implements Parcelable {
         this.content = content;
     }
 
+
     @Override
     public String toString() {
         return "Message{" +

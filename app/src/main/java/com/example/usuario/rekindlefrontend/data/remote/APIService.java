@@ -57,7 +57,7 @@ public interface APIService {
             String
             mail2);
     @POST("/usuarios/{mail}/chats")
-    Call<Void> newChat(@Path("mail") String mail, @Body Chat chat);
+    Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
@@ -74,7 +74,7 @@ public interface APIService {
             @Query("eye") String eye);
 
     @POST("/refugiados")
-    Call<Refugiado> createRefugiado(@Body Refugiado refugiado);
+    Call<Void> createRefugiado(@Body Refugiado refugiado);
 
     @GET("/refugiados/{mail}")
     Call<Refugiado> obtenerRefugiado(@Path("mail") String mail);
@@ -85,7 +85,7 @@ public interface APIService {
 
     //LLAMADAS RELACIONADAS CON USUARIOS VOLUNTARIOS
     @POST("/voluntarios")
-    Call<Voluntario> createVoluntario(@Body Voluntario voluntario);
+    Call<Void> createVoluntario(@Body Voluntario voluntario);
 
     @GET("/voluntarios/{mail}")
     Call<Voluntario> obtenerVoluntario(@Path("mail") String mail);
