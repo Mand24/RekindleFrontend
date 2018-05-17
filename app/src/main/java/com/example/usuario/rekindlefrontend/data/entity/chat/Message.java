@@ -9,7 +9,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class Message implements Parcelable{
+public class Message implements Parcelable {
+
     @SerializedName("idMessage")
     @Expose
     private int idMessage;
@@ -30,7 +31,8 @@ public class Message implements Parcelable{
     @Expose
     private String content;
 
-    public Message(){}
+    public Message() {
+    }
 
     public Message(int idChat, Usuario owner, String content) {
         this.idChat = idChat;
