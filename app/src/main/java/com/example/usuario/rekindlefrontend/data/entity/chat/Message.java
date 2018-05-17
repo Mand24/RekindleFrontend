@@ -14,6 +14,10 @@ public class Message implements Parcelable{
     @Expose
     private int idMessage;
 
+    @SerializedName("idChat")
+    @Expose
+    private int idChat;
+
     @SerializedName("owner")
     @Expose
     private Usuario owner;
@@ -28,13 +32,15 @@ public class Message implements Parcelable{
 
     public Message(){}
 
-    public Message(Usuario owner, String content) {
+    public Message(int idChat, Usuario owner, String content) {
+        this.idChat = idChat;
         this.owner = owner;
         this.timeStamp = new Date();
         this.content = content;
     }
 
     protected Message(Parcel in) {
+        idChat = in.readInt();
         idMessage = in.readInt();
         owner = in.readParcelable(Usuario.class.getClassLoader());
         content = in.readString();
@@ -59,6 +65,7 @@ public class Message implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(idChat);
         dest.writeInt(idMessage);
         dest.writeParcelable(owner, flags);
         dest.writeString(content);
@@ -70,6 +77,14 @@ public class Message implements Parcelable{
 
     public void setIdMessage(int idMessage) {
         this.idMessage = idMessage;
+    }
+
+    public int getIdChat() {
+        return idChat;
+    }
+
+    public void setIdChat(int idChat) {
+        this.idChat = idChat;
     }
 
     public Usuario getOwner() {
@@ -96,10 +111,12 @@ public class Message implements Parcelable{
         this.content = content;
     }
 
+
     @Override
     public String toString() {
         return "Message{" +
                 "idMessage=" + idMessage +
+                ", idChat=" + idChat +
                 ", owner=" + owner +
                 ", timeStamp=" + timeStamp +
                 ", content='" + content + '\'' +
