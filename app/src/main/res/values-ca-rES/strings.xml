@@ -35,6 +35,7 @@
     <string name="listar_servicios">Llistar Serveis</string>
     <string name="crear_servicio">Crear Servei</string>
     <string name="ver_perfil">Veure Perfil</string>
+    <string name="listar_reportes">Llistar Reports</string>
     <string name="nombre_usuario_perfil">Nom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
