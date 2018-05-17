@@ -76,8 +76,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         mContext = context;
     }
 
-    public void setMessages(List<Message> messages){
+    public void setMessages(List<Message> messages) {
         this.messages = messages;
+    }
+
+    public void addMessage(Message message) {
+        messages.add(message);
+        notifyDataSetChanged();
     }
 
     @Override
