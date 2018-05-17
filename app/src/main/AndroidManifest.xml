@@ -55,9 +55,8 @@
         <activity android:name=".view.usuarios.busqueda.ListarRefugiados"/>
         <activity android:name=".view.menu.menuLateral.Help"/>
         <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
-        <activity android:name=".view.usuarios.chat.ShowChat">
-        <activity android:name=".view.usuarios.chat.ListChats">
-        </activity>
+        <activity android:name=".view.usuarios.chat.ShowChat"/>
+        <activity android:name=".view.usuarios.chat.ListChats"/>
 
     </application>
 
