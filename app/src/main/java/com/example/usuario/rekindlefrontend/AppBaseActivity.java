@@ -8,21 +8,27 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Help;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
@@ -34,8 +40,10 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     protected NavigationView navigationView;
             // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
+    protected Toolbar mToolbar;
     private TextView nombreUsuario;
     private TextView emailUsuario;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -44,10 +52,16 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 R.layout.activity_app_base);// The base layout that contains your navigation drawer.
 //      listView = (ListView) findViewById(R.id.list_view);
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation);
 
+        setSupportActionBar(mToolbar);
+
         View headerView = navigationView.getHeaderView(0);
+
+        drawerToggle = setupDrawerToggle();
+        drawerLayout.addDrawerListener(drawerToggle);
 
         nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
         emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
@@ -167,11 +181,13 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     /* Override all setContentView methods to put the content view to the FrameLayout view_stub
@@ -204,6 +220,33 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         if (view_stub != null) {
             view_stub.addView(view, params);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.show_lateral_menu:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            case R.id.home:
+                Intent i = new Intent(this, MenuPrincipal.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        return new ActionBarDrawerToggle(this, drawerLayout, mToolbar,R.string.drawer_open,R.string
+                .drawer_close);
     }
 
     //    @Override
