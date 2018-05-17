@@ -74,7 +74,7 @@ public interface APIService {
             @Query("eye") String eye);
 
     @POST("/refugiados")
-    Call<Refugiado> createRefugiado(@Body Refugiado refugiado);
+    Call<Void> createRefugiado(@Body Refugiado refugiado);
 
     @GET("/refugiados/{mail}")
     Call<Refugiado> obtenerRefugiado(@Path("mail") String mail);
@@ -85,7 +85,7 @@ public interface APIService {
 
     //LLAMADAS RELACIONADAS CON USUARIOS VOLUNTARIOS
     @POST("/voluntarios")
-    Call<Voluntario> createVoluntario(@Body Voluntario voluntario);
+    Call<Void> createVoluntario(@Body Voluntario voluntario);
 
     @GET("/voluntarios/{mail}")
     Call<Voluntario> obtenerVoluntario(@Path("mail") String mail);

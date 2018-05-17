@@ -20,6 +20,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -62,7 +63,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         setVistas();
 
         refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
-        currentUser = getUser(getApplicationContext();
+        currentUser = getUser(getApplicationContext());
         System.out.println(refugiado.toString());
 
         llenarTextViews();

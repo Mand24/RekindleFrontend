@@ -33,6 +33,8 @@ public class MenuPrincipal extends AppBaseActivity {
 
         Usuario usuario = getUser(this);
 
+        System.out.println(usuario.toString());
+
         String tipo_usuario = usuario.getTipo();
 
         System.out.println("tipo: "+tipo_usuario);

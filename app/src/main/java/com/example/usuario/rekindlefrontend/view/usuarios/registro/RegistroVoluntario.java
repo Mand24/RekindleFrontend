@@ -108,24 +108,16 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     public void sendCreateVoluntario() {
 
-        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Voluntario>() {
+        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
 
                 if (response.isSuccessful()) {
-                    Voluntario voluntario = response.body();
-                    System.out.println(voluntario.toString());
                     System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
                 } else {
-                    if (response.body() != null) {
-                        System.out.println("Resposta: " + response.toString
-                                ());
-                    } else {
-                        System.out.println("voluntario null");
-                    }
                     System.out.println("Mensaje: " + response.message());
                     System.out.println("codi: " + response.code());
                     System.out.println("dentro respuesta failed");
@@ -134,7 +126,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
             }
 
             @Override
-            public void onFailure(Call<Voluntario> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
 //                Log.e(TAG, "Unable to submit post to API.");
                 if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(),
