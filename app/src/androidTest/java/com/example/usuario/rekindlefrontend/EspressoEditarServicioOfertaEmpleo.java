@@ -16,7 +16,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -24,18 +24,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//import static org.hamcrest.core.AllOf.allOf;
-//import static org.hamcrest.core.Is.is;
-//import static org.hamcrest.core.IsInstanceOf.instanceOf;
-//import static org.hamcrest.core.AnyOf.*;
-
-
 @RunWith(AndroidJUnit4.class)
-public class EspressoCrearServicioOfertaEmpleo {
+public class EspressoEditarServicioOfertaEmpleo {
 
     @Rule
-    public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>
-            (CrearServicio.class);
+    public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>
+            (EditarServicio.class);
 
     @BeforeClass
     public static void setup(){
@@ -50,70 +44,7 @@ public class EspressoCrearServicioOfertaEmpleo {
     @Test
     public void testCamposOfertaEmpleo() {
 
-        onView(withId(R.id.boton_tipo_oferta_empleo)).perform(click());
-
-        onView(withId(R.id.nombre_oferta_empleo)).perform(replaceText
-                ("testNombreEmpleo"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testNombreEmpleo")));
-
-        onView(withId(R.id.telefono_oferta_empleo)).perform(replaceText
-                ("123"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("123")));
-
-        onView(withId(R.id.direccion_oferta_empleo)).perform(replaceText
-                ("testdireccion_Empleo"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testdireccion_Empleo")));
-
-        onView(withId(R.id.puesto_oferta_empleo)).perform(replaceText
-                ("testPuestoEmpleo"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testPuestoEmpleo")));
-
-        onView(withId(R.id.requisitos_oferta_empleo)).perform(replaceText
-                ("testRequisitos_Empleo"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testRequisitos_Empleo")));
-
-        onView(withId(R.id.jornada_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.jornada_oferta_empleo)).perform(replaceText
-                ("parcial - tardes"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("parcial - tardes")));
-
-        onView(withId(R.id.horas_semanales_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.horas_semanales_oferta_empleo)).perform(replaceText
-                ("20"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("20")));
-
-        onView(withId(R.id.duracion_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.duracion_oferta_empleo)).perform(replaceText
-                ("2 Meses"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("2 Meses")));
-
-        onView(withId(R.id.plazas_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.plazas_oferta_empleo)).perform(replaceText
-                ("10"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("10")));
-
-        onView(withId(R.id.sueldo_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.sueldo_oferta_empleo)).perform(replaceText
-                ("400"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("400")));
-
-        onView(withId(R.id.descripcion_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.descripcion_oferta_empleo)).perform(replaceText
-                ("testDescription"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testDescription")));
-
-    }
-
-    @Test
-    public void testBotonCrearOfertaEmpleo() {
-
-        //TODO: Testear cuando funcione crear oferta empleo
+        pantalla.getActivity ().menu  (3);
 
         onView(withId(R.id.boton_tipo_oferta_empleo)).perform(click());
 
@@ -173,17 +104,5 @@ public class EspressoCrearServicioOfertaEmpleo {
                 ("testDescription"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("testDescription")));
 
-        onView(withId(R.id.enviar_formulario_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
-        onView(withId(R.id.enviar_formulario_oferta_empleo)).perform(click());
-
     }
-
-    @Test
-    public void testAtras(){
-
-        //TODO: Testear cuando tengamos boton atras
-
-    }
-
 }

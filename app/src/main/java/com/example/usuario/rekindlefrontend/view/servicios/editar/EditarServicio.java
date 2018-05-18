@@ -5,7 +5,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
@@ -30,7 +29,7 @@ public class EditarServicio extends AppBaseActivity {
 
         tipoServicios[3] = new EditarOfertaEmpleo ();
 
-        menu (3);
+        menu (0);
 
     }
 

@@ -127,6 +127,7 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
         checkRequisitosServicio(eRequisitos.getText().toString());
         checkHorarioCursoEducativo(eHorario.getText().toString());
         checkPlazasServicio(ePlazas.getText().toString());
+        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlazas());
         checkDescripcionServicio(eDescripcion.getText().toString());
     }
 

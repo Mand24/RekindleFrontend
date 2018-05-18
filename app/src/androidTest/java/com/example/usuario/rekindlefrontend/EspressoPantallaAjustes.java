@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.instanceOf;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.example.usuario.rekindlefrontend.view.PantallaAjustes;
+import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -26,8 +26,8 @@ import java.util.Locale;
 public class EspressoPantallaAjustes {
 
     @Rule
-    public ActivityTestRule<PantallaAjustes> pantalla = new ActivityTestRule<PantallaAjustes>
-            (PantallaAjustes.class);
+    public ActivityTestRule<Ajustes> pantalla = new ActivityTestRule<Ajustes>
+            (Ajustes.class);
 
     @BeforeClass
     public static void setup(){

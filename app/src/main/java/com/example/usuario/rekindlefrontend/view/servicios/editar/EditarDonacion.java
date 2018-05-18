@@ -122,6 +122,7 @@ public class EditarDonacion extends AbstractFormatChecker {
         checkNombreServicio(eNombre.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkSolicitudesServicio(eSolicitudes.getText().toString());
+        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getLimiteSolicitudes());
         checkDescripcionServicio(eDescripcion.getText().toString());
 
     }

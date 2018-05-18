@@ -16,7 +16,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -24,18 +24,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//import static org.hamcrest.core.AllOf.allOf;
-//import static org.hamcrest.core.Is.is;
-//import static org.hamcrest.core.IsInstanceOf.instanceOf;
-//import static org.hamcrest.core.AnyOf.*;
-
-
 @RunWith(AndroidJUnit4.class)
-public class EspressoCrearServicioCursoEducativo {
+public class EspressoEditarServicioCursoEducativo {
 
     @Rule
-    public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>
-            (CrearServicio.class);
+    public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>
+            (EditarServicio.class);
 
     @BeforeClass
     public static void setup(){
@@ -49,6 +43,8 @@ public class EspressoCrearServicioCursoEducativo {
 
     @Test
     public void testCamposCurso() {
+
+        pantalla.getActivity().menu(2);
 
         onView(withId(R.id.boton_tipo_curso_educativo)).perform(click());
 
@@ -97,18 +93,4 @@ public class EspressoCrearServicioCursoEducativo {
                 ()).check(matches(withText("testDescription")));
 
     }
-
-    @Test
-    public void testBotonCrearCurso() {
-
-        //TODO: Testear cuando funcione crear cursoeducativo
-    }
-
-    @Test
-    public void testAtras(){
-
-        //TODO: Testear cuando tengamos boton atras
-
-    }
-
 }

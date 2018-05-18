@@ -137,6 +137,7 @@ public class EditarOfertaEmpleo extends AbstractFormatChecker {
         checkRequisitosServicio(eRequisitos.getText().toString());
         checkSueldoOfertaEmpleo(eSueldo.getText().toString());
         checkPlazasServicio(ePlazas.getText().toString());
+        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlazasDisponibles());
         checkDescripcionServicio(eDescripcion.getText().toString());
     }
 

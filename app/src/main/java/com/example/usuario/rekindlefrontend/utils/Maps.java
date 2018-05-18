@@ -62,7 +62,6 @@ public class Maps extends Fragment {
     }
 
     public LatLng getLocationFromAddress(Context context,String strAddress) {
-
         Geocoder coder = new Geocoder(context);
         List<Address> address;
         LatLng p1 = null;

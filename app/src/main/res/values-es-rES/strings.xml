@@ -177,6 +177,9 @@
     <string name="editar_empleo">Editar empleo:</string>
     <string name="editar_curso">Editar curso educativo:</string>
 
+    <string name="plazas_aumento">No es posible disminuir el número de plazas/solicitudes, solo se
+        puede incrementar</string>
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>

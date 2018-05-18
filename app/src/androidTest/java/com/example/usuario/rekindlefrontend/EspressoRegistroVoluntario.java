@@ -13,7 +13,7 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.usuarios.RegistroUsuario;
+import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
