@@ -48,10 +48,13 @@ public class EditarPerfil extends AppBaseActivity {
 
         String tipo_usuario = user.getTipo();
 
+        System.out.println("editar" + tipo_usuario);
+
         if(tipo_usuario.equals("Refugee")){
-            mRefugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+            mRefugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
         } else {
-            mVoluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
+            mVoluntario = (Voluntario) getIntent().getParcelableExtra("Voluntario");
+            System.out.println("editaraa"+mVoluntario);
         }
         menu(tipo_usuario);
     }
@@ -63,6 +66,7 @@ public class EditarPerfil extends AppBaseActivity {
         if(tipo_usuario.equals("Refugee")){
             bundle.putParcelable("Refugiado", mRefugiado);
         } else {
+            System.out.println("editara"+mVoluntario.toString());
             bundle.putParcelable("Voluntario", mVoluntario);
         }
 

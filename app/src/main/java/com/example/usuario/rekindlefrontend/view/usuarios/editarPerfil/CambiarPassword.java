@@ -50,6 +50,8 @@ public class CambiarPassword extends AppBaseActivity {
 
         tipo = getIntent().getStringExtra("tipo");
 
+        System.out.println(tipo);
+
         if (tipo.equals("Refugee")) {
             refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
             email = refugiado.getMail();

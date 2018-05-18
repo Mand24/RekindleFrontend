@@ -5,46 +5,52 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_horizontal"
-    tools:context=".view.servicios.EleccionTipoServicio"
-    >
+    tools:context=".view.servicios.EleccionTipoServicio">
 
-    <ImageButton
-        android:id="@+id/boton_tipo_alojamiento"
-        android:layout_width="@dimen/dim70"
-        android:layout_height="@dimen/dim70"
-        android:src="@drawable/lodging"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/texto_nombre_formulario"/>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
 
-    <Space style="@style/espacio"/>
+            <ImageButton
+                android:id="@+id/boton_tipo_alojamiento"
+                android:layout_width="@dimen/dim70"
+                android:layout_height="@dimen/dim70"
+                android:src="@drawable/lodging"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/texto_nombre_formulario"/>
 
-    <ImageButton
-        android:id="@+id/boton_tipo_donacion"
-        android:layout_width="@dimen/dim70"
-        android:layout_height="@dimen/dim70"
-        android:src="@drawable/donation"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"/>
+            <Space style="@style/espacio"/>
 
-    <Space style="@style/espacio"/>
+            <ImageButton
+                android:id="@+id/boton_tipo_donacion"
+                android:layout_width="@dimen/dim70"
+                android:layout_height="@dimen/dim70"
+                android:src="@drawable/donation"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
 
-    <ImageButton
-        android:id="@+id/boton_tipo_curso_educativo"
-        android:layout_width="@dimen/dim70"
-        android:layout_height="@dimen/dim70"
-        android:src="@drawable/education"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"/>
+            <Space style="@style/espacio"/>
 
-    <Space style="@style/espacio"/>
+            <ImageButton
+                android:id="@+id/boton_tipo_curso_educativo"
+                android:layout_width="@dimen/dim70"
+                android:layout_height="@dimen/dim70"
+                android:src="@drawable/education"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
 
-    <ImageButton
-        android:id="@+id/boton_tipo_oferta_empleo"
-        android:layout_width="@dimen/dim70"
-        android:layout_height="@dimen/dim70"
-        android:src="@drawable/job"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"/>
+            <Space style="@style/espacio"/>
+
+            <ImageButton
+                android:id="@+id/boton_tipo_oferta_empleo"
+                android:layout_width="@dimen/dim70"
+                android:layout_height="@dimen/dim70"
+                android:src="@drawable/job"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+    </LinearLayout>
 
 </LinearLayout>
