@@ -119,12 +119,6 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 //                    showResponse(response.body().toString());
 //                    Log.i(TAG, "post submitted to API." + response.body().toString());
                 } else {
-                    if (response.body() != null) {
-                        System.out.println("Resposta: " + response.toString
-                                ());
-                    } else {
-                        System.out.println("voluntario null");
-                    }
                     System.out.println("Mensaje: " + response.message());
                     System.out.println("codi: " + response.code());
                     System.out.println("dentro respuesta failed");

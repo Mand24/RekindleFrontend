@@ -73,6 +73,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda_refugiado);
+        getSupportActionBar().setTitle(R.string.titulo_busqueda);
         //establecer las vistas
         setVistas();
 

@@ -60,6 +60,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
         setContentView(R.layout.activity_mostrar_perfil_refugiado);
 
+        getSupportActionBar().setTitle(R.string.showRefugee);
+
         setVistas();
 
         refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");

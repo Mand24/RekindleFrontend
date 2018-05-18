@@ -10,11 +10,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CambiarPassword extends AppCompatActivity {
+public class CambiarPassword extends AppBaseActivity {
 
     private String tipo;
     private Refugiado refugiado;
@@ -43,10 +45,13 @@ public class CambiarPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_password);
+        getSupportActionBar().setTitle(R.string.cambiar_password);
 
         mAPIService = APIUtils.getAPIService();
 
         tipo = getIntent().getStringExtra("tipo");
+
+        System.out.println(tipo);
 
         if (tipo.equals("Refugee")) {
             refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
@@ -78,6 +83,12 @@ public class CambiarPassword extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     public boolean letras (String texto)

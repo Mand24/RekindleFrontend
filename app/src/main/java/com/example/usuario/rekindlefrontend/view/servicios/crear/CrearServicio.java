@@ -23,6 +23,8 @@ public class CrearServicio extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_servicio);
 
+        getSupportActionBar().setTitle(R.string.crear_servicio);
+
         tiposFormulario = new HashMap<>();
 
         tiposFormulario.put("Lodge", new FormularioAlojamiento());

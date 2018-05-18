@@ -58,6 +58,7 @@ public class VerPerfilVoluntario extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
                 i.putExtra("Voluntario", voluntario);
+                System.out.println("ver"+voluntario.toString());
                 startActivity(i);
             }
 
@@ -96,6 +97,8 @@ public class VerPerfilVoluntario extends Fragment {
             public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
                 if (response.isSuccessful()){
                     voluntario = response.body();
+                    System.out.println("llamadab"+response.body().toString());
+                    System.out.println("llamada"+voluntario);
 //                    voluntario.setTipo(1);
                     tratarResultadoPeticion(true);
                 }

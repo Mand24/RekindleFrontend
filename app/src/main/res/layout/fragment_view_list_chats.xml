@@ -44,14 +44,11 @@
 
                 <TextView
                     android:id="@+id/name_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/texto" />
+                    style="@style/text_view" />
 
                 <TextView
                     android:id="@+id/surname1_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    style="@style/text_view" />
 
 
             </LinearLayout>

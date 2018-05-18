@@ -20,6 +20,8 @@ public class Help extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        getSupportActionBar().setTitle(R.string.titulo_help);
+
         //TextView tvTitulo = findViewById(R.id.titulo_help);
         //TextView tvContenido = findViewById(R.id.contenido_help);
 

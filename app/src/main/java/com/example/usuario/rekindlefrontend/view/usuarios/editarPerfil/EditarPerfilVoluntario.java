@@ -50,6 +50,8 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
         voluntario = (Voluntario) getActivity().getIntent().getParcelableExtra("Voluntario");
 
+        System.out.println("editarv"+ voluntario.toString());
+
         initializeData(view);
 
 
@@ -79,6 +81,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                 Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
                 i.putExtra("Voluntario", voluntario);
                 i.putExtra("tipo", voluntario.getTipo());
+                System.out.println(voluntario.toString());
                 startActivity(i);
             }
 

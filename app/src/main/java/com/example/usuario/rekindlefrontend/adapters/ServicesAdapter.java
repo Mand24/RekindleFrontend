@@ -62,6 +62,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     @Override
     public void onBindViewHolder(ServiceViewHolder serviceViewHolder, int i) {
         Servicio servicio = servicios.get(i);
+        String tipo = servicio.getTipo();
+        if (tipo.equals("Lodge")) servicio.setImage(R.drawable.lodging);
+        else if (tipo.equals("Donation")) servicio.setImage(R.drawable.donation);
+        else if (tipo.equals("Education")) servicio.setImage(R.drawable.education);
+        else servicio.setImage(R.drawable.job);
 
         serviceViewHolder.serviceName.setText(servicio.getNombre());
         serviceViewHolder.serviceAddress.setText(servicio.getDireccion());

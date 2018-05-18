@@ -44,6 +44,8 @@ public class MostrarServicio extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_servicio);
 
+        getSupportActionBar().setTitle(R.string.showService);
+
         Servicio servicio = (Servicio) getIntent().getSerializableExtra("Servicio");
 
         String tipo_servicio = servicio.getTipo();

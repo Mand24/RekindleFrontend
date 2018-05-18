@@ -223,5 +223,17 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="home">Inicio</string>
+    <string name="menuLateral">Menú Lateral</string>
+    <string name="search">Buscar</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="showService">Mostrar Servicio</string>
+    <string name="listRefugee">Listar Refugiados</string>
+    <string name="showRefugee">Mostrar Refugiado</string>
+    <string name="listChat">Listar Chats</string>
+    <string name="showChat">Mostrar Chat</string>
+    <string name="editProfile">Editar Perfil</string>
+
 
 </resources>

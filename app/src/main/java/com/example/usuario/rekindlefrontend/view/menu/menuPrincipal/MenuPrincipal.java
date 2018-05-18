@@ -26,12 +26,16 @@ public class MenuPrincipal extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
+        getSupportActionBar().setTitle(R.string.titulo_menu_principal);
+
         tipos_menu_principal = new HashMap<>();
 
         tipos_menu_principal.put("Refugee", new MenuPrincipalRefugiado());
         tipos_menu_principal.put("Volunteer", new MenuPrincipalVoluntario());
 
         Usuario usuario = getUser(this);
+
+        System.out.println(usuario.toString());
 
         String tipo_usuario = usuario.getTipo();
 
