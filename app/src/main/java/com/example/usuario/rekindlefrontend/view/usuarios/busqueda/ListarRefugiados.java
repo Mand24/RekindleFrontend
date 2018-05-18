@@ -117,6 +117,24 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.show_lateral_menu:
+//                drawerLayout.openDrawer(GravityCompat.START);
+//                return true;
+            case R.id.home:
+                Intent i = new Intent(this, MenuPrincipal.class);
+                startActivity(i);
+                return true;
+            case R.id.search:
+                searchView = (SearchView) item.getActionView();
+                search(searchView);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void search(SearchView searchView) {
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

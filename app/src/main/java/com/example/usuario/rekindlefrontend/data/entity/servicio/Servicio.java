@@ -113,12 +113,13 @@ public class Servicio implements Serializable {
     public String toString() {
         return "Servicio{" +
                 "id=" + id +
-                ", tipo=" + tipo +
+                ", tipo='" + tipo + '\'' +
                 ", volunteer='" + volunteer + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", adress='" + adress + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", image=" + image +
                 '}';
     }
 }

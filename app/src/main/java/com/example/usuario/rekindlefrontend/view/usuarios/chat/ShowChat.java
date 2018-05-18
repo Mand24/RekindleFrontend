@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.chat;
 
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
@@ -20,6 +22,10 @@ import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.google.gson.Gson;
+import com.pusher.client.Pusher;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,19 +48,22 @@ public class ShowChat extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_chat);
 
-        RecyclerView.LayoutManager mLayoutManager =
-                new LinearLayoutManager(this.getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-
         mAPIService = APIUtils.getAPIService();
 
         chat = getIntent().getParcelableExtra("Chat");
 
         sendGetMessagesChat();
 
-        refreshItems();
+        recyclerView = findViewById(R.id.messageList);
+        mAdapter = new MessagesAdapter(messages,this);
+
+        RecyclerView.LayoutManager mLayoutManager =
+                new LinearLayoutManager(this.getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+      
+        initializeData();
 
         AppCompatButton btnSend = (AppCompatButton) findViewById(R.id.btnSendMessage);
         final EditText txtMessage = (EditText) findViewById(R.id.txtMessage);
@@ -63,14 +72,42 @@ public class ShowChat extends AppBaseActivity {
             @Override
             public void onClick(View v) {
 
-                message = new Message(getUser(getApplicationContext()), txtMessage.getText()
-                        .toString());
+                message = new Message(chat.getIdChat(),getUser(getApplicationContext()),txtMessage.getText().toString());
                 sendSendMessage();
+                txtMessage.getText().clear();
             }
         });
+
+        runPusher();
     }
 
-    protected void refreshItems() {
+    public void runPusher() {
+
+        Pusher pusher = getPusher();
+        Channel channel = getChannel();
+
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Message message = gson.fromJson(data, Message.class);
+                        mAdapter.addMessage(message);
+
+                        /*// have the ListView scroll down to the new message
+                        messagesView.setSelection(messageAdapter.getCount() - 1);*/
+                    }
+
+                });
+            }
+        });
+
+        pusher.connect();
+    }
+
+    protected void initializeData() {
 
         mAdapter.setMessages(messages);
         mAdapter.notifyDataSetChanged();

@@ -57,7 +57,7 @@ public interface APIService {
             String
             mail2);
     @POST("/usuarios/{mail}/chats")
-    Call<Void> newChat(@Path("mail") String mail, @Body Chat chat);
+    Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")

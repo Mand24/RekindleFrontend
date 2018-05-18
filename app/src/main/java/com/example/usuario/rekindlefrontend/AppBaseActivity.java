@@ -232,9 +232,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.show_lateral_menu:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
+//            case R.id.show_lateral_menu:
+//                drawerLayout.openDrawer(GravityCompat.START);
+//                return true;
             case R.id.home:
                 Intent i = new Intent(this, MenuPrincipal.class);
                 startActivity(i);
@@ -244,7 +244,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         }
     }
 
-    private ActionBarDrawerToggle setupDrawerToggle() {
+    public ActionBarDrawerToggle setupDrawerToggle() {
         return new ActionBarDrawerToggle(this, drawerLayout, mToolbar,R.string.drawer_open,R.string
                 .drawer_close);
     }

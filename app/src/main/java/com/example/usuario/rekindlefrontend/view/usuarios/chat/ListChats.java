@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.usuarios.chat;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -26,6 +27,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,9 +54,11 @@ public class ListChats extends AppBaseActivity implements Filterable {
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
+        getSupportActionBar().setTitle("lista");
+
         initializeData();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -72,6 +76,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
         mAPIService.getChats(currentUser.getMail()).enqueue(new Callback<ArrayList<Chat>>() {
             @Override
             public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
+                System.out.println("listchat code: " + response.code());
                 if (response.isSuccessful()){
                     tratarResultadoPeticion(true, response.body());
                 }else {
@@ -91,7 +96,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
         if (result) {
             chats = respuesta;
             filteredChats = chats;
-            //refreshItems(); no hauria de fer falta
+            refreshItems(); //no hauria de fer falta
 
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R
@@ -129,6 +134,24 @@ public class ListChats extends AppBaseActivity implements Filterable {
         searchView = (SearchView) search.getActionView();
         search(searchView);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.show_lateral_menu:
+//                drawerLayout.openDrawer(GravityCompat.START);
+//                return true;
+            case R.id.home:
+                Intent i = new Intent(this, MenuPrincipal.class);
+                startActivity(i);
+                return true;
+            case R.id.search:
+                searchView = (SearchView) item.getActionView();
+                search(searchView);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void search(SearchView searchView) {

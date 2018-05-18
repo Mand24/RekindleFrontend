@@ -5,13 +5,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/fondo"
-                tools:context=".view.usuarios.busqueda.MostrarPerfilRefugiado">
+                tools:context=".view.usuarios.busqueda.MostrarPerfilRefugiado"
+                >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="?android:actionBarSize">
 
         <RelativeLayout
             android:layout_width="match_parent"

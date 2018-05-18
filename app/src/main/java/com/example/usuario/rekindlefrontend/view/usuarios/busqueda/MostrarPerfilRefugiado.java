@@ -124,6 +124,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
                 new Callback<Chat>() {
                     @Override
                     public void onResponse(Call<Chat> call, Response<Chat> response) {
+                        System.out.println("getchat code: " + response.code());
                         if (response.isSuccessful()){
                             tratarResultadoPeticion(true, response.body());
                         }
@@ -153,29 +154,30 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     }
 
     public void sendNewChat(Chat newChat){
-        mAPIService.newChat(currentUser.getMail(), newChat).enqueue(new Callback<Void>() {
+        mAPIService.newChat(currentUser.getMail(), newChat).enqueue(new Callback<Chat>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                System.out.println("newchat code: " + response.code());
                 if (response.isSuccessful()){
-                    manageResult(true);
+                    manageResult(true, response.body());
                 }
                 else {
-                    manageResult(false);
+                    manageResult(false, null);
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false);
+            public void onFailure(Call<Chat> call, Throwable t) {
+                manageResult(false, null);
             }
         });
 
     }
 
-    public void manageResult(boolean result){
+    public void manageResult(boolean result, Chat chat){
         if (result){
             Intent i = new Intent(this, ShowChat.class);
-            i.putExtra("Chat", newChat);
+            i.putExtra("Chat", chat);
             startActivity(i);
         }
         else {

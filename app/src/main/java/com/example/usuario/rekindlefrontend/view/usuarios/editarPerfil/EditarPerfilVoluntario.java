@@ -78,6 +78,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
                 i.putExtra("Voluntario", voluntario);
+                i.putExtra("tipo", voluntario.getTipo());
                 startActivity(i);
             }
 
