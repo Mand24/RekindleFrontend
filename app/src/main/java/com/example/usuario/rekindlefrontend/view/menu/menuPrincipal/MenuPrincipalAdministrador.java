@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
+import com.example.usuario.rekindlefrontend.view.ListReports;
 
 public class MenuPrincipalAdministrador extends Fragment {
 
@@ -32,7 +32,7 @@ public class MenuPrincipalAdministrador extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), ListarReportes.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), ListReports.class);
                 startActivity(i);
             }
         });

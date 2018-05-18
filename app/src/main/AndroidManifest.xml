@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.user.rekindlefrontend">
+          package="com.example.usuario.rekindlefrontend">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -42,6 +42,7 @@
         <activity android:name=".view.services.list.MyServicesVolunteer" />
         <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
 
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
@@ -56,9 +57,16 @@
         <activity android:name=".view.usuarios.busqueda.ListarRefugiados"/>
         <activity android:name=".view.menu.menuLateral.Help"/>
         <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
+
         <activity android:name=".view.usuarios.chat.ShowChat"/>
         <activity android:name=".view.usuarios.chat.ListChats"/>
 
+        <activity android:name=".view.ListReports">
+        </activity>
+        <activity android:name=".view.CreateReport">
+        </activity>
+        <activity android:name=".view.ShowReport">
+        </activity>
     </application>
 
 </manifest>
