@@ -17,6 +17,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/boton_reportar"
+                android:text="@string/reportar"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dim10"
+                android:layout_marginLeft="@dimen/dim20" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/boton_iniciar_chat"
+                android:text="@string/chat"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dim10"
+                android:layout_marginLeft="@dimen/dim10" />
+
             <ImageView
                 android:id="@+id/foto_perfil_refugiado"
                 android:layout_alignParentTop="true"

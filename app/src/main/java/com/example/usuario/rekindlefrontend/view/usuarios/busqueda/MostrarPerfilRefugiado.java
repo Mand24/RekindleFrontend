@@ -2,26 +2,16 @@ package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
-import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.CreateReport;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.google.gson.Gson;
-
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MostrarPerfilRefugiado extends AppBaseActivity {
 
@@ -40,6 +30,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     private TextView ojosUsuario;
     private TextView biografiaUsuario;
 
+    private AppCompatButton reportar;
+
     private APIService mAPIService;
     private Refugiado refugiado;
 
@@ -55,12 +47,22 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
         System.out.println(refugiado.toString());
 
+        reportar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CreateReport
+                        .class);
+                startActivity(i);
+            }
+        });
+
         llenarTextViews();
 
 
     }
 
     public void setVistas(){
+        reportar = findViewById(R.id.boton_reportar);
         tipoUsuario = findViewById(R.id.tipo_usuario_perfil_refugiado);
         nombreUsuario = findViewById(R.id.nombre_usuario_perfil_refugiado);
         apellido1 = findViewById(R.id.apellido1_usuario_perfil_refugiado);
@@ -75,7 +77,6 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         sangreUsuario = findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = findViewById(R.id.ojos_usuario_perfil_refugiado);
         biografiaUsuario = findViewById(R.id.biografia_usuario_perfil_refugiado);
-
     }
 
 
