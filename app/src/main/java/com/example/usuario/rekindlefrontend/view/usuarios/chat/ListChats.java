@@ -92,7 +92,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
         if (result) {
             chats = respuesta;
             filteredChats = chats;
-            //refreshItems(); no hauria de fer falta
+            refreshItems(); //no hauria de fer falta
 
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R

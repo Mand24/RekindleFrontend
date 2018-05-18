@@ -72,7 +72,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
             @Override
             public void onClick(View v) {
-                sendGetChat();
+                Chat chat = new Chat(currentUser,refugiado);
+                sendNewChat(chat);
             }
         });
 
@@ -135,8 +136,18 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
                     @Override
                     public void onFailure(Call<Chat> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R
-                                .string.error), Toast.LENGTH_SHORT).show();
+                        if (t instanceof IOException) {
+                            Toast.makeText(getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(),
+                                    "getchat!! conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
                     }
                 });
     }
@@ -168,7 +179,18 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
             @Override
             public void onFailure(Call<Chat> call, Throwable t) {
-                manageResult(false, null);
+                if (t instanceof IOException) {
+                    Toast.makeText(getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "newchat!! conversion issue! big problems :(", Toast.LENGTH_SHORT)
+                            .show();
+
+                }
             }
         });
 

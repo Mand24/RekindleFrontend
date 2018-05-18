@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend.view.usuarios.chat;
 
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
@@ -54,6 +55,9 @@ public class ShowChat extends AppBaseActivity {
 
         sendGetMessagesChat();
 
+        //TODO esto es de prueba
+        messages = new ArrayList<Message>();
+
         recyclerView = findViewById(R.id.messageList);
         mAdapter = new MessagesAdapter(messages,this);
 
@@ -78,6 +82,7 @@ public class ShowChat extends AppBaseActivity {
             }
         });
 
+        setUpPusher();
         runPusher();
     }
 
