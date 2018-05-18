@@ -216,6 +216,12 @@
     <string name="search">Buscar</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="showService">Mostrar Servei</string>
+    <string name="listRefugee">Llistar Refugiats</string>
+    <string name="showRefugee">Mostrar Refugiat</string>
+    <string name="listChat">Llistar Chats</string>
+    <string name="showChat">Mostrar Chat</string>
+    <string name="editProfile">Editar Perfil</string>
 
 
 </resources>

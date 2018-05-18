@@ -35,9 +35,9 @@ public class EditarPerfil extends AppBaseActivity {
 
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_editar_perfil);
+
+        getSupportActionBar().setTitle(R.string.editProfile);
 
         tiposPerfil = new HashMap<>();
 

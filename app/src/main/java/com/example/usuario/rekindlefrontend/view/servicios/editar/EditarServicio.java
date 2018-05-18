@@ -22,6 +22,8 @@ public class EditarServicio extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_servicio);
 
+        getSupportActionBar().setTitle(R.string.title_activity_editar_servicio);
+
         tipoServicios = new HashMap<>();
 
         tipoServicios.put("Lodge", new EditarAlojamiento ());

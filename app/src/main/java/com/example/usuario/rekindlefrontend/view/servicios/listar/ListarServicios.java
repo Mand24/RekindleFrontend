@@ -60,6 +60,8 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_servicios);
 
+        getSupportActionBar().setTitle(R.string.listar_servicios);
+
         filters.put("Lodge", true);
         filters.put("Donation", true);
         filters.put("Education", true);

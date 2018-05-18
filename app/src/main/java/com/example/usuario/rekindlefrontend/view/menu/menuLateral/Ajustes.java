@@ -29,6 +29,8 @@ public class Ajustes extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_ajustes);
 
+        getSupportActionBar().setTitle(R.string.ajustes);
+
         //establecer las vistas
         setVistas();
 

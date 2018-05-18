@@ -41,6 +41,7 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_refugiados);
         recyclerView = (RecyclerView) findViewById(R.id.rv);
+        getSupportActionBar().setTitle(R.string.listRefugee);
 
         initializeData();
 

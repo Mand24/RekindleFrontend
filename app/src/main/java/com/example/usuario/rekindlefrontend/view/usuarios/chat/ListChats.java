@@ -54,7 +54,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
-        getSupportActionBar().setTitle("lista");
+        getSupportActionBar().setTitle(R.string.listChat);
 
         initializeData();
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -48,6 +48,8 @@ public class ShowChat extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_chat);
 
+        getSupportActionBar().setTitle(R.string.showChat);
+
         mAPIService = APIUtils.getAPIService();
 
         chat = getIntent().getParcelableExtra("Chat");

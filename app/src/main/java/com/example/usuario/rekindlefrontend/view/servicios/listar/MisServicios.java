@@ -17,6 +17,7 @@ public class MisServicios extends ListarServicios {
     @Override
     public void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
+        getSupportActionBar().setTitle(R.string.mis_servicios);
     }
 
     @Override

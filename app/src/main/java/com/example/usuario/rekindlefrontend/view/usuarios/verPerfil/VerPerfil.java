@@ -34,6 +34,8 @@ public class VerPerfil extends AppBaseActivity {
 
         setContentView(R.layout.activity_ver_perfil);
 
+        getSupportActionBar().setTitle(R.string.ver_perfil);
+
         tiposPerfil = new HashMap<>();
 
         tiposPerfil.put("Refugee", new VerPerfilRefugiado());

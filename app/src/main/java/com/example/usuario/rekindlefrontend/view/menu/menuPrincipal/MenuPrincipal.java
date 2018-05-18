@@ -26,6 +26,8 @@ public class MenuPrincipal extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
+        getSupportActionBar().setTitle(R.string.titulo_menu_principal);
+
         tipos_menu_principal = new HashMap<>();
 
         tipos_menu_principal.put("Refugee", new MenuPrincipalRefugiado());

@@ -45,6 +45,7 @@ public class CambiarPassword extends AppBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_password);
+        getSupportActionBar().setTitle(R.string.cambiar_password);
 
         mAPIService = APIUtils.getAPIService();
 
