@@ -11,7 +11,6 @@ import com.example.usuario.rekindlefrontend.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -27,19 +26,11 @@ public class Maps extends Fragment {
                 .CONNECTIVITY_SERVICE);
         NetworkInfo network = cm.getActiveNetworkInfo();
 
-         /*System.out.println ("Available: " +network.isAvailable ()+ "---");
-         System.out.println ("Failover: " +network.isFailover ()+ "---");
-         System.out.println ("Connected: " +network.isConnected ()+ "---");
-         System.out.println ("Network info:"+ "---");
-         System.out.println ("Type: " +network.getTypeName()+ "---");
-         System.out.println ("State: " +network.getDetailedState()+ "---");
-         System.out.println ("Extra info: " +network.getExtraInfo()+ "---");*/
-
         return network;
     }
 
     public Marker setMarker (String adress, Marker myMarker, GoogleMap
-            mGoogleMap) {
+            mGoogleMap, String serviceName) {
 
         // set : coordenadas
         LatLng coordenadas = getLocationFromAddress (getActivity ().getApplicationContext (),
@@ -52,8 +43,7 @@ public class Maps extends Fragment {
         if (myMarker != null) myMarker.remove ();
 
         myMarker = mGoogleMap.addMarker (new MarkerOptions().position (coordenadas).title
-                ("Localización Servicio").icon (BitmapDescriptorFactory.fromResource (R.mipmap
-                .ic_launcher)));
+                (getString(R.string.serviceLocation)+ " " + serviceName));
 
         //  move camera
         mGoogleMap.animateCamera (myLocation);

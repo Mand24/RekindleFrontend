@@ -13,18 +13,11 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
-import com.example.usuario.rekindlefrontend.data.remote.APIService;
-import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Maps;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,7 +82,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap);
+                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap, servicio.getNombre());
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string
