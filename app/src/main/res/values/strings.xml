@@ -426,6 +426,7 @@
     <string name="service_deleted_successfully">Service deleted successfully!</string>
     <string name="delete_service_confirmation">Are you Sure you want to delete the service?</string>
     <string name="not_available">Not available</string>
+    <string name="change_photo">Change photo</string>
 
 
 </resources>

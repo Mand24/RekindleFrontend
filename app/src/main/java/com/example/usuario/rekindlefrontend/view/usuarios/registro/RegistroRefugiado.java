@@ -158,7 +158,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
         System.out.println("dentro obtener");
         refugiado = new Refugiado(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
-                eSegundo_apellido.getText().toString(), eTelefono.getText().toString(),
+                eSegundo_apellido.getText().toString(), null, eTelefono.getText().toString(),
                 eNacimiento.getText().toString(), sSexo.getSelectedItem().toString(),
                 eProcedencia.getText().toString(), ePueblo.getText().toString(), eEtnia.getText()
                 .toString(), sGrupo_sanguineo.getSelectedItem().toString(), sOjos.getSelectedItem

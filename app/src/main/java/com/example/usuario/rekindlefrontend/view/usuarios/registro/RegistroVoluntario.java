@@ -102,7 +102,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
         voluntario = new Voluntario(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
-                eSegundo_apellido.getText().toString());
+                eSegundo_apellido.getText().toString(), null);
 
     }
 

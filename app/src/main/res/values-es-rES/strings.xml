@@ -243,6 +243,7 @@
     <string name="service_deleted_successfully">Servicio eliminado correctamente!</string>
     <string name="delete_service_confirmation">Seguro que quieres eliminar este servicio?</string>
     <string name="not_available">No disponible</string>
+    <string name="change_photo">Cambiar foto</string>
 
 
 </resources>

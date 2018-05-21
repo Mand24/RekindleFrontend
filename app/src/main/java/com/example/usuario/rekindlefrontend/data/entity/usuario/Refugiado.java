@@ -74,9 +74,10 @@ public class Refugiado extends Usuario {
     }*/
 
     public Refugiado(String mail, String password, String name, String surname1,
-            String surname2, String phoneNumber, String birthDate, String sex, String country,
+            String surname2, String photo, String phoneNumber, String birthDate, String sex, String
+            country,
             String town, String ethnic, String bloodType, String eyeColor, String biography) {
-        super("Refugee", mail, password, name, surname1, surname2);
+        super("Refugee", mail, password, name, surname1, surname2, photo);
         /*this.mail = mail;
         this.password = password;
         this.name = name;

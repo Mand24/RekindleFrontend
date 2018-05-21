@@ -28,17 +28,21 @@ public class Usuario implements Parcelable {
     @SerializedName("surname2")
     @Expose
     private String surname2;
+    @SerializedName("photo")
+    @Expose
+    private String photo;
 
     public Usuario(){}
 
     public Usuario(String tipo, String mail, String password, String name, String surname1, String
-            surname2) {
+            surname2, String photo) {
         this.tipo = tipo;
         this.mail = mail;
         this.password = password;
         this.name = name;
         this.surname1 = surname1;
         this.surname2 = surname2;
+        this.photo = photo;
     }
 
 
@@ -49,6 +53,7 @@ public class Usuario implements Parcelable {
         name = in.readString();
         surname1 = in.readString();
         surname2 = in.readString();
+        photo = in.readString();
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
@@ -76,6 +81,7 @@ public class Usuario implements Parcelable {
         dest.writeString(name);
         dest.writeString(surname1);
         dest.writeString(surname2);
+        dest.writeString(photo);
     }
 
     public String getTipo() { return tipo; }
@@ -122,6 +128,14 @@ public class Usuario implements Parcelable {
         this.surname2 = surname2;
     }
 
+    public String getPhoto(){
+        return photo;
+    }
+
+    public void setPhoto(String photo){
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -131,6 +145,7 @@ public class Usuario implements Parcelable {
                 ", name='" + name + '\'' +
                 ", surname1='" + surname1 + '\'' +
                 ", surname2='" + surname2 + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

@@ -3,8 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".view.usuarios.editarPerfil.EditarPerfilRefugiado"
->
+                tools:context=".view.usuarios.editarPerfil.EditarPerfilRefugiado">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,14 +16,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_gravity="right"
-                android:layout_margin="@dimen/dim10"
-                android:layout_width="@dimen/dim100"
-                android:layout_height="@dimen/dim100"
-                android:src="@drawable/foto_perfil"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
 
-            />
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/change_photo_refugee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_photo"/>
+
+                <ImageView
+                    android:id="@+id/refugee_photo"
+                    android:layout_width="@dimen/dim100"
+                    android:layout_height="@dimen/dim100"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/dim10"/>
+
+            </LinearLayout>
 
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="match_parent">
@@ -64,32 +75,32 @@
 
                 <EditText
                     android:id="@+id/nombre_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_nombre_formulario"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginBottom="4dp"
+                android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="8dp"
                 android:text="@string/texto_email_formulario"
             />
 
             <TextView
                 android:id="@+id/email_usuario_perfil"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
-                android:layout_marginBottom="8dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"
             />
@@ -102,13 +113,13 @@
 
                 <EditText
                     android:id="@+id/apellido1_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_1apellido_formulario"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -120,13 +131,13 @@
 
                 <EditText
                     android:id="@+id/apellido2_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_2apellido_formulario"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -138,13 +149,13 @@
 
                 <EditText
                     android:id="@+id/telefono_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_numero_telefono"
+                    android:inputType="phone"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -172,7 +183,7 @@
                 style="@style/text_view"
                 android:layout_marginStart="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_sexo_refugiado" />
+                android:text="@string/texto_sexo_refugiado"/>
 
             <Spinner
                 android:id="@+id/sexo_usuario_perfil"
@@ -193,13 +204,13 @@
 
                 <EditText
                     android:id="@+id/pais_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_procedencia_refugiado"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -211,13 +222,13 @@
 
                 <EditText
                     android:id="@+id/pueblo_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_pueblo_refugiado"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -229,13 +240,13 @@
 
                 <EditText
                     android:id="@+id/etnia_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_etnia_refugiado"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -285,38 +296,37 @@
 
                 <EditText
                     android:id="@+id/biografia_usuario_perfil"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_biografia_refugiado"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
                 android:id="@+id/cambiar_password"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/cambiar_password"
             />
 
             <android.support.v7.widget.AppCompatButton
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
                 android:id="@+id/guardar_editar_perfil"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/guardar"
             />
 
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </RelativeLayout>

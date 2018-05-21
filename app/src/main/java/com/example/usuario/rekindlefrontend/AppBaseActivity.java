@@ -6,6 +6,8 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,12 +15,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +47,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     protected Toolbar mToolbar;
     private TextView nombreUsuario;
     private TextView emailUsuario;
+    private ImageView photoUser;
     private ActionBarDrawerToggle drawerToggle;
 
     @Override
@@ -65,6 +70,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
         emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
+        photoUser = (ImageView) headerView.findViewById(R.id.profile_image);
 
        /* SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
        (getApplicationContext());
@@ -76,6 +82,15 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         nombreUsuario.setText(usuario.getName() + " " + usuario.getSurname1());
         emailUsuario.setText(usuario.getMail());
+
+        if(usuario.getPhoto() != null) {
+            byte[] decodedString = Base64.decode(usuario.getPhoto(), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
+                    decodedString.length);
+            photoUser.setImageBitmap(decodedByte);
+        }else{
+            photoUser.setImageResource(R.drawable.ic_usuario);
+        }
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
