@@ -28,6 +28,7 @@ import com.pusher.client.Pusher;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class ShowChat extends AppBaseActivity {
         mAPIService = APIUtils.getAPIService();
 
         chat = getIntent().getParcelableExtra("Chat");
+        System.out.println(chat.toString());
 
         sendGetMessagesChat();
 
@@ -144,6 +146,7 @@ public class ShowChat extends AppBaseActivity {
                             Response<ArrayList<Message>>
                                     response) {
                         System.out.println("url " + call.request().url());
+                        System.out.println("codigo: "+ response.code());
 
                         if (response.isSuccessful()) {
                             System.out.println("dentro respuesta ok");
@@ -166,8 +169,16 @@ public class ShowChat extends AppBaseActivity {
 
                     @Override
                     public void onFailure(Call<ArrayList<Message>> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R
-                                .string.error), Toast.LENGTH_SHORT).show();
+                        if (t instanceof IOException) {
+                            Toast.makeText(getApplicationContext(), "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+
+                        }
                     }
                 });
     }

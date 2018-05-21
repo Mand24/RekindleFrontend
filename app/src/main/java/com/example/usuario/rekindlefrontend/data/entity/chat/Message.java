@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class Message implements Parcelable {
 
-    @SerializedName("idMessage")
+    @SerializedName("id")
     @Expose
     private int idMessage;
 
@@ -40,6 +40,15 @@ public class Message implements Parcelable {
         this.timeStamp = new Date();
         this.content = content;
     }
+
+    public Message(int idMessage, int idChat, Usuario owner, String content) {
+        this.idMessage = idMessage;
+        this.idChat = idChat;
+        this.owner = owner;
+        this.timeStamp = new Date();
+        this.content = content;
+    }
+
 
     protected Message(Parcel in) {
         idChat = in.readInt();
@@ -117,7 +126,7 @@ public class Message implements Parcelable {
     @Override
     public String toString() {
         return "Message{" +
-                "idMessage=" + idMessage +
+                "id=" + idMessage +
                 ", idChat=" + idChat +
                 ", owner=" + owner +
                 ", timeStamp=" + timeStamp +

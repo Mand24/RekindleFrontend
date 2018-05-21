@@ -129,6 +129,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
                     public void onResponse(Call<Chat> call, Response<Chat> response) {
                         System.out.println("getchat code: " + response.code());
                         if (response.isSuccessful()){
+                            System.out.println("getchat");
+                            System.out.println(response.body().toString());
                             tratarResultadoPeticion(true, response.body());
                         }
                         else {
@@ -172,6 +174,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 System.out.println("newchat code: " + response.code());
                 if (response.isSuccessful()){
+                    System.out.println("newchat");
+                    System.out.println(response.body().toString());
                     manageResult(true, response.body());
                 }
                 else {

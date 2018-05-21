@@ -52,7 +52,7 @@ public interface APIService {
     @GET("/usuarios/{mail}/chats")
     Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
 
-    @GET("/usuarios/{mail}/chats")
+    @GET("/usuarios/{mail}/chat")
     Call<Chat> getChat(@Path("mail") String mail, @Query("mail1") String mail1, @Query("mail2")
             String
             mail2);

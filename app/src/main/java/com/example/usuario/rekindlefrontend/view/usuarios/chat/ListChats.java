@@ -110,6 +110,11 @@ public class ListChats extends AppBaseActivity implements Filterable {
                             public void onItemClick(View v, int position) {
                                 Intent intent = new Intent(getApplicationContext(), ShowChat.class);
                                 intent.putExtra("Chat", chats.get(position));
+                                System.out.println(chats.get(position).toString());
+                                System.out.println("Llista");
+                                for (Chat s : chats){
+                                    System.out.println(s.toString());
+                                }
                                 startActivity(intent);
                             }
                             @Override

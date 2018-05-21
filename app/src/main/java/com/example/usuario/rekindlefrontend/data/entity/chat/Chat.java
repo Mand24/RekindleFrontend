@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Chat implements Parcelable{
 
-    @SerializedName("idChat")
+    @SerializedName("id")
     @Expose
     private int idChat;
 
@@ -24,6 +24,12 @@ public class Chat implements Parcelable{
     public Chat(){}
 
     public Chat(Usuario user1, Usuario user2) {
+        this.user1 = user1;
+        this.user2 = user2;
+    }
+
+    public Chat(int idChat, Usuario user1, Usuario user2) {
+        this.idChat = idChat;
         this.user1 = user1;
         this.user2 = user2;
     }
@@ -85,7 +91,7 @@ public class Chat implements Parcelable{
     @Override
     public String toString() {
         return "Chat{" +
-                "idChat=" + idChat +
+                "id=" + idChat +
                 ", user1=" + user1 +
                 ", user2=" + user2 +
                 '}';
