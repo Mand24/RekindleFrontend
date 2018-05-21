@@ -25,7 +25,7 @@ public class Message implements Parcelable {
 
     @SerializedName("timeStamp")
     @Expose
-    private Date timeStamp;
+    private String timeStamp;
 
     @SerializedName("content")
     @Expose
@@ -37,7 +37,8 @@ public class Message implements Parcelable {
     public Message(int idChat, Usuario owner, String content) {
         this.idChat = idChat;
         this.owner = owner;
-        this.timeStamp = new Date();
+        Date date = new Date();
+        this.timeStamp = "2018-05-24";
         this.content = content;
     }
 
@@ -45,15 +46,16 @@ public class Message implements Parcelable {
         this.idMessage = idMessage;
         this.idChat = idChat;
         this.owner = owner;
-        this.timeStamp = new Date();
+        this.timeStamp = "2018-05-24";
         this.content = content;
     }
 
 
     protected Message(Parcel in) {
-        idChat = in.readInt();
         idMessage = in.readInt();
+        idChat = in.readInt();
         owner = in.readParcelable(Usuario.class.getClassLoader());
+        timeStamp = in.readString();
         content = in.readString();
     }
 
@@ -76,9 +78,10 @@ public class Message implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(idChat);
         dest.writeInt(idMessage);
+        dest.writeInt(idChat);
         dest.writeParcelable(owner, flags);
+        dest.writeString(timeStamp);
         dest.writeString(content);
     }
 
@@ -106,11 +109,11 @@ public class Message implements Parcelable {
         this.owner = owner;
     }
 
-    public Date getTimeStamp() {
+    public String getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
     }
 
@@ -129,7 +132,7 @@ public class Message implements Parcelable {
                 "id=" + idMessage +
                 ", idChat=" + idChat +
                 ", owner=" + owner +
-                ", timeStamp=" + timeStamp +
+                ", timeStamp='" + timeStamp + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

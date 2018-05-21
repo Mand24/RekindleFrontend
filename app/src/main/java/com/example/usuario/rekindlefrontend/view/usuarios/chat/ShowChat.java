@@ -81,6 +81,8 @@ public class ShowChat extends AppBaseActivity {
             public void onClick(View v) {
 
                 message = new Message(chat.getIdChat(),getUser(getApplicationContext()),txtMessage.getText().toString());
+                System.out.println("missatge");
+                System.out.println(message.toString());
                 sendSendMessage();
                 txtMessage.getText().clear();
             }
@@ -127,7 +129,8 @@ public class ShowChat extends AppBaseActivity {
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-
+                        System.out.println("urlmessage " +call.request().url());
+                        System.out.println("codigoenviomensaje: "+ response.code());
                     }
 
                     @Override
