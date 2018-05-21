@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
@@ -84,70 +85,75 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
 
         inscribirse.setClickable(false);
 
-        final String mail = Consistency.getUser(container.getContext()).getMail();
+        Usuario user = Consistency.getUser(container.getContext());
+        final String mail = user.getMail();
+        String type = user.getTipo();
 
-        mAPIService.isUserSubscribed(mail, servicio.getId(), TYPE).enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                if (response.isSuccessful()) {
-                    inscribirse.setClickable(true);
-                    if(response.body()) {
+        if(type.equals("Refugee")) {
+
+            mAPIService.isUserSubscribed(mail, servicio.getId(), TYPE).enqueue(
+                    new Callback<Boolean>() {
+                        @Override
+                        public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                            if (response.isSuccessful()) {
+                                inscribirse.setClickable(true);
+                                if (response.body()) {
+                                    inscribirse.setText(R.string.unsubscribe);
+                                } else {
+                                    inscribirse.setText(R.string.inscribir);
+                                }
+                            } else {
+                                System.out.println("CODIGO " + response.code());
+                                failure();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Boolean> call, Throwable t) {
+                            Log.e("on Failure", t.toString());
+                            failure();
+                        }
+                    });
+
+            inscribirse.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    if (inscribirse.getText().toString().equals(R.string.inscribir)) {
+                        mAPIService.subscribeService(mail,
+                                servicio.getId(), TYPE);
                         inscribirse.setText(R.string.unsubscribe);
-                    }
-                    else{
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(
+                                view.getContext());
+
+                        builder.setMessage(R.string.unsubscribe_confirmation);
+                        builder.setCancelable(false);
+                        builder.setPositiveButton(R.string.yes,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog,
+                                            int which) {
+                                        mAPIService.unsubscribeService(mail, servicio.getId(),
+                                                TYPE);
+                                    }
+                                });
+
+                        builder.setNegativeButton(R.string.no,
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog,
+                                            int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        AlertDialog alert = builder.create();
+                        alert.show();
                         inscribirse.setText(R.string.inscribir);
                     }
-                } else {
-                    System.out.println("CODIGO "+response.code());
-                    failure();
                 }
-            }
-
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-                Log.e("on Failure", t.toString());
-                failure();
-            }
-        });
-
-        inscribirse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                if(inscribirse.getText().toString().equals(R.string.inscribir)) {
-                    mAPIService.subscribeService(mail,
-                            servicio.getId(), TYPE);
-                    inscribirse.setText(R.string.unsubscribe);
-                }
-                else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(
-                            view.getContext());
-
-                    builder.setMessage(R.string.unsubscribe_confirmation);
-                    builder.setCancelable(false);
-                    builder.setPositiveButton(R.string.yes,
-                            new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog,
-                                        int which) {
-                                    mAPIService.unsubscribeService(mail, servicio.getId(), TYPE);
-                                }
-                            });
-
-                    builder.setNegativeButton(R.string.no,
-                            new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog,
-                                        int which) {
-                                    dialog.cancel();
-                                }
-                            });
-
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                    inscribirse.setText(R.string.inscribir);
-                }
-            }
-        });
+            });
+        }
 
         return view;
     }
