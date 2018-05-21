@@ -417,7 +417,14 @@
     <string name="listChat">List Chats</string>
     <string name="showChat">Show Chat</string>
     <string name="editProfile">Edit Profile</string>
-
+    <string name="select_option">Select an option</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="unsubscribe_confirmation">Are you Sure you want to unsubscribe?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="unsubscribed_successfully">Unsubscribed successfully!</string>
+    <string name="service_deleted_successfully">Service deleted successfully!</string>
+    <string name="delete_service_confirmation">Are you Sure you want to delete the service?</string>
 
 
 </resources>

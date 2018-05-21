@@ -41,27 +41,27 @@ public class EspressoMenuPrincipal {
         release();
     }
 
-    @Test
-    public void testListarServicios() {
-
-        onView(withId(R.id.listar_servicios_MenuPrincipal)).perform(click());
-        intended(hasComponent(ListarServicios.class.getName()));
-
-    }
-
-    @Test
-    public void testBotonCrearServicios(){
-
-        onView(withId(R.id.crear_servicio_MenuPrincipal)).perform(click());
-        intended(hasComponent(CrearServicio.class.getName()));
-    }
-
-    @Test
-    public void testBotonVerPerfil(){
-
-        onView(withId(R.id.ver_perfil_MenuPrincipal)).perform(click());
-        intended(hasComponent(VerPerfilRefugiado.class.getName()));
-    }
+//    @Test
+//    public void testListarServicios() {
+//
+//        onView(withId(R.id.listar_servicios_MenuPrincipal)).perform(click());
+//        intended(hasComponent(ListarServicios.class.getName()));
+//
+//    }
+//
+//    @Test
+//    public void testBotonCrearServicios(){
+//
+//        onView(withId(R.id.crear_servicio_MenuPrincipal)).perform(click());
+//        intended(hasComponent(CrearServicio.class.getName()));
+//    }
+//
+//    @Test
+//    public void testBotonVerPerfil(){
+//
+//        onView(withId(R.id.ver_perfil_MenuPrincipal)).perform(click());
+//        intended(hasComponent(VerPerfilRefugiado.class.getName()));
+//    }
 
     @Test
     public void testAtras(){

@@ -222,6 +222,14 @@
     <string name="listChat">Llistar Chats</string>
     <string name="showChat">Mostrar Chat</string>
     <string name="editProfile">Editar Perfil</string>
+    <string name="select_option">Selecciona una opció</string>
+    <string name="unsubscribe">Desinscriure</string>
+    <string name="unsubscribe_confirmation">Estar segur de que vols desinscriure\'t?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="unsubscribed_successfully">Desinscrit correctament!</string>
+    <string name="service_deleted_successfully">Servei eliminat correctament!</string>
+    <string name="delete_service_confirmation">Estàs segur que vols eliminar aquest servei?</string>
 
 
 </resources>

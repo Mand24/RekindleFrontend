@@ -104,7 +104,7 @@ public interface APIService {
 
     @GET("/servicios/{mail}/{tipo}")
     Call<ArrayList<Servicio>> obtenerMisServicios(@Path("mail") String mail, @Path
-            ("tipo") int tipo);
+            ("tipo") String tipo);
 
     @GET("/alojamientos/{id}")
     Call<Alojamiento> getAlojamiento(@Path("id") int id);
@@ -143,7 +143,15 @@ public interface APIService {
     Call<Void> crearEducacion(@Body CursoEducativo educacion);
 
     @DELETE("/servicios/{id}/{tipo}")
-    Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") char tipo);
+    Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
+
+    @POST("/usuarios/{mail}/inscripciones/{id}/{tipo}")
+    Call<Void> subscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
+            String tipo);
+
+    @DELETE("/refugiados/{mail}/inscripciones/{id}/{tipo}")
+    Call<Void> unsubscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
+            String tipo);
 
     @GET("/test2")
     Call<Refugiado> prueba();
