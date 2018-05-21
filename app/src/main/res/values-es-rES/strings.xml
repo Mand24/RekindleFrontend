@@ -96,6 +96,8 @@
     <string name="donacion_fallida">Ha fallado la creación de la donación!</string>
     <string name="oferta_empleo_correctamente">Oferta de empleo creada correctamente!</string>
     <string name="oferta_empleo_fallida">Ha fallado la creación de la oferta de empleo!</string>
+    <string name="reporte_creado_correctamente">Reporte creado correctamente!</string>
+    <string name="reporte_fallido">Ha fallado la creación del reporte!</string>
     <string name="guardado_correctamente">Guardado correctamente!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Ajustes</string>

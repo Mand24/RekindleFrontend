@@ -110,6 +110,9 @@
         successfully!
     </string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
+    <string name="reporte_creado_correctamente">Report created succesfully!
+    </string>
+    <string name="reporte_fallido">Report failed!</string>
     <string name="guardado_correctamente">Save successfully!</string>
     <string name="guardado_fallido">Save failed!</string>
     <string name="ajustes">Settings</string>
