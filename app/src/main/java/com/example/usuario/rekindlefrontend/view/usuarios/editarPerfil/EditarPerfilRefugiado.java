@@ -213,10 +213,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         eBiografia.setText(refugiado.getBiography());
 
         if(refugiado.getPhoto() != null) {
-            byte[] decodedString = Base64.decode(refugiado.getPhoto(), Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
-                    decodedString.length);
-            ePhoto.setImageBitmap(decodedByte);
+            ePhoto.setImageBitmap(refugiado.getDecodedPhoto());
         }else{
             ePhoto.setImageResource(R.drawable.foto_perfil);
         }
@@ -249,11 +246,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         refugiado.setBiography(eBiografia.getText().toString());
 
         if(bitmapImage != null) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
-            byte[] byte_arr = stream.toByteArray();
-            String image_str = Base64.encodeToString(byte_arr, Base64.DEFAULT);
-            refugiado.setPhoto(image_str);
+            refugiado.setPhoto(encode_photo(bitmapImage));
         }else {
             refugiado.setPhoto(null);
         }
@@ -334,6 +327,13 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                     }
                 }
         }
+    }
+
+    private String encode_photo(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        byte[] byte_arr = stream.toByteArray();
+        return Base64.encodeToString(byte_arr, Base64.DEFAULT);
     }
 
 }

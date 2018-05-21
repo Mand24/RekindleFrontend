@@ -138,10 +138,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         eSegundo_apellido.setText(voluntario.getSurname2());
 
         if(voluntario.getPhoto() != null) {
-            byte[] decodedString = Base64.decode(voluntario.getPhoto(), Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
-                    decodedString.length);
-            ePhoto.setImageBitmap(decodedByte);
+            ePhoto.setImageBitmap(voluntario.getDecodedPhoto());
         }else{
             ePhoto.setImageResource(R.drawable.foto_perfil);
         }
@@ -162,11 +159,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         voluntario.setSurname2(eSegundo_apellido.getText().toString());
 
         if(bitmapImage != null) {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
-            byte[] byte_arr = stream.toByteArray();
-            String image_str = Base64.encodeToString(byte_arr, Base64.DEFAULT);
-            voluntario.setPhoto(image_str);
+            voluntario.setPhoto(encode_photo(bitmapImage));
         }
         else{
             voluntario.setPhoto(null);
@@ -249,6 +242,13 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                     }
                 }
         }
+    }
+
+    private String encode_photo(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        byte[] byte_arr = stream.toByteArray();
+        return Base64.encodeToString(byte_arr, Base64.DEFAULT);
     }
 
 }

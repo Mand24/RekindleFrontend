@@ -1,9 +1,12 @@
 package com.example.usuario.rekindlefrontend.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +29,14 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
 
     public class RefugiadoViewHolder extends RecyclerView.ViewHolder{
         CardView cv;
+        ImageView photo;
         TextView nombre, apellido1, apellido2, sexo, nacimiento;
 //        ImageView serviceType;
 
         RefugiadoViewHolder(View itemView){
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
+            photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
             nombre = (TextView) itemView.findViewById(R.id.nombre_cv);
             apellido1 = (TextView) itemView.findViewById(R.id.apellido1_cv);
             apellido2 = (TextView) itemView.findViewById(R.id.apellido2_cv);
@@ -78,6 +83,12 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
         refugiadoViewHolder.apellido2.setText(refugiado.getSurname2());
         refugiadoViewHolder.sexo.setText(refugiado.getSex());
         refugiadoViewHolder.nacimiento.setText(refugiado.getBirthDate());
+        if(refugiado.getPhoto() != null){
+            refugiadoViewHolder.photo.setImageBitmap(refugiado.getDecodedPhoto());
+        }
+        else{
+            refugiadoViewHolder.photo.setImageResource(R.drawable.foto_perfil);
+        }
 
     }
 

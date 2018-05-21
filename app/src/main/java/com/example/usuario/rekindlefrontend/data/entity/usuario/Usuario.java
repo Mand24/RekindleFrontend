@@ -1,7 +1,10 @@
 package com.example.usuario.rekindlefrontend.data.entity.usuario;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Base64;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -134,6 +137,12 @@ public class Usuario implements Parcelable {
 
     public void setPhoto(String photo){
         this.photo = photo;
+    }
+
+    public Bitmap getDecodedPhoto(){
+        byte[] decodedString = Base64.decode(getPhoto(), Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedString, 0,
+                decodedString.length);
     }
 
     @Override

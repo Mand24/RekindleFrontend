@@ -84,10 +84,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         emailUsuario.setText(usuario.getMail());
 
         if(usuario.getPhoto() != null) {
-            byte[] decodedString = Base64.decode(usuario.getPhoto(), Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,
-                    decodedString.length);
-            photoUser.setImageBitmap(decodedByte);
+            photoUser.setImageBitmap(usuario.getDecodedPhoto());
         }else{
             photoUser.setImageResource(R.drawable.ic_usuario);
         }
