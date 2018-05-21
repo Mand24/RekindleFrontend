@@ -155,6 +155,8 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
                     }
                 }
             });
+        }else{
+            inscribirse.setText(R.string.not_available);
         }
 
         return view;

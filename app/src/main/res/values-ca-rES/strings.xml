@@ -230,6 +230,7 @@
     <string name="unsubscribed_successfully">Desinscrit correctament!</string>
     <string name="service_deleted_successfully">Servei eliminat correctament!</string>
     <string name="delete_service_confirmation">Estàs segur que vols eliminar aquest servei?</string>
+    <string name="not_available">No disponible</string>
 
 
 </resources>
