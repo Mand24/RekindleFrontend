@@ -145,6 +145,10 @@ public interface APIService {
     @DELETE("/servicios/{id}/{tipo}")
     Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
 
+    @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
+    Call<Boolean> isUserSubscribed(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
+            String tipo);
+
     @POST("/usuarios/{mail}/inscripciones/{id}/{tipo}")
     Call<Void> subscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
