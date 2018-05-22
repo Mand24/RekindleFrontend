@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
-import android.util.Pair;
-
+import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
@@ -12,9 +11,6 @@ import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -134,4 +130,15 @@ public interface APIService {
 
     @GET("/test2")
     Call<Refugiado> prueba();
+
+    //LLAMADAS RELACIONADAS CON REPORTES
+
+    @POST("/reportes")
+    Call<Void> createReport(@Body Report report);
+
+    @GET("/reportes")
+    Call<ArrayList<Report>> getReports();
+
+    @GET("/reportes/{id}")
+    Call<Report> getReport(@Path("id") int id);
 }
