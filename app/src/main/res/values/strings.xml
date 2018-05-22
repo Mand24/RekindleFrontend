@@ -122,7 +122,7 @@
     <string name="enviar_correo">Send mail</string>
     <string name="code_request">Request recovery code</string>
     <string name="title_about">About Rekindle App</string>
-    <string name="version">Version 0.2</string>
+    <string name="version">Version 0.3</string>
     <string name="company">2018-2018 Rekindle Team</string>
     <string name="rights">All rights reserved</string>
 
@@ -278,134 +278,132 @@
         <b>
             <u>Log In \n</u>
         </b>
-        Pantalla donde podrá iniciar
-        sesión en caso de que ya se haya registrado anteriormente. Para iniciar sesión necesita
-        introducir el correo con el que se registró, la contraseña asociada, y después
-        pulsar en \"Iniciar sesión\". En caso de no estar registrado puede pulsar en \"No tienes
-        cuenta todavía? Crea una\" para registrarte como refugiado o como voluntario. En caso de no
-        recordar la contraseña asociada a su email de inició de sesión puede pulsar en
-        \"Recuperar contraseña\".\n \n
+        Screen where you can log in if you have already registered before. To log in you need to
+        enter the email with which you registered, the associated password, and then click on \"Log
+        in\". If you are not registered, you can click on \"Do not have an account yet? Create
+        a new one\" to register as a refugee or as a volunteer. If you do not remember the password
+        associated with your session initiation email, you can click on \"Recover password\". \n
+        \n
 
         <b>
-            <u>Registro \n</u>
+            <u>Sign in \n</u>
         </b>
-        Aquí podrá registrarse como refugiado, o bien como
-        voluntario, seleccionando el valor deseado mediante los botones \"Refugiado\" y
-        \"Voluntario\" situados en la parte superior de la pantalla. Para completar el registro
-        introduzca como mínimo todos los campos obligatorios (marcados con un \"*\" al final del
-        campo). Para enviar la solicitud de registro pulsa \"Enviar\". \n \n
+        Here you can register as a refugee, or as a
+        volunteer, selecting the desired value using the buttons "Refugee" and
+        \"Volunteer\" located at the top of the screen. To complete the registration
+        enter at least all required fields (marked with a \"*\" at the end of the
+        countryside). To send the registration request, click \"Send\". \n \n
+        <b>
+            <u>Get recuperation code \n</u>
+        </b>
+        Enter the mail associated with your
+        account and press \"Send Mail\", then you will be sent a recovery code
+        which will be necessary for the next operation. \n \n
 
         <b>
-            <u>Pedir código de recuperación \n</u>
+            <u>Change password with code \n</u>
         </b>
-        Introduzca el correo asociado a su
-        cuenta y pulse \"Enviar Correo\", a continuación se le enviará un código de recuperación
-        que será necesario para la siguiente operación. \n \n
+        Enter the code received by
+        email and enter the new desired password and its confirmation.
+        If you do not want to change the password or change the email address, you can go back to
+        the previous screen by pressing \"Go back to the previous screen\" located in the corner
+        lower left. \n \n
 
         <b>
-            <u>Cambiar contraseña con código \n</u>
+            <u>Main menu \n</u>
         </b>
-        Introduzca el código recibido por
-        correo electrónico e introduzca la nueva contraseña deseada y su confirmación.
-        En caso de no querer cambiar la contraseña o cambiar la dirección de correo, puede volver a
-        la pantalla anterior pulsando \"Volver a la pantalla anterior\" situado en la esquina
-        inferior izquierda. \n \n
+        Once the session starts, this will be your main menu
+        , where you will have buttons in the middle of the screen where you can see the major
+        actions of the system. Keeping a tap on the left side of the screen and
+        sliding to the right you can access the side menu where there will be
+        options like View Profile, Settings, Help, About, Close session, etc. \n \n
 
         <b>
-            <u>Menú principal \n</u>
+            <u>List services \n</u>
         </b>
-        Una vez iniciada la sesión este será su menu
-        principal, donde tendrá botones en mitad de la pantalla donde podrá ver la acciones
-        principales del sistema. Manteniendo una pulsación en la parte izquierda de la pantalla y
-        deslizando el movimiento hacia la derecha podrá acceder al menú lateral donde habrá
-        opciones como Ver Perfil, Ajustes, Ayuda, About, Cerrar sesión, etc. \n \n
+        List where all the services will appear
+        available at that time. By clicking on the top bar you can type, filtering the
+        list making only those services that match the text appear
+        inserted. To help filtering by type, there are four buttons on top of the
+        list of services, if all are active, it means that the list is showing all
+        the types of service, when a button is clicked the filtering is altered, that is, if a
+        button is shown with a gray color, it means that that type of service will not be shown in the
+        list, more than one button can be pressed. To reactivate the service type of
+        you simply have to press the service button again. It also has a button
+        of adjustments that will allow you to adjust the search more precisely, having
+        several attributes for each type of service such as price, distance, language,
+        etc. When you click on a service, all its information will be displayed. \n \n
 
         <b>
-            <u>Listar servicios \n</u>
+            <u>Show service \n</u>
         </b>
-        Lista donde apareceran todos los servicios
-        disponibles en ese momento. Pulsando en la barra superior podrá escribir, filtrando el
-        listado haciendo que solo aparezcan aquellos servicios que coincidan con el texto
-        introducido. Para ayudar al filtrado por tipo dispone de cuatro botones encima del
-        listado de servicios, si todos están activos, significa que la lista está mostrando todos
-        los tipos de servicio, cuando un botón es clicado se altera el filtrado, es decir, si un
-        botón se muestra con un color gris, significa que ese tipo de servicio no se mostrará en la
-        lista, más de un botón puede ser pulsado. Para volver a activar el tipo de servicio de
-        simplemente tiene que volver a pulsar el botón del servicio. Además dispone de un botón
-        de ajustes que le permitirá ajustar la búsqueda de manera más precisa, disponiendo de
-        varios atributos por cada tipo de servicio como por ejemplo precio, distáncia, idioma,
-        etc. Al pulsar en un servicio, se mostrará toda su información. \n \n
+        On this screen all the information associated with the service is displayed,
+        including a map with the location of the service. Click on
+        red marker will allow you to trace a route from your current location to the service
+        or open the GoogleMaps application for more options. If you have any questions with the
+        service, you can contact the volunteer by clicking on "Chat" and start a
+        conversation with him. If other users have used this service previously and have
+        given their assessment, you can see it by clicking \"Opinions\". And finally to sign up for
+        service just click on \"Register\". \n \n
 
         <b>
-            <u>Mostrar servicio \n</u>
+            <u>(Volunteer) My services \n</u>
         </b>
-        En esta pantalla se muestra toda la información
-        asociada al servicio, incluyendo un mapa con la localización del servicio. Clicar en el
-        marcador rojo le permitirá trazar una ruta desde su localización actual hasta el servicio
-        o abrir la aplicación GoogleMaps para más opciones. Si le surge cualquier duda con el
-        servicio, puede contactar con el voluntario pulsando en \"Chat\" e iniciará una
-        conversación con él. Si otros usuarios han hecho uso de este servicio anteriormente y han
-        dado su valoración, podrá verla pulsando \"Opiniones\". Y finalmente para inscribirse al
-        servicio solo tiene que pulsar en \"Inscribir\". \n \n
+        Here you can see the list of services that you have created.
+        With a short press you can get a list of all the users
+        who have enrolled in it. Perform a long press selecting a service
+        will allow to edit said service or eliminate it. \n \n
 
         <b>
-            <u>(Voluntario) Mis servicios \n</u>
+            <u>(Refugee) My services \n</u>
         </b>
-        Aquí podrá ver la lista de servicios
-        que ha creado. Haciendo una pulsación corta puede obtener una lista de todos los usuarios
-        que se han inscrito en ella. Realizar una pulsación larga seleccionando un servicio le
-        permitirá editar dicho servicio o eliminarlo. \n \n
+        Here you can see the list of services in
+        those you have enrolled, click on one of them will show its information again, and
+        performing a long press will allow you to unsubscribe from the service. \n \n
 
         <b>
-            <u>(Refugiado) Mis servicios \n</u>
+            <u>(Only volunteers) Create service \n</u>
         </b>
-        Aquí podrá ver la lista de servicios en
-        los que se ha inscrito, clicar en uno de ellos mostrará de nuevo su información, y
-        realizar una pulsación larga le permitirá darse de baja del servicio. \n \n
-
-        <b>
-            <u>(Solo voluntarios) Crear servicio \n</u>
-        </b>
-        Formulario donde se le pedirá
-        introducir unos ciertos datos, dependietes del tipo de servicio seleccionado mediante los
-        cuatro botones situados en la parte superior de la pantalla. Pulsar en "Enviar" dará de
-        alta su servicio. \n \n
-
-        <b>
-            <u>(Solo refugiados) Buscar personas \n</u>
-        </b>
-        Formulario donde introduciendo
-        ciertos datos podrá realizar una búsqueda de otros refugiados con tal de mantener una
-        comunicación con ellos. \n \n
-
-        <b>
-            <u>Ver perfil \n</u>
-        </b>
-        A partir del menú lateral podrá acceder a su perfil y
-        ver su información asociada. Desde esta pantalla también podrá acceder a "Editar perfil".
+        Form where you will be asked
+        enter certain data, depending on the type of service selected through the
+        four buttons located at the top of the screen. Click on "Send" will submit your service.
         \n \n
 
         <b>
-            <u>Editar perfil \n</u>
+            <u>(Only refugees) Search people \n</u>
         </b>
-        Pantalla donde podrá modificar su información de
-        perfil así como su contraseña. \n \n
+        Form where introducing
+        certain data will search for other refugees in order to maintain a
+        communication with them. \n \n
 
         <b>
-            <u>Cambiar contraseña \n</u>
+            <u>Show profile \n</u>
         </b>
-        Podrá cambiar su contraseña actual por una nueva. \n \n
+        From the side menu you can access your profile and
+        See your associated information. From this screen you can also access "Edit profile".
+        \n \n
 
         <b>
-            <u>Ajustes \n</u>
+            <u>Edit profile \n</u>
         </b>
-        A partir del menú lateral podrá acceder a ajustes, donde
-        podrá seleccionar idioma, distáncia máxima de búsqueda de servicios, etc. \n \n
+        Screen where you can modify your information
+        as well as your password. \n \n
+
+        <b>
+            <u>Change password \n</u>
+        </b>
+        You can change your current password for a new one. \n \n
+
+        <b>
+            <u>Settings \n</u>
+        </b>
+        From the side menu you can access settings, where
+        you can select language, maximum distance of search of services, etc. \n \n
 
         <b>
             <u>About \n</u>
         </b>
-        Pantalla para conocer más acerca de nosotros.
+        Screen to know more about us.
     </string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

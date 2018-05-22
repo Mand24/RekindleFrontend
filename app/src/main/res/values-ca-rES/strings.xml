@@ -170,6 +170,12 @@
     <string name="plazas_aumento">No es possible disminuir el número de plaçes/sol·licituts, sol es
         pot incrementar</string>
 
+
+    <string name="title_about">Sobre Rekindle App</string>
+    <string name="version">Versión 0.3</string>
+    <string name="company">2018-2018 Rekindle Team</string>
+    <string name="rights">Todos los derechos reservados</string>
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>
@@ -214,6 +220,142 @@
         <item>Català</item>
         <item>Espanyol</item>
     </string-array>
+
+    <string name="texto_help">
+        <b>
+            <u>Log In \n</u>
+        </b>
+        Pantalla on podrà iniciar
+        sesió en cas que js s'hagi registrat anteriorment. Per a iniciar sesió necessita
+        introduir el correu amb que es va registrar, la contrasenya associada, i despres
+        premmer en \"Iniciar sesió\". En cas de no estar registrat pot pulsar en \"No tens
+        compte encara? Crea una\" per a registrar-te com a refugiat o com a voluntari. En cas
+        de no recordar la contrasenya associada al seu email de inici de sesió pot pulsar en
+        \"Recuperar contrasenya\".\n \n
+
+        <b>
+            <u>Registre \n</u>
+        </b>
+        Aquí podrà registrar-se com a refugiat, o be com a
+        voluntari, seleccionant el valor desitjat mitjantçant els botons \"Refugiat\" i
+        \"Voluntari\" situats en la part superior de la pantalla. Per a completar el registre
+        introdueixi como a mínim tots els camps obligatoris (marcats amb un \"*\" al final
+        de camp). Per a enviar la solicitut de registre prem \"Enviar\". \n \n
+
+        <b>
+            <u>Demanar codi de recuperació \n</u>
+        </b>
+        Introdueixi el correu associado al seu
+        compte y premmi \"Enviar Correu\", a continuació se li enviará un codi de recuperació
+        que será necesari per a la següent operació. \n \n
+
+        <b>
+            <u>Cambiar contrasenya amb codi \n</u>
+        </b>
+        Introdueixi el codi rebut per
+        correu electrònic e introdueixi la nova contrasenya desitjada i la seva confirmació.
+        En cas de no voler canviar la contrasenya o canviar la direcció de correu, pot tornar a
+        la pantalla anterior polsant \"Tornar a la pantalla anterior\" situat en la cantonada
+        inferior esquerre. \n \n
+
+        <b>
+            <u>Menú principal \n</u>
+        </b>
+        Una vegada iniciada la sessió aquest serà el seu menu
+        principal, on tindrà botons al centre de la pantalla on podrà veure les accions
+        principals del sistema. Fent una pulsació en la part esquerre de la pantalla i
+        lliscant el movimient cap a la dreta podrà accedir al menú lateral on haurà
+        opcions com Veure Perfil, Ajustos, Ajuda, About, Tancar sesió, etc. \n \n
+
+        <b>
+            <u>Llistar serveis \n</u>
+        </b>
+        Llista on apareixeran tots els serveis
+        disponibles en aquest moment. Fent clic a la barra superior podrà escriure, filtrant el
+        llistat fent que només apareguin aquells serveis que coincideixin amb el text
+        introduït. Per ajudar al filtrat per tipus disposa de quatre botons sobre del
+        llistat de serveis, si tots estan actius, vol dir que la llista està mostrant tots
+        els tipus de servei, quan un botó és clicat s'altera el filtrat, és a dir, si un
+        botó es mostra amb un color gris, vol dir que aquest tipus de servei no es mostrarà a la
+        llista, més d'un botó pot ser premut. Per tornar a activar el tipus de servei de
+        simplement ha de tornar a prémer el botó del servei. A més disposa d'un botó
+        d'ajustos que li permetrà ajustar la recerca de manera més precisa, disposant de
+        diversos atributs per cada tipus de servei com ara preu, distància, idioma,
+        etc. En prémer en un servei, es mostrarà tota la seva informació. \n \n
+
+        <b>
+            <u>Mostrar servei \n</u>
+        </b>
+        En aquesta pantalla es mostra tota la informació
+        associada al servei, incloent un mapa amb la localització del servei. Clicar al
+        marcador vermell li permetrà traçar una ruta des de la seva localització actual fins al servei
+        o obrir l'aplicació GoogleMaps per a més opcions. Si té qualsevol dubte amb el
+        servei, pot contactar amb el voluntari prement en \"Xat\" i iniciarà una
+        conversa amb ell. Si altres usuaris han fet ús d'aquest servei anteriorment i han
+        donat la seva valoració, podrà veure-prement \"Opinions\". I finalment per inscriure al
+        servei només ha de prémer a \"Inscriure\".
+
+        <b>
+            <u>(Voluntari) Els meus serveis \n</u>
+        </b>
+        Aquí podrà veure la llista de serveis
+        que ha creat. Fent una polsada curta pot obtenir una llista de tots els usuaris
+        que s'han inscrit en ella. Realitzar una pulsació llarga seleccionant un servei li
+        permetrà editar aquest servei o eliminar-lo \n \n
+
+        <b>
+            <u>(Refugiat) Els meus serveis \n</u>
+        </b>
+        Aquí podrà veure la llista de serveis en
+        què s'ha inscrit, cliqueu en un d'ells mostrarà de nou la seva informació, i
+        realitzar una pulsació llarga li permetrà donar-se de baixa del servei. \n \n
+
+        <b>
+            <u>(Només voluntaris) Crear servei \n</u>
+        </b>
+        Formulari on se li demanarà
+        introduir uns certes dades, dependietes del tipus de servei seleccionat mitjançant els
+        quatre botons situats a la part superior de la pantalla. Cal prémer a "Enviar" donarà de
+        alta el seu servei. \n \n
+
+        <b>
+            <u>(Només refugiados) Buscar personas \n</u>
+        </b>
+        Formulario donde introduciendo
+        ciertos datos podrá realizar una búsqueda de otros refugiados con tal de mantener una
+        comunicación con ellos. \n \n
+
+        <b>
+            <u>Veure perfil \n</u>
+        </b>
+        A partir del menú lateral podrà accedir al seu perfil i
+        veure la seva informació associada. Des d'aquesta pantalla també podrà accedir a "Edita
+        perfil".
+        \n \n
+
+        <b>
+            <u>Editar perfil \n</u>
+        </b>
+        Pantalla on podrà modificar la seva informació de
+        perfil així com la seva contrasenya. \n \n
+
+        <b>
+            <u>Cambiar contrasenya \n</u>
+        </b>
+        Podrà canviar la contrasenya actual per una de nova. \n \n
+
+        <b>
+            <u>Ajustos \n</u>
+        </b>
+        A partir del menú lateral podrà accedir a ajustos, on
+        podrà seleccionar idioma, distància màxima de cerca de serveis, etc. \n \n
+
+        <b>
+            <u>About \n</u>
+        </b>
+        Pantalla per conèixer més sobre nosaltres.
+
+    </string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
