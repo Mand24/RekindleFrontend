@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.adapters;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -112,6 +114,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
     @Override
     public int getItemCount() {
         return messages.size();
+    }
+
+    public int getItemViewType(int position){
+        Message message = messages.get(position);
+        if (message.getOwner().getMail().equals(getUser(mContext).getMail())){
+            return VIEW_TYPE_MY_MESSAGE;
+        }
+        else return VIEW_TYPE_OTHER_MESSAGE;
     }
 
 
