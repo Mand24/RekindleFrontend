@@ -23,9 +23,9 @@ public class Message implements Parcelable {
     @Expose
     private Usuario owner;
 
-    @SerializedName("timeStamp")
+    @SerializedName("timestamp")
     @Expose
-    private String timeStamp;
+    private String timestamp;
 
     @SerializedName("content")
     @Expose
@@ -38,7 +38,7 @@ public class Message implements Parcelable {
         this.idChat = idChat;
         this.owner = owner;
         Date date = new Date();
-        this.timeStamp = "2018-05-24";
+        this.timestamp = "2018-05-24";
         this.content = content;
     }
 
@@ -46,7 +46,7 @@ public class Message implements Parcelable {
         this.idMessage = idMessage;
         this.idChat = idChat;
         this.owner = owner;
-        this.timeStamp = "2018-05-24";
+        this.timestamp = "2018-05-24";
         this.content = content;
     }
 
@@ -55,7 +55,7 @@ public class Message implements Parcelable {
         idMessage = in.readInt();
         idChat = in.readInt();
         owner = in.readParcelable(Usuario.class.getClassLoader());
-        timeStamp = in.readString();
+        timestamp = in.readString();
         content = in.readString();
     }
 
@@ -81,7 +81,7 @@ public class Message implements Parcelable {
         dest.writeInt(idMessage);
         dest.writeInt(idChat);
         dest.writeParcelable(owner, flags);
-        dest.writeString(timeStamp);
+        dest.writeString(timestamp);
         dest.writeString(content);
     }
 
@@ -109,12 +109,12 @@ public class Message implements Parcelable {
         this.owner = owner;
     }
 
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setTimestamp(String timeStamp) {
+        this.timestamp = timeStamp;
     }
 
     public String getContent() {
@@ -132,7 +132,7 @@ public class Message implements Parcelable {
                 "id=" + idMessage +
                 ", idChat=" + idChat +
                 ", owner=" + owner +
-                ", timeStamp='" + timeStamp + '\'' +
+                ", timestamp='" + timestamp + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

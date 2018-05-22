@@ -60,7 +60,7 @@ public class ShowChat extends AppBaseActivity {
         sendGetMessagesChat();
 
         //TODO esto es de prueba
-        messages = new ArrayList<Message>();
+        //messages = new ArrayList<Message>();
 
         recyclerView = findViewById(R.id.messageList);
         mAdapter = new MessagesAdapter(messages,this);

@@ -47,7 +47,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         @Override
         public void bind(Message message){
             txtMyMessage.setText(message.getContent());
-            txtMyMessageTime.setText(message.getTimeStamp().toString());
+            txtMyMessageTime.setText(message.getTimestamp().toString());
         }
     }
 
@@ -65,7 +65,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         @Override
         public void bind(Message message){
             txtOtherMessage.setText(message.getContent());
-            txtOtherMessageTime.setText(message.getTimeStamp().toString());
+            txtOtherMessageTime.setText(message.getTimestamp().toString());
             txtOtherMessageUser.setText(message.getOwner().getName());
         }
     }
