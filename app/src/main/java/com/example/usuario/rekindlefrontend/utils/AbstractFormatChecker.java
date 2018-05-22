@@ -176,4 +176,10 @@ public abstract class AbstractFormatChecker extends Fragment {
                 .precio_formato));
     }
 
+    public void checkPlazasAumento (String _nuevas, String _viejas) throws Exception {
+        Integer nuevas = Integer.parseInt(_nuevas);
+        Integer viejas = Integer.parseInt(_viejas);
+        if (viejas > nuevas) throw new Exception (getString(R.string.plazas_aumento));
+    }
+
 }

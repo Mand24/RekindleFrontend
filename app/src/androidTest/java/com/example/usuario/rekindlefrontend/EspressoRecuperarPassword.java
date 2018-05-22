@@ -12,7 +12,7 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.RecuperarPassword;
+import com.example.usuario.rekindlefrontend.view.menu.login.RecuperarPassword;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

@@ -223,12 +223,16 @@
     <string name="wrong_code">Wrong code</string>
 
     <string name="editar_alojamiento">Edit housing:</string>
-    <string name="editar_donacion">Editar donation:</string>
-    <string name="editar_empleo">Editar job offer:</string>
+    <string name="editar_donacion">Edit donation:</string>
+    <string name="editar_empleo">Edit job offer:</string>
     <string name="editar_curso">Edit educative curs:</string>
 
     <string name="searchService">Search services</string>
     <string name="no_permission">The aplication does not have the location permission</string>
+
+    <string name="plazas_aumento">Is not possible decrease the number of places/requests, only can
+        increment</string>
+
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>

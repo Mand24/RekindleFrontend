@@ -167,7 +167,8 @@
     <string name="searchService">Cercar serveis</string>
     <string name="no_permission">L\'aplicació no te permissos d\'ubicació</string>
     <string name="myLocation"></string>
-
+    <string name="plazas_aumento">No es possible disminuir el número de plaçes/sol·licituts, sol es
+        pot incrementar</string>
 
     <string-array name="clic_servicio">
         <item>Editar</item>

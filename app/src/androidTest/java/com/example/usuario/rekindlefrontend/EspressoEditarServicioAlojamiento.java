@@ -16,7 +16,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -24,18 +24,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//import static org.hamcrest.core.AllOf.allOf;
-//import static org.hamcrest.core.Is.is;
-//import static org.hamcrest.core.IsInstanceOf.instanceOf;
-//import static org.hamcrest.core.AnyOf.*;
-
-
 @RunWith(AndroidJUnit4.class)
-public class EspressoCrearServicioAlojamiento {
+public class EspressoEditarServicioAlojamiento {
 
     @Rule
-    public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>
-            (CrearServicio.class);
+    public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>
+            (EditarServicio.class);
 
     @BeforeClass
     public static void setup(){
@@ -50,11 +44,14 @@ public class EspressoCrearServicioAlojamiento {
     @Test
     public void testCamposAlojamiento() {
 
+        pantalla.getActivity().menu(0);
+
         onView(withId(R.id.boton_tipo_alojamiento)).perform(click());
 
         onView(withId(R.id.nombre_alojamiento)).perform(replaceText
                 ("testNombreAlojamiento"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("testNombreAlojamiento")));
+
         onView(withId(R.id.telefono_alojamiento)).perform(replaceText
                 ("123"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("123")));
@@ -76,7 +73,5 @@ public class EspressoCrearServicioAlojamiento {
         onView(withId(R.id.descripcion_alojamiento)).perform(replaceText
                 ("testDescription"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("testDescription")));
-
     }
-
 }

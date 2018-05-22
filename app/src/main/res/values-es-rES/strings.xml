@@ -180,6 +180,9 @@
     <string name="searchService">Buscar servicios</string>
     <string name="no_permission">La aplicación no tiene permisos de ubicación</string>
 
+    <string name="plazas_aumento">No es posible disminuir el número de plazas/solicitudes, solo se
+        puede incrementar</string>
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>

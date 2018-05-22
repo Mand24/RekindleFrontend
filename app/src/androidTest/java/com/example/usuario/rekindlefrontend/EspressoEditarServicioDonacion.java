@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -16,7 +15,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -24,18 +23,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-//import static org.hamcrest.core.AllOf.allOf;
-//import static org.hamcrest.core.Is.is;
-//import static org.hamcrest.core.IsInstanceOf.instanceOf;
-//import static org.hamcrest.core.AnyOf.*;
-
-
 @RunWith(AndroidJUnit4.class)
-public class EspressoCrearServicioDonacion {
+public class EspressoEditarServicioDonacion {
 
     @Rule
-    public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>
-            (CrearServicio.class);
+    public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>
+            (EditarServicio.class);
 
     @BeforeClass
     public static void setup(){
@@ -50,11 +43,12 @@ public class EspressoCrearServicioDonacion {
     @Test
     public void testCamposDonacion() {
 
-        onView(withId(R.id.boton_tipo_donacion)).perform(click());
+        pantalla.getActivity().menu(1);
 
         onView(withId(R.id.nombre_donacion)).perform(replaceText
                 ("testNombreDonacion"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("testNombreDonacion")));
+
         onView(withId(R.id.telefono_donacion)).perform(replaceText
                 ("123"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("123")));
@@ -84,18 +78,4 @@ public class EspressoCrearServicioDonacion {
                 ()).check(matches(withText("testDescription")));
 
     }
-
-    @Test
-    public void testBotonCrearDonacion() {
-
-        //TODO: Testear cuando funcione crear donacion
-    }
-
-    @Test
-    public void testAtras(){
-
-        //TODO: Testear cuando tengamos boton atras
-
-    }
-
 }
