@@ -29,7 +29,7 @@ public class OfertaEmpleo extends Servicio {
     public OfertaEmpleo (int id, String email, String nombre, String descripcion, String direccion, String puesto,
             String requisitos, String jornada, String horasSemana, String duracion, String
             plazasDisponibles, String sueldo, String numero){
-        super(id, 3, email, nombre, descripcion, direccion, numero);
+        super(id, "Job", email, nombre, descripcion, direccion, numero);
         this.puesto = puesto;
         this.requisitos = requisitos;
         this.jornada = jornada;

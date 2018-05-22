@@ -1,10 +1,18 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -20,6 +29,9 @@ import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipa
 import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
+import com.pusher.client.Pusher;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
 import java.util.Set;
@@ -89,6 +101,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void comprobar_login(){
+        //TODO sharepreference consistencyutils?
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
@@ -98,7 +111,6 @@ public class Login extends AppCompatActivity {
         else {
             usuario = gson.fromJson(json, Usuario.class);
             Intent i = new Intent(this, MenuPrincipal.class);
-            i.putExtra("tipo", usuario.getTipo());
             startActivity(i);
         }
     }
@@ -121,17 +133,6 @@ public class Login extends AppCompatActivity {
         //String email = _emailText.getText().toString();
         //String password = _passwordText.getText().toString();
 
-
-        // TODO: Llamar API
-        /*try{
-            //result = new AsyncTaskCall().execute(email, password).get();
-            //result = true;
-            //if (result) onLoginSuccess();
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
-
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
@@ -152,18 +153,18 @@ public class Login extends AppCompatActivity {
         mAPIService.login(email, password).enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                Set<String> headers = response.headers().names();
+                /*Set<String> headers = response.headers().names();
                 for(String header : headers) {
                     System.out.println("cabecera: "+header);
-                }
+                }*/
 
-                System.out.println(response.code());
+//                System.out.println(response.code());
 
                 if (response.isSuccessful()) {
-                    String header1 = response.headers().get("Tipo");
-                    int i = Integer.parseInt(header1);
+                    /*String header1 = response.headers().get("Tipo");
+                    int i = Integer.parseInt(header1);*/
                     usuario = response.body();
-                    usuario.setTipo(i);
+//                    usuario.setTipo(i);
                     System.out.println("tipo: "+usuario.getTipo());
                     onLoginSuccess();
                 }
@@ -188,29 +189,6 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Boolean> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Boolean doInBackground(String... params) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            boolean result = false;
-            try {
-                result = ComunicacionUsuarios.iniciarSesion(url, params[0], params[1]);
-                //result = ComunicacionUsuarios.test2(url);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
-
     @Override
     public void onBackPressed() {
         // disable going back to the MainActivity
@@ -226,18 +204,57 @@ public class Login extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+
+        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor miEditor = datos.edit();
         Gson gson = new Gson();
         String json = gson.toJson(usuario);
         miEditor.putString("usuario", json);
-        miEditor.apply();
+        miEditor.apply();*/
+
+        saveUser(usuario,this);
+        setUpPusher();
+        runPusher();
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        i.putExtra("tipo", usuario.getTipo());
         System.out.println("USUARIOL "+usuario.toString());
         System.out.println("tipo1: "+usuario.getTipo());
         startActivity(i);
+    }
+
+    public void runPusher() {
+        Pusher pusher = getPusher();
+        Channel channel = getChannel();
+
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        NotificationCompat.Builder mBuilder;
+                        NotificationManager mNotifyMgr =(NotificationManager)
+                                getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+
+                        int icono = R.mipmap.ic_launcher;
+                        /*Intent i=new Intent(MainActivity.this, MensajeActivity.class);
+                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, i, 0);*/
+
+                        mBuilder = new NotificationCompat.Builder(getApplicationContext())
+                                .setSmallIcon(icono)
+                                .setContentTitle("Titulo")
+                                .setContentText("Hola que tal?")
+                                .setVibrate(new long[] {100, 250, 100, 500})
+                                .setAutoCancel(true);
+
+                        mNotifyMgr.notify(1, mBuilder.build());
+                    }
+
+                });
+            }
+        });
+
+        pusher.connect();
     }
 
     public void onLoginFailed() {
@@ -246,6 +263,7 @@ public class Login extends AppCompatActivity {
         _loginButton.setEnabled(true);
     }
 
+    //TODO pasar estas comprovaciones a AbstractFormatChecker
     public boolean validate() {
         boolean valid = true;
 

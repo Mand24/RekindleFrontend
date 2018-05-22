@@ -4,6 +4,8 @@ package com.example.usuario.rekindlefrontend.view.servicios.crear;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -18,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.comunicacion.ComunicacionServicios;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -136,11 +137,13 @@ public class FormularioDonacion extends AbstractFormatChecker {
 
     public void obtenerParametros(){
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
+        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
+        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+
+        Usuario usuario = getUser(getActivity().getApplicationContext());
 
         mDonacion = new Donacion(0, usuario.getMail(), eNombre.getText().toString(),
                 eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
@@ -176,7 +179,6 @@ public class FormularioDonacion extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.donacion_creada_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
-            i.putExtra("tipo", 1);
             startActivity(i);
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R

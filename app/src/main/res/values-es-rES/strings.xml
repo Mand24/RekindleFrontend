@@ -177,6 +177,9 @@
     <string name="editar_empleo">Editar empleo:</string>
     <string name="editar_curso">Editar curso educativo:</string>
 
+    <string name="searchService">Buscar servicios</string>
+    <string name="no_permission">La aplicación no tiene permisos de ubicación</string>
+
     <string name="plazas_aumento">No es posible disminuir el número de plazas/solicitudes, solo se
         puede incrementar</string>
 
@@ -225,6 +228,21 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home">Inicio</string>
+    <string name="menuLateral">Menú Lateral</string>
+    <string name="search">Buscar</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="showService">Mostrar Servicio</string>
+    <string name="listRefugee">Listar Refugiados</string>
+    <string name="showRefugee">Mostrar Refugiado</string>
+    <string name="listChat">Listar Chats</string>
+    <string name="showChat">Mostrar Chat</string>
+    <string name="editProfile">Editar Perfil</string>
+    <string name="myLocation_maps">Mi ubicación</string>
+    <string name="noLocation">No podemos determinar tu ubicación, intentalo más tarde</string>
+    <string name="serviceLocation">Ubicación servicio:</string>
 
 
 </resources>

@@ -41,6 +41,7 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_refugiados);
         recyclerView = (RecyclerView) findViewById(R.id.rv);
+        getSupportActionBar().setTitle(R.string.listRefugee);
 
         initializeData();
 
@@ -87,15 +88,6 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
     }
 
     private void initializeData() {
-        /*refugiados.add(new Refugiado("mail@gmail.com", "1234", "nombre", "apellido1",
-                "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));
-        refugiados.add(new Refugiado("mail1@gmail.com", "1234", "nombre1", "apellido1",
-                "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));
-        refugiados.add(new Refugiado("mail2@gmail.com", "1234", "nombre2", "apellido1",
-                "apellido2", "123456789", "09-02-1995", "Masculino", "España", "Barcelona", "",
-                "", "", ""));*/
 
         refugiados = getIntent().getParcelableArrayListExtra("listRefugiados");
 
@@ -124,6 +116,24 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
         searchView = (SearchView) search.getActionView();
         search(searchView);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.show_lateral_menu:
+//                drawerLayout.openDrawer(GravityCompat.START);
+//                return true;
+            case R.id.home:
+                Intent i = new Intent(this, MenuPrincipal.class);
+                startActivity(i);
+                return true;
+            case R.id.search:
+                searchView = (SearchView) item.getActionView();
+                search(searchView);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void search(SearchView searchView) {

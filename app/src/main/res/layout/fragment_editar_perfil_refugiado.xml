@@ -18,11 +18,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/dim10"
                 android:layout_width="@dimen/dim100"
                 android:layout_height="@dimen/dim100"
                 android:src="@drawable/foto_perfil"
-                android:layout_marginLeft="@dimen/dim10"
-                android:layout_marginTop="@dimen/dim10"
+
             />
 
             <LinearLayout android:layout_width="match_parent"

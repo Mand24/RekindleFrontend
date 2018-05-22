@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.verPerfil;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -16,49 +18,54 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+
 /**
  * Created by Manel Fernandez on 24-Apr-18.
  */
 
 public class VerPerfil extends AppBaseActivity {
 
-    Fragment[] tiposPerfil;
+    HashMap<String, Fragment> tiposPerfil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_ver_perfil);
 
-        tiposPerfil = new Fragment[2];
+        getSupportActionBar().setTitle(R.string.ver_perfil);
 
-        tiposPerfil[0] = new VerPerfilRefugiado();
-        tiposPerfil[1] = new VerPerfilVoluntario();
+        tiposPerfil = new HashMap<>();
 
-        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
+        tiposPerfil.put("Refugee", new VerPerfilRefugiado());
+        tiposPerfil.put("Volunteer", new VerPerfilVoluntario());
+
+        Usuario user = getUser(this);
+
+        String tipo_usuario = user.getTipo();
 
         menu(tipo_usuario);
     }
 
-    public void menu(int tipo){
+    public void menu(String tipo_usuario){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.perfilUsuario, tiposPerfil[tipo]);
+        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo_usuario));
         transaction.commit();
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        /*Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
         i.putExtra("tipo", usuario.getTipo());
-        startActivity(i);
+        startActivity(i);*/
+        finish();
     }
 
     @Override

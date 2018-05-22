@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -18,9 +20,11 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+
 public class EditarPerfil extends AppBaseActivity {
 
-    Fragment[] tiposPerfil;
+    HashMap<String, Fragment> tiposPerfil;
     Voluntario mVoluntario;
     Refugiado mRefugiado;
 
@@ -31,41 +35,56 @@ public class EditarPerfil extends AppBaseActivity {
 
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.activity_editar_perfil);
 
-        tiposPerfil = new Fragment[2];
+        getSupportActionBar().setTitle(R.string.editProfile);
 
-        tiposPerfil[0] = new EditarPerfilRefugiado();
-        tiposPerfil[1] = new EditarPerfilVoluntario();
+        tiposPerfil = new HashMap<>();
 
-        int tipo_usuario = getIntent().getIntExtra("tipo", 3);
-        mVoluntario = (Voluntario) getIntent().getSerializableExtra("Voluntario");
-        mRefugiado = (Refugiado) getIntent().getSerializableExtra("Refugiado");
+        tiposPerfil.put("Refugee", new EditarPerfilRefugiado());
+        tiposPerfil.put("Volunteer", new EditarPerfilVoluntario());
 
+        Usuario user = getUser(this);
+
+        String tipo_usuario = user.getTipo();
+
+        System.out.println("editar" + tipo_usuario);
+
+        if(tipo_usuario.equals("Refugee")){
+            mRefugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
+        } else {
+            mVoluntario = (Voluntario) getIntent().getParcelableExtra("Voluntario");
+            System.out.println("editaraa"+mVoluntario);
+        }
         menu(tipo_usuario);
     }
 
-    public void menu(int tipo){
+    public void menu(String tipo_usuario){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        bundle.putParcelable("Voluntario", mVoluntario);
-        bundle.putParcelable("Refugiado", mRefugiado);
-        transaction.replace(R.id.perfilUsuario, tiposPerfil[tipo]);
+        if(tipo_usuario.equals("Refugee")){
+            bundle.putParcelable("Refugiado", mRefugiado);
+        } else {
+            System.out.println("editara"+mVoluntario.toString());
+            bundle.putParcelable("Voluntario", mVoluntario);
+        }
+
+        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo_usuario));
         transaction.commit();
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), VerPerfil.class);
+        /*Intent i = new Intent(getApplicationContext(), VerPerfil.class);
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
         i.putExtra("tipo", usuario.getTipo());
-        startActivity(i);
+        startActivity(i);*/
+        //TODO testear esto
+        finish();
     }
 
     @Override

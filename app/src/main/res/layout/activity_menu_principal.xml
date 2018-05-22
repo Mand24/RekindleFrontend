@@ -7,20 +7,11 @@
     tools:context=".view.menu.menuPrincipal.MenuPrincipal"
     android:background="@drawable/fondo">
 
-        <TextView
-            android:id="@+id/titulo_MenuPrincipal"
-            android:text="@string/titulo_menu_principal"
-            style="@style/text_view"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dim100"
-        />
-
         <RelativeLayout
             android:id="@+id/tipo_menu_principal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/titulo_MenuPrincipal" >
+            android:layout_marginTop="?android:actionBarSize" >
 
         </RelativeLayout>
 

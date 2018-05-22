@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/dim1"
+
         android:id="@+id/eleccion_tipo_servicio"
         android:name="com.example.usuario.rekindlefrontend.view.servicios.EleccionTipoServicio"
-        tools:layout="@layout/fragment_eleccion_tipo_servicio">
+        tools:layout="@layout/fragment_eleccion_tipo_servicio"
+        android:layout_marginTop="?android:actionBarSize">
 
     </fragment>
 

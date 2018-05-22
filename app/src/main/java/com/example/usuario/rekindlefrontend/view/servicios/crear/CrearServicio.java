@@ -12,34 +12,38 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 
+import java.util.HashMap;
+
 public class CrearServicio extends AppBaseActivity {
 
-    Fragment[] tiposFormulario;
+    HashMap<String, Fragment> tiposFormulario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_servicio);
 
-        tiposFormulario = new Fragment[4];
+        getSupportActionBar().setTitle(R.string.crear_servicio);
 
-        tiposFormulario[0] = new FormularioAlojamiento();
+        tiposFormulario = new HashMap<>();
 
-        tiposFormulario[1] = new FormularioDonacion();
+        tiposFormulario.put("Lodge", new FormularioAlojamiento());
 
-        tiposFormulario[2] = new FormularioCursoEducativo();
+        tiposFormulario.put("Donation", new FormularioDonacion());
 
-        tiposFormulario[3] = new FormularioOfertaEmpleo();
+        tiposFormulario.put("Education", new FormularioCursoEducativo());
 
-        menu(0);
+        tiposFormulario.put("Job", new FormularioOfertaEmpleo());
+
+        menu("Lodge");
 
     }
 
-    public void menu(int tipo_servicio){
+    public void menu(String tipo_servicio){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.formulario_servicio, tiposFormulario[tipo_servicio]);
+        transaction.replace(R.id.formulario_servicio, tiposFormulario.get(tipo_servicio));
         transaction.commit();
     }
 

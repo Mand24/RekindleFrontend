@@ -22,18 +22,21 @@ public class About extends AppBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+        getSupportActionBar().setTitle(R.string.about);
     }
 
     @Override
     public void onBackPressed() {
 
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        /*Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
         i.putExtra("tipo", usuario.getTipo());
-        startActivity(i);
+        startActivity(i);*/
+
+        finish();
     }
 
     @Override

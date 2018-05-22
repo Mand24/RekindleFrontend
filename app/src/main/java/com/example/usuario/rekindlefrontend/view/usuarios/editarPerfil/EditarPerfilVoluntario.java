@@ -50,6 +50,8 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
         voluntario = (Voluntario) getActivity().getIntent().getParcelableExtra("Voluntario");
 
+        System.out.println("editarv"+ voluntario.toString());
+
         initializeData(view);
 
 
@@ -78,6 +80,8 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
                 i.putExtra("Voluntario", voluntario);
+                i.putExtra("tipo", voluntario.getTipo());
+                System.out.println(voluntario.toString());
                 startActivity(i);
             }
 
@@ -158,7 +162,6 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
-            i.putExtra("tipo", 1);
             startActivity(i);
 
         } else {
@@ -166,30 +169,5 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
                     .LENGTH_SHORT).show();
         }
     }
-
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Voluntario> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Voluntario doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            Voluntario result = new Voluntario();
-            try {
-                SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                        (getActivity().getApplicationContext());
-                String param = datos.getString("email", "email");
-                result = ComunicacionUsuarios.verPerfilVoluntario(url, param);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
 
 }

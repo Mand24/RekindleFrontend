@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
@@ -246,7 +245,6 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), VerPerfil.class);
-            i.putExtra("tipo", 0);
             startActivity(i);
 
         } else {
@@ -254,30 +252,5 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                     .LENGTH_SHORT).show();
         }
     }
-
-    /*private class AsyncTaskCall extends AsyncTask<String, Void, Refugiado> {
-
-        protected void onPreExecute() {
-            //showProgress(true);
-        }
-
-        protected Refugiado doInBackground(String... urls) {
-
-            String url = getResources().getString(R.string.url_server);
-            System.out.println("url servidor: " + url);
-            Refugiado result = new Refugiado();
-            try {
-                SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                        (getActivity().getApplicationContext());
-                String param = datos.getString("email", "email");
-                result = ComunicacionUsuarios.verPerfilRefugiado(url, param);
-            } catch (Exception e) {
-
-                e.printStackTrace();
-            }
-
-            return result;
-        }
-    }*/
 
 }

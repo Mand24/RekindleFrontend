@@ -29,6 +29,8 @@ public class Ajustes extends AppBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_ajustes);
 
+        getSupportActionBar().setTitle(R.string.ajustes);
+
         //establecer las vistas
         setVistas();
 
@@ -81,13 +83,15 @@ public class Ajustes extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        /*Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
         i.putExtra("tipo", usuario.getTipo());
-        startActivity(i);
+        startActivity(i);*/
+
+        finish();
     }
 
     public void setVistas() {

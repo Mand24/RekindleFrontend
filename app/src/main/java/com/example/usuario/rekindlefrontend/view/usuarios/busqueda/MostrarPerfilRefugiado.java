@@ -1,21 +1,26 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -41,8 +46,12 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     private TextView ojosUsuario;
     private TextView biografiaUsuario;
 
+    private AppCompatButton buttonChat;
+
     private APIService mAPIService;
     private Refugiado refugiado;
+    private Usuario currentUser;
+    private Chat newChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -51,12 +60,24 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
         setContentView(R.layout.activity_mostrar_perfil_refugiado);
 
+        getSupportActionBar().setTitle(R.string.showRefugee);
+
         setVistas();
 
         refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
+        currentUser = getUser(getApplicationContext());
         System.out.println(refugiado.toString());
 
         llenarTextViews();
+
+        buttonChat.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Chat chat = new Chat(currentUser,refugiado);
+                sendNewChat(chat);
+            }
+        });
 
 
     }
@@ -76,6 +97,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         sangreUsuario = findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = findViewById(R.id.ojos_usuario_perfil_refugiado);
         biografiaUsuario = findViewById(R.id.biografia_usuario_perfil_refugiado);
+        buttonChat = findViewById(R.id.chat);
+        mAPIService = APIUtils.getAPIService();
 
     }
 
@@ -97,6 +120,98 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         ojosUsuario.setText(refugiado.getEyeColor());
         biografiaUsuario.setText(refugiado.getBiography());
 
+    }
+
+    public void sendGetChat(){
+        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), refugiado.getMail()).enqueue(
+                new Callback<Chat>() {
+                    @Override
+                    public void onResponse(Call<Chat> call, Response<Chat> response) {
+                        System.out.println("getchat code: " + response.code());
+                        if (response.isSuccessful()){
+                            System.out.println("getchat");
+                            System.out.println(response.body().toString());
+                            tratarResultadoPeticion(true, response.body());
+                        }
+                        else {
+                            tratarResultadoPeticion(false, null);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Chat> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(),
+                                    "getchat!! conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+    public void tratarResultadoPeticion(boolean resultado, Chat chat){
+        if (resultado){
+            Intent i = new Intent(this, ShowChat.class);
+            i.putExtra("Chat", chat);
+            startActivity(i);
+        }
+        else {
+            newChat = new Chat(currentUser,refugiado);
+            sendNewChat(newChat);
+        }
+    }
+
+    public void sendNewChat(Chat newChat){
+        mAPIService.newChat(currentUser.getMail(), newChat).enqueue(new Callback<Chat>() {
+            @Override
+            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                System.out.println("newchat code: " + response.code());
+                if (response.isSuccessful()){
+                    System.out.println("newchat");
+                    System.out.println(response.body().toString());
+                    manageResult(true, response.body());
+                }
+                else {
+                    manageResult(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chat> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "newchat!! conversion issue! big problems :(", Toast.LENGTH_SHORT)
+                            .show();
+
+                }
+            }
+        });
+
+    }
+
+    public void manageResult(boolean result, Chat chat){
+        if (result){
+            Intent i = new Intent(this, ShowChat.class);
+            i.putExtra("Chat", chat);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

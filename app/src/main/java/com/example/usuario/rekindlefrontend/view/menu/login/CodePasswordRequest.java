@@ -61,7 +61,6 @@ public class CodePasswordRequest extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), Login.class);
-        startActivity(i);
+        finish();
     }
 }

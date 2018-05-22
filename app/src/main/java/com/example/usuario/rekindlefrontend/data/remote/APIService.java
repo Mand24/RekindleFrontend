@@ -2,6 +2,9 @@ package com.example.usuario.rekindlefrontend.data.remote;
 
 import android.util.Pair;
 
+
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
@@ -46,6 +49,16 @@ public interface APIService {
     Call<Void> recuperarPassword(@Path("mail") String mail, @Field("passwordNew") String
                     password);
 
+    @GET("/usuarios/{mail}/chats")
+    Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
+
+    @GET("/usuarios/{mail}/chat")
+    Call<Chat> getChat(@Path("mail") String mail, @Query("mail1") String mail1, @Query("mail2")
+            String
+            mail2);
+    @POST("/usuarios/{mail}/chats")
+    Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);
+
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
     Call<ArrayList<Refugiado>> buscarRefugiados(
@@ -61,7 +74,7 @@ public interface APIService {
             @Query("eye") String eye);
 
     @POST("/refugiados")
-    Call<Refugiado> createRefugiado(@Body Refugiado refugiado);
+    Call<Void> createRefugiado(@Body Refugiado refugiado);
 
     @GET("/refugiados/{mail}")
     Call<Refugiado> obtenerRefugiado(@Path("mail") String mail);
@@ -72,7 +85,7 @@ public interface APIService {
 
     //LLAMADAS RELACIONADAS CON USUARIOS VOLUNTARIOS
     @POST("/voluntarios")
-    Call<Voluntario> createVoluntario(@Body Voluntario voluntario);
+    Call<Void> createVoluntario(@Body Voluntario voluntario);
 
     @GET("/voluntarios/{mail}")
     Call<Voluntario> obtenerVoluntario(@Path("mail") String mail);
@@ -87,10 +100,10 @@ public interface APIService {
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
     @GET("/servicios")
-    Call<Map<Integer,ArrayList<Servicio>>> obtenerServicios();
+    Call<ArrayList<Servicio>> obtenerServicios();
 
     @GET("/servicios/{mail}/{tipo}")
-    Call<Map<Integer,ArrayList<Servicio>>> obtenerMisServicios(@Path("mail") String mail, @Path
+    Call<ArrayList<Servicio>> obtenerMisServicios(@Path("mail") String mail, @Path
             ("tipo") int tipo);
 
     @GET("/alojamientos/{id}")
@@ -134,4 +147,11 @@ public interface APIService {
 
     @GET("/test2")
     Call<Refugiado> prueba();
+
+    @GET("/usuarios/{mail}/chats/{idChat}/messages")
+    Call<ArrayList<Message>> getMessagesChat(@Path("mail") String mail, @Path("idChat") int idChat);
+
+    @POST("/usuarios/{mail}/chats/{idChat}/messages")
+    Call<Void> sendMessage(@Path("mail") String mail, @Path("idChat") int idChat, @Body Message
+            message);
 }

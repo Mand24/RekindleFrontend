@@ -20,7 +20,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    
+
 }
 
 sourceSets {
@@ -59,4 +59,6 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    // Pusher
+    implementation 'com.pusher:pusher-java-client:1.6.0'
 }

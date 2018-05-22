@@ -73,6 +73,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busqueda_refugiado);
+        getSupportActionBar().setTitle(R.string.titulo_busqueda);
         //establecer las vistas
         setVistas();
 
@@ -89,8 +90,8 @@ public class BusquedaRefugiado extends AppBaseActivity{
                     //checkCampos(view);
                     obtenerParametros();
                     /*boolean result = new AsyncTaskCall().execute().get();
-                    tratarResultadoPeticion(result);
-                    //tratarResultadoPeticion(true);*/
+                    manageRequestResult(result);
+                    //manageRequestResult(true);*/
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -247,9 +248,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        i.putExtra("tipo", 0);
-        startActivity(i);
+        finish();
     }
 
     @Override

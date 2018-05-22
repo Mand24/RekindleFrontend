@@ -33,6 +33,7 @@ import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugia
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,21 +53,27 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
     protected APIService mAPIService;
 
     protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
-    protected List<Boolean> filters = new ArrayList<>(
-            Arrays.asList(true, true, true, true));
+    protected HashMap<String, Boolean> filters = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_servicios);
 
+        getSupportActionBar().setTitle(R.string.listar_servicios);
+
+        filters.put("Lodge", true);
+        filters.put("Donation", true);
+        filters.put("Education", true);
+        filters.put("Job", true);
+
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
         initializeData();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
@@ -84,12 +91,12 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(0)) {
-                    filters.set(0, false);
+                if (filters.get("Lodge")) {
+                    filters.put("Lodge", false);
                     filtrarAlojamiento.setBackgroundColor(
                             getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(0, true);
+                    filters.put("Lodge", true);
                     filtrarAlojamiento.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -103,11 +110,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(1)) {
-                    filters.set(1, false);
+                if (filters.get("Donation")) {
+                    filters.put("Donation", false);
                     filtrarDonacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(1, true);
+                    filters.put("Donation", true);
                     filtrarDonacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -121,11 +128,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(2)) {
-                    filters.set(2, false);
+                if (filters.get("Education")) {
+                    filters.put("Education", false);
                     filtrarEducacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(2, true);
+                    filters.put("Education", true);
                     filtrarEducacion.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -139,11 +146,11 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
-                if (filters.get(3)) {
-                    filters.set(3, false);
+                if (filters.get("Job")) {
+                    filters.put("Job", false);
                     filtrarEmpleo.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
-                    filters.set(3, true);
+                    filters.put("Job", true);
                     filtrarEmpleo.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
@@ -190,28 +197,27 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
     private void initializeData() {
 
-        mAPIService.obtenerServicios().enqueue(new Callback<Map<Integer, ArrayList<Servicio>>>
+        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Servicio>>
                 () {
             @Override
-            public void onResponse(Call<Map<Integer, ArrayList<Servicio>>> call,
-                    Response<Map<Integer, ArrayList<Servicio>>>
+            public void onResponse(Call<ArrayList<Servicio>> call,
+                    Response<ArrayList<Servicio>>
                             response) {
                 if (response.isSuccessful()) {
-                    Map<Integer, ArrayList<Servicio>> respuesta = response.body();
-                    //TODO: parsear
+                    ArrayList<Servicio> respuesta = response.body();
                     //servicios = response.body();
-                    tratarRespuesta(respuesta);
+                    tratarResultadoPeticion(true, respuesta);
 
                 } else {
                     System.out.println("CODIGO "+response.code());
-                    tratarResultadoPeticion(false);
+                    tratarResultadoPeticion(false, null);
                 }
             }
 
             @Override
-            public void onFailure(Call<Map<Integer, ArrayList<Servicio>>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
                 Log.e("on Failure", t.toString());
-                tratarResultadoPeticion(false);
+                tratarResultadoPeticion(false, null);
                 Log.i(t.getClass().toString(), "========================");
                 if (t instanceof IOException) {
                     Log.i( "NETWORK ERROR", "=======================================");
@@ -219,7 +225,6 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                 }
                 else {
                     Log.i( "CONVERSION ERROR", "=======================================");
-                    // todo log to some central bug tracking service
                 }
             }
         });
@@ -245,6 +250,23 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         searchView = (SearchView) search.getActionView();
         search(searchView);
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.show_lateral_menu:
+//                drawerLayout.openDrawer(GravityCompat.START);
+//                return true;
+            case R.id.home:
+                Intent i = new Intent(this, MenuPrincipal.class);
+                startActivity(i);
+                return true;
+            case R.id.search:
+                searchView = (SearchView) item.getActionView();
+                search(searchView);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void search(SearchView searchView) {
@@ -305,31 +327,12 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         };
     }
 
-    public void tratarRespuesta(Map<Integer, ArrayList<Servicio>> respuesta) {
-        ArrayList<Servicio> aux = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            aux = respuesta.get(i);
-            for (Servicio s : aux) {
-                s.setTipo(i);
-                if (i == 0) {
-                    s.setImage(R.drawable.lodging);
-                } else if (i == 1) {
-                    s.setImage(R.drawable.donation);
-                } else if (i == 2) {
-                    s.setImage(R.drawable.education);
-                } else {
-                    s.setImage(R.drawable.job);
-                }
-            }
-            servicios.addAll(aux);
-        }
-        serviciosFiltrados = servicios;
-        refreshItems();
-    }
-
-    public void tratarResultadoPeticion(boolean result) {
+    public void tratarResultadoPeticion(boolean result, List<Servicio> respuesta) {
 
         if (result) {
+            servicios = respuesta;
+            serviciosFiltrados = servicios;
+            refreshItems();
 
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R
