@@ -40,7 +40,7 @@ public class ShowChat extends AppBaseActivity {
 
     private APIService mAPIService;
     private Chat chat;
-    private List<Message> messages;
+    private List<Message> messages = new ArrayList<>();
     private Message message;
     private MessagesAdapter mAdapter;
     private RecyclerView recyclerView;
@@ -57,8 +57,6 @@ public class ShowChat extends AppBaseActivity {
         chat = getIntent().getParcelableExtra("Chat");
         System.out.println(chat.toString());
 
-        sendGetMessagesChat();
-
         //TODO esto es de prueba
         //messages = new ArrayList<Message>();
 
@@ -70,9 +68,9 @@ public class ShowChat extends AppBaseActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-      
-        initializeData();
 
+        sendGetMessagesChat();
+        
         AppCompatButton btnSend = (AppCompatButton) findViewById(R.id.btnSendMessage);
         final EditText txtMessage = (EditText) findViewById(R.id.txtMessage);
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +152,9 @@ public class ShowChat extends AppBaseActivity {
                         if (response.isSuccessful()) {
                             System.out.println("dentro respuesta ok");
                             messages = response.body();
+                            initializeData();
+                            System.out.println("-------------------------------------------------");
+                            System.out.println(messages);
 
                         } else {
                     /*if (response.body() != null) {
