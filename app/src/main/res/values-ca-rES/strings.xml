@@ -164,6 +164,11 @@
     <string name="editar_empleo">Editar feina:</string>
     <string name="editar_curso">Editar curs educatiu:</string>
 
+    <string name="searchService">Cercar serveis</string>
+    <string name="no_permission">L\'aplicació no te permissos d\'ubicació</string>
+    <string name="myLocation"></string>
+
+
     <string-array name="clic_servicio">
         <item>Editar</item>
         <item>Eliminar</item>
@@ -222,6 +227,9 @@
     <string name="listChat">Llistar Chats</string>
     <string name="showChat">Mostrar Chat</string>
     <string name="editProfile">Editar Perfil</string>
+    <string name="myLocation_maps">La meva ubicació</string>
+    <string name="noLocation">No podem determinar la teva ubicació, prova-ho més tard</string>
+    <string name="serviceLocation">Ubicació servei:</string>
 
 
 </resources>

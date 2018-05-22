@@ -227,6 +227,8 @@
     <string name="editar_empleo">Editar job offer:</string>
     <string name="editar_curso">Edit educative curs:</string>
 
+    <string name="searchService">Search services</string>
+    <string name="no_permission">The aplication does not have the location permission</string>
 
     <string-array name="lista_usuarios">
         <item>Refugee</item>
@@ -417,7 +419,10 @@
     <string name="listChat">List Chats</string>
     <string name="showChat">Show Chat</string>
     <string name="editProfile">Edit Profile</string>
-
+    <string name="title_activity_buscar_servicio">BuscarServicio</string>
+    <string name="myLocation_maps">My location</string>
+    <string name="noLocation">We can not determine your location, try again later</string>
+    <string name="serviceLocation">Service location:</string>
 
 
 </resources>
