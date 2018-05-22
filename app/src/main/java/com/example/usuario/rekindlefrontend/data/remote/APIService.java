@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
 
+
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
@@ -11,6 +12,17 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
+
+import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+
 
 import java.util.ArrayList;
 
@@ -161,4 +173,17 @@ public interface APIService {
     @POST("/usuarios/{mail}/chats/{idChat}/messages")
     Call<Void> sendMessage(@Path("mail") String mail, @Path("idChat") int idChat, @Body Message
             message);
+
+
+    //LLAMADAS RELACIONADAS CON REPORTES
+
+    @POST("/reportes")
+    Call<Void> createReport(@Body Report report);
+
+    @GET("/reportes")
+    Call<ArrayList<Report>> getReports();
+
+    @GET("/reportes/{id}")
+    Call<Report> getReport(@Path("id") int id);
+
 }

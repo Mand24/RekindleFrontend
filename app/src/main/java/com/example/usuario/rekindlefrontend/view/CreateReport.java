@@ -64,6 +64,7 @@ public class CreateReport extends AppCompatActivity {
     }
 
     public void createReport(){
+        //TODO Pasar usuario reportado
         Usuario user = getUser(getApplicationContext());
         report = new Report (user, , motive.getText().toString());
     }
