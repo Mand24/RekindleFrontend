@@ -113,8 +113,8 @@ public class ShowChat extends AppBaseActivity {
                         System.out.println("pushermessage"+ message.toString());
                         mAdapter.addMessage(message);
 
-                        /*// have the ListView scroll down to the new message
-                        messagesView.setSelection(messageAdapter.getCount() - 1);*/
+                        // have the ListView scroll down to the new message
+                        recyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
                     }
 
                 });
