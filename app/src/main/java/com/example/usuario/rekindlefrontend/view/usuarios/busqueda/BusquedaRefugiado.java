@@ -252,7 +252,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
     }
 
     @Override
-    protected void gotoInicio() {
+    protected void gotoLaunch() {
         Intent i = new Intent(this, Login.class);
         startActivity(i);
     }

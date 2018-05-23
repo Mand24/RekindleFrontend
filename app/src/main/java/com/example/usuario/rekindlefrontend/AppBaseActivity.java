@@ -6,16 +6,12 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,9 +41,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
             // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
     protected Toolbar mToolbar;
-    private TextView nombreUsuario;
-    private TextView emailUsuario;
-    private ImageView photoUser;
+    private TextView userName;
+    private TextView userEmail;
+    private ImageView userPhoto;
     private ActionBarDrawerToggle drawerToggle;
 
     @Override
@@ -68,9 +64,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         drawerToggle = setupDrawerToggle();
         drawerLayout.addDrawerListener(drawerToggle);
 
-        nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
-        emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
-        photoUser = (ImageView) headerView.findViewById(R.id.profile_image);
+        userName = (TextView) headerView.findViewById(R.id.nombre_header);
+        userEmail = (TextView) headerView.findViewById(R.id.email_header);
+        userPhoto = (ImageView) headerView.findViewById(R.id.profile_image);
 
        /* SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
        (getApplicationContext());
@@ -78,15 +74,15 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);*/
 
-        Usuario usuario = getUser(this);
+        Usuario user = getUser(this);
 
-        nombreUsuario.setText(usuario.getName() + " " + usuario.getSurname1());
-        emailUsuario.setText(usuario.getMail());
+        userName.setText(user.getName() + " " + user.getSurname1());
+        userEmail.setText(user.getMail());
 
-        if(usuario.getPhoto() != null) {
-            photoUser.setImageBitmap(usuario.getDecodedPhoto());
+        if(user.getPhoto() != null) {
+            userPhoto.setImageBitmap(user.getDecodedPhoto());
         }else{
-            photoUser.setImageResource(R.drawable.ic_usuario);
+            userPhoto.setImageResource(R.drawable.ic_usuario);
         }
 
 
@@ -135,6 +131,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                     case R.id.cerrar_sesion:
                         openDialog();
                         break;
+                    default:
+                        break;
                 }
                 return true;
 
@@ -163,6 +161,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     private void openDialog() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
+                //TODO pasar todos estos a Strings
                 .setTitle("Logout")
                 .setMessage("Are you sure you want to log out?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -179,7 +178,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
                                 .LENGTH_SHORT)
                                 .show();
-                        gotoInicio();
+                        gotoLaunch();
                     }
 
                 })
@@ -187,7 +186,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 .show();
     }
 
-    protected abstract void gotoInicio();
+    protected abstract void gotoLaunch();
 
 
     @Override

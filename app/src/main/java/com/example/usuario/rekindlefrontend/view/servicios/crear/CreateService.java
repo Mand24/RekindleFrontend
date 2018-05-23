@@ -4,19 +4,17 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 
 import java.util.HashMap;
 
-public class CrearServicio extends AppBaseActivity {
+public class CreateService extends AppBaseActivity {
 
-    HashMap<String, Fragment> tiposFormulario;
+    HashMap<String, Fragment> formTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +23,25 @@ public class CrearServicio extends AppBaseActivity {
 
         getSupportActionBar().setTitle(R.string.crear_servicio);
 
-        tiposFormulario = new HashMap<>();
+        formTypes = new HashMap<>();
 
-        tiposFormulario.put("Lodge", new FormularioAlojamiento());
+        formTypes.put("Lodge", new FormularioAlojamiento());
 
-        tiposFormulario.put("Donation", new FormularioDonacion());
+        formTypes.put("Donation", new FormularioDonacion());
 
-        tiposFormulario.put("Education", new FormularioCursoEducativo());
+        formTypes.put("Education", new FormularioCursoEducativo());
 
-        tiposFormulario.put("Job", new FormularioOfertaEmpleo());
+        formTypes.put("Job", new FormularioOfertaEmpleo());
 
         menu("Lodge");
 
     }
 
-    public void menu(String tipo_servicio){
+    public void menu(String serviceType){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.formulario_servicio, tiposFormulario.get(tipo_servicio));
+        transaction.replace(R.id.formulario_servicio, formTypes.get(serviceType));
         transaction.commit();
     }
 
@@ -53,7 +51,7 @@ public class CrearServicio extends AppBaseActivity {
     }
 
     @Override
-    protected void gotoInicio() {
+    protected void gotoLaunch() {
         Intent i = new Intent(this, Login.class);
         startActivity(i);
     }

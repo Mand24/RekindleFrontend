@@ -16,7 +16,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.crear.CreateService;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -34,8 +34,8 @@ import org.junit.runner.RunWith;
 public class EspressoCrearServiceEducation {
 
     @Rule
-    public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>
-            (CrearServicio.class);
+    public ActivityTestRule<CreateService> pantalla = new ActivityTestRule<CreateService>
+            (CreateService.class);
 
     @BeforeClass
     public static void setup(){

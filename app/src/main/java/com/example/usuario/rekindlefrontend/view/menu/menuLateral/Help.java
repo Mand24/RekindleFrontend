@@ -41,7 +41,7 @@ public class Help extends AppBaseActivity {
     }
 
     @Override
-    protected void gotoInicio() {
+    protected void gotoLaunch() {
         Intent i = new Intent(Help.this, Login.class);
         startActivity(i);
     }

@@ -7,11 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.crear.CreateService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,7 +51,7 @@ public class EleccionTipoServicio extends Fragment {
                 public void onClick(View v) {
 
                     Activity actividad = getActivity();
-                    ((CrearServicio)actividad).menu(key);
+                    ((CreateService)actividad).menu(key);
                 }
             });
         }

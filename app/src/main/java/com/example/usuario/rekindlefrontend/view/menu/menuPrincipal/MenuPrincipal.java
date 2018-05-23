@@ -63,7 +63,7 @@ public class MenuPrincipal extends AppBaseActivity {
     }
 
     @Override
-    protected void gotoInicio() {
+    protected void gotoLaunch() {
         Intent i = new Intent(MenuPrincipal.this, Login.class);
         startActivity(i);
     }

@@ -122,7 +122,7 @@ public class Ajustes extends AppBaseActivity {
     }
 
     @Override
-    protected void gotoInicio() {
+    protected void gotoLaunch() {
         Intent i = new Intent(Ajustes.this, Login.class);
         startActivity(i);
     }

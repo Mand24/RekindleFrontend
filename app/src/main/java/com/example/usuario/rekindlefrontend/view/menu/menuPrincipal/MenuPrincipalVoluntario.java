@@ -8,10 +8,9 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.crear.CreateService;
 import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
 import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosVoluntario;
 
@@ -53,7 +52,7 @@ public class MenuPrincipalVoluntario extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), CrearServicio.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), CreateService.class);
                 startActivity(i);
             }
         });

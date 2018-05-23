@@ -40,7 +40,7 @@ public class About extends AppBaseActivity {
     }
 
     @Override
-    protected void gotoInicio() {
+    protected void gotoLaunch() {
         Intent i = new Intent(About.this, Login.class);
         startActivity(i);
     }
