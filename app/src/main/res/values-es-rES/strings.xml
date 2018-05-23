@@ -144,7 +144,7 @@
     <string name="sueldo_obligatorio">Salario obligatorio</string>
     <string name="sueldo_formto">Formato del salario incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
     <string name="plazas_numeros">Plazas sólo puede contener números</string>
-    <string name="plazas_largo">El número de places es demasiado largo, máximo 5 dígitos</string>
+    <string name="plazas_largo">El número de placesLimit es demasiado largo, máximo 5 dígitos</string>
     <string name="ambito_obligatorio">Ámbito obligatorio</string>
     <string name="ambito_largo">La descripción del ámbito es demasiado larga, máximo 50 caracteres</string>
     <string name="horario_obligatorio">Horario obligatorio</string>
@@ -180,7 +180,7 @@
     <string name="searchService">Buscar services</string>
     <string name="no_permission">La aplicación no tiene permisos de ubicación</string>
 
-    <string name="plazas_aumento">No es posible disminuir el número de places/solicitudes, solo se
+    <string name="plazas_aumento">No es posible disminuir el número de placesLimit/solicitudes, solo se
         puede incrementar</string>
 
     <string name="title_about">Sobre Rekindle App</string>

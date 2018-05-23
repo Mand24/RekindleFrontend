@@ -12,7 +12,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 
 import org.junit.AfterClass;

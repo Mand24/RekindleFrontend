@@ -13,21 +13,21 @@ public class Education extends Service {
     @SerializedName("schedule")
     @Expose
     private String schedule;
-    @SerializedName("places")
+    @SerializedName("placesLimit")
     @Expose
-    private String places;
+    private String placesLimit;
     @SerializedName("price")
     @Expose
     private String price;
 
     public Education(int id, String email, String name, String description, String adress,
-            String ambit, String requirements, String schedule, String places, String price,
+            String ambit, String requirements, String schedule, String placesLimit, String price,
             String phoneNumber) {
         super(id, "Education", email, name, description, adress, phoneNumber);
         this.ambit = ambit;
         this.requirements = requirements;
         this.schedule = schedule;
-        this.places = places;
+        this.placesLimit = placesLimit;
         this.price = price;
     }
 
@@ -55,12 +55,12 @@ public class Education extends Service {
         this.schedule = schedule;
     }
 
-    public String getPlaces() {
-        return places;
+    public String getPlacesLimit() {
+        return placesLimit;
     }
 
-    public void setPlaces(String places) {
-        this.places = places;
+    public void setPlacesLimit(String placesLimit) {
+        this.placesLimit = placesLimit;
     }
 
     public String getPrice() {
@@ -84,7 +84,7 @@ public class Education extends Service {
                 ", ambit='" + ambit + '\'' +
                 ", requirements='" + requirements + '\'' +
                 ", schedule='" + schedule + '\'' +
-                ", places='" + places + '\'' +
+                ", placesLimit='" + placesLimit + '\'' +
                 ", price='" + price + '\'' +
                 '}';
     }

@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -121,10 +121,10 @@ public class DonationForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eName.getText().toString());
-        checkTelefonoServicio(ePhoneNumber.getText().toString());
-        checkSolicitudesServicio(ePlacesLimit.getText().toString());
-        checkDescripcionServicio(eDescription.getText().toString());
+        checkServiceName(eName.getText().toString());
+        checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        checkServicePlaces(ePlacesLimit.getText().toString());
+        checkServiceDescription(eDescription.getText().toString());
 
     }
 

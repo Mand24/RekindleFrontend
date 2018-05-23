@@ -15,7 +15,7 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.services.edit.ServiceEdit;
 
 import org.junit.AfterClass;

@@ -16,7 +16,7 @@ import android.widget.Filterable;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ChatsAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;

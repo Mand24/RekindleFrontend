@@ -14,7 +14,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.RefugiadosAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;

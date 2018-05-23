@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -112,21 +112,21 @@ public class EducationEdit extends AbstractFormatChecker {
         eAmbit.setText(servicio.getAmbit());
         eRequirements.setText(servicio.getRequirements());
         eSchedule.setText(servicio.getSchedule());
-        ePlacesLimit.setText(servicio.getPlaces());
+        ePlacesLimit.setText(servicio.getPlacesLimit());
         ePrice.setText(servicio.getPrice());
         eDescription.setText (servicio.getDescription());
     }
 
     public void checkFields() throws Exception {
 
-        checkNombreServicio(eName.getText().toString());
-        checkTelefonoServicio(ePhoneNumber.getText().toString());
-        checkAmbitoCursoEducativo(eAmbit.getText().toString());
-        checkRequisitosServicio(eRequirements.getText().toString());
-        checkHorarioCursoEducativo(eSchedule.getText().toString());
-        checkPlazasServicio(ePlacesLimit.getText().toString());
-        checkPlazasAumento(ePlacesLimit.getText().toString(), servicio.getPlaces());
-        checkDescripcionServicio(eDescription.getText().toString());
+        checkServiceName(eName.getText().toString());
+        checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        checkServiceAmbit(eAmbit.getText().toString());
+        checkServiceRequirements(eRequirements.getText().toString());
+        checkServiceSchedule(eSchedule.getText().toString());
+        checkServicePlaces(ePlacesLimit.getText().toString());
+        checkServiceIncreasePlaces(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
+        checkServiceDescription(eDescription.getText().toString());
     }
 
     public void getParams() {

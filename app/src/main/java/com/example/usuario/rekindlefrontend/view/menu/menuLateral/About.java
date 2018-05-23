@@ -3,8 +3,8 @@ package com.example.usuario.rekindlefrontend.view.menu.menuLateral;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 /**

@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Lodge extends Service {
-    @SerializedName("places")
+    @SerializedName("placesLimit")
     @Expose
     private String placesLimit;
     @SerializedName("dateLimit")

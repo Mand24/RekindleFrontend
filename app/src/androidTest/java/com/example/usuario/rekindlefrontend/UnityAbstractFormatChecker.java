@@ -4,46 +4,46 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
-
+import com.example.user.rekindlefrontend.R;
 import org.junit.Test;
 
 public class UnityAbstractFormatChecker extends AbstractFormatChecker{
 
     @Test
     public void check_letras () {
-        assertFalse (letras ("as34"));
-        assertFalse (letras ("cfdh%&"));
-        assertTrue  (letras ("letras"));
+        assertFalse (letters("as34"));
+        assertFalse (letters("cfdh%&"));
+        assertTrue  (letters("letters"));
     }
 
     @Test
     public void check_numeros () {
-        assertFalse (numeros ("as34"));
-        assertFalse (numeros ("123%&"));
-        assertTrue  (numeros ("1234"));
+        assertFalse (numbers("as34"));
+        assertFalse (numbers("123%&"));
+        assertTrue  (numbers("1234"));
     }
 
     @Test
     public void check_preuFormato () {
-        assertTrue (preuFormat ("12,34"));
-        assertFalse (preuFormat ("12,345"));
-        assertTrue  (preuFormat ("12.34"));
-        assertTrue  (preuFormat ("1234"));
+        assertTrue (priceFormat("12,34"));
+        assertFalse (priceFormat("12,345"));
+        assertTrue  (priceFormat("12.34"));
+        assertTrue  (priceFormat("1234"));
     }
 
     @Test (expected = java.lang.Exception.class)
     public void testNombre_obli () throws Exception {
-        checkNombre ("");
+        checkName("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void testNombre_largo () throws Exception {
-        checkNombre ("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        checkName("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void testNombre_letras () throws Exception {
-        checkNombre ("dscbh46");
+        checkName("dscbh46");
     }
 
     @Test (expected = java.lang.Exception.class)
@@ -85,113 +85,113 @@ public class UnityAbstractFormatChecker extends AbstractFormatChecker{
 
     @Test (expected = java.lang.Exception.class)
     public void apellido1_obli () throws Exception {
-        checkPrimer_apellido ("");
+        checkSurname1("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void apellido1_largo () throws Exception {
-        checkPrimer_apellido("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkSurname1("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void apellido1_letras () throws Exception {
-        checkPrimer_apellido ("12134");
+        checkSurname1("12134");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void apellido2_largo () throws Exception {
-        checkSegundo_apellido ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkSurname2("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void apellido2_letras () throws Exception {
-        checkSegundo_apellido ("aaa23224a");
+        checkSurname2("aaa23224a");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void telefono_numeros () throws Exception {
-        checkTelefono ("dcfsd");
+        checkPhoneNumber("dcfsd");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void telefono_largo () throws Exception {
-        checkTelefono ("123456789123456789123456789123456789123456789");
+        checkPhoneNumber("123456789123456789123456789123456789123456789");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void procedencia_letras () throws Exception {
-        checkProcedencia ("1234dsv");
+        checkCountry("1234dsv");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void procedencia_largo () throws Exception {
-        checkProcedencia ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkCountry("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void pueblo_largo () throws Exception {
-        checkPueblo
+        checkTown
                 ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssss");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void pueblo_letras () throws Exception {
-        checkPueblo ("dcsfvf34v");
+        checkTown("dcsfvf34v");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void etnia_largo () throws Exception{
-        checkEtnia ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkEthnic("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void etnia_letras () throws Exception{
-        checkEtnia ("a12aaaaaaa");
+        checkEthnic("a12aaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void nombreServioio_obli () throws Exception {
-        checkNombreServicio ("");
+        checkServiceName("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void nombreServioio_letras () throws Exception {
-        checkNombreServicio ("cdsv234");
+        checkServiceName("cdsv234");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void nombreServioio_largo () throws Exception {
-        checkNombreServicio ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkServiceName("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void telefonoServicio_obli () throws Exception {
-        checkTelefonoServicio ("");
+        checkServicePhoneNumber("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void telefonoServicio_nuemeros () throws Exception {
-        checkTelefonoServicio ("asf234r");
+        checkServicePhoneNumber("asf234r");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void telefonoServicio_largo () throws Exception {
-        checkTelefonoServicio ("123456789123456789123456789123456789123456789");
+        checkServicePhoneNumber("123456789123456789123456789123456789123456789");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void solicitudes_numeros () throws Exception {
-        checkSolicitudesServicio ("ascdcd");
+        checkServicePlaces("ascdcd");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void descripcion_obli () throws Exception {
-        checkDescripcionServicio ("");
+        checkServiceDescription("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void descripcion_larga () throws Exception {
-        checkDescripcionServicio ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        checkServiceDescription("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -199,57 +199,57 @@ public class UnityAbstractFormatChecker extends AbstractFormatChecker{
 
     @Test (expected = java.lang.Exception.class)
     public void puesto_obli () throws Exception {
-        checkPuestoOfertaEmpleo ("");
+        checkServiceCharge("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void puesto_largo () throws Exception {
-        checkPuestoOfertaEmpleo ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkServiceCharge("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void requisitos_obli () throws Exception {
-        checkRequisitosServicio ("");
+        checkServiceRequirements("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void requisitos_largo () throws Exception {
-        checkRequisitosServicio ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        checkServiceRequirements("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void sueldo_obli () throws Exception  {
-        checkSueldoOfertaEmpleo ("");
+        checkServiceSalary("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void sueldo_formato () throws Exception  {
-        checkSueldoOfertaEmpleo ("23.2324");
+        checkServiceSalary("23.2324");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void plazas_numeros () throws Exception {
-        checkPlazasServicio ("dffvs");
+        checkServicePlaces ("dffvs");
     }
 
     @Test(expected = java.lang.Exception.class)
     public void plazas_largo () throws Exception {
-        checkPlazasServicio ("12345678");
+        checkServicePlaces ("12345678");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void ambito_obli () throws Exception {
-        checkAmbitoCursoEducativo ("");
+        checkServiceAmbit("");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void ambito_largo () throws Exception {
-        checkAmbitoCursoEducativo ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        checkServiceAmbit("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     @Test (expected = java.lang.Exception.class)
     public void precio_formato () throws Exception {
-        checkPrice ("12.2345");
+        checkServicePrice("12.2345");
     }
 }

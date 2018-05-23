@@ -22,7 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -216,14 +216,14 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
     public void checkCampos(View view) throws Exception {
 
-        checkNombre(eNombre.getText().toString());
-        checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        checkSegundo_apellido(eSegundo_apellido.getText().toString());
-        checkTelefono(eTelefono.getText().toString());
-        checkProcedencia(eProcedencia.getText().toString());
-        checkPueblo(ePueblo.getText().toString());
-        checkEtnia(eEtnia.getText().toString());
-        checkBiografia(eBiografia.getText().toString());
+        checkName(eNombre.getText().toString());
+        checkSurname1(ePrimer_apellido.getText().toString());
+        checkSurname2(eSegundo_apellido.getText().toString());
+        checkPhoneNumber(eTelefono.getText().toString());
+        checkCountry(eProcedencia.getText().toString());
+        checkTown(ePueblo.getText().toString());
+        checkEthnic(eEtnia.getText().toString());
+        checkBiography(eBiografia.getText().toString());
     }
 
     public void obtenerCampos() {

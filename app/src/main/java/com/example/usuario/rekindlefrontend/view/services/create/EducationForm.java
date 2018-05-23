@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -120,13 +120,13 @@ public class EducationForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eName.getText().toString());
-        checkTelefonoServicio(ePhoneNumber.getText().toString());
-        checkAmbitoCursoEducativo(eAmbit.getText().toString());
-        checkRequisitosServicio(eRequirements.getText().toString());
-        checkHorarioCursoEducativo(eSchedule.getText().toString());
-        checkPlazasServicio(ePlacesLimit.getText().toString());
-        checkDescripcionServicio(eDescription.getText().toString());
+        checkServiceName(eName.getText().toString());
+        checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        checkServiceAmbit(eAmbit.getText().toString());
+        checkServiceRequirements(eRequirements.getText().toString());
+        checkServiceSchedule(eSchedule.getText().toString());
+        checkServicePlaces(ePlacesLimit.getText().toString());
+        checkServiceDescription(eDescription.getText().toString());
 
     }
 

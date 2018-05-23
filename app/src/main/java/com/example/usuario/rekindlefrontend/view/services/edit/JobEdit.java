@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -123,20 +123,20 @@ public class JobEdit extends AbstractFormatChecker {
         eContractDuration.setText(servicio.getContractDuration());
         eSalary.setText(servicio.getSalary());
         eCharge.setText(servicio.getCharge());
-        ePlacesLimit.setText(servicio.getPlaces());
+        ePlacesLimit.setText(servicio.getPlacesLimit());
         eDescription.setText (servicio.getDescription());
     }
 
     public void checkFields() throws Exception {
 
-        checkNombreServicio(eName.getText().toString());
-        checkTelefonoServicio(ePhoneNumber.getText().toString());
-        checkPuestoOfertaEmpleo(eCharge.getText().toString());
-        checkRequisitosServicio(eRequirements.getText().toString());
-        checkSueldoOfertaEmpleo(eSalary.getText().toString());
-        checkPlazasServicio(ePlacesLimit.getText().toString());
-        checkPlazasAumento(ePlacesLimit.getText().toString(), servicio.getPlaces());
-        checkDescripcionServicio(eDescription.getText().toString());
+        checkServiceName(eName.getText().toString());
+        checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        checkServiceCharge(eCharge.getText().toString());
+        checkServiceRequirements(eRequirements.getText().toString());
+        checkServiceSalary(eSalary.getText().toString());
+        checkServicePlaces(ePlacesLimit.getText().toString());
+        checkServiceIncreasePlaces(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
+        checkServiceDescription(eDescription.getText().toString());
     }
 
     public void getParams() {

@@ -19,23 +19,23 @@ public class Job extends Service {
     @SerializedName("contractDuration")
     @Expose
     public String contractDuration;
-    @SerializedName("places")
+    @SerializedName("placesLimit")
     @Expose
-    public String places;
+    public String placesLimit;
     @SerializedName("salary")
     @Expose
     public String salary;
 
     public Job(int id, String email, String name, String description, String adress, String charge,
             String requirements, String hoursDay, String hoursWeek, String contractDuration, String
-            places, String salary, String phoneNumber) {
+            placesLimit, String salary, String phoneNumber) {
         super(id, "Job", email, name, description, adress, phoneNumber);
         this.charge = charge;
         this.requirements = requirements;
         this.hoursDay = hoursDay;
         this.hoursWeek = hoursWeek;
         this.contractDuration = contractDuration;
-        this.places = places;
+        this.placesLimit = placesLimit;
         this.salary = salary;
     }
 
@@ -79,12 +79,12 @@ public class Job extends Service {
         this.contractDuration = contractDuration;
     }
 
-    public String getPlaces() {
-        return places;
+    public String getPlacesLimit() {
+        return placesLimit;
     }
 
-    public void setPlaces(String places) {
-        this.places = places;
+    public void setPlacesLimit(String placesLimit) {
+        this.placesLimit = placesLimit;
     }
 
     public String getSalary() {
@@ -110,7 +110,7 @@ public class Job extends Service {
                 ", hoursDay='" + hoursDay + '\'' +
                 ", hoursWeek='" + hoursWeek + '\'' +
                 ", contractDuration='" + contractDuration + '\'' +
-                ", places='" + places + '\'' +
+                ", placesLimit='" + placesLimit + '\'' +
                 ", salary='" + salary + '\'' +
                 '}';
     }

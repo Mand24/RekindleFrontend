@@ -24,6 +24,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.rekindlefrontend.R;
+
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;

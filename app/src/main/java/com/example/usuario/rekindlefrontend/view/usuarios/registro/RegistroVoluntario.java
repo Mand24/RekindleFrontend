@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -89,12 +89,12 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     public void checkCampos(View view) throws Exception {
 
-        checkNombre(eNombre.getText().toString());
+        checkName(eNombre.getText().toString());
         checkEmail(eEmail.getText().toString());
         checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
                 ());
-        checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        checkSegundo_apellido(eSegundo_apellido.getText().toString());
+        checkSurname1(ePrimer_apellido.getText().toString());
+        checkSurname2(eSegundo_apellido.getText().toString());
 
     }
 

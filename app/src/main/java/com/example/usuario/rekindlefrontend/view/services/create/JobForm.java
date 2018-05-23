@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -125,16 +125,16 @@ public class JobForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eName.getText().toString());
-        checkTelefonoServicio(ePhoneNumber.getText().toString());
-        checkPuestoOfertaEmpleo(eCharge.getText().toString());
-        checkRequisitosServicio(eRequirements.getText().toString());
-        checkJornadaOfertaEmpleo(eHoursDay.getText().toString());
-        checkHorasOfertaEmpleo(eHoursWeek.getText().toString());
-        checkDuracionOfertaEmpleo(eContractDuration.getText().toString());
-        checkSueldoOfertaEmpleo(eSalary.getText().toString());
-        checkPlazasServicio(ePlacesLimit.getText().toString());
-        checkDescripcionServicio(eDescription.getText().toString());
+        checkServiceName(eName.getText().toString());
+        checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        checkServiceCharge(eCharge.getText().toString());
+        checkServiceRequirements(eRequirements.getText().toString());
+        checkServiceHoursDay(eHoursDay.getText().toString());
+        checkServiceHoursWeek(eHoursWeek.getText().toString());
+        checkServiceContractDuration(eContractDuration.getText().toString());
+        checkServiceSalary(eSalary.getText().toString());
+        checkServicePlaces(ePlacesLimit.getText().toString());
+        checkServiceDescription(eDescription.getText().toString());
 
     }
 

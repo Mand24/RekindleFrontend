@@ -34,7 +34,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.not;
-
+import com.example.user.rekindlefrontend.R;
 
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.CambiarPassword;
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;

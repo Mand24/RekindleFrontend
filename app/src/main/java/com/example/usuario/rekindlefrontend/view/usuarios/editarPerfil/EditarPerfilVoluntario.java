@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -146,9 +146,9 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     public void checkCampos(View view) throws Exception {
 
-        checkNombre(eNombre.getText().toString());;
-        checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        checkSegundo_apellido(eSegundo_apellido.getText().toString());
+        checkName(eNombre.getText().toString());;
+        checkSurname1(ePrimer_apellido.getText().toString());
+        checkSurname2(eSegundo_apellido.getText().toString());
 
     }
 

@@ -10,7 +10,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.R;
+import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -156,12 +156,12 @@ public class BusquedaRefugiado extends AppBaseActivity{
 
     /*public void checkFields(View view) throws Exception {
 
-        checkNombre(eNombre.getText().toString());
-        checkPrimer_apellido(ePrimer_apellido.getText().toString());
-        checkSegundo_apellido(eSegundo_apellido.getText().toString());
-        checkProcedencia(eProcedencia.getText().toString());
-        checkPueblo(ePueblo.getText().toString());
-        checkEtnia(eEtnia.getText().toString());
+        checkName(eNombre.getText().toString());
+        checkSurname1(ePrimer_apellido.getText().toString());
+        checkSurname2(eSegundo_apellido.getText().toString());
+        checkCountry(eProcedencia.getText().toString());
+        checkTown(ePueblo.getText().toString());
+        checkEthnic(eEtnia.getText().toString());
     }*/
 
     public void sendBuscarRefugiados() {
