@@ -24,13 +24,16 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.pusher.client.Pusher;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -102,7 +105,11 @@ public class ShowChat extends AppBaseActivity {
                     @Override
                     public void run() {
                         Gson gson = new Gson();
-                        Message message = gson.fromJson(data, Message.class);
+                        Type mapType = new TypeToken<Map<String, Message>>(){}.getType();
+//                        Map<String, String[]> son = new Gson().fromJson(easyString, mapType);
+                        Map<String,Message> map = gson.fromJson(data, mapType);
+                        Message message = map.get("message");
+                        System.out.println("data"+data);
                         System.out.println("pushermessage"+ message.toString());
                         mAdapter.addMessage(message);
 
