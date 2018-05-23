@@ -36,40 +36,44 @@ import java.util.List;
 
 public class SearchService extends AppCompatActivity implements OnMapReadyCallback {
 
-    private Refugiado refugiado = new Refugiado ("refugiado@gmail.com", "pass1234",
-            "refugiadoName", "refugiadoSurname","refugadioSecondSurname", null,  "123456789",
-            "12-09-2018","Male","Barcelona","cabrils","ethinc","+A","","");
+    private Refugiado refugiado = new Refugiado("refugiado@gmail.com", "pass1234",
+            "refugiadoName", "refugiadoSurname", "refugadioSecondSurname", null, "123456789",
+            "12-09-2018", "Male", "Barcelona", "cabrils", "ethinc", "+A", "", "");
 
     private Education ser0 = new Education(0, "voluntario@gmail.com",
-            "cursoEducativo", "descr", "Passatge Passalaigua, 14, 08348 Cabrils, Barcelona", "ambito", "requisits", "horario", "plazas", "123,2", "12");
+            "cursoEducativo", "descr", "Passatge Passalaigua, 14, 08348 Cabrils, Barcelona",
+            "ambito", "requisits", "horario", "plazas", "123,2", "12");
     private Lodge ser1 = new Lodge(1, "voluntario@gmail.com", "alojamiento",
-            "desc", "Carrer Infern d'en Parera, 2, 08348 Cabrils, Barcelona", "12","12-03-2018", "1234");
+            "desc", "Carrer Infern d'en Parera, 2, 08348 Cabrils, Barcelona", "12", "12-03-2018",
+            "1234");
     private Job ser2 = new Job(2, "voluntario@gmail.com", "empleo", "desc",
-            "Carrer Bellesguard, 23-7, 08348 Cabrils, Barcelona", "charge", "requi", "hoursDay", "12", "50", "120", "1200", "2345");
+            "Carrer Bellesguard, 23-7, 08348 Cabrils, Barcelona", "charge", "requi", "hoursDay",
+            "12", "50", "120", "1200", "2345");
     private Donation ser3 = new Donation(3, "voluntario@gmail.com", "donacion",
-            "desc", "Carrer Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona", "123", "12:00", "13:00", "123445");
+            "desc", "Carrer Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona", "123", "12:00",
+            "13:00", "123445");
 
-    private ArrayList <Service> mServices = new ArrayList <Service> ();
+    private ArrayList<Service> mServices = new ArrayList<Service>();
 
     private MapFragment mapFragment;
-    private GoogleMap   map;
+    private GoogleMap map;
 
     private LocationManager locationManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
-        mServices.add (ser0);
-        mServices.add (ser1);
-        mServices.add (ser2);
-        mServices.add (ser3);
+        mServices.add(ser0);
+        mServices.add(ser1);
+        mServices.add(ser2);
+        mServices.add(ser3);
 
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_buscar_servicio);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_buscar_servicio);
 
-        mapFragment = (MapFragment) getFragmentManager ().findFragmentById (R.id.google_mapView_buscarServicio);
-        mapFragment.getMapAsync (this);
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(
+                R.id.google_mapView_buscarServicio);
+        mapFragment.getMapAsync(this);
 
     }
 
@@ -78,32 +82,31 @@ public class SearchService extends AppCompatActivity implements OnMapReadyCallba
 
         map = googleMap;
 
-        NetworkInfo network = getNetworkInfo ();
+        NetworkInfo network = getNetworkInfo();
 
-        if (network != null && network.isConnectedOrConnecting ()) {
+        if (network != null && network.isConnectedOrConnecting()) {
             try {
 
-                setServicies();
+                setServices();
                 setMyPosition();
 
             } catch (Exception e) // connected but no internet (login required, for exemple)
             {
-                Toast.makeText(getApplicationContext (), getString(R.string
+                Toast.makeText(getApplicationContext(), getString(R.string
                         .nointernet), Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(getApplicationContext (), getString (R.string.nomap),
+            Toast.makeText(getApplicationContext(), getString(R.string.nomap),
                     Toast.LENGTH_LONG).show();
         }
     }
 
-    public void setMyPosition()
-    {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(getApplicationContext (), getString(R.string.no_permission), Toast
+    public void setMyPosition() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplicationContext(), getString(R.string.no_permission), Toast
                     .LENGTH_LONG).show();
-        }
-        else {
+        } else {
             try {
                 locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 Location myLocation = locationManager.getLastKnownLocation(
@@ -115,27 +118,25 @@ public class SearchService extends AppCompatActivity implements OnMapReadyCallba
                         (getString(R.string.myLocation_maps)));
 
                 // set : location
-                CameraUpdate camera = CameraUpdateFactory.newLatLngZoom (userLocation, 9);
+                CameraUpdate camera = CameraUpdateFactory.newLatLngZoom(userLocation, 9);
 
                 //  move camera
-                map.animateCamera (camera);
+                map.animateCamera(camera);
 
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext (), getString(R.string.noLocation), Toast
+                Toast.makeText(getApplicationContext(), getString(R.string.noLocation), Toast
                         .LENGTH_LONG).show();
             }
         }
     }
 
-    public void setServicies ()
-    {
+    public void setServices() {
         for (Service s : mServices) {
             setMarkerService(s.getAdress(), map, s.getName());
         }
     }
 
-    public NetworkInfo getNetworkInfo ()
-    {
+    public NetworkInfo getNetworkInfo() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context
                 .CONNECTIVITY_SERVICE);
         NetworkInfo network = cm.getActiveNetworkInfo();
@@ -143,18 +144,18 @@ public class SearchService extends AppCompatActivity implements OnMapReadyCallba
         return network;
     }
 
-    public void setMarkerService (String adress, GoogleMap
+    public void setMarkerService(String adress, GoogleMap
             mGoogleMap, String serviceName) {
 
         // set : coordenadas
-        LatLng coordenadas = getLocationFromAddress (getApplicationContext (),
+        LatLng coordinates = getLocationFromAddress(getApplicationContext(),
                 adress);
 
-        Marker myMarker = mGoogleMap.addMarker (new MarkerOptions().position (coordenadas).title
+        Marker myMarker = mGoogleMap.addMarker(new MarkerOptions().position(coordinates).title
                 (getString(R.string.serviceLocation) + " " + serviceName));
     }
 
-    public LatLng getLocationFromAddress(Context context,String strAddress) {
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
         List<Address> address;

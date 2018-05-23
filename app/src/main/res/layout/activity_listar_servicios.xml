@@ -31,7 +31,7 @@
 
         <fragment
             android:id="@+id/eleccion_tipo_servicio"
-            android:name="com.example.usuario.rekindlefrontend.view.services.EleccionTipoServicio"
+            android:name="com.example.usuario.rekindlefrontend.view.services.ServiceTypeSelector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
