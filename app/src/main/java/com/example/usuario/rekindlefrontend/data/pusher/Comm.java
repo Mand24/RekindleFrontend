@@ -16,14 +16,16 @@ import java.util.List;
 
 public class Comm {
 
+    public static final String PusherApiKey = "743a4fb4a1370f0ca9a4";
+    public static final String PusherCluster = "eu";
     private static Pusher pusher;
     private static Channel channel;
 
     public static void setUpPusher() {
 
         PusherOptions options = new PusherOptions();
-        options.setCluster("eu");
-        pusher = new Pusher("743a4fb4a1370f0ca9a4", options);
+        options.setCluster(PusherCluster);
+        pusher = new Pusher(PusherApiKey, options);
 
         channel = pusher.subscribe("my-channel");
 
