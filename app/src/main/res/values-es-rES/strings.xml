@@ -48,7 +48,7 @@
     <string name="inscribir">Inscribir</string>
     <string name="chat">Chat</string>
 
-    <string name="alojamiento">Alojamiento</string>
+    <string name="lodge">Alojamiento</string>
     <string name="donacion">Donación</string>
     <string name="formulario_donacion">Formulario Donacion:</string>
     <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
@@ -83,10 +83,10 @@
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registrado correctamente!</string>
     <string name="registro_fallido">La inscripción ha fallado!</string>
-    <string name="servicio_alojamiento_creado_correctamente">Servicio de alojamiento creado
+    <string name="servicio_alojamiento_creado_correctamente">Servicio de lodge creado
         correctamente!</string>
     <string name="servicio_alojamiento_fallido">Ha fallado la creación del servicio de
-        alojamiento!</string>
+        lodge!</string>
     <string name="curso_educativo_creado_correctamente">Curso educativo creado
         correctamente!</string>
     <string name="curso_educativo_fallido">Ha fallado la creación del curso educativo!</string>
@@ -172,7 +172,7 @@
     <string name="contraseña_fail">No se ha podido actualizar la contraseña</string>
     <string name="wrong_code">Código equivocaddo</string>
 
-    <string name="editar_alojamiento">Editar alojamiento:</string>
+    <string name="editar_alojamiento">Editar lodge:</string>
     <string name="editar_donacion">Editar donación:</string>
     <string name="editar_empleo">Editar empleo:</string>
     <string name="editar_curso">Editar curso educativo:</string>
