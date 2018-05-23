@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;

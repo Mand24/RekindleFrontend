@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;

@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
+import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;

@@ -87,7 +87,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
             public void onClick(View v) {
 
                 try {
-                    //checkCampos(view);
+                    //checkFields(view);
                     obtenerParametros();
                     /*boolean result = new AsyncTaskCall().execute().get();
                     manageRequestResult(result);
@@ -165,7 +165,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
         sOjosString = sOjos.getSelectedItem().toString();
     }
 
-    /*public void checkCampos(View view) throws Exception {
+    /*public void checkFields(View view) throws Exception {
 
         checkNombre(eNombre.getText().toString());
         checkPrimer_apellido(ePrimer_apellido.getText().toString());

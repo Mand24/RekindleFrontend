@@ -15,11 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.service.Education;
+import com.example.usuario.rekindlefrontend.data.entity.service.Job;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;

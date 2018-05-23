@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -43,21 +43,21 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormularioAlojamiento extends AbstractFormatChecker {
+public class LodgeForm extends AbstractFormatChecker {
 
-    private EditText eNombre;
-    private EditText eTelefono;
-    private EditText eDireccion;
-    private EditText eSolicitudes;
+    private EditText eName;
+    private EditText ePhoneNumber;
+    private EditText eAdress;
+    private EditText ePlacesLimit;
     private EditText eDeadline;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
-    private EditText eDescripcion;
+    private EditText eDescription;
     private Lodge mLodge;
     private APIService mAPIService;
 
-    public FormularioAlojamiento() {
+    public LodgeForm() {
         // Required empty public constructor
     }
 
@@ -69,7 +69,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         final View view = inflater.inflate(R.layout.fragment_formulario_alojamiento, container,
                 false);
 
-        setVistas(view);
+        setViews(view);
 
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_formulario_alojamiento);
@@ -78,24 +78,24 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             @Override
             public void onClick(View v) {
                 try {
-                    checkCampos(view);
-                    obtenerParametros();
+                    checkFields(view);
+                    getParams();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCrearAlojamiento();
+                sendCreateLodge();
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_alojamiento);
-        eDireccion.setOnClickListener(new View.OnClickListener() {
+        eAdress = view.findViewById(R.id.direccion_alojamiento);
+        eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-                }catch (GooglePlayServicesRepairableException e) {
+                } catch (GooglePlayServicesRepairableException e) {
                     // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
                     // TODO: Handle the error.
@@ -110,28 +110,28 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         return view;
     }
 
-    public void setVistas(View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_alojamiento);
-        eTelefono = view.findViewById(R.id.telefono_alojamiento);
-        eDireccion = view.findViewById(R.id.direccion_alojamiento);
-        eSolicitudes = view.findViewById(R.id.solicitudes_alojamiento);
+        eName = view.findViewById(R.id.nombre_alojamiento);
+        ePhoneNumber = view.findViewById(R.id.telefono_alojamiento);
+        eAdress = view.findViewById(R.id.direccion_alojamiento);
+        ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
-        eDescripcion = view.findViewById(R.id.descripcion_alojamiento);
+        eDescription = view.findViewById(R.id.descripcion_alojamiento);
 
         mAPIService = APIUtils.getAPIService();
     }
 
-    public void checkCampos(View view) throws Exception {
+    public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkSolicitudesServicio(eSolicitudes.getText().toString());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkSolicitudesServicio(ePlacesLimit.getText().toString());
+        checkDescripcionServicio(eDescription.getText().toString());
 
     }
 
-    public void obtenerParametros() {
+    public void getParams() {
 
         /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
@@ -139,27 +139,26 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);*/
 
-        Usuario usuario = getUser(getActivity().getApplicationContext());
+        Usuario user = getUser(getActivity().getApplicationContext());
 
-        mLodge = new Lodge(0, usuario.getMail(), eNombre.getText().toString(),
-                eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
-                .getText().toString(), eDeadline.getText().toString(), eTelefono.getText()
+        mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
+                eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
+                .getText().toString(), eDeadline.getText().toString(), ePhoneNumber.getText()
                 .toString());
-
 
 
     }
 
-    public void sendCrearAlojamiento(){
+    public void sendCreateLodge() {
         mAPIService.crearAlojamiento(mLodge).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("llamada "+call.toString());
-                if (response.isSuccessful()){
-                    tratarResultadoPeticion(true);
-                }else {
-                    System.out.println("codi "+response.code());
-                    tratarResultadoPeticion(false);
+                System.out.println("llamada " + call.toString());
+                if (response.isSuccessful()) {
+                    manageResult(true);
+                } else {
+                    System.out.println("codi " + response.code());
+                    manageResult(false);
                 }
             }
 
@@ -167,20 +166,21 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             public void onFailure(Call<Void> call, Throwable t) {
 
                 if (t instanceof IOException) {
-                    Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
-                            + " :( inform "
-                            + "the user and "
-                            + "possibly retry", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getActivity().getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
     }
 
-    public void tratarResultadoPeticion(boolean result) {
+    public void manageResult(boolean result) {
 
         if (result) {
 
@@ -201,7 +201,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 Log.i("==================", "Place: " + place.getName());
-                eDireccion.setText(place.getAddress());
+                eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 // TODO: Handle the error.

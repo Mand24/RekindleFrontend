@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;

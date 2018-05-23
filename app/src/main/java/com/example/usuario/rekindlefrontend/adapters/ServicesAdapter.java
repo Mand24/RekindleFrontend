@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;

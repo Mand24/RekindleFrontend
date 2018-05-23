@@ -9,11 +9,11 @@ import android.util.Log;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.service.Education;
+import com.example.usuario.rekindlefrontend.data.entity.service.Job;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;

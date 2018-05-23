@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;

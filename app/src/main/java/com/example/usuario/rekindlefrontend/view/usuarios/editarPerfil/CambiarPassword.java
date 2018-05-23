@@ -70,7 +70,7 @@ public class CambiarPassword extends AppBaseActivity {
             public void onClick(View v) {
                 if (setCampos()){
                     /*try{
-                        obtenerParametros();
+                        getParams();
                         boolean result = new AsyncTaskCall().execute().get();
                         manageRequestResult(result);
                     }catch (Exception e){

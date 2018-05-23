@@ -3,11 +3,11 @@ package com.example.usuario.rekindlefrontend.data.remote;
 
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.service.Education;
+import com.example.usuario.rekindlefrontend.data.entity.service.Job;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;

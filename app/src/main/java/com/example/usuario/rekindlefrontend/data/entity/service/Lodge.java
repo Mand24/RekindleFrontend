@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.data.entity.servicio;
+package com.example.usuario.rekindlefrontend.data.entity.service;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

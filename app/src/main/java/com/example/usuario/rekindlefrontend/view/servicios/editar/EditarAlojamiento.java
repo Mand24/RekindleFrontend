@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;

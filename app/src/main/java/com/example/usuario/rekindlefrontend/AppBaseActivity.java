@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
@@ -38,7 +38,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
     protected RelativeLayout view_stub; //This is the framelayout to keep your content view
     protected NavigationView navigationView;
-            // The new navigation view from Android Design Library. Can inflate menu resources. Easy
+    // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
     protected Toolbar mToolbar;
     private TextView userName;
@@ -79,9 +79,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         userName.setText(user.getName() + " " + user.getSurname1());
         userEmail.setText(user.getMail());
 
-        if(user.getPhoto() != null) {
+        if (user.getPhoto() != null) {
             userPhoto.setImageBitmap(user.getDecodedPhoto());
-        }else{
+        } else {
             userPhoto.setImageResource(R.drawable.ic_usuario);
         }
 
@@ -256,8 +256,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     }
 
     public ActionBarDrawerToggle setupDrawerToggle() {
-        return new ActionBarDrawerToggle(this, drawerLayout, mToolbar,R.string.drawer_open,R.string
-                .drawer_close);
+        return new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.drawer_open,
+                R.string
+                        .drawer_close);
     }
 
     //    @Override
