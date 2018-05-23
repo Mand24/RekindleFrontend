@@ -89,8 +89,10 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
             @Override
             public void onClick(View v) {
+
                 Chat chat = new Chat(currentUser, mRefugee);
-                sendNewChat(chat);
+                sendGetChat();
+
             }
         });
 

@@ -103,6 +103,7 @@ public class ShowChat extends AppBaseActivity {
                     public void run() {
                         Gson gson = new Gson();
                         Message message = gson.fromJson(data, Message.class);
+                        System.out.println("pushermessage"+ message.toString());
                         mAdapter.addMessage(message);
 
                         /*// have the ListView scroll down to the new message
