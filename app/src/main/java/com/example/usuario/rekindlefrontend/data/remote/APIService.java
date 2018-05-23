@@ -1,23 +1,18 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
-import android.util.Pair;
-
 
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -99,50 +94,50 @@ public interface APIService {
     @GET("/refugiados/{mail}")
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
-    @GET("/servicios")
-    Call<ArrayList<Servicio>> obtenerServicios();
+    @GET("/mServices")
+    Call<ArrayList<Service>> obtenerServicios();
 
-    @GET("/servicios/{mail}/{tipo}")
-    Call<ArrayList<Servicio>> obtenerMisServicios(@Path("mail") String mail, @Path
+    @GET("/mServices/{mail}/{tipo}")
+    Call<ArrayList<Service>> obtenerMisServicios(@Path("mail") String mail, @Path
             ("tipo") String tipo);
 
     @GET("/alojamientos/{id}")
-    Call<Alojamiento> getAlojamiento(@Path("id") int id);
+    Call<Lodge> getAlojamiento(@Path("id") int id);
 
     @GET("/cursos/{id}")
-    Call<CursoEducativo> getCurso(@Path("id") int id);
+    Call<Education> getCurso(@Path("id") int id);
 
     @GET("/donaciones/{id}")
-    Call<Donacion> getDonacion(@Path("id") int id);
+    Call<Donation> getDonacion(@Path("id") int id);
 
     @GET("/empleos/{id}")
-    Call<OfertaEmpleo> getEmpleo(@Path("id") int id);
+    Call<Job> getEmpleo(@Path("id") int id);
 
     @PUT("/alojamientos/{id}")
-    Call<Void> editarAlojamiento(@Path("id") int id, @Body Alojamiento alojamiento);
+    Call<Void> editarAlojamiento(@Path("id") int id, @Body Lodge lodge);
 
     @PUT("/cursos/{id}")
-    Call<Void> editarCurso(@Path("id") int id, @Body CursoEducativo curso);
+    Call<Void> editarCurso(@Path("id") int id, @Body Education curso);
 
     @PUT("/donaciones/{id}")
-    Call<Void> editarDonacion(@Path("id") int id, @Body Donacion donacion);
+    Call<Void> editarDonacion(@Path("id") int id, @Body Donation donation);
 
     @PUT("/empleos/{id}")
-    Call<Void> editarEmpleo(@Path("id") int id, @Body OfertaEmpleo empleo);
+    Call<Void> editarEmpleo(@Path("id") int id, @Body Job empleo);
 
     @POST("/alojamientos")
-    Call<Void> crearAlojamiento(@Body Alojamiento alojamiento);
+    Call<Void> crearAlojamiento(@Body Lodge lodge);
 
     @POST("/donaciones")
-    Call<Void> crearDonacion(@Body Donacion donacion);
+    Call<Void> crearDonacion(@Body Donation donation);
 
     @POST("/empleos")
-    Call<Void> crearOferta(@Body OfertaEmpleo empleo);
+    Call<Void> crearOferta(@Body Job empleo);
 
     @POST("/cursos")
-    Call<Void> crearEducacion(@Body CursoEducativo educacion);
+    Call<Void> crearEducacion(@Body Education educacion);
 
-    @DELETE("/servicios/{id}/{tipo}")
+    @DELETE("/mServices/{id}/{tipo}")
     Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
 
     @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")

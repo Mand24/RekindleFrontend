@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
@@ -31,12 +31,12 @@ public class MisServiciosRefugiado extends ListarServicios {
 
     @Override
     protected void setAdapterListener() {
-        mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
+        mAdapter = new ServicesAdapter(getApplicationContext(), mServiciosFiltrados,
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("Servicio", servicios.get(position));
+                        intent.putExtra("Service", mServices.get(position));
                         startActivity(intent);
                     }
 
@@ -58,7 +58,7 @@ public class MisServiciosRefugiado extends ListarServicios {
 
                                                     public void onClick(DialogInterface dialog,
                                                             int which) {
-                                                        sendUnsubscribeService(servicios.get
+                                                        sendUnsubscribeService(mServices.get
                                                                 (position));
                                                     }
                                                 });
@@ -81,9 +81,9 @@ public class MisServiciosRefugiado extends ListarServicios {
                 });
     }
 
-    public void sendUnsubscribeService(Servicio servicio) {
-       mAPIService.unsubscribeService(Consistency.getUser(this).getMail(), servicio.getId(),
-               servicio.getTipo()).enqueue(new Callback<Void>() {
+    public void sendUnsubscribeService(Service service) {
+       mAPIService.unsubscribeService(Consistency.getUser(this).getMail(), service.getId(),
+               service.getServiceType()).enqueue(new Callback<Void>() {
            @Override
            public void onResponse(Call<Void> call, Response<Void> response) {
                if (response.isSuccessful()) {
@@ -107,12 +107,12 @@ public class MisServiciosRefugiado extends ListarServicios {
     protected void initializeData(){
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
                 (this).getTipo())
-                .enqueue(new Callback<ArrayList<Servicio>>() {
+                .enqueue(new Callback<ArrayList<Service>>() {
                     @Override
-                    public void onResponse(Call<ArrayList<Servicio>> call,
-                            Response<ArrayList<Servicio>> response) {
+                    public void onResponse(Call<ArrayList<Service>> call,
+                            Response<ArrayList<Service>> response) {
                         if (response.isSuccessful()) {
-                            ArrayList<Servicio> respuesta = response.body();
+                            ArrayList<Service> respuesta = response.body();
                             tratarResultadoPeticion(true, respuesta);
                         } else {
                             System.out.println("CODIGO "+response.code());
@@ -121,7 +121,7 @@ public class MisServiciosRefugiado extends ListarServicios {
                     }
 
                     @Override
-                    public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
+                    public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
 
                     }
                 });

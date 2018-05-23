@@ -88,7 +88,7 @@ public class Ajustes extends AppBaseActivity {
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);
-        i.putExtra("tipo", usuario.getTipo());
+        i.putExtra("tipo", usuario.getServiceType());
         startActivity(i);*/
 
         finish();

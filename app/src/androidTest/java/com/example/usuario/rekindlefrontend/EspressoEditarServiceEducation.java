@@ -25,7 +25,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoEditarServicioCursoEducativo {
+public class EspressoEditarServiceEducation {
 
     @Rule
     public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>

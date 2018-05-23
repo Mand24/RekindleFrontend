@@ -58,7 +58,7 @@
                 android:layout_below="@id/label_tipo_usuario_perfil_refugiado"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener tipo()"
+                android:text="Obtener serviceType()"
                 android:background="@drawable/back"/>
 
             <TextView

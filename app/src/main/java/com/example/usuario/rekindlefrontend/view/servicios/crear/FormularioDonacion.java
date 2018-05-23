@@ -7,11 +7,8 @@ import static android.app.Activity.RESULT_OK;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -33,9 +30,6 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +50,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
     private EditText eSolicitudes;
     private EditText eDescripcion;
 
-    private Donacion mDonacion;
+    private Donation mDonation;
     private APIService mAPIService;
 
     public FormularioDonacion() {
@@ -145,7 +139,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
 
         Usuario usuario = getUser(getActivity().getApplicationContext());
 
-        mDonacion = new Donacion(0, usuario.getMail(), eNombre.getText().toString(),
+        mDonation = new Donation(0, usuario.getMail(), eNombre.getText().toString(),
                 eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
                 .getText().toString(), editStartingTime.getText().toString(), editEndingTime
                 .getText().toString(), eTelefono.getText().toString());
@@ -153,7 +147,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
     }
 
     public void sendCrearDonacion(){
-        mAPIService.crearDonacion(mDonacion).enqueue(new Callback<Void>() {
+        mAPIService.crearDonacion(mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){

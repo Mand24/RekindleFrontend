@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -29,7 +29,7 @@ import java.util.Calendar;
 
 public class EditarAlojamiento extends AbstractFormatChecker {
 
-    private Alojamiento servicio;
+    private Lodge servicio;
     private ArrayList<String> param;
 
     private EditText eNombre;
@@ -53,8 +53,8 @@ public class EditarAlojamiento extends AbstractFormatChecker {
         final View view = inflater.inflate (R.layout.fragment_editar_alojamiento, container, false);
 
         // set : SERVICIO_ALOJAMIENTO
-        //TODO: new Alojamiento
-        //servicio =  new Alojamiento (12345, "nombrePD", "descrPD", "direccionPD", "soliciPD",
+        //TODO: new Lodge
+        //servicio =  new Lodge (12345, "nombrePD", "descrPD", "direccionPD", "soliciPD",
           //      "21-03-2018PD", "123456789PD", "valoracionPD", 0);
 
         setVistas (view);
@@ -111,12 +111,12 @@ public class EditarAlojamiento extends AbstractFormatChecker {
 
     public void cargarValores () {
 
-        eNombre.setText (servicio.getNombre ());
-        eTelefono.setText (servicio.getNumero ());
-        eDireccion.setText (servicio.getDireccion ());
-        eSolicitudes.setText(servicio.getLimiteSolicitudes ());
-        eDeadline.setText (servicio.getFecha ());
-        eDescripcion.setText (servicio.getDescripcion ());
+        eNombre.setText (servicio.getName());
+        eTelefono.setText (servicio.getPhoneNumber());
+        eDireccion.setText (servicio.getAdress());
+        eSolicitudes.setText(servicio.getPlacesLimit());
+        eDeadline.setText (servicio.getDateLimit());
+        eDescripcion.setText (servicio.getDescription());
     }
 
     public void checkCampos () throws Exception {
@@ -124,7 +124,7 @@ public class EditarAlojamiento extends AbstractFormatChecker {
         checkNombreServicio(eNombre.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkSolicitudesServicio(eSolicitudes.getText().toString());
-        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getLimiteSolicitudes());
+        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getPlacesLimit());
         checkDescripcionServicio(eDescripcion.getText().toString());
     }
 

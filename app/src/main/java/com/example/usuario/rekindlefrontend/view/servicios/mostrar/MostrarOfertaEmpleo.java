@@ -15,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -44,7 +43,7 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
     TextView titulo, descripcion, direccion, numero, puesto, requisitos, jornada, horas, duracion;
     AppCompatButton chat, inscribirse;
 
-    public OfertaEmpleo servicio;
+    public Job servicio;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
@@ -61,7 +60,7 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        servicio = (OfertaEmpleo) getArguments().getSerializable("servicioFrag");
+        servicio = (Job) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_oferta_empleo);
         descripcion = view.findViewById(R.id.descripcion_oferta_empleo);
@@ -77,15 +76,15 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        titulo.setText(servicio.getNombre());
-        descripcion.setText(servicio.getDescripcion());
-        direccion.setText(servicio.getDireccion());
-        puesto.setText(servicio.getPuesto());
-        requisitos.setText(servicio.getRequisitos());
-        jornada.setText(servicio.getJornada());
-        horas.setText(servicio.getHorasSemana());
-        duracion.setText(servicio.getDuracion());
-        numero.setText(servicio.getNumero());
+        titulo.setText(servicio.getName());
+        descripcion.setText(servicio.getDescription());
+        direccion.setText(servicio.getAdress());
+        puesto.setText(servicio.getCharge());
+        requisitos.setText(servicio.getRequirements());
+        jornada.setText(servicio.getHoursDay());
+        horas.setText(servicio.getHoursWeek());
+        duracion.setText(servicio.getContractDuration());
+        numero.setText(servicio.getPhoneNumber());
 
         mMapView.getMapAsync(this);
 
@@ -175,7 +174,7 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap, servicio.getNombre());
+                myMarker = setMarker(servicio.getAdress(), myMarker, mGoogleMap, servicio.getName());
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string

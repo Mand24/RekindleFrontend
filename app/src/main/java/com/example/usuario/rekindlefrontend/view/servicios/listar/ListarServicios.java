@@ -1,15 +1,12 @@
 package com.example.usuario.rekindlefrontend.view.servicios.listar;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
@@ -26,17 +24,12 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
-import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugiados;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,8 +37,8 @@ import retrofit2.Response;
 
 public class ListarServicios extends AppBaseActivity implements Filterable {
 
-    protected List<Servicio> servicios = new ArrayList<>();
-    protected List<Servicio> serviciosFiltrados = new ArrayList<>();
+    protected List<Service> mServices = new ArrayList<>();
+    protected List<Service> mServiciosFiltrados = new ArrayList<>();
     protected RecyclerView recyclerView;
     protected ServicesAdapter mAdapter;
     protected SearchView searchView;
@@ -161,13 +154,13 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
     }
 
     protected void setAdapterListener() {
-        mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
+        mAdapter = new ServicesAdapter(getApplicationContext(), mServiciosFiltrados,
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
                         //TODO:Algo al clicar
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("Servicio", serviciosFiltrados.get(position));
+                        intent.putExtra("Service", mServiciosFiltrados.get(position));
                         startActivity(intent);
                     }
 
@@ -180,10 +173,10 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
     /*private void filtrar() {
         String output = "";
-        serviciosFiltrados = new ArrayList<>();
-        for (Servicio s : servicios) {
+        mServiciosFiltrados = new ArrayList<>();
+        for (Service s : mServices) {
             if (filters.get(s.getId())) {
-                serviciosFiltrados.add(s);
+                mServiciosFiltrados.add(s);
             }
         }
         refreshItems();
@@ -191,21 +184,21 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
     protected void refreshItems() {
 
-        mAdapter.setServicios(serviciosFiltrados);
+        mAdapter.setServices(mServiciosFiltrados);
         mAdapter.notifyDataSetChanged();
     }
 
     protected void initializeData() {
 
-        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Servicio>>
+        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Service>>
                 () {
             @Override
-            public void onResponse(Call<ArrayList<Servicio>> call,
-                    Response<ArrayList<Servicio>>
+            public void onResponse(Call<ArrayList<Service>> call,
+                    Response<ArrayList<Service>>
                             response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Servicio> respuesta = response.body();
-                    //servicios = response.body();
+                    ArrayList<Service> respuesta = response.body();
+                    //mServices = response.body();
                     tratarResultadoPeticion(true, respuesta);
 
                 } else {
@@ -215,7 +208,7 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
                 Log.e("on Failure", t.toString());
                 tratarResultadoPeticion(false, null);
                 Log.i(t.getClass().toString(), "========================");
@@ -296,13 +289,13 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
                 String charString = charSequence.toString();
 
-                ArrayList<Servicio> filteredList = new ArrayList<>();
+                ArrayList<Service> filteredList = new ArrayList<>();
 
-                for (Servicio s : servicios) {
-                    if (filters.get(s.getTipo())) {
+                for (Service s : mServices) {
+                    if (filters.get(s.getServiceType())) {
                         if (!charString.isEmpty()) {
-                            if (s.getNombre().toLowerCase().contains(charString) || s
-                                    .getDireccion().toLowerCase().contains(charString)) {
+                            if (s.getName().toLowerCase().contains(charString) || s
+                                    .getAdress().toLowerCase().contains(charString)) {
 
                                 filteredList.add(s);
                             }
@@ -312,26 +305,26 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                     }
                 }
 
-                serviciosFiltrados = filteredList;
+                mServiciosFiltrados = filteredList;
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = serviciosFiltrados;
+                filterResults.values = mServiciosFiltrados;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                serviciosFiltrados = (ArrayList<Servicio>) filterResults.values;
+                mServiciosFiltrados = (ArrayList<Service>) filterResults.values;
                 refreshItems();
             }
         };
     }
 
-    public void tratarResultadoPeticion(boolean result, List<Servicio> respuesta) {
+    public void tratarResultadoPeticion(boolean result, List<Service> respuesta) {
 
         if (result) {
-            servicios = respuesta;
-            serviciosFiltrados = servicios;
+            mServices = respuesta;
+            mServiciosFiltrados = mServices;
             refreshItems();
 
         } else {

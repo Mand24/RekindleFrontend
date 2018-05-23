@@ -128,7 +128,7 @@ public class RecuperarPassword extends AppCompatActivity {
                             String header1 = response.headers().get("Tipo");
                             int i = Integer.parseInt(header1);*/
                             Usuario usuario = response.body();
-//                            usuario.setTipo(i);
+//                            usuario.setServiceType(i);
                             tratarResultadoLogin(true, usuario);
                         }else {
                             System.out.println("CODI2 "+response.code());

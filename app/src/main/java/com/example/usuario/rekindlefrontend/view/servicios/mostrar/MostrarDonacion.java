@@ -15,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -44,7 +43,7 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
     TextView titulo, descripcion, direccion, inicio, fin, numero;
     AppCompatButton chat, inscribirse;
 
-    public Donacion servicio;
+    public Donation servicio;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
@@ -62,7 +61,7 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
 
 
-        servicio = (Donacion) getArguments().getSerializable("servicioFrag");
+        servicio = (Donation) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_donacion);
         descripcion = view.findViewById(R.id.descripcion_donacion);
@@ -74,12 +73,12 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        titulo.setText(servicio.getNombre());
-        descripcion.setText(servicio.getDescripcion());
-        direccion.setText(servicio.getDireccion());
-        inicio.setText(servicio.getHoraInicio());
-        fin.setText(servicio.getHoraFin());
-        numero.setText(servicio.getNumero());
+        titulo.setText(servicio.getName());
+        descripcion.setText(servicio.getDescription());
+        direccion.setText(servicio.getAdress());
+        inicio.setText(servicio.getStartTime());
+        fin.setText(servicio.getEndTime());
+        numero.setText(servicio.getPhoneNumber());
 
         mMapView.getMapAsync(this);
 
@@ -169,7 +168,7 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap, servicio.getNombre());
+                myMarker = setMarker(servicio.getAdress(), myMarker, mGoogleMap, servicio.getName());
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string

@@ -99,7 +99,7 @@ public class VerPerfilVoluntario extends Fragment {
                     voluntario = response.body();
                     System.out.println("llamadab"+response.body().toString());
                     System.out.println("llamada"+voluntario);
-//                    voluntario.setTipo(1);
+//                    voluntario.setServiceType(1);
                     tratarResultadoPeticion(true);
                 }
                 else {

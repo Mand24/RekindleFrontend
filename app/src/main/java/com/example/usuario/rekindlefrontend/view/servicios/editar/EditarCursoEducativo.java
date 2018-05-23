@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class EditarCursoEducativo extends AbstractFormatChecker {
 
     private ArrayList<String> param;
-    private CursoEducativo servicio;
+    private Education servicio;
     private EditText eDireccion;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -50,7 +50,7 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
 
             // set : SERVICIO_CURSOEDUCATIVO
 
-            /*servicio = new CursoEducativo (1111, "nombreCursoPD", "descripPD", "direccionPD",
+            /*servicio = new Education (1111, "nombreCursoPD", "descripPD", "direccionPD",
                 "fechaPD",
                     "ambitoPD", "requiPD", "hoarioPD", "plazasPD", "precioPD", "numeroPD",
                     "valoracionPD", 2);*/
@@ -108,15 +108,15 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
     }
 
     public void cargarValores () {
-        eNombre.setText(servicio.getNombre());
-        eTelefono.setText (servicio.getNumero ());
-        eDireccion.setText (servicio.getDireccion ());
-        eAmbito.setText(servicio.getAmbito());
-        eRequisitos.setText(servicio.getRequisitos());
-        eHorario.setText(servicio.getHorario());
-        ePlazas.setText(servicio.getPlazas());
-        ePrecio.setText(servicio.getPrecio());
-        eDescripcion.setText (servicio.getDescripcion ());
+        eNombre.setText(servicio.getName());
+        eTelefono.setText (servicio.getPhoneNumber());
+        eDireccion.setText (servicio.getAdress());
+        eAmbito.setText(servicio.getAmbit());
+        eRequisitos.setText(servicio.getRequirements());
+        eHorario.setText(servicio.getSchedule());
+        ePlazas.setText(servicio.getPlaces());
+        ePrecio.setText(servicio.getPrice());
+        eDescripcion.setText (servicio.getDescription());
     }
 
     public void checkCampos () throws Exception {
@@ -127,7 +127,7 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
         checkRequisitosServicio(eRequisitos.getText().toString());
         checkHorarioCursoEducativo(eHorario.getText().toString());
         checkPlazasServicio(ePlazas.getText().toString());
-        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlazas());
+        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlaces());
         checkDescripcionServicio(eDescripcion.getText().toString());
     }
 

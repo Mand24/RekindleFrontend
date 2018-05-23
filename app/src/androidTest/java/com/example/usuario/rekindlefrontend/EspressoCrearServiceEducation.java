@@ -31,7 +31,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoCrearServicioDonacion {
+public class EspressoCrearServiceEducation {
 
     @Rule
     public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>
@@ -48,47 +48,60 @@ public class EspressoCrearServicioDonacion {
     }
 
     @Test
-    public void testCamposDonacion() {
+    public void testCamposCurso() {
 
-        onView(withId(R.id.boton_tipo_donacion)).perform(click());
+        onView(withId(R.id.boton_tipo_curso_educativo)).perform(click());
 
-        onView(withId(R.id.nombre_donacion)).perform(replaceText
-                ("testNombreDonacion"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testNombreDonacion")));
-        onView(withId(R.id.telefono_donacion)).perform(replaceText
+        onView(withId(R.id.nombre_curso_educativo)).perform(replaceText
+                ("testNombreCurso"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testNombreCurso")));
+
+        onView(withId(R.id.telefono_curso_educativo)).perform(replaceText
                 ("123"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("123")));
 
-        onView(withId(R.id.direccion_donacion)).perform(replaceText
-                ("testdireccion_Donacion"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("testdireccion_Donacion")));
+        onView(withId(R.id.direccion_curso_educativo)).perform(replaceText
+                ("testdireccion_Curso"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testdireccion_Curso")));
 
-        onView(withId(R.id.solicitudes_donacion)).perform(replaceText
+        onView(withId(R.id.ambito_curso_educativo)).perform(replaceText
+                ("testAmbito_Curso"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testAmbito_Curso")));
+
+        onView(withId(R.id.requisitos_curso_educativo)).perform(replaceText
+                ("testRequisitos_Curso"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("testRequisitos_Curso")));
+
+        onView(withId(R.id.horario_curso_educativo)).perform(scrollTo()).check(ViewAssertions
+                .matches(isDisplayed()));
+        onView(withId(R.id.horario_curso_educativo)).perform(replaceText
+                ("tardes"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("tardes")));
+
+        onView(withId(R.id.plazas_curso_educativo)).perform(scrollTo()).check(ViewAssertions
+                .matches(isDisplayed()));
+        onView(withId(R.id.plazas_curso_educativo)).perform(replaceText
                 ("10"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("10")));
 
-        onView(withId(R.id.franja_horaria_inicio_donacion)).perform(replaceText
-                ("12:00"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("12:00")));
-
-        onView(withId(R.id.franja_horaria_fin_donacion)).perform(scrollTo()).check(ViewAssertions
+        onView(withId(R.id.precio_curso_educativo)).perform(scrollTo()).check(ViewAssertions
                 .matches(isDisplayed()));
-        onView(withId(R.id.franja_horaria_fin_donacion)).perform(replaceText
-                ("15:00"), ViewActions.closeSoftKeyboard
-                ()).check(matches(withText("15:00")));
+        onView(withId(R.id.precio_curso_educativo)).perform(replaceText
+                ("0.00"), ViewActions.closeSoftKeyboard
+                ()).check(matches(withText("0.00")));
 
-        onView(withId(R.id.descripcion_donacion)).perform(scrollTo()).check(ViewAssertions
+        onView(withId(R.id.descripcion_curso_educativo)).perform(scrollTo()).check(ViewAssertions
                 .matches(isDisplayed()));
-        onView(withId(R.id.descripcion_donacion)).perform(replaceText
+        onView(withId(R.id.descripcion_curso_educativo)).perform(replaceText
                 ("testDescription"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("testDescription")));
 
     }
 
     @Test
-    public void testBotonCrearDonacion() {
+    public void testBotonCrearCurso() {
 
-        //TODO: Testear cuando funcione crear donacion
+        //TODO: Testear cuando funcione crear cursoeducativo
     }
 
     @Test

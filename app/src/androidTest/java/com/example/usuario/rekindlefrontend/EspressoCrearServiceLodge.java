@@ -31,7 +31,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoCrearServicioAlojamiento {
+public class EspressoCrearServiceLodge {
 
     @Rule
     public ActivityTestRule<CrearServicio> pantalla = new ActivityTestRule<CrearServicio>

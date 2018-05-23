@@ -1,0 +1,58 @@
+package com.example.usuario.rekindlefrontend.data.entity.servicio;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class Donation extends Service {
+    @SerializedName("places")
+    @Expose
+    private String placesLimit;
+    @SerializedName("startTime")
+    @Expose
+    private String startTime;
+    @SerializedName("endTime")
+    @Expose
+    private String endTime;
+
+
+    public Donation(int id, String email, String name, String description, String adress,
+            String placesLimit, String startTime, String endTime, String phoneNumber) {
+        super(id, "Donation", email, name, description, adress, phoneNumber);
+        this.placesLimit = placesLimit;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public String getPlacesLimit() {
+        return placesLimit;
+    }
+
+    public void setPlacesLimit(String placesLimit) {
+        this.placesLimit = placesLimit;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Donation{" +
+                "placesLimit='" + placesLimit + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                '}';
+    }
+}

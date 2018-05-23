@@ -25,7 +25,7 @@ public class UnityMaps {
     public void testMyMarker ()
     {
         mres = maps.setMarker(adress, mres, mGoogleMap);
-        assertEquals (mres.getTitle(), "Localización Servicio");
+        assertEquals (mres.getTitle(), "Localización Service");
         LatLng coordenadas = maps.getLocationFromAddress (c.getApplicationContext (),
                 adress);
         assertTrue(coordenadas.equals(mres.getPosition()));

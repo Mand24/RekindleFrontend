@@ -6,7 +6,7 @@
     android:background="@drawable/fondo">
 
     <RelativeLayout
-        android:id="@+id/servicio"
+        android:id="@+id/service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?android:actionBarSize">

@@ -10,13 +10,12 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,12 +31,12 @@ public class MisServiciosVoluntario extends ListarServicios {
 
     @Override
     protected void setAdapterListener() {
-        mAdapter = new ServicesAdapter(getApplicationContext(), serviciosFiltrados,
+        mAdapter = new ServicesAdapter(getApplicationContext(), mServiciosFiltrados,
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
-                        intent.putExtra("Servicio", servicios.get(position));
+                        intent.putExtra("Service", mServices.get(position));
                         startActivity(intent);
                     }
                     @Override
@@ -65,7 +64,7 @@ public class MisServiciosVoluntario extends ListarServicios {
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
                                                             // TODO API delete
-                                                            sendEliminarServicio(servicios.get
+                                                            sendEliminarServicio(mServices.get
                                                                     (position));
                                                         }
                                                     });
@@ -89,8 +88,8 @@ public class MisServiciosVoluntario extends ListarServicios {
                 });
     }
 
-    public void sendEliminarServicio(Servicio servicio){
-        mAPIService.eliminarServicio(servicio.getId(), servicio.getTipo()).enqueue(
+    public void sendEliminarServicio(Service service){
+        mAPIService.eliminarServicio(service.getId(), service.getServiceType()).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -116,12 +115,12 @@ public class MisServiciosVoluntario extends ListarServicios {
     protected void initializeData(){
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
                 (this).getTipo())
-                .enqueue(new Callback<ArrayList<Servicio>>() {
+                .enqueue(new Callback<ArrayList<Service>>() {
                     @Override
-                    public void onResponse(Call<ArrayList<Servicio>> call,
-                            Response<ArrayList<Servicio>> response) {
+                    public void onResponse(Call<ArrayList<Service>> call,
+                            Response<ArrayList<Service>> response) {
                         if (response.isSuccessful()) {
-                            ArrayList<Servicio> respuesta = response.body();
+                            ArrayList<Service> respuesta = response.body();
                             tratarResultadoPeticion(true, respuesta);
                         } else {
                             System.out.println("CODIGO "+response.code());
@@ -130,7 +129,7 @@ public class MisServiciosVoluntario extends ListarServicios {
                     }
 
                     @Override
-                    public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
+                    public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
 
                     }
                 });

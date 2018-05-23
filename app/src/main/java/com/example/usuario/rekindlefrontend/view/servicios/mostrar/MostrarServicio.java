@@ -5,21 +5,18 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 
 import java.util.HashMap;
 
@@ -30,12 +27,12 @@ import retrofit2.Response;
 
 public class MostrarServicio extends AppBaseActivity {
 
-    HashMap<String, Fragment> tipoServicio;
+    HashMap<String, Fragment> serviceType;
     private APIService mAPIService;
-    private Alojamiento mAlojamiento;
-    private Donacion mDonacion;
-    private CursoEducativo mCursoEducativo;
-    private OfertaEmpleo mOfertaEmpleo;
+    private Lodge mLodge;
+    private Donation mDonation;
+    private Education mEducation;
+    private Job mJob;
     private FragmentTransaction transaction;
     private Bundle bundle = new Bundle();
 
@@ -46,83 +43,83 @@ public class MostrarServicio extends AppBaseActivity {
 
         getSupportActionBar().setTitle(R.string.showService);
 
-        Servicio servicio = (Servicio) getIntent().getSerializableExtra("Servicio");
+        Service service = (Service) getIntent().getSerializableExtra("Service");
 
-        String tipo_servicio = servicio.getTipo();
+        String tipo_servicio = service.getServiceType();
 
-        tipoServicio = new HashMap<>();
+        serviceType = new HashMap<>();
 
         mAPIService = APIUtils.getAPIService();
 
         if(tipo_servicio.equals("Lodge")){
-            mAPIService.getAlojamiento(servicio.getId()).enqueue(new Callback<Alojamiento>() {
+            mAPIService.getAlojamiento(service.getId()).enqueue(new Callback<Lodge>() {
                 @Override
-                public void onResponse(Call<Alojamiento> call, Response<Alojamiento> response) {
+                public void onResponse(Call<Lodge> call, Response<Lodge> response) {
                     if (response.isSuccessful()){
-                        mAlojamiento = response.body();
-                        bundle.putSerializable("servicioFrag", mAlojamiento);
+                        mLodge = response.body();
+                        bundle.putSerializable("servicioFrag", mLodge);
                         tratarResultadoPeticion(true, "Lodge");
                     }
                     else tratarResultadoPeticion(false, "Lodge");
                 }
 
                 @Override
-                public void onFailure(Call<Alojamiento> call, Throwable t) {
+                public void onFailure(Call<Lodge> call, Throwable t) {
                     tratarResultadoPeticion(false, "Lodge");
                 }
             });
         }
         else if(tipo_servicio.equals("Donation")){
-            mAPIService.getDonacion(servicio.getId()).enqueue(new Callback<Donacion>() {
+            mAPIService.getDonacion(service.getId()).enqueue(new Callback<Donation>() {
                 @Override
-                public void onResponse(Call<Donacion> call, Response<Donacion> response) {
+                public void onResponse(Call<Donation> call, Response<Donation> response) {
                     if (response.isSuccessful()){
-                        mDonacion = response.body();
-                        bundle.putSerializable("servicioFrag", mDonacion);
+                        mDonation = response.body();
+                        bundle.putSerializable("servicioFrag", mDonation);
                         tratarResultadoPeticion(true, "Donation");
                     }
                     else tratarResultadoPeticion(false, "Donation");
                 }
 
                 @Override
-                public void onFailure(Call<Donacion> call, Throwable t) {
+                public void onFailure(Call<Donation> call, Throwable t) {
                     tratarResultadoPeticion(false, "Donation");
                 }
             });
         }
         else if(tipo_servicio.equals("Course")){
-            mAPIService.getCurso(servicio.getId()).enqueue(new Callback<CursoEducativo>() {
+            mAPIService.getCurso(service.getId()).enqueue(new Callback<Education>() {
                 @Override
-                public void onResponse(Call<CursoEducativo> call,
-                        Response<CursoEducativo> response) {
+                public void onResponse(Call<Education> call,
+                        Response<Education> response) {
                     if (response.isSuccessful()){
-                        mCursoEducativo = response.body();
-                        bundle.putSerializable("servicioFrag", mCursoEducativo);
+                        mEducation = response.body();
+                        bundle.putSerializable("servicioFrag", mEducation);
                         tratarResultadoPeticion(true, "Course");
                     }
                     else tratarResultadoPeticion(false, "Course");
                 }
 
                 @Override
-                public void onFailure(Call<CursoEducativo> call, Throwable t) {
+                public void onFailure(Call<Education> call, Throwable t) {
                     tratarResultadoPeticion(false, "Course");
                 }
             });
         }
         else{
-            mAPIService.getEmpleo(servicio.getId()).enqueue(new Callback<OfertaEmpleo>() {
+            mAPIService.getEmpleo(service.getId()).enqueue(new Callback<Job>() {
                 @Override
-                public void onResponse(Call<OfertaEmpleo> call, Response<OfertaEmpleo> response) {
+                public void onResponse(Call<Job> call, Response<Job> response) {
                     if (response.isSuccessful()){
-                        mOfertaEmpleo = response.body();
-                        bundle.putSerializable("servicioFrag", mOfertaEmpleo);
+                        mJob = response.body();
+                        bundle.putSerializable("servicioFrag", mJob);
                         tratarResultadoPeticion(true, "Job");
                     }
                     else tratarResultadoPeticion(false, "Job");
                 }
 
                 @Override
-                public void onFailure(Call<OfertaEmpleo> call, Throwable t) {
+                public void onFailure(Call<Job> call, Throwable t) {
                     tratarResultadoPeticion(false, "Job");
                 }
             });
@@ -143,19 +140,19 @@ public class MostrarServicio extends AppBaseActivity {
     public void tratarResultadoPeticion(boolean result, String tipo) {
 
         if (result) {
-            tipoServicio.put("Lodge", new MostrarAlojamiento());
-            tipoServicio.get("Lodge").setArguments(bundle);
-            tipoServicio.put("Donation", new MostrarDonacion());
-            tipoServicio.get("Donation").setArguments(bundle);
-            tipoServicio.put("Education", new MostrarCursoEducativo());
-            tipoServicio.get("Education").setArguments(bundle);
-            tipoServicio.put("Job", new MostrarOfertaEmpleo());
-            tipoServicio.get("Job").setArguments(bundle);
+            serviceType.put("Lodge", new MostrarAlojamiento());
+            serviceType.get("Lodge").setArguments(bundle);
+            serviceType.put("Donation", new MostrarDonacion());
+            serviceType.get("Donation").setArguments(bundle);
+            serviceType.put("Education", new MostrarCursoEducativo());
+            serviceType.get("Education").setArguments(bundle);
+            serviceType.put("Job", new MostrarOfertaEmpleo());
+            serviceType.get("Job").setArguments(bundle);
 
             FragmentManager manager = getFragmentManager();
             transaction = manager.beginTransaction();
 
-            transaction.replace(R.id.servicio, tipoServicio.get(tipo));
+            transaction.replace(R.id.servicio, serviceType.get(tipo));
 
             transaction.commit();
 

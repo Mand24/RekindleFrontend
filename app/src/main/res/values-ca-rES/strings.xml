@@ -48,8 +48,8 @@
     <string name="inscribir">Inscriure</string>
     <string name="chat">Chat</string>
 
-    <string name="alojamiento">Alojamiento</string>
-    <string name="donacion">Donación</string>
+    <string name="lodge">Alojamiento</string>
+    <string name="donation">Donación</string>
     <string name="formulario_donacion">Formulari donació:</string>
     <string name="lugar_recogida_donacion">Lloc de recollida(*):</string>
     <string name="franja_horaria_donacion">Hora de recollida:</string>
@@ -76,7 +76,7 @@
     <string name="requisitos_curso_educativo">Requisits previs(*):</string>
     <string name="ambito_curso_educativo">Àmbit(*):</string>
     <string name="horario_curso_educativo">Horari(*):</string>
-    <string name="precio">Preu:</string>
+    <string name="price">Preu:</string>
     <string name="email_usuario_login">Correu</string>
     <string name="password_usuario_login">Contrasenya</string>
     <string name="go_to_signup"><b><u>Encara no tens compte? Crea un</u></b></string>

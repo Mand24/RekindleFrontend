@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent" android:layout_height="match_parent"
-            tools:context=".view.servicios.mostrar.MostrarDonacion"
+            tools:context=".view.services.mostrar.MostrarDonacion"
             android:layout_margin="@dimen/dim10">
 
     <RelativeLayout
@@ -84,7 +84,7 @@
         </RelativeLayout>
 
         <!--<RelativeLayout
-            android:id="@+id/servicio"
+            android:id="@serviceicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contacto">

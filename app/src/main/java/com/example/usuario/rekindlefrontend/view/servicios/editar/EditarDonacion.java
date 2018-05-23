@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donation;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class EditarDonacion extends AbstractFormatChecker {
 
     private ArrayList<String> param;
-    private Donacion servicio;
+    private Donation servicio;
 
     private EditText editStartingTime, editEndingTime;
     private EditText eDireccion;
@@ -50,7 +50,7 @@ public class EditarDonacion extends AbstractFormatChecker {
 
         // set : SERVICIO_DONACION
 
-        /*servicio = new Donacion (1111, "nombrePD", "descrpcionPD", "direccionPD", "solicitudesPD",
+        /*servicio = new Donation (1111, "nombrePD", "descrpcionPD", "direccionPD", "solicitudesPD",
                 "13:00IncioPD", "14:00FinPD", "numeroPD", "valoracionPD", 1);*/
 
         setVistas (view);
@@ -108,13 +108,13 @@ public class EditarDonacion extends AbstractFormatChecker {
 
     public void cargarValores () {
 
-        eNombre.setText (servicio.getNombre ());
-        eTelefono.setText (servicio.getNumero ());
-        eDireccion.setText (servicio.getDireccion ());
-        eSolicitudes.setText (servicio.getLimiteSolicitudes ());
-        editStartingTime.setText (servicio.getHoraInicio());
-        editEndingTime.setText (servicio.getHoraFin ());
-        eDescripcion.setText (servicio.getDescripcion ());
+        eNombre.setText (servicio.getName());
+        eTelefono.setText (servicio.getPhoneNumber());
+        eDireccion.setText (servicio.getAdress());
+        eSolicitudes.setText (servicio.getPlacesLimit());
+        editStartingTime.setText (servicio.getStartTime());
+        editEndingTime.setText (servicio.getEndTime());
+        eDescripcion.setText (servicio.getDescription());
     }
 
     public void checkCampos () throws Exception {
@@ -122,7 +122,7 @@ public class EditarDonacion extends AbstractFormatChecker {
         checkNombreServicio(eNombre.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
         checkSolicitudesServicio(eSolicitudes.getText().toString());
-        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getLimiteSolicitudes());
+        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getPlacesLimit());
         checkDescripcionServicio(eDescripcion.getText().toString());
 
     }

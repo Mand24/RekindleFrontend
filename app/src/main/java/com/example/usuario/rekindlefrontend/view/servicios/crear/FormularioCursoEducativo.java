@@ -7,11 +7,8 @@ import static android.app.Activity.RESULT_OK;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -32,9 +29,6 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +51,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
     private EditText ePlazas;
     private EditText ePrecio;
     private EditText eDescripcion;
-    private CursoEducativo mCursoEducativo;
+    private Education mEducation;
     private APIService mAPIService;
 
     public FormularioCursoEducativo() {
@@ -147,7 +141,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
 
         Usuario usuario = getUser(getActivity().getApplicationContext());
 
-        mCursoEducativo = new CursoEducativo(0, usuario.getMail(), eNombre.getText().toString(),
+        mEducation = new Education(0, usuario.getMail(), eNombre.getText().toString(),
                 eDescripcion.getText().toString(), eDireccion.getText().toString(), eAmbito
                 .getText().toString(), eRequisitos.getText().toString(), eHorario.getText()
                 .toString(), ePlazas.getText().toString(), ePrecio.getText().toString(),
@@ -156,7 +150,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
     }
 
     public void sendCrearEducacion(){
-        mAPIService.crearEducacion(mCursoEducativo).enqueue(new Callback<Void>() {
+        mAPIService.crearEducacion(mEducation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){

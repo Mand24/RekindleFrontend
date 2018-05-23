@@ -10,15 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ServiceViewHolder> {
 
-    private List<Servicio> servicios;
-    private List<Servicio> serviciosFiltered;
+    private List<Service> mServices;
+    private List<Service> mServiciosFiltered;
     private Context mContext;
     private CustomItemClickListener listener;
 
@@ -36,14 +36,14 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
         }
     }
 
-    public ServicesAdapter(Context mContext, List<Servicio> servicios, CustomItemClickListener listener){
+    public ServicesAdapter(Context mContext, List<Service> services, CustomItemClickListener listener){
         this.mContext = mContext;
-        this.servicios = servicios;
+        this.mServices = services;
         this.listener = listener;
     }
 
-    public void setServicios(List<Servicio> servicios) {
-        this.servicios = servicios;
+    public void setServices(List<Service> services) {
+        this.mServices = services;
     }
 
     @Override
@@ -61,16 +61,16 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
     @Override
     public void onBindViewHolder(ServiceViewHolder serviceViewHolder, int i) {
-        Servicio servicio = servicios.get(i);
-        String tipo = servicio.getTipo();
-        if (tipo.equals("Lodge")) servicio.setImage(R.drawable.lodging);
-        else if (tipo.equals("Donation")) servicio.setImage(R.drawable.donation);
-        else if (tipo.equals("Education")) servicio.setImage(R.drawable.education);
-        else servicio.setImage(R.drawable.job);
+        Service service = mServices.get(i);
+        String tipo = service.getServiceType();
+        if (tipo.equals("Lodge")) service.setImage(R.drawable.lodging);
+        else if (tipo.equals("Donation")) service.setImage(R.drawable.donation);
+        else if (tipo.equals("Education")) service.setImage(R.drawable.education);
+        else service.setImage(R.drawable.job);
 
-        serviceViewHolder.serviceName.setText(servicio.getNombre());
-        serviceViewHolder.serviceAddress.setText(servicio.getDireccion());
-        serviceViewHolder.serviceType.setImageResource(servicio.getImage());
+        serviceViewHolder.serviceName.setText(service.getName());
+        serviceViewHolder.serviceAddress.setText(service.getAdress());
+        serviceViewHolder.serviceType.setImageResource(service.getImage());
     }
 
     @Override
@@ -80,6 +80,6 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
     @Override
     public int getItemCount(){
-        return servicios.size();
+        return mServices.size();
     }
 }

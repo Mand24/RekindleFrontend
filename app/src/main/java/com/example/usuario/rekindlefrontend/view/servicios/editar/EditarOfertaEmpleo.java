@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class EditarOfertaEmpleo extends AbstractFormatChecker {
 
     private ArrayList<String> param;
-    private OfertaEmpleo servicio;
+    private Job servicio;
     private EditText eDireccion;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -54,7 +54,7 @@ public class EditarOfertaEmpleo extends AbstractFormatChecker {
 
             /**/
             //TODO: que esté bien
-            /*servicio = new OfertaEmpleo (111, "nombrePD", "descripPD", "direccionPD",
+            /*servicio = new Job (111, "nombrePD", "descripPD", "direccionPD",
                 "puestoPD",
                     "requisitosPD", "joranadaPD", "horasSemanaPD", "duracionPD", "plazasPD",
                     "sueldoPD", "numeroPD", "valoracionPD", 3);*/
@@ -115,18 +115,18 @@ public class EditarOfertaEmpleo extends AbstractFormatChecker {
 
     public void cargarValores () {
 
-        eNombre.setText (servicio.getNombre ());
-        eTelefono.setText (servicio.getNumero ());
-        eDireccion.setText (servicio.getDireccion ());
-        ePuesto.setText (servicio.getPuesto());
-        eRequisitos.setText(servicio.getRequisitos());
-        eJornada.setText(servicio.getJornada());
-        eHoras.setText(servicio.getHorasSemana());
-        eDuracion.setText(servicio.getDuracion());
-        eSueldo.setText(servicio.getSueldo());
-        ePuesto.setText(servicio.getPuesto());
-        ePlazas.setText(servicio.getPlazasDisponibles());
-        eDescripcion.setText (servicio.getDescripcion ());
+        eNombre.setText (servicio.getName());
+        eTelefono.setText (servicio.getPhoneNumber());
+        eDireccion.setText (servicio.getAdress());
+        ePuesto.setText (servicio.getCharge());
+        eRequisitos.setText(servicio.getRequirements());
+        eJornada.setText(servicio.getHoursDay());
+        eHoras.setText(servicio.getHoursWeek());
+        eDuracion.setText(servicio.getContractDuration());
+        eSueldo.setText(servicio.getSalary());
+        ePuesto.setText(servicio.getCharge());
+        ePlazas.setText(servicio.getPlaces());
+        eDescripcion.setText (servicio.getDescription());
     }
 
     public void checkCampos () throws Exception {
@@ -137,7 +137,7 @@ public class EditarOfertaEmpleo extends AbstractFormatChecker {
         checkRequisitosServicio(eRequisitos.getText().toString());
         checkSueldoOfertaEmpleo(eSueldo.getText().toString());
         checkPlazasServicio(ePlazas.getText().toString());
-        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlazasDisponibles());
+        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlaces());
         checkDescripcionServicio(eDescripcion.getText().toString());
     }
 

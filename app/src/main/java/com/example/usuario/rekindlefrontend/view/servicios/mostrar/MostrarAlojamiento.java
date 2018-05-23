@@ -15,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -45,7 +44,7 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
     TextView titulo, descripcion, direccion, fecha, numero;
     AppCompatButton chat, inscribirse;
 
-    public Alojamiento servicio;
+    public Lodge servicio;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
@@ -62,7 +61,7 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        servicio = (Alojamiento) getArguments().getSerializable("servicioFrag");
+        servicio = (Lodge) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_alojamiento);
         descripcion = view.findViewById(R.id.descripcion_alojamiento);
@@ -73,11 +72,11 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        titulo.setText(servicio.getNombre());
-        descripcion.setText(servicio.getDescripcion());
-        direccion.setText(servicio.getDireccion());
-        fecha.setText(servicio.getFecha());
-        numero.setText(servicio.getNumero());
+        titulo.setText(servicio.getName());
+        descripcion.setText(servicio.getDescription());
+        direccion.setText(servicio.getAdress());
+        fecha.setText(servicio.getDateLimit());
+        numero.setText(servicio.getPhoneNumber());
 
         mMapView.getMapAsync(this);
 
@@ -167,7 +166,7 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap, servicio.getNombre());
+                myMarker = setMarker(servicio.getAdress(), myMarker, mGoogleMap, servicio.getName());
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string

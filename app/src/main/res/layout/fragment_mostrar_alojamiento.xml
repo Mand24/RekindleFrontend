@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent" android:layout_height="match_parent"
             android:layout_margin="@dimen/dim10"
-            tools:context=".view.servicios.mostrar.MostrarAlojamiento">
+            tools:context=".view.services.mostrar.MostrarAlojamiento">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -79,7 +79,7 @@
         </RelativeLayout>
 
         <!-- <RelativeLayout
-             android:id="@+id/servicio"
+             android:id="@serviceicio"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_below="@+id/contacto">

@@ -9,10 +9,7 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -34,10 +31,8 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import retrofit2.Call;
@@ -59,7 +54,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
     private EditText eDescripcion;
-    private Alojamiento alojamiento;
+    private Lodge mLodge;
     private APIService mAPIService;
 
     public FormularioAlojamiento() {
@@ -146,7 +141,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
 
         Usuario usuario = getUser(getActivity().getApplicationContext());
 
-        alojamiento = new Alojamiento(0, usuario.getMail(), eNombre.getText().toString(),
+        mLodge = new Lodge(0, usuario.getMail(), eNombre.getText().toString(),
                 eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
                 .getText().toString(), eDeadline.getText().toString(), eTelefono.getText()
                 .toString());
@@ -156,7 +151,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     }
 
     public void sendCrearAlojamiento(){
-        mAPIService.crearAlojamiento(alojamiento).enqueue(new Callback<Void>() {
+        mAPIService.crearAlojamiento(mLodge).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("llamada "+call.toString());

@@ -15,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Education;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -43,7 +42,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
     TextView titulo, descripcion, direccion, ambito, requisitos, horario, precio, numero;
     AppCompatButton chat, inscribirse;
 
-    public CursoEducativo servicio;
+    public Education servicio;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
@@ -60,7 +59,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        servicio = (CursoEducativo) getArguments().getSerializable("servicioFrag");
+        servicio = (Education) getArguments().getSerializable("servicioFrag");
 
         titulo = view.findViewById(R.id.titulo_curso_educativo);
         descripcion = view.findViewById(R.id.descripcion_curso_educativo);
@@ -74,14 +73,14 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         inscribirse = view.findViewById(R.id.inscribirse);
 
-        titulo.setText(servicio.getNombre());
-        descripcion.setText(servicio.getDescripcion());
-        direccion.setText(servicio.getDireccion());
-        ambito.setText(servicio.getAmbito());
-        requisitos.setText(servicio.getRequisitos());
-        horario.setText(servicio.getHorario());
-        precio.setText(servicio.getPrecio());
-        numero.setText(servicio.getNumero());
+        titulo.setText(servicio.getName());
+        descripcion.setText(servicio.getDescription());
+        direccion.setText(servicio.getAdress());
+        ambito.setText(servicio.getAmbit());
+        requisitos.setText(servicio.getRequirements());
+        horario.setText(servicio.getSchedule());
+        precio.setText(servicio.getPrice());
+        numero.setText(servicio.getPhoneNumber());
 
         mMapView.getMapAsync(this);
 
@@ -171,7 +170,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
         if (network != null && network.isConnectedOrConnecting ()) {
             try {
-                myMarker = setMarker(servicio.getDireccion (), myMarker, mGoogleMap, servicio.getNombre());
+                myMarker = setMarker(servicio.getAdress(), myMarker, mGoogleMap, servicio.getName());
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
                 Toast.makeText(getActivity ().getApplicationContext (), getString(R.string

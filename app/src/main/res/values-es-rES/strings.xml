@@ -48,8 +48,8 @@
     <string name="inscribir">Inscribir</string>
     <string name="chat">Chat</string>
 
-    <string name="alojamiento">Alojamiento</string>
-    <string name="donacion">Donación</string>
+    <string name="lodge">Alojamiento</string>
+    <string name="donation">Donación</string>
     <string name="formulario_donacion">Formulario Donacion:</string>
     <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
     <string name="franja_horaria_donacion">Hora de Recogida:</string>
@@ -76,7 +76,7 @@
     <string name="requisitos_curso_educativo">Requisitos previos(*):</string>
     <string name="ambito_curso_educativo">Ámbito(*):</string>
     <string name="horario_curso_educativo">Horario(*):</string>
-    <string name="precio">Precio:</string>
+    <string name="price">Precio:</string>
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
     <string name="go_to_signup"><b><u>No tienes cuenta todavía? Crea una</u></b></string>
@@ -85,7 +85,7 @@
     <string name="registro_fallido">La inscripción ha fallado!</string>
     <string name="servicio_alojamiento_creado_correctamente">Servicio de lodge creado
         correctamente!</string>
-    <string name="servicio_alojamiento_fallido">Ha fallado la creación del servicio de
+    <string name="servicio_alojamiento_fallido">Ha fallado la creación del service de
         lodge!</string>
     <string name="curso_educativo_creado_correctamente">Curso educativo creado
         correctamente!</string>
@@ -100,7 +100,7 @@
     <string name="ayuda">Ayuda</string>
     <string name="about">Acerca de Rekindle</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
-    <string name="mis_servicios">Mis servicios</string>
+    <string name="mis_servicios">Mis services</string>
     <string name="buscar_personas">Buscar personas</string>
     <string name="ajustes_generales">Ajustes generales</string>
     <string name="idioma">Idioma:</string>
@@ -128,28 +128,28 @@
     <string name="pueblo_letras">El nombre del pueblo sólo puede contener letras</string>
     <string name="etnia_largo">El nombre de la etnia demasiado largo, máximo 20 letras</string>
     <string name="etnia_letras">El nombre de la etnia sólo puede contener letras</string>
-    <string name="nombreServicio_obligatorio">Nombre del servicio obligatorio</string>
-    <string name="nombreServicio_largo">El nombre del servicio es demasiado largo, máximo 50 letras</string>
-    <string name="nombreServicio_letras">El nombre del servicio sólo puede contener letras</string>
+    <string name="nombreServicio_obligatorio">Nombre del service obligatorio</string>
+    <string name="nombreServicio_largo">El nombre del service es demasiado largo, máximo 50 letras</string>
+    <string name="nombreServicio_letras">El nombre del service sólo puede contener letras</string>
     <string name="telefonoServicio_obligatorio">Teléfono obligatorio</string>
     <string name="solicitudes_numeros">El límite de solicitudes debe ser un número</string>
     <string name="descripcion_obligatoria">Descripción es obligatoria</string>
     <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letrass</string>
     <string name="descripcion_letras">La descripción sólo puede contener letras</string>
     <string name="puestoTrabajo_obligatorio">Puesto de trabajo obligatorio</string>
-    <string name="puestoTrabajo_largo">El nombre del puesto de trabajo es demasiado largo, máximo 50 caracteres</string>
+    <string name="puestoTrabajo_largo">El nombre del charge de trabajo es demasiado largo, máximo 50 caracteres</string>
     <string name="requisitos_obligatorios">Requisitos obligatorios</string>
-    <string name="requisitos_largo">La descripción de los requisitos es demasiada larga, máximo 100 caracteres</string>
+    <string name="requisitos_largo">La descripción de los requirements es demasiada larga, máximo 100 caracteres</string>
 
     <string name="sueldo_obligatorio">Salario obligatorio</string>
     <string name="sueldo_formto">Formato del salario incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
     <string name="plazas_numeros">Plazas sólo puede contener números</string>
-    <string name="plazas_largo">El número de plazas es demasiado largo, máximo 5 dígitos</string>
+    <string name="plazas_largo">El número de places es demasiado largo, máximo 5 dígitos</string>
     <string name="ambito_obligatorio">Ámbito obligatorio</string>
     <string name="ambito_largo">La descripción del ámbito es demasiado larga, máximo 50 caracteres</string>
     <string name="horario_obligatorio">Horario obligatorio</string>
-    <string name="horario_largo">El horario es demasiado largo, máximo 30 caracteres</string>
-    <string name="precio_formato">Formato de precio incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
+    <string name="horario_largo">El schedule es demasiado largo, máximo 30 caracteres</string>
+    <string name="precio_formato">Formato de price incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
 
     <string name="enviar_correo">Enviar correo</string>
 
@@ -158,9 +158,9 @@
     <string name="back_to_login"><b><u>Volver a la pantalla anterior</u></b></string>
     <string name="introducir_codigo">Código(*):</string>
 
-    <string name="titulo_mis_servicios">Mis servicios</string>
+    <string name="titulo_mis_servicios">Mis services</string>
 
-    <string name="nomap">Conectate a internet para ver la localización del servicio</string>
+    <string name="nomap">Conectate a internet para ver la localización del service</string>
     s<string name="nointernet">Comprueba tu conexión a Internet</string>
 
     <string name="autentificacion">Verificando...</string>
@@ -177,10 +177,10 @@
     <string name="editar_empleo">Editar empleo:</string>
     <string name="editar_curso">Editar curso educativo:</string>
 
-    <string name="searchService">Buscar servicios</string>
+    <string name="searchService">Buscar services</string>
     <string name="no_permission">La aplicación no tiene permisos de ubicación</string>
 
-    <string name="plazas_aumento">No es posible disminuir el número de plazas/solicitudes, solo se
+    <string name="plazas_aumento">No es posible disminuir el número de places/solicitudes, solo se
         puede incrementar</string>
 
     <string name="title_about">Sobre Rekindle App</string>
@@ -279,55 +279,55 @@
         opciones como Ver Perfil, Ajustes, Ayuda, About, Cerrar sesión, etc. \n \n
 
         <b>
-            <u>Listar servicios \n</u>
+            <u>Listar services \n</u>
         </b>
-        Lista donde apareceran todos los servicios
+        Lista donde apareceran todos los services
         disponibles en ese momento. Pulsando en la barra superior podrá escribir, filtrando el
-        listado haciendo que solo aparezcan aquellos servicios que coincidan con el texto
-        introducido. Para ayudar al filtrado por tipo dispone de cuatro botones encima del
-        listado de servicios, si todos están activos, significa que la lista está mostrando todos
-        los tipos de servicio, cuando un botón es clicado se altera el filtrado, es decir, si un
-        botón se muestra con un color gris, significa que ese tipo de servicio no se mostrará en la
-        lista, más de un botón puede ser pulsado. Para volver a activar el tipo de servicio de
-        simplemente tiene que volver a pulsar el botón del servicio. Además dispone de un botón
+        listado haciendo que solo aparezcan aquellos services que coincidan con el texto
+        introducido. Para ayudar al filtrado por serviceType dispone de cuatro botones encima del
+        listado de services, si todos están activos, significa que la lista está mostrando todos
+        los tipos de service, cuando un botón es clicado se altera el filtrado, es decir, si un
+        botón se muestra con un color gris, significa que ese serviceType de service no se mostrará en la
+        lista, más de un botón puede ser pulsado. Para volver a activar el serviceType de service de
+        simplemente tiene que volver a pulsar el botón del service. Además dispone de un botón
         de ajustes que le permitirá ajustar la búsqueda de manera más precisa, disponiendo de
-        varios atributos por cada tipo de servicio como por ejemplo precio, distáncia, idioma,
-        etc. Al pulsar en un servicio, se mostrará toda su información. \n \n
+        varios atributos por cada serviceType de service como por ejemplo price, distáncia, idioma,
+        etc. Al pulsar en un service, se mostrará toda su información. \n \n
 
         <b>
-            <u>Mostrar servicio \n</u>
+            <u>Mostrar service \n</u>
         </b>
         En esta pantalla se muestra toda la información
-        asociada al servicio, incluyendo un mapa con la localización del servicio. Clicar en el
-        marcador rojo le permitirá trazar una ruta desde su localización actual hasta el servicio
+        asociada al service, incluyendo un mapa con la localización del service. Clicar en el
+        marcador rojo le permitirá trazar una ruta desde su localización actual hasta el service
         o abrir la aplicación GoogleMaps para más opciones. Si le surge cualquier duda con el
-        servicio, puede contactar con el voluntario pulsando en \"Chat\" e iniciará una
-        conversación con él. Si otros usuarios han hecho uso de este servicio anteriormente y han
+        service, puede contactar con el voluntario pulsando en \"Chat\" e iniciará una
+        conversación con él. Si otros usuarios han hecho uso de este service anteriormente y han
         dado su valoración, podrá verla pulsando \"Opiniones\". Y finalmente para inscribirse al
-        servicio solo tiene que pulsar en \"Inscribir\". \n \n
+        service solo tiene que pulsar en \"Inscribir\". \n \n
 
         <b>
-            <u>(Voluntario) Mis servicios \n</u>
+            <u>(Voluntario) Mis services \n</u>
         </b>
-        Aquí podrá ver la lista de servicios
+        Aquí podrá ver la lista de services
         que ha creado. Haciendo una pulsación corta puede obtener una lista de todos los usuarios
-        que se han inscrito en ella. Realizar una pulsación larga seleccionando un servicio le
-        permitirá editar dicho servicio o eliminarlo. \n \n
+        que se han inscrito en ella. Realizar una pulsación larga seleccionando un service le
+        permitirá editar dicho service o eliminarlo. \n \n
 
         <b>
-            <u>(Refugiado) Mis servicios \n</u>
+            <u>(Refugiado) Mis services \n</u>
         </b>
-        Aquí podrá ver la lista de servicios en
+        Aquí podrá ver la lista de services en
         los que se ha inscrito, clicar en uno de ellos mostrará de nuevo su información, y
-        realizar una pulsación larga le permitirá darse de baja del servicio. \n \n
+        realizar una pulsación larga le permitirá darse de baja del service. \n \n
 
         <b>
-            <u>(Solo voluntarios) Crear servicio \n</u>
+            <u>(Solo voluntarios) Crear service \n</u>
         </b>
         Formulario donde se le pedirá
-        introducir unos ciertos datos, dependietes del tipo de servicio seleccionado mediante los
+        introducir unos ciertos datos, dependietes del serviceType de service seleccionado mediante los
         cuatro botones situados en la parte superior de la pantalla. Pulsar en "Enviar" dará de
-        alta su servicio. \n \n
+        alta su service. \n \n
 
         <b>
             <u>(Solo refugiados) Buscar personas \n</u>
@@ -358,7 +358,7 @@
             <u>Ajustes \n</u>
         </b>
         A partir del menú lateral podrá acceder a ajustes, donde
-        podrá seleccionar idioma, distáncia máxima de búsqueda de servicios, etc. \n \n
+        podrá seleccionar idioma, distáncia máxima de búsqueda de services, etc. \n \n
 
         <b>
             <u>About \n</u>
@@ -381,7 +381,7 @@
     <string name="editProfile">Editar Perfil</string>
     <string name="myLocation_maps">Mi ubicación</string>
     <string name="noLocation">No podemos determinar tu ubicación, intentalo más tarde</string>
-    <string name="serviceLocation">Ubicación servicio:</string>
+    <string name="serviceLocation">Ubicación service:</string>
     <string name="select_option">Elige una opción</string>
     <string name="unsubscribe">Desinscribir</string>
     <string name="unsubscribe_confirmation">Estás seguro que quieres desinscribirte?</string>
@@ -389,7 +389,7 @@
     <string name="no">No</string>
     <string name="unsubscribed_successfully">Desinscrito correctamente!</string>
     <string name="service_deleted_successfully">Servicio eliminado correctamente!</string>
-    <string name="delete_service_confirmation">Seguro que quieres eliminar este servicio?</string>
+    <string name="delete_service_confirmation">Seguro que quieres eliminar este service?</string>
     <string name="not_available">No disponible</string>
     <string name="change_photo">Cambiar foto</string>
 

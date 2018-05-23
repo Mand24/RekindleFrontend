@@ -164,7 +164,7 @@ public class Login extends AppCompatActivity {
                     /*String header1 = response.headers().get("Tipo");
                     int i = Integer.parseInt(header1);*/
                     usuario = response.body();
-//                    usuario.setTipo(i);
+//                    usuario.setServiceType(i);
                     System.out.println("tipo: "+usuario.getTipo());
                     onLoginSuccess();
                 }

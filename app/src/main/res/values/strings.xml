@@ -53,8 +53,8 @@
     <string name="inscribir">Enrol</string>
     <string name="chat">Chat</string>
 
-    <string name="alojamiento">Hosting</string>
-    <string name="donacion">Donations</string>
+    <string name="lodge">Hosting</string>
+    <string name="donation">Donations</string>
     <string name="formulario_donacion">Donation form:</string>
     <string name="lugar_recogida_donacion">Pick up location(*):</string>
     <string name="franja_horaria_donacion">Pick up time:</string>
@@ -81,7 +81,7 @@
     <string name="requisitos_curso_educativo">Prerequisites(*):</string>
     <string name="ambito_curso_educativo">Field:</string>
     <string name="horario_curso_educativo">Schedule(*):</string>
-    <string name="precio">Price:</string>
+    <string name="price">Price:</string>
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
     <string name="go_to_signup">

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.servicios.crear.FormularioDonacion">
+    tools:context=".view.services.crear.FormularioDonacion">
 
     <ScrollView
         android:layout_width="match_parent"

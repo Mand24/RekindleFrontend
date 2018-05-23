@@ -1,19 +1,17 @@
 package com.example.usuario.rekindlefrontend.data.entity.servicio;
 
-import android.widget.ImageView;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Servicio implements Serializable {
+public class Service implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
     @SerializedName("serviceType")
     @Expose
-    private String tipo;
+    private String serviceType;
     @SerializedName("volunteer")
     @Expose
     private String volunteer;
@@ -33,16 +31,15 @@ public class Servicio implements Serializable {
     private int image;
 
 
-
-    public Servicio(int id, String tipo, String email, String nombre, String descripcion, String
-            direccion, String numero) {
+    public Service(int id, String serviceType, String email, String name, String description, String
+            adress, String phoneNumber) {
         this.id = id;
-        this.tipo = tipo;
+        this.serviceType = serviceType;
         this.volunteer = email;
-        this.name = nombre;
-        this.description = descripcion;
-        this.adress = direccion;
-        this.phoneNumber = numero;
+        this.name = name;
+        this.description = description;
+        this.adress = adress;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getId() {
@@ -53,12 +50,12 @@ public class Servicio implements Serializable {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getServiceType() {
+        return serviceType;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     public String getEmail() {
@@ -69,36 +66,36 @@ public class Servicio implements Serializable {
         this.volunteer = email;
     }
 
-    public String getNombre() {
+    public String getName() {
         return name;
     }
 
-    public void setNombre(String nombre) {
-        this.name = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescripcion() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.description = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDireccion() {
+    public String getAdress() {
         return adress;
     }
 
-    public void setDireccion(String direccion) {
-        this.adress = direccion;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
-    public String getNumero() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setNumero(String numero) {
-        this.phoneNumber = numero;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public int getImage() {
@@ -111,9 +108,9 @@ public class Servicio implements Serializable {
 
     @Override
     public String toString() {
-        return "Servicio{" +
+        return "Service{" +
                 "id=" + id +
-                ", tipo='" + tipo + '\'' +
+                ", serviceType='" + serviceType + '\'' +
                 ", volunteer='" + volunteer + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

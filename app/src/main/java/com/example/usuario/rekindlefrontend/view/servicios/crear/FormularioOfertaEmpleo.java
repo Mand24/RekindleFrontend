@@ -7,11 +7,8 @@ import static android.app.Activity.RESULT_OK;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Job;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -32,9 +29,6 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,7 +54,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     private EditText ePlazas;
     private EditText eDescripcion;
 
-    private OfertaEmpleo mOfertaEmpleo;
+    private Job mJob;
     private APIService mAPIService;
 
     public FormularioOfertaEmpleo() {
@@ -155,7 +149,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
 
         Usuario usuario = getUser(getActivity().getApplicationContext());
 
-        mOfertaEmpleo = new OfertaEmpleo(0, usuario.getMail(), eNombre.getText().toString(),
+        mJob = new Job(0, usuario.getMail(), eNombre.getText().toString(),
                 eDescripcion.getText().toString(), eDireccion.getText().toString(),ePuesto
                 .getText().toString(), eRequisitos.getText().toString(), eJornada.getText()
                 .toString(), eHoras.getText().toString(), eDuracion.getText().toString(), ePlazas
@@ -165,7 +159,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     }
 
     public void sendCrearOferta(){
-        mAPIService.crearOferta(mOfertaEmpleo).enqueue(new Callback<Void>() {
+        mAPIService.crearOferta(mJob).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
