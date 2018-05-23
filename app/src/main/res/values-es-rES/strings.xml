@@ -48,7 +48,7 @@
     <string name="inscribir">Inscribir</string>
     <string name="chat">Chat</string>
 
-    <string name="lodge">Alojamiento</string>
+    <string name="alojamiento">Alojamiento</string>
     <string name="donacion">Donación</string>
     <string name="formulario_donacion">Formulario Donacion:</string>
     <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
