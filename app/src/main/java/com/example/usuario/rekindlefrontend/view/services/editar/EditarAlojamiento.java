@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.editar;
+package com.example.usuario.rekindlefrontend.view.services.editar;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;

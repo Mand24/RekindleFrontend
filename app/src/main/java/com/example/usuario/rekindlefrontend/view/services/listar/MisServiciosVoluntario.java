@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.listar;
+package com.example.usuario.rekindlefrontend.view.services.listar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
-import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
+import com.example.usuario.rekindlefrontend.view.services.mostrar.MostrarServicio;
 
 import java.util.ArrayList;
 

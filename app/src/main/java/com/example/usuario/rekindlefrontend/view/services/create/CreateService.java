@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.crear;
+package com.example.usuario.rekindlefrontend.view.services.create;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -29,7 +29,7 @@ public class CreateService extends AppBaseActivity {
 
         formTypes.put("Donation", new FormularioDonacion());
 
-        formTypes.put("Education", new FormularioCursoEducativo());
+        formTypes.put("Education", new EducationForm());
 
         formTypes.put("Job", new FormularioOfertaEmpleo());
 

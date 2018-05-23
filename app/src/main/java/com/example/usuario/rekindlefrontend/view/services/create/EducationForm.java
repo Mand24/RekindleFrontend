@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.crear;
+package com.example.usuario.rekindlefrontend.view.services.create;
 
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -6,9 +6,9 @@ import static android.app.Activity.RESULT_OK;
 
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,13 +17,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.R;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -38,61 +38,62 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormularioCursoEducativo extends AbstractFormatChecker {
+public class EducationForm extends AbstractFormatChecker {
 
-    private EditText eDireccion;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
-    private EditText eNombre;
-    private EditText eTelefono;
-    private EditText eAmbito;
-    private EditText eRequisitos;
-    private EditText eHorario;
-    private EditText ePlazas;
-    private EditText ePrecio;
-    private EditText eDescripcion;
+    private EditText eName;
+    private EditText ePhoneNumber;
+    private EditText eAdress;
+    private EditText eAmbit;
+    private EditText eRequirements;
+    private EditText eSchedule;
+    private EditText ePlacesLimit;
+    private EditText ePrice;
+    private EditText eDescription;
     private Education mEducation;
     private APIService mAPIService;
 
-    public FormularioCursoEducativo() {
+    public EducationForm() {
         // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_formulario_curso_educativo, container,
                 false);
 
         //establecer las vistas
-        setVistas(view);
+        setViews(view);
 
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_curso_educativo);
-        button_send.setOnClickListener(new View.OnClickListener(){
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(
+                R.id.enviar_formulario_curso_educativo);
+        button_send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 try {
-                    checkCampos(view);
-                    obtenerParametros();
+                    checkFields(view);
+                    getParams();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCrearEducacion();
+                sendCreateEducation();
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_curso_educativo);
-        eDireccion.setOnClickListener(new View.OnClickListener() {
+        eAdress = view.findViewById(R.id.direccion_curso_educativo);
+        eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-                }catch (GooglePlayServicesRepairableException e) {
+                } catch (GooglePlayServicesRepairableException e) {
                     // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
                     // TODO: Handle the error.
@@ -103,35 +104,35 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
         return view;
     }
 
-    public void setVistas(View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_curso_educativo);
-        eTelefono = view.findViewById(R.id.telefono_curso_educativo);
-        eDireccion = view.findViewById(R.id.direccion_curso_educativo);
-        eAmbito = view.findViewById(R.id.ambito_curso_educativo);
-        eRequisitos = view.findViewById(R.id.requisitos_curso_educativo);
-        eHorario = view.findViewById(R.id.horario_curso_educativo);
-        ePlazas = view.findViewById(R.id.plazas_curso_educativo);
-        ePrecio = view.findViewById(R.id.precio_curso_educativo);
-        eDescripcion = view.findViewById(R.id.descripcion_curso_educativo);
+        eName = view.findViewById(R.id.nombre_curso_educativo);
+        ePhoneNumber = view.findViewById(R.id.telefono_curso_educativo);
+        eAdress = view.findViewById(R.id.direccion_curso_educativo);
+        eAmbit = view.findViewById(R.id.ambito_curso_educativo);
+        eRequirements = view.findViewById(R.id.requisitos_curso_educativo);
+        eSchedule = view.findViewById(R.id.horario_curso_educativo);
+        ePlacesLimit = view.findViewById(R.id.plazas_curso_educativo);
+        ePrice = view.findViewById(R.id.precio_curso_educativo);
+        eDescription = view.findViewById(R.id.descripcion_curso_educativo);
 
         mAPIService = APIUtils.getAPIService();
 
     }
 
-    public void checkCampos(View view) throws Exception {//TODO FALTA CHECK PRECIO!!!
+    public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkAmbitoCursoEducativo(eAmbito.getText().toString());
-        checkRequisitosServicio(eRequisitos.getText().toString());
-        checkHorarioCursoEducativo(eHorario.getText().toString());
-        checkPlazasServicio(ePlazas.getText().toString());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkAmbitoCursoEducativo(eAmbit.getText().toString());
+        checkRequisitosServicio(eRequirements.getText().toString());
+        checkHorarioCursoEducativo(eSchedule.getText().toString());
+        checkPlazasServicio(ePlacesLimit.getText().toString());
+        checkDescripcionServicio(eDescription.getText().toString());
 
     }
 
-    public void obtenerParametros(){
+    public void getParams() {
 
         /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
@@ -139,38 +140,37 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
         String json = datos.getString("usuario", "");
         Usuario usuario = gson.fromJson(json, Usuario.class);*/
 
-        Usuario usuario = getUser(getActivity().getApplicationContext());
+        Usuario user = getUser(getActivity().getApplicationContext());
 
-        mEducation = new Education(0, usuario.getMail(), eNombre.getText().toString(),
-                eDescripcion.getText().toString(), eDireccion.getText().toString(), eAmbito
-                .getText().toString(), eRequisitos.getText().toString(), eHorario.getText()
-                .toString(), ePlazas.getText().toString(), ePrecio.getText().toString(),
-                eTelefono.getText().toString());
+        mEducation = new Education(0, user.getMail(), eName.getText().toString(),
+                eDescription.getText().toString(), eAdress.getText().toString(), eAmbit
+                .getText().toString(), eRequirements.getText().toString(), eSchedule.getText()
+                .toString(), ePlacesLimit.getText().toString(), ePrice.getText().toString(),
+                ePhoneNumber.getText().toString());
 
     }
 
-    public void sendCrearEducacion(){
+    public void sendCreateEducation() {
         mAPIService.crearEducacion(mEducation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
-                    tratarResultadoPeticion(true);
-                }
-                else {
-                    System.out.println("codi "+response.code());
-                    tratarResultadoPeticion(false);
+                if (response.isSuccessful()) {
+                    manageResult(true);
+                } else {
+                    System.out.println("codi " + response.code());
+                    manageResult(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                tratarResultadoPeticion(false);
+                manageResult(false);
 
             }
         });
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void manageResult(boolean result) {
 
         if (result) {
 
@@ -179,8 +179,10 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
             startActivity(i);
 
-        }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                .string.curso_educativo_fallido), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.curso_educativo_fallido), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -189,7 +191,7 @@ public class FormularioCursoEducativo extends AbstractFormatChecker {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 Log.i("==================", "Place: " + place.getName());
-                eDireccion.setText(place.getAddress());
+                eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 // TODO: Handle the error.

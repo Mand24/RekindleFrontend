@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios;
+package com.example.usuario.rekindlefrontend.view.services;
 
 import android.Manifest;
 import android.content.Context;

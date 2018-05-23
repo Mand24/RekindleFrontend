@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CreateService;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosVoluntario;
+import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
+import com.example.usuario.rekindlefrontend.view.services.listar.ListarServicios;
+import com.example.usuario.rekindlefrontend.view.services.listar.MisServiciosVoluntario;
 
 /**
  * A simple {@link Fragment} subclass.

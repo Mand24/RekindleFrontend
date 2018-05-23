@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.crear;
+package com.example.usuario.rekindlefrontend.view.services.create;
 
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -17,13 +17,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.service.Job;
+import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -38,26 +39,21 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormularioOfertaEmpleo extends AbstractFormatChecker {
+public class FormularioDonacion extends AbstractFormatChecker {
 
+
+    private EditText editStartingTime, editEndingTime;
     private EditText eDireccion;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
-
     private EditText eNombre;
     private EditText eTelefono;
-    private EditText ePuesto;
-    private EditText eRequisitos;
-    private EditText eJornada;
-    private EditText eHoras;
-    private EditText eDuracion;
-    private EditText eSueldo;
-    private EditText ePlazas;
+    private EditText eSolicitudes;
     private EditText eDescripcion;
 
-    private Job mJob;
+    private Donation mDonation;
     private APIService mAPIService;
 
-    public FormularioOfertaEmpleo() {
+    public FormularioDonacion() {
         // Required empty public constructor
     }
 
@@ -66,13 +62,13 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_formulario_oferta_empleo, container,
+        final View view = inflater.inflate(R.layout.fragment_formulario_donacion, container,
                 false);
 
         //establecer las vistas
         setVistas(view);
 
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_oferta_empleo);
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_donacion);
         button_send.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -83,11 +79,11 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCrearOferta();
+                sendCrearDonacion();
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_oferta_empleo);
+        eDireccion = view.findViewById(R.id.direccion_donacion);
         eDireccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,22 +99,22 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
             }
         });
 
+        editStartingTime = (EditText) view.findViewById(R.id
+                .franja_horaria_inicio_donacion);
+        SetTime fromTime = new SetTime(editStartingTime, container.getContext());
+        SetTime toTime = new SetTime(editEndingTime, container.getContext());
         return view;
     }
 
     public void setVistas(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_oferta_empleo);
-        eTelefono = view.findViewById(R.id.telefono_oferta_empleo);
-        eDireccion = view.findViewById(R.id.direccion_oferta_empleo);
-        ePuesto = view.findViewById(R.id.puesto_oferta_empleo);
-        eRequisitos = view.findViewById(R.id.requisitos_oferta_empleo);
-        eJornada = view.findViewById(R.id.jornada_oferta_empleo);
-        eHoras = view.findViewById(R.id.horas_semanales_oferta_empleo);
-        eDuracion = view.findViewById(R.id.duracion_oferta_empleo);
-        eSueldo = view.findViewById(R.id.sueldo_oferta_empleo);
-        ePlazas = view.findViewById(R.id.plazas_oferta_empleo);
-        eDescripcion = view.findViewById(R.id.descripcion_oferta_empleo);
+        eNombre = view.findViewById(R.id.nombre_donacion);
+        eTelefono = view.findViewById(R.id.telefono_donacion);
+        eDireccion = view.findViewById(R.id.direccion_donacion);
+        eSolicitudes = view.findViewById(R.id.solicitudes_donacion);
+        editStartingTime = view.findViewById(R.id.franja_horaria_inicio_donacion);
+        editEndingTime = view.findViewById(R.id.franja_horaria_fin_donacion);
+        eDescripcion = view.findViewById(R.id.descripcion_donacion);
 
         mAPIService = APIUtils.getAPIService();
 
@@ -128,13 +124,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
 
         checkNombreServicio(eNombre.getText().toString());
         checkTelefonoServicio(eTelefono.getText().toString());
-        checkPuestoOfertaEmpleo(ePuesto.getText().toString());
-        checkRequisitosServicio(eRequisitos.getText().toString());
-        checkJornadaOfertaEmpleo(eJornada.getText().toString());
-        checkHorasOfertaEmpleo(eHoras.getText().toString());
-        checkDuracionOfertaEmpleo(eDuracion.getText().toString());
-        checkSueldoOfertaEmpleo(eSueldo.getText().toString());
-        checkPlazasServicio(ePlazas.getText().toString());
+        checkSolicitudesServicio(eSolicitudes.getText().toString());
         checkDescripcionServicio(eDescripcion.getText().toString());
 
     }
@@ -149,17 +139,15 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
 
         Usuario usuario = getUser(getActivity().getApplicationContext());
 
-        mJob = new Job(0, usuario.getMail(), eNombre.getText().toString(),
-                eDescripcion.getText().toString(), eDireccion.getText().toString(),ePuesto
-                .getText().toString(), eRequisitos.getText().toString(), eJornada.getText()
-                .toString(), eHoras.getText().toString(), eDuracion.getText().toString(), ePlazas
-                .getText().toString(), eSueldo.getText().toString(), eTelefono.getText().toString
-                ());
+        mDonation = new Donation(0, usuario.getMail(), eNombre.getText().toString(),
+                eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
+                .getText().toString(), editStartingTime.getText().toString(), editEndingTime
+                .getText().toString(), eTelefono.getText().toString());
 
     }
 
-    public void sendCrearOferta(){
-        mAPIService.crearOferta(mJob).enqueue(new Callback<Void>() {
+    public void sendCrearDonacion(){
+        mAPIService.crearDonacion(mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
@@ -183,12 +171,12 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
         if (result) {
 
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                    .string.servicio_alojamiento_creado_correctamente), Toast.LENGTH_SHORT).show();
+                    .string.donacion_creada_correctamente), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
             startActivity(i);
 
         }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                .string.servicio_alojamiento_fallido), Toast.LENGTH_SHORT).show();
+                .string.donacion_fallida), Toast.LENGTH_SHORT).show();
     }
 
     @Override

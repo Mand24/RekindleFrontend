@@ -31,7 +31,7 @@
 
         <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
         <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
-        <activity android:name=".view.services.crear.CrearServicio" />
+        <activity android:name=".view.services.create.CrearServicio" />
         <activity android:name=".view.services.listar.ListarServicios" />
         <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
         <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />

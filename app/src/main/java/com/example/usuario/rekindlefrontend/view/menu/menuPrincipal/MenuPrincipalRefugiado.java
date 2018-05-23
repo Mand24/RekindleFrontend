@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosRefugiado;
+import com.example.usuario.rekindlefrontend.view.services.listar.ListarServicios;
+import com.example.usuario.rekindlefrontend.view.services.listar.MisServiciosRefugiado;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.BusquedaRefugiado;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 

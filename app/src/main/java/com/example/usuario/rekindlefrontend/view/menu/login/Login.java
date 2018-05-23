@@ -6,7 +6,6 @@ import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,12 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
 import com.pusher.client.Pusher;
@@ -34,7 +31,6 @@ import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;

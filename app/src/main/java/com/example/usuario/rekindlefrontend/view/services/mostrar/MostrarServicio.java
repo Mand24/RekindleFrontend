@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.mostrar;
+package com.example.usuario.rekindlefrontend.view.services.mostrar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios.mostrar;
+package com.example.usuario.rekindlefrontend.view.services.mostrar;
 
 
 import android.app.Fragment;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.service.Education;
+import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -30,44 +30,43 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
+public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
-    public MostrarCursoEducativo() {
+    public MostrarAlojamiento() {
         // Required empty public constructor
     }
 
-    TextView titulo, descripcion, direccion, ambito, requisitos, horario, precio, numero;
+
+    TextView titulo, descripcion, direccion, fecha, numero;
     AppCompatButton chat, inscribirse;
 
-    public Education servicio;
+    public Lodge servicio;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
     private APIService mAPIService = APIUtils.getAPIService();
-    private final String TYPE = "Education";
+    private final String TYPE = "Lodge";
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
             Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_mostrar_curso_educativo, container,
+        final View view = inflater.inflate(R.layout.fragment_mostrar_alojamiento, container,
                 false);
 
         super.onCreate(savedInstanceState);
 
-        servicio = (Education) getArguments().getSerializable("servicioFrag");
+        servicio = (Lodge) getArguments().getSerializable("servicioFrag");
 
-        titulo = view.findViewById(R.id.titulo_curso_educativo);
-        descripcion = view.findViewById(R.id.descripcion_curso_educativo);
-        direccion = view.findViewById(R.id.direccion_curso_educativo);
-        ambito = view.findViewById(R.id.ambito_curso_educativo);
-        requisitos = view.findViewById(R.id.requisitos_curso_educativo);
-        horario = view.findViewById(R.id.horario_curso_educativo);
-        precio = view.findViewById(R.id.precio_curso_educativo);
+        titulo = view.findViewById(R.id.titulo_alojamiento);
+        descripcion = view.findViewById(R.id.descripcion_alojamiento);
+        direccion = view.findViewById(R.id.direccion_alojamiento);
+        fecha = view.findViewById(R.id.fecha_limite_alojamiento);
         mMapView = (MapFragment) getChildFragmentManager().findFragmentById(R.id.google_mapView);
         numero = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
@@ -76,10 +75,7 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
         titulo.setText(servicio.getName());
         descripcion.setText(servicio.getDescription());
         direccion.setText(servicio.getAdress());
-        ambito.setText(servicio.getAmbit());
-        requisitos.setText(servicio.getRequirements());
-        horario.setText(servicio.getSchedule());
-        precio.setText(servicio.getPrice());
+        fecha.setText(servicio.getDateLimit());
         numero.setText(servicio.getPhoneNumber());
 
         mMapView.getMapAsync(this);

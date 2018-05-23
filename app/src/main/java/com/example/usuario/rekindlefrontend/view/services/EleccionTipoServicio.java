@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.servicios;
+package com.example.usuario.rekindlefrontend.view.services;
 
 
 import android.app.Activity;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CreateService;
+import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
 
 import java.util.HashMap;
 import java.util.Map;
