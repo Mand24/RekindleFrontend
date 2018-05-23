@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.services.listar.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.services.listar.MisServiciosRefugiado;
+import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
+import com.example.usuario.rekindlefrontend.view.services.list.MisServiciosRefugiado;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.BusquedaRefugiado;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 
@@ -45,7 +45,7 @@ public class MenuPrincipalRefugiado extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), ListarServicios.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), ListServices.class);
                 startActivity(i);
             }
         });

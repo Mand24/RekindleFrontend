@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.listar;
+package com.example.usuario.rekindlefrontend.view.services.list;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MisServiciosRefugiado extends ListarServicios {
+public class MisServiciosRefugiado extends ListServices {
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -91,14 +91,14 @@ public class MisServiciosRefugiado extends ListarServicios {
                            Toast.LENGTH_SHORT).show();
                } else {
                    System.out.println("CODIGO "+response.code());
-                   tratarResultadoPeticion(false, null);
+                   manageResult(false, null);
                }
            }
 
            @Override
            public void onFailure(Call<Void> call, Throwable t) {
                Log.e("on Failure", t.toString());
-               tratarResultadoPeticion(false, null);
+               manageResult(false, null);
            }
        });
     }
@@ -113,10 +113,10 @@ public class MisServiciosRefugiado extends ListarServicios {
                             Response<ArrayList<Service>> response) {
                         if (response.isSuccessful()) {
                             ArrayList<Service> respuesta = response.body();
-                            tratarResultadoPeticion(true, respuesta);
+                            manageResult(true, respuesta);
                         } else {
                             System.out.println("CODIGO "+response.code());
-                            tratarResultadoPeticion(false, null);
+                            manageResult(false, null);
                         }
                     }
 

@@ -32,14 +32,14 @@
         <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
         <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
         <activity android:name=".view.services.create.CrearServicio" />
-        <activity android:name=".view.services.listar.ListarServicios" />
+        <activity android:name=".view.services.list.ListServices" />
         <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
         <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />
         <activity android:name=".view.services.mostrar.MostrarServicio" />
         <activity android:name=".view.menu.login.RecuperarPassword" />
         <activity android:name=".view.menu.login.CodePasswordRequest" />
-        <activity android:name=".view.services.listar.MisServiciosRefugiado" />
-        <activity android:name=".view.services.listar.MisServiciosVoluntario" />
+        <activity android:name=".view.services.list.MisServiciosRefugiado" />
+        <activity android:name=".view.services.list.MisServiciosVoluntario" />
         <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
 
         <meta-data

@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.listar;
+package com.example.usuario.rekindlefrontend.view.services.list;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListarServicios extends AppBaseActivity implements Filterable {
+public class ListServices extends AppBaseActivity implements Filterable {
 
     protected List<Service> mServices = new ArrayList<>();
     protected List<Service> mServiciosFiltrados = new ArrayList<>();
@@ -45,7 +45,7 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
     protected APIService mAPIService;
 
-    protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
+    protected ImageButton LodgeFilter, DonationFilter, EducationFilter, JobFilter;
     protected HashMap<String, Boolean> filters = new HashMap<>();
 
     @Override
@@ -78,73 +78,73 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
         recyclerView.setAdapter(mAdapter);
 
-        filtrarAlojamiento = (ImageButton) findViewById(R.id.boton_tipo_alojamiento);
+        LodgeFilter = (ImageButton) findViewById(R.id.boton_tipo_alojamiento);
 
-        filtrarAlojamiento.setOnClickListener(new View.OnClickListener() {
+        LodgeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
                 if (filters.get("Lodge")) {
                     filters.put("Lodge", false);
-                    filtrarAlojamiento.setBackgroundColor(
+                    LodgeFilter.setBackgroundColor(
                             getResources().getColor(R.color.colorIron));
                 } else {
                     filters.put("Lodge", true);
-                    filtrarAlojamiento.setBackgroundColor(
+                    LodgeFilter.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
                 getFilter().filter(searchView.getQuery());
             }
         });
 
-        filtrarDonacion = (ImageButton) findViewById(R.id.boton_tipo_donacion);
+        DonationFilter = (ImageButton) findViewById(R.id.boton_tipo_donacion);
 
-        filtrarDonacion.setOnClickListener(new View.OnClickListener() {
+        DonationFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
                 if (filters.get("Donation")) {
                     filters.put("Donation", false);
-                    filtrarDonacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                    DonationFilter.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
                     filters.put("Donation", true);
-                    filtrarDonacion.setBackgroundColor(
+                    DonationFilter.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
                 getFilter().filter(searchView.getQuery());
             }
         });
 
-        filtrarEducacion = (ImageButton) findViewById(R.id.boton_tipo_curso_educativo);
+        EducationFilter = (ImageButton) findViewById(R.id.boton_tipo_curso_educativo);
 
-        filtrarEducacion.setOnClickListener(new View.OnClickListener() {
+        EducationFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
                 if (filters.get("Education")) {
                     filters.put("Education", false);
-                    filtrarEducacion.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                    EducationFilter.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
                     filters.put("Education", true);
-                    filtrarEducacion.setBackgroundColor(
+                    EducationFilter.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
                 getFilter().filter(searchView.getQuery());
             }
         });
 
-        filtrarEmpleo = (ImageButton) findViewById(R.id.boton_tipo_oferta_empleo);
+        JobFilter = (ImageButton) findViewById(R.id.boton_tipo_oferta_empleo);
 
-        filtrarEmpleo.setOnClickListener(new View.OnClickListener() {
+        JobFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toggle imagen; filtrar()
                 if (filters.get("Job")) {
                     filters.put("Job", false);
-                    filtrarEmpleo.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                    JobFilter.setBackgroundColor(getResources().getColor(R.color.colorIron));
                 } else {
                     filters.put("Job", true);
-                    filtrarEmpleo.setBackgroundColor(
+                    JobFilter.setBackgroundColor(
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
                 getFilter().filter(searchView.getQuery());
@@ -171,17 +171,6 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                 });
     }
 
-    /*private void filtrar() {
-        String output = "";
-        mServiciosFiltrados = new ArrayList<>();
-        for (Service s : mServices) {
-            if (filters.get(s.getId())) {
-                mServiciosFiltrados.add(s);
-            }
-        }
-        refreshItems();
-    }*/
-
     protected void refreshItems() {
 
         mAdapter.setServices(mServiciosFiltrados);
@@ -197,20 +186,20 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                     Response<ArrayList<Service>>
                             response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Service> respuesta = response.body();
+                    ArrayList<Service> body = response.body();
                     //mServices = response.body();
-                    tratarResultadoPeticion(true, respuesta);
+                    manageResult(true, body);
 
                 } else {
                     System.out.println("CODIGO "+response.code());
-                    tratarResultadoPeticion(false, null);
+                    manageResult(false, null);
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
                 Log.e("on Failure", t.toString());
-                tratarResultadoPeticion(false, null);
+                manageResult(false, null);
                 Log.i(t.getClass().toString(), "========================");
                 if (t instanceof IOException) {
                     Log.i( "NETWORK ERROR", "=======================================");
@@ -320,10 +309,10 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         };
     }
 
-    public void tratarResultadoPeticion(boolean result, List<Service> respuesta) {
+    public void manageResult(boolean result, List<Service> body) {
 
         if (result) {
-            mServices = respuesta;
+            mServices = body;
             mServiciosFiltrados = mServices;
             refreshItems();
 

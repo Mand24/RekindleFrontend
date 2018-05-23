@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.services.listar.ListarServicios"
+    tools:context=".view.services.list.ListServices"
     android:background="@drawable/fondo">
 
     <!--<android.support.design.widget.AppBarLayout

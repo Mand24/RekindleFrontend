@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
-import com.example.usuario.rekindlefrontend.view.services.listar.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.services.listar.MisServiciosVoluntario;
+import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
+import com.example.usuario.rekindlefrontend.view.services.list.MisServiciosVoluntario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,7 +43,7 @@ public class MenuPrincipalVoluntario extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), ListarServicios.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), ListServices.class);
                 startActivity(i);
             }
         });
