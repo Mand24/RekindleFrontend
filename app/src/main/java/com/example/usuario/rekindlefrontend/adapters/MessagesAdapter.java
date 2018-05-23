@@ -13,7 +13,11 @@ import android.widget.TextView;
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by ORION on 16/05/2018.
@@ -49,7 +53,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         @Override
         public void bind(Message message){
             txtMyMessage.setText(message.getContent());
-            txtMyMessageTime.setText(message.getTimestamp().toString());
+            Date date = new Date();
+            try{
+                date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").parse(message.getTimestamp());
+            }catch (Exception e){
+
+            }
+            txtMyMessageTime.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRANCE)
+                    .format(date));
         }
     }
 
@@ -67,7 +78,14 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         @Override
         public void bind(Message message){
             txtOtherMessage.setText(message.getContent());
-            txtOtherMessageTime.setText(message.getTimestamp().toString());
+            Date date = new Date();
+            try{
+                date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").parse(message.getTimestamp());
+            }catch (Exception e){
+
+            }
+            txtOtherMessageTime.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.FRANCE)
+                    .format(date));
             txtOtherMessageUser.setText(message.getOwner().getName());
         }
     }

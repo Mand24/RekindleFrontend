@@ -7,7 +7,10 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 public class Message implements Parcelable {
 
@@ -38,7 +41,7 @@ public class Message implements Parcelable {
         this.idChat = idChat;
         this.owner = owner;
         Date date = new Date();
-        this.timestamp = "2018-05-24";
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.FRANCE).format(date);
         this.content = content;
     }
 
@@ -46,7 +49,9 @@ public class Message implements Parcelable {
         this.idMessage = idMessage;
         this.idChat = idChat;
         this.owner = owner;
-        this.timestamp = "2018-05-24";
+        Date date = new Date();
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.FRANCE)
+                .format(date);
         this.content = content;
     }
 
@@ -56,6 +61,7 @@ public class Message implements Parcelable {
         idChat = in.readInt();
         owner = in.readParcelable(User.class.getClassLoader());
         timestamp = in.readString();
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'", Locale.FRANCE).format(timestamp);
         content = in.readString();
     }
 
