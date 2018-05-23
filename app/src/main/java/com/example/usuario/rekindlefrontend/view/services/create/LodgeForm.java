@@ -131,12 +131,6 @@ public class LodgeForm extends AbstractFormatChecker {
 
     public void getParams() {
 
-        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                (getActivity().getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);*/
-
         Usuario user = getUser(getActivity().getApplicationContext());
 
         mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),

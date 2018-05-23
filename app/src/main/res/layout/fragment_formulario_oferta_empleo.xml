@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.services.create.FormularioOfertaEmpleo">
+    tools:context=".view.services.create.JobForm">
 
     <ScrollView
         android:layout_width="match_parent"

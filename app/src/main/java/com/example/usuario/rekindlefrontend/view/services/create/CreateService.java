@@ -31,7 +31,7 @@ public class CreateService extends AppBaseActivity {
 
         formTypes.put("Education", new EducationForm());
 
-        formTypes.put("Job", new FormularioOfertaEmpleo());
+        formTypes.put("Job", new JobForm());
 
         menu("Lodge");
 

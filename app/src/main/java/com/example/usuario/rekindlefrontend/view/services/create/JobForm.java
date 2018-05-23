@@ -38,26 +38,26 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormularioOfertaEmpleo extends AbstractFormatChecker {
+public class JobForm extends AbstractFormatChecker {
 
-    private EditText eDireccion;
+    private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
-    private EditText eNombre;
-    private EditText eTelefono;
-    private EditText ePuesto;
-    private EditText eRequisitos;
-    private EditText eJornada;
-    private EditText eHoras;
-    private EditText eDuracion;
-    private EditText eSueldo;
-    private EditText ePlazas;
-    private EditText eDescripcion;
+    private EditText eName;
+    private EditText ePhoneNumber;
+    private EditText eCharge;
+    private EditText eRequirements;
+    private EditText eHoursDay;
+    private EditText eHoursWeek;
+    private EditText eContractDuration;
+    private EditText eSalary;
+    private EditText ePlacesLimit;
+    private EditText eDescription;
 
     private Job mJob;
     private APIService mAPIService;
 
-    public FormularioOfertaEmpleo() {
+    public JobForm() {
         // Required empty public constructor
     }
 
@@ -70,7 +70,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
                 false);
 
         //establecer las vistas
-        setVistas(view);
+        setViews(view);
 
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_oferta_empleo);
         button_send.setOnClickListener(new View.OnClickListener(){
@@ -78,17 +78,17 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
             @Override
             public void onClick(View v) {
                 try {
-                    checkCampos(view);
-                    obtenerParametros();
+                    checkFields(view);
+                    getParams();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCrearOferta();
+                sendCreateJob();
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_oferta_empleo);
-        eDireccion.setOnClickListener(new View.OnClickListener() {
+        eAdress = view.findViewById(R.id.direccion_oferta_empleo);
+        eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
@@ -96,9 +96,7 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 }catch (GooglePlayServicesRepairableException e) {
-                    // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
-                    // TODO: Handle the error.
                 }
             }
         });
@@ -106,79 +104,73 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
         return view;
     }
 
-    public void setVistas(View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_oferta_empleo);
-        eTelefono = view.findViewById(R.id.telefono_oferta_empleo);
-        eDireccion = view.findViewById(R.id.direccion_oferta_empleo);
-        ePuesto = view.findViewById(R.id.puesto_oferta_empleo);
-        eRequisitos = view.findViewById(R.id.requisitos_oferta_empleo);
-        eJornada = view.findViewById(R.id.jornada_oferta_empleo);
-        eHoras = view.findViewById(R.id.horas_semanales_oferta_empleo);
-        eDuracion = view.findViewById(R.id.duracion_oferta_empleo);
-        eSueldo = view.findViewById(R.id.sueldo_oferta_empleo);
-        ePlazas = view.findViewById(R.id.plazas_oferta_empleo);
-        eDescripcion = view.findViewById(R.id.descripcion_oferta_empleo);
+        eName = view.findViewById(R.id.nombre_oferta_empleo);
+        ePhoneNumber = view.findViewById(R.id.telefono_oferta_empleo);
+        eAdress = view.findViewById(R.id.direccion_oferta_empleo);
+        eCharge = view.findViewById(R.id.puesto_oferta_empleo);
+        eRequirements = view.findViewById(R.id.requisitos_oferta_empleo);
+        eHoursDay = view.findViewById(R.id.jornada_oferta_empleo);
+        eHoursWeek = view.findViewById(R.id.horas_semanales_oferta_empleo);
+        eContractDuration = view.findViewById(R.id.duracion_oferta_empleo);
+        eSalary = view.findViewById(R.id.sueldo_oferta_empleo);
+        ePlacesLimit = view.findViewById(R.id.plazas_oferta_empleo);
+        eDescription = view.findViewById(R.id.descripcion_oferta_empleo);
 
         mAPIService = APIUtils.getAPIService();
 
     }
 
-    public void checkCampos(View view) throws Exception {
+    public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkPuestoOfertaEmpleo(ePuesto.getText().toString());
-        checkRequisitosServicio(eRequisitos.getText().toString());
-        checkJornadaOfertaEmpleo(eJornada.getText().toString());
-        checkHorasOfertaEmpleo(eHoras.getText().toString());
-        checkDuracionOfertaEmpleo(eDuracion.getText().toString());
-        checkSueldoOfertaEmpleo(eSueldo.getText().toString());
-        checkPlazasServicio(ePlazas.getText().toString());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkPuestoOfertaEmpleo(eCharge.getText().toString());
+        checkRequisitosServicio(eRequirements.getText().toString());
+        checkJornadaOfertaEmpleo(eHoursDay.getText().toString());
+        checkHorasOfertaEmpleo(eHoursWeek.getText().toString());
+        checkDuracionOfertaEmpleo(eContractDuration.getText().toString());
+        checkSueldoOfertaEmpleo(eSalary.getText().toString());
+        checkPlazasServicio(ePlacesLimit.getText().toString());
+        checkDescripcionServicio(eDescription.getText().toString());
 
     }
 
-    public void obtenerParametros(){
+    public void getParams(){
 
-        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                (getActivity().getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+        Usuario user = getUser(getActivity().getApplicationContext());
 
-        Usuario usuario = getUser(getActivity().getApplicationContext());
-
-        mJob = new Job(0, usuario.getMail(), eNombre.getText().toString(),
-                eDescripcion.getText().toString(), eDireccion.getText().toString(),ePuesto
-                .getText().toString(), eRequisitos.getText().toString(), eJornada.getText()
-                .toString(), eHoras.getText().toString(), eDuracion.getText().toString(), ePlazas
-                .getText().toString(), eSueldo.getText().toString(), eTelefono.getText().toString
+        mJob = new Job(0, user.getMail(), eName.getText().toString(),
+                eDescription.getText().toString(), eAdress.getText().toString(), eCharge
+                .getText().toString(), eRequirements.getText().toString(), eHoursDay.getText()
+                .toString(), eHoursWeek.getText().toString(), eContractDuration.getText().toString(), ePlacesLimit
+                .getText().toString(), eSalary.getText().toString(), ePhoneNumber.getText().toString
                 ());
 
     }
 
-    public void sendCrearOferta(){
+    public void sendCreateJob(){
         mAPIService.crearOferta(mJob).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
-                    tratarResultadoPeticion(true);
+                    manageResult(true);
                 }else {
                     System.out.println("codi "+response.code());
-                    tratarResultadoPeticion(false);
+                    manageResult(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                tratarResultadoPeticion(false);
+                manageResult(false);
 
             }
         });
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void manageResult(boolean result){
 
         if (result) {
 
@@ -197,10 +189,9 @@ public class FormularioOfertaEmpleo extends AbstractFormatChecker {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 Log.i("==================", "Place: " + place.getName());
-                eDireccion.setText(place.getAddress());
+                eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                // TODO: Handle the error.
                 Log.i("==================", status.getStatusMessage());
 
             } else if (resultCode == RESULT_CANCELED) {
