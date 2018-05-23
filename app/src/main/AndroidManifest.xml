@@ -38,8 +38,8 @@
         <activity android:name=".view.services.mostrar.MostrarServicio" />
         <activity android:name=".view.menu.login.RecuperarPassword" />
         <activity android:name=".view.menu.login.CodePasswordRequest" />
-        <activity android:name=".view.services.list.MisServiciosRefugiado" />
-        <activity android:name=".view.services.list.MisServiciosVoluntario" />
+        <activity android:name=".view.services.list.MyServicesRefugee" />
+        <activity android:name=".view.services.list.MyServicesVolunteer" />
         <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
 
         <meta-data

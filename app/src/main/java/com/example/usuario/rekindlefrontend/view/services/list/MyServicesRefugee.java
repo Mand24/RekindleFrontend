@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MisServiciosRefugiado extends ListServices {
+public class MyServicesRefugee extends ListServices {
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -43,13 +43,13 @@ public class MisServiciosRefugiado extends ListServices {
                     @Override
                     public void onItemLongClick(View v, final int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
-                                (MisServiciosRefugiado.this);
+                                (MyServicesRefugee.this);
                         alertDialog.setTitle(R.string.select_option).setItems(
                                 new String[]{getString(R.string.unsubscribe)},
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(
-                                                MisServiciosRefugiado.this);
+                                                MyServicesRefugee.this);
 
                                         builder.setMessage(R.string.unsubscribe_confirmation);
                                         builder.setCancelable(false);

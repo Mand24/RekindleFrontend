@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MisServiciosVoluntario extends ListServices {
+public class MyServicesVolunteer extends ListServices {
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -42,7 +42,7 @@ public class MisServiciosVoluntario extends ListServices {
                     @Override
                     public void onItemLongClick(View v, final int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
-                                (MisServiciosVoluntario.this);
+                                (MyServicesVolunteer.this);
                         alertDialog.setTitle(R.string.select_option).setItems(R.array.clic_servicio,
                                 new DialogInterface.OnClickListener(){
                                     public void onClick(DialogInterface dialog, int which){
@@ -53,7 +53,7 @@ public class MisServiciosVoluntario extends ListServices {
                                         } else if (which == 1){
                                             //TODO:Call API
                                             AlertDialog.Builder builder = new AlertDialog.Builder(
-                                                    MisServiciosVoluntario.this);
+                                                    MyServicesVolunteer.this);
 
                                             builder.setMessage(R.string
                                                     .delete_service_confirmation);
@@ -64,7 +64,7 @@ public class MisServiciosVoluntario extends ListServices {
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
                                                             // TODO API delete
-                                                            sendEliminarServicio(mServices.get
+                                                            sendDeleteService(mServices.get
                                                                     (position));
                                                         }
                                                     });
@@ -88,7 +88,7 @@ public class MisServiciosVoluntario extends ListServices {
                 });
     }
 
-    public void sendEliminarServicio(Service service){
+    public void sendDeleteService(Service service){
         mAPIService.eliminarServicio(service.getId(), service.getServiceType()).enqueue(
                 new Callback<Void>() {
                     @Override
