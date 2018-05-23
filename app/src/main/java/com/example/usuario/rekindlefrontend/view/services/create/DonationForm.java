@@ -6,9 +6,9 @@ import static android.app.Activity.RESULT_OK;
 
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,14 +17,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -60,7 +60,7 @@ public class DonationForm extends AbstractFormatChecker {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_formulario_donacion, container,
                 false);
@@ -68,8 +68,9 @@ public class DonationForm extends AbstractFormatChecker {
         //establecer las vistas
         setViews(view);
 
-        AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_donacion);
-        button_send.setOnClickListener(new View.OnClickListener(){
+        AppCompatButton button_send = (AppCompatButton) view.findViewById(
+                R.id.enviar_formulario_donacion);
+        button_send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -87,11 +88,11 @@ public class DonationForm extends AbstractFormatChecker {
         eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-                }catch (GooglePlayServicesRepairableException e) {
+                } catch (GooglePlayServicesRepairableException e) {
                 } catch (GooglePlayServicesNotAvailableException e) {
                 }
             }
@@ -127,7 +128,7 @@ public class DonationForm extends AbstractFormatChecker {
 
     }
 
-    public void getParams(){
+    public void getParams() {
 
         Usuario user = getUser(getActivity().getApplicationContext());
 
@@ -138,14 +139,14 @@ public class DonationForm extends AbstractFormatChecker {
 
     }
 
-    public void sendCreateDonation(){
+    public void sendCreateDonation() {
         mAPIService.crearDonacion(mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manageResult(true);
-                }else {
-                    System.out.println("codi "+response.code());
+                } else {
+                    System.out.println("codi " + response.code());
                     manageResult(false);
                 }
             }
@@ -158,7 +159,7 @@ public class DonationForm extends AbstractFormatChecker {
         });
     }
 
-    public void manageResult(boolean result){
+    public void manageResult(boolean result) {
 
         if (result) {
 
@@ -167,8 +168,10 @@ public class DonationForm extends AbstractFormatChecker {
             Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
             startActivity(i);
 
-        }else Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
-                .string.donacion_fallida), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.donacion_fallida), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
