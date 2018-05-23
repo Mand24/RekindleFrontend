@@ -24,7 +24,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,7 +145,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
 //                drawerLayout.openDrawer(GravityCompat.START);
 //                return true;
             case R.id.home:
-                Intent i = new Intent(this, MenuPrincipal.class);
+                Intent i = new Intent(this, MainMenu.class);
                 startActivity(i);
                 return true;
             case R.id.search:

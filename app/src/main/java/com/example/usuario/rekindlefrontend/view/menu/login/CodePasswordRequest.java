@@ -49,7 +49,7 @@ public class CodePasswordRequest extends AppCompatActivity {
                     "12rekindle34", email, "Password recovery code", "Your password recovery code"
                             + " is: " + codeString);
 
-            Intent i = new Intent(getApplicationContext(), RecuperarPassword.class);
+            Intent i = new Intent(getApplicationContext(), RecoverPassword.class);
             i.putExtra("email", email);
             i.putExtra("code", codeString);
             startActivity(i);

@@ -17,14 +17,14 @@ import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunte
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuPrincipalVoluntario extends Fragment {
+public class MainMenuVolunteer extends Fragment {
 
-    private AppCompatButton button_listar_servicios;
-    private AppCompatButton button_crear_servicio;
-    private AppCompatButton button_mis_servicios;
+    private AppCompatButton button_list_services;
+    private AppCompatButton button_create_services;
+    private AppCompatButton button_my_services;
 
 
-    public MenuPrincipalVoluntario() {
+    public MainMenuVolunteer() {
         // Required empty public constructor
     }
 
@@ -35,11 +35,9 @@ public class MenuPrincipalVoluntario extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu_principal_voluntario, container,
                 false);
+        setViews(view);
 
-        //establecer las vistas
-        setVistas(view);
-
-        button_listar_servicios.setOnClickListener(new View.OnClickListener(){
+        button_list_services.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -48,7 +46,7 @@ public class MenuPrincipalVoluntario extends Fragment {
             }
         });
 
-        button_crear_servicio.setOnClickListener(new View.OnClickListener(){
+        button_create_services.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -57,7 +55,7 @@ public class MenuPrincipalVoluntario extends Fragment {
             }
         });
 
-        button_mis_servicios.setOnClickListener(new View.OnClickListener(){
+        button_my_services.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -71,10 +69,10 @@ public class MenuPrincipalVoluntario extends Fragment {
         return view;
     }
 
-    public void setVistas(View view){
-        button_listar_servicios = view.findViewById(R.id.listar_servicios_MenuPrincipalVoluntario);
-        button_crear_servicio = view.findViewById(R.id.crear_servicio_MenuPrincipalVoluntario);
-        button_mis_servicios = view.findViewById(R.id.mis_servicios_MenuPrincipalVoluntario);
+    public void setViews(View view){
+        button_list_services = view.findViewById(R.id.listar_servicios_MenuPrincipalVoluntario);
+        button_create_services = view.findViewById(R.id.crear_servicio_MenuPrincipalVoluntario);
+        button_my_services = view.findViewById(R.id.mis_servicios_MenuPrincipalVoluntario);
     }
 
 }

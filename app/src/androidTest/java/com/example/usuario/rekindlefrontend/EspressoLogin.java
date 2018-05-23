@@ -21,7 +21,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import com.example.user.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 
@@ -71,7 +71,7 @@ public class EspressoLogin {
                 .closeSoftKeyboard());
 
         onView(withId(R.id.btn_login)).perform(click());
-        intended(hasComponent(MenuPrincipal.class.getName()));
+        intended(hasComponent(MainMenu.class.getName()));
     }
 
     @Test

@@ -2,13 +2,13 @@ package com.example.usuario.rekindlefrontend.utils;
 
 import android.app.Fragment;
 
-
 import com.example.user.rekindlefrontend.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class AbstractFormatChecker extends Fragment {
+
     public boolean letters(String texto) {
         Pattern patron = Pattern.compile("^[a-zA-Z]+$");
         Matcher valid = patron.matcher(texto);

@@ -14,10 +14,10 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.Locale;
 
-public class Ajustes extends AppBaseActivity {
+public class Settings extends AppBaseActivity {
 
-    private Spinner sIdiomas;
-    private AppCompatButton bGuardar;
+    private Spinner sLanguages;
+    private AppCompatButton bSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,48 +26,50 @@ public class Ajustes extends AppBaseActivity {
 
         getSupportActionBar().setTitle(R.string.ajustes);
 
-        //establecer las vistas
-        setVistas();
+        setViews();
 
-        setIdiomaActualSpinner();
-        bGuardar.setOnClickListener(new View.OnClickListener() {
+        setCurrentLangSpinner();
+        bSave.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Locale localizacion;
+                Locale localization;
                 Configuration config;
-                switch (sIdiomas.getSelectedItemPosition()) {
+                switch (sLanguages.getSelectedItemPosition()) {
 
                     case 0:
-                        localizacion = new Locale("en", "EN");
-                        Locale.setDefault(localizacion);
+                        localization = new Locale("en", "EN");
+                        Locale.setDefault(localization);
                         config = new Configuration();
-                        config.locale = localizacion;
+                        config.locale = localization;
                         getBaseContext().getResources().updateConfiguration(config,
                                 getBaseContext().getResources().getDisplayMetrics());
                         break;
                     case 1:
-                        localizacion = new Locale("ca", "ES");
+                        localization = new Locale("ca", "ES");
 
-                        Locale.setDefault(localizacion);
+                        Locale.setDefault(localization);
                         config = new Configuration();
-                        config.locale = localizacion;
+                        config.locale = localization;
                         getBaseContext().getResources().updateConfiguration(config,
                                 getBaseContext().getResources().getDisplayMetrics());
                         break;
                     case 2:
-                        localizacion = new Locale("es", "ES");
+                        localization = new Locale("es", "ES");
 
-                        Locale.setDefault(localizacion);
+                        Locale.setDefault(localization);
                         config = new Configuration();
-                        config.locale = localizacion;
+                        config.locale = localization;
                         getBaseContext().getResources().updateConfiguration(config,
                                 getBaseContext().getResources().getDisplayMetrics());
+                        break;
+                    default:
+                        break;
 
                 }
 
-                Intent refrescar = new Intent(getApplicationContext(), Ajustes.class);
-                startActivity(refrescar);
+                Intent refresh = new Intent(getApplicationContext(), Settings.class);
+                startActivity(refresh);
                 finish();
 
             }
@@ -78,47 +80,43 @@ public class Ajustes extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        /*Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        User usuario = gson.fromJson(json, User.class);
-        i.putExtra("tipo", usuario.getServiceType());
-        startActivity(i);*/
-
         finish();
     }
 
-    public void setVistas() {
-        sIdiomas = findViewById(R.id.idiomas_ajustes);
+    public void setViews() {
+        sLanguages = findViewById(R.id.idiomas_ajustes);
         ArrayAdapter<CharSequence> adapter_idiomas = ArrayAdapter.createFromResource
                 (getApplicationContext(), R.array.lista_idiomas, R.layout.spinner_item);
         adapter_idiomas.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sIdiomas.setAdapter(adapter_idiomas);
+        sLanguages.setAdapter(adapter_idiomas);
 
-        bGuardar = findViewById(R.id.guardar_ajustes);
+        bSave = findViewById(R.id.guardar_ajustes);
     }
 
-    public void setIdiomaActualSpinner() {
-        String codLenguaje = Locale.getDefault().getLanguage();
-        System.out.println("idioma: " + codLenguaje);
+    public void setCurrentLangSpinner() {
+        String codLanguage = Locale.getDefault().getLanguage();
+        System.out.println("idioma: " + codLanguage);
 
-        switch (codLenguaje) {
+        switch (codLanguage) {
             case "en":
-                sIdiomas.setSelection(0);
+                sLanguages.setSelection(0);
                 break;
             case "ca":
-                sIdiomas.setSelection(1);
+                sLanguages.setSelection(1);
                 break;
             case "es":
-                sIdiomas.setSelection(2);
+                sLanguages.setSelection(2);
+                break;
+            default:
+                sLanguages.setSelection(0);
+                break;
         }
     }
 
     @Override
     protected void gotoLaunch() {
-        Intent i = new Intent(Ajustes.this, Login.class);
+        Intent i = new Intent(Settings.this, Login.class);
         startActivity(i);
     }
 }

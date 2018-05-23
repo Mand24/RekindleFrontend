@@ -53,7 +53,7 @@ public class VerPerfil extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        /*Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
+        /*Intent i = new Intent(getApplicationContext(), MainMenu.class);
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");

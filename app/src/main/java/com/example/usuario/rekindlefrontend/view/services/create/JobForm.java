@@ -23,7 +23,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -178,7 +178,7 @@ public class JobForm extends AbstractFormatChecker {
 
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.servicio_alojamiento_creado_correctamente), Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(getActivity().getApplicationContext(), MenuPrincipal.class);
+            Intent i = new Intent(getActivity().getApplicationContext(), MainMenu.class);
             startActivity(i);
 
         } else {

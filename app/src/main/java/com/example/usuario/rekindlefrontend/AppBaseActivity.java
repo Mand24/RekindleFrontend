@@ -28,9 +28,9 @@ import com.example.user.rekindlefrontend.R;
 
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
+import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Settings;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Help;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
@@ -113,7 +113,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), "configuracion!", Toast
 //                                .LENGTH_SHORT)
 //                                .show();
-                        i = new Intent(getApplicationContext(), Ajustes.class);
+                        i = new Intent(getApplicationContext(), Settings.class);
                         startActivity(i);
                         break;
 
@@ -249,7 +249,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 //                drawerLayout.openDrawer(GravityCompat.START);
 //                return true;
             case R.id.home:
-                Intent i = new Intent(this, MenuPrincipal.class);
+                Intent i = new Intent(this, MainMenu.class);
                 startActivity(i);
                 return true;
             default:

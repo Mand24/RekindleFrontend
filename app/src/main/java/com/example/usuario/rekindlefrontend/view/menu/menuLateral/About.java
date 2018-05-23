@@ -22,15 +22,6 @@ public class About extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-
-        /*Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        User usuario = gson.fromJson(json, User.class);
-        i.putExtra("tipo", usuario.getServiceType());
-        startActivity(i);*/
-
         finish();
     }
 

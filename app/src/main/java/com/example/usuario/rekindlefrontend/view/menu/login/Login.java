@@ -19,12 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
 import com.pusher.client.Pusher;
@@ -50,7 +49,7 @@ public class Login extends AppCompatActivity {
     private APIService mAPIService;
     private User mUser;
 
-    private void bind(){
+    private void bind() {
         _loginButton = (Button) findViewById(R.id.btn_login);
         _signupLink = (TextView) findViewById(R.id.link_signup);
         _recuperarPasswordLink = (TextView) findViewById(R.id.link_recuperar_password);
@@ -63,7 +62,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        comprobar_login();
+        checkLogin();
         setContentView(R.layout.activity_pantalla_inicio);
 
         bind();
@@ -87,7 +86,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        _recuperarPasswordLink.setOnClickListener(new View.OnClickListener(){
+        _recuperarPasswordLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -97,17 +96,17 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void comprobar_login(){
+    public void checkLogin() {
         //TODO sharepreference consistencyutils?
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(
+                getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("mUser", "");
-        if (json.isEmpty()){
+        if (json.isEmpty()) {
             return;
-        }
-        else {
+        } else {
             mUser = gson.fromJson(json, User.class);
-            Intent i = new Intent(this, MenuPrincipal.class);
+            Intent i = new Intent(this, MainMenu.class);
             startActivity(i);
         }
     }
@@ -124,48 +123,31 @@ public class Login extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(Login.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(getString (R.string.autentificacion));
+        progressDialog.setMessage(getString(R.string.autentificacion));
         progressDialog.show();
-
-        //String email = _emailText.getText().toString();
-        //String password = _passwordText.getText().toString();
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        //onLoginSuccess();
-                        // onLoginFailed();
 
                         sendLogin();
-
                         progressDialog.dismiss();
                     }
                 }, 1500);
     }
 
-    public void sendLogin(){
+    public void sendLogin() {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
         mAPIService.login(email, password).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                /*Set<String> headers = response.headers().names();
-                for(String header : headers) {
-                    System.out.println("cabecera: "+header);
-                }*/
-
-//                System.out.println(response.code());
 
                 if (response.isSuccessful()) {
-                    /*String header1 = response.headers().get("Tipo");
-                    int i = Integer.parseInt(header1);*/
                     mUser = response.body();
-//                    mUser.setServiceType(i);
-                    System.out.println("tipo: "+ mUser.getUserType());
+                    System.out.println("tipo: " + mUser.getUserType());
                     onLoginSuccess();
-                }
-                else {
+                } else {
                     onLoginFailed();
                 }
             }
@@ -173,13 +155,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
+                    Toast.makeText(getApplicationContext(), getString(R.string.network_fail), Toast
                             .LENGTH_SHORT).show();
-                    // logging probably not necessary
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), getString (R.string.conversation_fail), Toast
-                            .LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.conversation_fail),
+                            Toast
+                                    .LENGTH_SHORT).show();
 
                 }
             }
@@ -188,34 +169,26 @@ public class Login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // disable going back to the MainActivity
         backpress = (backpress + 1);
 
-        if (backpress>1) {
+        if (backpress > 1) {
             moveTaskToBack(true);
-        }
-        else{
-            Toast.makeText(getApplicationContext(), getString (R.string.back_exit), Toast.LENGTH_SHORT)
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.back_exit),
+                    Toast.LENGTH_SHORT)
                     .show();
         }
     }
 
     public void onLoginSuccess() {
 
-        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor miEditor = datos.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(mUser);
-        miEditor.putString("mUser", json);
-        miEditor.apply();*/
-
-        saveUser(mUser,this);
+        saveUser(mUser, this);
         setUpPusher();
         runPusher();
         _loginButton.setEnabled(true);
-        Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        System.out.println("USUARIOL "+ mUser.toString());
-        System.out.println("tipo1: "+ mUser.getUserType());
+        Intent i = new Intent(getApplicationContext(), MainMenu.class);
+        System.out.println("USUARIOL " + mUser.toString());
+        System.out.println("tipo1: " + mUser.getUserType());
         startActivity(i);
     }
 
@@ -230,18 +203,19 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void run() {
                         NotificationCompat.Builder mBuilder;
-                        NotificationManager mNotifyMgr =(NotificationManager)
+                        NotificationManager mNotifyMgr = (NotificationManager)
                                 getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
                         int icono = R.mipmap.ic_launcher;
                         /*Intent i=new Intent(MainActivity.this, MensajeActivity.class);
-                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, i, 0);*/
+                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity
+                        .this, 0, i, 0);*/
 
                         mBuilder = new NotificationCompat.Builder(getApplicationContext())
                                 .setSmallIcon(icono)
                                 .setContentTitle("Titulo")
                                 .setContentText("Hola que tal?")
-                                .setVibrate(new long[] {100, 250, 100, 500})
+                                .setVibrate(new long[]{100, 250, 100, 500})
                                 .setAutoCancel(true);
 
                         mNotifyMgr.notify(1, mBuilder.build());
@@ -255,12 +229,11 @@ public class Login extends AppCompatActivity {
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), getString (R.string.login_fail), Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), getString(R.string.login_fail), Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
 
-    //TODO pasar estas comprovaciones a AbstractFormatChecker
     public boolean validate() {
         boolean valid = true;
 
@@ -268,14 +241,14 @@ public class Login extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError(getString (R.string.email_formato));
+            _emailText.setError(getString(R.string.email_formato));
             valid = false;
         } else {
             _emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4) {
-            _passwordText.setError(getString (R.string.contraseña_corta));
+            _passwordText.setError(getString(R.string.contraseña_corta));
             valid = false;
         } else {
             _passwordText.setError(null);

@@ -12,7 +12,7 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.menu.login.RecuperarPassword;
+import com.example.usuario.rekindlefrontend.view.menu.login.RecoverPassword;
 import com.example.user.rekindlefrontend.R;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -21,11 +21,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoRecuperarPassword {
+public class EspressoRecoverPassword {
 
     @Rule
-    public ActivityTestRule<RecuperarPassword> pantalla = new ActivityTestRule<RecuperarPassword>
-            (RecuperarPassword.class);
+    public ActivityTestRule<RecoverPassword> pantalla = new ActivityTestRule<RecoverPassword>
+            (RecoverPassword.class);
 
     @BeforeClass
     public static void setup(){

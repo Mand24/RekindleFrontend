@@ -1,9 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.menu.menuPrincipal;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +19,15 @@ import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuPrincipalRefugiado extends Fragment {
+public class MainMenuRefugee extends Fragment {
 
-    private AppCompatButton button_listar_servicios;
-    private AppCompatButton button_mis_servicios;
-    private AppCompatButton button_buscar_personas;
+    private AppCompatButton button_list_services;
+    private AppCompatButton button_my_services;
+    private AppCompatButton button_search_people;
     private AppCompatButton button_chat;
 
 
-    public MenuPrincipalRefugiado() {
+    public MainMenuRefugee() {
         // Required empty public constructor
     }
 
@@ -38,10 +38,9 @@ public class MenuPrincipalRefugiado extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu_principal_refugiado, container, false);
 
-        //establecer las vistas
-        setVistas(view);
+        setViews(view);
 
-        button_listar_servicios.setOnClickListener(new View.OnClickListener(){
+        button_list_services.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -50,7 +49,7 @@ public class MenuPrincipalRefugiado extends Fragment {
             }
         });
 
-        button_mis_servicios.setOnClickListener(new View.OnClickListener(){
+        button_my_services.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -60,18 +59,19 @@ public class MenuPrincipalRefugiado extends Fragment {
             }
         });
 
-        button_buscar_personas.setOnClickListener(new View.OnClickListener(){
+        button_search_people.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), BusquedaRefugiado.class);
+                Intent i = new Intent(getActivity().getApplicationContext(),
+                        BusquedaRefugiado.class);
                 startActivity(i);
-                Toast.makeText(getActivity().getApplicationContext(), getString (R.string
+                Toast.makeText(getActivity().getApplicationContext(), getString(R.string
                         .buscar_personas), Toast.LENGTH_SHORT).show();
             }
         });
 
-        button_chat.setOnClickListener(new View.OnClickListener(){
+        button_chat.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -84,10 +84,10 @@ public class MenuPrincipalRefugiado extends Fragment {
         return view;
     }
 
-    public void setVistas(View view){
-        button_listar_servicios = view.findViewById(R.id.listar_servicios_MenuPrincipalRefugiado);
-        button_mis_servicios = view.findViewById(R.id.mis_servicios_MenuPrincipalRefugiado);
-        button_buscar_personas = view.findViewById(R.id.buscar_personas_MenuPrincipalRefugiado);
+    public void setViews(View view) {
+        button_list_services = view.findViewById(R.id.listar_servicios_MenuPrincipalRefugiado);
+        button_my_services = view.findViewById(R.id.mis_servicios_MenuPrincipalRefugiado);
+        button_search_people = view.findViewById(R.id.buscar_personas_MenuPrincipalRefugiado);
         button_chat = view.findViewById(R.id.chat);
     }
 

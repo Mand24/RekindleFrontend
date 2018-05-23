@@ -16,10 +16,10 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.HashMap;
 
-public class MenuPrincipal extends AppBaseActivity {
+public class MainMenu extends AppBaseActivity {
 
     private int backpress = 0;
-    HashMap<String, Fragment> tipos_menu_principal;
+    HashMap<String, Fragment> mainMenuTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,27 +28,27 @@ public class MenuPrincipal extends AppBaseActivity {
 
         getSupportActionBar().setTitle(R.string.titulo_menu_principal);
 
-        tipos_menu_principal = new HashMap<>();
+        mainMenuTypes = new HashMap<>();
 
-        tipos_menu_principal.put("Refugee", new MenuPrincipalRefugiado());
-        tipos_menu_principal.put("Volunteer", new MenuPrincipalVoluntario());
+        mainMenuTypes.put("Refugee", new MainMenuRefugee());
+        mainMenuTypes.put("Volunteer", new MainMenuVolunteer());
 
         User user = getUser(this);
 
         System.out.println(user.toString());
 
-        String tipo_usuario = user.getUserType();
+        String userType = user.getUserType();
 
-        System.out.println("tipo: "+tipo_usuario);
+        System.out.println("tipo: "+userType);
 
-        elegir_tipo_menu_principal(tipo_usuario);
+        setMainMenuType(userType);
 
     }
 
-    public void elegir_tipo_menu_principal(String tipo_usuario){
+    public void setMainMenuType(String userType){
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.tipo_menu_principal, tipos_menu_principal.get(tipo_usuario));
+        transaction.replace(R.id.tipo_menu_principal, mainMenuTypes.get(userType));
         transaction.commit();
     }
 
@@ -64,7 +64,7 @@ public class MenuPrincipal extends AppBaseActivity {
 
     @Override
     protected void gotoLaunch() {
-        Intent i = new Intent(MenuPrincipal.this, Login.class);
+        Intent i = new Intent(MainMenu.this, Login.class);
         startActivity(i);
     }
 }
