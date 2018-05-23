@@ -1,5 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -187,7 +189,8 @@ public class BusquedaRefugiado extends AppBaseActivity{
                 ePuebloString,
                 eEtniaString,
                 sGrupo_sanguineoString,
-                sOjosString).enqueue(new Callback<ArrayList<Refugiado>>() {
+                sOjosString, getUser(getApplicationContext()).getMail()).enqueue(new
+                                                                                                   Callback<ArrayList<Refugiado>>() {
             @Override
             public void onResponse(Call<ArrayList<Refugiado>> call, Response<ArrayList<Refugiado>> response) {
                 System.out.println("url " +call.request().url());

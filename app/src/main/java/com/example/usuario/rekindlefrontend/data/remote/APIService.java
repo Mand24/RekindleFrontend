@@ -71,7 +71,8 @@ public interface APIService {
             @Query("town") String town,
             @Query("ethnic") String ethnic,
             @Query("blood") String blood,
-            @Query("eye") String eye);
+            @Query("eye") String eye,
+            @Query("mail") String mail);
 
     @POST("/refugiados")
     Call<Void> createRefugiado(@Body Refugiado refugiado);
