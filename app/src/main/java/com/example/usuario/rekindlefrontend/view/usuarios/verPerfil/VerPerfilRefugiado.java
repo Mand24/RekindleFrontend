@@ -5,7 +5,6 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +14,11 @@ import android.widget.Toast;
 
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -47,7 +44,7 @@ public class VerPerfilRefugiado extends Fragment {
     private TextView biografiaUsuario;
 
     private APIService mAPIService;
-    private Refugiado refugiado;
+    private Refugee mRefugee;
 
 
     @Override
@@ -68,7 +65,7 @@ public class VerPerfilRefugiado extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
-                i.putExtra("Refugiado", refugiado);
+                i.putExtra("Refugee", mRefugee);
                 startActivity(i);
             }
 
@@ -103,26 +100,26 @@ public class VerPerfilRefugiado extends Fragment {
         /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
         Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+        String json = datos.getString("user", "");
+        User user = gson.fromJson(json, User.class);*/
 
-        Usuario usuario = getUser(getActivity().getApplicationContext());
+        User user = getUser(getActivity().getApplicationContext());
 
-        System.out.println("tipo app: "+ usuario.getMail());
-        String mail = usuario.getMail();
+        System.out.println("tipo app: "+ user.getMail());
+        String mail = user.getMail();
 
-        mAPIService.obtenerRefugiado(mail).enqueue(new Callback<Refugiado>() {
+        mAPIService.obtenerRefugiado(mail).enqueue(new Callback<Refugee>() {
             @Override
-            public void onResponse(Call<Refugiado> call, Response<Refugiado> response) {
+            public void onResponse(Call<Refugee> call, Response<Refugee> response) {
                 if (response.isSuccessful()){
                     System.out.println("dentro respuesta");
                     if (response.body() != null) System.out.println("dentro respuesta ok");
-                    refugiado = response.body();
-//                    refugiado.setServiceType(0);
+                    mRefugee = response.body();
+//                    mRefugee.setServiceType(0);
                     tratarResultadoPeticion(true);
                 }
                 else {
-                    System.out.println("refugiado null");
+                    System.out.println("mRefugee null");
                     System.out.println("Mensaje: "+response.message());
                     System.out.println("codi: "+response.code());
                     System.out.println("dentro respuesta failed");
@@ -131,7 +128,7 @@ public class VerPerfilRefugiado extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Refugiado> call, Throwable t) {
+            public void onFailure(Call<Refugee> call, Throwable t) {
                 if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
                             + " :( inform "
@@ -164,20 +161,20 @@ public class VerPerfilRefugiado extends Fragment {
 
     public void llenarTextViews(){
 
-        tipoUsuario.setText("Refugiado");
-        nombreUsuario.setText(refugiado.getName());
-        apellido1.setText(refugiado.getSurname1());
-        apellido2.setText(refugiado.getSurname2());
-        emailUsuario.setText(refugiado.getMail());
-        telefonoUsuario.setText(refugiado.getPhoneNumber());
-        nacimientoUsuario.setText(refugiado.getBirthDate());
-        sexoUsuario.setText(refugiado.getSex());
-        paisUsuario.setText(refugiado.getCountry());
-        puebloUsuario.setText(refugiado.getTown());
-        etniaUsuario.setText(refugiado.getEthnic());
-        sangreUsuario.setText(refugiado.getBloodType());
-        ojosUsuario.setText(refugiado.getEyeColor());
-        biografiaUsuario.setText(refugiado.getBiography());
+        tipoUsuario.setText("Refugee");
+        nombreUsuario.setText(mRefugee.getName());
+        apellido1.setText(mRefugee.getSurname1());
+        apellido2.setText(mRefugee.getSurname2());
+        emailUsuario.setText(mRefugee.getMail());
+        telefonoUsuario.setText(mRefugee.getPhoneNumber());
+        nacimientoUsuario.setText(mRefugee.getBirthDate());
+        sexoUsuario.setText(mRefugee.getSex());
+        paisUsuario.setText(mRefugee.getCountry());
+        puebloUsuario.setText(mRefugee.getTown());
+        etniaUsuario.setText(mRefugee.getEthnic());
+        sangreUsuario.setText(mRefugee.getBloodType());
+        ojosUsuario.setText(mRefugee.getEyeColor());
+        biografiaUsuario.setText(mRefugee.getBiography());
 
     }
 

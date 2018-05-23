@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.data.entity.usuario;
+package com.example.usuario.rekindlefrontend.data.entity.user;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,13 +9,11 @@ import android.util.Base64;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class Usuario implements Parcelable {
+public class User implements Parcelable {
 
     @SerializedName("userType")
     @Expose
-    private String tipo;
+    private String userType;
     @SerializedName("mail")
     @Expose
     private String mail;
@@ -35,11 +33,11 @@ public class Usuario implements Parcelable {
     @Expose
     private String photo;
 
-    public Usuario(){}
+    public User(){}
 
-    public Usuario(String tipo, String mail, String password, String name, String surname1, String
+    public User(String userType, String mail, String password, String name, String surname1, String
             surname2, String photo) {
-        this.tipo = tipo;
+        this.userType = userType;
         this.mail = mail;
         this.password = password;
         this.name = name;
@@ -49,8 +47,8 @@ public class Usuario implements Parcelable {
     }
 
 
-    protected Usuario(Parcel in) {
-        tipo = in.readString();
+    protected User(Parcel in) {
+        userType = in.readString();
         mail = in.readString();
         password = in.readString();
         name = in.readString();
@@ -59,15 +57,15 @@ public class Usuario implements Parcelable {
         photo = in.readString();
     }
 
-    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+    public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
-        public Usuario createFromParcel(Parcel in) {
-            return new Usuario(in);
+        public User createFromParcel(Parcel in) {
+            return new User(in);
         }
 
         @Override
-        public Usuario[] newArray(int size) {
-            return new Usuario[size];
+        public User[] newArray(int size) {
+            return new User[size];
         }
     };
 
@@ -78,7 +76,7 @@ public class Usuario implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(tipo);
+        dest.writeString(userType);
         dest.writeString(mail);
         dest.writeString(password);
         dest.writeString(name);
@@ -87,9 +85,9 @@ public class Usuario implements Parcelable {
         dest.writeString(photo);
     }
 
-    public String getTipo() { return tipo; }
+    public String getUserType() { return userType; }
 
-    public void setTipo(String tipo) { this.tipo = tipo; }
+    public void setUserType(String userType) { this.userType = userType; }
 
     public String getMail() {
         return mail;
@@ -147,8 +145,8 @@ public class Usuario implements Parcelable {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "tipo='" + tipo + '\'' +
+        return "User{" +
+                "userType='" + userType + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

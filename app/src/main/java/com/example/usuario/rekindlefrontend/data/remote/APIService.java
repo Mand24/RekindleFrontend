@@ -8,9 +8,9 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public interface APIService {
     //LLAMADAS RELACIONADAS CON EL LOGIN
     @POST("/login")
     @FormUrlEncoded
-    Call<Usuario> login(@Field("mail") String mail, @Field("password") String password);
+    Call<User> login(@Field("mail") String mail, @Field("password") String password);
 
 
     //LLAMADAS RELACIONADAS CON USUARIOS
@@ -55,8 +55,8 @@ public interface APIService {
     Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
-    @GET("/refugiados")
-    Call<ArrayList<Refugiado>> buscarRefugiados(
+    @GET("/mRefugees")
+    Call<ArrayList<Refugee>> buscarRefugiados(
             @Query("name") String name,
             @Query("surname1") String surname1,
             @Query("surname2") String surname2,
@@ -68,30 +68,30 @@ public interface APIService {
             @Query("blood") String blood,
             @Query("eye") String eye);
 
-    @POST("/refugiados")
-    Call<Void> createRefugiado(@Body Refugiado refugiado);
+    @POST("/mRefugees")
+    Call<Void> createRefugiado(@Body Refugee refugee);
 
-    @GET("/refugiados/{mail}")
-    Call<Refugiado> obtenerRefugiado(@Path("mail") String mail);
+    @GET("/mRefugees/{mail}")
+    Call<Refugee> obtenerRefugiado(@Path("mail") String mail);
 
-    @PUT("/refugiados/{mail}")
-    Call<Void> actualizarRefugiado(@Path("mail") String mail, @Body Refugiado refugiado);
+    @PUT("/mRefugees/{mail}")
+    Call<Void> actualizarRefugiado(@Path("mail") String mail, @Body Refugee refugee);
 
 
     //LLAMADAS RELACIONADAS CON USUARIOS VOLUNTARIOS
     @POST("/voluntarios")
-    Call<Void> createVoluntario(@Body Voluntario voluntario);
+    Call<Void> createVoluntario(@Body Volunteer volunteer);
 
     @GET("/voluntarios/{mail}")
-    Call<Voluntario> obtenerVoluntario(@Path("mail") String mail);
+    Call<Volunteer> obtenerVoluntario(@Path("mail") String mail);
 
     @PUT("/voluntarios/{mail}")
-    Call<Void> actualizarVoluntario(@Path("mail") String mail, @Body Voluntario voluntario);
+    Call<Void> actualizarVoluntario(@Path("mail") String mail, @Body Volunteer volunteer);
 
 
     //LLAMADAS RELACIONADAS CON SERVICIOS
 /*
-    @GET("/refugiados/{mail}")
+    @GET("/mRefugees/{mail}")
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
     @GET("/mServices")
@@ -140,7 +140,7 @@ public interface APIService {
     @DELETE("/mServices/{id}/{tipo}")
     Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
 
-    @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
+    @GET("/mRefugees/{mail}/inscripciones/{id}/{tipo}")
     Call<Boolean> isUserSubscribed(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
@@ -148,12 +148,12 @@ public interface APIService {
     Call<Void> subscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
-    @DELETE("/refugiados/{mail}/inscripciones/{id}/{tipo}")
+    @DELETE("/mRefugees/{mail}/inscripciones/{id}/{tipo}")
     Call<Void> unsubscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
     @GET("/test2")
-    Call<Refugiado> prueba();
+    Call<Refugee> prueba();
 
     @GET("/usuarios/{mail}/chats/{idChat}/messages")
     Call<ArrayList<Message>> getMessagesChat(@Path("mail") String mail, @Path("idChat") int idChat);

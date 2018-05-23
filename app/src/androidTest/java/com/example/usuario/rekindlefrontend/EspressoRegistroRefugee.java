@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoRegistroRefugiado {
+public class EspressoRegistroRefugee {
 
     @Rule
     public ActivityTestRule<RegistroUsuario> pantalla = new ActivityTestRule<RegistroUsuario>

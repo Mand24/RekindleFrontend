@@ -50,7 +50,14 @@ public class Donation extends Service {
     @Override
     public String toString() {
         return "Donation{" +
-                "placesLimit='" + placesLimit + '\'' +
+                "id=" + getId() + '\'' +
+                ", serviceType=" + getServiceType() + '\'' +
+                ", volunteer='" + getEmail() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", adress='" + getAdress() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", placesLimit='" + placesLimit + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 '}';

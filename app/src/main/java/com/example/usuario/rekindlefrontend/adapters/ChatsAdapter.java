@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
@@ -65,7 +65,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
     @Override
     public void onBindViewHolder(@NonNull ChatsAdapter.ChatViewHolder chatViewHolder, int i) {
         Chat chat = chats.get(i);
-        Usuario user, currentUser;
+        User user, currentUser;
         currentUser = getUser(mContext);
         if (!chat.getUser1().getMail().equals(currentUser.getMail())){
             user = chat.getUser1();

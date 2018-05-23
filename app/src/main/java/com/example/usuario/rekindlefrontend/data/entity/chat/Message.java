@@ -3,7 +3,7 @@ package com.example.usuario.rekindlefrontend.data.entity.chat;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -21,7 +21,7 @@ public class Message implements Parcelable {
 
     @SerializedName("owner")
     @Expose
-    private Usuario owner;
+    private User owner;
 
     @SerializedName("timestamp")
     @Expose
@@ -34,7 +34,7 @@ public class Message implements Parcelable {
     public Message() {
     }
 
-    public Message(int idChat, Usuario owner, String content) {
+    public Message(int idChat, User owner, String content) {
         this.idChat = idChat;
         this.owner = owner;
         Date date = new Date();
@@ -42,7 +42,7 @@ public class Message implements Parcelable {
         this.content = content;
     }
 
-    public Message(int idMessage, int idChat, Usuario owner, String content) {
+    public Message(int idMessage, int idChat, User owner, String content) {
         this.idMessage = idMessage;
         this.idChat = idChat;
         this.owner = owner;
@@ -54,7 +54,7 @@ public class Message implements Parcelable {
     protected Message(Parcel in) {
         idMessage = in.readInt();
         idChat = in.readInt();
-        owner = in.readParcelable(Usuario.class.getClassLoader());
+        owner = in.readParcelable(User.class.getClassLoader());
         timestamp = in.readString();
         content = in.readString();
     }
@@ -101,11 +101,11 @@ public class Message implements Parcelable {
         this.idChat = idChat;
     }
 
-    public Usuario getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(Usuario owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
     }
 

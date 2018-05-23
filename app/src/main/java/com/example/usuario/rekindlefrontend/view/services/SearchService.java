@@ -20,7 +20,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,7 +36,7 @@ import java.util.List;
 
 public class SearchService extends AppCompatActivity implements OnMapReadyCallback {
 
-    private Refugiado refugiado = new Refugiado("refugiado@gmail.com", "pass1234",
+    private Refugee mRefugee = new Refugee("mRefugee@gmail.com", "pass1234",
             "refugiadoName", "refugiadoSurname", "refugadioSecondSurname", null, "123456789",
             "12-09-2018", "Male", "Barcelona", "cabrils", "ethinc", "+A", "", "");
 

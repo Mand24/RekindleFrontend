@@ -5,7 +5,6 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +14,11 @@ import android.widget.Toast;
 
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -37,7 +35,7 @@ public class VerPerfilVoluntario extends Fragment {
     private TextView emailUsuario;
 
     private APIService mAPIService;
-    private Voluntario voluntario;
+    private Volunteer mVolunteer;
 
 
     @Override
@@ -57,8 +55,8 @@ public class VerPerfilVoluntario extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
-                i.putExtra("Voluntario", voluntario);
-                System.out.println("ver"+voluntario.toString());
+                i.putExtra("Volunteer", mVolunteer);
+                System.out.println("ver"+ mVolunteer.toString());
                 startActivity(i);
             }
 
@@ -84,34 +82,34 @@ public class VerPerfilVoluntario extends Fragment {
         /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
         Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+        String json = datos.getString("user", "");
+        User user = gson.fromJson(json, User.class);*/
 
-        Usuario usuario = getUser(getActivity().getApplicationContext());
+        User user = getUser(getActivity().getApplicationContext());
 
-        System.out.println("tipo app: "+ usuario.getMail());
-        String mail = usuario.getMail();
+        System.out.println("tipo app: "+ user.getMail());
+        String mail = user.getMail();
 
-        mAPIService.obtenerVoluntario(mail).enqueue(new Callback<Voluntario>() {
+        mAPIService.obtenerVoluntario(mail).enqueue(new Callback<Volunteer>() {
             @Override
-            public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+            public void onResponse(Call<Volunteer> call, Response<Volunteer> response) {
                 if (response.isSuccessful()){
-                    voluntario = response.body();
+                    mVolunteer = response.body();
                     System.out.println("llamadab"+response.body().toString());
-                    System.out.println("llamada"+voluntario);
-//                    voluntario.setServiceType(1);
+                    System.out.println("llamada"+ mVolunteer);
+//                    mVolunteer.setServiceType(1);
                     tratarResultadoPeticion(true);
                 }
                 else {
                     Toast.makeText(getActivity().getApplicationContext(), "Error al pedir "
-                            + "información voluntario", Toast
+                            + "información mVolunteer", Toast
                             .LENGTH_SHORT).show();
                     tratarResultadoPeticion(false);
                 }
             }
 
             @Override
-            public void onFailure(Call<Voluntario> call, Throwable t) {
+            public void onFailure(Call<Volunteer> call, Throwable t) {
                 if (t instanceof IOException) {
                     Toast.makeText(getActivity().getApplicationContext(), "this is an actual network failure"
                             + " :( inform "
@@ -144,11 +142,11 @@ public class VerPerfilVoluntario extends Fragment {
 
     public void llenarTextViews(){
 
-        tipoUsuario.setText("Voluntario");
-        nombreUsuario.setText(voluntario.getName());
-        apellido1.setText(voluntario.getSurname1());
-        apellido2.setText(voluntario.getSurname2());
-        emailUsuario.setText(voluntario.getMail());
+        tipoUsuario.setText("Volunteer");
+        nombreUsuario.setText(mVolunteer.getName());
+        apellido1.setText(mVolunteer.getSurname1());
+        apellido2.setText(mVolunteer.getSurname2());
+        emailUsuario.setText(mVolunteer.getMail());
 
     }
 

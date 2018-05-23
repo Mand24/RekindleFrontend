@@ -42,7 +42,7 @@ import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfilRef
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoEditarPerfilRefugiado {
+public class EspressoEditarPerfilRefugee {
 
     @Rule
     public ActivityTestRule<EditarPerfil> pantalla = new ActivityTestRule<EditarPerfil>

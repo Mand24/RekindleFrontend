@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
@@ -42,7 +41,7 @@ import retrofit2.Response;
 
 public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
-    private Voluntario voluntario;
+    private Volunteer mVolunteer;
 
     private EditText eNombre;
     private TextView eEmail;
@@ -67,9 +66,9 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
         setVistas(view);
 
-        voluntario = (Voluntario) getActivity().getIntent().getParcelableExtra("Voluntario");
+        mVolunteer = (Volunteer) getActivity().getIntent().getParcelableExtra("Volunteer");
 
-        System.out.println("editarv"+ voluntario.toString());
+        System.out.println("editarv"+ mVolunteer.toString());
 
         initializeData(view);
 
@@ -98,9 +97,9 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
-                i.putExtra("Voluntario", voluntario);
-                i.putExtra("tipo", voluntario.getTipo());
-                System.out.println(voluntario.toString());
+                i.putExtra("Volunteer", mVolunteer);
+                i.putExtra("tipo", mVolunteer.getUserType());
+                System.out.println(mVolunteer.toString());
                 startActivity(i);
             }
 
@@ -132,13 +131,13 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     public void initializeData(View view){
 
-        eNombre.setText(voluntario.getName());
-        eEmail.setText(voluntario.getMail());
-        ePrimer_apellido.setText(voluntario.getSurname1());
-        eSegundo_apellido.setText(voluntario.getSurname2());
+        eNombre.setText(mVolunteer.getName());
+        eEmail.setText(mVolunteer.getMail());
+        ePrimer_apellido.setText(mVolunteer.getSurname1());
+        eSegundo_apellido.setText(mVolunteer.getSurname2());
 
-        if(voluntario.getPhoto() != null) {
-            ePhoto.setImageBitmap(voluntario.getDecodedPhoto());
+        if(mVolunteer.getPhoto() != null) {
+            ePhoto.setImageBitmap(mVolunteer.getDecodedPhoto());
         }else{
             ePhoto.setImageResource(R.drawable.foto_perfil);
         }
@@ -154,20 +153,20 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
     }
 
     public void obtenerCampos() {
-        voluntario.setName(eNombre.getText().toString());
-        voluntario.setSurname1(ePrimer_apellido.getText().toString());
-        voluntario.setSurname2(eSegundo_apellido.getText().toString());
+        mVolunteer.setName(eNombre.getText().toString());
+        mVolunteer.setSurname1(ePrimer_apellido.getText().toString());
+        mVolunteer.setSurname2(eSegundo_apellido.getText().toString());
 
         if(bitmapImage != null) {
-            voluntario.setPhoto(encode_photo(bitmapImage));
+            mVolunteer.setPhoto(encode_photo(bitmapImage));
         }
         else{
-            voluntario.setPhoto(null);
+            mVolunteer.setPhoto(null);
         }
     }
 
     public void sendActualizarVoluntario(){
-        mAPIService.actualizarVoluntario(voluntario.getMail(), voluntario).enqueue(
+        mAPIService.actualizarVoluntario(mVolunteer.getMail(), mVolunteer).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

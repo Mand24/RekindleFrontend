@@ -3,7 +3,7 @@ package com.example.usuario.rekindlefrontend.data.entity.chat;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,20 +15,20 @@ public class Chat implements Parcelable{
 
     @SerializedName("user1")
     @Expose
-    private Usuario user1;
+    private User user1;
 
     @SerializedName("user2")
     @Expose
-    private Usuario user2;
+    private User user2;
 
     public Chat(){}
 
-    public Chat(Usuario user1, Usuario user2) {
+    public Chat(User user1, User user2) {
         this.user1 = user1;
         this.user2 = user2;
     }
 
-    public Chat(int idChat, Usuario user1, Usuario user2) {
+    public Chat(int idChat, User user1, User user2) {
         this.idChat = idChat;
         this.user1 = user1;
         this.user2 = user2;
@@ -36,8 +36,8 @@ public class Chat implements Parcelable{
 
     protected Chat(Parcel in) {
         idChat = in.readInt();
-        user1 = in.readParcelable(Usuario.class.getClassLoader());
-        user2 = in.readParcelable(Usuario.class.getClassLoader());
+        user1 = in.readParcelable(User.class.getClassLoader());
+        user2 = in.readParcelable(User.class.getClassLoader());
     }
 
     public static final Creator<Chat> CREATOR = new Creator<Chat>() {
@@ -72,19 +72,19 @@ public class Chat implements Parcelable{
         this.idChat = idChat;
     }
 
-    public Usuario getUser1() {
+    public User getUser1() {
         return user1;
     }
 
-    public void setUser1(Usuario user1) {
+    public void setUser1(User user1) {
         this.user1 = user1;
     }
 
-    public Usuario getUser2() {
+    public User getUser2() {
         return user2;
     }
 
-    public void setUser2(Usuario user2) {
+    public void setUser2(User user2) {
         this.user2 = user2;
     }
 

@@ -1,17 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,16 +11,13 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -66,7 +55,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
     private String sOjosString;
 
     private APIService mAPIService;
-    private ArrayList<Refugiado> listRefugiados;
+    private ArrayList<Refugee> mListRefugees;
 
 
     @Override
@@ -187,14 +176,14 @@ public class BusquedaRefugiado extends AppBaseActivity{
                 ePuebloString,
                 eEtniaString,
                 sGrupo_sanguineoString,
-                sOjosString).enqueue(new Callback<ArrayList<Refugiado>>() {
+                sOjosString).enqueue(new Callback<ArrayList<Refugee>>() {
             @Override
-            public void onResponse(Call<ArrayList<Refugiado>> call, Response<ArrayList<Refugiado>> response) {
+            public void onResponse(Call<ArrayList<Refugee>> call, Response<ArrayList<Refugee>> response) {
                 System.out.println("url " +call.request().url());
 
                 if (response.isSuccessful()) {
                     System.out.println("dentro respuesta ok");
-                    listRefugiados = response.body();
+                    mListRefugees = response.body();
 
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());
@@ -211,7 +200,7 @@ public class BusquedaRefugiado extends AppBaseActivity{
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Refugiado>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Refugee>> call, Throwable t) {
                 System.out.println("url " +call.request().url());
 //                Log.e(TAG, "Unable to submit post to API.");
                 /*if (t instanceof IOException) {
@@ -236,8 +225,8 @@ public class BusquedaRefugiado extends AppBaseActivity{
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.busqueda_correcta), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), ListarRefugiados.class);
-//            i.putExtra("listRefugiados", listRefugiados);
-            i.putParcelableArrayListExtra("listRefugiados", listRefugiados);
+//            i.putExtra("mListRefugees", mListRefugees);
+            i.putParcelableArrayListExtra("mListRefugees", mListRefugees);
             startActivity(i);
 
         } else {

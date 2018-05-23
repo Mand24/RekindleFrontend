@@ -6,17 +6,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.google.gson.Gson;
 
 import java.util.HashMap;
 
@@ -41,9 +36,9 @@ public class VerPerfil extends AppBaseActivity {
         tiposPerfil.put("Refugee", new VerPerfilRefugiado());
         tiposPerfil.put("Volunteer", new VerPerfilVoluntario());
 
-        Usuario user = getUser(this);
+        User user = getUser(this);
 
-        String tipo_usuario = user.getTipo();
+        String tipo_usuario = user.getUserType();
 
         menu(tipo_usuario);
     }
@@ -62,7 +57,7 @@ public class VerPerfil extends AppBaseActivity {
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
+        User usuario = gson.fromJson(json, User.class);
         i.putExtra("tipo", usuario.getServiceType());
         startActivity(i);*/
         finish();

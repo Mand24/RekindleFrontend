@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.HashMap;
@@ -33,11 +33,11 @@ public class MenuPrincipal extends AppBaseActivity {
         tipos_menu_principal.put("Refugee", new MenuPrincipalRefugiado());
         tipos_menu_principal.put("Volunteer", new MenuPrincipalVoluntario());
 
-        Usuario usuario = getUser(this);
+        User user = getUser(this);
 
-        System.out.println(usuario.toString());
+        System.out.println(user.toString());
 
-        String tipo_usuario = usuario.getTipo();
+        String tipo_usuario = user.getUserType();
 
         System.out.println("tipo: "+tipo_usuario);
 

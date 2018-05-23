@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
@@ -50,7 +50,7 @@ public class RegistroRefugiado extends AbstractFormatChecker {
     private EditText eBiografia;
 
     private APIService mAPIService;
-    private Refugiado refugiado;
+    private Refugee mRefugee;
 
     public RegistroRefugiado() {
         // Required empty public constructor
@@ -156,23 +156,23 @@ public class RegistroRefugiado extends AbstractFormatChecker {
     public void obtenerParametros() {
 
         System.out.println("dentro obtener");
-        refugiado = new Refugiado(eEmail.getText().toString(), ePassword.getText().toString(),
+        mRefugee = new Refugee(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
                 eSegundo_apellido.getText().toString(), null, eTelefono.getText().toString(),
                 eNacimiento.getText().toString(), sSexo.getSelectedItem().toString(),
                 eProcedencia.getText().toString(), ePueblo.getText().toString(), eEtnia.getText()
                 .toString(), sGrupo_sanguineo.getSelectedItem().toString(), sOjos.getSelectedItem
                 ().toString(), eBiografia.getText().toString());
-        System.out.println("crear refugiado");
+        System.out.println("crear mRefugee");
 
     }
 
     public void sendCreateRefugiado() {
         System.out.println("dentro send");
-        System.out.println(refugiado.toString());
+        System.out.println(mRefugee.toString());
 
 
-        mAPIService.createRefugiado(refugiado).enqueue(new Callback<Void>() {
+        mAPIService.createRefugiado(mRefugee).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
 

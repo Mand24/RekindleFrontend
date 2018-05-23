@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.busqueda;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,25 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.RefugiadosAdapter;
-import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
-    protected List<Refugiado> refugiados = new ArrayList<>();
-    protected List<Refugiado> refugiadosFiltrados = new ArrayList<>();
+    protected List<Refugee> mRefugees = new ArrayList<>();
+    protected List<Refugee> mRefugiadosFiltrados = new ArrayList<>();
     protected RecyclerView recyclerView;
     protected RefugiadosAdapter mAdapter;
     protected SearchView searchView;
@@ -62,13 +58,13 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
     }
 
     protected void setAdapterListener() {
-        mAdapter = new RefugiadosAdapter(getApplicationContext(), refugiadosFiltrados,
+        mAdapter = new RefugiadosAdapter(getApplicationContext(), mRefugiadosFiltrados,
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(), MostrarPerfilRefugiado.class);
-                        intent.putExtra("Refugiado", refugiados.get(position));
-                        System.out.println(refugiados.get(position).toString());
+                        intent.putExtra("Refugee", mRefugees.get(position));
+                        System.out.println(mRefugees.get(position).toString());
                         startActivity(intent);
 
                        /* Toast.makeText(getApplicationContext(), "Mostrar Perfil!!!", Toast
@@ -83,15 +79,15 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
     protected void refreshItems() {
 
-        mAdapter.setRefugiados(refugiadosFiltrados);
+        mAdapter.setRefugees(mRefugiadosFiltrados);
         mAdapter.notifyDataSetChanged();
     }
 
     private void initializeData() {
 
-        refugiados = getIntent().getParcelableArrayListExtra("listRefugiados");
+        mRefugees = getIntent().getParcelableArrayListExtra("listRefugiados");
 
-        refugiadosFiltrados = refugiados;
+        mRefugiadosFiltrados = mRefugees;
 
 
     }
@@ -162,9 +158,9 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
                 String charString = charSequence.toString();
 
-                ArrayList<Refugiado> filteredList = new ArrayList<>();
+                ArrayList<Refugee> filteredList = new ArrayList<>();
 
-                for (Refugiado s : refugiados) {
+                for (Refugee s : mRefugees) {
                     if(!charString.isEmpty()) {
                         if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
                         )|| (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
@@ -183,16 +179,16 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
                 }
 
-                refugiadosFiltrados = filteredList;
+                mRefugiadosFiltrados = filteredList;
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = refugiadosFiltrados;
+                filterResults.values = mRefugiadosFiltrados;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                refugiadosFiltrados = (ArrayList<Refugiado>) filterResults.values;
+                mRefugiadosFiltrados = (ArrayList<Refugee>) filterResults.values;
                 refreshItems();
             }
         };

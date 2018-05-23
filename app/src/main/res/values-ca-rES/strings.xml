@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Rekindle</string>
-    <string name="usuario">Nom usuari:</string>
+    <string name="user">Nom usuari:</string>
     <string name="password">Contrasenya:</string>
     <string name="password1">Contrasenya(*):</string>
     <string name="repetir_password">Repetir contrasenya(*):</string>
@@ -13,8 +13,8 @@
     <string name="atras">Enrere</string>
     <string name="login">Iniciar sessió</string>
     <string name="enviar">Enviar</string>
-    <string name="refugiado">Refugiat</string>
-    <string name="voluntario">Voluntari</string>
+    <string name="refugee">Refugiat</string>
+    <string name="volunteer">Voluntari</string>
     <string name="subtitulo_formulario">Ompli els camps següents:</string>
     <string name="texto_nombre_formulario">Nom(*):</string>
     <string name="texto_1apellido_formulario">Primer cognom(*):</string>
@@ -319,10 +319,10 @@
         alta el seu servei. \n \n
 
         <b>
-            <u>(Només refugiados) Buscar personas \n</u>
+            <u>(Només refugees) Buscar personas \n</u>
         </b>
         Formulario donde introduciendo
-        ciertos datos podrá realizar una búsqueda de otros refugiados con tal de mantener una
+        ciertos datos podrá realizar una búsqueda de otros refugees con tal de mantener una
         comunicación con ellos. \n \n
 
         <b>

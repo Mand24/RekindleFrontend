@@ -2,8 +2,6 @@ package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
@@ -12,8 +10,8 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
@@ -30,8 +28,8 @@ import retrofit2.Response;
 public class CambiarPassword extends AppBaseActivity {
 
     private String tipo;
-    private Refugiado refugiado;
-    private Voluntario voluntario;
+    private Refugee mRefugee;
+    private Volunteer mVolunteer;
 
     private ArrayList<String> param;
 
@@ -54,12 +52,12 @@ public class CambiarPassword extends AppBaseActivity {
         System.out.println(tipo);
 
         if (tipo.equals("Refugee")) {
-            refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
-            email = refugiado.getMail();
+            mRefugee = (Refugee) getIntent().getParcelableExtra("Refugee");
+            email = mRefugee.getMail();
         }
         else {
-            voluntario = (Voluntario) getIntent().getParcelableExtra("Voluntario");
-            email = voluntario.getMail();
+            mVolunteer = (Volunteer) getIntent().getParcelableExtra("Volunteer");
+            email = mVolunteer.getMail();
         }
 
 
@@ -187,15 +185,15 @@ public class CambiarPassword extends AppBaseActivity {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.guardado_correctamente), Toast.LENGTH_SHORT).show();
             if (tipo.equals("Refugee")) {
-                refugiado.setPassword(new_pass);
+                mRefugee.setPassword(new_pass);
                 Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
-                i.putExtra("Refugiado", refugiado);
+                i.putExtra("Refugee", mRefugee);
                 startActivity(i);
             }
             else {
-                voluntario.setPassword(new_pass);
+                mVolunteer.setPassword(new_pass);
                 Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
-                i.putExtra("Voluntario", voluntario);
+                i.putExtra("Volunteer", mVolunteer);
                 startActivity(i);
             }
 

@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.data.entity.usuario;
+package com.example.usuario.rekindlefrontend.data.entity.user;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,23 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Refugiado extends Usuario {
-
-    /*@SerializedName("mail")
-    @Expose
-    protected String mail;
-    @SerializedName("password")
-    @Expose
-    protected String password;
-    @SerializedName("name")
-    @Expose
-    protected String name;
-    @SerializedName("surname1")
-    @Expose
-    protected String surname1;
-    @SerializedName("surname2")
-    @Expose
-    protected String surname2;*/
+public class Refugee extends User {
 
     @SerializedName("phoneNumber")
     @Expose
@@ -53,36 +37,15 @@ public class Refugiado extends Usuario {
     private String biography;
 
 
-    public Refugiado(){
+    public Refugee(){
         super();
     }
 
-//    public Refugiado(){}
-
-    /*public Refugiado(String mail, String password, String name, String surname1,
-            String surname2, String phoneNumber, String birthDate, String sex, String country,
-            String town, String ethnic, String bloodType, String eyeColor) {
-        super(mail, password, name, surname1, surname2);
-        this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
-        this.sex = sex;
-        this.country = country;
-        this.town = town;
-        this.ethnic = ethnic;
-        this.bloodType = bloodType;
-        this.eyeColor = eyeColor;
-    }*/
-
-    public Refugiado(String mail, String password, String name, String surname1,
+    public Refugee(String mail, String password, String name, String surname1,
             String surname2, String photo, String phoneNumber, String birthDate, String sex, String
             country,
             String town, String ethnic, String bloodType, String eyeColor, String biography) {
         super("Refugee", mail, password, name, surname1, surname2, photo);
-        /*this.mail = mail;
-        this.password = password;
-        this.name = name;
-        this.surname1 = surname1;
-        this.surname2 = surname2;*/
         this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
         this.sex = sex;
@@ -93,46 +56,6 @@ public class Refugiado extends Usuario {
         this.eyeColor = eyeColor;
         this.biography = biography;
     }
-
-    /*public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname1() {
-        return surname1;
-    }
-
-    public void setSurname1(String surname1) {
-        this.surname1 = surname1;
-    }
-
-    public String getSurname2() {
-        return surname2;
-    }
-
-    public void setSurname2(String surname2) {
-        this.surname2 = surname2;
-    }*/
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -206,24 +129,10 @@ public class Refugiado extends Usuario {
         this.biography = biography;
     }
 
-    /*@Override
-    public String toString() {
-        return "Refugiado{" +
-                "phoneNumber='" + phoneNumber + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", sex='" + sex + '\'' +
-                ", country='" + country + '\'' +
-                ", town='" + town + '\'' +
-                ", ethnic='" + ethnic + '\'' +
-                ", bloodType='" + bloodType + '\'' +
-                ", eyeColor='" + eyeColor + '\'' +
-                '}';
-    }*/
-
     @Override
     public String toString() {
-        return "Refugiado{" +
-                "tipo='" + getTipo() + '\'' +
+        return "Refugee{" +
+                "tipo='" + getUserType() + '\'' +
                 ", mail='" + getMail() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", name='" + getName() + '\'' +
@@ -262,7 +171,7 @@ public class Refugiado extends Usuario {
         dest.writeString(this.biography);
     }
 
-    protected Refugiado(Parcel in) {
+    protected Refugee(Parcel in) {
         super(in);
         this.phoneNumber = in.readString();
         this.birthDate = in.readString();
@@ -275,16 +184,16 @@ public class Refugiado extends Usuario {
         this.biography = in.readString();
     }
 
-    public static final Parcelable.Creator<Refugiado> CREATOR =
-            new Parcelable.Creator<Refugiado>() {
+    public static final Parcelable.Creator<Refugee> CREATOR =
+            new Parcelable.Creator<Refugee>() {
                 @Override
-                public Refugiado createFromParcel(Parcel source) {
-                    return new Refugiado(source);
+                public Refugee createFromParcel(Parcel source) {
+                    return new Refugee(source);
                 }
 
                 @Override
-                public Refugiado[] newArray(int size) {
-                    return new Refugiado[size];
+                public Refugee[] newArray(int size) {
+                    return new Refugee[size];
                 }
             };
 }

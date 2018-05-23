@@ -1,9 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -119,17 +116,17 @@ public class RecuperarPassword extends AppCompatActivity {
             }
             public void sendLogin(String email, String password){
                 System.out.println("EMAIL "+email);
-                mAPIService.login(email, password).enqueue(new Callback<Usuario>() {
+                mAPIService.login(email, password).enqueue(new Callback<User>() {
                     @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    public void onResponse(Call<User> call, Response<User> response) {
                         if (response.isSuccessful()){
                             /*System.out.println("CODI2 "+response.code());
                             System.out.println("BODY "+response.body().toString());
                             String header1 = response.headers().get("Tipo");
                             int i = Integer.parseInt(header1);*/
-                            Usuario usuario = response.body();
-//                            usuario.setServiceType(i);
-                            tratarResultadoLogin(true, usuario);
+                            User user = response.body();
+//                            user.setServiceType(i);
+                            tratarResultadoLogin(true, user);
                         }else {
                             System.out.println("CODI2 "+response.code());
                             tratarResultadoLogin(false, response.body());
@@ -138,7 +135,7 @@ public class RecuperarPassword extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
+                    public void onFailure(Call<User> call, Throwable t) {
                         if (t instanceof IOException) {
                             Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
                                     .LENGTH_SHORT)
@@ -155,21 +152,21 @@ public class RecuperarPassword extends AppCompatActivity {
                 });
             }
 
-            public void tratarResultadoLogin(boolean result, Usuario usuario){
+            public void tratarResultadoLogin(boolean result, User user){
                 if (result){
-                    System.out.println("USUARIO1 "+usuario.toString());
+                    System.out.println("USUARIO1 "+ user.toString());
                     /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor miEditor = datos.edit();
                     Gson gson = new Gson();
-                    String json = gson.toJson(usuario);
-                    miEditor.putString("usuario", json);
+                    String json = gson.toJson(user);
+                    miEditor.putString("user", json);
                     miEditor.apply();*/
 
-                    saveUser(usuario, getApplicationContext());
+                    saveUser(user, getApplicationContext());
 
-                    System.out.println("USUARIO2 "+usuario.toString());
+                    System.out.println("USUARIO2 "+ user.toString());
                     Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-                    System.out.println("TIPO "+usuario.getTipo());
+                    System.out.println("TIPO "+ user.getUserType());
                     startActivity(i);
                 }
                 else {

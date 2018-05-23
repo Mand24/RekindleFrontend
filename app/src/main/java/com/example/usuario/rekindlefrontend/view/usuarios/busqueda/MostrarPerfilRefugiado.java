@@ -4,8 +4,6 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.TextView;
@@ -14,14 +12,12 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
@@ -49,8 +45,8 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     private AppCompatButton buttonChat;
 
     private APIService mAPIService;
-    private Refugiado refugiado;
-    private Usuario currentUser;
+    private Refugee mRefugee;
+    private User currentUser;
     private Chat newChat;
 
     @Override
@@ -64,9 +60,9 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
         setVistas();
 
-        refugiado = (Refugiado) getIntent().getParcelableExtra("Refugiado");
+        mRefugee = (Refugee) getIntent().getParcelableExtra("Refugee");
         currentUser = getUser(getApplicationContext());
-        System.out.println(refugiado.toString());
+        System.out.println(mRefugee.toString());
 
         llenarTextViews();
 
@@ -74,7 +70,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
             @Override
             public void onClick(View v) {
-                Chat chat = new Chat(currentUser,refugiado);
+                Chat chat = new Chat(currentUser, mRefugee);
                 sendNewChat(chat);
             }
         });
@@ -105,25 +101,25 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
 
     public void llenarTextViews(){
 
-        tipoUsuario.setText("Refugiado");
-        nombreUsuario.setText(refugiado.getName());
-        apellido1.setText(refugiado.getSurname1());
-        apellido2.setText(refugiado.getSurname2());
-        emailUsuario.setText(refugiado.getMail());
-        telefonoUsuario.setText(refugiado.getPhoneNumber());
-        nacimientoUsuario.setText(refugiado.getBirthDate());
-        sexoUsuario.setText(refugiado.getSex());
-        paisUsuario.setText(refugiado.getCountry());
-        puebloUsuario.setText(refugiado.getTown());
-        etniaUsuario.setText(refugiado.getEthnic());
-        sangreUsuario.setText(refugiado.getBloodType());
-        ojosUsuario.setText(refugiado.getEyeColor());
-        biografiaUsuario.setText(refugiado.getBiography());
+        tipoUsuario.setText("Refugee");
+        nombreUsuario.setText(mRefugee.getName());
+        apellido1.setText(mRefugee.getSurname1());
+        apellido2.setText(mRefugee.getSurname2());
+        emailUsuario.setText(mRefugee.getMail());
+        telefonoUsuario.setText(mRefugee.getPhoneNumber());
+        nacimientoUsuario.setText(mRefugee.getBirthDate());
+        sexoUsuario.setText(mRefugee.getSex());
+        paisUsuario.setText(mRefugee.getCountry());
+        puebloUsuario.setText(mRefugee.getTown());
+        etniaUsuario.setText(mRefugee.getEthnic());
+        sangreUsuario.setText(mRefugee.getBloodType());
+        ojosUsuario.setText(mRefugee.getEyeColor());
+        biografiaUsuario.setText(mRefugee.getBiography());
 
     }
 
     public void sendGetChat(){
-        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), refugiado.getMail()).enqueue(
+        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), mRefugee.getMail()).enqueue(
                 new Callback<Chat>() {
                     @Override
                     public void onResponse(Call<Chat> call, Response<Chat> response) {
@@ -163,7 +159,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
             startActivity(i);
         }
         else {
-            newChat = new Chat(currentUser,refugiado);
+            newChat = new Chat(currentUser, mRefugee);
             sendNewChat(newChat);
         }
     }

@@ -4,13 +4,10 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Base64;
@@ -26,14 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
-import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -49,7 +44,7 @@ import retrofit2.Response;
 
 public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
-    private Refugiado refugiado;
+    private Refugee mRefugee;
     ArrayAdapter<CharSequence> adapter1, adapter2, adapter3;
 
     private EditText eNombre;
@@ -84,9 +79,9 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         setVistas(view);
 
-        refugiado = (Refugiado) getActivity().getIntent().getParcelableExtra("Refugiado");
+        mRefugee = (Refugee) getActivity().getIntent().getParcelableExtra("Refugee");
 
-        System.out.println(refugiado.toString());
+        System.out.println(mRefugee.toString());
 
         initializeData(view);
 
@@ -117,8 +112,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
-                i.putExtra("Refugiado", refugiado);
-                i.putExtra("tipo", refugiado.getTipo());
+                i.putExtra("Refugee", mRefugee);
+                i.putExtra("tipo", mRefugee.getUserType());
                 startActivity(i);
             }
 
@@ -190,30 +185,30 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
     public void initializeData(View view){
 
-        eNombre.setText(refugiado.getName());
-        eEmail.setText(refugiado.getMail());
-        ePrimer_apellido.setText(refugiado.getSurname1());
-        eSegundo_apellido.setText(refugiado.getSurname2());
-        eTelefono.setText(refugiado.getPhoneNumber());
-        eNacimiento.setText(refugiado.getBirthDate());
+        eNombre.setText(mRefugee.getName());
+        eEmail.setText(mRefugee.getMail());
+        ePrimer_apellido.setText(mRefugee.getSurname1());
+        eSegundo_apellido.setText(mRefugee.getSurname2());
+        eTelefono.setText(mRefugee.getPhoneNumber());
+        eNacimiento.setText(mRefugee.getBirthDate());
 
-        int selectionPosition = adapter1.getPosition(refugiado.getSex());
+        int selectionPosition = adapter1.getPosition(mRefugee.getSex());
         sSexo.setSelection(selectionPosition);
 
-        eProcedencia.setText(refugiado.getCountry());
-        ePueblo.setText(refugiado.getTown());
-        eEtnia.setText(refugiado.getEthnic());
+        eProcedencia.setText(mRefugee.getCountry());
+        ePueblo.setText(mRefugee.getTown());
+        eEtnia.setText(mRefugee.getEthnic());
 
-        selectionPosition = adapter2.getPosition(refugiado.getBloodType());
+        selectionPosition = adapter2.getPosition(mRefugee.getBloodType());
         sGrupo_sanguineo.setSelection(selectionPosition);
 
-        selectionPosition = adapter3.getPosition(refugiado.getEyeColor());
+        selectionPosition = adapter3.getPosition(mRefugee.getEyeColor());
         sOjos.setSelection(selectionPosition);
 
-        eBiografia.setText(refugiado.getBiography());
+        eBiografia.setText(mRefugee.getBiography());
 
-        if(refugiado.getPhoto() != null) {
-            ePhoto.setImageBitmap(refugiado.getDecodedPhoto());
+        if(mRefugee.getPhoto() != null) {
+            ePhoto.setImageBitmap(mRefugee.getDecodedPhoto());
         }else{
             ePhoto.setImageResource(R.drawable.foto_perfil);
         }
@@ -232,28 +227,28 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     }
 
     public void obtenerCampos() {
-        refugiado.setName(eNombre.getText().toString());
-        refugiado.setSurname1(ePrimer_apellido.getText().toString());
-        refugiado.setSurname2(eSegundo_apellido.getText().toString());
-        refugiado.setPhoneNumber(eTelefono.getText().toString());
-        refugiado.setCountry(eProcedencia.getText().toString());
-        refugiado.setTown(ePueblo.getText().toString());
-        refugiado.setEthnic(eEtnia.getText().toString());
-        refugiado.setBirthDate(eNacimiento.getText().toString());
-        refugiado.setSex(sSexo.getSelectedItem().toString());
-        refugiado.setBloodType(sGrupo_sanguineo.getSelectedItem().toString());
-        refugiado.setEyeColor(sOjos.getSelectedItem().toString());
-        refugiado.setBiography(eBiografia.getText().toString());
+        mRefugee.setName(eNombre.getText().toString());
+        mRefugee.setSurname1(ePrimer_apellido.getText().toString());
+        mRefugee.setSurname2(eSegundo_apellido.getText().toString());
+        mRefugee.setPhoneNumber(eTelefono.getText().toString());
+        mRefugee.setCountry(eProcedencia.getText().toString());
+        mRefugee.setTown(ePueblo.getText().toString());
+        mRefugee.setEthnic(eEtnia.getText().toString());
+        mRefugee.setBirthDate(eNacimiento.getText().toString());
+        mRefugee.setSex(sSexo.getSelectedItem().toString());
+        mRefugee.setBloodType(sGrupo_sanguineo.getSelectedItem().toString());
+        mRefugee.setEyeColor(sOjos.getSelectedItem().toString());
+        mRefugee.setBiography(eBiografia.getText().toString());
 
         if(bitmapImage != null) {
-            refugiado.setPhoto(encode_photo(bitmapImage));
+            mRefugee.setPhoto(encode_photo(bitmapImage));
         }else {
-            refugiado.setPhoto(null);
+            mRefugee.setPhoto(null);
         }
     }
 
     public void sendActualizarRefugiado() {
-        mAPIService.actualizarRefugiado(refugiado.getMail(), refugiado).enqueue(
+        mAPIService.actualizarRefugiado(mRefugee.getMail(), mRefugee).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

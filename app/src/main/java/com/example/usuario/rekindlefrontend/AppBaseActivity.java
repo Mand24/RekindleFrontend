@@ -24,7 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Help;
@@ -72,9 +72,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
        (getApplicationContext());
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);*/
+        User usuario = gson.fromJson(json, User.class);*/
 
-        Usuario user = getUser(this);
+        User user = getUser(this);
 
         userName.setText(user.getName() + " " + user.getSurname1());
         userEmail.setText(user.getMail());

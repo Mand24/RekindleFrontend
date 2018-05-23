@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
@@ -86,9 +86,9 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
 
         enroll.setClickable(false);
 
-        Usuario user = Consistency.getUser(container.getContext());
+        User user = Consistency.getUser(container.getContext());
         final String mail = user.getMail();
-        String type = user.getTipo();
+        String type = user.getUserType();
 
         if (type.equals("Refugee")) {
 

@@ -98,7 +98,14 @@ public class Job extends Service {
     @Override
     public String toString() {
         return "Job{" +
-                "charge='" + charge + '\'' +
+                "id=" + getId() + '\'' +
+                ", serviceType=" + getServiceType() + '\'' +
+                ", volunteer='" + getEmail() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", adress='" + getAdress() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", charge='" + charge + '\'' +
                 ", requirements='" + requirements + '\'' +
                 ", hoursDay='" + hoursDay + '\'' +
                 ", hoursWeek='" + hoursWeek + '\'' +

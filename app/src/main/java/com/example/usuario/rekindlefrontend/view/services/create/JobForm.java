@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
@@ -140,7 +140,7 @@ public class JobForm extends AbstractFormatChecker {
 
     public void getParams() {
 
-        Usuario user = getUser(getActivity().getApplicationContext());
+        User user = getUser(getActivity().getApplicationContext());
 
         mJob = new Job(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), eCharge

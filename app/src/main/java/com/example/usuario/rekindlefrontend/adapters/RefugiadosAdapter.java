@@ -11,14 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
 public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.RefugiadoViewHolder> {
 
-    private List<Refugiado> refugiados;
+    private List<Refugee> mRefugees;
     private CustomItemClickListener listener;
     private Context mContext;
 
@@ -40,15 +40,15 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
         }
     }
 
-    public RefugiadosAdapter(Context mContext, List<Refugiado> refugiados, CustomItemClickListener
+    public RefugiadosAdapter(Context mContext, List<Refugee> refugees, CustomItemClickListener
             listener){
         this.mContext = mContext;
-        this.refugiados = refugiados;
+        this.mRefugees = refugees;
         this.listener = listener;
     }
 
-    public void setRefugiados(List<Refugiado> refugiados) {
-        this.refugiados = refugiados;
+    public void setRefugees(List<Refugee> refugees) {
+        this.mRefugees = refugees;
     }
 
 
@@ -71,15 +71,15 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
     @Override
     public void onBindViewHolder(@NonNull RefugiadosAdapter.RefugiadoViewHolder refugiadoViewHolder,
             int i) {
-        Refugiado refugiado = refugiados.get(i);
+        Refugee refugee = mRefugees.get(i);
 
-        refugiadoViewHolder.nombre.setText(refugiado.getName());
-        refugiadoViewHolder.apellido1.setText(refugiado.getSurname1());
-        refugiadoViewHolder.apellido2.setText(refugiado.getSurname2());
-        refugiadoViewHolder.sexo.setText(refugiado.getSex());
-        refugiadoViewHolder.nacimiento.setText(refugiado.getBirthDate());
-        if(refugiado.getPhoto() != null){
-            refugiadoViewHolder.photo.setImageBitmap(refugiado.getDecodedPhoto());
+        refugiadoViewHolder.nombre.setText(refugee.getName());
+        refugiadoViewHolder.apellido1.setText(refugee.getSurname1());
+        refugiadoViewHolder.apellido2.setText(refugee.getSurname2());
+        refugiadoViewHolder.sexo.setText(refugee.getSex());
+        refugiadoViewHolder.nacimiento.setText(refugee.getBirthDate());
+        if(refugee.getPhoto() != null){
+            refugiadoViewHolder.photo.setImageBitmap(refugee.getDecodedPhoto());
         }
         else{
             refugiadoViewHolder.photo.setImageResource(R.drawable.foto_perfil);
@@ -94,6 +94,6 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
 
     @Override
     public int getItemCount() {
-        return refugiados.size();
+        return mRefugees.size();
     }
 }

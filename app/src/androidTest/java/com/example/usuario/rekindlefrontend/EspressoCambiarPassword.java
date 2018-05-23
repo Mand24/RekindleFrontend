@@ -14,7 +14,7 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.CambiarPassword;
 
 import org.junit.AfterClass;
@@ -32,7 +32,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class EspressoCambiarPassword {
 
-    public Voluntario voluntario = new Voluntario ("voluntario@hotmail.com", "pass123",
+    public Volunteer mVolunteer = new Volunteer("mVolunteer@hotmail.com", "pass123",
             "voluntarioName", "surnameOne", "surnameTwo", null);
     @Rule
     public ActivityTestRule<CambiarPassword> pantalla = new ActivityTestRule<CambiarPassword>
@@ -41,8 +41,8 @@ public class EspressoCambiarPassword {
         protected Intent getActivityIntent() {
             Intent intent = new Intent(InstrumentationRegistry.getContext(),
                     CambiarPassword.class);
-            intent.putExtra("Voluntario", voluntario);
-            intent.putExtra("tipo", voluntario.getTipo());
+            intent.putExtra("Volunteer", mVolunteer);
+            intent.putExtra("tipo", mVolunteer.getUserType());
             return intent;
         }
     };

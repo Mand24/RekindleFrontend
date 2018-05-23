@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
@@ -38,7 +38,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
     private EditText eSegundo_apellido;
 
     private APIService mAPIService;
-    private Voluntario voluntario;
+    private Volunteer mVolunteer;
 
     public RegistroVoluntario() {
         // Required empty public constructor
@@ -100,7 +100,7 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     public void obtenerParametros() {
 
-        voluntario = new Voluntario(eEmail.getText().toString(), ePassword.getText().toString(),
+        mVolunteer = new Volunteer(eEmail.getText().toString(), ePassword.getText().toString(),
                 eNombre.getText().toString(), ePrimer_apellido.getText().toString(),
                 eSegundo_apellido.getText().toString(), null);
 
@@ -108,12 +108,12 @@ public class RegistroVoluntario extends AbstractFormatChecker {
 
     public void sendCreateVoluntario() {
 
-        mAPIService.createVoluntario(voluntario).enqueue(new Callback<Void>() {
+        mAPIService.createVoluntario(mVolunteer).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
 
                 if (response.isSuccessful()) {
-                    System.out.println(voluntario.toString());
+                    System.out.println(mVolunteer.toString());
                     System.out.println("dentro respuesta ok");
                     tratarResultadoPeticion(true);
 //                    showResponse(response.body().toString());

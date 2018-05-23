@@ -74,7 +74,14 @@ public class Education extends Service {
     @Override
     public String toString() {
         return "Education{" +
-                "ambit='" + ambit + '\'' +
+                "id=" + getId() + '\'' +
+                ", serviceType=" + getServiceType() + '\'' +
+                ", volunteer='" + getEmail() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", adress='" + getAdress() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", ambit='" + ambit + '\'' +
                 ", requirements='" + requirements + '\'' +
                 ", schedule='" + schedule + '\'' +
                 ", places='" + places + '\'' +

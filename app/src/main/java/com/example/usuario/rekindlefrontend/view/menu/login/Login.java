@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
@@ -47,7 +47,7 @@ public class Login extends AppCompatActivity {
     Button _loginButton;
 
     private APIService mAPIService;
-    private Usuario usuario;
+    private User mUser;
 
     private void bind(){
         _loginButton = (Button) findViewById(R.id.btn_login);
@@ -100,12 +100,12 @@ public class Login extends AppCompatActivity {
         //TODO sharepreference consistencyutils?
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
+        String json = datos.getString("mUser", "");
         if (json.isEmpty()){
             return;
         }
         else {
-            usuario = gson.fromJson(json, Usuario.class);
+            mUser = gson.fromJson(json, User.class);
             Intent i = new Intent(this, MenuPrincipal.class);
             startActivity(i);
         }
@@ -146,9 +146,9 @@ public class Login extends AppCompatActivity {
     public void sendLogin(){
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
-        mAPIService.login(email, password).enqueue(new Callback<Usuario>() {
+        mAPIService.login(email, password).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 /*Set<String> headers = response.headers().names();
                 for(String header : headers) {
                     System.out.println("cabecera: "+header);
@@ -159,9 +159,9 @@ public class Login extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     /*String header1 = response.headers().get("Tipo");
                     int i = Integer.parseInt(header1);*/
-                    usuario = response.body();
-//                    usuario.setServiceType(i);
-                    System.out.println("tipo: "+usuario.getTipo());
+                    mUser = response.body();
+//                    mUser.setServiceType(i);
+                    System.out.println("tipo: "+ mUser.getUserType());
                     onLoginSuccess();
                 }
                 else {
@@ -170,7 +170,7 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 if (t instanceof IOException) {
                     Toast.makeText(getApplicationContext(), getString (R.string.network_fail), Toast
                             .LENGTH_SHORT).show();
@@ -204,17 +204,17 @@ public class Login extends AppCompatActivity {
         /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor miEditor = datos.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(usuario);
-        miEditor.putString("usuario", json);
+        String json = gson.toJson(mUser);
+        miEditor.putString("mUser", json);
         miEditor.apply();*/
 
-        saveUser(usuario,this);
+        saveUser(mUser,this);
         setUpPusher();
         runPusher();
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MenuPrincipal.class);
-        System.out.println("USUARIOL "+usuario.toString());
-        System.out.println("tipo1: "+usuario.getTipo());
+        System.out.println("USUARIOL "+ mUser.toString());
+        System.out.println("tipo1: "+ mUser.getUserType());
         startActivity(i);
     }
 

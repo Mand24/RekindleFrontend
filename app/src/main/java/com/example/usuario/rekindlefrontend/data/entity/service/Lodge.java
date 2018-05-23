@@ -37,8 +37,8 @@ public class Lodge extends Service {
     @Override
     public String toString() {
         return "Lodge{" +
-                "id=" + getId() +
-                ", tipo=" + getServiceType() +
+                "id=" + getId() + '\'' +
+                ", serviceType=" + getServiceType() + '\'' +
                 ", volunteer='" + getEmail() + '\'' +
                 ", name='" + getName() + '\'' +
                 ", description='" + getDescription() + '\'' +

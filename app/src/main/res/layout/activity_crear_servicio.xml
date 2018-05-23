@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
 
         android:id="@+id/eleccion_tipo_servicio"
-        android:name="com.example.usuario.rekindlefrontend.view.services.ServiceTypeSelector"
+        android:name="com.example.user.rekindlefrontend.view.services.ServiceTypeSelector"
         tools:layout="@layout/fragment_eleccion_tipo_servicio"
         android:layout_marginTop="?android:actionBarSize">
 

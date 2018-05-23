@@ -3,14 +3,11 @@ package com.example.usuario.rekindlefrontend.view.usuarios.chat;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +19,7 @@ import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ChatsAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
@@ -44,7 +41,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
     protected ChatsAdapter mAdapter;
     protected SearchView searchView;
     protected APIService mAPIService;
-    protected Usuario currentUser;
+    protected User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,7 +184,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
                 ArrayList<Chat> filteredList = new ArrayList<>();
 
                 for (Chat s : chats) {
-                    Usuario user;
+                    User user;
                     if (!s.getUser1().getMail().equals(currentUser.getMail())){
                         user = s.getUser1();
                     }else {

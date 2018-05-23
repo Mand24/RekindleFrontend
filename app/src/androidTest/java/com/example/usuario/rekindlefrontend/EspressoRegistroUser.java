@@ -39,7 +39,7 @@ import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuar
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoRegistroUsuario {
+public class EspressoRegistroUser {
 
     @Rule
     public ActivityTestRule<RegistroUsuario> pantalla = new ActivityTestRule<RegistroUsuario>
@@ -182,7 +182,7 @@ public class EspressoRegistroUsuario {
     @Test
     public void testRegistroRefugiadoCorrecto() {
 
-        //TODO: Terminar cuando tengamos registro refugiados
+        //TODO: Terminar cuando tengamos registro mRefugees
 
         onView(withId(R.id.boton_refugiado)).perform(click());
 

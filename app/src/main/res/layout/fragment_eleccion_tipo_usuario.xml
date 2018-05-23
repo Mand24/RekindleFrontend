@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/boton_refugiado"
-            android:text="@string/refugiado" />
+            android:text="@string/refugee" />
 
         <Space style="@style/espacio"/>
 
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/boton_voluntario"
-            android:text="@string/voluntario" />
+            android:text="@string/volunteer" />
 
 
 

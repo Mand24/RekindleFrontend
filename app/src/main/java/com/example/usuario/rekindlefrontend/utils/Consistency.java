@@ -2,12 +2,9 @@ package com.example.usuario.rekindlefrontend.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
-import android.util.Base64;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.Gson;
 
 /**
@@ -16,7 +13,7 @@ import com.google.gson.Gson;
 
 public class Consistency {
 
-    public static void saveUser(Usuario user, Context ctx){
+    public static void saveUser(User user, Context ctx){
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(ctx);
         SharedPreferences.Editor miEditor = datos.edit();
@@ -31,12 +28,12 @@ public class Consistency {
         miEditor.apply();
     }
 
-    public static Usuario getUser(Context ctx){
+    public static User getUser(Context ctx){
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(ctx);
         Gson gson = new Gson();
         String json = datos.getString("usuario", "");
-        Usuario user = gson.fromJson(json, Usuario.class);
+        User user = gson.fromJson(json, User.class);
         return user;
     }
 }

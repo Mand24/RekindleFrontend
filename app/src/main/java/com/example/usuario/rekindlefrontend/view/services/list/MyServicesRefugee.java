@@ -106,7 +106,7 @@ public class MyServicesRefugee extends ListServices {
     @Override
     protected void initializeData(){
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
-                (this).getTipo())
+                (this).getUserType())
                 .enqueue(new Callback<ArrayList<Service>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Service>> call,
