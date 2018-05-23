@@ -96,9 +96,7 @@ public class LodgeForm extends AbstractFormatChecker {
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 } catch (GooglePlayServicesRepairableException e) {
-                    // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
-                    // TODO: Handle the error.
                 }
             }
         });
@@ -204,7 +202,6 @@ public class LodgeForm extends AbstractFormatChecker {
                 eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                // TODO: Handle the error.
                 Log.i("==================", status.getStatusMessage());
 
             } else if (resultCode == RESULT_CANCELED) {

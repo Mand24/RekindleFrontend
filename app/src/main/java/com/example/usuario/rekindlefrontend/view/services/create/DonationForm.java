@@ -39,21 +39,21 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FormularioDonacion extends AbstractFormatChecker {
+public class DonationForm extends AbstractFormatChecker {
 
 
     private EditText editStartingTime, editEndingTime;
-    private EditText eDireccion;
+    private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
-    private EditText eNombre;
-    private EditText eTelefono;
-    private EditText eSolicitudes;
-    private EditText eDescripcion;
+    private EditText eName;
+    private EditText ePhoneNumber;
+    private EditText ePlacesLimit;
+    private EditText eDescription;
 
     private Donation mDonation;
     private APIService mAPIService;
 
-    public FormularioDonacion() {
+    public DonationForm() {
         // Required empty public constructor
     }
 
@@ -66,7 +66,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
                 false);
 
         //establecer las vistas
-        setVistas(view);
+        setViews(view);
 
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id.enviar_formulario_donacion);
         button_send.setOnClickListener(new View.OnClickListener(){
@@ -74,17 +74,17 @@ public class FormularioDonacion extends AbstractFormatChecker {
             @Override
             public void onClick(View v) {
                 try {
-                    checkCampos(view);
-                    obtenerParametros();
+                    checkFields(view);
+                    getParams();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCrearDonacion();
+                sendCreateDonation();
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_donacion);
-        eDireccion.setOnClickListener(new View.OnClickListener() {
+        eAdress = view.findViewById(R.id.direccion_donacion);
+        eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
@@ -92,9 +92,7 @@ public class FormularioDonacion extends AbstractFormatChecker {
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 }catch (GooglePlayServicesRepairableException e) {
-                    // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
-                    // TODO: Handle the error.
                 }
             }
         });
@@ -106,30 +104,30 @@ public class FormularioDonacion extends AbstractFormatChecker {
         return view;
     }
 
-    public void setVistas(View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_donacion);
-        eTelefono = view.findViewById(R.id.telefono_donacion);
-        eDireccion = view.findViewById(R.id.direccion_donacion);
-        eSolicitudes = view.findViewById(R.id.solicitudes_donacion);
+        eName = view.findViewById(R.id.nombre_donacion);
+        ePhoneNumber = view.findViewById(R.id.telefono_donacion);
+        eAdress = view.findViewById(R.id.direccion_donacion);
+        ePlacesLimit = view.findViewById(R.id.solicitudes_donacion);
         editStartingTime = view.findViewById(R.id.franja_horaria_inicio_donacion);
         editEndingTime = view.findViewById(R.id.franja_horaria_fin_donacion);
-        eDescripcion = view.findViewById(R.id.descripcion_donacion);
+        eDescription = view.findViewById(R.id.descripcion_donacion);
 
         mAPIService = APIUtils.getAPIService();
 
     }
 
-    public void checkCampos(View view) throws Exception {
+    public void checkFields(View view) throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkSolicitudesServicio(eSolicitudes.getText().toString());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkSolicitudesServicio(ePlacesLimit.getText().toString());
+        checkDescripcionServicio(eDescription.getText().toString());
 
     }
 
-    public void obtenerParametros(){
+    public void getParams(){
 
         /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
                 (getActivity().getApplicationContext());
@@ -139,34 +137,34 @@ public class FormularioDonacion extends AbstractFormatChecker {
 
         Usuario usuario = getUser(getActivity().getApplicationContext());
 
-        mDonation = new Donation(0, usuario.getMail(), eNombre.getText().toString(),
-                eDescripcion.getText().toString(), eDireccion.getText().toString(), eSolicitudes
+        mDonation = new Donation(0, usuario.getMail(), eName.getText().toString(),
+                eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
                 .getText().toString(), editStartingTime.getText().toString(), editEndingTime
-                .getText().toString(), eTelefono.getText().toString());
+                .getText().toString(), ePhoneNumber.getText().toString());
 
     }
 
-    public void sendCrearDonacion(){
+    public void sendCreateDonation(){
         mAPIService.crearDonacion(mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
-                    tratarResultadoPeticion(true);
+                    manageResult(true);
                 }else {
                     System.out.println("codi "+response.code());
-                    tratarResultadoPeticion(false);
+                    manageResult(false);
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                tratarResultadoPeticion(false);
+                manageResult(false);
 
             }
         });
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void manageResult(boolean result){
 
         if (result) {
 
@@ -185,10 +183,9 @@ public class FormularioDonacion extends AbstractFormatChecker {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 Log.i("==================", "Place: " + place.getName());
-                eDireccion.setText(place.getAddress());
+                eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                // TODO: Handle the error.
                 Log.i("==================", status.getStatusMessage());
 
             } else if (resultCode == RESULT_CANCELED) {

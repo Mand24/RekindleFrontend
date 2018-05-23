@@ -27,7 +27,7 @@ public class CreateService extends AppBaseActivity {
 
         formTypes.put("Lodge", new LodgeForm());
 
-        formTypes.put("Donation", new FormularioDonacion());
+        formTypes.put("Donation", new DonationForm());
 
         formTypes.put("Education", new EducationForm());
 
