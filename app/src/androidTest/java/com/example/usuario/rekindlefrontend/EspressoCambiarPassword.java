@@ -33,7 +33,7 @@ import org.junit.runner.RunWith;
 public class EspressoCambiarPassword {
 
     public Voluntario voluntario = new Voluntario ("voluntario@hotmail.com", "pass123",
-            "voluntarioName", "surnameOne", "surnameTwo");
+            "voluntarioName", "surnameOne", "surnameTwo", null);
     @Rule
     public ActivityTestRule<CambiarPassword> pantalla = new ActivityTestRule<CambiarPassword>
             (CambiarPassword.class) {

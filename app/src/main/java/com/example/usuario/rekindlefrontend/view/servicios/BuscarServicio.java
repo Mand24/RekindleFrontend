@@ -37,7 +37,7 @@ import java.util.List;
 public class BuscarServicio extends AppCompatActivity implements OnMapReadyCallback {
 
     private Refugiado refugiado = new Refugiado ("refugiado@gmail.com", "pass1234",
-            "refugiadoName", "refugiadoSurname","refugadioSecondSurname", "123456789",
+            "refugiadoName", "refugiadoSurname","refugadioSecondSurname", null,  "123456789",
             "12-09-2018","Male","Barcelona","cabrils","ethinc","+A","","");
 
     private CursoEducativo ser0 = new CursoEducativo (0, "voluntario@gmail.com",

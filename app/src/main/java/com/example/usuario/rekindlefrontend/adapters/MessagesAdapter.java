@@ -118,6 +118,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
 
     public int getItemViewType(int position){
         Message message = messages.get(position);
+        System.out.println(message.toString());
         if (message.getOwner().getMail().equals(getUser(mContext).getMail())){
             return VIEW_TYPE_MY_MESSAGE;
         }
