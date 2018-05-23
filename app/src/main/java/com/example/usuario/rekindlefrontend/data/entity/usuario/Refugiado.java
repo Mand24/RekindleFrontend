@@ -229,6 +229,7 @@ public class Refugiado extends Usuario {
                 ", name='" + getName() + '\'' +
                 ", surname1='" + getSurname1() + '\'' +
                 ", surname2='" + getSurname2() + '\'' +
+                ", photo='" + getPhoto() + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 ", sex='" + sex + '\'' +
