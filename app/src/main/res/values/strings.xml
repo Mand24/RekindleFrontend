@@ -53,7 +53,7 @@
     <string name="inscribir">Enrol</string>
     <string name="chat">Chat</string>
 
-    <string name="alojamiento">Hosting</string>
+    <string name="lodge">Hosting</string>
     <string name="donacion">Donations</string>
     <string name="formulario_donacion">Donation form:</string>
     <string name="lugar_recogida_donacion">Pick up location(*):</string>

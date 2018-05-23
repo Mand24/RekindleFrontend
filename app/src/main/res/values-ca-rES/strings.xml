@@ -48,7 +48,7 @@
     <string name="inscribir">Inscriure</string>
     <string name="chat">Chat</string>
 
-    <string name="alojamiento">Alojamiento</string>
+    <string name="lodge">Alojamiento</string>
     <string name="donacion">Donación</string>
     <string name="formulario_donacion">Formulari donació:</string>
     <string name="lugar_recogida_donacion">Lloc de recollida(*):</string>
@@ -226,7 +226,7 @@
             <u>Log In \n</u>
         </b>
         Pantalla on podrà iniciar
-        sesió en cas que js s'hagi registrat anteriorment. Per a iniciar sesió necessita
+        sesió en cas que ja s hagi registrat anteriorment. Per a iniciar sesió necessita
         introduir el correu amb que es va registrar, la contrasenya associada, i despres
         premmer en \"Iniciar sesió\". En cas de no estar registrat pot pulsar en \"No tens
         compte encara? Crea una\" per a registrar-te com a refugiat o com a voluntari. En cas
@@ -275,11 +275,11 @@
         llistat fent que només apareguin aquells serveis que coincideixin amb el text
         introduït. Per ajudar al filtrat per tipus disposa de quatre botons sobre del
         llistat de serveis, si tots estan actius, vol dir que la llista està mostrant tots
-        els tipus de servei, quan un botó és clicat s'altera el filtrat, és a dir, si un
+        els tipus de servei, quan un botó és clicat s altera el filtrat, és a dir, si un
         botó es mostra amb un color gris, vol dir que aquest tipus de servei no es mostrarà a la
-        llista, més d'un botó pot ser premut. Per tornar a activar el tipus de servei de
-        simplement ha de tornar a prémer el botó del servei. A més disposa d'un botó
-        d'ajustos que li permetrà ajustar la recerca de manera més precisa, disposant de
+        llista, més d un botó pot ser premut. Per tornar a activar el tipus de servei de
+        simplement ha de tornar a prémer el botó del servei. A més disposa d un botó
+        d ajustos que li permetrà ajustar la recerca de manera més precisa, disposant de
         diversos atributs per cada tipus de servei com ara preu, distància, idioma,
         etc. En prémer en un servei, es mostrarà tota la seva informació. \n \n
 
@@ -289,9 +289,9 @@
         En aquesta pantalla es mostra tota la informació
         associada al servei, incloent un mapa amb la localització del servei. Clicar al
         marcador vermell li permetrà traçar una ruta des de la seva localització actual fins al servei
-        o obrir l'aplicació GoogleMaps per a més opcions. Si té qualsevol dubte amb el
+        o obrir l aplicació GoogleMaps per a més opcions. Si té qualsevol dubte amb el
         servei, pot contactar amb el voluntari prement en \"Xat\" i iniciarà una
-        conversa amb ell. Si altres usuaris han fet ús d'aquest servei anteriorment i han
+        conversa amb ell. Si altres usuaris han fet ús d aquest servei anteriorment i han
         donat la seva valoració, podrà veure-prement \"Opinions\". I finalment per inscriure al
         servei només ha de prémer a \"Inscriure\".
 
@@ -300,14 +300,14 @@
         </b>
         Aquí podrà veure la llista de serveis
         que ha creat. Fent una polsada curta pot obtenir una llista de tots els usuaris
-        que s'han inscrit en ella. Realitzar una pulsació llarga seleccionant un servei li
+        que s han inscrit en ella. Realitzar una pulsació llarga seleccionant un servei li
         permetrà editar aquest servei o eliminar-lo \n \n
 
         <b>
             <u>(Refugiat) Els meus serveis \n</u>
         </b>
         Aquí podrà veure la llista de serveis en
-        què s'ha inscrit, cliqueu en un d'ells mostrarà de nou la seva informació, i
+        què s ha inscrit, cliqueu en un d ells mostrarà de nou la seva informació, i
         realitzar una pulsació llarga li permetrà donar-se de baixa del servei. \n \n
 
         <b>
@@ -329,7 +329,7 @@
             <u>Veure perfil \n</u>
         </b>
         A partir del menú lateral podrà accedir al seu perfil i
-        veure la seva informació associada. Des d'aquesta pantalla també podrà accedir a "Edita
+        veure la seva informació associada. Des d aquesta pantalla també podrà accedir a "Edita
         perfil".
         \n \n
 
@@ -348,7 +348,8 @@
             <u>Ajustos \n</u>
         </b>
         A partir del menú lateral podrà accedir a ajustos, on
-        podrà seleccionar idioma, distància màxima de cerca de serveis, etc. \n \n
+        podrà seleccionar idioma, distància màxima de cerca de serveis, etc.
+        \n \n
 
         <b>
             <u>About \n</u>
