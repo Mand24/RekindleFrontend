@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.editar;
+package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -12,9 +12,9 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.HashMap;
 
-public class EditarServicio extends AppBaseActivity {
+public class ServiceEdit extends AppBaseActivity {
 
-    HashMap<String, Fragment> tipoServicios;
+    HashMap<String, Fragment> ServicesTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,26 +23,26 @@ public class EditarServicio extends AppBaseActivity {
 
         getSupportActionBar().setTitle(R.string.title_activity_editar_servicio);
 
-        tipoServicios = new HashMap<>();
+        ServicesTypes = new HashMap<>();
 
-        tipoServicios.put("Lodge", new EditarAlojamiento ());
+        ServicesTypes.put("Lodge", new LodgeEdit());
 
-        tipoServicios.put("Donation", new EditarDonacion ());
+        ServicesTypes.put("Donation", new DonationEdit());
 
-        tipoServicios.put("Education", new EditarCursoEducativo ());
+        ServicesTypes.put("Education", new EducationEdit());
 
-        tipoServicios.put("Job", new EditarOfertaEmpleo ());
+        ServicesTypes.put("Job", new JobEdit());
 
         menu ("Lodge");
 
 
     }
 
-    public void menu(String tipo_servicio){
+    public void menu(String ServiceType){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace (R.id.editar_servicio, tipoServicios.get(tipo_servicio));
+        transaction.replace (R.id.editar_servicio, ServicesTypes.get(ServiceType));
         transaction.commit();
     }
 

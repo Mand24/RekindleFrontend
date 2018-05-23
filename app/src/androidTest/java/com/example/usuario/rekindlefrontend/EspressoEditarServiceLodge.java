@@ -16,7 +16,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.services.editar.EditarServicio;
+import com.example.usuario.rekindlefrontend.view.services.edit.ServiceEdit;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -28,8 +28,8 @@ import org.junit.runner.RunWith;
 public class EspressoEditarServiceLodge {
 
     @Rule
-    public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>
-            (EditarServicio.class);
+    public ActivityTestRule<ServiceEdit> pantalla = new ActivityTestRule<ServiceEdit>
+            (ServiceEdit.class);
 
     @BeforeClass
     public static void setup(){

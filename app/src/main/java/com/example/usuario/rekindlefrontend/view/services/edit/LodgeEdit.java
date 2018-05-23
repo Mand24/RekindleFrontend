@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.editar;
+package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -27,23 +27,23 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class EditarAlojamiento extends AbstractFormatChecker {
+public class LodgeEdit extends AbstractFormatChecker {
 
     private Lodge servicio;
     private ArrayList<String> param;
 
-    private EditText eNombre;
+    private EditText eName;
     private EditText eEmail;
-    private EditText eTelefono;
-    private EditText eDireccion;
-    private EditText eSolicitudes;
+    private EditText ePhoneNumber;
+    private EditText eAdress;
+    private EditText ePlacesLimit;
     private EditText eDeadline;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
-    private EditText eDescripcion;
+    private EditText eDescription;
 
-    public EditarAlojamiento () {
+    public LodgeEdit() {
 
     }
 
@@ -52,26 +52,21 @@ public class EditarAlojamiento extends AbstractFormatChecker {
             savedInstanceState) {
         final View view = inflater.inflate (R.layout.fragment_editar_alojamiento, container, false);
 
-        // set : SERVICIO_ALOJAMIENTO
-        //TODO: new Lodge
-        //servicio =  new Lodge (12345, "nombrePD", "descrPD", "direccionPD", "soliciPD",
-          //      "21-03-2018PD", "123456789PD", "valoracionPD", 0);
-
-        setVistas (view);
+        setViews(view);
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         SetDate setDate = new SetDate(eDeadline, container.getContext());
 
-        cargarValores ();
+        initializeFields();
 
-        AppCompatButton enviar_editar = (AppCompatButton) view.findViewById(R.id
+        AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
                 .enviar_editar_alojamiento);
 
-        enviar_editar.setOnClickListener(new View.OnClickListener() {
+        sendEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    checkCampos();
-                    obtenerParametros();
+                    checkFields();
+                    getParams();
                     // funcion enviar datos
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -79,8 +74,8 @@ public class EditarAlojamiento extends AbstractFormatChecker {
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_alojamiento);
-        eDireccion.setOnClickListener(new View.OnClickListener() {
+        eAdress = view.findViewById(R.id.direccion_alojamiento);
+        eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
@@ -88,9 +83,7 @@ public class EditarAlojamiento extends AbstractFormatChecker {
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 }catch (GooglePlayServicesRepairableException e) {
-                    // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
-                    // TODO: Handle the error.
                 }
             }
         });
@@ -98,46 +91,46 @@ public class EditarAlojamiento extends AbstractFormatChecker {
         return view;
     }
 
-    public void setVistas (View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_alojamiento);
+        eName = view.findViewById(R.id.nombre_alojamiento);
       //TODO:  eEmail = view.findViewById(R.id.correo_alojamiento);
-        eTelefono = view.findViewById(R.id.telefono_alojamiento);
-        eDireccion = view.findViewById(R.id.direccion_alojamiento);
-        eSolicitudes = view.findViewById(R.id.solicitudes_alojamiento);
+        ePhoneNumber = view.findViewById(R.id.telefono_alojamiento);
+        eAdress = view.findViewById(R.id.direccion_alojamiento);
+        ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
-        eDescripcion = view.findViewById(R.id.descripcion_alojamiento);
+        eDescription = view.findViewById(R.id.descripcion_alojamiento);
     }
 
-    public void cargarValores () {
+    public void initializeFields() {
 
-        eNombre.setText (servicio.getName());
-        eTelefono.setText (servicio.getPhoneNumber());
-        eDireccion.setText (servicio.getAdress());
-        eSolicitudes.setText(servicio.getPlacesLimit());
+        eName.setText (servicio.getName());
+        ePhoneNumber.setText (servicio.getPhoneNumber());
+        eAdress.setText (servicio.getAdress());
+        ePlacesLimit.setText(servicio.getPlacesLimit());
         eDeadline.setText (servicio.getDateLimit());
-        eDescripcion.setText (servicio.getDescription());
+        eDescription.setText (servicio.getDescription());
     }
 
-    public void checkCampos () throws Exception {
+    public void checkFields() throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkSolicitudesServicio(eSolicitudes.getText().toString());
-        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getPlacesLimit());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkSolicitudesServicio(ePlacesLimit.getText().toString());
+        checkPlazasAumento(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
+        checkDescripcionServicio(eDescription.getText().toString());
     }
 
-    public void obtenerParametros () {
+    public void getParams() {
 
         new ArrayList<String>();
 
-        param.add (eNombre.getText().toString());
-        param.add (eTelefono.getText().toString());
-        param.add (eDireccion.getText().toString());
-        param.add (eSolicitudes.getText().toString());
+        param.add (eName.getText().toString());
+        param.add (ePhoneNumber.getText().toString());
+        param.add (eAdress.getText().toString());
+        param.add (ePlacesLimit.getText().toString());
         param.add (eDeadline.getText().toString());
-        param.add (eDescripcion.getText().toString());
+        param.add (eDescription.getText().toString());
     }
 
     @Override
@@ -146,7 +139,7 @@ public class EditarAlojamiento extends AbstractFormatChecker {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 Log.i("==================", "Place: " + place.getName());
-                eDireccion.setText(place.getAddress());
+                eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
                 // TODO: Handle the error.

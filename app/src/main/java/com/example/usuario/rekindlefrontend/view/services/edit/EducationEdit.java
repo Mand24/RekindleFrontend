@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.editar;
+package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -24,24 +24,24 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 
-public class EditarCursoEducativo extends AbstractFormatChecker {
+public class EducationEdit extends AbstractFormatChecker {
 
     private ArrayList<String> param;
     private Education servicio;
-    private EditText eDireccion;
+    private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
-    private EditText eNombre;
+    private EditText eName;
     private EditText eEmail;
-    private EditText eTelefono;
-    private EditText eAmbito;
-    private EditText eRequisitos;
-    private EditText eHorario;
-    private EditText ePlazas;
-    private EditText ePrecio;
-    private EditText eDescripcion;
+    private EditText ePhoneNumber;
+    private EditText eAmbit;
+    private EditText eRequirements;
+    private EditText eSchedule;
+    private EditText ePlacesLimit;
+    private EditText ePrice;
+    private EditText eDescription;
 
-    public EditarCursoEducativo () { }
+    public EducationEdit() { }
 
     @Override
     public View onCreateView (LayoutInflater inflater, final ViewGroup container, Bundle
@@ -55,19 +55,19 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
                     "ambitoPD", "requiPD", "hoarioPD", "plazasPD", "precioPD", "numeroPD",
                     "valoracionPD", 2);*/
 
-            setVistas (view);
+            setViews(view);
 
-            cargarValores ();
+            initializeFields();
 
-            AppCompatButton enviar_editar = (AppCompatButton) view.findViewById(R.id
+            AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
             .enviar_editar_curso_educativo);
 
-            enviar_editar.setOnClickListener(new View.OnClickListener() {
+            sendEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try {
-                            checkCampos ();
-                            obtenerParametros ();
+                            checkFields();
+                            getParams();
                             // crida funcion envio de datos
                         } catch (Exception e) {
                             Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -75,8 +75,8 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
                     }
             });
 
-            eDireccion = view.findViewById(R.id.direccion_curso_educativo);
-            eDireccion.setOnClickListener(new View.OnClickListener() {
+            eAdress = view.findViewById(R.id.direccion_curso_educativo);
+            eAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                             try{
@@ -84,9 +84,7 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
                                 .MODE_OVERLAY).build(getActivity());
                                 startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                             }catch (GooglePlayServicesRepairableException e) {
-                                // TODO: Handle the error.
                             } catch (GooglePlayServicesNotAvailableException e) {
-                                // TODO: Handle the error.
                             }
                     }
             });
@@ -94,56 +92,56 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
             return view;
             }
 
-    public void setVistas (View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_curso_educativo);
-        eTelefono = view.findViewById(R.id.telefono_curso_educativo);
-        eDireccion = view.findViewById(R.id.direccion_curso_educativo);
-        eAmbito = view.findViewById(R.id.ambito_curso_educativo);
-        eRequisitos = view.findViewById(R.id.requisitos_curso_educativo);
-        eHorario = view.findViewById(R.id.horario_curso_educativo);
-        ePlazas = view.findViewById(R.id.plazas_curso_educativo);
-        ePrecio = view.findViewById(R.id.precio_curso_educativo);
-        eDescripcion = view.findViewById(R.id.descripcion_curso_educativo);
+        eName = view.findViewById(R.id.nombre_curso_educativo);
+        ePhoneNumber = view.findViewById(R.id.telefono_curso_educativo);
+        eAdress = view.findViewById(R.id.direccion_curso_educativo);
+        eAmbit = view.findViewById(R.id.ambito_curso_educativo);
+        eRequirements = view.findViewById(R.id.requisitos_curso_educativo);
+        eSchedule = view.findViewById(R.id.horario_curso_educativo);
+        ePlacesLimit = view.findViewById(R.id.plazas_curso_educativo);
+        ePrice = view.findViewById(R.id.precio_curso_educativo);
+        eDescription = view.findViewById(R.id.descripcion_curso_educativo);
     }
 
-    public void cargarValores () {
-        eNombre.setText(servicio.getName());
-        eTelefono.setText (servicio.getPhoneNumber());
-        eDireccion.setText (servicio.getAdress());
-        eAmbito.setText(servicio.getAmbit());
-        eRequisitos.setText(servicio.getRequirements());
-        eHorario.setText(servicio.getSchedule());
-        ePlazas.setText(servicio.getPlaces());
-        ePrecio.setText(servicio.getPrice());
-        eDescripcion.setText (servicio.getDescription());
+    public void initializeFields() {
+        eName.setText(servicio.getName());
+        ePhoneNumber.setText (servicio.getPhoneNumber());
+        eAdress.setText (servicio.getAdress());
+        eAmbit.setText(servicio.getAmbit());
+        eRequirements.setText(servicio.getRequirements());
+        eSchedule.setText(servicio.getSchedule());
+        ePlacesLimit.setText(servicio.getPlaces());
+        ePrice.setText(servicio.getPrice());
+        eDescription.setText (servicio.getDescription());
     }
 
-    public void checkCampos () throws Exception {
+    public void checkFields() throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkAmbitoCursoEducativo(eAmbito.getText().toString());
-        checkRequisitosServicio(eRequisitos.getText().toString());
-        checkHorarioCursoEducativo(eHorario.getText().toString());
-        checkPlazasServicio(ePlazas.getText().toString());
-        checkPlazasAumento(ePlazas.getText().toString(), servicio.getPlaces());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkAmbitoCursoEducativo(eAmbit.getText().toString());
+        checkRequisitosServicio(eRequirements.getText().toString());
+        checkHorarioCursoEducativo(eSchedule.getText().toString());
+        checkPlazasServicio(ePlacesLimit.getText().toString());
+        checkPlazasAumento(ePlacesLimit.getText().toString(), servicio.getPlaces());
+        checkDescripcionServicio(eDescription.getText().toString());
     }
 
-    public void obtenerParametros () {
+    public void getParams() {
 
         param = new ArrayList<String>();
 
-        param.add (eNombre.getText().toString());
-        param.add (eTelefono.getText().toString());
-        param.add (eDireccion.getText().toString());
-        param.add (eAmbito.getText().toString());
-        param.add (eRequisitos.getText().toString());
-        param.add (eHorario.getText().toString());
-        param.add (ePlazas.getText().toString());
-        param.add (ePrecio.getText().toString());
-        param.add (eDescripcion.getText().toString());
+        param.add (eName.getText().toString());
+        param.add (ePhoneNumber.getText().toString());
+        param.add (eAdress.getText().toString());
+        param.add (eAmbit.getText().toString());
+        param.add (eRequirements.getText().toString());
+        param.add (eSchedule.getText().toString());
+        param.add (ePlacesLimit.getText().toString());
+        param.add (ePrice.getText().toString());
+        param.add (eDescription.getText().toString());
     }
 
     @Override
@@ -152,10 +150,9 @@ public class EditarCursoEducativo extends AbstractFormatChecker {
                 if (resultCode == RESULT_OK) {
                     Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                     Log.i("==================", "Place: " + place.getName());
-                    eDireccion.setText(place.getAddress());
+                    eAdress.setText(place.getAddress());
                 } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                     Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                    // TODO: Handle the error.
                     Log.i("==================", status.getStatusMessage());
 
                 } else if (resultCode == RESULT_CANCELED) {

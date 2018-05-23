@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.editar;
+package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -25,21 +25,21 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 
-public class EditarDonacion extends AbstractFormatChecker {
+public class DonationEdit extends AbstractFormatChecker {
 
     private ArrayList<String> param;
     private Donation servicio;
 
     private EditText editStartingTime, editEndingTime;
-    private EditText eDireccion;
+    private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
-    private EditText eNombre;
+    private EditText eName;
     private EditText eEmail;
-    private EditText eTelefono;
-    private EditText eSolicitudes;
-    private EditText eDescripcion;
+    private EditText ePhoneNumber;
+    private EditText ePlacesLimit;
+    private EditText eDescription;
 
-    public EditarDonacion () {
+    public DonationEdit() {
 
         }
 
@@ -53,22 +53,22 @@ public class EditarDonacion extends AbstractFormatChecker {
         /*servicio = new Donation (1111, "nombrePD", "descrpcionPD", "direccionPD", "solicitudesPD",
                 "13:00IncioPD", "14:00FinPD", "numeroPD", "valoracionPD", 1);*/
 
-        setVistas (view);
+        setViews(view);
         editStartingTime = (EditText) view.findViewById(R.id.franja_horaria_inicio_donacion);
         SetTime fromTime = new SetTime(editStartingTime, container.getContext());
         SetTime toTime = new SetTime(editEndingTime, container.getContext());
 
-        cargarValores ();
+        initializeFields();
 
-        AppCompatButton enviar_editar = (AppCompatButton) view.findViewById(R.id
+        AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
         .enviar_editar_donacion);
 
-        enviar_editar.setOnClickListener(new View.OnClickListener() {
+        sendEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    checkCampos();
-                    obtenerParametros();
+                    checkFields();
+                    getParams();
                     // funcion enviar datos
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -76,8 +76,8 @@ public class EditarDonacion extends AbstractFormatChecker {
             }
         });
 
-        eDireccion = view.findViewById(R.id.direccion_donacion);
-        eDireccion.setOnClickListener(new View.OnClickListener() {
+        eAdress = view.findViewById(R.id.direccion_donacion);
+        eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
@@ -85,9 +85,7 @@ public class EditarDonacion extends AbstractFormatChecker {
                     .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 } catch (GooglePlayServicesRepairableException e) {
-                    // TODO: Handle the error.
                 } catch (GooglePlayServicesNotAvailableException e) {
-                    // TODO: Handle the error.
                 }
             }
         });
@@ -95,49 +93,49 @@ public class EditarDonacion extends AbstractFormatChecker {
         return view;
         }
 
-    public void setVistas (View view) {
+    public void setViews(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_donacion);
-        eTelefono = view.findViewById(R.id.telefono_donacion);
-        eDireccion = view.findViewById(R.id.direccion_donacion);
-        eSolicitudes = view.findViewById(R.id.solicitudes_donacion);
+        eName = view.findViewById(R.id.nombre_donacion);
+        ePhoneNumber = view.findViewById(R.id.telefono_donacion);
+        eAdress = view.findViewById(R.id.direccion_donacion);
+        ePlacesLimit = view.findViewById(R.id.solicitudes_donacion);
         editStartingTime = view.findViewById(R.id.franja_horaria_inicio_donacion);
         editEndingTime = view.findViewById(R.id.franja_horaria_fin_donacion);
-        eDescripcion = view.findViewById(R.id.descripcion_donacion);
+        eDescription = view.findViewById(R.id.descripcion_donacion);
     }
 
-    public void cargarValores () {
+    public void initializeFields() {
 
-        eNombre.setText (servicio.getName());
-        eTelefono.setText (servicio.getPhoneNumber());
-        eDireccion.setText (servicio.getAdress());
-        eSolicitudes.setText (servicio.getPlacesLimit());
+        eName.setText (servicio.getName());
+        ePhoneNumber.setText (servicio.getPhoneNumber());
+        eAdress.setText (servicio.getAdress());
+        ePlacesLimit.setText (servicio.getPlacesLimit());
         editStartingTime.setText (servicio.getStartTime());
         editEndingTime.setText (servicio.getEndTime());
-        eDescripcion.setText (servicio.getDescription());
+        eDescription.setText (servicio.getDescription());
     }
 
-    public void checkCampos () throws Exception {
+    public void checkFields() throws Exception {
 
-        checkNombreServicio(eNombre.getText().toString());
-        checkTelefonoServicio(eTelefono.getText().toString());
-        checkSolicitudesServicio(eSolicitudes.getText().toString());
-        checkPlazasAumento(eSolicitudes.getText().toString(), servicio.getPlacesLimit());
-        checkDescripcionServicio(eDescripcion.getText().toString());
+        checkNombreServicio(eName.getText().toString());
+        checkTelefonoServicio(ePhoneNumber.getText().toString());
+        checkSolicitudesServicio(ePlacesLimit.getText().toString());
+        checkPlazasAumento(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
+        checkDescripcionServicio(eDescription.getText().toString());
 
     }
 
-    public void obtenerParametros () {
+    public void getParams() {
 
         param = new ArrayList<String>();
 
-        param.add (eNombre.getText().toString());
-        param.add (eTelefono.getText().toString());
-        param.add (eDireccion.getText().toString());
-        param.add (eSolicitudes.getText().toString());
+        param.add (eName.getText().toString());
+        param.add (ePhoneNumber.getText().toString());
+        param.add (eAdress.getText().toString());
+        param.add (ePlacesLimit.getText().toString());
         param.add(editStartingTime.getText().toString());
         param.add(editEndingTime.getText().toString());
-        param.add (eDescripcion.getText().toString());
+        param.add (eDescription.getText().toString());
     }
 
     @Override
@@ -146,10 +144,9 @@ public class EditarDonacion extends AbstractFormatChecker {
             if (resultCode == RESULT_OK) {
                 Place place = PlaceAutocomplete.getPlace(getActivity(), data);
                 Log.i("==================", "Place: " + place.getName());
-                eDireccion.setText(place.getAddress());
+                eAdress.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                // TODO: Handle the error.
                 Log.i("==================", status.getStatusMessage());
 
             } else if (resultCode == RESULT_CANCELED) {
