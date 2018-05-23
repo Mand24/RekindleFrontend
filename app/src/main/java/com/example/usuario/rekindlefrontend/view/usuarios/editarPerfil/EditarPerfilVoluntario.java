@@ -1,12 +1,23 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +28,8 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -36,7 +49,13 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
     private EditText ePrimer_apellido;
     private EditText eSegundo_apellido;
 
+    private Bitmap bitmapImage;
+    private ImageView ePhoto;
+
     private APIService mAPIService;
+
+    private static final int TAKE_PICTURE = 1;
+    private Uri imageUri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -87,6 +106,14 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
         });
 
+        AppCompatButton setPhoto = (AppCompatButton) view.findViewById(R.id.change_photo_volunteer);
+        setPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePhoto(view);
+            }
+        });
+
         return view;
     }
 
@@ -96,6 +123,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         eEmail = view.findViewById(R.id.email_usuario_perfil);
         ePrimer_apellido = view.findViewById(R.id.apellido1_usuario_perfil);
         eSegundo_apellido = view.findViewById(R.id.apellido2_usuario_perfil);
+        ePhoto = view.findViewById(R.id.volunteer_photo);
 
         mAPIService = APIUtils.getAPIService();
 
@@ -108,6 +136,12 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         eEmail.setText(voluntario.getMail());
         ePrimer_apellido.setText(voluntario.getSurname1());
         eSegundo_apellido.setText(voluntario.getSurname2());
+
+        if(voluntario.getPhoto() != null) {
+            ePhoto.setImageBitmap(voluntario.getDecodedPhoto());
+        }else{
+            ePhoto.setImageResource(R.drawable.foto_perfil);
+        }
 
     }
 
@@ -123,6 +157,13 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         voluntario.setName(eNombre.getText().toString());
         voluntario.setSurname1(ePrimer_apellido.getText().toString());
         voluntario.setSurname2(eSegundo_apellido.getText().toString());
+
+        if(bitmapImage != null) {
+            voluntario.setPhoto(encode_photo(bitmapImage));
+        }
+        else{
+            voluntario.setPhoto(null);
+        }
     }
 
     public void sendActualizarVoluntario(){
@@ -168,6 +209,46 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
             Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
                     .LENGTH_SHORT).show();
         }
+    }
+
+    public void takePhoto(View view){
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File photo = new File(Environment.getExternalStorageDirectory(), "Pic.jpg");
+        i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
+        imageUri = Uri.fromFile(photo);
+        startActivityForResult(i, TAKE_PICTURE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case TAKE_PICTURE:
+                if(resultCode == Activity.RESULT_OK){
+                    Uri selectedImage = imageUri;
+                    getActivity().getContentResolver().notifyChange(selectedImage, null);
+                    ContentResolver cr = getActivity().getContentResolver();
+                    try{
+                        bitmapImage = android.provider.MediaStore.Images.Media.getBitmap(cr,
+                                selectedImage);
+
+                        ePhoto.setImageBitmap(bitmapImage);
+                        Toast.makeText(getActivity(), selectedImage.toString(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_SHORT).show();
+                        Log.e("Camera", e.toString());
+                    }
+                }
+        }
+    }
+
+    private String encode_photo(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        byte[] byte_arr = stream.toByteArray();
+        return Base64.encodeToString(byte_arr, Base64.DEFAULT);
     }
 
 }

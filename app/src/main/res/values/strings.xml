@@ -425,6 +425,16 @@
     <string name="myLocation_maps">My location</string>
     <string name="noLocation">We can not determine your location, try again later</string>
     <string name="serviceLocation">Service location:</string>
+    <string name="select_option">Select an option</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="unsubscribe_confirmation">Are you Sure you want to unsubscribe?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="unsubscribed_successfully">Unsubscribed successfully!</string>
+    <string name="service_deleted_successfully">Service deleted successfully!</string>
+    <string name="delete_service_confirmation">Are you Sure you want to delete the service?</string>
+    <string name="not_available">Not available</string>
+    <string name="change_photo">Change photo</string>
 
 
 </resources>

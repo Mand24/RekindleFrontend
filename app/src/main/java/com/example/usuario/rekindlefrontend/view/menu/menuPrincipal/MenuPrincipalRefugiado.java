@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
+import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosRefugiado;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.BusquedaRefugiado;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 
@@ -53,10 +54,9 @@ public class MenuPrincipalRefugiado extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity().getApplicationContext(), getString (R.string.titulo_mis_servicios),
-                        Toast
-                        .LENGTH_SHORT)
-                        .show();
+                Intent i = new Intent(getActivity().getApplicationContext(),
+                        MisServiciosRefugiado.class);
+                startActivity(i);
             }
         });
 

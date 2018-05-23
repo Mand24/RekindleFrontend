@@ -1,14 +1,26 @@
 package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +35,8 @@ import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 import com.google.gson.Gson;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -52,7 +66,13 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     private Spinner sOjos;
     private EditText eBiografia;
 
+    private Bitmap bitmapImage;
+    private ImageView ePhoto;
+
     private APIService mAPIService;
+
+    private static final int TAKE_PICTURE = 1;
+    private Uri imageUri;
 
 
     @Override
@@ -106,10 +126,20 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         SetDate setDate = new SetDate(eNacimiento, container.getContext());
 
+        AppCompatButton setPhoto = (AppCompatButton) view.findViewById(R.id.change_photo_refugee);
+        setPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePhoto(view);
+            }
+        });
+
         return view;
     }
 
     public void setVistas(View view) {
+
+
 
         eNombre = view.findViewById(R.id.nombre_usuario_perfil);
         eEmail = view.findViewById(R.id.email_usuario_perfil);
@@ -151,6 +181,8 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         eBiografia = view.findViewById(R.id.biografia_usuario_perfil);
 
+        ePhoto = view.findViewById(R.id.refugee_photo);
+
         mAPIService = APIUtils.getAPIService();
 
     }
@@ -179,6 +211,12 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         sOjos.setSelection(selectionPosition);
 
         eBiografia.setText(refugiado.getBiography());
+
+        if(refugiado.getPhoto() != null) {
+            ePhoto.setImageBitmap(refugiado.getDecodedPhoto());
+        }else{
+            ePhoto.setImageResource(R.drawable.foto_perfil);
+        }
     }
 
     public void checkCampos(View view) throws Exception {
@@ -206,6 +244,12 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         refugiado.setBloodType(sGrupo_sanguineo.getSelectedItem().toString());
         refugiado.setEyeColor(sOjos.getSelectedItem().toString());
         refugiado.setBiography(eBiografia.getText().toString());
+
+        if(bitmapImage != null) {
+            refugiado.setPhoto(encode_photo(bitmapImage));
+        }else {
+            refugiado.setPhoto(null);
+        }
     }
 
     public void sendActualizarRefugiado() {
@@ -251,6 +295,45 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
             Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
                     .LENGTH_SHORT).show();
         }
+    }
+
+    public void takePhoto(View view){
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File photo = new File(Environment.getExternalStorageDirectory(), "Pic.jpg");
+        i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
+        imageUri = Uri.fromFile(photo);
+        startActivityForResult(i, TAKE_PICTURE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case TAKE_PICTURE:
+                if(resultCode == Activity.RESULT_OK){
+                    Uri selectedImage = imageUri;
+                    getActivity().getContentResolver().notifyChange(selectedImage, null);
+                    ContentResolver cr = getActivity().getContentResolver();
+                    try{
+                        bitmapImage = android.provider.MediaStore.Images.Media.getBitmap(cr,
+                                selectedImage);
+                        ePhoto.setImageBitmap(bitmapImage);
+                        Toast.makeText(getActivity(), selectedImage.toString(), Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_SHORT).show();
+                        Log.e("Camera", e.toString());
+                    }
+                }
+        }
+    }
+
+    private String encode_photo(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        byte[] byte_arr = stream.toByteArray();
+        return Base64.encodeToString(byte_arr, Base64.DEFAULT);
     }
 
 }

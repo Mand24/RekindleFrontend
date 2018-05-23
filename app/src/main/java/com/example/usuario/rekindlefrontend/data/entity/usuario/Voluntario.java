@@ -12,8 +12,8 @@ public class Voluntario extends Usuario {
     }
 
     public Voluntario(String mail, String password, String name, String surname1,
-            String surname2) {
-        super("Volunteer", mail, password, name, surname1, surname2);
+            String surname2, String photo) {
+        super("Volunteer", mail, password, name, surname1, surname2, photo);
     }
 
     @Override

@@ -3,6 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_margin="@dimen/dim10"
             tools:context=".view.servicios.mostrar.MostrarAlojamiento">
 
     <RelativeLayout
@@ -104,8 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_below="@+id/contacto"
-            android:text="@string/inscribir"/>
+            android:layout_below="@+id/contacto"/>
 
     </RelativeLayout>
 

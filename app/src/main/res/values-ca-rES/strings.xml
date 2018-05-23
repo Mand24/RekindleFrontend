@@ -373,6 +373,16 @@
     <string name="myLocation_maps">La meva ubicació</string>
     <string name="noLocation">No podem determinar la teva ubicació, prova-ho més tard</string>
     <string name="serviceLocation">Ubicació servei:</string>
+    <string name="select_option">Selecciona una opció</string>
+    <string name="unsubscribe">Desinscriure</string>
+    <string name="unsubscribe_confirmation">Estar segur de que vols desinscriure\'t?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="unsubscribed_successfully">Desinscrit correctament!</string>
+    <string name="service_deleted_successfully">Servei eliminat correctament!</string>
+    <string name="delete_service_confirmation">Estàs segur que vols eliminar aquest servei?</string>
+    <string name="not_available">No disponible</string>
+    <string name="change_photo">Cambiar foto</string>
 
 
 </resources>

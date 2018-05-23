@@ -195,7 +195,7 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
         mAdapter.notifyDataSetChanged();
     }
 
-    private void initializeData() {
+    protected void initializeData() {
 
         mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Servicio>>
                 () {

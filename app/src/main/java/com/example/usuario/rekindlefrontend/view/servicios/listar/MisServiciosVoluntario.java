@@ -4,15 +4,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 
-public class MisServicios extends ListarServicios {
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MisServiciosVoluntario extends ListarServicios {
 
     @Override
     public void onCreate(Bundle savedInstance){
@@ -31,10 +41,10 @@ public class MisServicios extends ListarServicios {
                         startActivity(intent);
                     }
                     @Override
-                    public void onItemLongClick(View v, int position) {
+                    public void onItemLongClick(View v, final int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
-                                (MisServicios.this);
-                        alertDialog.setTitle("Elije una opcion").setItems(R.array.clic_servicio,
+                                (MisServiciosVoluntario.this);
+                        alertDialog.setTitle(R.string.select_option).setItems(R.array.clic_servicio,
                                 new DialogInterface.OnClickListener(){
                                     public void onClick(DialogInterface dialog, int which){
                                         //Editar
@@ -43,26 +53,24 @@ public class MisServicios extends ListarServicios {
                                                     Toast.LENGTH_SHORT).show();
                                         } else if (which == 1){
                                             //TODO:Call API
-                                            Toast.makeText(getApplicationContext(), "Not implemented ",
-                                                    Toast.LENGTH_SHORT).show();
                                             AlertDialog.Builder builder = new AlertDialog.Builder(
-                                                    MisServicios.this);
+                                                    MisServiciosVoluntario.this);
 
-                                            builder.setMessage("Are you Sure you want to delete "
-                                                    + "the service?");
+                                            builder.setMessage(R.string
+                                                    .delete_service_confirmation);
                                             builder.setCancelable(false);
-                                            builder.setPositiveButton("Yes",
+                                            builder.setPositiveButton(R.string.yes,
                                                     new DialogInterface.OnClickListener() {
 
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
                                                             // TODO API delete
-                                                            sendEliminarServicio();
-                                                            MisServicios.this.finish();
+                                                            sendEliminarServicio(servicios.get
+                                                                    (position));
                                                         }
                                                     });
 
-                                            builder.setNegativeButton("No",
+                                            builder.setNegativeButton(R.string.no,
                                                     new DialogInterface.OnClickListener() {
 
                                                         public void onClick(DialogInterface dialog,
@@ -81,8 +89,51 @@ public class MisServicios extends ListarServicios {
                 });
     }
 
-    public void sendEliminarServicio(){
+    public void sendEliminarServicio(Servicio servicio){
+        mAPIService.eliminarServicio(servicio.getId(), servicio.getTipo()).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), R.string
+                                            .service_deleted_successfully,
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            System.out.println("CODIGO "+response.code());
+                            tratarResultadoPeticion(false, null);
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("on Failure", t.toString());
+                        tratarResultadoPeticion(false, null);
+                    }
+                });
+    }
+
+    @Override
+    protected void initializeData(){
+        mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
+                (this).getTipo())
+                .enqueue(new Callback<ArrayList<Servicio>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Servicio>> call,
+                            Response<ArrayList<Servicio>> response) {
+                        if (response.isSuccessful()) {
+                            ArrayList<Servicio> respuesta = response.body();
+                            tratarResultadoPeticion(true, respuesta);
+                        } else {
+                            System.out.println("CODIGO "+response.code());
+                            tratarResultadoPeticion(false, null);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
+
+                    }
+                });
     }
 }
 

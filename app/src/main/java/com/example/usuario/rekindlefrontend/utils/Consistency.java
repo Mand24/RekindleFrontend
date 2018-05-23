@@ -2,7 +2,10 @@ package com.example.usuario.rekindlefrontend.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.google.gson.Gson;
