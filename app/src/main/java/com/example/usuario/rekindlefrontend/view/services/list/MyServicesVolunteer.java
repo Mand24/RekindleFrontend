@@ -13,7 +13,7 @@ import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
-import com.example.usuario.rekindlefrontend.view.services.mostrar.MostrarServicio;
+import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class MyServicesVolunteer extends ListServices {
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
+                        Intent intent = new Intent(getApplicationContext(), ShowService.class);
                         intent.putExtra("Service", mServices.get(position));
                         startActivity(intent);
                     }

@@ -24,7 +24,7 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
-import com.example.usuario.rekindlefrontend.view.services.mostrar.MostrarServicio;
+import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -159,7 +159,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
                     @Override
                     public void onItemClick(View v, int position) {
                         //TODO:Algo al clicar
-                        Intent intent = new Intent(getApplicationContext(), MostrarServicio.class);
+                        Intent intent = new Intent(getApplicationContext(), ShowService.class);
                         intent.putExtra("Service", mServiciosFiltrados.get(position));
                         startActivity(intent);
                     }

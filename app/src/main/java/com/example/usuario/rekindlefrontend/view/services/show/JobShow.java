@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.view.services.mostrar;
+package com.example.usuario.rekindlefrontend.view.services.show;
 
 
 import android.app.Fragment;
@@ -33,17 +33,18 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
+public class JobShow extends Maps implements OnMapReadyCallback {
 
-    public MostrarOfertaEmpleo() {
+    public JobShow() {
         // Required empty public constructor
     }
 
 
-    TextView titulo, descripcion, direccion, numero, puesto, requisitos, jornada, horas, duracion;
-    AppCompatButton chat, inscribirse;
+    TextView title, description, adress, phoneNumber, charge, requirements, hoursDay, hoursWeek,
+            contractDuration;
+    AppCompatButton chat, enroll;
 
-    public Job servicio;
+    public Job service;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
@@ -60,52 +61,52 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        servicio = (Job) getArguments().getSerializable("servicioFrag");
+        service = (Job) getArguments().getSerializable("servicioFrag");
 
-        titulo = view.findViewById(R.id.titulo_oferta_empleo);
-        descripcion = view.findViewById(R.id.descripcion_oferta_empleo);
-        direccion = view.findViewById(R.id.direccion_oferta_empleo);
-        puesto = view.findViewById(R.id.puesto_oferta_empleo);
-        requisitos = view.findViewById(R.id.requisitos_oferta_empleo);
-        jornada = view.findViewById(R.id.jornada_oferta_empleo);
-        horas = view.findViewById(R.id.horas_semanales_oferta_empleo);
-        duracion = view.findViewById(R.id.duracion_oferta_empleo);
+        title = view.findViewById(R.id.titulo_oferta_empleo);
+        description = view.findViewById(R.id.descripcion_oferta_empleo);
+        adress = view.findViewById(R.id.direccion_oferta_empleo);
+        charge = view.findViewById(R.id.puesto_oferta_empleo);
+        requirements = view.findViewById(R.id.requisitos_oferta_empleo);
+        hoursDay = view.findViewById(R.id.jornada_oferta_empleo);
+        hoursWeek = view.findViewById(R.id.horas_semanales_oferta_empleo);
+        contractDuration = view.findViewById(R.id.duracion_oferta_empleo);
         mMapView = (MapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.google_mapView);
-        numero = view.findViewById(R.id.numero_contacto_servicio);
+        phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
-        inscribirse = view.findViewById(R.id.inscribirse);
+        enroll = view.findViewById(R.id.inscribirse);
 
-        titulo.setText(servicio.getName());
-        descripcion.setText(servicio.getDescription());
-        direccion.setText(servicio.getAdress());
-        puesto.setText(servicio.getCharge());
-        requisitos.setText(servicio.getRequirements());
-        jornada.setText(servicio.getHoursDay());
-        horas.setText(servicio.getHoursWeek());
-        duracion.setText(servicio.getContractDuration());
-        numero.setText(servicio.getPhoneNumber());
+        title.setText(service.getName());
+        description.setText(service.getDescription());
+        adress.setText(service.getAdress());
+        charge.setText(service.getCharge());
+        requirements.setText(service.getRequirements());
+        hoursDay.setText(service.getHoursDay());
+        hoursWeek.setText(service.getHoursWeek());
+        contractDuration.setText(service.getContractDuration());
+        phoneNumber.setText(service.getPhoneNumber());
 
         mMapView.getMapAsync(this);
 
-        inscribirse.setClickable(false);
+        enroll.setClickable(false);
 
         Usuario user = Consistency.getUser(container.getContext());
         final String mail = user.getMail();
         String type = user.getTipo();
 
-        if(type.equals("Refugee")) {
+        if (type.equals("Refugee")) {
 
-            mAPIService.isUserSubscribed(mail, servicio.getId(), TYPE).enqueue(
+            mAPIService.isUserSubscribed(mail, service.getId(), TYPE).enqueue(
                     new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                             if (response.isSuccessful()) {
-                                inscribirse.setClickable(true);
+                                enroll.setClickable(true);
                                 if (response.body()) {
-                                    inscribirse.setText(R.string.unsubscribe);
+                                    enroll.setText(R.string.unsubscribe);
                                 } else {
-                                    inscribirse.setText(R.string.inscribir);
+                                    enroll.setText(R.string.inscribir);
                                 }
                             } else {
                                 System.out.println("CODIGO " + response.code());
@@ -120,14 +121,14 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
                         }
                     });
 
-            inscribirse.setOnClickListener(new View.OnClickListener() {
+            enroll.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(final View view) {
-                    if (inscribirse.getText().toString().equals(R.string.inscribir)) {
+                    if (enroll.getText().toString().equals(R.string.inscribir)) {
                         mAPIService.subscribeService(mail,
-                                servicio.getId(), TYPE);
-                        inscribirse.setText(R.string.unsubscribe);
+                                service.getId(), TYPE);
+                        enroll.setText(R.string.unsubscribe);
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(
                                 view.getContext());
@@ -139,7 +140,7 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
                                     public void onClick(DialogInterface dialog,
                                             int which) {
-                                        mAPIService.unsubscribeService(mail, servicio.getId(),
+                                        mAPIService.unsubscribeService(mail, service.getId(),
                                                 TYPE);
                                     }
                                 });
@@ -155,12 +156,12 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
 
                         AlertDialog alert = builder.create();
                         alert.show();
-                        inscribirse.setText(R.string.inscribir);
+                        enroll.setText(R.string.inscribir);
                     }
                 }
             });
-        }else{
-            inscribirse.setText(R.string.not_available);
+        } else {
+            enroll.setText(R.string.not_available);
         }
 
         return view;
@@ -170,23 +171,23 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
 
-        NetworkInfo network = getNetworkInfo ();
+        NetworkInfo network = getNetworkInfo();
 
-        if (network != null && network.isConnectedOrConnecting ()) {
+        if (network != null && network.isConnectedOrConnecting()) {
             try {
-                myMarker = setMarker(servicio.getAdress(), myMarker, mGoogleMap, servicio.getName());
+                myMarker = setMarker(service.getAdress(), myMarker, mGoogleMap, service.getName());
             } catch (Exception e) // Conectats però sense internet (p.e. falta logejar-nos)
             {
-                Toast.makeText(getActivity ().getApplicationContext (), getString(R.string
+                Toast.makeText(getActivity().getApplicationContext(), getString(R.string
                         .nointernet), Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(getActivity ().getApplicationContext (), getString (R.string.nomap),
+            Toast.makeText(getActivity().getApplicationContext(), getString(R.string.nomap),
                     Toast.LENGTH_LONG).show();
         }
     }
 
-    private void failure(){
+    private void failure() {
         Toast.makeText(getActivity(), getResources().getString(R
                 .string.error), Toast.LENGTH_SHORT).show();
     }

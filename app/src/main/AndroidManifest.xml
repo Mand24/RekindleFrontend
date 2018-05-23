@@ -35,7 +35,7 @@
         <activity android:name=".view.services.list.ListServices" />
         <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
         <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />
-        <activity android:name=".view.services.mostrar.MostrarServicio" />
+        <activity android:name=".view.services.show.ShowService" />
         <activity android:name=".view.menu.login.RecuperarPassword" />
         <activity android:name=".view.menu.login.CodePasswordRequest" />
         <activity android:name=".view.services.list.MyServicesRefugee" />

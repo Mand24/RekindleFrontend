@@ -54,7 +54,7 @@ public class JobEdit extends AbstractFormatChecker {
 
             /**/
             //TODO: que esté bien
-            /*servicio = new Job (111, "nombrePD", "descripPD", "direccionPD",
+            /*service = new Job (111, "nombrePD", "descripPD", "direccionPD",
                 "puestoPD",
                     "requisitosPD", "joranadaPD", "horasSemanaPD", "duracionPD", "plazasPD",
                     "sueldoPD", "numeroPD", "valoracionPD", 3);*/

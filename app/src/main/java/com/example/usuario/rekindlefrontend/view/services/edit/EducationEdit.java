@@ -50,7 +50,7 @@ public class EducationEdit extends AbstractFormatChecker {
 
             // set : SERVICIO_CURSOEDUCATIVO
 
-            /*servicio = new Education (1111, "nombreCursoPD", "descripPD", "direccionPD",
+            /*service = new Education (1111, "nombreCursoPD", "descripPD", "direccionPD",
                 "fechaPD",
                     "ambitoPD", "requiPD", "hoarioPD", "plazasPD", "precioPD", "numeroPD",
                     "valoracionPD", 2);*/

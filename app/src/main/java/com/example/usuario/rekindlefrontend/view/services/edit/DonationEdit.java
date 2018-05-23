@@ -50,7 +50,7 @@ public class DonationEdit extends AbstractFormatChecker {
 
         // set : SERVICIO_DONACION
 
-        /*servicio = new Donation (1111, "nombrePD", "descrpcionPD", "direccionPD", "solicitudesPD",
+        /*service = new Donation (1111, "nombrePD", "descrpcionPD", "direccionPD", "solicitudesPD",
                 "13:00IncioPD", "14:00FinPD", "numeroPD", "valoracionPD", 1);*/
 
         setViews(view);

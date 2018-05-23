@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuscarServicio extends AppCompatActivity implements OnMapReadyCallback {
+public class SearchService extends AppCompatActivity implements OnMapReadyCallback {
 
     private Refugiado refugiado = new Refugiado ("refugiado@gmail.com", "pass1234",
             "refugiadoName", "refugiadoSurname","refugadioSecondSurname", null,  "123456789",

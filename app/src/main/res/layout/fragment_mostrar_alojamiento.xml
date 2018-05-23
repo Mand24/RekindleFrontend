@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent" android:layout_height="match_parent"
             android:layout_margin="@dimen/dim10"
-            tools:context=".view.services.mostrar.MostrarAlojamiento">
+            tools:context=".view.services.show.LodgeShow">
 
     <RelativeLayout
         android:layout_width="match_parent"

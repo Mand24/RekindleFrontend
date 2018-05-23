@@ -6,7 +6,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/fondo"
                 android:gravity="center_vertical"
-                tools:context="com.example.usuario.rekindlefrontend.view.services.mostrar.MostrarServicio">
+                tools:context="com.example.usuario.rekindlefrontend.view.services.show.ShowService">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
