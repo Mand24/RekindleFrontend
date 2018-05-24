@@ -155,11 +155,6 @@ public class UnityAbstractFormatChecker extends AbstractFormatChecker{
     }
 
     @Test (expected = java.lang.Exception.class)
-    public void nombreServioio_letras () throws Exception {
-        checkNombreServicio ("cdsv234");
-    }
-
-    @Test (expected = java.lang.Exception.class)
     public void nombreServioio_largo () throws Exception {
         checkNombreServicio ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }

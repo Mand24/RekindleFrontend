@@ -4,7 +4,9 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.intent.Intents.init;
 import static android.support.test.espresso.intent.Intents.release;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -16,7 +18,7 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -28,8 +30,9 @@ import org.junit.runner.RunWith;
 public class EspressoEditarServicioAlojamiento {
 
     @Rule
-    public ActivityTestRule<EditarServicio> pantalla = new ActivityTestRule<EditarServicio>
-            (EditarServicio.class);
+    public ActivityTestRule<Login> pantalla = new ActivityTestRule<Login>
+            (Login.class) {
+    };
 
     @BeforeClass
     public static void setup(){
@@ -44,9 +47,29 @@ public class EspressoEditarServicioAlojamiento {
     @Test
     public void testCamposAlojamiento() {
 
-        pantalla.getActivity().menu(0);
+        // set : login
+
+        onView(withId(R.id.input_email)).perform(typeText("dummy@voluntario.com"));
+
+        onView(withId(R.id.input_password)).perform(typeText("1234"));
+
+        // login
+
+        onView(withId(R.id.btn_login)).perform(click());
+
+        // edit services
+
+        onView(withId(R.id.listar_servicios_MenuPrincipalVoluntario)).perform(click());
+
+        // edit : lodge
 
         onView(withId(R.id.boton_tipo_alojamiento)).perform(click());
+
+        // select : first element
+
+        onView(withId(R.id.rv)).perform(actionOnItemAtPosition(0, click()));
+
+        // check campos
 
         onView(withId(R.id.nombre_alojamiento)).perform(replaceText
                 ("testNombreAlojamiento"), ViewActions.closeSoftKeyboard

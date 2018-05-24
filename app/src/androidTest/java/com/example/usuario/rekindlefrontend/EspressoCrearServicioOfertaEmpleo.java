@@ -4,6 +4,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.init;
 import static android.support.test.espresso.intent.Intents.release;
@@ -50,7 +51,25 @@ public class EspressoCrearServicioOfertaEmpleo {
     @Test
     public void testCamposOfertaEmpleo() {
 
+        // set : login
+
+        onView(withId(R.id.input_email)).perform(typeText("dummy@voluntario.com"));
+
+        onView(withId(R.id.input_password)).perform(typeText("1234"));
+
+        // login
+
+        onView(withId(R.id.btn_login)).perform(click());
+
+        // go : create_service
+
+        onView(withId(R.id.crear_servicio_MenuPrincipalVoluntario)).perform(click());
+
+        // go : fragment job offer
+
         onView(withId(R.id.boton_tipo_oferta_empleo)).perform(click());
+
+        // check : campos
 
         onView(withId(R.id.nombre_oferta_empleo)).perform(replaceText
                 ("testNombreEmpleo"), ViewActions.closeSoftKeyboard

@@ -95,7 +95,6 @@ public abstract class AbstractFormatChecker extends Fragment {
         if (texto.length() == 0) throw new Exception(getString(R.string
                 .nombreServicio_obligatorio));
         else if (texto.length() > 50) throw new Exception(getString(R.string.nombreServicio_largo));
-        else if (!letras(texto)) throw new Exception(getString(R.string.nombreServicio_letras));
     }
 
     public  void checkTelefonoServicio(String texto) throws Exception {
