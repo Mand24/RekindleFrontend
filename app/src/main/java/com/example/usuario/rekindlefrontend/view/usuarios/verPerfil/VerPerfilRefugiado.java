@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class VerPerfilRefugiado extends Fragment {
     private TextView sangreUsuario;
     private TextView ojosUsuario;
     private TextView biografiaUsuario;
+    private ImageView photoUser;
 
     private APIService mAPIService;
     private Refugee mRefugee;
@@ -91,6 +93,7 @@ public class VerPerfilRefugiado extends Fragment {
         sangreUsuario = view.findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = view.findViewById(R.id.ojos_usuario_perfil_refugiado);
         biografiaUsuario = view.findViewById(R.id.biografia_usuario_perfil_refugiado);
+        photoUser = view.findViewById(R.id.foto_perfil_refugiado);
 
         mAPIService = APIUtils.getAPIService();
     }
@@ -175,7 +178,11 @@ public class VerPerfilRefugiado extends Fragment {
         sangreUsuario.setText(mRefugee.getBloodType());
         ojosUsuario.setText(mRefugee.getEyeColor());
         biografiaUsuario.setText(mRefugee.getBiography());
-
+        if(mRefugee.getPhoto() != null) {
+            photoUser.setImageBitmap(mRefugee.getDecodedPhoto());
+        }else{
+            photoUser.setImageResource(R.drawable.ic_usuario);
+        }
     }
 
 }

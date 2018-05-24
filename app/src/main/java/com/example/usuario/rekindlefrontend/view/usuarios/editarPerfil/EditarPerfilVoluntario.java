@@ -28,6 +28,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
 import java.io.ByteArrayOutputStream;
@@ -144,7 +145,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         if(mVolunteer.getPhoto() != null) {
             ePhoto.setImageBitmap(mVolunteer.getDecodedPhoto());
         }else{
-            ePhoto.setImageResource(R.drawable.foto_perfil);
+            ePhoto.setImageResource(R.drawable.ic_usuario);
         }
 
     }
@@ -168,6 +169,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
         else{
             mVolunteer.setPhoto(null);
         }
+        Consistency.saveUser(voluntario, getActivity());
     }
 
     public void sendActualizarVoluntario(){

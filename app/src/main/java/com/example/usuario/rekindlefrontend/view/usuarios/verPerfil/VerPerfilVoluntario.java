@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class VerPerfilVoluntario extends Fragment {
     private TextView apellido1;
     private TextView apellido2;
     private TextView emailUsuario;
+    private ImageView photoUser;
 
     private APIService mAPIService;
     private Volunteer mVolunteer;
@@ -73,6 +75,7 @@ public class VerPerfilVoluntario extends Fragment {
         apellido1 = view.findViewById(R.id.apellido1_usuario_perfil_voluntario);
         apellido2 = view.findViewById(R.id.apellido2_usuario_perfil_voluntario);
         emailUsuario = view.findViewById(R.id.email_usuario_perfil_voluntario);
+        photoUser = view.findViewById(R.id.foto_perfil_voluntario);
 
         mAPIService = APIUtils.getAPIService();
     }
@@ -141,12 +144,17 @@ public class VerPerfilVoluntario extends Fragment {
     }
 
     public void llenarTextViews(){
-
+        
         tipoUsuario.setText("Volunteer");
         nombreUsuario.setText(mVolunteer.getName());
         apellido1.setText(mVolunteer.getSurname1());
         apellido2.setText(mVolunteer.getSurname2());
         emailUsuario.setText(mVolunteer.getMail());
+        if(mVolunteer.getPhoto() != null) {
+            photoUser.setImageBitmap(mVolunteer.getDecodedPhoto());
+        }else{
+            photoUser.setImageResource(R.drawable.ic_usuario);
+        }
 
     }
 

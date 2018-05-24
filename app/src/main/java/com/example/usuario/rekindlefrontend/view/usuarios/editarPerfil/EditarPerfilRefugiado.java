@@ -26,11 +26,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
+
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
 
@@ -216,8 +224,9 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         if(mRefugee.getPhoto() != null) {
             ePhoto.setImageBitmap(mRefugee.getDecodedPhoto());
         }else{
-            ePhoto.setImageResource(R.drawable.foto_perfil);
+            ePhoto.setImageResource(R.drawable.ic_usuario);
         }
+
     }
 
     public void checkCampos(View view) throws Exception {
@@ -251,6 +260,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         }else {
             mRefugee.setPhoto(null);
         }
+        Consistency.saveUser(refugiado, getActivity());
     }
 
     public void sendActualizarRefugiado() {
