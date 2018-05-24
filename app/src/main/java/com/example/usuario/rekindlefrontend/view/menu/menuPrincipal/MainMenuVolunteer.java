@@ -85,7 +85,7 @@ public class MainMenuVolunteer extends Fragment {
 
         return view;
     }
-    
+
     public void setViews(View view){
         button_list_services = view.findViewById(R.id.listar_servicios_MenuPrincipalVoluntario);
         button_create_services = view.findViewById(R.id.crear_servicio_MenuPrincipalVoluntario);
