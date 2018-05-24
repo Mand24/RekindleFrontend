@@ -389,5 +389,14 @@
     <string name="not_available">No disponible</string>
     <string name="change_photo">Cambiar foto</string>
 
+    <string name="titleListReports">Reports</string>
+
+    <string name="informer_user">Usuari informador</string>
+    <string name="reported_user">Usuari reportat</string>
+    <string name="motive">Motiu del report</string>
+    <string name="report_form">Formulari de report</string>
+    <string name="explanation_motive">Escriu el motiu del teu report</string>
+    <string name="send_report">Enviar report</string>
+
 
 </resources>

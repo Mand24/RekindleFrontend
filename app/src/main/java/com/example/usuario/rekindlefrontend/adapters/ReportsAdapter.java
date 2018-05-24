@@ -15,16 +15,16 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
-public class ReportsAdapter extends RecyclerView.Adapter<RefugiadosAdapter.RefugiadoViewHolder>{
+public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportViewHolder>{
 
     private List<Report> reports;
     private CustomItemClickListener listener;
     private Context mContext;
 
+
     public class ReportViewHolder extends RecyclerView.ViewHolder{
         CardView cv;
         TextView informer_mail, reported_mail;
-//        ImageView serviceType;
 
         ReportViewHolder(View itemView){
             super(itemView);
@@ -45,7 +45,6 @@ public class ReportsAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Refug
         this.reports = reports;
     }
 
-
     @Override
     public ReportsAdapter.ReportViewHolder onCreateViewHolder(ViewGroup viewGroup,
             int i) {
@@ -65,15 +64,14 @@ public class ReportsAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Refug
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RefugiadosAdapter.RefugiadoViewHolder refugiadoViewHolder,
-            int i) {
+    public void onBindViewHolder(@NonNull ReportViewHolder holder, int i) {
         Report report = reports.get(i);
 
-        refugiadoViewHolder.informer_mail.setText(report.getInformerMail());
-        refugiadoViewHolder.reported_mail.setText(report.getReportedMail());
-
+        holder.informer_mail.setText(report.getInformerUserMail());
+        holder.reported_mail.setText(report.getReportedUserMail());
 
     }
+
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {

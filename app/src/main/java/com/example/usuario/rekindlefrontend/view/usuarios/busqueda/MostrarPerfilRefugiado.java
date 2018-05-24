@@ -79,6 +79,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateReport
                         .class);
+                i.putExtra("ReportedUser", refugiado);
                 startActivity(i);
             }
         });

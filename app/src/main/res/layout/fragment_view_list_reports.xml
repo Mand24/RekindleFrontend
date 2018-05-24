@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:card_view="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/dim6"
@@ -27,14 +27,11 @@
 
                 <TextView
                     android:id="@+id/informer_mail_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/texto" />
+                    style="@style/text_view"/>
 
                 <TextView
                     android:id="@+id/reported_mail_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    style="@style/text_view"/>
 
             </LinearLayout>
 

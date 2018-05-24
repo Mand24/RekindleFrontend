@@ -101,7 +101,6 @@ public interface APIService {
     @PUT("/voluntarios/{mail}")
     Call<Void> actualizarVoluntario(@Path("mail") String mail, @Body Volunteer volunteer);
 
-
     //LLAMADAS RELACIONADAS CON SERVICIOS
 /*
     @GET("/mRefugees/{mail}")
