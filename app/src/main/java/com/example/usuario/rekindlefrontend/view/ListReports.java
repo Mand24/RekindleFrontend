@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.SearchView;
+import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
@@ -109,6 +110,17 @@ public class ListReports extends AppBaseActivity implements Filterable {
     private void refreshItems(){
         mAdapter.setReports(filteredReports);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem search = menu.findItem(R.id.search);
+        searchView = (SearchView) search.getActionView();
+        search(searchView);
+        return true;
     }
 
     @Override

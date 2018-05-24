@@ -55,7 +55,7 @@
                 <EditText
                     android:id="@+id/motive"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
+                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"

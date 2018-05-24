@@ -167,7 +167,8 @@ public class Login extends AppCompatActivity {
                     System.out.println("cabecera: "+header);
                 }*/
 
-//                System.out.println(response.code());
+                System.out.println(response.code());
+                System.out.println(call.request().url());
 
                 if (response.isSuccessful()) {
                     /*String header1 = response.headers().get("Tipo");

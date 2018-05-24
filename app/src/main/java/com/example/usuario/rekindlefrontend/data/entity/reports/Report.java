@@ -76,4 +76,14 @@ public class Report implements Parcelable{
         dest.writeParcelable(reportedUser, flags);
         dest.writeString(motive);
     }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "idReport=" + idReport +
+                ", informerUser=" + informerUser +
+                ", reportedUser=" + reportedUser +
+                ", motive='" + motive + '\'' +
+                '}';
+    }
 }
