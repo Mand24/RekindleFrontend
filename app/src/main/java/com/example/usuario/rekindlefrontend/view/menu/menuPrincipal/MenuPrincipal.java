@@ -32,6 +32,7 @@ public class MenuPrincipal extends AppBaseActivity {
 
         tipos_menu_principal.put("Refugee", new MenuPrincipalRefugiado());
         tipos_menu_principal.put("Volunteer", new MenuPrincipalVoluntario());
+        tipos_menu_principal.put("Admin", new MenuPrincipalAdministrador());
 
         Usuario usuario = getUser(this);
 

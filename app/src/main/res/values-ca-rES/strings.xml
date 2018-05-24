@@ -35,6 +35,7 @@
     <string name="listar_servicios">Llistar Serveis</string>
     <string name="crear_servicio">Crear Servei</string>
     <string name="ver_perfil">Veure Perfil</string>
+    <string name="listar_reportes">Llistar Reports</string>
     <string name="nombre_usuario_perfil">Nom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
@@ -46,7 +47,8 @@
 
     <string name="opiniones">Opinions</string>
     <string name="inscribir">Inscriure</string>
-    <string name="chat">Chat</string>
+    <string name="chat">Xat</string>
+    <string name="reportar">Reportar</string>
 
     <string name="alojamiento">Alojamiento</string>
     <string name="donacion">Donación</string>
@@ -93,6 +95,8 @@
     <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
     <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
+    <string name="reporte_creado_correctamente">Report creat correctament!</string>
+    <string name="reporte_fallido">Ha fallat la creació del report!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Configuració</string>
@@ -384,6 +388,13 @@
     <string name="delete_service_confirmation">Estàs segur que vols eliminar aquest servei?</string>
     <string name="not_available">No disponible</string>
     <string name="change_photo">Cambiar foto</string>
+    <string name="titleListReports">Reports</string>
 
+    <string name="informer_user">Usuari informador</string>
+    <string name="reported_user">Usuari reportat</string>
+    <string name="motive">Motiu del report</string>
+    <string name="report_form">Formulari de report</string>
+    <string name="explanation_motive">Escriu el motiu del teu report</string>
+    <string name="send_report">Enviar report</string>
 
 </resources>

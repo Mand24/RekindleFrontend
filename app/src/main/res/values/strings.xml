@@ -38,6 +38,7 @@
     <string name="listar_servicios">List Services</string>
     <string name="crear_servicio">Create Service</string>
     <string name="ver_perfil">See Profile</string>
+    <string name="listar_reportes">List Reports</string>
     <string name="nombre_usuario_perfil">Name:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
@@ -52,6 +53,7 @@
     <string name="opiniones">Reviews</string>
     <string name="inscribir">Enrol</string>
     <string name="chat">Chat</string>
+    <string name="reportar">Report</string>
 
     <string name="alojamiento">Hosting</string>
     <string name="donacion">Donations</string>
@@ -108,6 +110,9 @@
         successfully!
     </string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
+    <string name="reporte_creado_correctamente">Report created succesfully!
+    </string>
+    <string name="reporte_fallido">Report failed!</string>
     <string name="guardado_correctamente">Save successfully!</string>
     <string name="guardado_fallido">Save failed!</string>
     <string name="ajustes">Settings</string>
@@ -200,6 +205,12 @@
     <string name="texto_biografia_refugiado">Biography:</string>
     <string name="biografia_largo">The biography is too long, maximum 300 letters</string>
 
+    <string name="informer_user">Informer User</string>
+    <string name="reported_user">Reported User</string>
+    <string name="motive">Report motive</string>
+    <string name="report_form">Report form</string>
+    <string name="explanation_motive">Write the motive for your report</string>
+    <string name="send_report">Send report</string>
 
     <string name="titulo_busqueda">Search people</string>
     <string name="subtitulo_busqueda">Please, fill all the info you know about the person
@@ -436,6 +447,9 @@
     <string name="not_available">Not available</string>
     <string name="change_photo">Change photo</string>
 
+    <string name="title_activity_editar_servicio">EditarServicio</string>
+
+    <string name="titleListReports">Reports</string>
 
 </resources>
 

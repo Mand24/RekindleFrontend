@@ -35,6 +35,7 @@
     <string name="listar_servicios">Listar Servicios</string>
     <string name="crear_servicio">Crear Servicio</string>
     <string name="ver_perfil">Ver Perfil</string>
+    <string name="listar_reportes">Listar Reportes</string>
     <string name="nombre_usuario_perfil">Nombre:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
@@ -47,6 +48,7 @@
     <string name="opiniones">Opiniones</string>
     <string name="inscribir">Inscribir</string>
     <string name="chat">Chat</string>
+    <string name="reportar">Reportar</string>
 
     <string name="alojamiento">Alojamiento</string>
     <string name="donacion">Donación</string>
@@ -94,6 +96,8 @@
     <string name="donacion_fallida">Ha fallado la creación de la donación!</string>
     <string name="oferta_empleo_correctamente">Oferta de empleo creada correctamente!</string>
     <string name="oferta_empleo_fallida">Ha fallado la creación de la oferta de empleo!</string>
+    <string name="reporte_creado_correctamente">Reporte creado correctamente!</string>
+    <string name="reporte_fallido">Ha fallado la creación del reporte!</string>
     <string name="guardado_correctamente">Guardado correctamente!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Ajustes</string>
@@ -392,6 +396,13 @@
     <string name="delete_service_confirmation">Seguro que quieres eliminar este servicio?</string>
     <string name="not_available">No disponible</string>
     <string name="change_photo">Cambiar foto</string>
+    <string name="titleListReports">Reportes</string>
 
+    <string name="informer_user">Usuario informador</string>
+    <string name="reported_user">Usuario reportado</string>
+    <string name="motive">Motivo del reporte</string>
+    <string name="report_form">Formulario de reporte</string>
+    <string name="explanation_motive">Escribe el motivo de tu reporte</string>
+    <string name="send_report">Enviar reporte</string>
 
 </resources>

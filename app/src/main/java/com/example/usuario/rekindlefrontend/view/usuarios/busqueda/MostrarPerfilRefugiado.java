@@ -8,26 +8,20 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
+import android.support.v7.widget.AppCompatButton;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
-import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.CreateReport;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.google.gson.Gson;
-
-import java.io.IOException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MostrarPerfilRefugiado extends AppBaseActivity {
 
@@ -46,7 +40,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     private TextView ojosUsuario;
     private TextView biografiaUsuario;
 
-    private AppCompatButton buttonChat;
+    private AppCompatButton reportar;
 
     private APIService mAPIService;
     private Refugiado refugiado;
@@ -68,6 +62,16 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         currentUser = getUser(getApplicationContext());
         System.out.println(refugiado.toString());
 
+        reportar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CreateReport
+                        .class);
+                i.putExtra("ReportedUser", refugiado);
+                startActivity(i);
+            }
+        });
+
         llenarTextViews();
 
         buttonChat.setOnClickListener(new View.OnClickListener(){
@@ -83,6 +87,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     }
 
     public void setVistas(){
+        reportar = findViewById(R.id.boton_reportar);
         tipoUsuario = findViewById(R.id.tipo_usuario_perfil_refugiado);
         nombreUsuario = findViewById(R.id.nombre_usuario_perfil_refugiado);
         apellido1 = findViewById(R.id.apellido1_usuario_perfil_refugiado);

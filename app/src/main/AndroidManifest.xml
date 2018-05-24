@@ -51,7 +51,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
-        <!-- <activity android:name=".AppBaseActivity"></activity> -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity android:name=".view.menu.menuLateral.Ajustes"/>
         <activity android:name=".view.menu.menuLateral.About"/>
@@ -61,6 +64,12 @@
         <activity android:name=".view.usuarios.chat.ShowChat"/>
         <activity android:name=".view.usuarios.chat.ListChats"/>
 
+        <activity android:name=".view.ListReports">
+        </activity>
+        <activity android:name=".view.CreateReport">
+        </activity>
+        <activity android:name=".view.ShowReport">
+        </activity>
     </application>
 
 </manifest>
