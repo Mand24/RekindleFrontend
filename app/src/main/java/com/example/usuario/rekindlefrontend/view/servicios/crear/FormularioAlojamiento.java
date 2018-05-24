@@ -156,6 +156,7 @@ public class FormularioAlojamiento extends AbstractFormatChecker {
     }
 
     public void sendCrearAlojamiento(){
+        System.out.println("alojamiento "+ alojamiento.toString());
         mAPIService.crearAlojamiento(alojamiento).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
