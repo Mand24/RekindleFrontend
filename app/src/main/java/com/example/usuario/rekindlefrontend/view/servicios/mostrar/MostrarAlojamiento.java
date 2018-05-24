@@ -132,7 +132,8 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
             inscribirse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
-                    if (inscribirse.getText().toString().equals(R.string.inscribir)) {
+                    if (inscribirse.getText().toString().equals(getResources().getString(R
+                            .string.inscribir))) {
                         mAPIService.subscribeService(mail,
                                 servicio.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
