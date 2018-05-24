@@ -125,6 +125,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                                     enroll.setText(R.string.unsubscribe);
                                 } else {
                                     enroll.setText(R.string.inscribir);
+
                                 }
                             } else {
                                 System.out.println("CODIGO " + response.code());
@@ -144,8 +145,24 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 public void onClick(final View view) {
                     if (enroll.getText().toString().equals(R.string.inscribir)) {
                         mAPIService.subscribeService(mail,
-                                service.getId(), TYPE);
-                        enroll.setText(R.string.unsubscribe);
+
+                        service.getId(), TYPE).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()){
+                                    enroll.setText(R.string.unsubscribe);
+                                }
+                                else{
+                                    failure();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                failure();
+                            }
+                        });
+
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(
                                 view.getContext());
@@ -157,8 +174,26 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
                                     public void onClick(DialogInterface dialog,
                                             int which) {
+
                                         mAPIService.unsubscribeService(mail, service.getId(),
-                                                TYPE);
+                                                TYPE).enqueue(new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call,
+                                                    Response<Void> response) {
+                                                if (response.isSuccessful()){
+                                                    enroll.setText(R.string.inscribir);
+                                                }
+                                                else{
+                                                    failure();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+                                                failure();
+                                            }
+                                        });
+
                                     }
                                 });
 
