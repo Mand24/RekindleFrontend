@@ -11,17 +11,26 @@ import android.view.View;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.CreateReport;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.google.gson.Gson;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MostrarPerfilRefugiado extends AppBaseActivity {
 
@@ -40,7 +49,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     private TextView ojosUsuario;
     private TextView biografiaUsuario;
 
-    private AppCompatButton reportar;
+    private AppCompatButton reportar, buttonChat;
 
     private APIService mAPIService;
     private Refugiado refugiado;
