@@ -22,7 +22,7 @@
                 android:layout_marginStart="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="Report form"
+                android:text="@string/report_form"
             />
 
             <TextView
@@ -32,7 +32,7 @@
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="8dp"
-                android:text="Reported User"
+                android:text="@string/reported_user"
             />
 
             <TextView
@@ -60,7 +60,7 @@
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
-                    android:hint="Write the reason for your report"
+                    android:hint="@string/explanation_motive"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -71,7 +71,7 @@
                 android:id="@+id/send_report"
                 android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
-                android:text="Send report"
+                android:text="@string/send_report"
             />
         </LinearLayout>
 

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
@@ -27,7 +28,7 @@ public class CreateReport extends AppCompatActivity {
 
     private TextView reportedUser;
     private EditText motive;
-
+    private Refugiado refugee;
     private Report report;
     private APIService mAPIService;
 
@@ -37,22 +38,17 @@ public class CreateReport extends AppCompatActivity {
         setContentView(R.layout.activity_create_report);
 
         setViews();
+        fillTextViews();
+
+        refugee = getIntent().getParcelableExtra("ReportedUser");
 
         AppCompatButton send_report = findViewById(R.id.send_report);
         send_report.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
-                try{
-                    createReport();
-                }
-                catch (Exception e){
-                    Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
+                createReport();
                 sendReport();
-
             }
 
         });
@@ -63,10 +59,13 @@ public class CreateReport extends AppCompatActivity {
         motive = findViewById(R.id.motive);
     }
 
+    public void fillTextViews(){
+        reportedUser.setText(refugee.getMail());
+    }
+
     public void createReport(){
-        //TODO Pasar usuario reportado
         Usuario user = getUser(getApplicationContext());
-        report = new Report (user, , motive.getText().toString());
+        report = new Report (user, refugee, motive.getText().toString());
     }
 
     public void sendReport(){
