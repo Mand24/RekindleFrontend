@@ -3,15 +3,19 @@ package com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Base64;
 import android.util.Log;
@@ -65,6 +69,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     private Spinner sGrupo_sanguineo;
     private Spinner sOjos;
     private EditText eBiografia;
+    private AppCompatButton mPhotoButton;
 
     private Bitmap bitmapImage;
     private ImageView ePhoto;
@@ -72,6 +77,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
     private APIService mAPIService;
 
     private static final int TAKE_PICTURE = 1;
+    private static final int PERMISSION_REQUEST_CODE = 1;
     private Uri imageUri;
 
 
@@ -126,11 +132,11 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         SetDate setDate = new SetDate(eNacimiento, container.getContext());
 
-        AppCompatButton setPhoto = (AppCompatButton) view.findViewById(R.id.change_photo_refugee);
-        setPhoto.setOnClickListener(new View.OnClickListener() {
+        mPhotoButton = (AppCompatButton) view.findViewById(R.id.change_photo_refugee);
+        mPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                takePhoto(view);
+                tryTakePhoto(view);
             }
         });
 
@@ -297,31 +303,63 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         }
     }
 
-    public void takePhoto(View view){
+    public void tryTakePhoto(View view) {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkPermission()) {
+                takePhoto();
+            } else {
+                requestPermission();
+            }
+        }else{
+            takePhoto();
+        }
+    }
+
+    private void takePhoto() {
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File photo = new File(Environment.getExternalStorageDirectory(), "Pic.jpg");
+        File photo = new File(Environment.getExternalStorageDirectory(), "Pic"
+                + ".jpg");
         i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
         imageUri = Uri.fromFile(photo);
         startActivityForResult(i, TAKE_PICTURE);
     }
 
+    private void requestPermission() {
+        if(Build.VERSION.SDK_INT >= 23) {
+            requestPermissions(new String[]{android.Manifest.permission
+                    .WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission
+                .WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case TAKE_PICTURE:
-                if(resultCode == Activity.RESULT_OK){
+                if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage = imageUri;
                     getActivity().getContentResolver().notifyChange(selectedImage, null);
                     ContentResolver cr = getActivity().getContentResolver();
-                    try{
+                    try {
                         bitmapImage = android.provider.MediaStore.Images.Media.getBitmap(cr,
                                 selectedImage);
+                        bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 200, 200, false);
                         ePhoto.setImageBitmap(bitmapImage);
-                        Toast.makeText(getActivity(), selectedImage.toString(), Toast.LENGTH_SHORT).show();
-                    }catch (Exception e){
+                        Toast.makeText(getActivity(), selectedImage.toString(),
+                                Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
                         Toast.makeText(getActivity(), R.string.error, Toast.LENGTH_SHORT).show();
                         Log.e("Camera", e.toString());
                     }
@@ -329,11 +367,22 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         }
     }
 
-    private String encode_photo(Bitmap bitmap){
+    private String encode_photo(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        bitmapImage.compress(Bitmap.CompressFormat.JPEG, 90, stream);
         byte[] byte_arr = stream.toByteArray();
         return Base64.encodeToString(byte_arr, Base64.DEFAULT);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[],
+            int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            Log.v("====================","Permission: "+permissions[0]+ "was "+grantResults[0]);
+            //resume tasks needing this permission
+            mPhotoButton.performClick();
+        }
     }
 
 }
