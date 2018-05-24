@@ -202,23 +202,29 @@ public class Login extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         NotificationCompat.Builder mBuilder;
                         NotificationManager mNotifyMgr = (NotificationManager)
                                 getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
                         int icono = R.mipmap.ic_launcher;
-                        /*Intent i=new Intent(MainActivity.this, MensajeActivity.class);
-                        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity
-                        .this, 0, i, 0);*/
 
-                        mBuilder = new NotificationCompat.Builder(getApplicationContext())
-                                .setSmallIcon(icono)
-                                .setContentTitle("Titulo")
-                                .setContentText("Hola que tal?")
-                                .setVibrate(new long[]{100, 250, 100, 500})
-                                .setAutoCancel(true);
+                        // Instantiate the builder and set notification elements:
+                        Notification.Builder builder = new Notification.Builder (this)
+                                .SetContentTitle ("Sample Notification")
+                                .SetContentText ("Hello World! This is my first notification!")
+                                .SetSmallIcon (Resource.Drawable.ic_notification);
 
-                        mNotifyMgr.notify(1, mBuilder.build());
+                        // Build the notification:
+                        Notification notification = builder.Build();
+
+                        // Get the notification manager:
+                        NotificationManager notificationManager =
+                                GetSystemService (Context.NotificationService) as NotificationManager;
+
+                        // Publish the notification:
+                        const int notificationId = 0;
+                        notificationManager.Notify (notificationId, notification);
                     }
 
                 });
