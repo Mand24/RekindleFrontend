@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.servicios.mostrar;
 
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -15,17 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.Maps;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +55,8 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
     public Marker myMarker;
     private APIService mAPIService = APIUtils.getAPIService();
     private final String TYPE = "Education";
+    private Usuario currentUser;
+    private Chat newChat;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -87,11 +95,19 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
 
         inscribirse.setClickable(false);
 
-        Usuario user = Consistency.getUser(container.getContext());
-        final String mail = user.getMail();
-        String type = user.getTipo();
+        currentUser = Consistency.getUser(container.getContext());
+        final String mail = currentUser.getMail();
+        String type = currentUser.getTipo();
 
         if(type.equals("Refugee")) {
+
+            chat.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    sendGetChat();
+                }
+            });
 
             mAPIService.isUserSubscribed(mail, servicio.getId(), TYPE).enqueue(
                     new Callback<Boolean>() {
@@ -156,10 +172,141 @@ public class MostrarCursoEducativo extends Maps implements OnMapReadyCallback {
                 }
             });
         }else{
-            inscribirse.setText(R.string.not_available);
+            inscribirse.setVisibility(View.INVISIBLE);
+            chat.setVisibility(View.INVISIBLE);
         }
 
         return view;
+    }
+
+    public void sendGetChat(){
+        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), servicio.getEmail())
+                .enqueue(
+                        new Callback<Chat>() {
+                            @Override
+                            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                                System.out.println("getchat code: " + response.code());
+                                if (response.isSuccessful()){
+                                    System.out.println("getchat");
+                                    System.out.println(response.body().toString());
+                                    manageResultGetChat(true, response.body());
+                                }
+                                else {
+                                    manageResultGetChat(false, null);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Chat> call, Throwable t) {
+                                if (t instanceof IOException) {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "this is an actual network failure"
+                                                    + " :( inform "
+                                                    + "the user and "
+                                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "getchat!! conversion issue! big problems :(", Toast
+                                                    .LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+    }
+
+    public void manageResultGetChat(boolean resultado, Chat chat){
+        if (resultado){
+            Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
+            i.putExtra("Chat", chat);
+            startActivity(i);
+        }
+        else {
+            mAPIService.obtenerVoluntario(servicio.getEmail()).enqueue(new Callback<Voluntario>() {
+                @Override
+                public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+                    if (response.isSuccessful()){
+                        manageResultGetVolunteer(true, response.body());
+                    }
+                    else {
+                        manageResultGetVolunteer(false, null);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Voluntario> call, Throwable t) {
+                    if (t instanceof IOException) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "this is an actual network failure"
+                                        + " :( inform "
+                                        + "the user and "
+                                        + "possibly retry", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "getchat!! conversion issue! big problems :(", Toast
+                                        .LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+
+        }
+    }
+
+    public void manageResultGetVolunteer(boolean result, Voluntario volunteer){
+        if (result){
+            newChat = new Chat(currentUser,volunteer);
+            sendNewChat(newChat);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void sendNewChat(Chat chat){
+        mAPIService.newChat(currentUser.getMail(), chat).enqueue(new Callback<Chat>() {
+            @Override
+            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                System.out.println("newchat code: " + response.code());
+                if (response.isSuccessful()){
+                    System.out.println("newchat");
+                    System.out.println(response.body().toString());
+                    manageResultNewChat(true, response.body());
+                }
+                else {
+                    manageResultNewChat(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chat> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "newchat!! conversion issue! big problems :(", Toast.LENGTH_SHORT)
+                            .show();
+
+                }
+            }
+        });
+
+    }
+
+    public void manageResultNewChat(boolean result, Chat chat){
+        if (result){
+            Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
+            i.putExtra("Chat", chat);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
