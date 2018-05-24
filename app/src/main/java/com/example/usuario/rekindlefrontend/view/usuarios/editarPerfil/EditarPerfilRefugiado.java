@@ -355,7 +355,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                     try {
                         bitmapImage = android.provider.MediaStore.Images.Media.getBitmap(cr,
                                 selectedImage);
-
+                        bitmapImage = Bitmap.createScaledBitmap(bitmapImage, 200, 200, false);
                         ePhoto.setImageBitmap(bitmapImage);
                         Toast.makeText(getActivity(), selectedImage.toString(),
                                 Toast.LENGTH_SHORT).show();
@@ -369,7 +369,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
     private String encode_photo(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmapImage.compress(Bitmap.CompressFormat.PNG, 90, stream);
+        bitmapImage.compress(Bitmap.CompressFormat.JPEG, 90, stream);
         byte[] byte_arr = stream.toByteArray();
         return Base64.encodeToString(byte_arr, Base64.DEFAULT);
     }
