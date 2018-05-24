@@ -56,6 +56,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
                 listener.onItemClick(view, mViewHolder.getAdapterPosition());
             }
         });
+        v.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                listener.onItemLongClick(view, mViewHolder.getAdapterPosition());
+                return false;
+            }
+        });
         return mViewHolder;
     }
 
