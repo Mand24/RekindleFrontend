@@ -70,6 +70,12 @@
         </activity>
         <activity android:name=".view.ShowReport">
         </activity>
+        <provider
+            android:name=".utils.DatabaseContentProvider"
+            android:authorities="com.example.usuario.rekindlefrontend"
+            android:enabled="true"
+            android:exported="false">
+        </provider>
     </application>
 
 </manifest>

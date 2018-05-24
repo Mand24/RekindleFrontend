@@ -87,7 +87,7 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
             refugiadoViewHolder.photo.setImageBitmap(refugiado.getDecodedPhoto());
         }
         else{
-            refugiadoViewHolder.photo.setImageResource(R.drawable.foto_perfil);
+            refugiadoViewHolder.photo.setImageResource(R.drawable.ic_usuario);
         }
 
     }
