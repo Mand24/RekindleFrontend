@@ -4,6 +4,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.init;
 import static android.support.test.espresso.intent.Intents.release;
@@ -15,8 +16,11 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
+
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -34,8 +38,10 @@ import org.junit.runner.RunWith;
 public class EspressoCrearServiceEducation {
 
     @Rule
-    public ActivityTestRule<CreateService> pantalla = new ActivityTestRule<CreateService>
-            (CreateService.class);
+
+    public ActivityTestRule<Login> pantalla = new ActivityTestRule<Login>
+            (Login.class) {
+    };
 
     @BeforeClass
     public static void setup(){
@@ -50,7 +56,25 @@ public class EspressoCrearServiceEducation {
     @Test
     public void testCamposCurso() {
 
+        // set : login
+
+        onView(withId(R.id.input_email)).perform(typeText("dummy@voluntario.com"));
+
+        onView(withId(R.id.input_password)).perform(typeText("1234"));
+
+        // login
+
+        onView(withId(R.id.btn_login)).perform(click());
+
+        // go : create_service
+
+        onView(withId(R.id.crear_servicio_MenuPrincipalVoluntario)).perform(click());
+
+        // go : fragment educative
+
         onView(withId(R.id.boton_tipo_curso_educativo)).perform(click());
+
+        // check : campos
 
         onView(withId(R.id.nombre_curso_educativo)).perform(replaceText
                 ("testNombreCurso"), ViewActions.closeSoftKeyboard
