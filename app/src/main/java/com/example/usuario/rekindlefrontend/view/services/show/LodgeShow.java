@@ -143,7 +143,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
             enroll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
-                    if (enroll.getText().toString().equals(R.string.inscribir)) {
+
+                    if (enroll.getText().toString().equals(getResources().getString(R
+                            .string.inscribir))) {
                         mAPIService.subscribeService(mail,
 
                                 servicio.getId(), TYPE).enqueue(new Callback<Void>() {
