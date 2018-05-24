@@ -57,7 +57,7 @@ public class Report implements Parcelable{
     }
 
     public String getReportedUserMail(){
-        return this.informerUser.getMail();
+        return this.reportedUser.getMail();
     }
 
     public String getMotive(){
