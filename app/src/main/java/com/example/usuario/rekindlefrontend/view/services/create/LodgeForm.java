@@ -143,6 +143,7 @@ public class LodgeForm extends AbstractFormatChecker {
 
     public void sendCreateLodge() {
         mAPIService.crearAlojamiento(mLodge).enqueue(new Callback<Void>() {
+
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("llamada " + call.toString());

@@ -144,7 +144,7 @@ public class VerPerfilVoluntario extends Fragment {
     }
 
     public void llenarTextViews(){
-        
+
         tipoUsuario.setText("Volunteer");
         nombreUsuario.setText(mVolunteer.getName());
         apellido1.setText(mVolunteer.getSurname1());
