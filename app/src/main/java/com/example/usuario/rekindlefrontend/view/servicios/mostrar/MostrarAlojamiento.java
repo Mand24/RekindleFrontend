@@ -167,6 +167,8 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
                                             @Override
                                             public void onResponse(Call<Void> call,
                                                     Response<Void> response) {
+                                                System.out.println("CODIGOunsu " + response.code());
+                                                System.out.println("url " + call.request().url());
                                                 if (response.isSuccessful()){
                                                     inscribirse.setText(R.string.inscribir);
                                                 }
@@ -188,13 +190,14 @@ public class MostrarAlojamiento extends Maps implements OnMapReadyCallback {
 
                                     public void onClick(DialogInterface dialog,
                                             int which) {
+                                        inscribirse.setText(R.string.unsubscribe);
                                         dialog.cancel();
                                     }
                                 });
 
                         AlertDialog alert = builder.create();
                         alert.show();
-                        inscribirse.setText(R.string.inscribir);
+//                        inscribirse.setText(R.string.inscribir);
                     }
                 }
             });
