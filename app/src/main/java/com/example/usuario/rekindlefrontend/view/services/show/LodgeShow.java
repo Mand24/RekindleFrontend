@@ -109,7 +109,6 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
                 @Override
                 public void onClick(View v) {
-//                Chat chat = new Chat(currentUser,refugiado);
                     sendGetChat();
                 }
             });
