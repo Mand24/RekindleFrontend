@@ -15,18 +15,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD:app/src/main/java/com/example/usuario/rekindlefrontend/view/services/show/LodgeShow.java
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
-=======
+
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
->>>>>>> chat mostrar alojamiento:app/src/main/java/com/example/usuario/rekindlefrontend/view/servicios/mostrar/MostrarAlojamiento.java
+
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
@@ -181,6 +180,8 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                             @Override
                                             public void onResponse(Call<Void> call,
                                                     Response<Void> response) {
+                                                System.out.println("CODIGOunsu " + response.code());
+                                                System.out.println("url " + call.request().url());
                                                 if (response.isSuccessful()){
                                                     inscribirse.setText(R.string.inscribir);
                                                 }
@@ -203,6 +204,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
                                     public void onClick(DialogInterface dialog,
                                             int which) {
+                                        inscribirse.setText(R.string.unsubscribe);
                                         dialog.cancel();
                                     }
                                 });
@@ -210,6 +212,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                         AlertDialog alert = builder.create();
                         alert.show();
                         enroll.setText(R.string.inscribir);
+
                     }
                 }
             });
