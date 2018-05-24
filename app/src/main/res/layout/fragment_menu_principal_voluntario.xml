@@ -42,4 +42,16 @@
         android:layout_marginRight="@dimen/dim20"
     />
 
+    <android.support.v7.widget.AppCompatButton
+        android:layout_height="wrap_content"
+        android:id="@+id/chat"
+        android:text="@string/chat"
+        android:layout_width="match_parent"
+        android:layout_below="@id/mis_servicios_MenuPrincipalVoluntario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20"
+    />
+
 </RelativeLayout>
