@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.services.show;
 
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -14,17 +15,29 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD:app/src/main/java/com/example/usuario/rekindlefrontend/view/services/show/LodgeShow.java
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
+=======
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
+>>>>>>> chat mostrar alojamiento:app/src/main/java/com/example/usuario/rekindlefrontend/view/servicios/mostrar/MostrarAlojamiento.java
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.Maps;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.Marker;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,6 +63,8 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     public Marker myMarker;
     private APIService mAPIService = APIUtils.getAPIService();
     private final String TYPE = "Lodge";
+    private Usuario currentUser;
+    private Chat newChat;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -86,9 +101,21 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         final String mail = user.getMail();
         String type = user.getUserType();
 
+
         if (type.equals("Refugee")) {
 
-            mAPIService.isUserSubscribed(mail, service.getId(), TYPE).enqueue(
+
+            chat.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+//                Chat chat = new Chat(currentUser,refugiado);
+                    sendGetChat();
+                }
+            });
+
+            mAPIService.isUserSubscribed(mail, servicio.getId(), TYPE).enqueue(
+
                     new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
@@ -150,11 +177,144 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                     }
                 }
             });
-        } else {
-            enroll.setText(R.string.not_available);
+
+        }else{
+            inscribirse.setVisibility(View.INVISIBLE);
+            chat.setVisibility(View.INVISIBLE);
+
         }
 
         return view;
+    }
+
+    public void sendGetChat(){
+        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), servicio.getEmail())
+        .enqueue(
+                new Callback<Chat>() {
+                    @Override
+                    public void onResponse(Call<Chat> call, Response<Chat> response) {
+                        System.out.println("getchat code: " + response.code());
+                        if (response.isSuccessful()){
+                            System.out.println("getchat");
+                            System.out.println(response.body().toString());
+                            manageResultGetChat(true, response.body());
+                        }
+                        else {
+                            manageResultGetChat(false, null);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Chat> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "getchat!! conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+    public void manageResultGetChat(boolean resultado, Chat chat){
+        if (resultado){
+            Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
+            i.putExtra("Chat", chat);
+            startActivity(i);
+        }
+        else {
+            mAPIService.obtenerVoluntario(servicio.getEmail()).enqueue(new Callback<Voluntario>() {
+                @Override
+                public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+                    if (response.isSuccessful()){
+                        manageResultGetVolunteer(true, response.body());
+                    }
+                    else {
+                        manageResultGetVolunteer(false, null);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Voluntario> call, Throwable t) {
+                    if (t instanceof IOException) {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "this is an actual network failure"
+                                        + " :( inform "
+                                        + "the user and "
+                                        + "possibly retry", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "getchat!! conversion issue! big problems :(", Toast
+                                        .LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+
+        }
+    }
+
+    public void manageResultGetVolunteer(boolean result, Voluntario volunteer){
+        if (result){
+            newChat = new Chat(currentUser,volunteer);
+            sendNewChat(newChat);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void sendNewChat(Chat chat){
+        mAPIService.newChat(currentUser.getMail(), chat).enqueue(new Callback<Chat>() {
+            @Override
+            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                System.out.println("newchat code: " + response.code());
+                if (response.isSuccessful()){
+                    System.out.println("newchat");
+                    System.out.println(response.body().toString());
+                    manageResultNewChat(true, response.body());
+                }
+                else {
+                    manageResultNewChat(false, null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Chat> call, Throwable t) {
+                if (t instanceof IOException) {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "this is an actual network failure"
+                                    + " :( inform "
+                                    + "the user and "
+                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "newchat!! conversion issue! big problems :(", Toast.LENGTH_SHORT)
+                            .show();
+
+                }
+            }
+        });
+
+    }
+
+    public void manageResultNewChat(boolean result, Chat chat){
+        if (result){
+            Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
+            i.putExtra("Chat", chat);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
