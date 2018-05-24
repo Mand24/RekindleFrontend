@@ -39,7 +39,6 @@ import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipa
 import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
->
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -164,7 +163,14 @@ public class Login extends AppCompatActivity {
         String password = _passwordText.getText().toString();
         mAPIService.login(email, password).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                /*Set<String> headers = response.headers().names();
+                for(String header : headers) {
+                    System.out.println("cabecera: "+header);
+                }*/
+
+                System.out.println(response.code());
+                System.out.println(call.request().url());
 
                 if (response.isSuccessful()) {
                     mUser = response.body();

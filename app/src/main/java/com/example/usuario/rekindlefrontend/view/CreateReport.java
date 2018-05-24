@@ -16,6 +16,7 @@ import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
 
 import java.io.IOException;
@@ -38,9 +39,10 @@ public class CreateReport extends AppCompatActivity {
         setContentView(R.layout.activity_create_report);
 
         setViews();
-        fillTextViews();
 
         refugee = getIntent().getParcelableExtra("ReportedUser");
+
+        fillTextViews();
 
         AppCompatButton send_report = findViewById(R.id.send_report);
         send_report.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +59,7 @@ public class CreateReport extends AppCompatActivity {
     public void setViews(){
         reportedUser = findViewById(R.id.reported_user);
         motive = findViewById(R.id.motive);
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void fillTextViews(){
@@ -66,6 +69,7 @@ public class CreateReport extends AppCompatActivity {
     public void createReport(){
         Usuario user = getUser(getApplicationContext());
         report = new Report (user, refugee, motive.getText().toString());
+        System.out.println("reporte "+report.toString());
     }
 
     public void sendReport(){
