@@ -120,9 +120,9 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
                             if (response.isSuccessful()) {
                                 inscribirse.setClickable(true);
                                 if (response.body()) {
-                                    inscribirse.setText(R.string.inscribir);
-                                } else {
                                     inscribirse.setText(R.string.unsubscribe);
+                                } else {
+                                    inscribirse.setText(R.string.inscribir);
                                 }
                             } else {
                                 System.out.println("CODIGO " + response.code());
@@ -143,8 +143,22 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
                 public void onClick(final View view) {
                     if (inscribirse.getText().toString().equals(R.string.inscribir)) {
                         mAPIService.subscribeService(mail,
-                                servicio.getId(), TYPE);
-                        inscribirse.setText(R.string.unsubscribe);
+                                servicio.getId(), TYPE).enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()){
+                                    inscribirse.setText(R.string.unsubscribe);
+                                }
+                                else{
+                                    failure();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                failure();
+                            }
+                        });
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(
                                 view.getContext());
@@ -157,7 +171,23 @@ public class MostrarOfertaEmpleo extends Maps implements OnMapReadyCallback {
                                     public void onClick(DialogInterface dialog,
                                             int which) {
                                         mAPIService.unsubscribeService(mail, servicio.getId(),
-                                                TYPE);
+                                                TYPE).enqueue(new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call,
+                                                    Response<Void> response) {
+                                                if (response.isSuccessful()){
+                                                    inscribirse.setText(R.string.inscribir);
+                                                }
+                                                else{
+                                                    failure();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+                                                failure();
+                                            }
+                                        });
                                     }
                                 });
 
