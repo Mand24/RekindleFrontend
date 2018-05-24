@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.menu.login;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
 import android.app.Notification;
@@ -21,18 +22,38 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
+
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
+import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
+>
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.pusher.client.Pusher;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
+
+
+import java.lang.reflect.Type;
+import java.util.Map;
+import java.util.Set;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -198,6 +219,7 @@ public class Login extends AppCompatActivity {
         Pusher pusher = getPusher();
         Channel channel = getChannel();
 
+
         channel.bind("my-event", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
@@ -205,45 +227,57 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        NotificationCompat.Builder mBuilder;
-                        NotificationManager mNotifyMgr = (NotificationManager)
-                                getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+                        Gson gson = new Gson();
+                        Type mapType = new TypeToken<Map<String, Message>>(){}.getType();
+                        Map<String,Message> map = gson.fromJson(data, mapType);
+                        Message message = map.get("message");
+                        Usuario owner = message.getOwner();
+                        if (!getUser(getApplicationContext()).getMail().equals(owner.getMail())){
 
-                        int icono = R.mipmap.ic_launcher;
+                            Intent intent = new Intent(getApplicationContext(), ListChats.class);
 
-                        Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+                            // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+                            final int pendingIntentId = 0;
+                            PendingIntent contentIntent =
+                                    PendingIntent.getActivity(getApplicationContext(), pendingIntentId, intent,
+                                            PendingIntent.FLAG_UPDATE_CURRENT);
 
-                        // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
-                        final int pendingIntentId = 0;
-                        PendingIntent pendingIntent =
-                                PendingIntent.getActivity(getApplicationContext(), pendingIntentId, intent,
-                                        PendingIntent.FLAG_ONE_SHOT);
+                            // Instantiate the builder and set notification elements:
 
-                        // Instantiate the builder and set notification elements:
-                        Notification.Builder builder = new Notification.Builder
-                                (getApplicationContext());
-                        builder.setContentTitle("hola");
-                        builder.setContentText("que tal?");
-                        builder.setSmallIcon(R.mipmap.ic_launcher);
+                            Notification notification  = new Notification.Builder(getApplicationContext())
+                                    .setCategory(Notification.CATEGORY_PROMO)
+                                    .setContentTitle(owner.getName() + " " + owner.getSurname1())
+                                    .setContentText(message.getContent())
+                                    .setSmallIcon(R.drawable.logo_r)
+                                    .setAutoCancel(true)
+                                    .setVisibility(Notification.VISIBILITY_PUBLIC)
+                                    .addAction(android.R.drawable.ic_menu_view, "View details", contentIntent)
+                                    .setContentIntent(contentIntent)
+                                    .setPriority(Notification.PRIORITY_HIGH)
+                                    .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
 
-                        // Build the notification:
-                        Notification notification = builder.build();
 
-                        // Get the notification manager:
-                        NotificationManager notificationManager =
-                                (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+                            // Get the notification manager:
+                            NotificationManager notificationManager =
+                                    (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
-                        // Publish the notification:
-                        final int notificationId = 0;
-                        notificationManager.notify(notificationId, notification);
+                            // Publish the notification:
+                            final int notificationId = 0;
+                            notificationManager.notify(notificationId, notification);
+                        }
+
                     }
 
                 });
+
+
             }
         });
 
         pusher.connect();
     }
+
+
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), getString(R.string.login_fail), Toast.LENGTH_LONG).show();

@@ -106,7 +106,6 @@ public class ShowChat extends AppBaseActivity {
                     public void run() {
                         Gson gson = new Gson();
                         Type mapType = new TypeToken<Map<String, Message>>(){}.getType();
-//                        Map<String, String[]> son = new Gson().fromJson(easyString, mapType);
                         Map<String,Message> map = gson.fromJson(data, mapType);
                         Message message = map.get("message");
                         System.out.println("data"+data);
@@ -159,10 +158,14 @@ public class ShowChat extends AppBaseActivity {
 
                         if (response.isSuccessful()) {
                             System.out.println("dentro respuesta ok");
+                            System.out.println
+                                    ("---------------------------------------------------------------------------------------------------------");
+                            System.out.println("lista mensajes");
                             messages = response.body();
-                            initializeData();
-                            System.out.println("-------------------------------------------------");
                             System.out.println(messages);
+                            System.out.println
+                                    ("---------------------------------------------------------------------------------------------------------");
+                            initializeData();
 
                         } else {
                     /*if (response.body() != null) {
