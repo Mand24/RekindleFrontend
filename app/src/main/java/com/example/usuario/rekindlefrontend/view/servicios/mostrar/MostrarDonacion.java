@@ -114,9 +114,9 @@ public class MostrarDonacion extends Maps implements OnMapReadyCallback {
                             if (response.isSuccessful()) {
                                 inscribirse.setClickable(true);
                                 if (response.body()) {
-                                    inscribirse.setText(R.string.unsubscribe);
-                                } else {
                                     inscribirse.setText(R.string.inscribir);
+                                } else {
+                                    inscribirse.setText(R.string.unsubscribe);
                                 }
                             } else {
                                 System.out.println("CODIGO " + response.code());
