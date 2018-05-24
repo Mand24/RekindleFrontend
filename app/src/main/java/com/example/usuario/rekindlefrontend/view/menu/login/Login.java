@@ -5,8 +5,10 @@ import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -210,21 +212,22 @@ public class Login extends AppCompatActivity {
                         int icono = R.mipmap.ic_launcher;
 
                         // Instantiate the builder and set notification elements:
-                        Notification.Builder builder = new Notification.Builder (this)
-                                .SetContentTitle ("Sample Notification")
-                                .SetContentText ("Hello World! This is my first notification!")
-                                .SetSmallIcon (Resource.Drawable.ic_notification);
+                        Notification.Builder builder = new Notification.Builder
+                                (getApplicationContext());
+                        builder.setContentTitle("hola");
+                        builder.setContentText("que tal?");
+                        builder.setSmallIcon(R.mipmap.ic_launcher);
 
                         // Build the notification:
-                        Notification notification = builder.Build();
+                        Notification notification = builder.build();
 
                         // Get the notification manager:
                         NotificationManager notificationManager =
-                                GetSystemService (Context.NotificationService) as NotificationManager;
+                                (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
 
                         // Publish the notification:
-                        const int notificationId = 0;
-                        notificationManager.Notify (notificationId, notification);
+                        final int notificationId = 0;
+                        notificationManager.notify(notificationId, notification);
                     }
 
                 });
