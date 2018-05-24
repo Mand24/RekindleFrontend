@@ -211,6 +211,14 @@ public class Login extends AppCompatActivity {
 
                         int icono = R.mipmap.ic_launcher;
 
+                        Intent intent = new Intent(getApplicationContext(), MenuPrincipal.class);
+
+                        // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+                        final int pendingIntentId = 0;
+                        PendingIntent pendingIntent =
+                                PendingIntent.getActivity(getApplicationContext(), pendingIntentId, intent,
+                                        PendingIntent.FLAG_ONE_SHOT);
+
                         // Instantiate the builder and set notification elements:
                         Notification.Builder builder = new Notification.Builder
                                 (getApplicationContext());
