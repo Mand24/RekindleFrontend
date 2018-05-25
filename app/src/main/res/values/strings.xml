@@ -450,6 +450,7 @@
 
     <string name="titleListReports">Reports</string>
     <string name="map">Map</string>
+    <string name="noServices">No services available</string>
 
 </resources>
 

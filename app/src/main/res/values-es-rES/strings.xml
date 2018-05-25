@@ -407,5 +407,6 @@
     <string name="send_report">Enviar reporte</string>
 
     <string name="map">Mapa</string>
-
+    <string name="noServices">No hi ha serveis disponibles</string>
+    
 </resources>

@@ -1,10 +1,12 @@
 package com.example.usuario.rekindlefrontend.view.services;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
@@ -12,8 +14,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -56,8 +60,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallback {
-
+public class SearchService extends AppBaseActivity implements OnMapReadyCallback {
 
     private ArrayList<Service> mServices = new ArrayList<Service>();
 
@@ -69,12 +72,13 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
     private APIService mAPIService = APIUtils.getAPIService();
 
     private AppCompatButton mButton;
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private boolean cameraAssigned = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_buscar_servicio);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_buscar_servicio);
 
         mButton = findViewById(R.id.listServices);
 
@@ -90,10 +94,10 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
             @Override
             public void onResponse(Call<ArrayList<Servicio>> call,
                     Response<ArrayList<Servicio>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     servicios = response.body();
-                }
-                else {
+                    setPositions();
+                } else {
                     Toast.makeText(getApplicationContext(), getResources().getString(R
                             .string.error), Toast.LENGTH_SHORT).show();
                 }
@@ -106,9 +110,31 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
             }
         });
 
-        mapFragment = (MapFragment) getFragmentManager ().findFragmentById (R.id.google_mapView_buscarServicio);
-        mapFragment.getMapAsync (this);
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(
+                R.id.google_mapView_buscarServicio);
+        mapFragment.getMapAsync(this);
 
+    }
+
+    private void setPositions() {
+        NetworkInfo network = getNetworkInfo();
+
+        if (network != null && network.isConnectedOrConnecting()) {
+            try {
+                if (checkLocationPermission()) {
+                    setMyPosition();
+                }
+                setServicies();
+
+            } catch (Exception e) // connected but no internet (login required, for exemple)
+            {
+                Toast.makeText(getApplicationContext(), getString(R.string
+                        .nointernet), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.nomap),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -126,7 +152,6 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
 
         map = googleMap;
-
         NetworkInfo network = getNetworkInfo();
 
         if (network != null && network.isConnectedOrConnecting()) {
@@ -156,9 +181,11 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
                 locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                 Location myLocation = locationManager.getLastKnownLocation(
                         LocationManager.GPS_PROVIDER);
+
+                System.out.println("No location :(");
+
                 LatLng userLocation = new LatLng(myLocation.getLatitude(),
                         myLocation.getLongitude());
-
                 map.addMarker(new MarkerOptions().position(userLocation).title
                         (getString(R.string.myLocation_maps)));
 
@@ -167,17 +194,21 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
 
                 //  move camera
                 map.animateCamera(camera);
+                cameraAssigned = true;
 
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getString(R.string.noLocation), Toast
-                        .LENGTH_LONG).show();
-            }
+            Toast.makeText(getApplicationContext(), getString(R.string.noLocation), Toast
+                    .LENGTH_LONG).show();
         }
     }
 
-    public void setServices() {
-        for (Service s : mServices) {
-            setMarkerService(s.getAdress(), map, s.getName());
+    public void setServicies() {
+        if(servicios.size() == 0){
+            Toast.makeText(getApplicationContext(), getString(R.string.noServices), Toast
+                    .LENGTH_LONG).show();
+        }
+        for (Servicio s : servicios) {
+            setMarkerService(s.getDireccion(), map, s.getNombre());
         }
     }
 
@@ -193,11 +224,19 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
             mGoogleMap, String serviceName) {
 
         // set : coordenadas
+
         LatLng coordinates = getLocationFromAddress(getApplicationContext(),
                 adress);
 
         Marker myMarker = mGoogleMap.addMarker(new MarkerOptions().position(coordinates).title
+
                 (getString(R.string.serviceLocation) + " " + serviceName));
+
+        if(!cameraAssigned){
+            CameraUpdate camera = CameraUpdateFactory.newLatLngZoom(coordenadas, 9);
+            map.animateCamera(camera);
+            cameraAssigned = true;
+        }
     }
 
     public LatLng getLocationFromAddress(Context context, String strAddress) {
@@ -216,5 +255,49 @@ public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallbac
             ex.printStackTrace();
         }
         return p1;
+    }
+
+    private boolean checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_LOCATION);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+            String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATION: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    setMyPosition();
+
+                }
+            }
+        }
+    }
+
+    private Location getLastKnownLocation() {
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            @SuppressLint("MissingPermission") Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
     }
 }
