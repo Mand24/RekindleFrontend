@@ -15,19 +15,29 @@ import android.widget.Toast;
 
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
+
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
+import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosVoluntario;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 
+
 public class DonationEdit extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
     private Donation servicio;
 
     private EditText editStartingTime, editEndingTime;
@@ -39,7 +49,9 @@ public class DonationEdit extends AbstractFormatChecker {
     private EditText ePlacesLimit;
     private EditText eDescription;
 
-    public DonationEdit() {
+    private APIService mAPIService;
+
+    public DonationEdit () {
 
         }
 
@@ -48,12 +60,9 @@ public class DonationEdit extends AbstractFormatChecker {
         savedInstanceState) {
         final View view = inflater.inflate (R.layout.fragment_editar_donacion, container, false);
 
-        // set : SERVICIO_DONACION
-
-        /*service = new Donation (1111, "nombrePD", "descrpcionPD", "direccionPD", "solicitudesPD",
-                "13:00IncioPD", "14:00FinPD", "numeroPD", "valoracionPD", 1);*/
-
         setViews(view);
+        servicio = (Donation) getArguments().getSerializable("Donation");
+
         editStartingTime = (EditText) view.findViewById(R.id.franja_horaria_inicio_donacion);
         SetTime fromTime = new SetTime(editStartingTime, container.getContext());
         SetTime toTime = new SetTime(editEndingTime, container.getContext());
@@ -69,7 +78,8 @@ public class DonationEdit extends AbstractFormatChecker {
                 try {
                     checkFields();
                     getParams();
-                    // funcion enviar datos
+                    sendUpdateService();
+
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -102,6 +112,9 @@ public class DonationEdit extends AbstractFormatChecker {
         editStartingTime = view.findViewById(R.id.franja_horaria_inicio_donacion);
         editEndingTime = view.findViewById(R.id.franja_horaria_fin_donacion);
         eDescription = view.findViewById(R.id.descripcion_donacion);
+
+        mAPIService = APIUtils.getAPIService();
+
     }
 
     public void initializeFields() {
@@ -127,15 +140,46 @@ public class DonationEdit extends AbstractFormatChecker {
 
     public void getParams() {
 
-        param = new ArrayList<String>();
+        servicio.setName(eName.getText().toString());
+        servicio.setPhoneNumber(ePhoneNumber.getText().toString());
+        servicio.setAdress(eAdress.getText().toString());
+        servicio.setPlacesLimit(ePlacesLimit.getText().toString());
+        servicio.setStartTime(editStartingTime.getText().toString());
+        servicio.setEndTime(editEndingTime.getText().toString());
+        servicio.setDescription(eDescription.getText().toString());
+    }
 
-        param.add (eName.getText().toString());
-        param.add (ePhoneNumber.getText().toString());
-        param.add (eAdress.getText().toString());
-        param.add (ePlacesLimit.getText().toString());
-        param.add(editStartingTime.getText().toString());
-        param.add(editEndingTime.getText().toString());
-        param.add (eDescription.getText().toString());
+    public void sendUpdateService(){
+        mAPIService.editarDonacion(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    manageResult(true);
+                }
+                else {
+                    manageResult(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                manageResult(false);
+            }
+        });
+    }
+
+    public void manageResult(boolean result){
+        if (result){
+            Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
+                    Toast
+                            .LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), MisServiciosVoluntario.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
     }
 
     @Override

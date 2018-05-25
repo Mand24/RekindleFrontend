@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -24,9 +26,12 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class EducationEdit extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
     private Education servicio;
     private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
@@ -41,6 +46,8 @@ public class EducationEdit extends AbstractFormatChecker {
     private EditText ePrice;
     private EditText eDescription;
 
+    private APIService mAPIService;
+
     public EducationEdit() { }
 
     @Override
@@ -48,12 +55,7 @@ public class EducationEdit extends AbstractFormatChecker {
             savedInstanceState) {
             final View view = inflater.inflate (R.layout.fragment_editar_curso, container, false);
 
-            // set : SERVICIO_CURSOEDUCATIVO
-
-            /*service = new Education (1111, "nombreCursoPD", "descripPD", "direccionPD",
-                "fechaPD",
-                    "ambitoPD", "requiPD", "hoarioPD", "plazasPD", "precioPD", "numeroPD",
-                    "valoracionPD", 2);*/
+            servicio = (Education) getArguments().getSerializable("Education");
 
             setViews(view);
 
@@ -68,7 +70,7 @@ public class EducationEdit extends AbstractFormatChecker {
                         try {
                             checkFields();
                             getParams();
-                            // crida funcion envio de datos
+                            sendUpdateService();
                         } catch (Exception e) {
                             Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -103,6 +105,8 @@ public class EducationEdit extends AbstractFormatChecker {
         ePlacesLimit = view.findViewById(R.id.plazas_curso_educativo);
         ePrice = view.findViewById(R.id.precio_curso_educativo);
         eDescription = view.findViewById(R.id.descripcion_curso_educativo);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void initializeFields() {
@@ -131,17 +135,48 @@ public class EducationEdit extends AbstractFormatChecker {
 
     public void getParams() {
 
-        param = new ArrayList<String>();
+        servicio.setName(eName.getText().toString());
+        servicio.setPhoneNumber(ePhoneNumber.getText().toString());
+        servicio.setAdress(eAdress.getText().toString());
+        servicio.setAmbit(eAmbit.getText().toString());
+        servicio.setRequirements(eRequirements.getText().toString());
+        servicio.setSchedule(eSchedule.getText().toString());
+        servicio.setPlacesLimit(ePlacesLimit.getText().toString());
+        servicio.setPrice(ePrice.getText().toString());
+        servicio.setDescription (eDescription.getText().toString());
+    }
 
-        param.add (eName.getText().toString());
-        param.add (ePhoneNumber.getText().toString());
-        param.add (eAdress.getText().toString());
-        param.add (eAmbit.getText().toString());
-        param.add (eRequirements.getText().toString());
-        param.add (eSchedule.getText().toString());
-        param.add (ePlacesLimit.getText().toString());
-        param.add (ePrice.getText().toString());
-        param.add (eDescription.getText().toString());
+    public void sendUpdateService(){
+        mAPIService.editarCurso(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    manageResult(true);
+                }
+                else {
+                    manageResult(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                manageResult(false);
+            }
+        });
+    }
+
+    public void manageResult(boolean result){
+        if (result){
+            Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
+                    Toast
+                            .LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), MisServiciosVoluntario.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
     }
 
     @Override

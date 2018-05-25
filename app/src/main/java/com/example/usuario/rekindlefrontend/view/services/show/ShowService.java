@@ -87,7 +87,7 @@ public class ShowService extends AppBaseActivity {
                     manageResult(false, "Donation");
                 }
             });
-        } else if (type.equals("Course")) {
+        } else if (type.equals("Education")) {
             mAPIService.getCurso(service.getId()).enqueue(new Callback<Education>() {
                 @Override
                 public void onResponse(Call<Education> call,
@@ -95,15 +95,15 @@ public class ShowService extends AppBaseActivity {
                     if (response.isSuccessful()) {
                         mEducation = response.body();
                         bundle.putSerializable("servicioFrag", mEducation);
-                        manageResult(true, "Course");
+                        manageResult(true, "Education");
                     } else {
-                        manageResult(false, "Course");
+                        manageResult(false, "Education");
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Education> call, Throwable t) {
-                    manageResult(false, "Course");
+                    manageResult(false, "Education");
                 }
             });
         } else {

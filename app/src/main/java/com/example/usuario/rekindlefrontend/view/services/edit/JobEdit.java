@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -24,9 +26,12 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class JobEdit extends AbstractFormatChecker {
 
-    private ArrayList<String> param;
     private Job servicio;
     private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
@@ -43,6 +48,8 @@ public class JobEdit extends AbstractFormatChecker {
     private EditText ePlacesLimit;
     private EditText eDescription;
 
+    private APIService mAPIService;
+
     public JobEdit() {}
 
     @Override
@@ -50,14 +57,7 @@ public class JobEdit extends AbstractFormatChecker {
             savedInstanceState) {
             final View view = inflater.inflate (R.layout.fragment_editar_empleo, container, false);
 
-            // set : SERVICIO_EMPLEO
-
-            /**/
-            //TODO: que esté bien
-            /*service = new Job (111, "nombrePD", "descripPD", "direccionPD",
-                "puestoPD",
-                    "requisitosPD", "joranadaPD", "horasSemanaPD", "duracionPD", "plazasPD",
-                    "sueldoPD", "numeroPD", "valoracionPD", 3);*/
+            servicio = (Job) getArguments().getSerializable("Job");
 
             setViews(view);
 
@@ -72,7 +72,7 @@ public class JobEdit extends AbstractFormatChecker {
                         try {
                             checkFields();
                             getParams();
-                            // crida funcion envio de datos
+                            sendUpdateService();
                         } catch (Exception e) {
                             Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -109,6 +109,8 @@ public class JobEdit extends AbstractFormatChecker {
         eSalary = view.findViewById(R.id.sueldo_oferta_empleo);
         ePlacesLimit = view.findViewById(R.id.plazas_oferta_empleo);
         eDescription = view.findViewById(R.id.descripcion_oferta_empleo);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void initializeFields() {
@@ -141,19 +143,50 @@ public class JobEdit extends AbstractFormatChecker {
 
     public void getParams() {
 
-        param = new ArrayList<String>();
+        servicio.setName(eName.getText().toString());
+        servicio.setPhoneNumber(ePhoneNumber.getText().toString());
+        servicio.setAdress(eAdress.getText().toString());
+        servicio.setCharge(eCharge.getText().toString());
+        servicio.setRequirements(eRequirements.getText().toString());
+        servicio.setHoursDay(eHoursDay.getText().toString());
+        servicio.setHoursWeek(eHoursWeek.getText().toString());
+        servicio.setContractDuration(eContractDuration.getText().toString());
+        servicio.setSalary(eSalary.getText().toString());
+        servicio.setPlacesLimit(ePlacesLimit.getText().toString());
+        servicio.setDescription (eDescription.getText().toString());
+    }
 
-        param.add (eName.getText().toString());
-        param.add (ePhoneNumber.getText().toString());
-        param.add (eAdress.getText().toString());
-        param.add (eCharge.getText().toString());
-        param.add (eRequirements.getText().toString());
-        param.add (eHoursDay.getText().toString());
-        param.add (eHoursWeek.getText().toString());
-        param.add (eContractDuration.getText().toString());
-        param.add (eSalary.getText().toString());
-        param.add (ePlacesLimit.getText().toString());
-        param.add (eDescription.getText().toString());
+    public void sendUpdateService(){
+        mAPIService.editarEmpleo(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    manageResult(true);
+                }
+                else {
+                    manageResult(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                manageResult(false);
+            }
+        });
+    }
+
+    public void manageResult(boolean result){
+        if (result){
+            Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
+                    Toast
+                            .LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), MisServiciosVoluntario.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
     }
 
     @Override

@@ -15,6 +15,10 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
 
+import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
+import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
+
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -49,8 +53,12 @@ public class MyServicesVolunteer extends ListServices {
                                     public void onClick(DialogInterface dialog, int which){
                                         //Editar
                                         if(which == 0){
-                                            Toast.makeText(getApplicationContext(), " Not implemented ",
-                                                    Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), EditarServicio.class);
+                                            intent.putExtra("typeService", servicios.get
+                                                    (position).getTipo());
+                                            intent.putExtra("Service",
+                                                    servicios.get(position));
+                                            startActivity(intent);
                                         } else if (which == 1){
                                             //TODO:Call API
                                             AlertDialog.Builder builder = new AlertDialog.Builder(

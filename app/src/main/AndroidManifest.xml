@@ -55,6 +55,7 @@
         <activity android:name=".view.ListReports"/>
         <activity android:name=".view.CreateReport"/>
         <activity android:name=".view.ShowReport"/>
+        <activity android:name=".view.servicios.editar.EditarServicio" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

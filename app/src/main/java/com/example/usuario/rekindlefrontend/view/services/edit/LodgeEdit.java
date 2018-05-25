@@ -16,8 +16,15 @@ import android.widget.Toast;
 
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
+
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
+import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosVoluntario;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
@@ -26,11 +33,13 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LodgeEdit extends AbstractFormatChecker {
 
     private Lodge servicio;
-    private ArrayList<String> param;
 
     private EditText eName;
     private EditText eEmail;
@@ -41,7 +50,10 @@ public class LodgeEdit extends AbstractFormatChecker {
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
+
     private EditText eDescription;
+
+    private APIService mAPIService;
 
     public LodgeEdit() {
 
@@ -52,7 +64,11 @@ public class LodgeEdit extends AbstractFormatChecker {
             savedInstanceState) {
         final View view = inflater.inflate (R.layout.fragment_editar_alojamiento, container, false);
 
+
         setViews(view);
+
+        servicio = (Lodge) getArguments().getSerializable("Lodge");
+
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         SetDate setDate = new SetDate(eDeadline, container.getContext());
 
@@ -67,7 +83,9 @@ public class LodgeEdit extends AbstractFormatChecker {
                 try {
                     checkFields();
                     getParams();
+                    sendUpdateService();
                     // funcion enviar datos
+
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -100,6 +118,8 @@ public class LodgeEdit extends AbstractFormatChecker {
         ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
         eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         eDescription = view.findViewById(R.id.descripcion_alojamiento);
+
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void initializeFields() {
@@ -123,14 +143,46 @@ public class LodgeEdit extends AbstractFormatChecker {
 
     public void getParams() {
 
-        new ArrayList<String>();
+        servicio.setName(eName.getText().toString());
+        servicio.setPhoneNumber(ePhoneNumber.getText().toString());
+        servicio.setAdress(eAdress.getText().toString());
+        servicio.setPlacesLimit(ePlacesLimit.getText().toString());
+        servicio.setDateLimit(eDeadline.getText().toString());
+        servicio.setDescription(eDescription.getText().toString());
+    }
 
-        param.add (eName.getText().toString());
-        param.add (ePhoneNumber.getText().toString());
-        param.add (eAdress.getText().toString());
-        param.add (ePlacesLimit.getText().toString());
-        param.add (eDeadline.getText().toString());
-        param.add (eDescription.getText().toString());
+    public void sendUpdateService(){
+        mAPIService.editarAlojamiento(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()){
+                    manageResult(true);
+                }
+                else {
+                    manageResult(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                manageResult(false);
+            }
+        });
+    }
+
+    public void manageResult(boolean result){
+        if (result){
+            Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
+                    Toast
+                            .LENGTH_SHORT).show();
+            Intent i = new Intent(getActivity().getApplicationContext(), MisServiciosVoluntario.class);
+            startActivity(i);
+        }
+        else {
+            Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
+                    .LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
