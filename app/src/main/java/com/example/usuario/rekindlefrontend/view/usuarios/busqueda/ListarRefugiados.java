@@ -45,8 +45,8 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
         initializeData();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
