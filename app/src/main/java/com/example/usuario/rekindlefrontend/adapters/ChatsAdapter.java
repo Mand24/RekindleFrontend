@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
@@ -26,11 +27,13 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
 
     public class ChatViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
+        ImageView photo;
         TextView name, surname1;
 //      ImageView userImage;
         ChatViewHolder(View itemView){
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
+            photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
             name = (TextView) itemView.findViewById(R.id.name_cv);
             surname1 = (TextView) itemView.findViewById(R.id.surname1_cv);
         }
@@ -75,6 +78,12 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
 
         chatViewHolder.name.setText(user.getName());
         chatViewHolder.surname1.setText(user.getSurname1());
+        if(user.getPhoto() != null){
+            chatViewHolder.photo.setImageBitmap(user.getDecodedPhoto());
+        }
+        else{
+            chatViewHolder.photo.setImageResource(R.drawable.ic_usuario);
+        }
     }
 
     @Override

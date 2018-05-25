@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/dim16">
 
-            <!--<LinearLayout
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/photo_layout">
@@ -33,13 +33,13 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="16dp"/>
 
-            </LinearLayout>-->
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <!--android:layout_toEndOf="@+id/photo_layout"-->
+                android:orientation="vertical"
+                android:layout_toEndOf="@+id/photo_layout">
 
 
                 <TextView
