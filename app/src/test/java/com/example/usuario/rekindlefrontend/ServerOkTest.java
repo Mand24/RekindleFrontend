@@ -18,7 +18,7 @@ public class ServerOkTest {
     @Test
     public void ContactServer() throws Exception {
 
-        String url = "http://10.4.41.147:8080/test2";
+        String url = "http://10.4.41.147:8080/test";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
