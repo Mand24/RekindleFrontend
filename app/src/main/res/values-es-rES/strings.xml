@@ -405,4 +405,6 @@
     <string name="explanation_motive">Escribe el motivo de tu reporte</string>
     <string name="send_report">Enviar reporte</string>
 
+    <string name="map">Mapa</string>
+
 </resources>

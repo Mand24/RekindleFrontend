@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.servicios.listar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +28,7 @@ import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipa
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.view.servicios.BuscarServicio;
 import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.ListarRefugiados;
 
@@ -54,6 +56,8 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
 
     protected ImageButton filtrarAlojamiento, filtrarDonacion, filtrarEducacion, filtrarEmpleo;
     protected HashMap<String, Boolean> filters = new HashMap<>();
+
+    protected AppCompatButton mMapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,6 +159,16 @@ public class ListarServicios extends AppBaseActivity implements Filterable {
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
                 getFilter().filter(searchView.getQuery());
+            }
+        });
+
+        mMapButton = findViewById(R.id.showMap);
+
+        mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BuscarServicio.class);
+                startActivity(intent);
             }
         });
 

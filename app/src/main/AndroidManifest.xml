@@ -42,6 +42,7 @@
         <activity android:name=".view.menu.login.CodePasswordRequest" />
         <activity android:name=".view.servicios.listar.MisServiciosRefugiado" />
         <activity android:name=".view.servicios.listar.MisServiciosVoluntario" />
+        <activity android:name=".view.servicios.BuscarServicio" />
         <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
 
         <meta-data

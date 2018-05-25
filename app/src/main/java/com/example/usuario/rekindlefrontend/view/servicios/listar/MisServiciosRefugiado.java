@@ -27,6 +27,7 @@ public class MisServiciosRefugiado extends ListarServicios {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
+        mMapButton.setVisibility(View.INVISIBLE);
     }
 
     @Override
