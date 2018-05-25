@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/src/main/java/com/example/usuario/rekindlefrontend/view/services/list/MyServicesRefugee.java
 package com.example.usuario.rekindlefrontend.view.services.list;
 
 import android.content.DialogInterface;
@@ -27,6 +28,7 @@ public class MyServicesRefugee extends ListServices {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
+        mMapButton.setVisibility(View.INVISIBLE);
     }
 
     @Override

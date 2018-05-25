@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend.view.services;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,7 +13,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.view.View;
 import android.widget.Toast;
+
 
 import com.example.user.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
@@ -21,6 +25,20 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
+
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
+import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
+import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
+
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,24 +52,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchService extends AppCompatActivity implements OnMapReadyCallback {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private Refugee mRefugee = new Refugee("mRefugee@gmail.com", "pass1234",
-            "refugiadoName", "refugiadoSurname", "refugadioSecondSurname", null, "123456789",
-            "12-09-2018", "Male", "Barcelona", "cabrils", "ethinc", "+A", "", "");
+public class BuscarServicio extends AppBaseActivity implements OnMapReadyCallback {
 
-    private Education ser0 = new Education(0, "voluntario@gmail.com",
-            "cursoEducativo", "descr", "Passatge Passalaigua, 14, 08348 Cabrils, Barcelona",
-            "ambito", "requisits", "horario", "plazas", "123,2", "12");
-    private Lodge ser1 = new Lodge(1, "voluntario@gmail.com", "alojamiento",
-            "desc", "Carrer Infern d'en Parera, 2, 08348 Cabrils, Barcelona", "12", "12-03-2018",
-            "1234");
-    private Job ser2 = new Job(2, "voluntario@gmail.com", "empleo", "desc",
-            "Carrer Bellesguard, 23-7, 08348 Cabrils, Barcelona", "charge", "requi", "hoursDay",
-            "12", "50", "120", "1200", "2345");
-    private Donation ser3 = new Donation(3, "voluntario@gmail.com", "donacion",
-            "desc", "Carrer Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona", "123", "12:00",
-            "13:00", "123445");
 
     private ArrayList<Service> mServices = new ArrayList<Service>();
 
@@ -60,21 +66,60 @@ public class SearchService extends AppCompatActivity implements OnMapReadyCallba
 
     private LocationManager locationManager;
 
+    private APIService mAPIService = APIUtils.getAPIService();
+
+    private AppCompatButton mButton;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate (savedInstanceState);
+        setContentView (R.layout.activity_buscar_servicio);
 
-        mServices.add(ser0);
-        mServices.add(ser1);
-        mServices.add(ser2);
-        mServices.add(ser3);
+        mButton = findViewById(R.id.listServices);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar_servicio);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ListarServicios.class);
+                startActivity(intent);
+            }
+        });
 
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(
-                R.id.google_mapView_buscarServicio);
-        mapFragment.getMapAsync(this);
+        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Servicio>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Servicio>> call,
+                    Response<ArrayList<Servicio>> response) {
+                if (response.isSuccessful()){
+                    servicios = response.body();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), getResources().getString(R
+                            .string.error), Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R
+                        .string.error), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mapFragment = (MapFragment) getFragmentManager ().findFragmentById (R.id.google_mapView_buscarServicio);
+        mapFragment.getMapAsync (this);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
+    protected void gotoInicio() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     @Override

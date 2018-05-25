@@ -398,5 +398,6 @@
     <string name="explanation_motive">Escriu el motiu del teu report</string>
     <string name="send_report">Enviar report</string>
 
+    <string name="map">Mapa</string>
 
 </resources>

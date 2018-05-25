@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.usuario.rekindlefrontend">
@@ -21,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Dark">
-        <activity android:name=".view.usuarios.registro.RegistroUsuario"/>
+
         <activity
             android:name=".view.menu.login.Login"
             android:theme="@style/AppTheme.Dark">
@@ -32,80 +31,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
-        <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
-        <activity android:name=".view.services.create.CrearServicio" />
-        <activity android:name=".view.services.list.ListServices" />
-        <activity android:name=".view.usuarios.editarPerfil.EditarPerfil" />
-        <activity android:name=".view.usuarios.editarPerfil.CambiarPassword" />
-        <activity android:name=".view.services.show.ShowService" />
-        <activity android:name=".view.menu.login.RecuperarPassword" />
-        <activity android:name=".view.menu.login.CodePasswordRequest" />
-        <activity android:name=".view.services.list.MyServicesRefugee" />
-        <activity android:name=".view.services.list.MyServicesVolunteer" />
-        <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
-
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
-
-        <!-- <activity android:name=".AppBaseActivity"></activity> -->
-
-        <activity android:name=".view.menu.menuLateral.Ajustes"/>
-        <activity android:name=".view.menu.menuLateral.About"/>
-        <activity android:name=".view.usuarios.busqueda.ListarRefugiados"/>
-        <activity android:name=".view.menu.menuLateral.Help"/>
-        <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
-
-        <activity android:name=".view.usuarios.chat.ShowChat"/>
-        <activity android:name=".view.usuarios.chat.ListChats"/>
-
-        <activity android:name=".view.ListReports">
-        </activity>
-        <activity android:name=".view.CreateReport">
-        </activity>
-        <activity android:name=".view.ShowReport">
-        </activity>
-    </application>
-
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.usuario.rekindlefrontend">
-
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
-    <permission
-        android:name="android.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature"/>
-
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme.Dark">
         <activity android:name=".view.usuarios.registro.RegistroUsuario"/>
-        <activity
-            android:name=".view.menu.login.Login"
-            android:theme="@style/AppTheme.Dark">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
         <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
         <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
         <activity android:name=".view.servicios.crear.CrearServicio" />
@@ -117,7 +43,18 @@
         <activity android:name=".view.menu.login.CodePasswordRequest" />
         <activity android:name=".view.servicios.listar.MisServiciosRefugiado" />
         <activity android:name=".view.servicios.listar.MisServiciosVoluntario" />
+        <activity android:name=".view.servicios.BuscarServicio" />
         <activity android:name=".view.usuarios.busqueda.BusquedaRefugiado" />
+        <activity android:name=".view.menu.menuLateral.Ajustes"/>
+        <activity android:name=".view.menu.menuLateral.About"/>
+        <activity android:name=".view.usuarios.busqueda.ListarRefugiados"/>
+        <activity android:name=".view.menu.menuLateral.Help"/>
+        <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
+        <activity android:name=".view.usuarios.chat.ShowChat"/>
+        <activity android:name=".view.usuarios.chat.ListChats"/>
+        <activity android:name=".view.ListReports"/>
+        <activity android:name=".view.CreateReport"/>
+        <activity android:name=".view.ShowReport"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -131,27 +68,13 @@
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".view.menu.menuLateral.Ajustes"/>
-        <activity android:name=".view.menu.menuLateral.About"/>
-        <activity android:name=".view.usuarios.busqueda.ListarRefugiados"/>
-        <activity android:name=".view.menu.menuLateral.Help"/>
-        <activity android:name=".view.usuarios.busqueda.MostrarPerfilRefugiado"/>
-        <activity android:name=".view.usuarios.chat.ShowChat"/>
-        <activity android:name=".view.usuarios.chat.ListChats"/>
-
-        <activity android:name=".view.ListReports">
-        </activity>
-        <activity android:name=".view.CreateReport">
-        </activity>
-        <activity android:name=".view.ShowReport">
-        </activity>
         <provider
             android:name=".utils.DatabaseContentProvider"
             android:authorities="com.example.usuario.rekindlefrontend"
             android:enabled="true"
             android:exported="false">
         </provider>
+
     </application>
 
->>>>>>> arreglar actualizaciones foto
 </manifest>

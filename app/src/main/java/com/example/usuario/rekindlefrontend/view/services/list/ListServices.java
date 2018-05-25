@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend.view.services.list;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,6 +47,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
     protected APIService mAPIService;
 
     protected ImageButton LodgeFilter, DonationFilter, EducationFilter, JobFilter;
+    protected AppCompatButton mMapButton;
     protected HashMap<String, Boolean> filters = new HashMap<>();
 
     @Override
@@ -148,6 +150,16 @@ public class ListServices extends AppBaseActivity implements Filterable {
                             getResources().getColor(R.color.colorPrimaryDarker));
                 }
                 getFilter().filter(searchView.getQuery());
+            }
+        });
+
+        mMapButton = findViewById(R.id.showMap);
+
+        mMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BuscarServicio.class);
+                startActivity(intent);
             }
         });
 
@@ -322,4 +334,3 @@ public class ListServices extends AppBaseActivity implements Filterable {
         }
     }
 }
-
