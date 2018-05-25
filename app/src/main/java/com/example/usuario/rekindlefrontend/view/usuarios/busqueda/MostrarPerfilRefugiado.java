@@ -10,6 +10,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
     private TextView sangreUsuario;
     private TextView ojosUsuario;
     private TextView biografiaUsuario;
+    private ImageView photoUser;
 
     private AppCompatButton reportar, buttonChat;
 
@@ -111,6 +113,7 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         sangreUsuario = findViewById(R.id.sangre_usuario_perfil_refugiado);
         ojosUsuario = findViewById(R.id.ojos_usuario_perfil_refugiado);
         biografiaUsuario = findViewById(R.id.biografia_usuario_perfil_refugiado);
+        photoUser = findViewById(R.id.foto_perfil_refugiado);
         buttonChat = findViewById(R.id.chat);
         mAPIService = APIUtils.getAPIService();
 
@@ -133,6 +136,11 @@ public class MostrarPerfilRefugiado extends AppBaseActivity {
         sangreUsuario.setText(refugiado.getBloodType());
         ojosUsuario.setText(refugiado.getEyeColor());
         biografiaUsuario.setText(refugiado.getBiography());
+        if(refugiado.getPhoto() != null) {
+            photoUser.setImageBitmap(refugiado.getDecodedPhoto());
+        }else{
+            photoUser.setImageResource(R.drawable.ic_usuario);
+        }
 
     }
 
