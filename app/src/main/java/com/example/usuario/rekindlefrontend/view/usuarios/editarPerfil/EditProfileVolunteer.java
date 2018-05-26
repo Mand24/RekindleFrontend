@@ -70,7 +70,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
                 false);
 
 
-        setVistas(view);
+        setViews(view);
 
         mVolunteer = (Volunteer) getActivity().getIntent().getParcelableExtra("Volunteer");
 
@@ -86,13 +86,13 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
             public void onClick(View v) {
 
                 try{
-                    checkCampos(view);
-                    obtenerCampos();
+                    checkFields(view);
+                    getFields();
                 }
                 catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendActualizarVoluntario();
+                sendUpdateVolunteer();
             }
 
         });
@@ -122,7 +122,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
         return view;
     }
 
-    public void setVistas(View view) {
+    public void setViews(View view) {
 
         eName = view.findViewById(R.id.nombre_usuario_perfil);
         eEmail = view.findViewById(R.id.email_usuario_perfil);
@@ -150,7 +150,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
 
     }
 
-    public void checkCampos(View view) throws Exception {
+    public void checkFields(View view) throws Exception {
 
         checkName(eName.getText().toString());;
         checkSurname1(eSurname1.getText().toString());
@@ -158,7 +158,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
 
     }
 
-    public void obtenerCampos() {
+    public void getFields() {
         mVolunteer.setName(eName.getText().toString());
         mVolunteer.setSurname1(eSurname1.getText().toString());
         mVolunteer.setSurname2(eSurname2.getText().toString());
@@ -169,18 +169,18 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
         else{
             mVolunteer.setPhoto(null);
         }
-        Consistency.saveUser(voluntario, getActivity());
+        Consistency.saveUser(mVolunteer, getActivity());
     }
 
-    public void sendActualizarVoluntario(){
+    public void sendUpdateVolunteer(){
         mAPIService.actualizarVoluntario(mVolunteer.getMail(), mVolunteer).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
-                            tratarResultadoPeticion(true);
+                            manageResult(true);
                         } else {
-                            tratarResultadoPeticion(false);
+                            manageResult(false);
                         }
                     }
 
@@ -201,7 +201,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker{
                 });
     }
 
-    public void tratarResultadoPeticion(boolean result) {
+    public void manageResult(boolean result) {
 
         if (result) {
 

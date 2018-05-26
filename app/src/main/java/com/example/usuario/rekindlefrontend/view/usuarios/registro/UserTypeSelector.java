@@ -18,11 +18,11 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EleccionTipoUsuario extends Fragment {
+public class UserTypeSelector extends Fragment {
 
-    private final HashMap<String, Integer> BOTONESMENU = new HashMap<String, Integer>();
+    private final HashMap<String, Integer> BUTTONSMENU = new HashMap<String, Integer>();
 
-    public EleccionTipoUsuario() {
+    public UserTypeSelector() {
         // Required empty public constructor
     }
 
@@ -35,11 +35,11 @@ public class EleccionTipoUsuario extends Fragment {
 
         Button botonmenu;
 
-        BOTONESMENU.put("Refugee", R.id.boton_refugiado);
-        BOTONESMENU.put("Volunteer", R.id.boton_voluntario);
+        BUTTONSMENU.put("Refugee", R.id.boton_refugiado);
+        BUTTONSMENU.put("Volunteer", R.id.boton_voluntario);
 
 
-        for(Map.Entry<String, Integer> entry : BOTONESMENU.entrySet()) {
+        for(Map.Entry<String, Integer> entry : BUTTONSMENU.entrySet()) {
             final String key = entry.getKey();
             int value = entry.getValue();
             botonmenu = (Button) menu_eleccion.findViewById(value);

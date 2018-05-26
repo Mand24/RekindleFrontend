@@ -36,7 +36,7 @@ public class EditProfile extends AppBaseActivity {
 
         profileTypes = new HashMap<>();
 
-        profileTypes.put("Refugee", new EditarPerfilRefugiado());
+        profileTypes.put("Refugee", new EditProfileRefugee());
         profileTypes.put("Volunteer", new EditProfileVolunteer());
 
         User user = getUser(this);

@@ -25,13 +25,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
-
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
@@ -51,24 +46,24 @@ import retrofit2.Response;
  * Created by ORION on 27/04/2018.
  */
 
-public class EditarPerfilRefugiado extends AbstractFormatChecker{
+public class EditProfileRefugee extends AbstractFormatChecker{
 
     private Refugee mRefugee;
     ArrayAdapter<CharSequence> adapter1, adapter2, adapter3;
 
-    private EditText eNombre;
+    private EditText eName;
     private TextView eEmail;
-    private EditText ePrimer_apellido;
-    private EditText eSegundo_apellido;
-    private EditText eTelefono;
-    private EditText eNacimiento;
-    private Spinner sSexo;
-    private EditText eProcedencia;
-    private EditText ePueblo;
-    private EditText eEtnia;
-    private Spinner sGrupo_sanguineo;
-    private Spinner sOjos;
-    private EditText eBiografia;
+    private EditText eSurname1;
+    private EditText eSurname2;
+    private EditText ePhoneNumber;
+    private EditText eBirthdate;
+    private Spinner sSex;
+    private EditText eCountry;
+    private EditText eTown;
+    private EditText eEthnic;
+    private Spinner sBloodType;
+    private Spinner sEyes;
+    private EditText eBiography;
     private AppCompatButton mPhotoButton;
 
     private Bitmap bitmapImage;
@@ -88,7 +83,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         final View view = inflater.inflate(R.layout.fragment_editar_perfil_refugiado, container,
                 false);
 
-        setVistas(view);
+        setViews(view);
 
         mRefugee = (Refugee) getActivity().getIntent().getParcelableExtra("Refugee");
 
@@ -104,14 +99,14 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
             public void onClick(View v) {
 
                 try{
-                    checkCampos(view);
-                    obtenerCampos();
+                    checkFields(view);
+                    getFields();
                 }
                 catch (Exception e){
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                sendActualizarRefugiado();
+                sendUpdateRefugee();
 
             }
 
@@ -130,7 +125,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
         });
 
-        SetDate setDate = new SetDate(eNacimiento, container.getContext());
+        SetDate setDate = new SetDate(eBirthdate, container.getContext());
 
         mPhotoButton = (AppCompatButton) view.findViewById(R.id.change_photo_refugee);
         mPhotoButton.setOnClickListener(new View.OnClickListener() {
@@ -143,29 +138,29 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         return view;
     }
 
-    public void setVistas(View view) {
+    public void setViews(View view) {
 
 
 
-        eNombre = view.findViewById(R.id.nombre_usuario_perfil);
+        eName = view.findViewById(R.id.nombre_usuario_perfil);
         eEmail = view.findViewById(R.id.email_usuario_perfil);
-        ePrimer_apellido = view.findViewById(R.id.apellido1_usuario_perfil);
-        eSegundo_apellido = view.findViewById(R.id.apellido2_usuario_perfil);
-        eTelefono = view.findViewById(R.id.telefono_usuario_perfil);
-        eNacimiento = view.findViewById(R.id.naciminento_usuario_perfil);
-        sSexo = view.findViewById(R.id.sexo_usuario_perfil);
+        eSurname1 = view.findViewById(R.id.apellido1_usuario_perfil);
+        eSurname2 = view.findViewById(R.id.apellido2_usuario_perfil);
+        ePhoneNumber = view.findViewById(R.id.telefono_usuario_perfil);
+        eBirthdate = view.findViewById(R.id.naciminento_usuario_perfil);
+        sSex = view.findViewById(R.id.sexo_usuario_perfil);
         adapter1 = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_sexo, R.layout.spinner_item);
 
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter1.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sSexo.setAdapter(adapter1);
-        eProcedencia = view.findViewById(R.id.pais_usuario_perfil);
-        ePueblo = view.findViewById(R.id.pueblo_usuario_perfil);
-        eEtnia = view.findViewById(R.id.etnia_usuario_perfil);
+        sSex.setAdapter(adapter1);
+        eCountry = view.findViewById(R.id.pais_usuario_perfil);
+        eTown = view.findViewById(R.id.pueblo_usuario_perfil);
+        eEthnic = view.findViewById(R.id.etnia_usuario_perfil);
 
-        sGrupo_sanguineo = view.findViewById(R.id.sangre_usuario_perfil);
+        sBloodType = view.findViewById(R.id.sangre_usuario_perfil);
 
         adapter2 = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_grupo_sanguineo, R.layout.spinner_item);
@@ -173,9 +168,9 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter2.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sGrupo_sanguineo.setAdapter(adapter2);
+        sBloodType.setAdapter(adapter2);
 
-        sOjos = view.findViewById(R.id.ojos_usuario_perfil);
+        sEyes = view.findViewById(R.id.ojos_usuario_perfil);
 
         adapter3 = ArrayAdapter.createFromResource(getActivity()
                 .getApplicationContext(), R.array.lista_color_ojos, R.layout.spinner_item);
@@ -183,9 +178,9 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter3.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
 
-        sOjos.setAdapter(adapter3);
+        sEyes.setAdapter(adapter3);
 
-        eBiografia = view.findViewById(R.id.biografia_usuario_perfil);
+        eBiography = view.findViewById(R.id.biografia_usuario_perfil);
 
         ePhoto = view.findViewById(R.id.refugee_photo);
 
@@ -196,27 +191,27 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
     public void initializeData(View view){
 
-        eNombre.setText(mRefugee.getName());
+        eName.setText(mRefugee.getName());
         eEmail.setText(mRefugee.getMail());
-        ePrimer_apellido.setText(mRefugee.getSurname1());
-        eSegundo_apellido.setText(mRefugee.getSurname2());
-        eTelefono.setText(mRefugee.getPhoneNumber());
-        eNacimiento.setText(mRefugee.getBirthDate());
+        eSurname1.setText(mRefugee.getSurname1());
+        eSurname2.setText(mRefugee.getSurname2());
+        ePhoneNumber.setText(mRefugee.getPhoneNumber());
+        eBirthdate.setText(mRefugee.getBirthDate());
 
         int selectionPosition = adapter1.getPosition(mRefugee.getSex());
-        sSexo.setSelection(selectionPosition);
+        sSex.setSelection(selectionPosition);
 
-        eProcedencia.setText(mRefugee.getCountry());
-        ePueblo.setText(mRefugee.getTown());
-        eEtnia.setText(mRefugee.getEthnic());
+        eCountry.setText(mRefugee.getCountry());
+        eTown.setText(mRefugee.getTown());
+        eEthnic.setText(mRefugee.getEthnic());
 
         selectionPosition = adapter2.getPosition(mRefugee.getBloodType());
-        sGrupo_sanguineo.setSelection(selectionPosition);
+        sBloodType.setSelection(selectionPosition);
 
         selectionPosition = adapter3.getPosition(mRefugee.getEyeColor());
-        sOjos.setSelection(selectionPosition);
+        sEyes.setSelection(selectionPosition);
 
-        eBiografia.setText(mRefugee.getBiography());
+        eBiography.setText(mRefugee.getBiography());
 
         if(mRefugee.getPhoto() != null) {
             ePhoto.setImageBitmap(mRefugee.getDecodedPhoto());
@@ -226,49 +221,49 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
     }
 
-    public void checkCampos(View view) throws Exception {
+    public void checkFields(View view) throws Exception {
 
-        checkName(eNombre.getText().toString());
-        checkSurname1(ePrimer_apellido.getText().toString());
-        checkSurname2(eSegundo_apellido.getText().toString());
-        checkPhoneNumber(eTelefono.getText().toString());
-        checkCountry(eProcedencia.getText().toString());
-        checkTown(ePueblo.getText().toString());
-        checkEthnic(eEtnia.getText().toString());
-        checkBiography(eBiografia.getText().toString());
+        checkName(eName.getText().toString());
+        checkSurname1(eSurname1.getText().toString());
+        checkSurname2(eSurname2.getText().toString());
+        checkPhoneNumber(ePhoneNumber.getText().toString());
+        checkCountry(eCountry.getText().toString());
+        checkTown(eTown.getText().toString());
+        checkEthnic(eEthnic.getText().toString());
+        checkBiography(eBiography.getText().toString());
     }
 
-    public void obtenerCampos() {
-        mRefugee.setName(eNombre.getText().toString());
-        mRefugee.setSurname1(ePrimer_apellido.getText().toString());
-        mRefugee.setSurname2(eSegundo_apellido.getText().toString());
-        mRefugee.setPhoneNumber(eTelefono.getText().toString());
-        mRefugee.setCountry(eProcedencia.getText().toString());
-        mRefugee.setTown(ePueblo.getText().toString());
-        mRefugee.setEthnic(eEtnia.getText().toString());
-        mRefugee.setBirthDate(eNacimiento.getText().toString());
-        mRefugee.setSex(sSexo.getSelectedItem().toString());
-        mRefugee.setBloodType(sGrupo_sanguineo.getSelectedItem().toString());
-        mRefugee.setEyeColor(sOjos.getSelectedItem().toString());
-        mRefugee.setBiography(eBiografia.getText().toString());
+    public void getFields() {
+        mRefugee.setName(eName.getText().toString());
+        mRefugee.setSurname1(eSurname1.getText().toString());
+        mRefugee.setSurname2(eSurname2.getText().toString());
+        mRefugee.setPhoneNumber(ePhoneNumber.getText().toString());
+        mRefugee.setCountry(eCountry.getText().toString());
+        mRefugee.setTown(eTown.getText().toString());
+        mRefugee.setEthnic(eEthnic.getText().toString());
+        mRefugee.setBirthDate(eBirthdate.getText().toString());
+        mRefugee.setSex(sSex.getSelectedItem().toString());
+        mRefugee.setBloodType(sBloodType.getSelectedItem().toString());
+        mRefugee.setEyeColor(sEyes.getSelectedItem().toString());
+        mRefugee.setBiography(eBiography.getText().toString());
 
         if(bitmapImage != null) {
             mRefugee.setPhoto(encode_photo(bitmapImage));
         }else {
             mRefugee.setPhoto(null);
         }
-        Consistency.saveUser(refugiado, getActivity());
+        Consistency.saveUser(mRefugee, getActivity());
     }
 
-    public void sendActualizarRefugiado() {
+    public void sendUpdateRefugee() {
         mAPIService.actualizarRefugiado(mRefugee.getMail(), mRefugee).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
-                            tratarResultadoPeticion(true);
+                            manageResult(true);
                         } else {
-                            tratarResultadoPeticion(false);
+                            manageResult(false);
                         }
                     }
 
@@ -289,7 +284,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
                 });
     }
 
-    public void tratarResultadoPeticion(boolean result) {
+    public void manageResult(boolean result) {
 
         if (result) {
 
