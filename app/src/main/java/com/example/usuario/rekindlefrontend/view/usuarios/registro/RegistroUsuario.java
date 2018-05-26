@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 
 import java.util.HashMap;
 

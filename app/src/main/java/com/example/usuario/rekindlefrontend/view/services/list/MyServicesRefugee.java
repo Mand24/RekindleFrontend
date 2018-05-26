@@ -1,4 +1,3 @@
-<<<<<<< HEAD:app/src/main/java/com/example/usuario/rekindlefrontend/view/services/list/MyServicesRefugee.java
 package com.example.usuario.rekindlefrontend.view.services.list;
 
 import android.content.DialogInterface;
@@ -9,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;

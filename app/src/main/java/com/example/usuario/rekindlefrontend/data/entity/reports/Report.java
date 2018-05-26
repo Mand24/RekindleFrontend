@@ -4,7 +4,7 @@ package com.example.usuario.rekindlefrontend.data.entity.reports;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

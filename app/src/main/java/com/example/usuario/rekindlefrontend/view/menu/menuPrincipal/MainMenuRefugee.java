@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugee;
 import com.example.usuario.rekindlefrontend.view.usuarios.busqueda.BusquedaRefugiado;

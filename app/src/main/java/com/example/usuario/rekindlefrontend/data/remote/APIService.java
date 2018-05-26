@@ -1,7 +1,5 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
-
-
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;

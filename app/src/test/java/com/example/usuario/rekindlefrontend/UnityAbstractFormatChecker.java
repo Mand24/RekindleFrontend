@@ -4,7 +4,7 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import org.junit.Test;
 
 public class UnityAbstractFormatChecker extends AbstractFormatChecker{

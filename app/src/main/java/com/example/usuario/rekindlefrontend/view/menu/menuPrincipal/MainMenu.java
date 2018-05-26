@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 

@@ -19,7 +19,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.usuario.rekindlefrontend.view.services.edit.ServiceEdit;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import org.junit.AfterClass;

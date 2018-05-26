@@ -13,7 +13,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 
 

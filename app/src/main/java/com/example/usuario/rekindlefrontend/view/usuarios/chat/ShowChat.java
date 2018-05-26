@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.MessagesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;

@@ -13,7 +13,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.usuario.rekindlefrontend.view.menu.login.RecoverPassword;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;

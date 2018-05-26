@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;

@@ -22,7 +22,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
@@ -197,8 +197,9 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
                 cameraAssigned = true;
 
             } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getString(R.string.noLocation), Toast
-                    .LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.noLocation), Toast
+                        .LENGTH_LONG).show();
+            }
         }
     }
 

@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;

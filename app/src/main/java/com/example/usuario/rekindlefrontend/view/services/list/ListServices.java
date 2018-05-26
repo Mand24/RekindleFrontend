@@ -23,7 +23,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
 

@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import android.support.test.rule.ActivityTestRule;
 
 import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Settings;
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;

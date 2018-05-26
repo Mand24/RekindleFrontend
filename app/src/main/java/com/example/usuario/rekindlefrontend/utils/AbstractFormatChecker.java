@@ -2,7 +2,7 @@ package com.example.usuario.rekindlefrontend.utils;
 
 import android.app.Fragment;
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

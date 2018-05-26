@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
 import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;

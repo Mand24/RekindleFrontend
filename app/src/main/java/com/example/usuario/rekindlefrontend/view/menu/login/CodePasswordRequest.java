@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-import com.example.user.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.CodeGenerator;
 import com.example.usuario.rekindlefrontend.utils.SendMailTask;
 
