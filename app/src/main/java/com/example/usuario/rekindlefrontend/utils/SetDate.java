@@ -35,7 +35,7 @@ public class SetDate implements View.OnClickListener, DatePickerDialog.OnDateSet
         myCalendar.set(Calendar.MONTH, monthOfYear);
         myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String month, day;
-        monthOfYear+=1;
+        monthOfYear += 1;
 
         if (monthOfYear < 10) {
 

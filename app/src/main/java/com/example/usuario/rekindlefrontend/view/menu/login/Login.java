@@ -26,9 +26,9 @@ import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
-import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
-import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
+import com.example.usuario.rekindlefrontend.view.chat.ListChats;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
+import com.example.usuario.rekindlefrontend.view.users.register.RegisterUser;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.pusher.client.Pusher;
@@ -46,13 +46,12 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
 
-    private int backpress = 0;
     EditText _emailText;
     EditText _passwordText;
     TextView _signupLink;
     TextView _recuperarPasswordLink;
     Button _loginButton;
-
+    private int backpress = 0;
     private APIService mAPIService;
     private User mUser;
 
@@ -88,7 +87,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent i = new Intent(getApplicationContext(), RegistroUsuario.class); //HERE
+                Intent i = new Intent(getApplicationContext(), RegisterUser.class); //HERE
                 startActivity(i);
             }
         });

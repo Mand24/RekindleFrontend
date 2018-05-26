@@ -32,14 +32,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/nombre_curso_educativo"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_nombre_formulario"
+                    android:inputType="textCapWords"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -50,14 +50,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/telefono_curso_educativo"
-                    android:inputType="phone"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/telefono"
+                    android:inputType="phone"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -68,14 +68,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/direccion_curso_educativo"
-                    android:inputType="text"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/direccion"
+                    android:inputType="text"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -86,14 +86,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/ambito_curso_educativo"
-                    android:inputType="textCapSentences"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/ambito_curso_educativo"
+                    android:inputType="textCapSentences"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -104,14 +104,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/requisitos_curso_educativo"
-                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/requisitos_curso_educativo"
+                    android:inputType="textMultiLine"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -122,14 +122,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/horario_curso_educativo"
-                    android:inputType="text"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/horario_curso_educativo"
+                    android:inputType="text"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -140,14 +140,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/plazas_curso_educativo"
-                    android:inputType="number"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/plazas_oferta_empleo"
+                    android:inputType="number"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -158,14 +158,14 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/precio_curso_educativo"
-                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/price"
+                    android:inputType="numberDecimal"
                 />
             </android.support.design.widget.TextInputLayout>
 
@@ -176,23 +176,23 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:layout_height="wrap_content"
                     android:id="@+id/descripcion_curso_educativo"
-                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/descripcion"
+                    android:inputType="textMultiLine"
                 />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/enviar_editar_curso_educativo"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/enviar"
             />
 

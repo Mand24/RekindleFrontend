@@ -11,15 +11,16 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
-                        EspressoCrearServicioAlojamiento.class,
-                        EspressoCrearServicioCursoEducativo.class,
-                        EspressoCrearServicioDonacion.class,
-                        EspressoCrearServicioOfertaEmpleo.class,
-                        EspressoEditarServicioAlojamiento.class,
-                        EspressoEditarServicioCursoEducativo.class,
-                        EspressoEditarServicioDonacion.class,
-                        EspressoEditarServicioOfertaEmpleo.class,
-                        EspressoLogin.class,
-                        EspressoRegistroUsuario.class, // testea registro voluntario y refugiado
-                        })
-public class SuiteEspresso {}
+        EspressoCrearServiceLodge.class,
+        EspressoCrearServiceEducation.class,
+        EspressoCrearServiceDonation.class,
+        EspressoCrearServiceJob.class,
+        EspressoEditarServiceLodge.class,
+        EspressoEditarServiceEducation.class,
+        EspressoEditarServiceDonation.class,
+        EspressoEditarServiceJob.class,
+        EspressoLogin.class,
+        EspressoRegistroUser.class, // testea registro voluntario y refugiado
+})
+public class SuiteEspresso {
+}

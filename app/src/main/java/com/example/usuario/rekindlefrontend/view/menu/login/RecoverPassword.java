@@ -15,7 +15,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import java.io.IOException;
 

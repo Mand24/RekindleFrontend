@@ -83,29 +83,29 @@ public class MyServicesRefugee extends ListServices {
     }
 
     public void sendUnsubscribeService(Service service) {
-       mAPIService.unsubscribeService(Consistency.getUser(this).getMail(), service.getId(),
-               service.getServiceType()).enqueue(new Callback<Void>() {
-           @Override
-           public void onResponse(Call<Void> call, Response<Void> response) {
-               if (response.isSuccessful()) {
-                   Toast.makeText(getApplicationContext(), R.string.unsubscribed_successfully,
-                           Toast.LENGTH_SHORT).show();
-               } else {
-                   System.out.println("CODIGO "+response.code());
-                   manageResult(false, null);
-               }
-           }
+        mAPIService.unsubscribeService(Consistency.getUser(this).getMail(), service.getId(),
+                service.getServiceType()).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), R.string.unsubscribed_successfully,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    System.out.println("CODIGO " + response.code());
+                    manageResult(false, null);
+                }
+            }
 
-           @Override
-           public void onFailure(Call<Void> call, Throwable t) {
-               Log.e("on Failure", t.toString());
-               manageResult(false, null);
-           }
-       });
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("on Failure", t.toString());
+                manageResult(false, null);
+            }
+        });
     }
 
     @Override
-    protected void initializeData(){
+    protected void initializeData() {
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
                 (this).getUserType())
                 .enqueue(new Callback<ArrayList<Service>>() {
@@ -116,7 +116,7 @@ public class MyServicesRefugee extends ListServices {
                             ArrayList<Service> respuesta = response.body();
                             manageResult(true, respuesta);
                         } else {
-                            System.out.println("CODIGO "+response.code());
+                            System.out.println("CODIGO " + response.code());
                             manageResult(false, null);
                         }
                     }

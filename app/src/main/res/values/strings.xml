@@ -241,8 +241,10 @@
     <string name="searchService">Search services</string>
     <string name="no_permission">The aplication does not have the location permission</string>
 
-    <string name="plazas_aumento">Is not possible decrease the number of placesLimit/requests, only can
-        increment</string>
+    <string name="plazas_aumento">Is not possible decrease the number of placesLimit/requests, only
+        can
+        increment
+    </string>
 
 
     <string-array name="lista_usuarios">
@@ -338,7 +340,8 @@
         inserted. To help filtering by type, there are four buttons on top of the
         list of services, if all are active, it means that the list is showing all
         the types of service, when a button is clicked the filtering is altered, that is, if a
-        button is shown with a gray color, it means that that type of service will not be shown in the
+        button is shown with a gray color, it means that that type of service will not be shown in
+        the
         list, more than one button can be pressed. To reactivate the service type of
         you simply have to press the service button again. It also has a button
         of adjustments that will allow you to adjust the search more precisely, having

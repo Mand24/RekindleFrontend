@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.utils.CodeGenerator;
 import com.example.usuario.rekindlefrontend.utils.SendMailTask;
@@ -36,9 +35,9 @@ public class CodePasswordRequest extends AppCompatActivity {
         });
     }
 
-    private void sendEmail(){
-        String email =  _email.getText().toString();
-        if(!email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher
+    private void sendEmail() {
+        String email = _email.getText().toString();
+        if (!email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher
                 (email).matches()) {
             CodeGenerator code = new CodeGenerator(5);
             String codeString = code.getCode();
@@ -54,8 +53,7 @@ public class CodePasswordRequest extends AppCompatActivity {
             i.putExtra("code", codeString);
             startActivity(i);
 
-        }
-        else{
+        } else {
             _email.setError("Enter a valid email address");
         }
     }

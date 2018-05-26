@@ -24,7 +24,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.Maps;
-import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
+import com.example.usuario.rekindlefrontend.view.chat.ShowChat;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -42,22 +42,19 @@ import retrofit2.Response;
  */
 public class LodgeShow extends Maps implements OnMapReadyCallback {
 
-    public LodgeShow() {
-        // Required empty public constructor
-    }
-
-
-    TextView title, description, adress, date, phoneNumber;
-    AppCompatButton chat, enroll;
-
+    private final String TYPE = "Lodge";
     public Lodge service;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
+    TextView title, description, adress, date, phoneNumber;
+    AppCompatButton chat, enroll;
     private APIService mAPIService = APIUtils.getAPIService();
-    private final String TYPE = "Lodge";
     private User currentUser;
     private Chat newChat;
+    public LodgeShow() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -90,15 +87,15 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
         enroll.setClickable(false);
 
-        User user = Consistency.getUser(container.getContext());
-        final String mail = user.getMail();
-        String type = user.getUserType();
+        currentUser = Consistency.getUser(container.getContext());
+        final String mail = currentUser.getMail();
+        String type = currentUser.getUserType();
 
 
         if (type.equals("Refugee")) {
 
 
-            chat.setOnClickListener(new View.OnClickListener(){
+            chat.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -144,10 +141,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                 service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
-                                if (response.isSuccessful()){
+                                if (response.isSuccessful()) {
                                     enroll.setText(R.string.unsubscribe);
-                                }
-                                else{
+                                } else {
                                     failure();
                                 }
                             }
@@ -176,10 +172,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                                     Response<Void> response) {
                                                 System.out.println("CODIGOunsu " + response.code());
                                                 System.out.println("url " + call.request().url());
-                                                if (response.isSuccessful()){
+                                                if (response.isSuccessful()) {
                                                     enroll.setText(R.string.inscribir);
-                                                }
-                                                else{
+                                                } else {
                                                     failure();
                                                 }
                                             }
@@ -211,7 +206,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-        }else{
+        } else {
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
 
@@ -220,55 +215,52 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         return view;
     }
 
-    public void sendGetChat(){
+    public void sendGetChat() {
         mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), service.getEmail())
-        .enqueue(
-                new Callback<Chat>() {
-                    @Override
-                    public void onResponse(Call<Chat> call, Response<Chat> response) {
-                        System.out.println("getchat code: " + response.code());
-                        if (response.isSuccessful()){
-                            System.out.println("getchat");
-                            System.out.println(response.body().toString());
-                            manageResultGetChat(true, response.body());
-                        }
-                        else {
-                            manageResultGetChat(false, null);
-                        }
-                    }
+                .enqueue(
+                        new Callback<Chat>() {
+                            @Override
+                            public void onResponse(Call<Chat> call, Response<Chat> response) {
+                                System.out.println("getchat code: " + response.code());
+                                if (response.isSuccessful()) {
+                                    System.out.println("getchat");
+                                    System.out.println(response.body().toString());
+                                    manageResultGetChat(true, response.body());
+                                } else {
+                                    manageResultGetChat(false, null);
+                                }
+                            }
 
-                    @Override
-                    public void onFailure(Call<Chat> call, Throwable t) {
-                        if (t instanceof IOException) {
-                            Toast.makeText(getActivity().getApplicationContext(),
-                                    "this is an actual network failure"
-                                            + " :( inform "
-                                            + "the user and "
-                                            + "possibly retry", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getActivity().getApplicationContext(),
-                                    "getchat!! conversion issue! big problems :(", Toast
-                                            .LENGTH_SHORT).show();
+                            @Override
+                            public void onFailure(Call<Chat> call, Throwable t) {
+                                if (t instanceof IOException) {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "this is an actual network failure"
+                                                    + " :( inform "
+                                                    + "the user and "
+                                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "getchat!! conversion issue! big problems :(", Toast
+                                                    .LENGTH_SHORT).show();
 
-                        }
-                    }
-                });
+                                }
+                            }
+                        });
     }
 
-    public void manageResultGetChat(boolean resultado, Chat chat){
-        if (resultado){
+    public void manageResultGetChat(boolean resultado, Chat chat) {
+        if (resultado) {
             Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
             i.putExtra("Chat", chat);
             startActivity(i);
-        }
-        else {
+        } else {
             mAPIService.obtenerVoluntario(service.getEmail()).enqueue(new Callback<Volunteer>() {
                 @Override
                 public void onResponse(Call<Volunteer> call, Response<Volunteer> response) {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         manageResultGetVolunteer(true, response.body());
-                    }
-                    else {
+                    } else {
                         manageResultGetVolunteer(false, null);
                     }
                 }
@@ -293,28 +285,26 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         }
     }
 
-    public void manageResultGetVolunteer(boolean result, Volunteer volunteer){
-        if (result){
-            newChat = new Chat(currentUser,volunteer);
+    public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
+        if (result) {
+            newChat = new Chat(currentUser, volunteer);
             sendNewChat(newChat);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.error), Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void sendNewChat(Chat chat){
+    public void sendNewChat(Chat chat) {
         mAPIService.newChat(currentUser.getMail(), chat).enqueue(new Callback<Chat>() {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 System.out.println("newchat code: " + response.code());
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     System.out.println("newchat");
                     System.out.println(response.body().toString());
                     manageResultNewChat(true, response.body());
-                }
-                else {
+                } else {
                     manageResultNewChat(false, null);
                 }
             }
@@ -338,13 +328,12 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
     }
 
-    public void manageResultNewChat(boolean result, Chat chat){
-        if (result){
+    public void manageResultNewChat(boolean result, Chat chat) {
+        if (result) {
             Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
             i.putExtra("Chat", chat);
             startActivity(i);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.error), Toast.LENGTH_SHORT).show();
         }

@@ -12,8 +12,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
+
+import com.example.usuario.rekindlefrontend.view.users.register.RegisterUser;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -25,22 +25,21 @@ import org.junit.runner.RunWith;
 public class EspressoRegistroVolunteer {
 
     @Rule
-    public ActivityTestRule<RegistroUsuario> pantalla = new ActivityTestRule<RegistroUsuario>
-            (RegistroUsuario.class);
+    public ActivityTestRule<RegisterUser> pantalla = new ActivityTestRule<RegisterUser>
+            (RegisterUser.class);
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
     @Test
-    public void testCampos ()
-    {
+    public void testCampos() {
         onView(withId(R.id.boton_voluntario)).perform(click());
 
         onView(withId(R.id.nombre_voluntario)).perform(replaceText

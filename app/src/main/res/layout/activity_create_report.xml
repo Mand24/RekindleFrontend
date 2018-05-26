@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateReport">
+    tools:context=".view.moderate.CreateReport">
 
     <ScrollView android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -19,9 +18,9 @@
             <TextView
                 android:id="@+id/subtitulo_registro_refugiado"
                 style="@style/text_view"
+                android:layout_marginBottom="@dimen/dim20"
                 android:layout_marginStart="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:layout_marginBottom="@dimen/dim20"
                 android:text="@string/report_form"
             />
 
@@ -54,23 +53,23 @@
 
                 <EditText
                     android:id="@+id/motive"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/explanation_motive"
+                    android:inputType="textMultiLine"
                 />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.v7.widget.AppCompatButton
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
                 android:id="@+id/send_report"
-                android:layout_marginTop="@dimen/dim20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/send_report"
             />
         </LinearLayout>

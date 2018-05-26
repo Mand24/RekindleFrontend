@@ -20,38 +20,37 @@ import java.util.List;
 
 public class Maps extends Fragment {
 
-    public NetworkInfo getNetworkInfo ()
-    {
-        ConnectivityManager cm = (ConnectivityManager) getActivity ().getSystemService(Context
+    public NetworkInfo getNetworkInfo() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context
                 .CONNECTIVITY_SERVICE);
         NetworkInfo network = cm.getActiveNetworkInfo();
 
         return network;
     }
 
-    public Marker setMarker (String adress, Marker myMarker, GoogleMap
+    public Marker setMarker(String adress, Marker myMarker, GoogleMap
             mGoogleMap, String serviceName) {
 
         // set : coordenadas
-        LatLng coordenadas = getLocationFromAddress (getActivity ().getApplicationContext (),
+        LatLng coordenadas = getLocationFromAddress(getActivity().getApplicationContext(),
                 adress);
 
         // set : location
-        CameraUpdate myLocation = CameraUpdateFactory.newLatLngZoom (coordenadas, 16);
+        CameraUpdate myLocation = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
 
         // set : marker
-        if (myMarker != null) myMarker.remove ();
+        if (myMarker != null) myMarker.remove();
 
-        myMarker = mGoogleMap.addMarker (new MarkerOptions().position (coordenadas).title
-                (getString(R.string.serviceLocation)+ " " + serviceName));
+        myMarker = mGoogleMap.addMarker(new MarkerOptions().position(coordenadas).title
+                (getString(R.string.serviceLocation) + " " + serviceName));
 
         //  move camera
-        mGoogleMap.animateCamera (myLocation);
+        mGoogleMap.animateCamera(myLocation);
 
         return myMarker;
     }
 
-    public LatLng getLocationFromAddress(Context context,String strAddress) {
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
         Geocoder coder = new Geocoder(context);
         List<Address> address;
         LatLng p1 = null;

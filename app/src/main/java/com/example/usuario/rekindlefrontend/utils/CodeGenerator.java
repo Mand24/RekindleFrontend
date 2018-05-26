@@ -21,16 +21,6 @@ public class CodeGenerator {
 
     private final char[] buf;
 
-    public String getCode(){
-        return nextString();
-    }
-
-    private String nextString() {
-        for (int idx = 0; idx < buf.length; ++idx)
-            buf[idx] = symbols[random.nextInt(symbols.length)];
-        return new String(buf);
-    }
-
     public CodeGenerator(int length, Random random, String symbols) {
         if (length < 1) throw new IllegalArgumentException();
         if (symbols.length() < 2) throw new IllegalArgumentException();
@@ -55,5 +45,16 @@ public class CodeGenerator {
      */
     public CodeGenerator() {
         this(5);
+    }
+
+    public String getCode() {
+        return nextString();
+    }
+
+    private String nextString() {
+        for (int idx = 0; idx < buf.length; ++idx) {
+            buf[idx] = symbols[random.nextInt(symbols.length)];
+        }
+        return new String(buf);
     }
 }

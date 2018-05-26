@@ -22,21 +22,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     private Context mContext;
     private CustomItemClickListener listener;
 
-    public class ServiceViewHolder extends RecyclerView.ViewHolder{
-        CardView cv;
-        TextView serviceName, serviceAddress, expirationDate;
-        ImageView serviceType;
-
-        ServiceViewHolder(View itemView){
-            super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
-            serviceName = (TextView) itemView.findViewById(R.id.titulo_servicio);
-            serviceAddress = (TextView) itemView.findViewById(R.id.direccion_servicio);
-            serviceType = (ImageView) itemView.findViewById(R.id.photo_cardView);
-        }
-    }
-
-    public ServicesAdapter(Context mContext, List<Service> services, CustomItemClickListener listener){
+    public ServicesAdapter(Context mContext, List<Service> services,
+            CustomItemClickListener listener) {
         this.mContext = mContext;
         this.mServices = services;
         this.listener = listener;
@@ -48,7 +35,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
     @Override
     public ServiceViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_vista_lista_servicios, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(
+                R.layout.fragment_vista_lista_servicios, viewGroup, false);
         final ServiceViewHolder mViewHolder = new ServiceViewHolder(v);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,10 +58,15 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     public void onBindViewHolder(ServiceViewHolder serviceViewHolder, int i) {
         Service service = mServices.get(i);
         String tipo = service.getServiceType();
-        if (tipo.equals("Lodge")) service.setImage(R.drawable.lodging);
-        else if (tipo.equals("Donation")) service.setImage(R.drawable.donation);
-        else if (tipo.equals("Education")) service.setImage(R.drawable.education);
-        else service.setImage(R.drawable.job);
+        if (tipo.equals("Lodge")) {
+            service.setImage(R.drawable.lodging);
+        } else if (tipo.equals("Donation")) {
+            service.setImage(R.drawable.donation);
+        } else if (tipo.equals("Education")) {
+            service.setImage(R.drawable.education);
+        } else {
+            service.setImage(R.drawable.job);
+        }
 
         serviceViewHolder.serviceName.setText(service.getName());
         serviceViewHolder.serviceAddress.setText(service.getAdress());
@@ -86,7 +79,21 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return mServices.size();
+    }
+
+    public class ServiceViewHolder extends RecyclerView.ViewHolder {
+        CardView cv;
+        TextView serviceName, serviceAddress, expirationDate;
+        ImageView serviceType;
+
+        ServiceViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView) itemView.findViewById(R.id.cv);
+            serviceName = (TextView) itemView.findViewById(R.id.titulo_servicio);
+            serviceAddress = (TextView) itemView.findViewById(R.id.direccion_servicio);
+            serviceType = (ImageView) itemView.findViewById(R.id.photo_cardView);
+        }
     }
 }

@@ -13,14 +13,13 @@ import com.google.gson.Gson;
 
 public class Consistency {
 
-    public static void saveUser(User user, Context ctx){
+    public static void saveUser(User user, Context ctx) {
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(ctx);
         SharedPreferences.Editor miEditor = datos.edit();
-        if(user == null){
+        if (user == null) {
             miEditor.putString("usuario", "");
-        }
-        else {
+        } else {
             Gson gson = new Gson();
             String json = gson.toJson(user);
             miEditor.putString("usuario", json);
@@ -28,7 +27,7 @@ public class Consistency {
         miEditor.apply();
     }
 
-    public static User getUser(Context ctx){
+    public static User getUser(Context ctx) {
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(ctx);
         Gson gson = new Gson();

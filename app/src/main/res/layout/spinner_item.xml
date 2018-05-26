@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/text_view_spinner"
 />
 
-<!--<Spinner
-android:id="@+id/lista_usuarios"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:background="@drawable/botones"
-android:popupBackground="@drawable/botones"
-android:layout_toRightOf="@id/texto_tipo_usuario"
-android:layout_marginTop="100dp"/>-->
+    <!--<Spinner
+    android:id="@+id/lista_usuarios"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/botones"
+    android:popupBackground="@drawable/botones"
+    android:layout_toRightOf="@id/texto_tipo_usuario"
+    android:layout_marginTop="100dp"/>-->

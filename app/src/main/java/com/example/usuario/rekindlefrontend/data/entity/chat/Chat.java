@@ -7,21 +7,31 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Chat implements Parcelable{
+public class Chat implements Parcelable {
 
+    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
+        @Override
+        public Chat createFromParcel(Parcel in) {
+            return new Chat(in);
+        }
+
+        @Override
+        public Chat[] newArray(int size) {
+            return new Chat[size];
+        }
+    };
     @SerializedName("id")
     @Expose
     private int idChat;
-
     @SerializedName("user1")
     @Expose
     private User user1;
-
     @SerializedName("user2")
     @Expose
     private User user2;
 
-    public Chat(){}
+    public Chat() {
+    }
 
     public Chat(User user1, User user2) {
         this.user1 = user1;
@@ -39,18 +49,6 @@ public class Chat implements Parcelable{
         user1 = in.readParcelable(User.class.getClassLoader());
         user2 = in.readParcelable(User.class.getClassLoader());
     }
-
-    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
-        @Override
-        public Chat createFromParcel(Parcel in) {
-            return new Chat(in);
-        }
-
-        @Override
-        public Chat[] newArray(int size) {
-            return new Chat[size];
-        }
-    };
 
     @Override
     public int describeContents() {

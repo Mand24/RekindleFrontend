@@ -13,7 +13,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.usuario.rekindlefrontend.view.menu.login.RecoverPassword;
-import com.example.usuario.rekindlefrontend.R;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -28,18 +28,17 @@ public class EspressoRecoverPassword {
             (RecoverPassword.class);
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
     @Test
-    public void comprobarCampos ()
-    {
+    public void comprobarCampos() {
         onView(withId(R.id.codigo)).perform(replaceText
                 ("actual"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("actual")));

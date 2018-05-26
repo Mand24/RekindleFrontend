@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/fondo"
-                tools:context=".view.usuarios.verPerfil.VerPerfilRefugiado">
+                tools:context=".view.users.show.ShowProfileRefugee">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,24 +17,24 @@
             android:layout_height="match_parent">
 
             <android.support.v7.widget.AppCompatButton
+                android:id="@+id/editar_ver_perfil_voluntario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editar_ver_perfil_voluntario"
-                android:text="@string/editar"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/dim10"
                 android:layout_marginTop="@dimen/dim10"
-                android:layout_marginLeft="@dimen/dim10" />
+                android:text="@string/editar"/>
 
             <ImageView
                 android:id="@+id/foto_perfil_voluntario"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/dim10"
-                android:layout_marginRight="@dimen/dim10"
                 android:layout_width="@dimen/dim100"
                 android:layout_height="@dimen/dim100"
-                android:src="@drawable/foto_perfil" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/dim10"
+                android:layout_marginTop="@dimen/dim10"
+                android:src="@drawable/foto_perfil"/>
 
             <TextView
                 android:id="@+id/label_tipo_usuario_perfil_voluntario"
@@ -44,20 +43,20 @@
                 android:layout_below="@id/editar_ver_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim50"
-                android:text="@string/tipo_usuario" />
+                android:text="@string/tipo_usuario"/>
 
             <TextView
                 android:id="@+id/tipo_usuario_perfil_voluntario"
                 style="@style/text_view"
-                android:padding="@dimen/dim6"
                 android:layout_width="match_parent"
-                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_tipo_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener serviceType()"
-                android:background="@drawable/back"/>
+                android:background="@drawable/back"
+                android:padding="@dimen/dim6"
+                android:text="Obtener serviceType()"/>
 
             <TextView
                 android:id="@+id/label_nombre_usuario_perfil_voluntario"
@@ -66,20 +65,20 @@
                 android:layout_below="@id/tipo_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/nombre_usuario_perfil" />
+                android:text="@string/nombre_usuario_perfil"/>
 
             <TextView
                 android:id="@+id/nombre_usuario_perfil_voluntario"
                 style="@style/text_view"
-                android:padding="@dimen/dim6"
                 android:layout_width="match_parent"
-                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_nombre_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener nombre()"
-                android:background="@drawable/back"/>
+                android:background="@drawable/back"
+                android:padding="@dimen/dim6"
+                android:text="Obtener nombre()"/>
 
             <TextView
                 android:id="@+id/label_apellido1_usuario_perfil_voluntario"
@@ -88,20 +87,20 @@
                 android:layout_below="@id/nombre_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_1apellido_formulario" />
+                android:text="@string/texto_1apellido_formulario"/>
 
             <TextView
                 android:id="@+id/apellido1_usuario_perfil_voluntario"
                 style="@style/text_view"
-                android:padding="@dimen/dim6"
                 android:layout_width="match_parent"
-                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido1_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener apellido1()"
-                android:background="@drawable/back"/>
+                android:background="@drawable/back"
+                android:padding="@dimen/dim6"
+                android:text="Obtener apellido1()"/>
 
             <TextView
                 android:id="@+id/label_apellido2_usuario_perfil_voluntario"
@@ -110,20 +109,20 @@
                 android:layout_below="@id/apellido1_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_2apellido_formulario" />
+                android:text="@string/texto_2apellido_formulario"/>
 
             <TextView
                 android:id="@+id/apellido2_usuario_perfil_voluntario"
                 style="@style/text_view"
-                android:padding="@dimen/dim6"
                 android:layout_width="match_parent"
-                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_apellido2_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener apellido2()"
-                android:background="@drawable/back"/>
+                android:background="@drawable/back"
+                android:padding="@dimen/dim6"
+                android:text="Obtener apellido2()"/>
 
             <TextView
                 android:id="@+id/label_email_usuario_perfil_voluntario"
@@ -132,21 +131,20 @@
                 android:layout_below="@id/apellido2_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/email_usuario_perfil" />
+                android:text="@string/email_usuario_perfil"/>
 
             <TextView
                 android:id="@+id/email_usuario_perfil_voluntario"
                 style="@style/text_view"
-                android:padding="@dimen/dim6"
                 android:layout_width="match_parent"
-                android:layout_marginRight="@dimen/dim20"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/label_email_usuario_perfil_voluntario"
                 android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
-                android:text="Obtener email()"
-                android:background="@drawable/back"/>
-
+                android:background="@drawable/back"
+                android:padding="@dimen/dim6"
+                android:text="Obtener email()"/>
 
 
         </RelativeLayout>

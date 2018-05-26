@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_horizontal"
-    tools:context=".view.services.ServiceTypeSelector">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="horizontal"
+              tools:context=".view.services.ServiceTypeSelector">
 
     <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        >
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal"
+                  android:orientation="horizontal"
+    >
 
-            <ImageButton
-                android:id="@+id/boton_tipo_alojamiento"
-                android:layout_width="@dimen/dim70"
-                android:layout_height="@dimen/dim70"
-                android:src="@drawable/lodging"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/texto_nombre_formulario"/>
+        <ImageButton
+            android:id="@+id/boton_tipo_alojamiento"
+            android:layout_width="@dimen/dim70"
+            android:layout_height="@dimen/dim70"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/texto_nombre_formulario"
+            android:scaleType="fitCenter"
+            android:src="@drawable/lodging"/>
 
-            <Space style="@style/espacio"/>
+        <Space style="@style/espacio"/>
 
-            <ImageButton
-                android:id="@+id/boton_tipo_donacion"
-                android:layout_width="@dimen/dim70"
-                android:layout_height="@dimen/dim70"
-                android:src="@drawable/donation"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+        <ImageButton
+            android:id="@+id/boton_tipo_donacion"
+            android:layout_width="@dimen/dim70"
+            android:layout_height="@dimen/dim70"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/donation"/>
 
-            <Space style="@style/espacio"/>
+        <Space style="@style/espacio"/>
 
-            <ImageButton
-                android:id="@+id/boton_tipo_curso_educativo"
-                android:layout_width="@dimen/dim70"
-                android:layout_height="@dimen/dim70"
-                android:src="@drawable/education"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+        <ImageButton
+            android:id="@+id/boton_tipo_curso_educativo"
+            android:layout_width="@dimen/dim70"
+            android:layout_height="@dimen/dim70"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/education"/>
 
-            <Space style="@style/espacio"/>
+        <Space style="@style/espacio"/>
 
-            <ImageButton
-                android:id="@+id/boton_tipo_oferta_empleo"
-                android:layout_width="@dimen/dim70"
-                android:layout_height="@dimen/dim70"
-                android:src="@drawable/job"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+        <ImageButton
+            android:id="@+id/boton_tipo_oferta_empleo"
+            android:layout_width="@dimen/dim70"
+            android:layout_height="@dimen/dim70"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/job"/>
     </LinearLayout>
 
 </LinearLayout>

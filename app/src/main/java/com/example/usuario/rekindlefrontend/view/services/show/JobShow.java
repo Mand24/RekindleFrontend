@@ -24,7 +24,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.Maps;
-import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
+import com.example.usuario.rekindlefrontend.view.chat.ShowChat;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -41,23 +41,20 @@ import retrofit2.Response;
  */
 public class JobShow extends Maps implements OnMapReadyCallback {
 
-    public JobShow() {
-        // Required empty public constructor
-    }
-
-
-    TextView title, description, adress, phoneNumber, charge, requirements, hoursDay, hoursWeek,
-            contractDuration;
-    AppCompatButton chat, enroll;
-
+    private final String TYPE = "Job";
     public Job service;
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
+    TextView title, description, adress, phoneNumber, charge, requirements, hoursDay, hoursWeek,
+            contractDuration;
+    AppCompatButton chat, enroll;
     private APIService mAPIService = APIUtils.getAPIService();
-    private final String TYPE = "Job";
     private User currentUser;
     private Chat newChat;
+    public JobShow() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -105,7 +102,7 @@ public class JobShow extends Maps implements OnMapReadyCallback {
 
         if (type.equals("Refugee")) {
 
-            chat.setOnClickListener(new View.OnClickListener(){
+            chat.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -151,10 +148,9 @@ public class JobShow extends Maps implements OnMapReadyCallback {
                                 service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
-                                if (response.isSuccessful()){
+                                if (response.isSuccessful()) {
                                     enroll.setText(R.string.unsubscribe);
-                                }
-                                else{
+                                } else {
                                     failure();
                                 }
                             }
@@ -181,10 +177,9 @@ public class JobShow extends Maps implements OnMapReadyCallback {
                                             @Override
                                             public void onResponse(Call<Void> call,
                                                     Response<Void> response) {
-                                                if (response.isSuccessful()){
+                                                if (response.isSuccessful()) {
                                                     enroll.setText(R.string.inscribir);
-                                                }
-                                                else{
+                                                } else {
                                                     failure();
                                                 }
                                             }
@@ -212,27 +207,26 @@ public class JobShow extends Maps implements OnMapReadyCallback {
                     }
                 }
             });
-        }else{
+        } else {
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
-       }
+        }
 
         return view;
     }
 
-    public void sendGetChat(){
+    public void sendGetChat() {
         mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), service.getEmail())
                 .enqueue(
                         new Callback<Chat>() {
                             @Override
                             public void onResponse(Call<Chat> call, Response<Chat> response) {
                                 System.out.println("getchat code: " + response.code());
-                                if (response.isSuccessful()){
+                                if (response.isSuccessful()) {
                                     System.out.println("getchat");
                                     System.out.println(response.body().toString());
                                     manageResultGetChat(true, response.body());
-                                }
-                                else {
+                                } else {
                                     manageResultGetChat(false, null);
                                 }
                             }
@@ -255,20 +249,18 @@ public class JobShow extends Maps implements OnMapReadyCallback {
                         });
     }
 
-    public void manageResultGetChat(boolean resultado, Chat chat){
-        if (resultado){
+    public void manageResultGetChat(boolean resultado, Chat chat) {
+        if (resultado) {
             Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
             i.putExtra("Chat", chat);
             startActivity(i);
-        }
-        else {
+        } else {
             mAPIService.obtenerVoluntario(service.getEmail()).enqueue(new Callback<Volunteer>() {
                 @Override
                 public void onResponse(Call<Volunteer> call, Response<Volunteer> response) {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         manageResultGetVolunteer(true, response.body());
-                    }
-                    else {
+                    } else {
                         manageResultGetVolunteer(false, null);
                     }
                 }
@@ -293,28 +285,26 @@ public class JobShow extends Maps implements OnMapReadyCallback {
         }
     }
 
-    public void manageResultGetVolunteer(boolean result, Volunteer volunteer){
-        if (result){
-            newChat = new Chat(currentUser,volunteer);
+    public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
+        if (result) {
+            newChat = new Chat(currentUser, volunteer);
             sendNewChat(newChat);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.error), Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void sendNewChat(Chat chat){
+    public void sendNewChat(Chat chat) {
         mAPIService.newChat(currentUser.getMail(), chat).enqueue(new Callback<Chat>() {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 System.out.println("newchat code: " + response.code());
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     System.out.println("newchat");
                     System.out.println(response.body().toString());
                     manageResultNewChat(true, response.body());
-                }
-                else {
+                } else {
                     manageResultNewChat(false, null);
                 }
             }
@@ -338,13 +328,12 @@ public class JobShow extends Maps implements OnMapReadyCallback {
 
     }
 
-    public void manageResultNewChat(boolean result, Chat chat){
-        if (result){
+    public void manageResultNewChat(boolean result, Chat chat) {
+        if (result) {
             Intent i = new Intent(getActivity().getApplicationContext(), ShowChat.class);
             i.putExtra("Chat", chat);
             startActivity(i);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
                     .string.error), Toast.LENGTH_SHORT).show();
         }

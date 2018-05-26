@@ -33,14 +33,14 @@
 
                 <EditText
                     android:id="@+id/nombre_alojamiento"
-                    android:inputType="textCapSentences"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_nombre_formulario"
-                    android:layout_height="wrap_content" />
+                    android:inputType="textCapSentences"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -51,14 +51,14 @@
 
                 <EditText
                     android:id="@+id/telefono_alojamiento"
-                    android:inputType="phone"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/telefono"
-                    android:layout_height="wrap_content" />
+                    android:inputType="phone"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -75,9 +75,9 @@
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
-                    android:hint="@string/direccion"
                     android:focusable="false"
-                    android:inputType="textMultiLine" />
+                    android:hint="@string/direccion"
+                    android:inputType="textMultiLine"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -88,14 +88,14 @@
 
                 <EditText
                     android:id="@+id/solicitudes_alojamiento"
-                    android:inputType="number"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/limite_solicitudes"
-                    android:layout_height="wrap_content" />
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -106,8 +106,8 @@
 
                 <EditText
                     android:id="@+id/fecha_limite_alojamiento"
-                    android:inputType="date"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
@@ -115,7 +115,7 @@
                     android:clickable="true"
                     android:focusable="false"
                     android:hint="@string/fecha_limite"
-                    android:layout_height="wrap_content" />
+                    android:inputType="date"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -133,15 +133,15 @@
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/descripcion"
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
+                android:id="@+id/enviar_editar_alojamiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/enviar_editar_alojamiento"
-                android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/enviar"
             />
 

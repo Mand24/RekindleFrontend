@@ -3,7 +3,6 @@ package com.example.usuario.rekindlefrontend.utils;
 import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/dim6"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="@dimen/dim6">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cv"
         app:cardBackgroundColor="@color/colorPrimaryDarker"
         app:cardCornerRadius="4dp">
 
@@ -20,46 +19,46 @@
             android:padding="16dp">
 
             <LinearLayout
+                android:id="@+id/photo_layout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/photo_layout">
+                android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/photo_cardView"
                     android:layout_width="@dimen/dim70"
                     android:layout_height="@dimen/dim70"
-                    android:id="@+id/photo_cardView"
-                    android:scaleType="fitCenter"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="16dp"/>
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="fitCenter"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_toEndOf="@+id/photo_layout">
+                android:layout_toEndOf="@+id/photo_layout"
+                android:orientation="vertical">
 
 
                 <TextView
                     android:id="@+id/nombre_cv"
-                    style="@style/text_view" />
+                    style="@style/text_view"/>
 
                 <TextView
                     android:id="@+id/apellido1_cv"
-                    style="@style/text_view" />
+                    style="@style/text_view"/>
 
                 <TextView
                     android:id="@+id/apellido2_cv"
-                    style="@style/text_view" />
+                    style="@style/text_view"/>
 
                 <TextView
                     android:id="@+id/sexo_cv"
-                    style="@style/text_view" />
+                    style="@style/text_view"/>
 
                 <TextView
                     android:id="@+id/nacimiento_cv"
-                    style="@style/text_view" />
+                    style="@style/text_view"/>
 
 
             </LinearLayout>

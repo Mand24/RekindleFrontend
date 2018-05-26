@@ -47,51 +47,52 @@ public class EducationEdit extends AbstractFormatChecker {
 
     private APIService mAPIService;
 
-    public EducationEdit() { }
+    public EducationEdit() {
+    }
 
     @Override
-    public View onCreateView (LayoutInflater inflater, final ViewGroup container, Bundle
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-            final View view = inflater.inflate (R.layout.fragment_editar_curso, container, false);
+        final View view = inflater.inflate(R.layout.fragment_editar_curso, container, false);
 
-            servicio = (Education) getArguments().getSerializable("Education");
+        servicio = (Education) getArguments().getSerializable("Education");
 
-            setViews(view);
+        setViews(view);
 
-            initializeFields();
+        initializeFields();
 
-            AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
-            .enviar_editar_curso_educativo);
+        AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
+                .enviar_editar_curso_educativo);
 
-            sendEdit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        try {
-                            checkFields();
-                            getParams();
-                            sendUpdateService();
-                        } catch (Exception e) {
-                            Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-            });
-
-            eAdress = view.findViewById(R.id.direccion_curso_educativo);
-            eAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                            try{
-                                Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
-                                .MODE_OVERLAY).build(getActivity());
-                                startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-                            }catch (GooglePlayServicesRepairableException e) {
-                            } catch (GooglePlayServicesNotAvailableException e) {
-                            }
-                    }
-            });
-
-            return view;
+        sendEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    checkFields();
+                    getParams();
+                    sendUpdateService();
+                } catch (Exception e) {
+                    Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
+        });
+
+        eAdress = view.findViewById(R.id.direccion_curso_educativo);
+        eAdress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
+                            .MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                } catch (GooglePlayServicesRepairableException e) {
+                } catch (GooglePlayServicesNotAvailableException e) {
+                }
+            }
+        });
+
+        return view;
+    }
 
     public void setViews(View view) {
 
@@ -110,14 +111,14 @@ public class EducationEdit extends AbstractFormatChecker {
 
     public void initializeFields() {
         eName.setText(servicio.getName());
-        ePhoneNumber.setText (servicio.getPhoneNumber());
-        eAdress.setText (servicio.getAdress());
+        ePhoneNumber.setText(servicio.getPhoneNumber());
+        eAdress.setText(servicio.getAdress());
         eAmbit.setText(servicio.getAmbit());
         eRequirements.setText(servicio.getRequirements());
         eSchedule.setText(servicio.getSchedule());
         ePlacesLimit.setText(servicio.getPlacesLimit());
         ePrice.setText(servicio.getPrice());
-        eDescription.setText (servicio.getDescription());
+        eDescription.setText(servicio.getDescription());
     }
 
     public void checkFields() throws Exception {
@@ -142,17 +143,16 @@ public class EducationEdit extends AbstractFormatChecker {
         servicio.setSchedule(eSchedule.getText().toString());
         servicio.setPlacesLimit(ePlacesLimit.getText().toString());
         servicio.setPrice(ePrice.getText().toString());
-        servicio.setDescription (eDescription.getText().toString());
+        servicio.setDescription(eDescription.getText().toString());
     }
 
-    public void sendUpdateService(){
+    public void sendUpdateService() {
         mAPIService.editarCurso(servicio.getId(), servicio).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manageResult(true);
-                }
-                else {
+                } else {
                     manageResult(false);
                 }
             }
@@ -164,15 +164,14 @@ public class EducationEdit extends AbstractFormatChecker {
         });
     }
 
-    public void manageResult(boolean result){
-        if (result){
+    public void manageResult(boolean result) {
+        if (result) {
             Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MyServicesVolunteer.class);
             startActivity(i);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
                     .LENGTH_SHORT).show();
         }
@@ -180,18 +179,18 @@ public class EducationEdit extends AbstractFormatChecker {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
-                if (resultCode == RESULT_OK) {
-                    Place place = PlaceAutocomplete.getPlace(getActivity(), data);
-                    Log.i("==================", "Place: " + place.getName());
-                    eAdress.setText(place.getAddress());
-                } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                    Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                    Log.i("==================", status.getStatusMessage());
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                Log.i("==================", "Place: " + place.getName());
+                eAdress.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                Log.i("==================", status.getStatusMessage());
 
-                } else if (resultCode == RESULT_CANCELED) {
-                    // The user canceled the operation.
-                }
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
             }
+        }
     }
 }

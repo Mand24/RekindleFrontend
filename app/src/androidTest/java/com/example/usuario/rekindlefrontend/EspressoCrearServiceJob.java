@@ -16,7 +16,7 @@ import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import com.example.usuario.rekindlefrontend.R;
+
 import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
 
 import org.junit.AfterClass;
@@ -39,12 +39,12 @@ public class EspressoCrearServiceJob {
             (CreateService.class);
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
@@ -192,14 +192,15 @@ public class EspressoCrearServiceJob {
                 ("testDescription"), ViewActions.closeSoftKeyboard
                 ()).check(matches(withText("testDescription")));
 
-        onView(withId(R.id.enviar_formulario_oferta_empleo)).perform(scrollTo()).check(ViewAssertions
-                .matches(isDisplayed()));
+        onView(withId(R.id.enviar_formulario_oferta_empleo)).perform(scrollTo()).check(
+                ViewAssertions
+                        .matches(isDisplayed()));
         onView(withId(R.id.enviar_formulario_oferta_empleo)).perform(click());
 
     }
 
     @Test
-    public void testAtras(){
+    public void testAtras() {
 
         //TODO: Testear cuando tengamos boton atras
 

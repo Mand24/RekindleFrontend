@@ -17,9 +17,6 @@ import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
-
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import org.junit.AfterClass;
@@ -44,12 +41,12 @@ public class EspressoCrearServiceEducation {
     };
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
@@ -129,7 +126,7 @@ public class EspressoCrearServiceEducation {
     }
 
     @Test
-    public void testAtras(){
+    public void testAtras() {
 
         //TODO: Testear cuando tengamos boton atras
 

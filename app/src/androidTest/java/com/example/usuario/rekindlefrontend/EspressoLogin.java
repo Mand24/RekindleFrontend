@@ -11,19 +11,13 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.hasCom
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
-
-
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
+import com.example.usuario.rekindlefrontend.view.users.register.RegisterUser;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -40,12 +34,12 @@ public class EspressoLogin {
             (Login.class);
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
@@ -60,9 +54,8 @@ public class EspressoLogin {
     }
 
     @Test
-    public void testBotonLogin(){
+    public void testBotonLogin() {
 
-        //TODO: Testear Login cuando funcione
         onView(withId(R.id.input_email)).perform(typeText("dummy@voluntario.com"), ViewActions
                 .closeSoftKeyboard());
 
@@ -74,7 +67,7 @@ public class EspressoLogin {
     }
 
     @Test
-    public void testBotonLoginFail(){
+    public void testBotonLoginFail() {
 
         onView(withId(R.id.input_email)).perform(typeText("testEmailMalo"), ViewActions
                 .closeSoftKeyboard());
@@ -87,15 +80,15 @@ public class EspressoLogin {
     }
 
     @Test
-    public void testLinkRegistro(){
+    public void testLinkRegistro() {
 
         onView(withId(R.id.link_signup)).perform(click());
-        intended(hasComponent(RegistroUsuario.class.getName()));
+        intended(hasComponent(RegisterUser.class.getName()));
 
     }
 
     @Test
-    public void testAtras(){
+    public void testAtras() {
 
         //TODO: Testear cuando tengamos boton atras
 

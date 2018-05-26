@@ -41,6 +41,6 @@ public class ServerOkTest {
 
         //Tratar Response Code
         int responseCode = con.getResponseCode();
-        assertEquals(responseCode,200);
+        assertEquals(responseCode, 200);
     }
 }

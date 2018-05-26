@@ -15,27 +15,15 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
-public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportViewHolder>{
+public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportViewHolder> {
 
     private List<Report> reports;
     private CustomItemClickListener listener;
     private Context mContext;
 
 
-    public class ReportViewHolder extends RecyclerView.ViewHolder{
-        CardView cv;
-        TextView informer_mail, reported_mail;
-
-        ReportViewHolder(View itemView){
-            super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
-            informer_mail = (TextView) itemView.findViewById(R.id.informer_mail_cv);
-            reported_mail = (TextView) itemView.findViewById(R.id.reported_mail_cv);
-        }
-    }
-
     public ReportsAdapter(Context mContext, List<Report> reports, CustomItemClickListener
-            listener){
+            listener) {
         this.mContext = mContext;
         this.reports = reports;
         this.listener = listener;
@@ -72,7 +60,6 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportVi
 
     }
 
-
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
@@ -81,5 +68,17 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportVi
     @Override
     public int getItemCount() {
         return reports.size();
+    }
+
+    public class ReportViewHolder extends RecyclerView.ViewHolder {
+        CardView cv;
+        TextView informer_mail, reported_mail;
+
+        ReportViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView) itemView.findViewById(R.id.cv);
+            informer_mail = (TextView) itemView.findViewById(R.id.informer_mail_cv);
+            reported_mail = (TextView) itemView.findViewById(R.id.reported_mail_cv);
+        }
     }
 }

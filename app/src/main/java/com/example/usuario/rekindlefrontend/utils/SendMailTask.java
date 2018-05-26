@@ -5,8 +5,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import java.util.List;
-
 
 public class SendMailTask extends AsyncTask {
 

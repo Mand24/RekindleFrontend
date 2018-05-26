@@ -22,26 +22,8 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
     private CustomItemClickListener listener;
     private Context mContext;
 
-    public class RefugiadoViewHolder extends RecyclerView.ViewHolder{
-        CardView cv;
-        ImageView photo;
-        TextView nombre, apellido1, apellido2, sexo, nacimiento;
-//        ImageView serviceType;
-
-        RefugiadoViewHolder(View itemView){
-            super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
-            photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
-            nombre = (TextView) itemView.findViewById(R.id.nombre_cv);
-            apellido1 = (TextView) itemView.findViewById(R.id.apellido1_cv);
-            apellido2 = (TextView) itemView.findViewById(R.id.apellido2_cv);
-            sexo = (TextView) itemView.findViewById(R.id.sexo_cv);
-            nacimiento = (TextView) itemView.findViewById(R.id.nacimiento_cv);
-        }
-    }
-
     public RefugeeAdapter(Context mContext, List<Refugee> refugees, CustomItemClickListener
-            listener){
+            listener) {
         this.mContext = mContext;
         this.mRefugees = refugees;
         this.listener = listener;
@@ -51,11 +33,11 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
         this.mRefugees = refugees;
     }
 
-
     @Override
     public RefugiadoViewHolder onCreateViewHolder(ViewGroup viewGroup,
             int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_vista_lista_refugiados,
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(
+                R.layout.fragment_vista_lista_refugiados,
                 viewGroup,
                 false);
         final RefugiadoViewHolder mViewHolder = new RefugiadoViewHolder(v);
@@ -78,10 +60,9 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
         refugiadoViewHolder.apellido2.setText(refugee.getSurname2());
         refugiadoViewHolder.sexo.setText(refugee.getSex());
         refugiadoViewHolder.nacimiento.setText(refugee.getBirthDate());
-        if(refugee.getPhoto() != null){
+        if (refugee.getPhoto() != null) {
             refugiadoViewHolder.photo.setImageBitmap(refugee.getDecodedPhoto());
-        }
-        else{
+        } else {
             refugiadoViewHolder.photo.setImageResource(R.drawable.ic_usuario);
         }
 
@@ -95,5 +76,23 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
     @Override
     public int getItemCount() {
         return mRefugees.size();
+    }
+
+    public class RefugiadoViewHolder extends RecyclerView.ViewHolder {
+        CardView cv;
+        ImageView photo;
+        TextView nombre, apellido1, apellido2, sexo, nacimiento;
+//        ImageView serviceType;
+
+        RefugiadoViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView) itemView.findViewById(R.id.cv);
+            photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
+            nombre = (TextView) itemView.findViewById(R.id.nombre_cv);
+            apellido1 = (TextView) itemView.findViewById(R.id.apellido1_cv);
+            apellido2 = (TextView) itemView.findViewById(R.id.apellido2_cv);
+            sexo = (TextView) itemView.findViewById(R.id.sexo_cv);
+            nacimiento = (TextView) itemView.findViewById(R.id.nacimiento_cv);
+        }
     }
 }

@@ -14,8 +14,8 @@ import static org.hamcrest.Matchers.instanceOf;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Settings;
-import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Settings;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -30,18 +30,17 @@ public class EspressoPantallaSettings {
             (Settings.class);
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
     @Test
-    public void testSpiner ()
-    {
+    public void testSpiner() {
 
         String codLenguaje = Locale.getDefault().getLanguage();
         int index = 0;

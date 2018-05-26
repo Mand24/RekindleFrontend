@@ -9,7 +9,9 @@
     <string name="acceder">Acceder</string>
     <string name="registro">Registrarse</string>
     <string name="tipo_usuario">Tipo de user:</string>
-    <string name="recuperar_password"><u>Recuperar contraseña</u></string>
+    <string name="recuperar_password">
+        <u>Recuperar contraseña</u>
+    </string>
     <string name="atras">Atrás</string>
     <string name="login">Iniciar sesión</string>
     <string name="enviar">Enviar</string>
@@ -40,7 +42,9 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
-    <string name="cambiar_password"><b>Cambiar contraseña</b></string>
+    <string name="cambiar_password">
+        <b>Cambiar contraseña</b>
+    </string>
     <string name="actual_password">Contraseña actual:</string>
     <string name="nuevo_password">Contraseña nueva:</string>
     <string name="repetir_password1">Repite contraseña:</string>
@@ -81,16 +85,23 @@
     <string name="price">Precio:</string>
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
-    <string name="go_to_signup"><b><u>No tienes cuenta todavía? Crea una</u></b></string>
+    <string name="go_to_signup">
+        <b>
+            <u>No tienes cuenta todavía? Crea una</u>
+        </b>
+    </string>
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registrado correctamente!</string>
     <string name="registro_fallido">La inscripción ha fallado!</string>
     <string name="servicio_alojamiento_creado_correctamente">Servicio de lodge creado
-        correctamente!</string>
+        correctamente!
+    </string>
     <string name="servicio_alojamiento_fallido">Ha fallado la creación del service de
-        lodge!</string>
+        lodge!
+    </string>
     <string name="curso_educativo_creado_correctamente">Curso educativo creado
-        correctamente!</string>
+        correctamente!
+    </string>
     <string name="curso_educativo_fallido">Ha fallado la creación del curso educativo!</string>
     <string name="donacion_creada_correctamente">Donación creada correctamente!</string>
     <string name="donacion_fallida">Ha fallado la creación de la donación!</string>
@@ -114,7 +125,8 @@
     <string name="nombre_letras">El nombre sólo puede contener letras</string>
     <string name="email_obligatorio">Email obligatorio</string>
     <string name="email_largo">Email demasiado largo, máximo 30 caracteres</string>
-    <string name="email_formato">El format del email es incorrecto; formato correcto = x@x.x</string>
+    <string name="email_formato">El format del email es incorrecto; formato correcto = x@x.x
+    </string>
     <string name="contraseña_obligatoria">Contraseña obligatoria</string>
     <string name="contraseña_larga">Contraseña demasiado larga, máximo 15 caracteres</string>
     <string name="contraseña_corta">Contrasenya massa curta, mínimo 4 caracteres</string>
@@ -126,14 +138,18 @@
     <string name="apellido2_letras">El segundo apellido sólo puede contener letras</string>
     <string name="telefonoUsuario_numeros">El teléfono sólo puede contener dígitos</string>
     <string name="telefonoUsuario_largo">Teléfono demasido largo, máximo 40 dígitos</string>
-    <string name="procedencia_letras">El nombre del país de origen sólo puede contener letras</string>
-    <string name="procedencia_largo">El nombre del país de origen es demasiado largo, máximo 20 letras</string>
+    <string name="procedencia_letras">El nombre del país de origen sólo puede contener letras
+    </string>
+    <string name="procedencia_largo">El nombre del país de origen es demasiado largo, máximo 20
+        letras
+    </string>
     <string name="pueblo_largo">El nombre del pueblo es demasiado largo, máximo 40 letras</string>
     <string name="pueblo_letras">El nombre del pueblo sólo puede contener letras</string>
     <string name="etnia_largo">El nombre de la etnia demasiado largo, máximo 20 letras</string>
     <string name="etnia_letras">El nombre de la etnia sólo puede contener letras</string>
     <string name="nombreServicio_obligatorio">Nombre del service obligatorio</string>
-    <string name="nombreServicio_largo">El nombre del service es demasiado largo, máximo 50 letras</string>
+    <string name="nombreServicio_largo">El nombre del service es demasiado largo, máximo 50 letras
+    </string>
     <string name="nombreServicio_letras">El nombre del service sólo puede contener letras</string>
     <string name="telefonoServicio_obligatorio">Teléfono obligatorio</string>
     <string name="solicitudes_numeros">El límite de solicitudes debe ser un número</string>
@@ -141,31 +157,46 @@
     <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letrass</string>
     <string name="descripcion_letras">La descripción sólo puede contener letras</string>
     <string name="puestoTrabajo_obligatorio">Puesto de trabajo obligatorio</string>
-    <string name="puestoTrabajo_largo">El nombre del charge de trabajo es demasiado largo, máximo 50 caracteres</string>
+    <string name="puestoTrabajo_largo">El nombre del charge de trabajo es demasiado largo, máximo 50
+        caracteres
+    </string>
     <string name="requisitos_obligatorios">Requisitos obligatorios</string>
-    <string name="requisitos_largo">La descripción de los requirements es demasiada larga, máximo 100 caracteres</string>
+    <string name="requisitos_largo">La descripción de los requirements es demasiada larga, máximo
+        100 caracteres
+    </string>
 
     <string name="sueldo_obligatorio">Salario obligatorio</string>
-    <string name="sueldo_formto">Formato del salario incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
+    <string name="sueldo_formto">Formato del salario incorrecto; formato correcto = decimal con
+        máximo dos dígitos de precisión
+    </string>
     <string name="plazas_numeros">Plazas sólo puede contener números</string>
-    <string name="plazas_largo">El número de placesLimit es demasiado largo, máximo 5 dígitos</string>
+    <string name="plazas_largo">El número de placesLimit es demasiado largo, máximo 5 dígitos
+    </string>
     <string name="ambito_obligatorio">Ámbito obligatorio</string>
-    <string name="ambito_largo">La descripción del ámbito es demasiado larga, máximo 50 caracteres</string>
+    <string name="ambito_largo">La descripción del ámbito es demasiado larga, máximo 50 caracteres
+    </string>
     <string name="horario_obligatorio">Horario obligatorio</string>
     <string name="horario_largo">El schedule es demasiado largo, máximo 30 caracteres</string>
-    <string name="precio_formato">Formato de price incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
+    <string name="precio_formato">Formato de price incorrecto; formato correcto = decimal con máximo
+        dos dígitos de precisión
+    </string>
 
     <string name="enviar_correo">Enviar correo</string>
 
     <string name="code_request">Pedir codigo de recuperación</string>
 
-    <string name="back_to_login"><b><u>Volver a la pantalla anterior</u></b></string>
+    <string name="back_to_login">
+        <b>
+            <u>Volver a la pantalla anterior</u>
+        </b>
+    </string>
     <string name="introducir_codigo">Código(*):</string>
 
     <string name="titulo_mis_servicios">Mis services</string>
 
     <string name="nomap">Conectate a internet para ver la localización del service</string>
-    s<string name="nointernet">Comprueba tu conexión a Internet</string>
+    s
+    <string name="nointernet">Comprueba tu conexión a Internet</string>
 
     <string name="autentificacion">Verificando...</string>
     <string name="network_fail">Fallo de red</string>
@@ -184,8 +215,10 @@
     <string name="searchService">Buscar services</string>
     <string name="no_permission">La aplicación no tiene permisos de ubicación</string>
 
-    <string name="plazas_aumento">No es posible disminuir el número de placesLimit/solicitudes, solo se
-        puede incrementar</string>
+    <string name="plazas_aumento">No es posible disminuir el número de placesLimit/solicitudes, solo
+        se
+        puede incrementar
+    </string>
 
     <string name="title_about">Sobre Rekindle App</string>
     <string name="version">Versió 0.3</string>
@@ -291,7 +324,8 @@
         introducido. Para ayudar al filtrado por serviceType dispone de cuatro botones encima del
         listado de services, si todos están activos, significa que la lista está mostrando todos
         los tipos de service, cuando un botón es clicado se altera el filtrado, es decir, si un
-        botón se muestra con un color gris, significa que ese serviceType de service no se mostrará en la
+        botón se muestra con un color gris, significa que ese serviceType de service no se mostrará
+        en la
         lista, más de un botón puede ser pulsado. Para volver a activar el serviceType de service de
         simplemente tiene que volver a pulsar el botón del service. Además dispone de un botón
         de ajustes que le permitirá ajustar la búsqueda de manera más precisa, disponiendo de
@@ -329,7 +363,8 @@
             <u>(Solo voluntarios) Crear service \n</u>
         </b>
         Formulario donde se le pedirá
-        introducir unos ciertos datos, dependietes del serviceType de service seleccionado mediante los
+        introducir unos ciertos datos, dependietes del serviceType de service seleccionado mediante
+        los
         cuatro botones situados en la parte superior de la pantalla. Pulsar en "Enviar" dará de
         alta su service. \n \n
 
@@ -408,5 +443,5 @@
 
     <string name="map">Mapa</string>
     <string name="noServices">No hi ha serveis disponibles</string>
-    
+
 </resources>

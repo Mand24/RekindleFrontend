@@ -15,26 +15,24 @@ import org.junit.Test;
 
 public class UnityMaps {
 
-    private String adress = "Carrer Torrent Roig, 08348 Cabrils, Barcelona";
-    private Maps maps = new Maps ();
-    private GoogleMap mGoogleMap;
     Marker mres;
     Context c;
+    private String adress = "Carrer Torrent Roig, 08348 Cabrils, Barcelona";
+    private Maps maps = new Maps();
+    private GoogleMap mGoogleMap;
 
     @Test
-    public void testMyMarker ()
-    {
+    public void testMyMarker() {
 
         mres = maps.setMarker(adress, mres, mGoogleMap, "name");
-        assertEquals (mres.getTitle(), "Localización Servicio: Name");
-        LatLng coordenadas = maps.getLocationFromAddress (c.getApplicationContext (),
+        assertEquals(mres.getTitle(), "Localización Servicio: Name");
+        LatLng coordenadas = maps.getLocationFromAddress(c.getApplicationContext(),
                 adress);
         assertTrue(coordenadas.equals(mres.getPosition()));
     }
 
     @Test
-    public void testNetWork ()
-    {
-        assertTrue (maps.getNetworkInfo() instanceof  NetworkInfo);
+    public void testNetWork() {
+        assertTrue(maps.getNetworkInfo() instanceof NetworkInfo);
     }
 }

@@ -25,20 +25,6 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
     private CustomItemClickListener listener;
     private Context mContext;
 
-    public class ChatViewHolder extends RecyclerView.ViewHolder {
-        CardView cv;
-        ImageView photo;
-        TextView name, surname1;
-//      ImageView userImage;
-        ChatViewHolder(View itemView){
-            super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
-            photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
-            name = (TextView) itemView.findViewById(R.id.name_cv);
-            surname1 = (TextView) itemView.findViewById(R.id.surname1_cv);
-        }
-    }
-
     public ChatsAdapter(List<Chat> chats, CustomItemClickListener listener, Context context) {
         this.chats = chats;
         this.listener = listener;
@@ -52,7 +38,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
     @NonNull
     @Override
     public ChatViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_view_list_chats,
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(
+                R.layout.fragment_view_list_chats,
                 viewGroup,
                 false);
         final ChatViewHolder mViewHolder = new ChatViewHolder(v);
@@ -70,18 +57,17 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
         Chat chat = chats.get(i);
         User user, currentUser;
         currentUser = getUser(mContext);
-        if (!chat.getUser1().getMail().equals(currentUser.getMail())){
+        if (!chat.getUser1().getMail().equals(currentUser.getMail())) {
             user = chat.getUser1();
-        }else {
+        } else {
             user = chat.getUser2();
         }
 
         chatViewHolder.name.setText(user.getName());
         chatViewHolder.surname1.setText(user.getSurname1());
-        if(user.getPhoto() != null){
+        if (user.getPhoto() != null) {
             chatViewHolder.photo.setImageBitmap(user.getDecodedPhoto());
-        }
-        else{
+        } else {
             chatViewHolder.photo.setImageResource(R.drawable.ic_usuario);
         }
     }
@@ -94,6 +80,21 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
     @Override
     public int getItemCount() {
         return this.chats.size();
+    }
+
+    public class ChatViewHolder extends RecyclerView.ViewHolder {
+        CardView cv;
+        ImageView photo;
+        TextView name, surname1;
+
+        //      ImageView userImage;
+        ChatViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView) itemView.findViewById(R.id.cv);
+            photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
+            name = (TextView) itemView.findViewById(R.id.name_cv);
+            surname1 = (TextView) itemView.findViewById(R.id.surname1_cv);
+        }
     }
 
 

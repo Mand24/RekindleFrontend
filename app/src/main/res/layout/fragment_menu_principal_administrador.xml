@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".view.menu.menuPrincipal.MainMenuAdmin">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.menu.mainMenu.MainMenuAdmin">
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/listar_reportes_MenuPrincipalAdministrador"
-        android:layout_height="wrap_content"
-        android:text="@string/listar_reportes"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dim50"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20"
+        android:layout_marginTop="@dimen/dim50"
+        android:text="@string/listar_reportes"
     />
 
 </RelativeLayout>

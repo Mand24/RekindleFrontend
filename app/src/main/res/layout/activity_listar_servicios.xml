@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.services.list.ListServices"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    tools:context=".view.services.list.ListServices">
 
     <!--<android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -26,24 +26,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="false"
-        android:orientation="vertical"
-        android:layout_marginTop="?android:actionBarSize">
+        android:layout_marginTop="?android:actionBarSize"
+        android:orientation="vertical">
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/showMap"
-            android:layout_height="wrap_content"
-            android:text="@string/map"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dim10"
             android:layout_marginLeft="@dimen/dim20"
             android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim10"
+            android:text="@string/map"
         />
 
         <fragment
             android:id="@+id/eleccion_tipo_servicio"
-            android:name="com.example.user.rekindlefrontend.view.services.ServiceTypeSelector"
+            android:name="com.example.usuario.rekindlefrontend.view.services.ServiceTypeSelector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

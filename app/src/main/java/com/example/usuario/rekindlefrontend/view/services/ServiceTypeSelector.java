@@ -29,9 +29,10 @@ public class ServiceTypeSelector extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View menuType = inflater.inflate(R.layout.fragment_eleccion_tipo_servicio, container, false);
+        View menuType = inflater.inflate(R.layout.fragment_eleccion_tipo_servicio, container,
+                false);
 
         ImageButton buttonMenu;
 
@@ -40,18 +41,18 @@ public class ServiceTypeSelector extends Fragment {
         BUTTONSMENU.put("Education", R.id.boton_tipo_curso_educativo);
         BUTTONSMENU.put("Job", R.id.boton_tipo_oferta_empleo);
 
-        for(Map.Entry<String, Integer> entry : BUTTONSMENU.entrySet()) {
+        for (Map.Entry<String, Integer> entry : BUTTONSMENU.entrySet()) {
             final String key = entry.getKey();
             int value = entry.getValue();
             buttonMenu = (ImageButton) menuType.findViewById(value);
 
-            buttonMenu.setOnClickListener(new View.OnClickListener(){
+            buttonMenu.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
 
                     Activity activity = getActivity();
-                    ((CreateService)activity).menu(key);
+                    ((CreateService) activity).menu(key);
                 }
             });
         }

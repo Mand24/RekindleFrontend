@@ -56,9 +56,9 @@ public class LodgeEdit extends AbstractFormatChecker {
     }
 
     @Override
-    public View onCreateView (LayoutInflater inflater, final ViewGroup container, Bundle
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-        final View view = inflater.inflate (R.layout.fragment_editar_alojamiento, container, false);
+        final View view = inflater.inflate(R.layout.fragment_editar_alojamiento, container, false);
 
 
         setViews(view);
@@ -92,11 +92,11 @@ public class LodgeEdit extends AbstractFormatChecker {
         eAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                try {
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
                             .MODE_OVERLAY).build(getActivity());
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-                }catch (GooglePlayServicesRepairableException e) {
+                } catch (GooglePlayServicesRepairableException e) {
                 } catch (GooglePlayServicesNotAvailableException e) {
                 }
             }
@@ -108,7 +108,7 @@ public class LodgeEdit extends AbstractFormatChecker {
     public void setViews(View view) {
 
         eName = view.findViewById(R.id.nombre_alojamiento);
-      //TODO:  eEmail = view.findViewById(R.id.correo_alojamiento);
+        //TODO:  eEmail = view.findViewById(R.id.correo_alojamiento);
         ePhoneNumber = view.findViewById(R.id.telefono_alojamiento);
         eAdress = view.findViewById(R.id.direccion_alojamiento);
         ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
@@ -120,12 +120,12 @@ public class LodgeEdit extends AbstractFormatChecker {
 
     public void initializeFields() {
 
-        eName.setText (servicio.getName());
-        ePhoneNumber.setText (servicio.getPhoneNumber());
-        eAdress.setText (servicio.getAdress());
+        eName.setText(servicio.getName());
+        ePhoneNumber.setText(servicio.getPhoneNumber());
+        eAdress.setText(servicio.getAdress());
         ePlacesLimit.setText(servicio.getPlacesLimit());
-        eDeadline.setText (servicio.getDateLimit());
-        eDescription.setText (servicio.getDescription());
+        eDeadline.setText(servicio.getDateLimit());
+        eDescription.setText(servicio.getDescription());
     }
 
     public void checkFields() throws Exception {
@@ -147,14 +147,13 @@ public class LodgeEdit extends AbstractFormatChecker {
         servicio.setDescription(eDescription.getText().toString());
     }
 
-    public void sendUpdateService(){
+    public void sendUpdateService() {
         mAPIService.editarAlojamiento(servicio.getId(), servicio).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manageResult(true);
-                }
-                else {
+                } else {
                     manageResult(false);
                 }
             }
@@ -166,15 +165,14 @@ public class LodgeEdit extends AbstractFormatChecker {
         });
     }
 
-    public void manageResult(boolean result){
-        if (result){
+    public void manageResult(boolean result) {
+        if (result) {
             Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MyServicesVolunteer.class);
             startActivity(i);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
                     .LENGTH_SHORT).show();
         }

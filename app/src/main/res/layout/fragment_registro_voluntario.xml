@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.usuarios.registro.RegistroVoluntario"
-    >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.users.register.RegisterVolunteer"
+>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,14 +40,14 @@
 
                 <EditText
                     android:id="@+id/nombre_voluntario"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_nombre_formulario"
-                    />
+                    android:inputType="textCapWords"
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -58,14 +58,14 @@
 
                 <EditText
                     android:id="@+id/email_voluntario"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_email_formulario"
-                    />
+                    android:inputType="textEmailAddress"
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -76,14 +76,14 @@
 
                 <EditText
                     android:id="@+id/password_voluntario"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/password1"
-                    />
+                    android:inputType="textPassword"
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -94,14 +94,14 @@
 
                 <EditText
                     android:id="@+id/rpassword_voluntario"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/repetir_password"
-                    />
+                    android:inputType="textPassword"
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -112,14 +112,14 @@
 
                 <EditText
                     android:id="@+id/p_apellido_voluntario"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_1apellido_formulario"
-                    />
+                    android:inputType="textCapWords"
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -130,23 +130,23 @@
 
                 <EditText
                     android:id="@+id/s_apellido_voluntario"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dim20"
                     android:layout_marginRight="@dimen/dim20"
                     android:layout_marginTop="@dimen/dim10"
                     android:hint="@string/texto_2apellido_formulario"
-                    />
+                    android:inputType="textCapWords"
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
                 android:id="@+id/enviar_registro_voluntario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/dim20"
                 android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/enviar"
             />
 

@@ -24,19 +24,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.R;
-
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Settings;
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Help;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
-import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.About;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Help;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Settings;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
+import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
-
-//    private ListView listView;
-//    private String[] opciones = { "Opción 1", "Opción 2", "Opción 3", "Opción 4" };
 
     protected RelativeLayout view_stub; //This is the framelayout to keep your content view
     protected NavigationView navigationView;
@@ -53,7 +48,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(
                 R.layout.activity_app_base);// The base layout that contains your navigation drawer.
-//      listView = (ListView) findViewById(R.id.list_view);
+
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -69,12 +64,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         userName = (TextView) headerView.findViewById(R.id.nombre_header);
         userEmail = (TextView) headerView.findViewById(R.id.email_header);
         userPhoto = (ImageView) headerView.findViewById(R.id.profile_image);
-
-       /* SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-       (getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        User usuario = gson.fromJson(json, User.class);*/
 
         User user = getUser(this);
 
@@ -103,30 +92,24 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 Intent i;
 
                 switch (menuItem.getItemId()) {
-                    /*Se define la lógica de casos que puedan producirse al seleccionar cualquier
-                     elemento del menú.*/
+
                     case R.id.ver_perfil:
-                        i = new Intent(getApplicationContext(), VerPerfil.class);
+                        i = new Intent(getApplicationContext(), ShowProfile.class);
                         startActivity(i);
                         break;
                     case R.id.configuracion:
-//                        Toast.makeText(getApplicationContext(), "configuracion!", Toast
-//                                .LENGTH_SHORT)
-//                                .show();
+
                         i = new Intent(getApplicationContext(), Settings.class);
                         startActivity(i);
                         break;
 
                     case R.id.ayuda:
-//                        Toast.makeText(getApplicationContext(), "help!", Toast
-//                                .LENGTH_SHORT)
-//                                .show();
+
                         i = new Intent(getApplicationContext(), Help.class);
                         startActivity(i);
                         break;
                     case R.id.about:
-//                      Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
-//                                .show();
+
                         i = new Intent(getApplicationContext(), About.class);
                         startActivity(i);
                         break;
@@ -140,24 +123,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
             }
         });
-
-//        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-//                android.R.id.text1,opciones));
-//
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//                    long arg3) {
-//                Toast.makeText(getApplicationContext(), "Item: " + opciones[arg2],
-//                        Toast.LENGTH_SHORT).show();
-//                drawerLayout.closeDrawers();
-//            }
-//        });
-
-        // Mostramos el botón en la barra de la aplicación
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        // and so on...
     }
 
     private void openDialog() {
@@ -169,11 +134,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /*SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences
-                        (getApplicationContext());
-                        SharedPreferences.Editor miEditor = datos.edit();
-                        miEditor.putString("usuario","");
-                        miEditor.apply();*/
+
 
                         saveUser(null, getApplicationContext());
 
@@ -203,9 +164,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /* Override all setContentView methods to put the content view to the FrameLayout view_stub
-     * so that, we can make other activity implementations looks like normal activity subclasses.
-     */
     @Override
     public void setContentView(int layoutResID) {
         if (view_stub != null) {
@@ -245,9 +203,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.show_lateral_menu:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
+
             case R.id.home:
                 Intent i = new Intent(this, MainMenu.class);
                 startActivity(i);
@@ -262,21 +218,5 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 R.string
                         .drawer_close);
     }
-
-    //    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                if (drawerLayout.isDrawerOpen(listView)) {
-//                    drawerLayout.closeDrawers();
-//                } else {
-//                    drawerLayout.openDrawer(listView);
-//                }
-//                return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
 }

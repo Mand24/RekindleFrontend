@@ -9,7 +9,9 @@
     <string name="acceder">Accedir</string>
     <string name="registro">Registrar-se</string>
     <string name="tipo_usuario">Tipus usuari:</string>
-    <string name="recuperar_password"><u>Recuperar contrasenya</u></string>
+    <string name="recuperar_password">
+        <u>Recuperar contrasenya</u>
+    </string>
     <string name="atras">Enrere</string>
     <string name="login">Iniciar sessió</string>
     <string name="enviar">Enviar</string>
@@ -40,7 +42,9 @@
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
-    <string name="cambiar_password"><b>Canviar contrasenya</b></string>
+    <string name="cambiar_password">
+        <b>Canviar contrasenya</b>
+    </string>
     <string name="actual_password">Contrasenya actual:</string>
     <string name="nuevo_password">Contrasenya nova:</string>
     <string name="repetir_password1">Repeteix contrasenya:</string>
@@ -81,14 +85,20 @@
     <string name="price">Preu:</string>
     <string name="email_usuario_login">Correu</string>
     <string name="password_usuario_login">Contrasenya</string>
-    <string name="go_to_signup"><b><u>Encara no tens compte? Crea un</u></b></string>
+    <string name="go_to_signup">
+        <b>
+            <u>Encara no tens compte? Crea un</u>
+        </b>
+    </string>
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registrat correctament!</string>
     <string name="registro_fallido">La inscripció ha fallat!</string>
     <string name="servicio_alojamiento_creado_correctamente">Servei de allotjament creat
-        correctament!</string>
+        correctament!
+    </string>
     <string name="servicio_alojamiento_fallido">Ha fallat la creació del servei de
-        allotjament!</string>
+        allotjament!
+    </string>
     <string name="curso_educativo_creado_correctamente">Curs educatiu creat correctament!</string>
     <string name="curso_educativo_fallido">Ha fallat la creació del curs educatiu!</string>
     <string name="donacion_creada_correctamente">Donació creada correctament!</string>
@@ -126,7 +136,8 @@
     <string name="telefonoUsuario_numeros">El telèfon només pot contenir dígits</string>
     <string name="telefonoUsuario_largo">Telèfon massa llarg, màxim 40 dígits</string>
     <string name="procedencia_letras">El nom del país d\'origen només pot contenir lletres</string>
-    <string name="procedencia_largo">El nom del país d\'origen és massa llarg, màxim 20 lletres</string>
+    <string name="procedencia_largo">El nom del país d\'origen és massa llarg, màxim 20 lletres
+    </string>
     <string name="pueblo_largo">El nom del poble és massa llarg, màxim 40 lletres</string>
     <string name="pueblo_letras">El nom del poble només pot contenir lletres</string>
     <string name="etnia_largo">El nom de l\'ètnia és massa llarg, màxim 20 lletres</string>
@@ -140,13 +151,21 @@
     <string name="descricpion_larga">La descripció és massa llarga, màxim 300 lletres</string>
     <string name="descripcion_letras">La descripció només pot contenir lletres</string>
     <string name="puestoTrabajo_obligatorio">Lloc de treball obligatori</string>
-    <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50 caràcters</string>
+    <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50
+        caràcters
+    </string>
     <string name="requisitos_obligatorios">Requisits obligatoris</string>
-    <string name="requisitos_largo">La descripció dels requisits és massa llarga, màxim 100 caràcters</string>
+    <string name="requisitos_largo">La descripció dels requisits és massa llarga, màxim 100
+        caràcters
+    </string>
     <string name="enviar_correo">Enviar correu</string>
     <string name="code_request">Demanar codi de recuperació</string>
 
-    <string name="back_to_login"><b><u>Tornar a la pantalla anterior</u></b></string>
+    <string name="back_to_login">
+        <b>
+            <u>Tornar a la pantalla anterior</u>
+        </b>
+    </string>
     <string name="introducir_codigo">Codi(*):</string>
 
     <string name="titulo_mis_servicios">Els meus serveiss</string>
@@ -172,7 +191,8 @@
     <string name="no_permission">L\'aplicació no te permissos d\'ubicació</string>
     <string name="myLocation"></string>
     <string name="plazas_aumento">No es possible disminuir el número de plaçes/sol·licituts, sol es
-        pot incrementar</string>
+        pot incrementar
+    </string>
 
 
     <string name="title_about">Sobre Rekindle App</string>
@@ -292,7 +312,8 @@
         </b>
         En aquesta pantalla es mostra tota la informació
         associada al servei, incloent un mapa amb la localització del servei. Clicar al
-        marcador vermell li permetrà traçar una ruta des de la seva localització actual fins al servei
+        marcador vermell li permetrà traçar una ruta des de la seva localització actual fins al
+        servei
         o obrir l aplicació GoogleMaps per a més opcions. Si té qualsevol dubte amb el
         servei, pot contactar amb el voluntari prement en \"Xat\" i iniciarà una
         conversa amb ell. Si altres usuaris han fet ús d aquest servei anteriorment i han

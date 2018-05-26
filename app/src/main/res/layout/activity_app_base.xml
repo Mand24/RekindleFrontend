@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout
-    android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/view_stub"
@@ -13,7 +13,7 @@
 
         <include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
+            layout="@layout/toolbar"/>
 
     </RelativeLayout>
 
@@ -37,10 +37,10 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation"
-        android:background="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="left"
+        android:background="@color/colorPrimaryDark"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/menu_lateral"
     />

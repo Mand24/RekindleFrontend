@@ -1,7 +1,8 @@
 package com.example.usuario.rekindlefrontend.data.remote;
 
-import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
+import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
@@ -10,8 +11,6 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
-
-import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
 
 import java.util.ArrayList;
 
@@ -37,13 +36,14 @@ public interface APIService {
     //LLAMADAS RELACIONADAS CON USUARIOS
     @PUT("/cambiarPassword/{mail}")
     @FormUrlEncoded
-    Call<Void> cambiarPassword(@Path("mail") String mail, @Field("passwordOld") String passwordOld, @Field
-            ("passwordNew") String passwordNew);
+    Call<Void> cambiarPassword(@Path("mail") String mail, @Field("passwordOld") String passwordOld,
+            @Field
+                    ("passwordNew") String passwordNew);
 
     @PUT("/recuperarPassword/{mail}")
     @FormUrlEncoded
     Call<Void> recuperarPassword(@Path("mail") String mail, @Field("passwordNew") String
-                    password);
+            password);
 
     @GET("/usuarios/{mail}/chats")
     Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
@@ -52,11 +52,12 @@ public interface APIService {
     Call<Chat> getChat(@Path("mail") String mail, @Query("mail1") String mail1, @Query("mail2")
             String
             mail2);
+
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
-    @GET("/mRefugees")
+    @GET("/refugiados")
     Call<ArrayList<Refugee>> buscarRefugiados(
             @Query("name") String name,
             @Query("surname1") String surname1,
@@ -70,13 +71,13 @@ public interface APIService {
             @Query("eye") String eye,
             @Query("mail") String mail);
 
-    @POST("/mRefugees")
+    @POST("/refugiados")
     Call<Void> createRefugiado(@Body Refugee refugee);
 
-    @GET("/mRefugees/{mail}")
+    @GET("/refugiados/{mail}")
     Call<Refugee> obtenerRefugiado(@Path("mail") String mail);
 
-    @PUT("/mRefugees/{mail}")
+    @PUT("/refugiados/{mail}")
     Call<Void> actualizarRefugiado(@Path("mail") String mail, @Body Refugee refugee);
 
 
@@ -95,10 +96,10 @@ public interface APIService {
     @GET("/mRefugees/{mail}")
     Call<> obtenerRefugiado(@Path("mail") String mail);
 */
-    @GET("/mServices")
+    @GET("/servicios")
     Call<ArrayList<Service>> obtenerServicios();
 
-    @GET("/mServices/{mail}/{tipo}")
+    @GET("/servicios/{mail}/{tipo}")
     Call<ArrayList<Service>> obtenerMisServicios(@Path("mail") String mail, @Path
             ("tipo") String tipo);
 
@@ -138,10 +139,10 @@ public interface APIService {
     @POST("/cursos")
     Call<Void> crearEducacion(@Body Education educacion);
 
-    @DELETE("/mServices/{id}/{tipo}")
+    @DELETE("/servicios/{id}/{tipo}")
     Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
 
-    @GET("/mRefugees/{mail}/inscripciones/{id}/{tipo}")
+    @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
     Call<Boolean> isUserSubscribed(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
@@ -149,7 +150,7 @@ public interface APIService {
     Call<Void> subscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
-    @DELETE("/mRefugees/{mail}/inscripciones/{id}/{tipo}")
+    @DELETE("/refugiados/{mail}/inscripciones/{id}/{tipo}")
     Call<Void> unsubscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 

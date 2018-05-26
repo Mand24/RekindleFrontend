@@ -8,26 +8,35 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Report implements Parcelable{
+public class Report implements Parcelable {
+    public static final Creator<Report> CREATOR = new Creator<Report>() {
+        @Override
+        public Report createFromParcel(Parcel in) {
+            return new Report(in);
+        }
+
+        @Override
+        public Report[] newArray(int size) {
+            return new Report[size];
+        }
+    };
     @SerializedName("idReport")
     @Expose
     private int idReport;
-
     @SerializedName("informerUser")
     @Expose
     private User informerUser;
-
     @SerializedName("reportedUser")
     @Expose
     private User reportedUser;
-
     @SerializedName("motive")
     @Expose
     private String motive;
 
-    public Report(){}
+    public Report() {
+    }
 
-    public Report(User informerUser, User reportedUser, String motive){
+    public Report(User informerUser, User reportedUser, String motive) {
         this.informerUser = informerUser;
         this.reportedUser = reportedUser;
         this.motive = motive;
@@ -40,27 +49,15 @@ public class Report implements Parcelable{
         motive = in.readString();
     }
 
-    public static final Creator<Report> CREATOR = new Creator<Report>() {
-        @Override
-        public Report createFromParcel(Parcel in) {
-            return new Report(in);
-        }
-
-        @Override
-        public Report[] newArray(int size) {
-            return new Report[size];
-        }
-    };
-
-    public String getInformerUserMail(){
+    public String getInformerUserMail() {
         return this.informerUser.getMail();
     }
 
-    public String getReportedUserMail(){
+    public String getReportedUserMail() {
         return this.reportedUser.getMail();
     }
 
-    public String getMotive(){
+    public String getMotive() {
         return this.motive;
     }
 

@@ -1,16 +1,5 @@
 package com.example.usuario.rekindlefrontend;
 
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.assertion.ViewAssertions;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -18,26 +7,37 @@ import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.init;
+import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.Intents.release;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static android.support.test.espresso.intent.Intents.intended;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.instanceOf;
+
+import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.assertion.ViewAssertions;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
+
+import com.example.usuario.rekindlefrontend.view.users.edit.ChangePassword;
+import com.example.usuario.rekindlefrontend.view.users.edit.EditProfile;
+import com.example.usuario.rekindlefrontend.view.users.show.ShowProfileRefugee;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 //import static org.hamcrest.core.AllOf.allOf;
 //import static org.hamcrest.core.Is.is;
 //import static org.hamcrest.core.IsInstanceOf.instanceOf;
 //import static org.hamcrest.core.AnyOf.*;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.instanceOf;
-import static org.hamcrest.Matchers.not;
-
-import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.ChangePassword;
-import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditProfile;
-import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -48,12 +48,12 @@ public class EspressoEditProfileRefugee {
             (EditProfile.class);
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 
@@ -142,18 +142,18 @@ public class EspressoEditProfileRefugee {
 
         onView(withId(R.id.guardar_editar_perfil)).perform(click());
 
-        intended(hasComponent(VerPerfilRefugiado.class.getName()));
+        intended(hasComponent(ShowProfileRefugee.class.getName()));
 
     }
 
     @Test
-    public void testAtras(){
+    public void testAtras() {
 
         //TODO: Testear cuando tengamos boton atras
 
 //        onView(isRoot()).perform(ViewActions.closeSoftKeyboard());
 //        onView(isRoot()).perform(pressBack());
-//        intended(hasComponent(VerPerfilRefugiado.class.getName()));
+//        intended(hasComponent(ShowProfileRefugee.class.getName()));
 
     }
 

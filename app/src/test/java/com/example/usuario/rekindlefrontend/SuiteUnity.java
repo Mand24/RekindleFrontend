@@ -13,4 +13,5 @@ import org.junit.runners.Suite;
         UnityAbstractFormatChecker.class,
         UnityMaps.class
 })
-public class SuiteUnity {}
+public class SuiteUnity {
+}

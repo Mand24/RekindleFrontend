@@ -8,6 +8,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class Refugee extends User {
 
+    public static final Parcelable.Creator<Refugee> CREATOR =
+            new Parcelable.Creator<Refugee>() {
+                @Override
+                public Refugee createFromParcel(Parcel source) {
+                    return new Refugee(source);
+                }
+
+                @Override
+                public Refugee[] newArray(int size) {
+                    return new Refugee[size];
+                }
+            };
     @SerializedName("phoneNumber")
     @Expose
     private String phoneNumber;
@@ -36,8 +48,7 @@ public class Refugee extends User {
     @Expose
     private String biography;
 
-
-    public Refugee(){
+    public Refugee() {
         super();
     }
 
@@ -55,6 +66,19 @@ public class Refugee extends User {
         this.bloodType = bloodType;
         this.eyeColor = eyeColor;
         this.biography = biography;
+    }
+
+    protected Refugee(Parcel in) {
+        super(in);
+        this.phoneNumber = in.readString();
+        this.birthDate = in.readString();
+        this.sex = in.readString();
+        this.country = in.readString();
+        this.town = in.readString();
+        this.ethnic = in.readString();
+        this.bloodType = in.readString();
+        this.eyeColor = in.readString();
+        this.biography = in.readString();
     }
 
     public String getPhoneNumber() {
@@ -151,7 +175,6 @@ public class Refugee extends User {
                 '}';
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -170,30 +193,4 @@ public class Refugee extends User {
         dest.writeString(this.eyeColor);
         dest.writeString(this.biography);
     }
-
-    protected Refugee(Parcel in) {
-        super(in);
-        this.phoneNumber = in.readString();
-        this.birthDate = in.readString();
-        this.sex = in.readString();
-        this.country = in.readString();
-        this.town = in.readString();
-        this.ethnic = in.readString();
-        this.bloodType = in.readString();
-        this.eyeColor = in.readString();
-        this.biography = in.readString();
-    }
-
-    public static final Parcelable.Creator<Refugee> CREATOR =
-            new Parcelable.Creator<Refugee>() {
-                @Override
-                public Refugee createFromParcel(Parcel source) {
-                    return new Refugee(source);
-                }
-
-                @Override
-                public Refugee[] newArray(int size) {
-                    return new Refugee[size];
-                }
-            };
 }

@@ -44,17 +44,13 @@ import retrofit2.Response;
 
 public class SearchService extends AppBaseActivity implements OnMapReadyCallback {
 
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private ArrayList<Service> mServices = new ArrayList<Service>();
-
     private MapFragment mapFragment;
     private GoogleMap map;
-
     private LocationManager locationManager;
-
     private APIService mAPIService = APIUtils.getAPIService();
-
     private AppCompatButton mButton;
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private boolean cameraAssigned = false;
 
     @Override
@@ -97,7 +93,6 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
     }
-
 
 
     private void setPositions() {
@@ -182,7 +177,7 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
     }
 
     public void setServices() {
-        if(mServices.size() == 0){
+        if (mServices.size() == 0) {
             Toast.makeText(getApplicationContext(), getString(R.string.noServices), Toast
                     .LENGTH_LONG).show();
         }
@@ -211,7 +206,7 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
 
                 (getString(R.string.serviceLocation) + " " + serviceName));
 
-        if(!cameraAssigned){
+        if (!cameraAssigned) {
             CameraUpdate camera = CameraUpdateFactory.newLatLngZoom(coordinates, 9);
             map.animateCamera(camera);
             cameraAssigned = true;
@@ -268,7 +263,8 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
         for (String provider : providers) {
-            @SuppressLint("MissingPermission") Location l = locationManager.getLastKnownLocation(provider);
+            @SuppressLint("MissingPermission") Location l = locationManager.getLastKnownLocation(
+                    provider);
             if (l == null) {
                 continue;
             }

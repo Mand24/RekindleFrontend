@@ -4,15 +4,9 @@ package com.example.usuario.rekindlefrontend.data.pusher;
  * Created by ORION on 16/05/2018.
  */
 
-import com.example.usuario.rekindlefrontend.adapters.MessagesAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
-import com.google.gson.Gson;
 import com.pusher.client.Pusher;
 import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.SubscriptionEventListener;
-
-import java.util.List;
 
 public class Comm {
 

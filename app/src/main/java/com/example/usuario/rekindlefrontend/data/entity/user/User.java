@@ -11,6 +11,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class User implements Parcelable {
 
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     @SerializedName("userType")
     @Expose
     private String userType;
@@ -33,7 +44,9 @@ public class User implements Parcelable {
     @Expose
     private String photo;
 
-    public User(){}
+    public User() {
+    }
+
 
     public User(String userType, String mail, String password, String name, String surname1, String
             surname2, String photo) {
@@ -46,7 +59,6 @@ public class User implements Parcelable {
         this.photo = photo;
     }
 
-
     protected User(Parcel in) {
         userType = in.readString();
         mail = in.readString();
@@ -56,18 +68,6 @@ public class User implements Parcelable {
         surname2 = in.readString();
         photo = in.readString();
     }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     @Override
     public int describeContents() {
@@ -85,9 +85,13 @@ public class User implements Parcelable {
         dest.writeString(photo);
     }
 
-    public String getUserType() { return userType; }
+    public String getUserType() {
+        return userType;
+    }
 
-    public void setUserType(String userType) { this.userType = userType; }
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 
     public String getMail() {
         return mail;
@@ -129,15 +133,15 @@ public class User implements Parcelable {
         this.surname2 = surname2;
     }
 
-    public String getPhoto(){
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo){
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
-    public Bitmap getDecodedPhoto(){
+    public Bitmap getDecodedPhoto() {
         byte[] decodedString = Base64.decode(getPhoto(), Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedString, 0,
                 decodedString.length);

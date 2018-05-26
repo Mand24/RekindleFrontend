@@ -31,31 +31,31 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.usuarios.registro.RegistroUsuario"/>
-        <activity android:name=".view.menu.menuPrincipal.MenuPrincipal" />
-        <activity android:name=".view.usuarios.verPerfil.VerPerfil" />
-        <activity android:name=".view.servicios.crear.CrearServicio" />
-        <activity android:name=".view.servicios.listar.ListarServicios" />
-        <activity android:name=".view.usuarios.editarPerfil.EditProfile" />
-        <activity android:name=".view.usuarios.editarPerfil.ChangePassword" />
-        <activity android:name=".view.servicios.mostrar.MostrarServicio" />
-        <activity android:name=".view.menu.login.RecuperarPassword" />
-        <activity android:name=".view.menu.login.CodePasswordRequest" />
-        <activity android:name=".view.servicios.listar.MisServiciosRefugiado" />
-        <activity android:name=".view.servicios.listar.MisServiciosVoluntario" />
-        <activity android:name=".view.servicios.BuscarServicio" />
-        <activity android:name=".view.usuarios.busqueda.SearchRefugee" />
-        <activity android:name=".view.menu.menuLateral.Ajustes"/>
-        <activity android:name=".view.menu.menuLateral.About"/>
-        <activity android:name=".view.usuarios.busqueda.ListRefugee"/>
-        <activity android:name=".view.menu.menuLateral.Help"/>
-        <activity android:name=".view.usuarios.busqueda.ShowRefugee"/>
-        <activity android:name=".view.usuarios.chat.ShowChat"/>
-        <activity android:name=".view.usuarios.chat.ListChats"/>
-        <activity android:name=".view.ListReports"/>
-        <activity android:name=".view.CreateReport"/>
-        <activity android:name=".view.ShowReport"/>
-        <activity android:name=".view.servicios.editar.EditarServicio" />
+        <activity android:name=".view.users.register.RegisterUser"/>
+        <activity android:name=".view.menu.mainMenu.MainMenu"/>
+        <activity android:name=".view.users.show.ShowProfile"/>
+        <activity android:name=".view.services.create.CreateService"/>
+        <activity android:name=".view.services.list.ListServices"/>
+        <activity android:name=".view.users.edit.EditProfile"/>
+        <activity android:name=".view.users.edit.ChangePassword"/>
+        <activity android:name=".view.services.show.ShowService"/>
+        <activity android:name=".view.menu.login.RecoverPassword"/>
+        <activity android:name=".view.menu.login.CodePasswordRequest"/>
+        <activity android:name=".view.services.list.MyServicesRefugee"/>
+        <activity android:name=".view.services.list.MyServicesVolunteer"/>
+        <activity android:name=".view.services.SearchService"/>
+        <activity android:name=".view.users.search.SearchRefugee"/>
+        <activity android:name=".view.menu.lateralMenu.Settings"/>
+        <activity android:name=".view.menu.lateralMenu.About"/>
+        <activity android:name=".view.users.search.ListRefugee"/>
+        <activity android:name=".view.menu.lateralMenu.Help"/>
+        <activity android:name=".view.users.search.ShowRefugee"/>
+        <activity android:name=".view.chat.ShowChat"/>
+        <activity android:name=".view.chat.ListChats"/>
+        <activity android:name=".view.moderate.ListReports"/>
+        <activity android:name=".view.moderate.CreateReport"/>
+        <activity android:name=".view.moderate.ShowReport"/>
+        <activity android:name=".view.services.edit.ServiceEdit"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -65,9 +65,9 @@
             android:value="@integer/google_play_services_version"/>
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
+                   android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
         <meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+                   android:value="@integer/google_play_services_version"/>
 
         <provider
             android:name=".utils.DatabaseContentProvider"

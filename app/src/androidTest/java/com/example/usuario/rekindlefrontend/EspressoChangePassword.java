@@ -15,7 +15,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
-import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.ChangePassword;
+import com.example.usuario.rekindlefrontend.view.users.edit.ChangePassword;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -48,12 +48,12 @@ public class EspressoChangePassword {
     };
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         init();
     }
 
     @AfterClass
-    public static void end(){
+    public static void end() {
         release();
     }
 

@@ -49,51 +49,52 @@ public class JobEdit extends AbstractFormatChecker {
 
     private APIService mAPIService;
 
-    public JobEdit() {}
+    public JobEdit() {
+    }
 
     @Override
-    public View onCreateView (LayoutInflater inflater, final ViewGroup container, Bundle
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-            final View view = inflater.inflate (R.layout.fragment_editar_empleo, container, false);
+        final View view = inflater.inflate(R.layout.fragment_editar_empleo, container, false);
 
-            servicio = (Job) getArguments().getSerializable("Job");
+        servicio = (Job) getArguments().getSerializable("Job");
 
-            setViews(view);
+        setViews(view);
 
-            initializeFields();
+        initializeFields();
 
-            AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
-            .enviar_editar_oferta_empleo);
+        AppCompatButton sendEdit = (AppCompatButton) view.findViewById(R.id
+                .enviar_editar_oferta_empleo);
 
-            sendEdit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                        try {
-                            checkFields();
-                            getParams();
-                            sendUpdateService();
-                        } catch (Exception e) {
-                            Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+        sendEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    checkFields();
+                    getParams();
+                    sendUpdateService();
+                } catch (Exception e) {
+                    Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            });
-
-            eAdress = view.findViewById(R.id.direccion_oferta_empleo);
-            eAdress.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try{
-                        Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
-                        .MODE_OVERLAY).build(getActivity());
-                        startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-                    }catch (GooglePlayServicesRepairableException e) {
-                    } catch (GooglePlayServicesNotAvailableException e) {
-                    }
-                }
-            });
-
-            return view;
             }
+        });
+
+        eAdress = view.findViewById(R.id.direccion_oferta_empleo);
+        eAdress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
+                            .MODE_OVERLAY).build(getActivity());
+                    startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                } catch (GooglePlayServicesRepairableException e) {
+                } catch (GooglePlayServicesNotAvailableException e) {
+                }
+            }
+        });
+
+        return view;
+    }
 
     public void setViews(View view) {
 
@@ -114,10 +115,10 @@ public class JobEdit extends AbstractFormatChecker {
 
     public void initializeFields() {
 
-        eName.setText (servicio.getName());
-        ePhoneNumber.setText (servicio.getPhoneNumber());
-        eAdress.setText (servicio.getAdress());
-        eCharge.setText (servicio.getCharge());
+        eName.setText(servicio.getName());
+        ePhoneNumber.setText(servicio.getPhoneNumber());
+        eAdress.setText(servicio.getAdress());
+        eCharge.setText(servicio.getCharge());
         eRequirements.setText(servicio.getRequirements());
         eHoursDay.setText(servicio.getHoursDay());
         eHoursWeek.setText(servicio.getHoursWeek());
@@ -125,7 +126,7 @@ public class JobEdit extends AbstractFormatChecker {
         eSalary.setText(servicio.getSalary());
         eCharge.setText(servicio.getCharge());
         ePlacesLimit.setText(servicio.getPlacesLimit());
-        eDescription.setText (servicio.getDescription());
+        eDescription.setText(servicio.getDescription());
     }
 
     public void checkFields() throws Exception {
@@ -152,17 +153,16 @@ public class JobEdit extends AbstractFormatChecker {
         servicio.setContractDuration(eContractDuration.getText().toString());
         servicio.setSalary(eSalary.getText().toString());
         servicio.setPlacesLimit(ePlacesLimit.getText().toString());
-        servicio.setDescription (eDescription.getText().toString());
+        servicio.setDescription(eDescription.getText().toString());
     }
 
-    public void sendUpdateService(){
+    public void sendUpdateService() {
         mAPIService.editarEmpleo(servicio.getId(), servicio).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manageResult(true);
-                }
-                else {
+                } else {
                     manageResult(false);
                 }
             }
@@ -174,15 +174,14 @@ public class JobEdit extends AbstractFormatChecker {
         });
     }
 
-    public void manageResult(boolean result){
-        if (result){
+    public void manageResult(boolean result) {
+        if (result) {
             Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
                     Toast
                             .LENGTH_SHORT).show();
             Intent i = new Intent(getActivity().getApplicationContext(), MyServicesVolunteer.class);
             startActivity(i);
-        }
-        else {
+        } else {
             Toast.makeText(getActivity().getApplicationContext(), "Actualización fallida", Toast
                     .LENGTH_SHORT).show();
         }
@@ -190,17 +189,17 @@ public class JobEdit extends AbstractFormatChecker {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
-                if (resultCode == RESULT_OK) {
-                    Place place = PlaceAutocomplete.getPlace(getActivity(), data);
-                    Log.i("==================", "Place: " + place.getName());
-                    eAdress.setText(place.getAddress());
-                } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                    Status status = PlaceAutocomplete.getStatus(getActivity(), data);
-                    Log.i("==================", status.getStatusMessage());
-                } else if (resultCode == RESULT_CANCELED) {
-                    // The user canceled the operation.
-                }
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                Log.i("==================", "Place: " + place.getName());
+                eAdress.setText(place.getAddress());
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+                Log.i("==================", status.getStatusMessage());
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
             }
+        }
     }
 }

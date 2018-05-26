@@ -8,62 +8,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 
 public class Message implements Parcelable {
-
-    @SerializedName("id")
-    @Expose
-    private int idMessage;
-
-    @SerializedName("idChat")
-    @Expose
-    private int idChat;
-
-    @SerializedName("owner")
-    @Expose
-    private User owner;
-
-    @SerializedName("timestamp")
-    @Expose
-    private String timestamp;
-
-    @SerializedName("content")
-    @Expose
-    private String content;
-
-    public Message() {
-    }
-
-    public Message(int idChat, User owner, String content) {
-        this.idChat = idChat;
-        this.owner = owner;
-        Date date = new Date();
-        this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.FRANCE).format(date);
-        this.content = content;
-    }
-
-    public Message(int idMessage, int idChat, User owner, String content) {
-        this.idMessage = idMessage;
-        this.idChat = idChat;
-        this.owner = owner;
-        Date date = new Date();
-        this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.FRANCE)
-                .format(date);
-        this.content = content;
-    }
-
-
-    protected Message(Parcel in) {
-        idMessage = in.readInt();
-        idChat = in.readInt();
-        owner = in.readParcelable(User.class.getClassLoader());
-        timestamp = in.readString();
-        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'", Locale.FRANCE).format(timestamp);
-        content = in.readString();
-    }
 
     public static final Creator<Message> CREATOR = new Creator<Message>() {
         @Override
@@ -76,6 +24,54 @@ public class Message implements Parcelable {
             return new Message[size];
         }
     };
+    @SerializedName("id")
+    @Expose
+    private int idMessage;
+    @SerializedName("idChat")
+    @Expose
+    private int idChat;
+    @SerializedName("owner")
+    @Expose
+    private User owner;
+    @SerializedName("timestamp")
+    @Expose
+    private String timestamp;
+    @SerializedName("content")
+    @Expose
+    private String content;
+
+    public Message() {
+    }
+
+    public Message(int idChat, User owner, String content) {
+        this.idChat = idChat;
+        this.owner = owner;
+        Date date = new Date();
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.FRANCE).format(
+                date);
+        this.content = content;
+    }
+
+
+    public Message(int idMessage, int idChat, User owner, String content) {
+        this.idMessage = idMessage;
+        this.idChat = idChat;
+        this.owner = owner;
+        Date date = new Date();
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.FRANCE)
+                .format(date);
+        this.content = content;
+    }
+
+    protected Message(Parcel in) {
+        idMessage = in.readInt();
+        idChat = in.readInt();
+        owner = in.readParcelable(User.class.getClassLoader());
+        timestamp = in.readString();
+        this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS'Z'", Locale.FRANCE).format(
+                timestamp);
+        content = in.readString();
+    }
 
     @Override
     public int describeContents() {
