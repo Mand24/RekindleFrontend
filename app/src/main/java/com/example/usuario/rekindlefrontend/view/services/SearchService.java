@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
-import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
@@ -15,34 +14,17 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
-import com.example.usuario.rekindlefrontend.data.entity.service.Education;
-import com.example.usuario.rekindlefrontend.data.entity.service.Job;
-import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
-import com.example.usuario.rekindlefrontend.data.entity.service.Service;
-import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
-
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
-
+import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -85,17 +67,17 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ListarServicios.class);
+                Intent intent = new Intent(getApplicationContext(), ListServices.class);
                 startActivity(intent);
             }
         });
 
-        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Servicio>>() {
+        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Service>>() {
             @Override
-            public void onResponse(Call<ArrayList<Servicio>> call,
-                    Response<ArrayList<Servicio>> response) {
+            public void onResponse(Call<ArrayList<Service>> call,
+                    Response<ArrayList<Service>> response) {
                 if (response.isSuccessful()) {
-                    servicios = response.body();
+                    mServices = response.body();
                     setPositions();
                 } else {
                     Toast.makeText(getApplicationContext(), getResources().getString(R
@@ -104,7 +86,7 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Servicio>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R
                         .string.error), Toast.LENGTH_SHORT).show();
             }
@@ -116,6 +98,8 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
 
     }
 
+
+
     private void setPositions() {
         NetworkInfo network = getNetworkInfo();
 
@@ -124,7 +108,7 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
                 if (checkLocationPermission()) {
                     setMyPosition();
                 }
-                setServicies();
+                setServices();
 
             } catch (Exception e) // connected but no internet (login required, for exemple)
             {
@@ -140,12 +124,6 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
     @Override
     public void onBackPressed() {
         finish();
-    }
-
-    @Override
-    protected void gotoInicio() {
-        Intent i = new Intent(this, Login.class);
-        startActivity(i);
     }
 
     @Override
@@ -203,13 +181,13 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
         }
     }
 
-    public void setServicies() {
-        if(servicios.size() == 0){
+    public void setServices() {
+        if(mServices.size() == 0){
             Toast.makeText(getApplicationContext(), getString(R.string.noServices), Toast
                     .LENGTH_LONG).show();
         }
-        for (Servicio s : servicios) {
-            setMarkerService(s.getDireccion(), map, s.getNombre());
+        for (Service s : mServices) {
+            setMarkerService(s.getAdress(), map, s.getName());
         }
     }
 
@@ -234,7 +212,7 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
                 (getString(R.string.serviceLocation) + " " + serviceName));
 
         if(!cameraAssigned){
-            CameraUpdate camera = CameraUpdateFactory.newLatLngZoom(coordenadas, 9);
+            CameraUpdate camera = CameraUpdateFactory.newLatLngZoom(coordinates, 9);
             map.animateCamera(camera);
             cameraAssigned = true;
         }
@@ -300,5 +278,11 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
             }
         }
         return bestLocation;
+    }
+
+    @Override
+    protected void gotoLaunch() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 }

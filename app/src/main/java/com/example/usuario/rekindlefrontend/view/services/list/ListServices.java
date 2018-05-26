@@ -17,14 +17,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
+import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
+import com.example.usuario.rekindlefrontend.view.services.SearchService;
 import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
 
 import java.io.IOException;
@@ -66,9 +67,6 @@ public class ListServices extends AppBaseActivity implements Filterable {
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
         initializeData();
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
@@ -158,7 +156,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
         mMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BuscarServicio.class);
+                Intent intent = new Intent(getApplicationContext(), SearchService.class);
                 startActivity(intent);
             }
         });
@@ -199,11 +197,10 @@ public class ListServices extends AppBaseActivity implements Filterable {
                             response) {
                 if (response.isSuccessful()) {
                     ArrayList<Service> body = response.body();
-                    //mServices = response.body();
                     manageResult(true, body);
 
                 } else {
-                    System.out.println("CODIGO "+response.code());
+                    System.out.println("CODIGO " + response.code());
                     manageResult(false, null);
                 }
             }
@@ -214,11 +211,10 @@ public class ListServices extends AppBaseActivity implements Filterable {
                 manageResult(false, null);
                 Log.i(t.getClass().toString(), "========================");
                 if (t instanceof IOException) {
-                    Log.i( "NETWORK ERROR", "=======================================");
+                    Log.i("NETWORK ERROR", "=======================================");
                     // logging probably not necessary
-                }
-                else {
-                    Log.i( "CONVERSION ERROR", "=======================================");
+                } else {
+                    Log.i("CONVERSION ERROR", "=======================================");
                 }
             }
         });
@@ -245,12 +241,10 @@ public class ListServices extends AppBaseActivity implements Filterable {
         search(searchView);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.show_lateral_menu:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
             case R.id.home:
                 Intent i = new Intent(this, MainMenu.class);
                 startActivity(i);

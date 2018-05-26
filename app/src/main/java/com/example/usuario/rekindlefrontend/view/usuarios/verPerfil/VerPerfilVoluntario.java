@@ -19,7 +19,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
+import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditProfile;
 
 import java.io.IOException;
 
@@ -56,7 +56,7 @@ public class VerPerfilVoluntario extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), EditarPerfil.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), EditProfile.class);
                 i.putExtra("Volunteer", mVolunteer);
                 System.out.println("ver"+ mVolunteer.toString());
                 startActivity(i);

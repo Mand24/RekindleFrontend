@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.ListReports;
 
-public class MenuPrincipalAdministrador extends Fragment {
+public class MainMenuAdmin extends Fragment {
 
-    private AppCompatButton button_listar_reportes;
+    private AppCompatButton button_list_reports;
 
-    public MenuPrincipalAdministrador() {
+    public MainMenuAdmin() {
         // Required empty public constructor
     }
 
@@ -26,9 +26,9 @@ public class MenuPrincipalAdministrador extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu_principal_administrador, container, false);
 
         //establecer las vistas
-        setVistas(view);
+        setViews(view);
 
-        button_listar_reportes.setOnClickListener(new View.OnClickListener(){
+        button_list_reports.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
@@ -41,8 +41,8 @@ public class MenuPrincipalAdministrador extends Fragment {
         return view;
     }
 
-    public void setVistas(View view){
-        button_listar_reportes = view.findViewById(R.id.listar_reportes_MenuPrincipalAdministrador);
+    public void setViews(View view){
+        button_list_reports = view.findViewById(R.id.listar_reportes_MenuPrincipalAdministrador);
     }
 }
 

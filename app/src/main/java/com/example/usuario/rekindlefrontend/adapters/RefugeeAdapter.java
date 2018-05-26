@@ -16,7 +16,7 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
-public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.RefugiadoViewHolder> {
+public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.RefugiadoViewHolder> {
 
     private List<Refugee> mRefugees;
     private CustomItemClickListener listener;
@@ -40,7 +40,7 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
         }
     }
 
-    public RefugiadosAdapter(Context mContext, List<Refugee> refugees, CustomItemClickListener
+    public RefugeeAdapter(Context mContext, List<Refugee> refugees, CustomItemClickListener
             listener){
         this.mContext = mContext;
         this.mRefugees = refugees;
@@ -69,7 +69,7 @@ public class RefugiadosAdapter extends RecyclerView.Adapter<RefugiadosAdapter.Re
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RefugiadosAdapter.RefugiadoViewHolder refugiadoViewHolder,
+    public void onBindViewHolder(@NonNull RefugeeAdapter.RefugiadoViewHolder refugiadoViewHolder,
             int i) {
         Refugee refugee = mRefugees.get(i);
 

@@ -18,13 +18,12 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -180,7 +179,7 @@ public class JobEdit extends AbstractFormatChecker {
             Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
                     Toast
                             .LENGTH_SHORT).show();
-            Intent i = new Intent(getActivity().getApplicationContext(), MisServiciosVoluntario.class);
+            Intent i = new Intent(getActivity().getApplicationContext(), MyServicesVolunteer.class);
             startActivity(i);
         }
         else {

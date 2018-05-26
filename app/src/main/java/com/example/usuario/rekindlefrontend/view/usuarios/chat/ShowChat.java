@@ -60,11 +60,8 @@ public class ShowChat extends AppBaseActivity {
         chat = getIntent().getParcelableExtra("Chat");
         System.out.println(chat.toString());
 
-        //TODO esto es de prueba
-        //messages = new ArrayList<Message>();
-
         recyclerView = findViewById(R.id.messageList);
-        mAdapter = new MessagesAdapter(messages,this);
+        mAdapter = new MessagesAdapter(messages, this);
 
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
@@ -73,7 +70,7 @@ public class ShowChat extends AppBaseActivity {
         recyclerView.setAdapter(mAdapter);
 
         sendGetMessagesChat();
-        
+
         AppCompatButton btnSend = (AppCompatButton) findViewById(R.id.btnSendMessage);
         final EditText txtMessage = (EditText) findViewById(R.id.txtMessage);
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +78,8 @@ public class ShowChat extends AppBaseActivity {
             @Override
             public void onClick(View v) {
 
-                message = new Message(chat.getIdChat(),getUser(getApplicationContext()),txtMessage.getText().toString());
+                message = new Message(chat.getIdChat(), getUser(getApplicationContext()),
+                        txtMessage.getText().toString());
                 System.out.println("missatge");
                 System.out.println(message.toString());
                 sendSendMessage();
@@ -105,11 +103,12 @@ public class ShowChat extends AppBaseActivity {
                     @Override
                     public void run() {
                         Gson gson = new Gson();
-                        Type mapType = new TypeToken<Map<String, Message>>(){}.getType();
-                        Map<String,Message> map = gson.fromJson(data, mapType);
+                        Type mapType = new TypeToken<Map<String, Message>>() {
+                        }.getType();
+                        Map<String, Message> map = gson.fromJson(data, mapType);
                         Message message = map.get("message");
-                        System.out.println("data"+data);
-                        System.out.println("pushermessage"+ message.toString());
+                        System.out.println("data" + data);
+                        System.out.println("pushermessage" + message.toString());
                         mAdapter.addMessage(message);
 
                         // have the ListView scroll down to the new message
@@ -134,8 +133,8 @@ public class ShowChat extends AppBaseActivity {
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        System.out.println("urlmessage " +call.request().url());
-                        System.out.println("codigoenviomensaje: "+ response.code());
+                        System.out.println("urlmessage " + call.request().url());
+                        System.out.println("codigoenviomensaje: " + response.code());
                     }
 
                     @Override
@@ -154,29 +153,21 @@ public class ShowChat extends AppBaseActivity {
                             Response<ArrayList<Message>>
                                     response) {
                         System.out.println("url " + call.request().url());
-                        System.out.println("codigo: "+ response.code());
+                        System.out.println("codigo: " + response.code());
 
                         if (response.isSuccessful()) {
                             System.out.println("dentro respuesta ok");
                             System.out.println
-                                    ("---------------------------------------------------------------------------------------------------------");
+                                    ("---------------");
                             System.out.println("lista mensajes");
                             messages = response.body();
                             System.out.println(messages);
                             System.out.println
-                                    ("---------------------------------------------------------------------------------------------------------");
+                                    ("---------------");
                             initializeData();
 
                         } else {
-                    /*if (response.body() != null) {
-                        System.out.println("Resposta: " + response.toString
-                                ());
-                    } else {
-                        System.out.println("messages null");
-                    }
-                    System.out.println("Mensaje: " + response.message());
-                    System.out.println("codi: " + response.code());
-                    System.out.println("dentro respuesta failed");*/
+
                             Toast.makeText(getApplicationContext(), getResources().getString(R
                                     .string.error), Toast.LENGTH_SHORT).show();
                         }
@@ -185,13 +176,14 @@ public class ShowChat extends AppBaseActivity {
                     @Override
                     public void onFailure(Call<ArrayList<Message>> call, Throwable t) {
                         if (t instanceof IOException) {
-                            Toast.makeText(getApplicationContext(), "this is an actual network failure"
-                                    + " :( inform "
-                                    + "the user and "
-                                    + "possibly retry", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(), "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
 
                         }
                     }

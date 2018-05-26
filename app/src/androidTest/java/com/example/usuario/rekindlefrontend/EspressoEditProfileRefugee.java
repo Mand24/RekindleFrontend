@@ -34,19 +34,18 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.not;
-import com.example.usuario.rekindlefrontend.R;
 
-import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.CambiarPassword;
-import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditarPerfil;
+import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.ChangePassword;
+import com.example.usuario.rekindlefrontend.view.usuarios.editarPerfil.EditProfile;
 import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfilRefugiado;
 
 
 @RunWith(AndroidJUnit4.class)
-public class EspressoEditarPerfilRefugee {
+public class EspressoEditProfileRefugee {
 
     @Rule
-    public ActivityTestRule<EditarPerfil> pantalla = new ActivityTestRule<EditarPerfil>
-            (EditarPerfil.class);
+    public ActivityTestRule<EditProfile> pantalla = new ActivityTestRule<EditProfile>
+            (EditProfile.class);
 
     @BeforeClass
     public static void setup(){
@@ -129,7 +128,7 @@ public class EspressoEditarPerfilRefugee {
 
         onView(withId(R.id.cambiar_password)).perform(click());
 
-        intended(hasComponent(CambiarPassword.class.getName()));
+        intended(hasComponent(ChangePassword.class.getName()));
 
     }
 

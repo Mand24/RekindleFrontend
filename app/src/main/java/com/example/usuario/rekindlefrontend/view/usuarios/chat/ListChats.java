@@ -54,8 +54,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
         getSupportActionBar().setTitle(R.string.listChat);
 
         initializeData();
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
+
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -75,20 +74,20 @@ public class ListChats extends AppBaseActivity implements Filterable {
             public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
                 System.out.println("listchat code: " + response.code());
                 if (response.isSuccessful()){
-                    tratarResultadoPeticion(true, response.body());
+                    manageResult(true, response.body());
                 }else {
-                    tratarResultadoPeticion(false, null);
+                    manageResult(false, null);
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Chat>> call, Throwable t) {
-                tratarResultadoPeticion(false, null);
+                manageResult(false, null);
             }
         });
     }
 
-    public void tratarResultadoPeticion(boolean result, List<Chat> respuesta) {
+    public void manageResult(boolean result, List<Chat> respuesta) {
 
         if (result) {
             chats = respuesta;
@@ -141,9 +140,7 @@ public class ListChats extends AppBaseActivity implements Filterable {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.show_lateral_menu:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
+
             case R.id.home:
                 Intent i = new Intent(this, MainMenu.class);
                 startActivity(i);

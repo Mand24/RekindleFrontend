@@ -8,13 +8,12 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,23 +21,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
-
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-import com.example.usuario.rekindlefrontend.data.remote.APIService;
-import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MenuPrincipal;
-import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
-import com.example.usuario.rekindlefrontend.view.usuarios.chat.ShowChat;
 import com.example.usuario.rekindlefrontend.view.usuarios.registro.RegistroUsuario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -47,12 +36,8 @@ import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
-
-
 import java.lang.reflect.Type;
 import java.util.Map;
-import java.util.Set;
-
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -163,7 +148,7 @@ public class Login extends AppCompatActivity {
         String password = _passwordText.getText().toString();
         mAPIService.login(email, password).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 /*Set<String> headers = response.headers().names();
                 for(String header : headers) {
                     System.out.println("cabecera: "+header);
@@ -234,30 +219,34 @@ public class Login extends AppCompatActivity {
                     public void run() {
 
                         Gson gson = new Gson();
-                        Type mapType = new TypeToken<Map<String, Message>>(){}.getType();
-                        Map<String,Message> map = gson.fromJson(data, mapType);
+                        Type mapType = new TypeToken<Map<String, Message>>() {
+                        }.getType();
+                        Map<String, Message> map = gson.fromJson(data, mapType);
                         Message message = map.get("message");
-                        Usuario owner = message.getOwner();
-                        if (!getUser(getApplicationContext()).getMail().equals(owner.getMail())){
+                        User owner = message.getOwner();
+                        if (!getUser(getApplicationContext()).getMail().equals(owner.getMail())) {
 
                             Intent intent = new Intent(getApplicationContext(), ListChats.class);
 
                             // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
                             final int pendingIntentId = 0;
                             PendingIntent contentIntent =
-                                    PendingIntent.getActivity(getApplicationContext(), pendingIntentId, intent,
+                                    PendingIntent.getActivity(getApplicationContext(),
+                                            pendingIntentId, intent,
                                             PendingIntent.FLAG_UPDATE_CURRENT);
 
                             // Instantiate the builder and set notification elements:
 
-                            Notification notification  = new Notification.Builder(getApplicationContext())
+                            Notification notification = new Notification.Builder(
+                                    getApplicationContext())
                                     .setCategory(Notification.CATEGORY_PROMO)
                                     .setContentTitle(owner.getName() + " " + owner.getSurname1())
                                     .setContentText(message.getContent())
                                     .setSmallIcon(R.drawable.logo_r)
                                     .setAutoCancel(true)
                                     .setVisibility(Notification.VISIBILITY_PUBLIC)
-                                    .addAction(android.R.drawable.ic_menu_view, "View details", contentIntent)
+                                    .addAction(android.R.drawable.ic_menu_view, "View details",
+                                            contentIntent)
                                     .setContentIntent(contentIntent)
                                     .setPriority(Notification.PRIORITY_HIGH)
                                     .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
@@ -265,7 +254,8 @@ public class Login extends AppCompatActivity {
 
                             // Get the notification manager:
                             NotificationManager notificationManager =
-                                    (NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+                                    (NotificationManager) getApplicationContext().getSystemService(
+                                            NOTIFICATION_SERVICE);
 
                             // Publish the notification:
                             final int notificationId = 0;
@@ -282,7 +272,6 @@ public class Login extends AppCompatActivity {
 
         pusher.connect();
     }
-
 
 
     public void onLoginFailed() {

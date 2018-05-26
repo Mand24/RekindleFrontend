@@ -1,24 +1,18 @@
 package com.example.usuario.rekindlefrontend.view.menu.menuPrincipal;
 
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
 import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
-
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.view.servicios.crear.CrearServicio;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.ListarServicios;
-import com.example.usuario.rekindlefrontend.view.servicios.listar.MisServiciosVoluntario;
 import com.example.usuario.rekindlefrontend.view.usuarios.chat.ListChats;
 
 
@@ -45,7 +39,7 @@ public class MainMenuVolunteer extends Fragment {
                 false);
         setViews(view);
 
-        button_list_services.setOnClickListener(new View.OnClickListener(){
+        button_list_services.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -54,7 +48,7 @@ public class MainMenuVolunteer extends Fragment {
             }
         });
 
-        button_create_services.setOnClickListener(new View.OnClickListener(){
+        button_create_services.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -63,7 +57,7 @@ public class MainMenuVolunteer extends Fragment {
             }
         });
 
-        button_my_services.setOnClickListener(new View.OnClickListener(){
+        button_my_services.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -73,7 +67,7 @@ public class MainMenuVolunteer extends Fragment {
             }
         });
 
-        button_chat.setOnClickListener(new View.OnClickListener(){
+        button_chat.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -86,7 +80,7 @@ public class MainMenuVolunteer extends Fragment {
         return view;
     }
 
-    public void setViews(View view){
+    public void setViews(View view) {
         button_list_services = view.findViewById(R.id.listar_servicios_MenuPrincipalVoluntario);
         button_create_services = view.findViewById(R.id.crear_servicio_MenuPrincipalVoluntario);
         button_my_services = view.findViewById(R.id.mis_servicios_MenuPrincipalVoluntario);

@@ -7,8 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.HashMap;
 
@@ -37,7 +37,7 @@ public class CreateService extends AppBaseActivity {
 
     }
 
-    public void menu(String serviceType){
+    public void menu(String serviceType) {
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

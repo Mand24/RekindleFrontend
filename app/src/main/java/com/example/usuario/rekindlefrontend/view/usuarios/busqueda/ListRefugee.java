@@ -6,7 +6,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.Filterable;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.adapters.RefugiadosAdapter;
+import com.example.usuario.rekindlefrontend.adapters.RefugeeAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
@@ -24,12 +23,12 @@ import com.example.usuario.rekindlefrontend.view.menu.menuPrincipal.MainMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListarRefugiados extends AppBaseActivity implements Filterable {
+public class ListRefugee extends AppBaseActivity implements Filterable {
 
     protected List<Refugee> mRefugees = new ArrayList<>();
-    protected List<Refugee> mRefugiadosFiltrados = new ArrayList<>();
+    protected List<Refugee> mRefugeesFiltered = new ArrayList<>();
     protected RecyclerView recyclerView;
-    protected RefugiadosAdapter mAdapter;
+    protected RefugeeAdapter mAdapter;
     protected SearchView searchView;
 
     @Override
@@ -41,9 +40,6 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
         initializeData();
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -54,23 +50,21 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
         recyclerView.setAdapter(mAdapter);
 
-
     }
 
     protected void setAdapterListener() {
-        mAdapter = new RefugiadosAdapter(getApplicationContext(), mRefugiadosFiltrados,
+        mAdapter = new RefugeeAdapter(getApplicationContext(), mRefugeesFiltered,
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        Intent intent = new Intent(getApplicationContext(), MostrarPerfilRefugiado.class);
+                        Intent intent = new Intent(getApplicationContext(),
+                                ShowRefugee.class);
                         intent.putExtra("Refugee", mRefugees.get(position));
                         System.out.println(mRefugees.get(position).toString());
                         startActivity(intent);
 
-                       /* Toast.makeText(getApplicationContext(), "Mostrar Perfil!!!", Toast
-                                .LENGTH_SHORT)
-                                .show();*/
                     }
+
                     @Override
                     public void onItemLongClick(View v, int position) {
                     }
@@ -79,7 +73,7 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
     protected void refreshItems() {
 
-        mAdapter.setRefugees(mRefugiadosFiltrados);
+        mAdapter.setRefugees(mRefugeesFiltered);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -87,9 +81,7 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
         mRefugees = getIntent().getParcelableArrayListExtra("listRefugiados");
 
-        mRefugiadosFiltrados = mRefugees;
-
-
+        mRefugeesFiltered = mRefugees;
     }
 
     @Override
@@ -117,9 +109,7 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.show_lateral_menu:
-//                drawerLayout.openDrawer(GravityCompat.START);
-//                return true;
+
             case R.id.home:
                 Intent i = new Intent(this, MainMenu.class);
                 startActivity(i);
@@ -161,9 +151,9 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
                 ArrayList<Refugee> filteredList = new ArrayList<>();
 
                 for (Refugee s : mRefugees) {
-                    if(!charString.isEmpty()) {
+                    if (!charString.isEmpty()) {
                         if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
-                        )|| (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
+                        ) || (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
                                 (charString)) || (s.getSurname2() != null && s
                                 .getSurname2().toLowerCase().contains(charString)) || (s.getSex()
                                 != null && s.getSex().toLowerCase().contains(charString)) || (s
@@ -172,23 +162,22 @@ public class ListarRefugiados extends AppBaseActivity implements Filterable {
 
                             filteredList.add(s);
                         }
-                    }
-                    else{
+                    } else {
                         filteredList.add(s);
                     }
 
                 }
 
-                mRefugiadosFiltrados = filteredList;
+                mRefugeesFiltered = filteredList;
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = mRefugiadosFiltrados;
+                filterResults.values = mRefugeesFiltered;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                mRefugiadosFiltrados = (ArrayList<Refugee>) filterResults.values;
+                mRefugeesFiltered = (ArrayList<Refugee>) filterResults.values;
                 refreshItems();
             }
         };

@@ -43,14 +43,14 @@ import retrofit2.Response;
  * Created by ORION on 27/04/2018.
  */
 
-public class EditarPerfilVoluntario extends AbstractFormatChecker{
+public class EditProfileVolunteer extends AbstractFormatChecker{
 
     private Volunteer mVolunteer;
 
-    private EditText eNombre;
+    private EditText eName;
     private TextView eEmail;
-    private EditText ePrimer_apellido;
-    private EditText eSegundo_apellido;
+    private EditText eSurname1;
+    private EditText eSurname2;
 
     private Bitmap bitmapImage;
     private ImageView ePhoto;
@@ -102,7 +102,7 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), ChangePassword.class);
                 i.putExtra("Volunteer", mVolunteer);
                 i.putExtra("tipo", mVolunteer.getUserType());
                 System.out.println(mVolunteer.toString());
@@ -124,10 +124,10 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     public void setVistas(View view) {
 
-        eNombre = view.findViewById(R.id.nombre_usuario_perfil);
+        eName = view.findViewById(R.id.nombre_usuario_perfil);
         eEmail = view.findViewById(R.id.email_usuario_perfil);
-        ePrimer_apellido = view.findViewById(R.id.apellido1_usuario_perfil);
-        eSegundo_apellido = view.findViewById(R.id.apellido2_usuario_perfil);
+        eSurname1 = view.findViewById(R.id.apellido1_usuario_perfil);
+        eSurname2 = view.findViewById(R.id.apellido2_usuario_perfil);
         ePhoto = view.findViewById(R.id.volunteer_photo);
 
         mAPIService = APIUtils.getAPIService();
@@ -137,10 +137,10 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     public void initializeData(View view){
 
-        eNombre.setText(mVolunteer.getName());
+        eName.setText(mVolunteer.getName());
         eEmail.setText(mVolunteer.getMail());
-        ePrimer_apellido.setText(mVolunteer.getSurname1());
-        eSegundo_apellido.setText(mVolunteer.getSurname2());
+        eSurname1.setText(mVolunteer.getSurname1());
+        eSurname2.setText(mVolunteer.getSurname2());
 
         if(mVolunteer.getPhoto() != null) {
             ePhoto.setImageBitmap(mVolunteer.getDecodedPhoto());
@@ -152,16 +152,16 @@ public class EditarPerfilVoluntario extends AbstractFormatChecker{
 
     public void checkCampos(View view) throws Exception {
 
-        checkName(eNombre.getText().toString());;
-        checkSurname1(ePrimer_apellido.getText().toString());
-        checkSurname2(eSegundo_apellido.getText().toString());
+        checkName(eName.getText().toString());;
+        checkSurname1(eSurname1.getText().toString());
+        checkSurname2(eSurname2.getText().toString());
 
     }
 
     public void obtenerCampos() {
-        mVolunteer.setName(eNombre.getText().toString());
-        mVolunteer.setSurname1(ePrimer_apellido.getText().toString());
-        mVolunteer.setSurname2(eSegundo_apellido.getText().toString());
+        mVolunteer.setName(eName.getText().toString());
+        mVolunteer.setSurname1(eSurname1.getText().toString());
+        mVolunteer.setSurname2(eSurname2.getText().toString());
 
         if(bitmapImage != null) {
             mVolunteer.setPhoto(encode_photo(bitmapImage));

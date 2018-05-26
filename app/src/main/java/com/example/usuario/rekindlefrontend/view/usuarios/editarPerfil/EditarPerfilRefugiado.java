@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Base64;
@@ -30,8 +29,6 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 
-import com.example.usuario.rekindlefrontend.AppBaseActivity;
-import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
 import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
 
@@ -125,7 +122,7 @@ public class EditarPerfilRefugiado extends AbstractFormatChecker{
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), CambiarPassword.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), ChangePassword.class);
                 i.putExtra("Refugee", mRefugee);
                 i.putExtra("tipo", mRefugee.getUserType());
                 startActivity(i);

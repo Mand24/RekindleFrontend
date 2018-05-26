@@ -16,16 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
-
-import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
-
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
@@ -62,7 +56,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     public Marker myMarker;
     private APIService mAPIService = APIUtils.getAPIService();
     private final String TYPE = "Lodge";
-    private Usuario currentUser;
+    private User currentUser;
     private Chat newChat;
 
     @Override
@@ -112,7 +106,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-            mAPIService.isUserSubscribed(mail, servicio.getId(), TYPE).enqueue(
+            mAPIService.isUserSubscribed(mail, service.getId(), TYPE).enqueue(
 
                     new Callback<Boolean>() {
                         @Override
@@ -147,11 +141,11 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                             .string.inscribir))) {
                         mAPIService.subscribeService(mail,
 
-                                servicio.getId(), TYPE).enqueue(new Callback<Void>() {
+                                service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
                                 if (response.isSuccessful()){
-                                    inscribirse.setText(R.string.unsubscribe);
+                                    enroll.setText(R.string.unsubscribe);
                                 }
                                 else{
                                     failure();
@@ -175,7 +169,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                     public void onClick(DialogInterface dialog,
                                             int which) {
 
-                                        mAPIService.unsubscribeService(mail, servicio.getId(),
+                                        mAPIService.unsubscribeService(mail, service.getId(),
                                                 TYPE).enqueue(new Callback<Void>() {
                                             @Override
                                             public void onResponse(Call<Void> call,
@@ -183,7 +177,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                                 System.out.println("CODIGOunsu " + response.code());
                                                 System.out.println("url " + call.request().url());
                                                 if (response.isSuccessful()){
-                                                    inscribirse.setText(R.string.inscribir);
+                                                    enroll.setText(R.string.inscribir);
                                                 }
                                                 else{
                                                     failure();
@@ -204,7 +198,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
                                     public void onClick(DialogInterface dialog,
                                             int which) {
-                                        inscribirse.setText(R.string.unsubscribe);
+                                        enroll.setText(R.string.unsubscribe);
                                         dialog.cancel();
                                     }
                                 });
@@ -218,7 +212,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
             });
 
         }else{
-            inscribirse.setVisibility(View.INVISIBLE);
+            enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
 
         }
@@ -227,7 +221,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     }
 
     public void sendGetChat(){
-        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), servicio.getEmail())
+        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), service.getEmail())
         .enqueue(
                 new Callback<Chat>() {
                     @Override
@@ -268,9 +262,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
             startActivity(i);
         }
         else {
-            mAPIService.obtenerVoluntario(servicio.getEmail()).enqueue(new Callback<Voluntario>() {
+            mAPIService.obtenerVoluntario(service.getEmail()).enqueue(new Callback<Volunteer>() {
                 @Override
-                public void onResponse(Call<Voluntario> call, Response<Voluntario> response) {
+                public void onResponse(Call<Volunteer> call, Response<Volunteer> response) {
                     if (response.isSuccessful()){
                         manageResultGetVolunteer(true, response.body());
                     }
@@ -280,7 +274,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                 }
 
                 @Override
-                public void onFailure(Call<Voluntario> call, Throwable t) {
+                public void onFailure(Call<Volunteer> call, Throwable t) {
                     if (t instanceof IOException) {
                         Toast.makeText(getActivity().getApplicationContext(),
                                 "this is an actual network failure"
@@ -299,7 +293,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         }
     }
 
-    public void manageResultGetVolunteer(boolean result, Voluntario volunteer){
+    public void manageResultGetVolunteer(boolean result, Volunteer volunteer){
         if (result){
             newChat = new Chat(currentUser,volunteer);
             sendNewChat(newChat);

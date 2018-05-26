@@ -17,21 +17,16 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CambiarPassword extends AppBaseActivity {
+public class ChangePassword extends AppBaseActivity {
 
-    private String tipo;
+    private String userType;
     private Refugee mRefugee;
     private Volunteer mVolunteer;
-
-    private ArrayList<String> param;
 
     private String actual;
     private String new_pass;
@@ -47,11 +42,11 @@ public class CambiarPassword extends AppBaseActivity {
 
         mAPIService = APIUtils.getAPIService();
 
-        tipo = getIntent().getStringExtra("tipo");
+        userType = getIntent().getStringExtra("userType");
 
-        System.out.println(tipo);
+        System.out.println(userType);
 
-        if (tipo.equals("Refugee")) {
+        if (userType.equals("Refugee")) {
             mRefugee = (Refugee) getIntent().getParcelableExtra("Refugee");
             email = mRefugee.getMail();
         }
@@ -66,18 +61,9 @@ public class CambiarPassword extends AppBaseActivity {
 
             @Override
             public void onClick(View v) {
-                if (setCampos()){
-                    /*try{
-                        getParams();
-                        boolean result = new AsyncTaskCall().execute().get();
-                        manageRequestResult(result);
-                    }catch (Exception e){
+                if (setFields()) {
 
-                        e.printStackTrace();
-                    }*/
-                   sendCambiarPassword();
-                }else {
-
+                    sendChangePassword();
                 }
             }
         });
@@ -89,76 +75,59 @@ public class CambiarPassword extends AppBaseActivity {
         startActivity(i);
     }
 
-    public boolean letras (String texto)
-    {
-        Pattern patron = Pattern.compile ("^[a-zA-Z]+$");
-        Matcher valid  = patron.matcher  (texto);
-        return  valid.matches ();
-    }
-
-    public boolean setCampos ()
+    public boolean setFields()
     {
         EditText container_data;
         Context context = getApplicationContext();
-        String  texto;
-        String  texto_aux;
+        String  text;
+        String  text_aux;
 
         container_data = findViewById(R.id.actual_password);
-        texto = container_data.getText().toString();
+        text = container_data.getText().toString();
 
-        if (texto.length () == 0 || texto.length() < 4) {
+        if (text.length () == 0 || text.length() < 4) {
             Toast.makeText(context, "Contraseña actual introducida no valida", Toast
                     .LENGTH_SHORT).show ();
             return false;
         }
-        else { actual = texto; }
+        else { actual = text; }
 
         container_data = findViewById(R.id.new_password);
-        texto = container_data.getText().toString();
+        text = container_data.getText().toString();
 
         container_data = findViewById(R.id.repeat_password);
-        texto_aux = container_data.getText().toString();
+        text_aux = container_data.getText().toString();
 
-        if (texto.length () == 0) {
+        if (text.length () == 0) {
             Toast.makeText (context, "Introduzca la nueva contraseña", Toast
                     .LENGTH_SHORT).show ();
             return false;
         }
-        else if (texto.length () < 4) {
+        else if (text.length () < 4) {
             Toast.makeText(context, "Nueva contraseña demasiada corta, mínimo 4 caracteres", Toast
                     .LENGTH_SHORT).show ();
             return false;
         }
-        else if (!texto.equals (texto_aux))
+        else if (!text.equals (text_aux))
         {
             Toast.makeText(context, "La nueva contraseña no coincide", Toast
                     .LENGTH_SHORT).show ();
             return false;
         }
-        else { new_pass = texto; }
+        else { new_pass = text; }
 
         return true;
     }
 
-    public void obtenerParametros(){
-
-        param = new ArrayList<String>();
-
-        param.add(email);
-        param.add (actual);
-        param.add (new_pass);
-
-    }
-
-    public void sendCambiarPassword() {
+    public void sendChangePassword() {
         mAPIService.cambiarPassword(email, actual, new_pass).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){
-                    tratarResultadoPeticion(true);
+                    manageResult(true);
                 }
                 else {
-                    tratarResultadoPeticion(false);
+                    manageResult(false);
                 }
             }
 
@@ -179,20 +148,20 @@ public class CambiarPassword extends AppBaseActivity {
         });
     }
 
-    public void tratarResultadoPeticion(boolean result){
+    public void manageResult(boolean result){
 
         if (result) {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.guardado_correctamente), Toast.LENGTH_SHORT).show();
-            if (tipo.equals("Refugee")) {
+            if (userType.equals("Refugee")) {
                 mRefugee.setPassword(new_pass);
-                Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
+                Intent i = new Intent(getApplicationContext(), EditProfile.class);
                 i.putExtra("Refugee", mRefugee);
                 startActivity(i);
             }
             else {
                 mVolunteer.setPassword(new_pass);
-                Intent i = new Intent(getApplicationContext(), EditarPerfil.class);
+                Intent i = new Intent(getApplicationContext(), EditProfile.class);
                 i.putExtra("Volunteer", mVolunteer);
                 startActivity(i);
             }

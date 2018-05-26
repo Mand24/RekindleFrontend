@@ -17,9 +17,9 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.util.HashMap;
 
-public class EditarPerfil extends AppBaseActivity {
+public class EditProfile extends AppBaseActivity {
 
-    HashMap<String, Fragment> tiposPerfil;
+    HashMap<String, Fragment> profileTypes;
     Volunteer mVolunteer;
     Refugee mRefugee;
 
@@ -34,51 +34,43 @@ public class EditarPerfil extends AppBaseActivity {
 
         getSupportActionBar().setTitle(R.string.editProfile);
 
-        tiposPerfil = new HashMap<>();
+        profileTypes = new HashMap<>();
 
-        tiposPerfil.put("Refugee", new EditarPerfilRefugiado());
-        tiposPerfil.put("Volunteer", new EditarPerfilVoluntario());
+        profileTypes.put("Refugee", new EditarPerfilRefugiado());
+        profileTypes.put("Volunteer", new EditProfileVolunteer());
 
         User user = getUser(this);
 
-        String tipo_usuario = user.getUserType();
+        String userType = user.getUserType();
 
-        System.out.println("editar" + tipo_usuario);
+        System.out.println("editar" + userType);
 
-        if(tipo_usuario.equals("Refugee")){
+        if(userType.equals("Refugee")){
             mRefugee = (Refugee) getIntent().getParcelableExtra("Refugee");
         } else {
             mVolunteer = (Volunteer) getIntent().getParcelableExtra("Volunteer");
             System.out.println("editaraa"+ mVolunteer);
         }
-        menu(tipo_usuario);
+        menu(userType);
     }
 
-    public void menu(String tipo_usuario){
+    public void menu(String userType){
 
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        if(tipo_usuario.equals("Refugee")){
+        if(userType.equals("Refugee")){
             bundle.putParcelable("Refugee", mRefugee);
         } else {
             System.out.println("editara"+ mVolunteer.toString());
             bundle.putParcelable("Volunteer", mVolunteer);
         }
 
-        transaction.replace(R.id.perfilUsuario, tiposPerfil.get(tipo_usuario));
+        transaction.replace(R.id.perfilUsuario, profileTypes.get(userType));
         transaction.commit();
     }
 
     @Override
     public void onBackPressed() {
-        /*Intent i = new Intent(getApplicationContext(), VerPerfil.class);
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        User usuario = gson.fromJson(json, User.class);
-        i.putExtra("tipo", usuario.getServiceType());
-        startActivity(i);*/
-        //TODO testear esto
         finish();
     }
 

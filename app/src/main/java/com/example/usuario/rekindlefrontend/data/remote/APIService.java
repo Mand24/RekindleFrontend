@@ -12,15 +12,6 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 
 import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Alojamiento;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.CursoEducativo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Donacion;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.OfertaEmpleo;
-import com.example.usuario.rekindlefrontend.data.entity.servicio.Servicio;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Refugiado;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Voluntario;
-
 
 import java.util.ArrayList;
 

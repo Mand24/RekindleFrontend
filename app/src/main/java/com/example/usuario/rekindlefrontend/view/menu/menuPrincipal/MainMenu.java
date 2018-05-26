@@ -33,7 +33,7 @@ public class MainMenu extends AppBaseActivity {
 
         mainMenuTypes.put("Refugee", new MainMenuRefugee());
         mainMenuTypes.put("Volunteer", new MainMenuVolunteer());
-        mainMenuTypes.put("Admin", newMainMenuAdmin());
+        mainMenuTypes.put("Admin", new MainMenuAdmin());
 
         User user = getUser(this);
 

@@ -15,11 +15,11 @@ public class Report implements Parcelable{
 
     @SerializedName("informerUser")
     @Expose
-    private Usuario informerUser;
+    private User informerUser;
 
     @SerializedName("reportedUser")
     @Expose
-    private Usuario reportedUser;
+    private User reportedUser;
 
     @SerializedName("motive")
     @Expose
@@ -27,7 +27,7 @@ public class Report implements Parcelable{
 
     public Report(){}
 
-    public Report(Usuario informerUser, Usuario reportedUser, String motive){
+    public Report(User informerUser, User reportedUser, String motive){
         this.informerUser = informerUser;
         this.reportedUser = reportedUser;
         this.motive = motive;
@@ -35,8 +35,8 @@ public class Report implements Parcelable{
 
     protected Report(Parcel in) {
         idReport = in.readInt();
-        informerUser = in.readParcelable(Usuario.class.getClassLoader());
-        reportedUser = in.readParcelable(Usuario.class.getClassLoader());
+        informerUser = in.readParcelable(User.class.getClassLoader());
+        reportedUser = in.readParcelable(User.class.getClassLoader());
         motive = in.readString();
     }
 

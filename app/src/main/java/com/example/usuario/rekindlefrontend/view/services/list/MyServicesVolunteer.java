@@ -13,11 +13,8 @@ import com.example.usuario.rekindlefrontend.adapters.ServicesAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.services.edit.ServiceEdit;
 import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
-
-import com.example.usuario.rekindlefrontend.view.servicios.editar.EditarServicio;
-import com.example.usuario.rekindlefrontend.view.servicios.mostrar.MostrarServicio;
-
 
 import java.util.ArrayList;
 
@@ -28,7 +25,7 @@ import retrofit2.Response;
 public class MyServicesVolunteer extends ListServices {
 
     @Override
-    public void onCreate(Bundle savedInstance){
+    public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
         mMapButton.setVisibility(View.INVISIBLE);
@@ -44,23 +41,25 @@ public class MyServicesVolunteer extends ListServices {
                         intent.putExtra("Service", mServices.get(position));
                         startActivity(intent);
                     }
+
                     @Override
                     public void onItemLongClick(View v, final int position) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder
                                 (MyServicesVolunteer.this);
                         alertDialog.setTitle(R.string.select_option).setItems(R.array.clic_servicio,
-                                new DialogInterface.OnClickListener(){
-                                    public void onClick(DialogInterface dialog, int which){
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
                                         //Editar
-                                        if(which == 0){
-                                            Intent intent = new Intent(getApplicationContext(), EditarServicio.class);
-                                            intent.putExtra("typeService", servicios.get
-                                                    (position).getTipo());
+                                        if (which == 0) {
+                                            Intent intent = new Intent(getApplicationContext(),
+                                                    ServiceEdit
+                                                            .class);
+                                            intent.putExtra("typeService", mServices.get
+                                                    (position).getServiceType());
                                             intent.putExtra("Service",
-                                                    servicios.get(position));
+                                                    mServices.get(position));
                                             startActivity(intent);
-                                        } else if (which == 1){
-                                            //TODO:Call API
+                                        } else if (which == 1) {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(
                                                     MyServicesVolunteer.this);
 
@@ -72,7 +71,6 @@ public class MyServicesVolunteer extends ListServices {
 
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
-                                                            // TODO API delete
                                                             sendDeleteService(mServices.get
                                                                     (position));
                                                         }
@@ -97,7 +95,7 @@ public class MyServicesVolunteer extends ListServices {
                 });
     }
 
-    public void sendDeleteService(Service service){
+    public void sendDeleteService(Service service) {
         mAPIService.eliminarServicio(service.getId(), service.getServiceType()).enqueue(
                 new Callback<Void>() {
                     @Override
@@ -107,7 +105,7 @@ public class MyServicesVolunteer extends ListServices {
                                             .service_deleted_successfully,
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            System.out.println("CODIGO "+response.code());
+                            System.out.println("CODIGO " + response.code());
                             manageResult(false, null);
                         }
                     }
@@ -121,7 +119,7 @@ public class MyServicesVolunteer extends ListServices {
     }
 
     @Override
-    protected void initializeData(){
+    protected void initializeData() {
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
                 (this).getUserType())
                 .enqueue(new Callback<ArrayList<Service>>() {
@@ -132,7 +130,7 @@ public class MyServicesVolunteer extends ListServices {
                             ArrayList<Service> respuesta = response.body();
                             manageResult(true, respuesta);
                         } else {
-                            System.out.println("CODIGO "+response.code());
+                            System.out.println("CODIGO " + response.code());
                             manageResult(false, null);
                         }
                     }
