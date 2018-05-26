@@ -31,7 +31,7 @@ public class UserTypeSelector extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View selectorMenu = inflater.inflate(R.layout.fragment_eleccion_tipo_usuario, container,
+        View selectorMenu = inflater.inflate(R.layout.fragment_selection_user_type, container,
                 false);
 
         Button menuButton;

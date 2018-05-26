@@ -60,7 +60,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
             Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_mostrar_curso_educativo, container,
+        final View view = inflater.inflate(R.layout.fragment_show_education, container,
                 false);
 
         super.onCreate(savedInstanceState);

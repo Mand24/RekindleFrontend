@@ -55,7 +55,7 @@ public class JobEdit extends AbstractFormatChecker {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_editar_empleo, container, false);
+        final View view = inflater.inflate(R.layout.fragment_edit_job, container, false);
 
         servicio = (Job) getArguments().getSerializable("Job");
 

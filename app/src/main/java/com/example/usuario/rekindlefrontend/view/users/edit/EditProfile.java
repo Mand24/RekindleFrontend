@@ -30,7 +30,7 @@ public class EditProfile extends AppBaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_editar_perfil);
+        setContentView(R.layout.activity_edit_profile);
 
         getSupportActionBar().setTitle(R.string.editProfile);
 

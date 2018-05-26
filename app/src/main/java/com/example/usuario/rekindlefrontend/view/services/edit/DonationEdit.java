@@ -53,7 +53,7 @@ public class DonationEdit extends AbstractFormatChecker {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_editar_donacion, container, false);
+        final View view = inflater.inflate(R.layout.fragment_edit_donation, container, false);
 
         setViews(view);
         servicio = (Donation) getArguments().getSerializable("Donation");

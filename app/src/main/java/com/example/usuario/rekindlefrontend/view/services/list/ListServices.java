@@ -54,7 +54,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_servicios);
+        setContentView(R.layout.activity_list_services);
 
         getSupportActionBar().setTitle(R.string.listar_servicios);
 
@@ -234,7 +234,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
 
         MenuItem search = menu.findItem(R.id.search);
         searchView = (SearchView) search.getActionView();

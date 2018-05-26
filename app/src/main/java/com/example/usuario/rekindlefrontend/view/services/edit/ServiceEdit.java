@@ -38,7 +38,7 @@ public class ServiceEdit extends AppBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_servicio);
+        setContentView(R.layout.activity_edit_service);
 
         getSupportActionBar().setTitle(R.string.title_activity_editar_servicio);
 

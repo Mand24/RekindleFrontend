@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="@dimen/dim1"
-            tools:layout="@layout/fragment_eleccion_tipo_servicio">
+            tools:layout="@layout/fragment_selection_service_type">
         </fragment>
 
         <android.support.v7.widget.RecyclerView

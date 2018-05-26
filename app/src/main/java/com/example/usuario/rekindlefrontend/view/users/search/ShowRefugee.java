@@ -57,7 +57,7 @@ public class ShowRefugee extends AppBaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_mostrar_perfil_refugiado);
+        setContentView(R.layout.activity_show_refugee);
 
         getSupportActionBar().setTitle(R.string.showRefugee);
 

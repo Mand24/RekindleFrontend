@@ -66,7 +66,7 @@ public class LodgeForm extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_formulario_alojamiento, container,
+        final View view = inflater.inflate(R.layout.fragment_lodge_form, container,
                 false);
 
         setViews(view);

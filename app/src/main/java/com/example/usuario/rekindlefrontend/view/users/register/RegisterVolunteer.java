@@ -49,7 +49,7 @@ public class RegisterVolunteer extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.fragment_registro_voluntario, container,
+        final View view = inflater.inflate(R.layout.fragment_register_volunteer, container,
                 false);
 
         setViews(view);

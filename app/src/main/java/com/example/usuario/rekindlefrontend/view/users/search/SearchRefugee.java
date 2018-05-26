@@ -61,7 +61,7 @@ public class SearchRefugee extends AppBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_busqueda_refugiado);
+        setContentView(R.layout.activity_search_refugee);
         getSupportActionBar().setTitle(R.string.titulo_busqueda);
 
         setViews();

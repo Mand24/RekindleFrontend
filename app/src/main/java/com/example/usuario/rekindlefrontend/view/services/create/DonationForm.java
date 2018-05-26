@@ -62,7 +62,7 @@ public class DonationForm extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_formulario_donacion, container,
+        final View view = inflater.inflate(R.layout.fragment_donation_form, container,
                 false);
 
         //establecer las vistas

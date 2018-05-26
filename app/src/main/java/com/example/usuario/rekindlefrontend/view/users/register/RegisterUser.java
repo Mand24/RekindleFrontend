@@ -17,7 +17,7 @@ public class RegisterUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_usuario);
+        setContentView(R.layout.activity_register_user);
 
         registerTypes = new HashMap<>();
 

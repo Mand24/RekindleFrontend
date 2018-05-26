@@ -60,7 +60,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
             Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_mostrar_donacion, container,
+        final View view = inflater.inflate(R.layout.fragment_show_donation, container,
                 false);
 
         super.onCreate(savedInstanceState);

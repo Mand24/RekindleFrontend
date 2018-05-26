@@ -66,7 +66,7 @@ public class JobForm extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_formulario_oferta_empleo, container,
+        final View view = inflater.inflate(R.layout.fragment_job_form, container,
                 false);
 
         //establecer las vistas

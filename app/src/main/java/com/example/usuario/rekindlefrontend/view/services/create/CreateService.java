@@ -19,7 +19,7 @@ public class CreateService extends AppBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_servicio);
+        setContentView(R.layout.activity_create_service);
 
         getSupportActionBar().setTitle(R.string.crear_servicio);
 

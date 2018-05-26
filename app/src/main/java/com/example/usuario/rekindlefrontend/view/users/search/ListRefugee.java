@@ -34,7 +34,7 @@ public class ListRefugee extends AppBaseActivity implements Filterable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_refugiados);
+        setContentView(R.layout.activity_list_refugees);
         recyclerView = (RecyclerView) findViewById(R.id.rv);
         getSupportActionBar().setTitle(R.string.listRefugee);
 
@@ -98,7 +98,7 @@ public class ListRefugee extends AppBaseActivity implements Filterable {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
 
         MenuItem search = menu.findItem(R.id.search);
         searchView = (SearchView) search.getActionView();

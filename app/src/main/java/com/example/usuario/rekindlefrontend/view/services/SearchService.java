@@ -56,7 +56,7 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar_servicio);
+        setContentView(R.layout.activity_search_service);
 
         mButton = findViewById(R.id.listServices);
 

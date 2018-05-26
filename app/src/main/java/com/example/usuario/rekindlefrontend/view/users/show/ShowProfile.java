@@ -25,7 +25,7 @@ public class ShowProfile extends AppBaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_ver_perfil);
+        setContentView(R.layout.activity_show_profile);
 
         getSupportActionBar().setTitle(R.string.ver_perfil);
 

@@ -39,7 +39,7 @@ public class ShowService extends AppBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_servicio);
+        setContentView(R.layout.activity_show_service);
 
         getSupportActionBar().setTitle(R.string.showService);
 

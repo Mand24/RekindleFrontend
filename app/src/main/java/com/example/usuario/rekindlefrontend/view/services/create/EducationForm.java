@@ -63,7 +63,7 @@ public class EducationForm extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_formulario_curso_educativo, container,
+        final View view = inflater.inflate(R.layout.fragment_education_form, container,
                 false);
 
         //establecer las vistas

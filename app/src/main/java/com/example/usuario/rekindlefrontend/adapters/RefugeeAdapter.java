@@ -37,7 +37,7 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
     public RefugiadoViewHolder onCreateViewHolder(ViewGroup viewGroup,
             int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(
-                R.layout.fragment_vista_lista_refugiados,
+                R.layout.fragment_list_refugees,
                 viewGroup,
                 false);
         final RefugiadoViewHolder mViewHolder = new RefugiadoViewHolder(v);

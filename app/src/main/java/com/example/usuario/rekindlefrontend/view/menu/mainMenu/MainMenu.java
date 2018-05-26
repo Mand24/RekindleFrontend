@@ -24,7 +24,7 @@ public class MainMenu extends AppBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_principal);
+        setContentView(R.layout.activity_main_menu);
 
         getSupportActionBar().setTitle(R.string.titulo_menu_principal);
 

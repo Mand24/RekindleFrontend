@@ -61,7 +61,7 @@ public class RegisterRefugee extends AbstractFormatChecker {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_registro_refugiado, container, false);
+        final View view = inflater.inflate(R.layout.fragment_register_refugee, container, false);
 
         //establecer las vistas
         setViews(view);

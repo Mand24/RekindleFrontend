@@ -61,7 +61,7 @@ public class JobShow extends Maps implements OnMapReadyCallback {
             Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_mostrar_oferta_empleo, container,
+        final View view = inflater.inflate(R.layout.fragment_show_job, container,
                 false);
 
         super.onCreate(savedInstanceState);

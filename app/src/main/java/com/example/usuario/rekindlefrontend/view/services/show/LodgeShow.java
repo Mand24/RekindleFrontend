@@ -61,7 +61,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
             Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_mostrar_alojamiento, container,
+        final View view = inflater.inflate(R.layout.fragment_show_lodge, container,
                 false);
 
         super.onCreate(savedInstanceState);

@@ -33,7 +33,7 @@
     <!--android:layout_height="match_parent"-->
     <!--android:layout_gravity="start"-->
     <!--app:headerLayout="@layout/header"-->
-    <!--app:menu="@menu/menu_lateral" />-->
+    <!--app:menu="@mlateral_menueral" />-->
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation"
@@ -42,6 +42,6 @@
         android:layout_gravity="left"
         android:background="@color/colorPrimaryDark"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/menu_lateral"
+        app:menu="@menu/lateral_menu"
     />
 </android.support.v4.widget.DrawerLayout>

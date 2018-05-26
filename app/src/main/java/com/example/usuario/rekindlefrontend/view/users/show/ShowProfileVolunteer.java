@@ -43,7 +43,7 @@ public class ShowProfileVolunteer extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_ver_perfil_voluntario, container,
+        final View view = inflater.inflate(R.layout.fragment_show_volunteer, container,
                 false);
 
         setViews(view);

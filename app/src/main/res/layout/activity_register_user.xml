@@ -4,27 +4,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/fondo"
-                tools:context=".view.services.create.CreateService">
+                tools:context=".view.users.register.RegisterUser">
 
     <fragment
-        android:id="@+id/eleccion_tipo_servicio"
-        android:name="com.example.usuario.rekindlefrontend.view.services.ServiceTypeSelector"
+        android:id="@+id/eleccion_usuario"
+        android:name="com.example.usuario.rekindlefrontend.view.users.register.UserTypeSelector"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="?android:actionBarSize"
-        tools:layout="@layout/fragment_eleccion_tipo_servicio">
+        android:layout_marginTop="@dimen/dim1"
+        tools:layout="@layout/fragment_selection_user_type">
 
     </fragment>
 
     <RelativeLayout
-        android:id="@+id/formulario_servicio"
+        android:id="@+id/formulario"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/eleccion_tipo_servicio">
+        android:layout_below="@+id/eleccion_usuario">
 
     </RelativeLayout>
-
 
 </RelativeLayout>

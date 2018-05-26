@@ -22,7 +22,7 @@ public class Settings extends AppBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantalla_ajustes);
+        setContentView(R.layout.activity_settings);
 
         getSupportActionBar().setTitle(R.string.ajustes);
 

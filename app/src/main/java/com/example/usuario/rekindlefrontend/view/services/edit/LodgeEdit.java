@@ -58,7 +58,7 @@ public class LodgeEdit extends AbstractFormatChecker {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_editar_alojamiento, container, false);
+        final View view = inflater.inflate(R.layout.fragment_edit_lodge, container, false);
 
 
         setViews(view);

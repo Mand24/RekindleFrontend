@@ -53,7 +53,7 @@ public class EducationEdit extends AbstractFormatChecker {
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle
             savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_editar_curso, container, false);
+        final View view = inflater.inflate(R.layout.fragment_edit_education, container, false);
 
         servicio = (Education) getArguments().getSerializable("Education");
 

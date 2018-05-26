@@ -36,7 +36,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
     @Override
     public ServiceViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(
-                R.layout.fragment_vista_lista_servicios, viewGroup, false);
+                R.layout.fragment_list_services, viewGroup, false);
         final ServiceViewHolder mViewHolder = new ServiceViewHolder(v);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
