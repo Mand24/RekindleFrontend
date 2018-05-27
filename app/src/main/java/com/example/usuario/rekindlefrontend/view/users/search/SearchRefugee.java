@@ -205,7 +205,7 @@ public class SearchRefugee extends AppBaseActivity {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.busqueda_correcta), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), ListRefugee.class);
-            i.putParcelableArrayListExtra("mListRefugees", mListRefugees);
+            i.putParcelableArrayListExtra("ListRefugees", mListRefugees);
             startActivity(i);
 
         } else {

@@ -79,7 +79,7 @@ public class ListRefugee extends AppBaseActivity implements Filterable {
 
     private void initializeData() {
 
-        mRefugees = getIntent().getParcelableArrayListExtra("mListRefugees");
+        mRefugees = getIntent().getParcelableArrayListExtra("ListRefugees");
 
         mRefugeesFiltered = mRefugees;
     }

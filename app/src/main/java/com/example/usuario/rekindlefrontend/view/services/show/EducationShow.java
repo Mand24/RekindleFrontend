@@ -65,7 +65,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        service = (Education) getArguments().getSerializable("servicioFrag");
+        service = (Education) getArguments().getSerializable("Education");
 
         title = view.findViewById(R.id.titulo_curso_educativo);
         description = view.findViewById(R.id.descripcion_curso_educativo);

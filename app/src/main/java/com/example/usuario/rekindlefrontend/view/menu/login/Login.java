@@ -107,7 +107,7 @@ public class Login extends AppCompatActivity {
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(
                 getApplicationContext());
         Gson gson = new Gson();
-        String json = datos.getString("mUser", "");
+        String json = datos.getString("User", "");
         if (json.isEmpty()) {
             return;
         } else {

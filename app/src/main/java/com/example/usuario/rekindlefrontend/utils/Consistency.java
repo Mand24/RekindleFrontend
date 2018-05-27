@@ -18,11 +18,11 @@ public class Consistency {
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(ctx);
         SharedPreferences.Editor miEditor = datos.edit();
         if (user == null) {
-            miEditor.putString("usuario", "");
+            miEditor.putString("User", "");
         } else {
             Gson gson = new Gson();
             String json = gson.toJson(user);
-            miEditor.putString("usuario", json);
+            miEditor.putString("User", json);
         }
         miEditor.apply();
     }
@@ -31,7 +31,7 @@ public class Consistency {
 
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(ctx);
         Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
+        String json = datos.getString("User", "");
         User user = gson.fromJson(json, User.class);
         return user;
     }

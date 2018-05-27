@@ -66,7 +66,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
 
 
-        service = (Donation) getArguments().getSerializable("servicioFrag");
+        service = (Donation) getArguments().getSerializable("Donation");
 
         title = view.findViewById(R.id.titulo_donacion);
         description = view.findViewById(R.id.descripcion_donacion);

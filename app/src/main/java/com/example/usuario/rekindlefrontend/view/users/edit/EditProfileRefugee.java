@@ -114,7 +114,7 @@ public class EditProfileRefugee extends AbstractFormatChecker {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), ChangePassword.class);
                 i.putExtra("Refugee", mRefugee);
-                i.putExtra("tipo", mRefugee.getUserType());
+                i.putExtra("userType", mRefugee.getUserType());
                 startActivity(i);
             }
 

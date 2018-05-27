@@ -57,7 +57,7 @@ public class ShowService extends AppBaseActivity {
                 public void onResponse(Call<Lodge> call, Response<Lodge> response) {
                     if (response.isSuccessful()) {
                         mLodge = response.body();
-                        bundle.putSerializable("servicioFrag", mLodge);
+                        bundle.putSerializable("Lodge", mLodge);
                         manageResult(true, "Lodge");
                     } else {
                         manageResult(false, "Lodge");
@@ -75,7 +75,7 @@ public class ShowService extends AppBaseActivity {
                 public void onResponse(Call<Donation> call, Response<Donation> response) {
                     if (response.isSuccessful()) {
                         mDonation = response.body();
-                        bundle.putSerializable("servicioFrag", mDonation);
+                        bundle.putSerializable("Donation", mDonation);
                         manageResult(true, "Donation");
                     } else {
                         manageResult(false, "Donation");
@@ -94,7 +94,7 @@ public class ShowService extends AppBaseActivity {
                         Response<Education> response) {
                     if (response.isSuccessful()) {
                         mEducation = response.body();
-                        bundle.putSerializable("servicioFrag", mEducation);
+                        bundle.putSerializable("Education", mEducation);
                         manageResult(true, "Education");
                     } else {
                         manageResult(false, "Education");
@@ -112,7 +112,7 @@ public class ShowService extends AppBaseActivity {
                 public void onResponse(Call<Job> call, Response<Job> response) {
                     if (response.isSuccessful()) {
                         mJob = response.body();
-                        bundle.putSerializable("servicioFrag", mJob);
+                        bundle.putSerializable("Job", mJob);
                         manageResult(true, "Job");
                     } else {
                         manageResult(false, "Job");

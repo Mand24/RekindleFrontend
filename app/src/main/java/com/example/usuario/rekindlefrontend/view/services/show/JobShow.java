@@ -66,7 +66,7 @@ public class JobShow extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        service = (Job) getArguments().getSerializable("servicioFrag");
+        service = (Job) getArguments().getSerializable("Job");
 
         title = view.findViewById(R.id.titulo_oferta_empleo);
         description = view.findViewById(R.id.descripcion_oferta_empleo);

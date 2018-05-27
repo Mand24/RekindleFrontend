@@ -66,7 +66,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
         super.onCreate(savedInstanceState);
 
-        service = (Lodge) getArguments().getSerializable("servicioFrag");
+        service = (Lodge) getArguments().getSerializable("Lodge");
 
         title = view.findViewById(R.id.titulo_alojamiento);
         description = view.findViewById(R.id.descripcion_alojamiento);

@@ -42,7 +42,7 @@ public class EspressoChangePassword {
             Intent intent = new Intent(InstrumentationRegistry.getContext(),
                     ChangePassword.class);
             intent.putExtra("Volunteer", mVolunteer);
-            intent.putExtra("tipo", mVolunteer.getUserType());
+            intent.putExtra("userType", mVolunteer.getUserType());
             return intent;
         }
     };

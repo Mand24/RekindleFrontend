@@ -16,7 +16,7 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
 
-public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.RefugiadoViewHolder> {
+public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.RefugeeViewHolder> {
 
     private List<Refugee> mRefugees;
     private CustomItemClickListener listener;
@@ -34,13 +34,13 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
     }
 
     @Override
-    public RefugiadoViewHolder onCreateViewHolder(ViewGroup viewGroup,
+    public RefugeeViewHolder onCreateViewHolder(ViewGroup viewGroup,
             int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(
                 R.layout.fragment_list_refugees,
                 viewGroup,
                 false);
-        final RefugiadoViewHolder mViewHolder = new RefugiadoViewHolder(v);
+        final RefugeeViewHolder mViewHolder = new RefugeeViewHolder(v);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,19 +51,19 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RefugeeAdapter.RefugiadoViewHolder refugiadoViewHolder,
+    public void onBindViewHolder(@NonNull RefugeeViewHolder refugeeViewHolder,
             int i) {
         Refugee refugee = mRefugees.get(i);
 
-        refugiadoViewHolder.nombre.setText(refugee.getName());
-        refugiadoViewHolder.apellido1.setText(refugee.getSurname1());
-        refugiadoViewHolder.apellido2.setText(refugee.getSurname2());
-        refugiadoViewHolder.sexo.setText(refugee.getSex());
-        refugiadoViewHolder.nacimiento.setText(refugee.getBirthDate());
+        refugeeViewHolder.name.setText(refugee.getName());
+        refugeeViewHolder.surname1.setText(refugee.getSurname1());
+        refugeeViewHolder.surname2.setText(refugee.getSurname2());
+        refugeeViewHolder.sex.setText(refugee.getSex());
+        refugeeViewHolder.birthdate.setText(refugee.getBirthDate());
         if (refugee.getPhoto() != null) {
-            refugiadoViewHolder.photo.setImageBitmap(refugee.getDecodedPhoto());
+            refugeeViewHolder.photo.setImageBitmap(refugee.getDecodedPhoto());
         } else {
-            refugiadoViewHolder.photo.setImageResource(R.drawable.ic_usuario);
+            refugeeViewHolder.photo.setImageResource(R.drawable.ic_usuario);
         }
 
     }
@@ -78,21 +78,21 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.Refugiad
         return mRefugees.size();
     }
 
-    public class RefugiadoViewHolder extends RecyclerView.ViewHolder {
+    public class RefugeeViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         ImageView photo;
-        TextView nombre, apellido1, apellido2, sexo, nacimiento;
+        TextView name, surname1, surname2, sex, birthdate;
 //        ImageView serviceType;
 
-        RefugiadoViewHolder(View itemView) {
+        RefugeeViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
             photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
-            nombre = (TextView) itemView.findViewById(R.id.nombre_cv);
-            apellido1 = (TextView) itemView.findViewById(R.id.apellido1_cv);
-            apellido2 = (TextView) itemView.findViewById(R.id.apellido2_cv);
-            sexo = (TextView) itemView.findViewById(R.id.sexo_cv);
-            nacimiento = (TextView) itemView.findViewById(R.id.nacimiento_cv);
+            name = (TextView) itemView.findViewById(R.id.nombre_cv);
+            surname1 = (TextView) itemView.findViewById(R.id.apellido1_cv);
+            surname2 = (TextView) itemView.findViewById(R.id.apellido2_cv);
+            sex = (TextView) itemView.findViewById(R.id.sexo_cv);
+            birthdate = (TextView) itemView.findViewById(R.id.nacimiento_cv);
         }
     }
 }

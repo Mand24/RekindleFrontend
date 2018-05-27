@@ -99,7 +99,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(), ChangePassword.class);
                 i.putExtra("Volunteer", mVolunteer);
-                i.putExtra("tipo", mVolunteer.getUserType());
+                i.putExtra("userType", mVolunteer.getUserType());
                 System.out.println(mVolunteer.toString());
                 startActivity(i);
             }
