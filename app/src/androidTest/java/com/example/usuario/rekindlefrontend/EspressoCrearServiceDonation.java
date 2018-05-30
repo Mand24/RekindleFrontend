@@ -4,7 +4,6 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
-import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.init;
 import static android.support.test.espresso.intent.Intents.release;
@@ -12,36 +11,70 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
+
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
 
-import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.services.create.CreateService;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
-//import static org.hamcrest.core.AllOf.allOf;
-//import static org.hamcrest.core.Is.is;
-//import static org.hamcrest.core.IsInstanceOf.instanceOf;
-//import static org.hamcrest.core.AnyOf.*;
-
-
-@RunWith(AndroidJUnit4.class)
+@RunWith(MockitoJUnitRunner.class)
+//@RunWith(AndroidJUnit4.class)
 public class EspressoCrearServiceDonation {
 
-    @Rule
-    public ActivityTestRule<Login> pantalla = new ActivityTestRule<Login>
-            (Login.class) {
-    };
+    @Mock
+    static private SharedPreferences sharedPrefs = Mockito.mock(SharedPreferences.class);
+    @Mock
+    static private SharedPreferences.Editor sharedPrefsEditor = Mockito.mock(SharedPreferences
+            .Editor
+            .class);
+    @Mock
+    static private Context context = Mockito.mock(Context.class);
+    @Mock
+    static private Consistency mConsistency = Mockito.mock(Consistency.class);
 
+    //@Mock
+    //AppBaseActivity base = Mockito.mock(AppBaseActivity.class);
+
+    @Rule
+    public ActivityTestRule<CreateService> pantalla = new ActivityTestRule<CreateService>
+            (CreateService.class) {
+    };
 
     @BeforeClass
     public static void setup() {
+
+        Volunteer voluntario = new Volunteer ("voluntario@mail.com", "pass123",
+                "voluntarioName", "surnameOne", "surnameTwo", "foto");
+
+        sharedPrefs  = Mockito.mock(SharedPreferences.class);
+        context      = Mockito.mock(Context.class);
+        mConsistency = Mockito.mock(Consistency.class);
+
+        Mockito.when(context.getSharedPreferences(anyString(), anyInt())).thenReturn(sharedPrefs);
+        Mockito.when(sharedPrefs.edit()).thenReturn(sharedPrefsEditor);
+        Mockito.when(mConsistency.getUser(context)).thenReturn(voluntario);
+
+        saveUser(voluntario, context);
+        setUpPusher();
         init();
     }
 
@@ -52,20 +85,6 @@ public class EspressoCrearServiceDonation {
 
     @Test
     public void testCamposDonacion() {
-
-        // set : login
-
-        onView(withId(R.id.input_email)).perform(typeText("dummy@voluntario.com"));
-
-        onView(withId(R.id.input_password)).perform(typeText("1234"));
-
-        // login
-
-        onView(withId(R.id.btn_login)).perform(click());
-
-        // go : create_service
-
-        onView(withId(R.id.crear_servicio_MenuPrincipalVoluntario)).perform(click());
 
         // go : fragment donation
 
