@@ -1,81 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.usuario.rekindlefrontend">
+    package="com.example.usuario.rekindlefrontend">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <permission
-        android:name="android.permission.MAPS_RECEIVE"
-        android:protectionLevel="signature"/>
+    <permission android:name="android.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme.Dark">
-
-        <activity
-            android:name=".view.menu.login.Login"
-            android:theme="@style/AppTheme.Dark">
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true" android:theme="@style/AppTheme.Dark">
+        <activity android:name=".view.menu.login.Login" android:theme="@style/AppTheme.Dark">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".view.users.register.RegisterUser"/>
-        <activity android:name=".view.menu.mainMenu.MainMenu"/>
-        <activity android:name=".view.users.show.ShowProfile"/>
-        <activity android:name=".view.services.create.CreateService"/>
-        <activity android:name=".view.services.list.ListServices"/>
-        <activity android:name=".view.users.edit.EditProfile"/>
-        <activity android:name=".view.users.edit.ChangePassword"/>
-        <activity android:name=".view.services.show.ShowService"/>
-        <activity android:name=".view.menu.login.RecoverPassword"/>
-        <activity android:name=".view.menu.login.CodePasswordRequest"/>
-        <activity android:name=".view.services.list.MyServicesRefugee"/>
-        <activity android:name=".view.services.list.MyServicesVolunteer"/>
-        <activity android:name=".view.services.SearchService"/>
-        <activity android:name=".view.users.search.SearchRefugee"/>
-        <activity android:name=".view.menu.lateralMenu.Settings"/>
-        <activity android:name=".view.menu.lateralMenu.About"/>
-        <activity android:name=".view.users.search.ListRefugee"/>
-        <activity android:name=".view.menu.lateralMenu.Help"/>
-        <activity android:name=".view.users.search.ShowRefugee"/>
-        <activity android:name=".view.chat.ShowChat"/>
-        <activity android:name=".view.chat.ListChats"/>
-        <activity android:name=".view.moderate.ListReports"/>
-        <activity android:name=".view.moderate.CreateReport"/>
-        <activity android:name=".view.moderate.ShowReport"/>
-        <activity android:name=".view.services.edit.ServiceEdit"/>
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+        <activity android:name=".view.users.register.RegisterUser" />
+        <activity android:name=".view.menu.mainMenu.MainMenu" />
+        <activity android:name=".view.users.show.ShowProfile" />
+        <activity android:name=".view.services.create.CreateService" />
+        <activity android:name=".view.services.list.ListServices" />
+        <activity android:name=".view.users.edit.EditProfile" />
+        <activity android:name=".view.users.edit.ChangePassword" />
+        <activity android:name=".view.services.show.ShowService" />
+        <activity android:name=".view.menu.login.RecoverPassword" />
+        <activity android:name=".view.menu.login.CodePasswordRequest" />
+        <activity android:name=".view.services.list.MyServicesRefugee" />
+        <activity android:name=".view.services.list.MyServicesVolunteer" />
+        <activity android:name=".view.services.SearchService" />
+        <activity android:name=".view.users.search.SearchRefugee" />
+        <activity android:name=".view.menu.lateralMenu.Settings" />
+        <activity android:name=".view.menu.lateralMenu.About" />
+        <activity android:name=".view.users.search.ListRefugee" />
+        <activity android:name=".view.menu.lateralMenu.Help" />
+        <activity android:name=".view.users.search.ShowRefugee" />
+        <activity android:name=".view.chat.ShowChat" />
+        <activity android:name=".view.chat.ListChats" />
+        <activity android:name=".view.moderate.ListReports" />
+        <activity android:name=".view.moderate.CreateReport" />
+        <activity android:name=".view.moderate.ShowReport" />
+        <activity android:name=".view.services.edit.ServiceEdit" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-                   android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
+            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
         <meta-data android:name="com.google.android.gms.version"
-                   android:value="@integer/google_play_services_version"/>
+            android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-        <provider
-            android:name=".utils.DatabaseContentProvider"
-            android:authorities="com.example.usuario.rekindlefrontend"
-            android:enabled="true"
-            android:exported="false">
-        </provider>
+        <provider android:name=".utils.DatabaseContentProvider"
+            android:authorities="com.example.usuario.rekindlefrontend" android:enabled="true"
+            android:exported="false"></provider>
 
+        <activity android:name=".view.helpLinks.ListHelpLinks"></activity>
     </application>
 
 </manifest>
