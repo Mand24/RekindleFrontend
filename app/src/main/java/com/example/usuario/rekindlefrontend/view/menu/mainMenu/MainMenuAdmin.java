@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinks;
+import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinksAdmin;
 import com.example.usuario.rekindlefrontend.view.moderate.ListReports;
 
 public class MainMenuAdmin extends Fragment {
 
     private AppCompatButton button_list_reports;
+    private AppCompatButton button_links;
 
     public MainMenuAdmin() {
         // Required empty public constructor
@@ -38,12 +41,22 @@ public class MainMenuAdmin extends Fragment {
             }
         });
 
+        button_links.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), ListHelpLinksAdmin.class);
+                startActivity(i);
+            }
+        });
+
 
         return view;
     }
 
     public void setViews(View view) {
         button_list_reports = view.findViewById(R.id.listar_reportes_MenuPrincipalAdministrador);
+        button_links = view.findViewById(R.id.links);
     }
 }
 

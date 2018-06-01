@@ -444,5 +444,7 @@
     <string name="map">Mapa</string>
     <string name="noServices">No hi ha serveis disponibles</string>
     <string name="links">Enlaces de ayuda</string>
+    <string name="delete_link_confirmation">Seguro que quieres eliminar este enlace?</string>
+    <string name="link_deleted_successfully">Enlace eliminado correctamente!</string>
 
 </resources>

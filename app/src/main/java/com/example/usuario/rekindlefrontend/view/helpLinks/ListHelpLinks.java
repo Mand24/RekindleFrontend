@@ -40,11 +40,11 @@ import retrofit2.Response;
 public class ListHelpLinks extends AppBaseActivity implements Filterable{
 
     private List<Link> mLinks = new ArrayList<>();
-    private List<Link> mFilteredLinks = new ArrayList<>();
+    protected List<Link> mFilteredLinks = new ArrayList<>();
     private RecyclerView recyclerView;
-    private LinksAdapter mAdapter;
+    protected LinksAdapter mAdapter;
     private SearchView searchView;
-    private APIService mAPIService;
+    protected APIService mAPIService;
     private ImageButton legalFilter, healthFilter, educationFilter;
     private HashMap<String, Boolean> filters = new HashMap<>();
 

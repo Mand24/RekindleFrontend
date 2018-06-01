@@ -423,5 +423,7 @@
 
     <string name="noServices">No hay servicios disponibles</string>
     <string name="links">Enllaços de ajuda</string>
+    <string name="delete_link_confirmation">Estàs segur que vols eliminar aquest enllaç?</string>
+    <string name="link_deleted_successfully">Enllaç eliminat correctament!</string>
 
 </resources>

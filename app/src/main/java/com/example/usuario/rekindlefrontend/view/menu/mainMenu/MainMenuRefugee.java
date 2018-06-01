@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.chat.ListChats;
+import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinks;
 import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugee;
 import com.example.usuario.rekindlefrontend.view.users.search.SearchRefugee;
@@ -25,6 +26,7 @@ public class MainMenuRefugee extends Fragment {
     private AppCompatButton button_my_services;
     private AppCompatButton button_search_people;
     private AppCompatButton button_chat;
+    private AppCompatButton button_links;
 
 
     public MainMenuRefugee() {
@@ -80,6 +82,15 @@ public class MainMenuRefugee extends Fragment {
             }
         });
 
+        button_links.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(), ListHelpLinks.class);
+                startActivity(i);
+            }
+        });
+
 
         return view;
     }
@@ -89,6 +100,7 @@ public class MainMenuRefugee extends Fragment {
         button_my_services = view.findViewById(R.id.mis_servicios_MenuPrincipalRefugiado);
         button_search_people = view.findViewById(R.id.buscar_personas_MenuPrincipalRefugiado);
         button_chat = view.findViewById(R.id.chat);
+        button_links = view.findViewById(R.id.links);
     }
 
 }

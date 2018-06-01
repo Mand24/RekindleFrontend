@@ -455,6 +455,8 @@
     <string name="map">Map</string>
     <string name="noServices">No services available</string>
     <string name="links">Help Links</string>
+    <string name="delete_link_confirmation">Are you sure you want to delete the link?</string>
+    <string name="link_deleted_successfully">Link deleted successfully!</string>
 
 </resources>
 
