@@ -457,6 +457,17 @@
     <string name="links">Help Links</string>
     <string name="delete_link_confirmation">Are you sure you want to delete the link?</string>
     <string name="link_deleted_successfully">Link deleted successfully!</string>
+    <string name="link_form">Link form</string>
+    <string name="link_url">Url:</string>
+    <string name="link_description">Description:</string>
+    <string name="send_link">Send Link</string>
+    <string-array name="list_type_links">
+        <item>Legal</item>
+        <item>Health</item>
+        <item>Education</item>
+    </string-array>
+    <string name="link_created_successfully">Link created successfully!</string>
+    <string name="createLink">Create link</string>
 
 </resources>
 

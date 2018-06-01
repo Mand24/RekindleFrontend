@@ -446,5 +446,16 @@
     <string name="links">Enlaces de ayuda</string>
     <string name="delete_link_confirmation">Seguro que quieres eliminar este enlace?</string>
     <string name="link_deleted_successfully">Enlace eliminado correctamente!</string>
+    <string name="link_form">Formulario link</string>
+    <string name="link_url">Url:</string>
+    <string name="link_description">Descripción:</string>
+    <string name="send_link">Enviar enlace</string>
+    <string-array name="list_type_links">
+        <item>Legal</item>
+        <item>Sanidad</item>
+        <item>Educación</item>
+    </string-array>
+    <string name="link_created_successfully">Enlace creado correctamente!</string>
+    <string name="createLink">Crear enlace</string>
 
 </resources>

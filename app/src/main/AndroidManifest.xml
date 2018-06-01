@@ -59,9 +59,10 @@
 
         <provider android:name=".utils.DatabaseContentProvider"
             android:authorities="com.example.usuario.rekindlefrontend" android:enabled="true"
-            android:exported="false"></provider>
+            android:exported="false" />
 
-        <activity android:name=".view.helpLinks.ListHelpLinks"></activity>
+        <activity android:name=".view.helpLinks.ListHelpLinks" />
+        <activity android:name=".view.helpLinks.CreateHelpLink"></activity>
     </application>
 
 </manifest>

@@ -182,6 +182,9 @@ public interface APIService {
     @GET("/links")
     Call<ArrayList<Link>> getLinks();
 
+    @POST("/links")
+    Call<Void> createLink(@Body Link link);
+
     @DELETE("/links/{id}")
     Call<Void> deleteLink(@Path("id") int id);
 
