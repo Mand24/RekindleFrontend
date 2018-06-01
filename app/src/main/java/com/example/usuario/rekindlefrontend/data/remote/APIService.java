@@ -185,6 +185,9 @@ public interface APIService {
     @POST("/links")
     Call<Void> createLink(@Body Link link);
 
+    @PUT("/links/{id}")
+    Call<Void> updateLink(@Path("id") int id, @Body Link link);
+
     @DELETE("/links/{id}")
     Call<Void> deleteLink(@Path("id") int id);
 

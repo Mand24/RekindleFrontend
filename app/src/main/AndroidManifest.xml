@@ -62,7 +62,8 @@
             android:exported="false" />
 
         <activity android:name=".view.helpLinks.ListHelpLinks" />
-        <activity android:name=".view.helpLinks.CreateHelpLink"></activity>
+        <activity android:name=".view.helpLinks.CreateHelpLink" />
+        <activity android:name=".view.helpLinks.EditHelpLink"></activity>
     </application>
 
 </manifest>

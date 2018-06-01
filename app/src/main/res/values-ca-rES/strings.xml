@@ -435,6 +435,7 @@
         <item>Educació</item>
     </string-array>
     <string name="link_created_successfully">Enllaç creat correctament!</string>
+    <string name="link_updated_successfully">Enllaç actualitzat correctament!</string>
     <string name="createLink">Crear enllaç</string>
 
 </resources>

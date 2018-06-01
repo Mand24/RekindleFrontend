@@ -48,14 +48,11 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
                                     public void onClick(DialogInterface dialog, int which) {
                                         //Editar
                                         if (which == 0) {
-                                            /*Intent intent = new Intent(getApplicationContext(),
-                                                    EditLink.class);
+                                            Intent intent = new Intent(getApplicationContext(),
+                                                    EditHelpLink.class);
                                             intent.putExtra("Link", mFilteredLinks.get
                                                     (position));
-                                            startActivity(intent);*/
-                                            Toast.makeText(getApplicationContext
-                                                    (), "not implemented!", Toast
-                                                    .LENGTH_SHORT).show();
+                                            startActivity(intent);
                                         } else if (which == 1) {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(
                                                     ListHelpLinksAdmin.this);
