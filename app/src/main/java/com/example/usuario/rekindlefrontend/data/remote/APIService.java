@@ -48,10 +48,10 @@ public interface APIService {
     @GET("/usuarios/{mail}/chats")
     Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
 
-    /*@GET("/usuarios/{mail}/chats/{idchat}")
+    @GET("/usuarios/{mail}/chats/{idchat}")
     Call<Chat> getChat(@Path("mail") String mail, @Query("mail1") String mail1, @Query("mail2")
             String
-            mail2);*/
+            mail2);
 
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);//back se encarga de mirar si existe!!!
