@@ -422,5 +422,6 @@
     <string name="map">Mapa</string>
 
     <string name="noServices">No hay servicios disponibles</string>
+    <string name="links">Enllaços de ajuda</string>
 
 </resources>

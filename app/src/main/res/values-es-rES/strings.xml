@@ -443,5 +443,6 @@
 
     <string name="map">Mapa</string>
     <string name="noServices">No hi ha serveis disponibles</string>
+    <string name="links">Enlaces de ayuda</string>
 
 </resources>

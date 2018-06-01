@@ -53,7 +53,7 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_help_links);
 
-        getSupportActionBar().setTitle(R.string.listar_servicios);
+        getSupportActionBar().setTitle(R.string.links);
 
         filters.put("Legal", true);
         filters.put("Health", true);

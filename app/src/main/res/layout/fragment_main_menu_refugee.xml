@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".view.menu.mainMenu.MenuPrincipalRefugiado">
+                tools:context=".view.menu.mainMenu.MainMenuRefugee">
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/listar_servicios_MenuPrincipalRefugiado"
@@ -51,6 +51,18 @@
         android:layout_marginRight="@dimen/dim20"
         android:layout_marginTop="@dimen/dim50"
         android:text="@string/chat"
+    />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/links"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chat"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20"
+        android:layout_marginTop="@dimen/dim50"
+        android:text="@string/links"
     />
 
 </RelativeLayout>
