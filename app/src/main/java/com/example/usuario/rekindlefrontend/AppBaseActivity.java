@@ -67,14 +67,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         User user = getUser(this);
 
-        userName.setText(user.getName() + " " + user.getSurname1());
-        userEmail.setText(user.getMail());
-
-        if (user.getPhoto() != null) {
-            userPhoto.setImageBitmap(user.getDecodedPhoto());
-        } else {
-            userPhoto.setImageResource(R.drawable.ic_usuario);
-        }
+        setDataUser(user);
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
@@ -123,6 +116,17 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    protected void setDataUser(User user) {
+        userName.setText(user.getName() + " " + user.getSurname1());
+        userEmail.setText(user.getMail());
+
+        if (user.getPhoto() != null) {
+            userPhoto.setImageBitmap(user.getDecodedPhoto());
+        } else {
+            userPhoto.setImageResource(R.drawable.ic_usuario);
+        }
     }
 
     private void openDialog() {
