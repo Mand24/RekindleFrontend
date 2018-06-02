@@ -62,7 +62,6 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
-        initializeData();
 
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
@@ -73,6 +72,8 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
         setAdapterListener();
 
         recyclerView.setAdapter(mAdapter);
+
+        initializeData();
 
         legalFilter = (ImageButton) findViewById(R.id.button_legal_type);
 
@@ -148,7 +149,6 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
     }
 
     protected void refreshItems() {
-
         mAdapter.setLinks(mFilteredLinks);
         mAdapter.notifyDataSetChanged();
     }
@@ -171,6 +171,19 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
                 manageResult(false, null);
             }
         });
+    }
+
+    public void manageResult(boolean result, List<Link> body) {
+
+        if (result) {
+            mLinks = body;
+            mFilteredLinks = mLinks;
+            refreshItems();
+
+        } else {
+            Toast.makeText(getApplicationContext(), getResources().getString(R
+                    .string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -266,19 +279,6 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
                 refreshItems();
             }
         };
-    }
-
-    public void manageResult(boolean result, List<Link> body) {
-
-        if (result) {
-            mLinks = body;
-            mFilteredLinks = mLinks;
-            refreshItems();
-
-        } else {
-            Toast.makeText(getApplicationContext(), getResources().getString(R
-                    .string.error), Toast.LENGTH_SHORT).show();
-        }
     }
 
 
