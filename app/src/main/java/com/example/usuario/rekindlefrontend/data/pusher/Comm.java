@@ -39,7 +39,7 @@ public class Comm {
     public static final String PusherApiKey = "743a4fb4a1370f0ca9a4";
     public static final String PusherCluster = "eu";
     private static Pusher pusher;
-//    private static Channel channel;
+    private static Channel channelUser;
     private static HashMap<Integer, Channel> channelsChat = new HashMap<>();
 
     /*public static void setUpPusher() {
@@ -52,7 +52,7 @@ public class Comm {
 
     }*/
 
-    public static void setUpPusher(ArrayList<Chat> chats) {
+    public static void setUpPusher(Activity act, ArrayList<Chat> chats) {
 
         PusherOptions options = new PusherOptions();
         options.setCluster(PusherCluster);
@@ -62,6 +62,8 @@ public class Comm {
             Channel channel = pusher.subscribe(Integer.toString(chat.getIdChat()));
             channelsChat.put(chat.getIdChat(), channel);
         }
+
+        channelUser = pusher.subscribe(getUser(act.getApplicationContext()).getMail());
     }
 
     public static void setAllChannelsNotifications(final Activity act){
@@ -83,6 +85,27 @@ public class Comm {
             });
 
         }
+    }
+
+    public static void setChannelUser(final Activity act){
+        channelUser.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Type mapType = new TypeToken<Map<String, Integer>>() {
+                        }.getType();
+                        Map<String, Integer> map = gson.fromJson(data, mapType);
+                        int idChat = map.get("message");
+                        Channel channel = pusher.subscribe(Integer.toString(idChat));
+                        channelsChat.put(idChat, channel);
+                        Comm.setChannelNotification(act, idChat);
+                    }
+                });
+            }
+        });
     }
 
     public static void setNotification(Activity act, String data){
@@ -138,6 +161,21 @@ public class Comm {
             }
         }
 
+    }
+
+    public static void setChannelNotification(final Activity act, int idChat){
+        Channel channel = channelsChat.get(idChat);
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Comm.setNotification(act, data);
+                    }
+                });
+            }
+        });
     }
 
     public static void connectPusher(){

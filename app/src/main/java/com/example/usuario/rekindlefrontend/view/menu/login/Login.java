@@ -4,6 +4,7 @@ import static com.example.usuario.rekindlefrontend.data.pusher.Comm.connectPushe
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setAllChannelsNotifications;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUser;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
@@ -239,8 +240,9 @@ public class Login extends AppCompatActivity {
     public void manageResult(boolean result, ArrayList<Chat> listChats){
         if (result){
             chats = listChats;
-            setUpPusher(chats);
+            setUpPusher(this, chats);
             setAllChannelsNotifications(this);
+            setChannelUser(this);
             connectPusher();
         }
         else {
