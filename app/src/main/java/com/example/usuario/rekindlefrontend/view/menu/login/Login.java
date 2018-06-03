@@ -202,9 +202,14 @@ public class Login extends AppCompatActivity {
 
         saveUser(mUser, this);
         sendGetChats();
-        setUpPusher(chats);
+        /*try{
+            Thread.sleep(1000);
+        }catch (Exception e){
+
+        }*/
+        /*setUpPusher(chats);
         setAllChannelsNotifications(this);
-        connectPusher();
+        connectPusher();*/
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MainMenu.class);
         System.out.println("USUARIOL " + mUser.toString());
@@ -217,20 +222,31 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
                 if (response.isSuccessful()){
-                    chats = response.body();
+                    manageResult(true, response.body());
                 }
                 else {
-                    Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
-                            .show();
+                    manageResult(false, null);
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Chat>> call, Throwable t) {
-                Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
-                        .show();
+                manageResult(false, null);
             }
         });
+    }
+
+    public void manageResult(boolean result, ArrayList<Chat> listChats){
+        if (result){
+            chats = listChats;
+            setUpPusher(chats);
+            setAllChannelsNotifications(this);
+            connectPusher();
+        }
+        else {
+            Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
     /*public void runPusher() {
