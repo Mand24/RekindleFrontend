@@ -202,6 +202,9 @@ public class Comm {
         pusher.disconnect();
     }
 
+    public static Channel getChannel(int idChat) {
+        return channelsChat.get(idChat);
+    }
 
     public static Pusher getPusher() {
         return pusher;
@@ -210,6 +213,8 @@ public class Comm {
     public static void setPusher(Pusher pusher) {
         Comm.pusher = pusher;
     }
+
+
 
 
     /*public static Channel getChannel() {
