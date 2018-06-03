@@ -444,4 +444,10 @@
     <string name="map">Mapa</string>
     <string name="noServices">No hi ha serveis disponibles</string>
 
+    <string name="titulo_evaluate_services">Valorar servicio</string>
+    <string name="evaluate">Valorar</string>
+    <string name="opinion">Añade tu opinión</string>
+    <string name="serviceOpinion">Opinión:</string>
+    <string name="opinionLenght">Opinión demasiado larga, máximo 350 caracteres</string>
+
 </resources>

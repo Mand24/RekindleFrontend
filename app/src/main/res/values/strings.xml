@@ -455,5 +455,11 @@
     <string name="map">Map</string>
     <string name="noServices">No services available</string>
 
+    <string name="titulo_evaluate_services">Evaluate service</string>
+    <string name="evaluate">Evaluate</string>
+    <string name="opinion">Add your opinion</string>
+    <string name="serviceOpinion">Opinion:</string>
+    <string name="opinionLenght">Opinion too long, maximum 350 characters</string>
+
 </resources>
 
