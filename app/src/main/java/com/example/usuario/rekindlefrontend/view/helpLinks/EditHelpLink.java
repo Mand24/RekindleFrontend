@@ -54,7 +54,7 @@ public class EditHelpLink extends AppBaseActivity {
     }
 
     public void setViews() {
-        type = findViewById(R.id.sangre_usuario_perfil);
+        type = findViewById(R.id.type);
 
         adapter = ArrayAdapter.createFromResource(this, R.array.list_type_links, R.layout
                 .spinner_item);
@@ -84,13 +84,17 @@ public class EditHelpLink extends AppBaseActivity {
         } else {
             linkType = "Education";
         }
-        link = new Link(linkType, url.getText().toString(), description.getText().toString());
+        link.setType(linkType);
+        link.setUrl(url.getText().toString());
+        link.setDescription(description.getText().toString());
     }
 
     public void sendUpdateLink() {
+        System.out.println(link.toString());
         mAPIService.updateLink(link.getIdLink(), link).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println("codi "+ response.code());
                 if (response.isSuccessful()) {
                     manageResult(true);
                 } else {

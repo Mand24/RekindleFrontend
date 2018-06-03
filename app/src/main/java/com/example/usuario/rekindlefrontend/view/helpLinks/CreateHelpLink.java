@@ -59,7 +59,7 @@ public class CreateHelpLink extends AppBaseActivity {
     }
 
     public void setViews() {
-        type = findViewById(R.id.sangre_usuario_perfil);
+        type = findViewById(R.id.type);
 
         adapter = ArrayAdapter.createFromResource(this, R.array.list_type_links, R.layout
                 .spinner_item);

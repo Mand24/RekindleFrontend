@@ -159,6 +159,7 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
             @Override
             public void onResponse(Call<ArrayList<Link>> call, Response<ArrayList<Link>> response) {
                 if (response.isSuccessful()){
+                    System.out.println("lista "+response.body().toString());
                     manageResult(true, response.body());
                 }
                 else {
