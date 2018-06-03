@@ -9,9 +9,11 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
@@ -72,53 +74,8 @@ public class Comm {
                     act.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
-                            Gson gson = new Gson();
-                            Type mapType = new TypeToken<Map<String, Message>>() {
-                            }.getType();
-                            Map<String, Message> map = gson.fromJson(data, mapType);
-                            Message message = map.get("message");
-                            User owner = message.getOwner();
-                            if (!getUser(act.getApplicationContext()).getMail().equals(owner.getMail())) {
-
-                                Intent intent = new Intent(act.getApplicationContext(), ListChats.class);
-
-                                // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
-                                final int pendingIntentId = 0;
-                                PendingIntent contentIntent =
-                                        PendingIntent.getActivity(act.getApplicationContext(),
-                                                pendingIntentId, intent,
-                                                PendingIntent.FLAG_UPDATE_CURRENT);
-
-                                // Instantiate the builder and set notification elements:
-
-                                Notification notification = new Notification.Builder(
-                                        act.getApplicationContext())
-                                        .setCategory(Notification.CATEGORY_PROMO)
-                                        .setContentTitle(owner.getName() + " " + owner.getSurname1())
-                                        .setContentText(message.getContent())
-                                        .setSmallIcon(R.drawable.logo_r)
-                                        .setAutoCancel(true)
-                                        .setVisibility(Notification.VISIBILITY_PUBLIC)
-                                        .addAction(android.R.drawable.ic_menu_view, "View details",
-                                                contentIntent)
-                                        .setContentIntent(contentIntent)
-                                        .setPriority(Notification.PRIORITY_HIGH)
-                                        .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
-
-
-                                // Get the notification manager:
-                                NotificationManager notificationManager =
-                                        (NotificationManager) act.getApplicationContext().getSystemService(
-                                                NOTIFICATION_SERVICE);
-
-                                // Publish the notification:
-                                final int notificationId = 0;
-                                notificationManager.notify(notificationId, notification);
-                            }
-
+                            Comm.setNotification(act, data);
                         }
-
                     });
 
 
@@ -128,69 +85,58 @@ public class Comm {
         }
     }
 
-    public static void setChannelNotification(final Activity act, int idChat){
+    public static void setNotification(Activity act, String data){
 
-        Channel channel = channelsChat.get(idChat);
+        ActivityManager activityManager = (ActivityManager)act.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        ComponentName cn = activityManager.getRunningTasks(1).get(0).topActivity;
 
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(String channelName, String eventName, final String data) {
-                act.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+        System.out.println("nombre " + cn.getClassName());
+        System.out.println("boolean " + cn.getClassName().contains("ShowChat"));
+        if (!cn.getClassName().contains("ShowChat")){
+            Gson gson = new Gson();
+            Type mapType = new TypeToken<Map<String, Message>>() {
+            }.getType();
+            Map<String, Message> map = gson.fromJson(data, mapType);
+            Message message = map.get("message");
+            User owner = message.getOwner();
+            if (!getUser(act.getApplicationContext()).getMail().equals(owner.getMail())) {
 
-                        Gson gson = new Gson();
-                        Type mapType = new TypeToken<Map<String, Message>>() {
-                        }.getType();
-                        Map<String, Message> map = gson.fromJson(data, mapType);
-                        Message message = map.get("message");
-                        User owner = message.getOwner();
-                        if (!getUser(act.getApplicationContext()).getMail().equals(owner.getMail())) {
+                Intent intent = new Intent(act.getApplicationContext(), ListChats.class);
 
-                            Intent intent = new Intent(act.getApplicationContext(), ListChats.class);
+                // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+                final int pendingIntentId = 0;
+                PendingIntent contentIntent =
+                        PendingIntent.getActivity(act.getApplicationContext(),
+                                pendingIntentId, intent,
+                                PendingIntent.FLAG_UPDATE_CURRENT);
 
-                            // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
-                            final int pendingIntentId = 0;
-                            PendingIntent contentIntent =
-                                    PendingIntent.getActivity(act.getApplicationContext(),
-                                            pendingIntentId, intent,
-                                            PendingIntent.FLAG_UPDATE_CURRENT);
+                // Instantiate the builder and set notification elements:
 
-                            // Instantiate the builder and set notification elements:
-
-                            Notification notification = new Notification.Builder(
-                                    act.getApplicationContext())
-                                    .setCategory(Notification.CATEGORY_PROMO)
-                                    .setContentTitle(owner.getName() + " " + owner.getSurname1())
-                                    .setContentText(message.getContent())
-                                    .setSmallIcon(R.drawable.logo_r)
-                                    .setAutoCancel(true)
-                                    .setVisibility(Notification.VISIBILITY_PUBLIC)
-                                    .addAction(android.R.drawable.ic_menu_view, "View details",
-                                            contentIntent)
-                                    .setContentIntent(contentIntent)
-                                    .setPriority(Notification.PRIORITY_HIGH)
-                                    .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
+                Notification notification = new Notification.Builder(
+                        act.getApplicationContext())
+                        .setCategory(Notification.CATEGORY_PROMO)
+                        .setContentTitle(owner.getName() + " " + owner.getSurname1())
+                        .setContentText(message.getContent())
+                        .setSmallIcon(R.drawable.logo_r)
+                        .setAutoCancel(true)
+                        .setVisibility(Notification.VISIBILITY_PUBLIC)
+                        .addAction(android.R.drawable.ic_menu_view, "View details",
+                                contentIntent)
+                        .setContentIntent(contentIntent)
+                        .setPriority(Notification.PRIORITY_HIGH)
+                        .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
 
 
-                            // Get the notification manager:
-                            NotificationManager notificationManager =
-                                    (NotificationManager) act.getApplicationContext().getSystemService(
-                                            NOTIFICATION_SERVICE);
+                // Get the notification manager:
+                NotificationManager notificationManager =
+                        (NotificationManager) act.getApplicationContext().getSystemService(
+                                NOTIFICATION_SERVICE);
 
-                            // Publish the notification:
-                            final int notificationId = 0;
-                            notificationManager.notify(notificationId, notification);
-                        }
-
-                    }
-
-                });
-
-
+                // Publish the notification:
+                final int notificationId = 0;
+                notificationManager.notify(notificationId, notification);
             }
-        });
-
+        }
 
     }
 

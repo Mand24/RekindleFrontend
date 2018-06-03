@@ -126,6 +126,7 @@ public class ShowChat extends AppBaseActivity {
 
         mAdapter.setMessages(messages);
         mAdapter.notifyDataSetChanged();
+        recyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
     public void sendSendMessage() {
