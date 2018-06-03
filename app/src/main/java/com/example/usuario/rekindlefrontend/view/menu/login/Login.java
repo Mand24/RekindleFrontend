@@ -1,7 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.connectPusher;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setAllChannelsNotifications;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
+import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -37,6 +40,7 @@ import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -54,6 +58,7 @@ public class Login extends AppCompatActivity {
     private int backpress = 0;
     private APIService mAPIService;
     private User mUser;
+    private ArrayList<Chat> chats;
 
     private void bind() {
         _loginButton = (Button) findViewById(R.id.btn_login);
@@ -196,8 +201,10 @@ public class Login extends AppCompatActivity {
     public void onLoginSuccess() {
 
         saveUser(mUser, this);
-        setUpPusher();
-        runPusher();
+        sendGetChats();
+        setUpPusher(chats);
+        setAllChannelsNotifications(this);
+        connectPusher();
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MainMenu.class);
         System.out.println("USUARIOL " + mUser.toString());
@@ -205,7 +212,28 @@ public class Login extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void runPusher() {
+    public void sendGetChats(){
+        mAPIService.getChats(mUser.getMail()).enqueue(new Callback<ArrayList<Chat>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
+                if (response.isSuccessful()){
+                    chats = response.body();
+                }
+                else {
+                    Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
+                            .show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Chat>> call, Throwable t) {
+                Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
+    }
+
+    /*public void runPusher() {
         Pusher pusher = getPusher();
         Channel channel = getChannel();
 
@@ -270,7 +298,7 @@ public class Login extends AppCompatActivity {
         });
 
         pusher.connect();
-    }
+    }*/
 
 
     public void onLoginFailed() {
