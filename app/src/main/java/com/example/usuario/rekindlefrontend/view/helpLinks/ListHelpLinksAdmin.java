@@ -66,6 +66,10 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
                                                             sendDeleteLink(mFilteredLinks.get(position));
+                                                            Intent refresh = new Intent
+                                                                    (getApplicationContext(), ListHelpLinksAdmin
+                                                                            .class);
+                                                            startActivity(refresh);
                                                         }
                                                     });
 

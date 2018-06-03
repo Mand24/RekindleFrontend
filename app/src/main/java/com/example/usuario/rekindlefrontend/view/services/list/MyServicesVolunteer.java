@@ -73,6 +73,10 @@ public class MyServicesVolunteer extends ListServices {
                                                                 int which) {
                                                             sendDeleteService(mServices.get
                                                                     (position));
+                                                            Intent refresh = new Intent
+                                                                    (getApplicationContext(), MyServicesVolunteer
+                                                                            .class);
+                                                            startActivity(refresh);
                                                         }
                                                     });
 
