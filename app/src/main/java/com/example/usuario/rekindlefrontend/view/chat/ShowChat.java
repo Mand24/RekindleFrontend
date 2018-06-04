@@ -87,14 +87,14 @@ public class ShowChat extends AppBaseActivity {
             }
         });
 
-        setUpPusher();
-        runPusher();
+//        setUpPusher();
+        setChannel();
     }
 
-    public void runPusher() {
+    public void setChannel() {
 
-        Pusher pusher = getPusher();
-        Channel channel = getChannel();
+//        Pusher pusher = getPusher();
+        Channel channel = getChannel(chat.getIdChat());
 
         channel.bind("my-event", new SubscriptionEventListener() {
             @Override
@@ -119,13 +119,14 @@ public class ShowChat extends AppBaseActivity {
             }
         });
 
-        pusher.connect();
+//        pusher.connect();
     }
 
     protected void initializeData() {
 
         mAdapter.setMessages(messages);
         mAdapter.notifyDataSetChanged();
+        recyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
     }
 
     public void sendSendMessage() {
