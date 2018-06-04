@@ -20,8 +20,10 @@ import android.content.Intent;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.view.chat.ListChats;
+import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugee;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.pusher.client.Pusher;
@@ -41,6 +43,7 @@ public class Comm {
     private static Pusher pusher;
     private static Channel channelUser;
     private static HashMap<Integer, Channel> channelsChat = new HashMap<>();
+    private static HashMap<Integer, Channel> channelsService = new HashMap<>();
 
     /*public static void setUpPusher() {
 
@@ -52,12 +55,13 @@ public class Comm {
 
     }*/
 
-    public static void setUpPusher(Activity act, ArrayList<Chat> chats) {
-
+    public static void setUpPusher() {
         PusherOptions options = new PusherOptions();
         options.setCluster(PusherCluster);
         pusher = new Pusher(PusherApiKey, options);
+    }
 
+    public static void setUpChannelsChats(Activity act, ArrayList<Chat> chats) {
         for (Chat chat:chats) {
             Channel channel = pusher.subscribe(Integer.toString(chat.getIdChat()));
             channelsChat.put(chat.getIdChat(), channel);
@@ -66,7 +70,14 @@ public class Comm {
         channelUser = pusher.subscribe(getUser(act.getApplicationContext()).getMail());
     }
 
-    public static void setAllChannelsNotifications(final Activity act){
+    public static void setUpChannelsServices(ArrayList<Service> services) {
+        for (Service service:services) {
+            Channel channel = pusher.subscribe(Integer.toString(service.getId()));
+            channelsService.put(service.getId(), channel);
+        }
+    }
+
+    public static void setAllChannelsNotificationsChats(final Activity act){
         for (Map.Entry<Integer, Channel> entry : channelsChat.entrySet()) {
             Channel channel = entry.getValue();
 
@@ -76,7 +87,43 @@ public class Comm {
                     act.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Comm.setNotification(act, data);
+                            Comm.setNotificationMessage(act, data);
+                        }
+                    });
+
+
+                }
+            });
+
+        }
+    }
+
+    public static void setChannelNotificationChat(final Activity act, int idChat){
+        Channel channel = channelsChat.get(idChat);
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Comm.setNotificationMessage(act, data);
+                    }
+                });
+            }
+        });
+    }
+
+    public static void setAllChannelsNotificationsServices(final Activity act){
+        for (Map.Entry<Integer, Channel> entry : channelsService.entrySet()) {
+            Channel channel = entry.getValue();
+
+            channel.bind("my-event", new SubscriptionEventListener() {
+                @Override
+                public void onEvent(String channelName, String eventName, final String data) {
+                    act.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Comm.setNotificationService(act, data);
                         }
                     });
 
@@ -101,14 +148,14 @@ public class Comm {
                         int idChat = map.get("message");
                         Channel channel = pusher.subscribe(Integer.toString(idChat));
                         channelsChat.put(idChat, channel);
-                        Comm.setChannelNotification(act, idChat);
+                        Comm.setChannelNotificationChat(act, idChat);
                     }
                 });
             }
         });
     }
 
-    public static void setNotification(Activity act, String data){
+    public static void setNotificationMessage(Activity act, String data){
 
         ActivityManager activityManager = (ActivityManager)act.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
         ComponentName cn = activityManager.getRunningTasks(1).get(0).topActivity;
@@ -163,19 +210,52 @@ public class Comm {
 
     }
 
-    public static void setChannelNotification(final Activity act, int idChat){
-        Channel channel = channelsChat.get(idChat);
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(String channelName, String eventName, final String data) {
-                act.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Comm.setNotification(act, data);
-                    }
-                });
-            }
-        });
+    //Nomes seran notificacions pels refugees que son els qui han de ser informats!!!
+    public static void setNotificationService(Activity act, String data){
+
+        Gson gson = new Gson();
+        Type mapType = new TypeToken<Map<String, Service>>() {
+        }.getType();
+        Map<String, Service> map = gson.fromJson(data, mapType);
+        Service service = map.get("message");
+
+        Intent intent = new Intent(act.getApplicationContext(), MyServicesRefugee.class);
+
+        // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+        final int pendingIntentId = 0;
+        PendingIntent contentIntent =
+                PendingIntent.getActivity(act.getApplicationContext(),
+                        pendingIntentId, intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Instantiate the builder and set notification elements:
+
+        Notification notification = new Notification.Builder(
+                act.getApplicationContext())
+                .setCategory(Notification.CATEGORY_PROMO)
+                .setContentTitle(service.getName())
+                .setContentText(service.getDescription())//AQUI HAURIA DE SORTIR SI HA ESTAT
+                // MODIFICAT O ELIMINAT SERIA LA CLAU DEL DATA PER SABER QUINA DE LES 2 OPCIONS
+                // ES!!!!
+                .setSmallIcon(R.drawable.logo_r)
+                .setAutoCancel(true)
+                .setVisibility(Notification.VISIBILITY_PUBLIC)
+                .addAction(android.R.drawable.ic_menu_view, "View details",
+                        contentIntent)
+                .setContentIntent(contentIntent)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
+
+
+        // Get the notification manager:
+        NotificationManager notificationManager =
+                (NotificationManager) act.getApplicationContext().getSystemService(
+                        NOTIFICATION_SERVICE);
+
+        // Publish the notification:
+        final int notificationId = 0;
+        notificationManager.notify(notificationId, notification);
+
     }
 
     public static void connectPusher(){
