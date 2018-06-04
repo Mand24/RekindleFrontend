@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend.data.remote;
 
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
+import com.example.usuario.rekindlefrontend.data.entity.link.Link;
 import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
@@ -175,5 +176,19 @@ public interface APIService {
 
     @GET("/reportes/{id}")
     Call<Report> getReport(@Path("id") int id);
+
+    //LLAMADAS RELACIONADAS CON LINKS
+
+    @GET("/links")
+    Call<ArrayList<Link>> getLinks();
+
+    @POST("/links")
+    Call<Void> createLink(@Body Link link);
+
+    @PUT("/links/{id}")
+    Call<Void> updateLink(@Path("id") int id, @Body Link link);
+
+    @DELETE("/links/{id}")
+    Call<Void> deleteLink(@Path("id") int id);
 
 }
