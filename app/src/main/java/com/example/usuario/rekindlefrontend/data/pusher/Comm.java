@@ -81,7 +81,7 @@ public class Comm {
         for (Map.Entry<Integer, Channel> entry : channelsChat.entrySet()) {
             Channel channel = entry.getValue();
 
-            channel.bind("my-event", new SubscriptionEventListener() {
+            channel.bind("new-message", new SubscriptionEventListener() {
                 @Override
                 public void onEvent(String channelName, String eventName, final String data) {
                     act.runOnUiThread(new Runnable() {
@@ -100,7 +100,7 @@ public class Comm {
 
     public static void setChannelNotificationChat(final Activity act, int idChat){
         Channel channel = channelsChat.get(idChat);
-        channel.bind("my-event", new SubscriptionEventListener() {
+        channel.bind("new-message", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
                 act.runOnUiThread(new Runnable() {
@@ -117,7 +117,7 @@ public class Comm {
         for (Map.Entry<Integer, Channel> entry : channelsService.entrySet()) {
             Channel channel = entry.getValue();
 
-            channel.bind("my-event", new SubscriptionEventListener() {
+            channel.bind("updated-service", new SubscriptionEventListener() {
                 @Override
                 public void onEvent(String channelName, String eventName, final String data) {
                     act.runOnUiThread(new Runnable() {
@@ -134,8 +134,23 @@ public class Comm {
         }
     }
 
+    public static void setChannelNotificationService(final Activity act, int idService){
+        Channel channel = channelsService.get(idService);
+        channel.bind("updated-service", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Comm.setNotificationService(act, data);
+                    }
+                });
+            }
+        });
+    }
+
     public static void setChannelUser(final Activity act){
-        channelUser.bind("my-event", new SubscriptionEventListener() {
+        channelUser.bind("new-chat", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
                 act.runOnUiThread(new Runnable() {
@@ -149,6 +164,43 @@ public class Comm {
                         Channel channel = pusher.subscribe(Integer.toString(idChat));
                         channelsChat.put(idChat, channel);
                         Comm.setChannelNotificationChat(act, idChat);
+                    }
+                });
+            }
+        });
+
+        channelUser.bind("new-service", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Type mapType = new TypeToken<Map<String, Integer>>() {
+                        }.getType();
+                        Map<String, Integer> map = gson.fromJson(data, mapType);
+                        int idService = map.get("message");
+                        Channel channel = pusher.subscribe(Integer.toString(idService));
+                        channelsService.put(idService, channel);
+                        Comm.setChannelNotificationService(act, idService);
+                    }
+                });
+            }
+        });
+
+        channelUser.bind("delete-service", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Type mapType = new TypeToken<Map<String, Integer>>() {
+                        }.getType();
+                        Map<String, Integer> map = gson.fromJson(data, mapType);
+                        int idService = map.get("message");
+                        pusher.unsubscribe(Integer.toString(idService));
+                        channelsService.remove(idService);
                     }
                 });
             }
