@@ -27,11 +27,12 @@ public class MyServicesRefugee extends ListServices {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
-        mMapButton.setVisibility(View.INVISIBLE);
+        mMapButton.setVisibility(View.GONE);
     }
 
     @Override
     protected void setAdapterListener() {
+
         mAdapter = new ServicesAdapter(getApplicationContext(), mServiciosFiltrados,
                 new CustomItemClickListener() {
                     @Override

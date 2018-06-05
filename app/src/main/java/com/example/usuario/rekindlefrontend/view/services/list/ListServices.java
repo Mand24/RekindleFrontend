@@ -64,7 +64,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
         filters.put("Job", true);
 
         mAPIService = APIUtils.getAPIService();
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
+        recyclerView = findViewById(R.id.rv);
 
         initializeData();
 
@@ -78,7 +78,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
         recyclerView.setAdapter(mAdapter);
 
-        LodgeFilter = (ImageButton) findViewById(R.id.boton_tipo_alojamiento);
+        LodgeFilter = findViewById(R.id.boton_tipo_alojamiento);
 
         LodgeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
             }
         });
 
-        DonationFilter = (ImageButton) findViewById(R.id.boton_tipo_donacion);
+        DonationFilter = findViewById(R.id.boton_tipo_donacion);
 
         DonationFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +115,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
             }
         });
 
-        EducationFilter = (ImageButton) findViewById(R.id.boton_tipo_curso_educativo);
+        EducationFilter = findViewById(R.id.boton_tipo_curso_educativo);
 
         EducationFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +133,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
             }
         });
 
-        JobFilter = (ImageButton) findViewById(R.id.boton_tipo_oferta_empleo);
+        JobFilter = findViewById(R.id.boton_tipo_oferta_empleo);
 
         JobFilter.setOnClickListener(new View.OnClickListener() {
             @Override

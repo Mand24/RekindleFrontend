@@ -19,25 +19,21 @@
             style="@style/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ajustes_generales"
-        />
+            android:text="@string/ajustes_generales"/>
 
     </RelativeLayout>
 
     <RelativeLayout android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_below="@+id/ajustes_generales_header"
-
-    >
+                    android:layout_below="@+id/ajustes_generales_header">
 
         <TextView
             android:id="@+id/idioma_texto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dim10"
+            android:layout_marginStart="@dimen/dim10"
             android:layout_marginTop="@dimen/dim20"
-            android:text="@string/idioma"
-        />
+            android:text="@string/idioma"/>
 
         <Spinner
             android:id="@+id/idiomas_ajustes"
@@ -48,19 +44,18 @@
             android:layout_marginRight="@dimen/dim20"
             android:layout_marginTop="@dimen/dim10"
             android:background="@color/colorPrimaryDarker"
-            android:popupBackground="@color/colorPrimaryDarker"
-        />
+            android:popupBackground="@color/colorPrimaryDarker"/>
 
-        <android.support.v7.widget.AppCompatButton android:id="@+id/guardar_ajustes"
-                                                   android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
-                                                   android:layout_below="@+id/idiomas_ajustes"
-                                                   android:layout_centerHorizontal="true"
-                                                   android:layout_marginLeft="@dimen/dim20"
-                                                   android:layout_marginRight="@dimen/dim20"
-                                                   android:layout_marginTop="@dimen/dim10"
-                                                   android:text="@string/guardar"
-        />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/guardar_ajustes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idiomas_ajustes"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim10"
+            android:text="@string/guardar"/>
 
 
     </RelativeLayout>
