@@ -458,5 +458,7 @@
     <string name="link_created_successfully">Enlace creado correctamente!</string>
     <string name="link_updated_successfully">Enlace actualizado correctamente!</string>
     <string name="createLink">Crear enlace</string>
+    <string name="descriptionEventUpdatedService">El servicio se ha actualitzado!</string>
+    <string name="descriptionEventDeletedService">El servicio se ha eliminado!</string>
 
 </resources>

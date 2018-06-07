@@ -469,6 +469,8 @@
     <string name="link_created_successfully">Link created successfully!</string>
     <string name="link_updated_successfully">Link updated successfully!</string>
     <string name="createLink">Create link</string>
+    <string name="descriptionEventUpdatedService">The service has been updated!</string>
+    <string name="descriptionEventDeletedService">The service has been deleted!</string>
 
 </resources>
 

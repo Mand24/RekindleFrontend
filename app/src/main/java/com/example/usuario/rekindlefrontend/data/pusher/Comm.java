@@ -16,6 +16,7 @@ import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
@@ -35,6 +36,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.mail.Quota;
 
 public class Comm {
 
@@ -123,7 +126,21 @@ public class Comm {
                     act.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Comm.setNotificationService(act, data);
+                            Comm.setNotificationService(act, data, "updated-service");
+                        }
+                    });
+
+
+                }
+            });
+
+            channel.bind("deleted-service", new SubscriptionEventListener() {
+                @Override
+                public void onEvent(String channelName, String eventName, final String data) {
+                    act.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Comm.setNotificationService(act, data, "deleted-service");
                         }
                     });
 
@@ -142,9 +159,23 @@ public class Comm {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Comm.setNotificationService(act, data);
+                        Comm.setNotificationService(act, data,"updated-service");
                     }
                 });
+            }
+        });
+
+        channel.bind("deleted-service", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                act.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Comm.setNotificationService(act, data, "deleted-service");
+                    }
+                });
+
+
             }
         });
     }
@@ -263,7 +294,7 @@ public class Comm {
     }
 
     //Nomes seran notificacions pels refugees que son els qui han de ser informats!!!
-    public static void setNotificationService(Activity act, String data){
+    public static void setNotificationService(Activity act, String data, String eventType){
 
         Gson gson = new Gson();
         Type mapType = new TypeToken<Map<String, Service>>() {
@@ -281,23 +312,28 @@ public class Comm {
                         PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Instantiate the builder and set notification elements:
+        Notification notification;
+        Notification.Builder builder = new Notification.Builder(act.getApplicationContext());
+        builder.setCategory(Notification.CATEGORY_PROMO);
+        builder.setContentTitle(service.getName());
+        builder.setSmallIcon(R.drawable.logo_r);
+        builder.setAutoCancel(true);
+        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+        builder.addAction(android.R.drawable.ic_menu_view, "View details",
+                        contentIntent);
+        builder.setContentIntent(contentIntent);
+        builder.setPriority(Notification.PRIORITY_HIGH);
+        builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
 
-        Notification notification = new Notification.Builder(
-                act.getApplicationContext())
-                .setCategory(Notification.CATEGORY_PROMO)
-                .setContentTitle(service.getName())
-                .setContentText(service.getDescription())//AQUI HAURIA DE SORTIR SI HA ESTAT
-                // MODIFICAT O ELIMINAT SERIA LA CLAU DEL DATA PER SABER QUINA DE LES 2 OPCIONS
-                // ES!!!!
-                .setSmallIcon(R.drawable.logo_r)
-                .setAutoCancel(true)
-                .setVisibility(Notification.VISIBILITY_PUBLIC)
-                .addAction(android.R.drawable.ic_menu_view, "View details",
-                        contentIntent)
-                .setContentIntent(contentIntent)
-                .setPriority(Notification.PRIORITY_HIGH)
-                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
-
+        if (eventType.equals("updated-service")){
+            builder.setContentText(act.getResources().getString(R
+                    .string.descriptionEventUpdatedService));
+        }
+        else {
+            builder.setContentText(act.getResources().getString(R
+                            .string.descriptionEventDeletedService));
+        }
+        notification = builder.build();
 
         // Get the notification manager:
         NotificationManager notificationManager =
