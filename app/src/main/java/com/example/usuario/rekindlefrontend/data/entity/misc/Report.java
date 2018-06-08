@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.data.entity.reports;
+package com.example.usuario.rekindlefrontend.data.entity.misc;
 
 
 import android.os.Parcel;
