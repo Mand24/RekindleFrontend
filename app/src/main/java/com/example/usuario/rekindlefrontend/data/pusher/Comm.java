@@ -64,13 +64,16 @@ public class Comm {
         pusher = new Pusher(PusherApiKey, options);
     }
 
+    public static void setUpChannelUser(Activity act){
+        channelUser = pusher.subscribe(getUser(act
+                .getApplicationContext()).getMail());
+    }
+
     public static void setUpChannelsChats(Activity act, ArrayList<Chat> chats) {
         for (Chat chat:chats) {
             Channel channel = pusher.subscribe(Integer.toString(chat.getIdChat()));
             channelsChat.put(chat.getIdChat(), channel);
         }
-
-        channelUser = pusher.subscribe(getUser(act.getApplicationContext()).getMail());
     }
 
     public static void setUpChannelsServices(ArrayList<Service> services) {
@@ -180,7 +183,7 @@ public class Comm {
         });
     }
 
-    public static void setChannelUser(final Activity act){
+    public static void setChannelUserChat(final Activity act){
         channelUser.bind("new-chat", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
@@ -199,7 +202,9 @@ public class Comm {
                 });
             }
         });
+    }
 
+    public static void setChannelUserService(final Activity act){
         channelUser.bind("enroll-service", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {

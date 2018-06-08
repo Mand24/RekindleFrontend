@@ -7,7 +7,9 @@ import static com.example.usuario.rekindlefrontend.data.pusher.Comm
         .setAllChannelsNotificationsChats;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm
         .setAllChannelsNotificationsServices;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUser;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUserChat;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUserService;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelUser;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelsChats;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelsServices;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
@@ -227,6 +229,7 @@ public class Login extends AppCompatActivity {
 
     public void setComm(){
         setUpPusher();
+        setUpChannelUser(this);
         sendGetChats();
         if (mUser.getUserType().equals("Refugee")){
             sendGetMyServicesRefugee();
@@ -257,7 +260,7 @@ public class Login extends AppCompatActivity {
         if (result){
             setUpChannelsChats(this, listChats);
             setAllChannelsNotificationsChats(this);
-            setChannelUser(this);
+            setChannelUserChat(this);
         }
         else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
@@ -291,6 +294,7 @@ public class Login extends AppCompatActivity {
         if (result){
             setUpChannelsServices(listServices);
             setAllChannelsNotificationsServices(this);
+            setChannelUserService(this);
         }
         else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
