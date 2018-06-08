@@ -75,7 +75,7 @@ public class Comm {
 
     public static void setUpChannelsServices(ArrayList<Service> services) {
         for (Service service:services) {
-            Channel channel = pusher.subscribe(Integer.toString(service.getId()));
+            Channel channel = pusher.subscribe(service.getServiceType() + Integer.toString(service.getId()));
             channelsService.put(service.getId(), channel);
         }
     }
@@ -200,7 +200,7 @@ public class Comm {
             }
         });
 
-        channelUser.bind("new-service", new SubscriptionEventListener() {
+        channelUser.bind("enroll-service", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
                 act.runOnUiThread(new Runnable() {
@@ -209,17 +209,17 @@ public class Comm {
                         Gson gson = new Gson();
                         Type mapType = new TypeToken<Map<String, Integer>>() {
                         }.getType();
-                        Map<String, Integer> map = gson.fromJson(data, mapType);
-                        int idService = map.get("message");
-                        Channel channel = pusher.subscribe(Integer.toString(idService));
-                        channelsService.put(idService, channel);
-                        Comm.setChannelNotificationService(act, idService);
+                        Map<String, Service> map = gson.fromJson(data, mapType);
+                        Service service = map.get("message");
+                        Channel channel = pusher.subscribe(service.getServiceType() + Integer.toString(service.getId()));
+                        channelsService.put(service.getId(), channel);
+                        Comm.setChannelNotificationService(act, service.getId());
                     }
                 });
             }
         });
 
-        channelUser.bind("delete-service", new SubscriptionEventListener() {
+        channelUser.bind("unenroll-service", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
                 act.runOnUiThread(new Runnable() {
@@ -228,10 +228,10 @@ public class Comm {
                         Gson gson = new Gson();
                         Type mapType = new TypeToken<Map<String, Integer>>() {
                         }.getType();
-                        Map<String, Integer> map = gson.fromJson(data, mapType);
-                        int idService = map.get("message");
-                        pusher.unsubscribe(Integer.toString(idService));
-                        channelsService.remove(idService);
+                        Map<String, Service> map = gson.fromJson(data, mapType);
+                        Service service = map.get("message");
+                        pusher.unsubscribe(service.getServiceType() + Integer.toString(service.getId()));
+                        channelsService.remove(service.getId());
                     }
                 });
             }
