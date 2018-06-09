@@ -53,6 +53,8 @@ public class DonationForm extends AbstractFormatChecker {
     private Donation mDonation;
     private APIService mAPIService;
 
+    private User user;
+
     public DonationForm() {
         // Required empty public constructor
     }
@@ -64,6 +66,8 @@ public class DonationForm extends AbstractFormatChecker {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_donation_form, container,
                 false);
+
+        user = getUser(getActivity().getApplicationContext());
 
         //establecer las vistas
         setViews(view);
@@ -130,8 +134,6 @@ public class DonationForm extends AbstractFormatChecker {
 
     public void getParams() {
 
-        User user = getUser(getActivity().getApplicationContext());
-
         mDonation = new Donation(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
                 .getText().toString(), editStartingTime.getText().toString(), editEndingTime
@@ -140,7 +142,7 @@ public class DonationForm extends AbstractFormatChecker {
     }
 
     public void sendCreateDonation() {
-        mAPIService.crearDonacion(mDonation).enqueue(new Callback<Void>() {
+        mAPIService.crearDonacion(user.getApiKey(), mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

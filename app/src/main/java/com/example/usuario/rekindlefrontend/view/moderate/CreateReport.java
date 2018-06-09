@@ -32,11 +32,14 @@ public class CreateReport extends AppCompatActivity {
     private Refugee refugee;
     private Report report;
     private APIService mAPIService;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_report);
+
+        user = getUser(this);
 
         setViews();
 
@@ -67,13 +70,12 @@ public class CreateReport extends AppCompatActivity {
     }
 
     public void createReport() {
-        User user = getUser(getApplicationContext());
         report = new Report(user, refugee, motive.getText().toString());
         System.out.println("reporte " + report.toString());
     }
 
     public void sendReport() {
-        mAPIService.createReport(report).enqueue(new Callback<Void>() {
+        mAPIService.createReport(user.getApiKey(), report).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("llamada " + call.toString());

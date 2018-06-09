@@ -15,6 +15,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.link.Link;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
@@ -91,7 +92,9 @@ public class EditHelpLink extends AppBaseActivity {
 
     public void sendUpdateLink() {
         System.out.println(link.toString());
-        mAPIService.updateLink(link.getIdLink(), link).enqueue(new Callback<Void>() {
+        mAPIService.updateLink(Consistency.getUser(this).getApiKey(), link.getIdLink(), link)
+                .enqueue(new
+                                                                                             Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("codi "+ response.code());

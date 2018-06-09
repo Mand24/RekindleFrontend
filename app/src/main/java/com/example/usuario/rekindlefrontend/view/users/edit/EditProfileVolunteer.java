@@ -168,7 +168,8 @@ public class EditProfileVolunteer extends AbstractFormatChecker {
     }
 
     public void sendUpdateVolunteer() {
-        mAPIService.actualizarVoluntario(mVolunteer.getMail(), mVolunteer).enqueue(
+        mAPIService.actualizarVoluntario(mVolunteer.getApiKey(), mVolunteer.getMail(), mVolunteer)
+                .enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
