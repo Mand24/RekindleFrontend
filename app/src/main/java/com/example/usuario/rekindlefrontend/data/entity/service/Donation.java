@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Donation extends Service {
-    @SerializedName("placesLimit")
+    @SerializedName("places")
     @Expose
     private String placesLimit;
     @SerializedName("startTime")

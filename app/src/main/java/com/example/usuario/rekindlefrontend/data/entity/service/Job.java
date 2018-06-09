@@ -19,7 +19,7 @@ public class Job extends Service {
     @SerializedName("contractDuration")
     @Expose
     public String contractDuration;
-    @SerializedName("placesLimit")
+    @SerializedName("places")
     @Expose
     public String placesLimit;
     @SerializedName("salary")
