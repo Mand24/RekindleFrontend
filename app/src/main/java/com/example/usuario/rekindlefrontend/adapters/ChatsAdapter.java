@@ -31,6 +31,8 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatViewHold
         mContext = context;
     }
 
+    public List<Chat> getChats () { return chats; }
+
     public void setChats(List<Chat> chats) {
         this.chats = chats;
     }
