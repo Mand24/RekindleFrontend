@@ -212,7 +212,7 @@ public class Comm {
                     @Override
                     public void run() {
                         Gson gson = new Gson();
-                        Type mapType = new TypeToken<Map<String, Integer>>() {
+                        Type mapType = new TypeToken<Map<String, Service>>() {
                         }.getType();
                         Map<String, Service> map = gson.fromJson(data, mapType);
                         Service service = map.get("message");
@@ -231,7 +231,7 @@ public class Comm {
                     @Override
                     public void run() {
                         Gson gson = new Gson();
-                        Type mapType = new TypeToken<Map<String, Integer>>() {
+                        Type mapType = new TypeToken<Map<String, Service>>() {
                         }.getType();
                         Map<String, Service> map = gson.fromJson(data, mapType);
                         Service service = map.get("message");

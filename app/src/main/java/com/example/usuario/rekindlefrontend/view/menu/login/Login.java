@@ -230,8 +230,10 @@ public class Login extends AppCompatActivity {
     public void setComm(){
         setUpPusher();
         setUpChannelUser(this);
+        setChannelUserChat(this);
         sendGetChats();
         if (mUser.getUserType().equals("Refugee")){
+            setChannelUserService(this);
             sendGetMyServicesRefugee();
         }
         connectPusher();
@@ -260,7 +262,6 @@ public class Login extends AppCompatActivity {
         if (result){
             setUpChannelsChats(this, listChats);
             setAllChannelsNotificationsChats(this);
-            setChannelUserChat(this);
         }
         else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
@@ -294,7 +295,6 @@ public class Login extends AppCompatActivity {
         if (result){
             setUpChannelsServices(listServices);
             setAllChannelsNotificationsServices(this);
-            setChannelUserService(this);
         }
         else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
