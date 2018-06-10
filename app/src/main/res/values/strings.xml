@@ -110,6 +110,8 @@
         successfully!
     </string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
+    <string name="solicitud_creada_correctamente">Request created successfully!</string>
+    <string name="solicitud_fallida">Request failed!</string>
     <string name="reporte_creado_correctamente">Report created succesfully!
     </string>
     <string name="reporte_fallido">Report failed!</string>
@@ -211,6 +213,12 @@
     <string name="report_form">Report form</string>
     <string name="explanation_motive">Write the motive for your report</string>
     <string name="send_report">Send report</string>
+
+    <string name="requested_donation">Requested donation</string>
+    <string name="request_motive">Request motive</string>
+    <string name="request_form">Request form</string>
+    <string name="explanation_request_motive">Write the motive for your request</string>
+    <string name="send_request">Send request</string>
 
     <string name="titulo_busqueda">Search people</string>
     <string name="subtitulo_busqueda">Please, fill all the info you know about the person

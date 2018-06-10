@@ -105,6 +105,8 @@
     <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
     <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
+    <string name="solicitud_creada_correctamente">Solicitud creada correctament!</string>
+    <string name="solicitud_fallida">Ha fallat la creació de la solicitud!</string>
     <string name="reporte_creado_correctamente">Report creat correctament!</string>
     <string name="reporte_fallido">Ha fallat la creació del report!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
@@ -418,6 +420,12 @@
     <string name="report_form">Formulari de report</string>
     <string name="explanation_motive">Escriu el motiu del teu report</string>
     <string name="send_report">Enviar report</string>
+
+    <string name="requested_donation">Donació solicitada</string>
+    <string name="request_motive">Motiu de la solicitud</string>
+    <string name="request_form">Formulari de solicitud</string>
+    <string name="explanation_request_motive">Escriu el motiu de la teva solicitud</string>
+    <string name="send_request">Enviar solicitud</string>
 
     <string name="map">Mapa</string>
 
