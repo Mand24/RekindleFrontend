@@ -1,6 +1,8 @@
 package com.example.usuario.rekindlefrontend.view.services.list;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
@@ -47,7 +50,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
     protected APIService mAPIService;
 
-    protected ImageButton LodgeFilter, DonationFilter, EducationFilter, JobFilter;
+    protected ImageButton LodgeFilter, DonationFilter, EducationFilter, JobFilter, mFilterButton;
     protected AppCompatButton mMapButton;
     protected HashMap<String, Boolean> filters = new HashMap<>();
 
@@ -66,7 +69,9 @@ public class ListServices extends AppBaseActivity implements Filterable {
         mAPIService = APIUtils.getAPIService();
         recyclerView = findViewById(R.id.rv);
 
-        initializeData();
+        Bundle extras = getIntent().getExtras();
+
+        initializeData(extras);
 
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
@@ -161,6 +166,15 @@ public class ListServices extends AppBaseActivity implements Filterable {
             }
         });
 
+        mFilterButton = findViewById(R.id.filterButton);
+        mFilterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ListServices.this, FilterServices.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     protected void setAdapterListener() {
@@ -187,37 +201,65 @@ public class ListServices extends AppBaseActivity implements Filterable {
         mAdapter.notifyDataSetChanged();
     }
 
-    protected void initializeData() {
+    protected void initializeData(Bundle extras) {
 
-        mAPIService.obtenerServicios().enqueue(new Callback<ArrayList<Service>>
-                () {
-            @Override
-            public void onResponse(Call<ArrayList<Service>> call,
-                    Response<ArrayList<Service>>
-                            response) {
-                if (response.isSuccessful()) {
-                    ArrayList<Service> body = response.body();
-                    manageResult(true, body);
+        String startDate = (String) extras.get("startDate");
+        String endDate = (String) extras.get("endDate");
+        Double minimumRating = new Double((double) extras.get("minimumRating"));
+        String location = (String) extras.get("location");
+        Integer distance = (Integer) extras.get("distance");
 
-                } else {
-                    System.out.println("CODIGO " + response.code());
-                    manageResult(false, null);
-                }
+        Geocoder geo = new Geocoder(getApplicationContext());
+        Address locationAddress = null;
+        Double latitude = null;
+        Double longitude = null;
+        try {
+            List<Address> addresses = geo.getFromLocationName(location, 1);
+            if (addresses.size() > 0) {
+                locationAddress = addresses.get(0);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (locationAddress != null) {
+            latitude = locationAddress.getLatitude();
+            longitude = locationAddress.getLongitude();
+        }
 
-            @Override
-            public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
-                Log.e("on Failure", t.toString());
-                manageResult(false, null);
-                Log.i(t.getClass().toString(), "========================");
-                if (t instanceof IOException) {
-                    Log.i("NETWORK ERROR", "=======================================");
-                    // logging probably not necessary
-                } else {
-                    Log.i("CONVERSION ERROR", "=======================================");
-                }
-            }
-        });
+        mAPIService.getServicesFiltered(startDate, endDate, minimumRating, latitude, longitude,
+                distance)
+                .enqueue(new Callback<ArrayList<Service>>
+                        () {
+                    @Override
+                    public void onResponse(Call<ArrayList<Service>> call,
+                            Response<ArrayList<Service>>
+                                    response) {
+                        if (response.isSuccessful()) {
+                            ArrayList<Service> body = response.body();
+                            manageResult(true, body);
+
+                        } else {
+                            System.out.println("CODIGO " + response.code());
+                            manageResult(false, null);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Service>> call,
+                            Throwable t) {
+                        Log.e("on Failure", t.toString());
+                        manageResult(false, null);
+                        Log.i(t.getClass().toString(), "========================");
+                        if (t instanceof IOException) {
+                            Log.i("NETWORK ERROR",
+                                    "=======================================");
+                            // logging probably not necessary
+                        } else {
+                            Log.i("CONVERSION ERROR",
+                                    "=======================================");
+                        }
+                    }
+                });
     }
 
     @Override

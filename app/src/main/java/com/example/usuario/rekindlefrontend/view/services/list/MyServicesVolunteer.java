@@ -123,7 +123,7 @@ public class MyServicesVolunteer extends ListServices {
     }
 
     @Override
-    protected void initializeData() {
+    protected void initializeData(Bundle savedInstance) {
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
                 (this).getUserType())
                 .enqueue(new Callback<ArrayList<Service>>() {

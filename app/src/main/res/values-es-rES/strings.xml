@@ -458,5 +458,15 @@
     <string name="link_created_successfully">Enlace creado correctamente!</string>
     <string name="link_updated_successfully">Enlace actualizado correctamente!</string>
     <string name="createLink">Crear enlace</string>
+    <string name="date_title">Fecha</string>
+    <string name="start_date">A partir del día</string>
+    <string name="end_date">Hasta el día</string>
+    <string name="minimumRating">Valoración mínima</string>
+    <string name="distance">Distancia</string>
+    <string name="custom_location">Posición a elegir</string>
+    <string name="reset_all">Resetear</string>
+    <string name="meters">metros</string>
+    <string name="kilometers">kilometros</string>
+    <string name="your_location">Tu localización</string>
 
 </resources>

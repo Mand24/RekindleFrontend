@@ -69,6 +69,9 @@
         <activity android:name=".view.helpLinks.ListHelpLinksAdmin"/>
         <activity android:name=".view.helpLinks.CreateHelpLink"/>
         <activity android:name=".view.helpLinks.EditHelpLink"/>
+        <activity android:name=".view.services.list.FilterServices"
+                  android:excludeFromRecents="true"
+                  android:theme="@style/AppTheme.Dark.Dialog"/>
     </application>
 
 </manifest>

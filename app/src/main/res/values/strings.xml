@@ -469,6 +469,16 @@
     <string name="link_created_successfully">Link created successfully!</string>
     <string name="link_updated_successfully">Link updated successfully!</string>
     <string name="createLink">Create link</string>
+    <string name="date_title">Date</string>
+    <string name="start_date">From date</string>
+    <string name="end_date">To date</string>
+    <string name="minimumRating">Minimum rating</string>
+    <string name="distance">Distance</string>
+    <string name="custom_location">Choose location</string>
+    <string name="reset_all">Reset</string>
+    <string name="meters">meters</string>
+    <string name="kilometers">kilometers</string>
+    <string name="your_location">Your location</string>
 
 </resources>
 

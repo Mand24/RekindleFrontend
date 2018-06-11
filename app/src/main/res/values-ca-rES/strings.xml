@@ -437,5 +437,15 @@
     <string name="link_created_successfully">Enllaç creat correctament!</string>
     <string name="link_updated_successfully">Enllaç actualitzat correctament!</string>
     <string name="createLink">Crear enllaç</string>
+    <string name="date_title">Data</string>
+    <string name="start_date">Des del día</string>
+    <string name="end_date">Fins al día</string>
+    <string name="minimumRating">Valoració mínima</string>
+    <string name="distance">Distància</string>
+    <string name="custom_location">Posició a triar</string>
+    <string name="reset_all">Resetejar</string>
+    <string name="meters">metres</string>
+    <string name="kilometers">kilometres</string>
+    <string name="your_location">La teva localització</string>
 
 </resources>
