@@ -240,4 +240,11 @@ public abstract class AbstractFormatChecker extends Fragment {
         if (old > news) throw new Exception(getString(R.string.plazas_aumento));
     }
 
+    public void checkURL (String URL) throws Exception {
+        Pattern patron = Pattern.compile("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\"
+                + ".[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)");
+        Matcher valid = patron.matcher(URL);
+        if(!valid.matches()) throw new Exception("Incorrect URL format; correct format =  ");
+    }
+
 }
