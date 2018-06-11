@@ -48,11 +48,8 @@ public class EvaluateService extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    checkOpinion ();
                     rating  = ratingBar.getRating();
 
-                    System.out.println("Rating bar: " + rating);
-                    System.out.println("Opinion: " + opinion.length());
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -63,20 +60,7 @@ public class EvaluateService extends AppCompatActivity {
     private void setViews () {
         serviceName     = findViewById (R.id.serviceName);
         ratingBar       = findViewById (R.id.ratingBar);
-        serviceOpinion  = findViewById (R.id.service_opinion);
 
         serviceName.setText (service.getName());
     }
-
-    private void checkOpinion () {
-
-        opinion = serviceOpinion.getText().toString();
-
-        if (opinion.length() > 350) {
-            Toast.makeText(getApplicationContext(), getText(R.string.opinionLenght), Toast
-                    .LENGTH_SHORT)
-                    .show();
-        }
-    }
-
 }
