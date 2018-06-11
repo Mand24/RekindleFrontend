@@ -38,6 +38,8 @@
     <string name="crear_servicio">Crear Servicio</string>
     <string name="ver_perfil">Ver Perfil</string>
     <string name="listar_reportes">Listar Reportes</string>
+    <string name="listar_solicitudes_donaciones">Listar solicitudes donaciones</string>
+    <string name="listar_solicitudes_usuarios">Listar solicitudes usuarios</string>
     <string name="nombre_usuario_perfil">Nombre:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
@@ -443,6 +445,7 @@
     <string name="explanation_motive">Escribe el motivo de tu reporte</string>
     <string name="send_report">Enviar reporte</string>
 
+    <string name="requester_user">Usuario solicitante</string>
     <string name="requested_donation">Donación solicitada</string>
     <string name="request_motive">Motivo de la solicitud</string>
     <string name="request_form">Formulario de solicitud</string>

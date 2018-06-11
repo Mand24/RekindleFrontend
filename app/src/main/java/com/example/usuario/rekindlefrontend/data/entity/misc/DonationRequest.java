@@ -66,7 +66,7 @@ public class DonationRequest implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(idRequest);
         dest.writeParcelable(user, flags);
-        dest.writeParcelable(donation, flags);
+        dest.writeSerializable(donation);
         dest.writeString(motive);
     }
 
