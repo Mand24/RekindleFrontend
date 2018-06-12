@@ -9,17 +9,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Chat implements Parcelable {
 
-    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
-        @Override
-        public Chat createFromParcel(Parcel in) {
-            return new Chat(in);
-        }
-
-        @Override
-        public Chat[] newArray(int size) {
-            return new Chat[size];
-        }
-    };
     @SerializedName("id")
     @Expose
     private int idChat;
@@ -61,6 +50,18 @@ public class Chat implements Parcelable {
         dest.writeParcelable(user1, flags);
         dest.writeParcelable(user2, flags);
     }
+
+    public static final Creator<Chat> CREATOR = new Creator<Chat>() {
+        @Override
+        public Chat createFromParcel(Parcel in) {
+            return new Chat(in);
+        }
+
+        @Override
+        public Chat[] newArray(int size) {
+            return new Chat[size];
+        }
+    };
 
     public int getIdChat() {
         return idChat;

@@ -8,18 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Refugee extends User {
 
-    public static final Parcelable.Creator<Refugee> CREATOR =
-            new Parcelable.Creator<Refugee>() {
-                @Override
-                public Refugee createFromParcel(Parcel source) {
-                    return new Refugee(source);
-                }
-
-                @Override
-                public Refugee[] newArray(int size) {
-                    return new Refugee[size];
-                }
-            };
     @SerializedName("phoneNumber")
     @Expose
     private String phoneNumber;
@@ -193,4 +181,17 @@ public class Refugee extends User {
         dest.writeString(this.eyeColor);
         dest.writeString(this.biography);
     }
+
+    public static final Parcelable.Creator<Refugee> CREATOR =
+            new Parcelable.Creator<Refugee>() {
+                @Override
+                public Refugee createFromParcel(Parcel source) {
+                    return new Refugee(source);
+                }
+
+                @Override
+                public Refugee[] newArray(int size) {
+                    return new Refugee[size];
+                }
+            };
 }

@@ -5,19 +5,6 @@ import android.os.Parcelable;
 
 public class Volunteer extends User {
 
-    public static final Parcelable.Creator<Volunteer> CREATOR =
-            new Parcelable.Creator<Volunteer>() {
-                @Override
-                public Volunteer createFromParcel(Parcel source) {
-                    return new Volunteer(source);
-                }
-
-                @Override
-                public Volunteer[] newArray(int size) {
-                    return new Volunteer[size];
-                }
-            };
-
     public Volunteer() {
         super();
     }
@@ -40,4 +27,17 @@ public class Volunteer extends User {
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
     }
+
+    public static final Parcelable.Creator<Volunteer> CREATOR =
+            new Parcelable.Creator<Volunteer>() {
+                @Override
+                public Volunteer createFromParcel(Parcel source) {
+                    return new Volunteer(source);
+                }
+
+                @Override
+                public Volunteer[] newArray(int size) {
+                    return new Volunteer[size];
+                }
+            };
 }

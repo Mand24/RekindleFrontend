@@ -1,10 +1,10 @@
-package com.example.usuario.rekindlefrontend.data.entity.usuario;
+package com.example.usuario.rekindlefrontend.data.entity.user;
 
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 
-public class Administrador extends User {
+public class Admin extends User {
 
-    public Administrador(String mail, String password, String name, String surname1,
+    public Admin(String mail, String password, String name, String surname1,
             String surname2, String photo) {
         super("Admin", mail, password, name, surname1, surname2, photo);
     }

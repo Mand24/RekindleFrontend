@@ -58,7 +58,7 @@ public class DonationRequestsAdapter extends RecyclerView.Adapter<DonationReques
             holder, int i) {
         DonationRequest donationRequest = donationRequests.get(i);
 
-        holder.user_mail.setText(donationRequest.getUser().getMail());
+        holder.user_mail.setText(donationRequest.getRefugeeMail());
         holder.donation_name.setText(donationRequest.getDonation().getName());
 
     }

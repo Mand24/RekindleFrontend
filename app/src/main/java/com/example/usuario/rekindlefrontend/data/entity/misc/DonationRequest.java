@@ -9,18 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DonationRequest implements Parcelable {
-    public static final Parcelable.Creator<DonationRequest> CREATOR = new Parcelable.Creator<DonationRequest>
-            () {
-        @Override
-        public DonationRequest createFromParcel(Parcel in) {
-            return new DonationRequest(in);
-        }
 
-        @Override
-        public DonationRequest[] newArray(int size) {
-            return new DonationRequest[size];
-        }
-    };
     @SerializedName("refugeeMail")
     @Expose
     private String refugeeMail;
@@ -64,6 +53,19 @@ public class DonationRequest implements Parcelable {
         dest.writeSerializable(donation);
         dest.writeString(motive);
     }
+
+    public static final Parcelable.Creator<DonationRequest> CREATOR = new Parcelable.Creator<DonationRequest>
+            () {
+        @Override
+        public DonationRequest createFromParcel(Parcel in) {
+            return new DonationRequest(in);
+        }
+
+        @Override
+        public DonationRequest[] newArray(int size) {
+            return new DonationRequest[size];
+        }
+    };
 
     @Override
     public String toString() {

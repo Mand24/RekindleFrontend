@@ -11,17 +11,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class User implements Parcelable {
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
     @SerializedName("userType")
     @Expose
     private String userType;
@@ -84,6 +73,18 @@ public class User implements Parcelable {
         dest.writeString(surname2);
         dest.writeString(photo);
     }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getUserType() {
         return userType;
