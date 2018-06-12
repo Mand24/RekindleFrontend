@@ -9,14 +9,18 @@ import org.junit.runners.Suite;
 
 // Runs all unit tests.
 @RunWith(Suite.class)
-@Suite.SuiteClasses({   EspressoMenuPrincipal.class,
-                        EspressoLogin.class,
-                        EspressoRegistroUsuario.class,
-                        EspressoVerPerfilRefugiado.class,
-                        EspressoCambiarPassword.class,
-                        EspressoEditarPerfil.class,
-                        EspressoCrearServicioAlojamiento.class,
-                        EspressoCrearServicioCursoEducativo.class,
-                        EspressoCrearServicioDonacion.class,
-                        EspressoCrearServicioOfertaEmpleo.class})
-public class SuiteEspresso {}
+@Suite.SuiteClasses({
+
+        EspressoCrearServiceLodge.class,
+        EspressoCrearServiceEducation.class,
+        EspressoCrearServiceDonation.class,
+        EspressoCrearServiceJob.class,
+        EspressoEditarServiceLodge.class,
+        EspressoEditarServiceEducation.class,
+        EspressoEditarServiceDonation.class,
+        EspressoEditarServiceJob.class,
+        EspressoLogin.class,
+        EspressoRegistroUser.class, // testea registro voluntario y refugiado
+})
+public class SuiteEspresso {
+}

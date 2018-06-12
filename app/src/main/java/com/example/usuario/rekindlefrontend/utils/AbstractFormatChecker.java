@@ -8,172 +8,236 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class AbstractFormatChecker extends Fragment {
-    public  boolean letras(String texto) {
-        Pattern patron = Pattern.compile("^[a-zA-Z]+$");
-        Matcher valid  = patron.matcher(texto);
-        return valid.matches();
-    }
 
-    public  boolean numeros(String texto) {
-        Pattern patron = Pattern.compile("^[0-9]+$");
+    public boolean letters(String texto) {
+        Pattern patron = Pattern.compile("^[a-zA-Z]+$");
         Matcher valid = patron.matcher(texto);
         return valid.matches();
     }
 
-    public  boolean preuFormat(String texto)
-    {
-        Pattern patron = Pattern.compile ("^\\d+(.\\d{1,2})?$");
-        Matcher valid  = patron.matcher (texto);
-        return valid.matches ();
+    public boolean numbers(String text) {
+        Pattern patron = Pattern.compile("^[0-9]+$");
+        Matcher valid = patron.matcher(text);
+        return valid.matches();
     }
 
-    public void checkNombre(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string
-                .nombre_obligatorio));
-        else if (texto.length() > 20) throw new Exception(getString(R.string
-                .nombre_largo));
-        else if (!letras(texto)) throw new Exception(getString(R.string.nombre_letras));
+    public boolean priceFormat(String text) {
+        Pattern patron = Pattern.compile("^\\d+(.\\d{1,2})?$");
+        Matcher valid = patron.matcher(text);
+        return valid.matches();
     }
 
-    public  void checkEmail(String texto) throws Exception {
-        if (texto.length () == 0) throw new Exception(getString(R.string.email_obligatorio));
-        else if (texto.length () > 30) throw new Exception(getString(R.string.email_largo));
-        else if (!android.util.Patterns.EMAIL_ADDRESS.matcher (texto).matches()) throw new
-                Exception(getString(R.string.email_formato));
+    public void checkName(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string
+                    .nombre_obligatorio));
+        } else if (text.length() > 20) {
+            throw new Exception(getString(R.string
+                    .nombre_largo));
+        } else if (!letters(text)) throw new Exception(getString(R.string.nombre_letras));
     }
 
-    public  void checkPassword(String texto, String texto_aux) throws Exception{
-        if (texto.length() == 0) throw new Exception(getString(R.string.contraseña_obligatoria));
-        else if (texto.length() > 15) throw new Exception(getString(R.string.contraseña_larga));
-        else if (texto.length() < 4) throw new Exception(getString(R.string.contraseña_corta));
-        else if (!texto.equals(texto_aux)) throw new Exception(getString(R.string
-                .contraseña_distinta));
+    public void checkEmail(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.email_obligatorio));
+        } else if (text.length() > 30) {
+            throw new Exception(getString(R.string.email_largo));
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
+            throw new
+                    Exception(getString(R.string.email_formato));
+        }
     }
 
-    public  void checkPrimer_apellido(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string.apellido1_obligatorio));
-        else if (texto.length() > 20) throw new Exception(getString(R.string.apellido1_largo));
-        else if (!letras(texto)) throw new Exception(getString(R.string.apellido1_letras));
+    public void checkPassword(String text, String aux) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.contraseña_obligatoria));
+        } else if (text.length() > 15) {
+            throw new Exception(getString(R.string.contraseña_larga));
+        } else if (text.length() < 4) {
+            throw new Exception(getString(R.string.contraseña_corta));
+        } else if (!text.equals(aux)) {
+            throw new Exception(getString(R.string
+                    .contraseña_distinta));
+        }
     }
 
-    public  void checkSegundo_apellido(String texto) throws Exception {
-        if (texto.length() > 20) throw new Exception(getString(R.string.apellido2_largo));
-        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
-                .apellido2_letras));
+    public void checkSurname1(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.apellido1_obligatorio));
+        } else if (text.length() > 20) {
+            throw new Exception(getString(R.string.apellido1_largo));
+        } else if (!letters(text)) throw new Exception(getString(R.string.apellido1_letras));
     }
 
-    public  void checkTelefono(String texto) throws Exception {
-        if (!numeros(texto) && texto.length() > 0) throw new Exception(getString(R.string
-                .telefonoUsuario_numeros));
-        else if (texto.length() > 40) throw new Exception(getString(R.string.telefonoUsuario_largo));
+    public void checkSurname2(String text) throws Exception {
+        if (text.length() > 20) {
+            throw new Exception(getString(R.string.apellido2_largo));
+        } else if (!letters(text) && text.length() > 0) {
+            throw new Exception(getString(R.string
+                    .apellido2_letras));
+        }
     }
 
-    public  void checkProcedencia(String texto) throws Exception {
-        if (!letras(texto) && texto.length() > 0) throw new Exception
-                (getString(R.string.procedencia_letras));
-        else if (texto.length() > 20) throw new Exception
-                (getString(R.string.procedencia_largo));
+    public void checkPhoneNumber(String text) throws Exception {
+        if (!numbers(text) && text.length() > 0) {
+            throw new Exception(getString(R.string
+                    .telefonoUsuario_numeros));
+        } else if (text.length() > 40) {
+            throw new Exception(
+                    getString(R.string.telefonoUsuario_largo));
+        }
     }
 
-    public  void checkPueblo(String texto) throws Exception {
-        if (texto.length() > 40) throw new Exception(getString(R.string.pueblo_largo));
-        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
-                .pueblo_letras));
+    public void checkCountry(String text) throws Exception {
+        if (!letters(text) && text.length() > 0) {
+            throw new Exception
+                    (getString(R.string.procedencia_letras));
+        } else if (text.length() > 20) {
+            throw new Exception
+                    (getString(R.string.procedencia_largo));
+        }
     }
 
-    public  void checkEtnia(String texto) throws Exception {
-        if (texto.length() > 20) throw new Exception(getString(R.string.etnia_largo));
-        else if (!letras(texto) && texto.length() > 0) throw new Exception(getString(R.string
-                .etnia_letras));
+    public void checkTown(String text) throws Exception {
+        if (text.length() > 40) {
+            throw new Exception(getString(R.string.pueblo_largo));
+        } else if (!letters(text) && text.length() > 0) {
+            throw new Exception(getString(R.string
+                    .pueblo_letras));
+        }
     }
 
-    public  void checkBiografia(String texto) throws Exception {
-        if (texto.length() > 300) throw new Exception(getString(R.string.biografia_largo));
+    public void checkEthnic(String text) throws Exception {
+        if (text.length() > 20) {
+            throw new Exception(getString(R.string.etnia_largo));
+        } else if (!letters(text) && text.length() > 0) {
+            throw new Exception(getString(R.string
+                    .etnia_letras));
+        }
     }
 
-    public  void checkNombreServicio(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string
-                .nombreServicio_obligatorio));
-        else if (texto.length() > 50) throw new Exception(getString(R.string.nombreServicio_largo));
-        else if (!letras(texto)) throw new Exception(getString(R.string.nombreServicio_letras));
+    public void checkBiography(String text) throws Exception {
+        if (text.length() > 300) throw new Exception(getString(R.string.biografia_largo));
     }
 
-    public  void checkTelefonoServicio(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string
-                .telefonoServicio_obligatorio));
-        else if (!numeros (texto) && texto.length () > 0) throw new Exception(getString(R.string
-                .telefonoUsuario_numeros));
-        else if (texto.length() > 40) throw new Exception(getString(R.string
-                .telefonoUsuario_largo));
-    }
-    public  void checkSolicitudesServicio(String texto) throws Exception {
-        if (!numeros (texto) && texto.length () > 0) throw new Exception(getString(R.string
-                .solicitudes_numeros));
+    public void checkServiceName(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string
+                    .nombreServicio_obligatorio));
+        } else if (text.length() > 50) {
+            throw new Exception(getString(R.string.nombreServicio_largo));
+        }
     }
 
-    public  void checkDescripcionServicio(String texto) throws Exception {
-        if (texto.length () == 0) throw new Exception(getString(R.string.descripcion_obligatoria));
-        else if (texto.length () > 300) throw new Exception
-                (getString(R.string.descricpion_larga));
+    public void checkServicePhoneNumber(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string
+                    .telefonoServicio_obligatorio));
+        } else if (!numbers(text) && text.length() > 0) {
+            throw new Exception(getString(R.string
+                    .telefonoUsuario_numeros));
+        } else if (text.length() > 40) {
+            throw new Exception(getString(R.string
+                    .telefonoUsuario_largo));
+        }
     }
 
-    public  void checkPuestoOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string
-                .puestoTrabajo_obligatorio));
-        else if (texto.length() > 50) throw new Exception(getString(R.string.puestoTrabajo_largo));
+    public void checkServicePlaces(String text) throws Exception {
+        if (!numbers(text) && text.length() > 0) {
+            throw new Exception(getString(R.string
+                    .solicitudes_numeros));
+        } else if (text.length() > 5) throw new Exception(getString(R.string.plazas_largo));
     }
 
-    public  void checkRequisitosServicio(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string.requisitos_obligatorios));
-        else if (texto.length() > 100) throw new Exception(getString(R.string.requisitos_largo));
+    public void checkServiceDescription(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.descripcion_obligatoria));
+        } else if (text.length() > 300) {
+            throw new Exception
+                    (getString(R.string.descricpion_larga));
+        }
     }
 
-    public  void checkJornadaOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Indicar horas de la joranada");
-        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Formato incorrecto; "
-                + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
-                + "deciamales, uso del punto como separador");
+    public void checkServiceCharge(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string
+                    .puestoTrabajo_obligatorio));
+        } else if (text.length() > 50) {
+            throw new Exception(
+                    getString(R.string.puestoTrabajo_largo));
+        }
     }
 
-    public  void checkHorasOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Indicar horas semanales");
-        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Formato incorrecto; "
-                + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
-                + "deciamales, uso del punto como separador");
+    public void checkServiceRequirements(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.requisitos_obligatorios));
+        } else if (text.length() > 100) throw new Exception(getString(R.string.requisitos_largo));
     }
 
-    public  void checkDuracionOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception("Indicar duración del contrato");
-        else if (!numeros(texto) && texto.length() > 0) throw new Exception("Duración solo puede "
-                + "contener dígitos");
-        else if (texto.length() > 3) throw new Exception("Duración demasiado larga, máximo 3 "
-                + "números");
+    public void checkServiceHoursDay(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception("Indicar horas de la joranada");
+        } else if (!numbers(text) && text.length() > 0) {
+            throw new Exception("Formato incorrecto; "
+                    + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
+                    + "deciamales, uso del punto como separador");
+        }
     }
 
-    public  void checkSueldoOfertaEmpleo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string.sueldo_obligatorio));
-        else if (!preuFormat(texto) && texto.length() > 0) throw new Exception(getString(R.string.sueldo_formto));
+    public void checkServiceHoursWeek(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception("Indicar horas semanales");
+        } else if (!numbers(text) && text.length() > 0) {
+            throw new Exception("Formato incorrecto; "
+                    + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
+                    + "deciamales, uso del punto como separador");
+        }
     }
 
-    public  void checkPlazasServicio(String texto) throws Exception {
-        if (!numeros(texto) && texto.length() > 0) throw new Exception(getString(R.string
-                .plazas_numeros));
-        else if (texto.length() > 5) throw new Exception(getString(R.string.plazas_largo));
+    public void checkServiceContractDuration(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception("Indicar duración del contrato");
+        } else if (!numbers(text) && text.length() > 0) {
+            throw new Exception("Duración solo puede "
+                    + "contener dígitos");
+        } else if (text.length() > 3) {
+            throw new Exception("Duración demasiado larga, máximo 3 "
+                    + "números");
+        }
     }
 
-    public  void checkAmbitoCursoEducativo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string.ambito_obligatorio));
-        else if (texto.length() > 50) throw new Exception(getString(R.string.ambito_largo));
+    public void checkServiceSalary(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.sueldo_obligatorio));
+        } else if (!priceFormat(text) && text.length() > 0) {
+            throw new Exception(
+                    getString(R.string.sueldo_formto));
+        }
     }
 
-    public  void checkHorarioCursoEducativo(String texto) throws Exception {
-        if (texto.length() == 0) throw new Exception(getString(R.string.horario_obligatorio));
-        else if (texto.length () > 30) throw new Exception(getString(R.string.horario_largo));
+    public void checkServiceAmbit(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.ambito_obligatorio));
+        } else if (text.length() > 50) throw new Exception(getString(R.string.ambito_largo));
     }
 
-    public  void checkPrice (String texto) throws Exception {
-        if (texto.length () > 0 && !preuFormat(texto)) throw new Exception (getString(R.string
-                .precio_formato));
+    public void checkServiceSchedule(String text) throws Exception {
+        if (text.length() == 0) {
+            throw new Exception(getString(R.string.horario_obligatorio));
+        } else if (text.length() > 30) throw new Exception(getString(R.string.horario_largo));
+    }
+
+    public void checkServicePrice(String text) throws Exception {
+        if (text.length() > 0 && !priceFormat(text)) {
+            throw new Exception(getString(R.string
+                    .precio_formato));
+        }
+    }
+
+    public void checkServiceIncreasePlaces(String _news, String _old) throws Exception {
+        Integer news = Integer.parseInt(_news);
+        Integer old = Integer.parseInt(_old);
+        if (old > news) throw new Exception(getString(R.string.plazas_aumento));
     }
 
 }

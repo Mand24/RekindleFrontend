@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.services.create.FormularioCursoEducativo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titulo_formulario_curso_educativo"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/formulario_curso_educativo"
+            />
+
+            <TextView
+                android:id="@+id/subtitulo_formulario_curso_educativo"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/subtitulo_formulario"
+            />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/nombre_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_nombre_formulario"
+                    android:inputType="textCapWords"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/telefono_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/telefono"
+                    android:inputType="phone"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/direccion_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:focusable="false"
+                    android:hint="@string/direccion"
+                    android:inputType="text"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/ambito_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/ambito_curso_educativo"
+                    android:inputType="textCapSentences"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/requisitos_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/requisitos_curso_educativo"
+                    android:inputType="textMultiLine"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/horario_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/horario_curso_educativo"
+                    android:inputType="text"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/plazas_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/plazas_oferta_empleo"
+                    android:inputType="number"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/precio_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/price"
+                    android:inputType="numberDecimal"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/descripcion_curso_educativo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/descripcion"
+                    android:inputType="textMultiLine"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/enviar_formulario_curso_educativo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/enviar"
+            />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

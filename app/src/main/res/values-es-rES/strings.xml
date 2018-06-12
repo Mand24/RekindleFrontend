@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Rekindle</string>
-    <string name="usuario">Nombre usuario:</string>
+    <string name="user">Nombre user:</string>
     <string name="password">Contraseña:</string>
     <string name="password1">Contraseña(*):</string>
     <string name="repetir_password">Repetir contraseña(*):</string>
     <string name="texto_numero_telefono">Número de teléfono(*):</string>
     <string name="acceder">Acceder</string>
     <string name="registro">Registrarse</string>
-    <string name="tipo_usuario">Tipo de usuario:</string>
-    <string name="recuperar_password"><u>Recuperar contraseña</u></string>
+    <string name="tipo_usuario">Tipo de user:</string>
+    <string name="recuperar_password">
+        <u>Recuperar contraseña</u>
+    </string>
     <string name="atras">Atrás</string>
     <string name="login">Iniciar sesión</string>
     <string name="enviar">Enviar</string>
-    <string name="refugiado">Refugiado</string>
-    <string name="voluntario">Voluntario</string>
+    <string name="refugee">Refugiado</string>
+    <string name="volunteer">Voluntario</string>
     <string name="subtitulo_formulario">Rellene los campos siguientes:</string>
     <string name="texto_nombre_formulario">Nombre(*):</string>
     <string name="texto_1apellido_formulario">Primer apellido(*):</string>
     <string name="texto_2apellido_formulario">Segundo apellido:</string>
     <string name="texto_email_formulario">Correo electrónico(*):</string>
-    <string name="formulario_refugiado">Formulario refugiado</string>
+    <string name="formulario_refugiado">Formulario refugee</string>
     <string name="texto_nacimiento_refugiado">Fecha de nacimiento:</string>
     <string name="texto_sexo_refugiado">Sexo:</string>
     <string name="texto_procedencia_refugiado">País de procedencia:</string>
@@ -35,11 +37,14 @@
     <string name="listar_servicios">Listar Servicios</string>
     <string name="crear_servicio">Crear Servicio</string>
     <string name="ver_perfil">Ver Perfil</string>
+    <string name="listar_reportes">Listar Reportes</string>
     <string name="nombre_usuario_perfil">Nombre:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
-    <string name="cambiar_password"><b>Cambiar contraseña</b></string>
+    <string name="cambiar_password">
+        <b>Cambiar contraseña</b>
+    </string>
     <string name="actual_password">Contraseña actual:</string>
     <string name="nuevo_password">Contraseña nueva:</string>
     <string name="repetir_password1">Repite contraseña:</string>
@@ -47,9 +52,10 @@
     <string name="opiniones">Opiniones</string>
     <string name="inscribir">Inscribir</string>
     <string name="chat">Chat</string>
+    <string name="reportar">Reportar</string>
 
-    <string name="alojamiento">Alojamiento</string>
-    <string name="donacion">Donación</string>
+    <string name="lodge">Alojamiento</string>
+    <string name="donation">Donación</string>
     <string name="formulario_donacion">Formulario Donacion:</string>
     <string name="lugar_recogida_donacion">Lugar de Recogida(*):</string>
     <string name="franja_horaria_donacion">Hora de Recogida:</string>
@@ -76,24 +82,33 @@
     <string name="requisitos_curso_educativo">Requisitos previos(*):</string>
     <string name="ambito_curso_educativo">Ámbito(*):</string>
     <string name="horario_curso_educativo">Horario(*):</string>
-    <string name="precio">Precio:</string>
+    <string name="price">Precio:</string>
     <string name="email_usuario_login">Email</string>
     <string name="password_usuario_login">Password</string>
-    <string name="go_to_signup"><b><u>No tienes cuenta todavía? Crea una</u></b></string>
+    <string name="go_to_signup">
+        <b>
+            <u>No tienes cuenta todavía? Crea una</u>
+        </b>
+    </string>
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registrado correctamente!</string>
     <string name="registro_fallido">La inscripción ha fallado!</string>
-    <string name="servicio_alojamiento_creado_correctamente">Servicio de alojamiento creado
-        correctamente!</string>
-    <string name="servicio_alojamiento_fallido">Ha fallado la creación del servicio de
-        alojamiento!</string>
+    <string name="servicio_alojamiento_creado_correctamente">Servicio de lodge creado
+        correctamente!
+    </string>
+    <string name="servicio_alojamiento_fallido">Ha fallado la creación del service de
+        lodge!
+    </string>
     <string name="curso_educativo_creado_correctamente">Curso educativo creado
-        correctamente!</string>
+        correctamente!
+    </string>
     <string name="curso_educativo_fallido">Ha fallado la creación del curso educativo!</string>
     <string name="donacion_creada_correctamente">Donación creada correctamente!</string>
     <string name="donacion_fallida">Ha fallado la creación de la donación!</string>
     <string name="oferta_empleo_correctamente">Oferta de empleo creada correctamente!</string>
     <string name="oferta_empleo_fallida">Ha fallado la creación de la oferta de empleo!</string>
+    <string name="reporte_creado_correctamente">Reporte creado correctamente!</string>
+    <string name="reporte_fallido">Ha fallado la creación del reporte!</string>
     <string name="guardado_correctamente">Guardado correctamente!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Ajustes</string>
@@ -110,7 +125,8 @@
     <string name="nombre_letras">El nombre sólo puede contener letras</string>
     <string name="email_obligatorio">Email obligatorio</string>
     <string name="email_largo">Email demasiado largo, máximo 30 caracteres</string>
-    <string name="email_formato">El format del email es incorrecto; formato correcto = x@x.x</string>
+    <string name="email_formato">El format del email es incorrecto; formato correcto = x@x.x
+    </string>
     <string name="contraseña_obligatoria">Contraseña obligatoria</string>
     <string name="contraseña_larga">Contraseña demasiado larga, máximo 15 caracteres</string>
     <string name="contraseña_corta">Contrasenya massa curta, mínimo 4 caracteres</string>
@@ -122,46 +138,65 @@
     <string name="apellido2_letras">El segundo apellido sólo puede contener letras</string>
     <string name="telefonoUsuario_numeros">El teléfono sólo puede contener dígitos</string>
     <string name="telefonoUsuario_largo">Teléfono demasido largo, máximo 40 dígitos</string>
-    <string name="procedencia_letras">El nombre del país de origen sólo puede contener letras</string>
-    <string name="procedencia_largo">El nombre del país de origen es demasiado largo, máximo 20 letras</string>
+    <string name="procedencia_letras">El nombre del país de origen sólo puede contener letras
+    </string>
+    <string name="procedencia_largo">El nombre del país de origen es demasiado largo, máximo 20
+        letras
+    </string>
     <string name="pueblo_largo">El nombre del pueblo es demasiado largo, máximo 40 letras</string>
     <string name="pueblo_letras">El nombre del pueblo sólo puede contener letras</string>
     <string name="etnia_largo">El nombre de la etnia demasiado largo, máximo 20 letras</string>
     <string name="etnia_letras">El nombre de la etnia sólo puede contener letras</string>
-    <string name="nombreServicio_obligatorio">Nombre del servicio obligatorio</string>
-    <string name="nombreServicio_largo">El nombre del servicio es demasiado largo, máximo 50 letras</string>
-    <string name="nombreServicio_letras">El nombre del servicio sólo puede contener letras</string>
+    <string name="nombreServicio_obligatorio">Nombre del service obligatorio</string>
+    <string name="nombreServicio_largo">El nombre del service es demasiado largo, máximo 50 letras
+    </string>
+    <string name="nombreServicio_letras">El nombre del service sólo puede contener letras</string>
     <string name="telefonoServicio_obligatorio">Teléfono obligatorio</string>
     <string name="solicitudes_numeros">El límite de solicitudes debe ser un número</string>
     <string name="descripcion_obligatoria">Descripción es obligatoria</string>
     <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letrass</string>
     <string name="descripcion_letras">La descripción sólo puede contener letras</string>
     <string name="puestoTrabajo_obligatorio">Puesto de trabajo obligatorio</string>
-    <string name="puestoTrabajo_largo">El nombre del puesto de trabajo es demasiado largo, máximo 50 caracteres</string>
+    <string name="puestoTrabajo_largo">El nombre del charge de trabajo es demasiado largo, máximo 50
+        caracteres
+    </string>
     <string name="requisitos_obligatorios">Requisitos obligatorios</string>
-    <string name="requisitos_largo">La descripción de los requisitos es demasiada larga, máximo 100 caracteres</string>
+    <string name="requisitos_largo">La descripción de los requirements es demasiada larga, máximo
+        100 caracteres
+    </string>
 
     <string name="sueldo_obligatorio">Salario obligatorio</string>
-    <string name="sueldo_formto">Formato del salario incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
+    <string name="sueldo_formto">Formato del salario incorrecto; formato correcto = decimal con
+        máximo dos dígitos de precisión
+    </string>
     <string name="plazas_numeros">Plazas sólo puede contener números</string>
-    <string name="plazas_largo">El número de plazas es demasiado largo, máximo 5 dígitos</string>
+    <string name="plazas_largo">El número de placesLimit es demasiado largo, máximo 5 dígitos
+    </string>
     <string name="ambito_obligatorio">Ámbito obligatorio</string>
-    <string name="ambito_largo">La descripción del ámbito es demasiado larga, máximo 50 caracteres</string>
+    <string name="ambito_largo">La descripción del ámbito es demasiado larga, máximo 50 caracteres
+    </string>
     <string name="horario_obligatorio">Horario obligatorio</string>
-    <string name="horario_largo">El horario es demasiado largo, máximo 30 caracteres</string>
-    <string name="precio_formato">Formato de precio incorrecto; formato correcto = decimal con máximo dos dígitos de precisión</string>
+    <string name="horario_largo">El schedule es demasiado largo, máximo 30 caracteres</string>
+    <string name="precio_formato">Formato de price incorrecto; formato correcto = decimal con máximo
+        dos dígitos de precisión
+    </string>
 
     <string name="enviar_correo">Enviar correo</string>
 
     <string name="code_request">Pedir codigo de recuperación</string>
 
-    <string name="back_to_login"><b><u>Volver a la pantalla anterior</u></b></string>
+    <string name="back_to_login">
+        <b>
+            <u>Volver a la pantalla anterior</u>
+        </b>
+    </string>
     <string name="introducir_codigo">Código(*):</string>
 
-    <string name="titulo_mis_servicios">Mis servicios</string>
+    <string name="titulo_mis_servicios">Mis services</string>
 
-    <string name="nomap">Conectate a internet para ver la localización del servicio</string>
-    s<string name="nointernet">Comprueba tu conexión a Internet</string>
+    <string name="nomap">Conectate a internet para ver la localización del service</string>
+    s
+    <string name="nointernet">Comprueba tu conexión a Internet</string>
 
     <string name="autentificacion">Verificando...</string>
     <string name="network_fail">Fallo de red</string>
@@ -172,10 +207,23 @@
     <string name="contraseña_fail">No se ha podido actualizar la contraseña</string>
     <string name="wrong_code">Código equivocaddo</string>
 
-    <string name="editar_alojamiento">Editar alojamiento:</string>
+    <string name="editar_alojamiento">Editar lodge:</string>
     <string name="editar_donacion">Editar donación:</string>
     <string name="editar_empleo">Editar empleo:</string>
     <string name="editar_curso">Editar curso educativo:</string>
+
+    <string name="searchService">Buscar services</string>
+    <string name="no_permission">La aplicación no tiene permisos de ubicación</string>
+
+    <string name="plazas_aumento">No es posible disminuir el número de placesLimit/solicitudes, solo
+        se
+        puede incrementar
+    </string>
+
+    <string name="title_about">Sobre Rekindle App</string>
+    <string name="version">Versió 0.3</string>
+    <string name="company">2018-2018 Rekindle Team</string>
+    <string name="rights">Tots els drets reservats</string>
 
     <string-array name="clic_servicio">
         <item>Editar</item>
@@ -221,7 +269,201 @@
         <item>Español</item>
     </string-array>
 
+    <string name="texto_help">
+        <b>
+            <u>Log In \n</u>
+        </b>
+        Pantalla donde podrá iniciar
+        sesión en caso de que ya se haya registrado anteriormente. Para iniciar sesión necesita
+        introducir el correo con el que se registró, la contraseña asociada, y después
+        pulsar en \"Iniciar sesión\". En caso de no estar registrado puede pulsar en \"No tienes
+        cuenta todavía? Crea una\" para registrarte como refugee o como volunteer. En caso de no
+        recordar la contraseña asociada a su email de inició de sesión puede pulsar en
+        \"Recuperar contraseña\".\n \n
+
+        <b>
+            <u>Registro \n</u>
+        </b>
+        Aquí podrá registrarse como refugee, o bien como
+        volunteer, seleccionando el valor deseado mediante los botones \"Refugiado\" y
+        \"Voluntario\" situados en la parte superior de la pantalla. Para completar el registro
+        introduzca como mínimo todos los campos obligatorios (marcados con un \"*\" al final del
+        campo). Para enviar la solicitud de registro pulsa \"Enviar\". \n \n
+
+        <b>
+            <u>Pedir código de recuperación \n</u>
+        </b>
+        Introduzca el correo asociado a su
+        cuenta y pulse \"Enviar Correo\", a continuación se le enviará un código de recuperación
+        que será necesario para la siguiente operación. \n \n
+
+        <b>
+            <u>Cambiar contraseña con código \n</u>
+        </b>
+        Introduzca el código recibido por
+        correo electrónico e introduzca la nueva contraseña deseada y su confirmación.
+        En caso de no querer cambiar la contraseña o cambiar la dirección de correo, puede volver a
+        la pantalla anterior pulsando \"Volver a la pantalla anterior\" situado en la esquina
+        inferior izquierda. \n \n
+
+        <b>
+            <u>Menú principal \n</u>
+        </b>
+        Una vez iniciada la sesión este será su menu
+        principal, donde tendrá botones en mitad de la pantalla donde podrá ver la acciones
+        principales del sistema. Manteniendo una pulsación en la parte izquierda de la pantalla y
+        deslizando el movimiento hacia la derecha podrá acceder al menú lateral donde habrá
+        opciones como Ver Perfil, Ajustes, Ayuda, About, Cerrar sesión, etc. \n \n
+
+        <b>
+            <u>Listar services \n</u>
+        </b>
+        Lista donde apareceran todos los services
+        disponibles en ese momento. Pulsando en la barra superior podrá escribir, filtrando el
+        listado haciendo que solo aparezcan aquellos services que coincidan con el texto
+        introducido. Para ayudar al filtrado por serviceType dispone de cuatro botones encima del
+        listado de services, si todos están activos, significa que la lista está mostrando todos
+        los tipos de service, cuando un botón es clicado se altera el filtrado, es decir, si un
+        botón se muestra con un color gris, significa que ese serviceType de service no se mostrará
+        en la
+        lista, más de un botón puede ser pulsado. Para volver a activar el serviceType de service de
+        simplemente tiene que volver a pulsar el botón del service. Además dispone de un botón
+        de ajustes que le permitirá ajustar la búsqueda de manera más precisa, disponiendo de
+        varios atributos por cada serviceType de service como por ejemplo price, distáncia, idioma,
+        etc. Al pulsar en un service, se mostrará toda su información. \n \n
+
+        <b>
+            <u>Mostrar service \n</u>
+        </b>
+        En esta pantalla se muestra toda la información
+        asociada al service, incluyendo un mapa con la localización del service. Clicar en el
+        marcador rojo le permitirá trazar una ruta desde su localización actual hasta el service
+        o abrir la aplicación GoogleMaps para más opciones. Si le surge cualquier duda con el
+        service, puede contactar con el volunteer pulsando en \"Chat\" e iniciará una
+        conversación con él. Si otros usuarios han hecho uso de este service anteriormente y han
+        dado su valoración, podrá verla pulsando \"Opiniones\". Y finalmente para inscribirse al
+        service solo tiene que pulsar en \"Inscribir\". \n \n
+
+        <b>
+            <u>(Voluntario) Mis services \n</u>
+        </b>
+        Aquí podrá ver la lista de services
+        que ha creado. Haciendo una pulsación corta puede obtener una lista de todos los usuarios
+        que se han inscrito en ella. Realizar una pulsación larga seleccionando un service le
+        permitirá editar dicho service o eliminarlo. \n \n
+
+        <b>
+            <u>(Refugiado) Mis services \n</u>
+        </b>
+        Aquí podrá ver la lista de services en
+        los que se ha inscrito, clicar en uno de ellos mostrará de nuevo su información, y
+        realizar una pulsación larga le permitirá darse de baja del service. \n \n
+
+        <b>
+            <u>(Solo voluntarios) Crear service \n</u>
+        </b>
+        Formulario donde se le pedirá
+        introducir unos ciertos datos, dependietes del serviceType de service seleccionado mediante
+        los
+        cuatro botones situados en la parte superior de la pantalla. Pulsar en "Enviar" dará de
+        alta su service. \n \n
+
+        <b>
+            <u>(Solo refugees) Buscar personas \n</u>
+        </b>
+        Formulario donde introduciendo
+        ciertos datos podrá realizar una búsqueda de otros refugees con tal de mantener una
+        comunicación con ellos. \n \n
+
+        <b>
+            <u>Ver perfil \n</u>
+        </b>
+        A partir del menú lateral podrá acceder a su perfil y
+        ver su información asociada. Desde esta pantalla también podrá acceder a "Editar perfil".
+        \n \n
+
+        <b>
+            <u>Editar perfil \n</u>
+        </b>
+        Pantalla donde podrá modificar su información de
+        perfil así como su contraseña. \n \n
+
+        <b>
+            <u>Cambiar contraseña \n</u>
+        </b>
+        Podrá cambiar su contraseña actual por una nueva. \n \n
+
+        <b>
+            <u>Ajustes \n</u>
+        </b>
+        A partir del menú lateral podrá acceder a ajustes, donde
+        podrá seleccionar idioma, distáncia máxima de búsqueda de services, etc. \n \n
+
+        <b>
+            <u>About \n</u>
+        </b>
+        Pantalla para conocer más acerca de nosotros.
+    </string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="home">Inicio</string>
+    <string name="menuLateral">Menú Lateral</string>
+    <string name="search">Buscar</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="showService">Mostrar Servicio</string>
+    <string name="listRefugee">Listar Refugiados</string>
+    <string name="showRefugee">Mostrar Refugiado</string>
+    <string name="listChat">Listar Chats</string>
+    <string name="showChat">Mostrar Chat</string>
+    <string name="editProfile">Editar Perfil</string>
+    <string name="myLocation_maps">Mi ubicación</string>
+    <string name="noLocation">No podemos determinar tu ubicación, intentalo más tarde</string>
+    <string name="serviceLocation">Ubicación service:</string>
+    <string name="select_option">Elige una opción</string>
+    <string name="unsubscribe">Desinscribir</string>
+    <string name="unsubscribe_confirmation">Estás seguro que quieres desinscribirte?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="unsubscribed_successfully">Desinscrito correctamente!</string>
+    <string name="service_deleted_successfully">Servicio eliminado correctamente!</string>
+    <string name="delete_service_confirmation">Seguro que quieres eliminar este service?</string>
+    <string name="not_available">No disponible</string>
+    <string name="change_photo">Cambiar foto</string>
+
+    <string name="titleListReports">Reportes</string>
+
+    <string name="informer_user">Usuario informador</string>
+    <string name="reported_user">Usuario reportado</string>
+    <string name="motive">Motivo del reporte</string>
+    <string name="report_form">Formulario de reporte</string>
+    <string name="explanation_motive">Escribe el motivo de tu reporte</string>
+    <string name="send_report">Enviar reporte</string>
+
+    <string name="map">Mapa</string>
+    <string name="noServices">No hi ha serveis disponibles</string>
+    <string name="links">Enlaces de ayuda</string>
+    <string name="delete_link_confirmation">Seguro que quieres eliminar este enlace?</string>
+    <string name="link_deleted_successfully">Enlace eliminado correctamente!</string>
+    <string name="link_form">Formulario link</string>
+    <string name="link_url">Url:</string>
+    <string name="link_description">Descripción:</string>
+    <string name="send_link">Enviar enlace</string>
+    <string-array name="list_type_links">
+        <item>Legal</item>
+        <item>Sanidad</item>
+        <item>Educación</item>
+    </string-array>
+    <string name="link_created_successfully">Enlace creado correctamente!</string>
+    <string name="link_updated_successfully">Enlace actualizado correctamente!</string>
+    <string name="createLink">Crear enlace</string>
+    <string name="descriptionEventUpdatedService">El servicio se ha actualitzado!</string>
+    <string name="descriptionEventDeletedService">El servicio se ha eliminado!</string>
+    <string name="titulo_evaluate_services">Valorar servicio</string>
+    <string name="evaluate">Valorar</string>
+    <string name="value_services">Valorar servicios</string>
+    <string name="endService">Cerrar Servicio</string>
+    <string name="closedService">Servicio Cerrado</string>
 
 </resources>

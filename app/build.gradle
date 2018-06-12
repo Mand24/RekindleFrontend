@@ -20,7 +20,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    
+
 }
 
 sourceSets {
@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:support-v4:27.1.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -59,4 +60,6 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    // Pusher
+    implementation 'com.pusher:pusher-java-client:1.6.0'
 }

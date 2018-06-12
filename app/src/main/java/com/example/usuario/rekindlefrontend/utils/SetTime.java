@@ -14,7 +14,7 @@ public class SetTime implements View.OnClickListener, TimePickerDialog.OnTimeSet
     private Calendar myCalendar;
     private Context ctx;
 
-    public SetTime(EditText editText, Context ctx){
+    public SetTime(EditText editText, Context ctx) {
         this.editText = editText;
         this.editText.setOnClickListener(this);
         this.myCalendar = Calendar.getInstance();
@@ -44,7 +44,7 @@ public class SetTime implements View.OnClickListener, TimePickerDialog.OnTimeSet
         } else {
             minuto = String.valueOf(minute);
         }
-        this.editText.setText( hora + ":" + minuto+":00");
+        this.editText.setText(hora + ":" + minuto + ":00");
     }
 
 }

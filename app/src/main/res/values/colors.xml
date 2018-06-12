@@ -10,5 +10,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorIron">#CCCCCC</color>
 
+    <color name="colorDarkRed">#993926</color>
+    <color name="colorDarkOrange">#b76114</color>
+
 
 </resources>

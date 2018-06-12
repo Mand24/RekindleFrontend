@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fondo"
+                tools:context=".view.services.create.CreateService">
+
+    <fragment
+        android:id="@+id/eleccion_tipo_servicio"
+        android:name="com.example.usuario.rekindlefrontend.view.services.ServiceTypeSelector"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="?android:actionBarSize"
+        tools:layout="@layout/fragment_selection_service_type">
+
+    </fragment>
+
+    <RelativeLayout
+        android:id="@+id/formulario_servicio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/eleccion_tipo_servicio">
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

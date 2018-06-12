@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.menu.mainMenu.MainMenuAdmin">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/listar_reportes_MenuPrincipalAdministrador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:text="@string/listar_reportes"
+        />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/createLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listar_reportes_MenuPrincipalAdministrador"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim50"
+            android:text="@string/createLink"
+        />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/links"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/createLink"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim50"
+            android:text="@string/links"
+        />
+
+    </LinearLayout>
+
+</RelativeLayout>

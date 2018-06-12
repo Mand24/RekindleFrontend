@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Rekindle</string>
-    <string name="usuario">Nom usuari:</string>
+    <string name="user">Nom usuari:</string>
     <string name="password">Contrasenya:</string>
     <string name="password1">Contrasenya(*):</string>
     <string name="repetir_password">Repetir contrasenya(*):</string>
@@ -9,12 +9,14 @@
     <string name="acceder">Accedir</string>
     <string name="registro">Registrar-se</string>
     <string name="tipo_usuario">Tipus usuari:</string>
-    <string name="recuperar_password"><u>Recuperar contrasenya</u></string>
+    <string name="recuperar_password">
+        <u>Recuperar contrasenya</u>
+    </string>
     <string name="atras">Enrere</string>
     <string name="login">Iniciar sessió</string>
     <string name="enviar">Enviar</string>
-    <string name="refugiado">Refugiat</string>
-    <string name="voluntario">Voluntari</string>
+    <string name="refugee">Refugiat</string>
+    <string name="volunteer">Voluntari</string>
     <string name="subtitulo_formulario">Ompli els camps següents:</string>
     <string name="texto_nombre_formulario">Nom(*):</string>
     <string name="texto_1apellido_formulario">Primer cognom(*):</string>
@@ -35,21 +37,25 @@
     <string name="listar_servicios">Llistar Serveis</string>
     <string name="crear_servicio">Crear Servei</string>
     <string name="ver_perfil">Veure Perfil</string>
+    <string name="listar_reportes">Llistar Reports</string>
     <string name="nombre_usuario_perfil">Nom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
-    <string name="cambiar_password"><b>Canviar contrasenya</b></string>
+    <string name="cambiar_password">
+        <b>Canviar contrasenya</b>
+    </string>
     <string name="actual_password">Contrasenya actual:</string>
     <string name="nuevo_password">Contrasenya nova:</string>
     <string name="repetir_password1">Repeteix contrasenya:</string>
 
     <string name="opiniones">Opinions</string>
     <string name="inscribir">Inscriure</string>
-    <string name="chat">Chat</string>
+    <string name="chat">Xat</string>
+    <string name="reportar">Reportar</string>
 
-    <string name="alojamiento">Alojamiento</string>
-    <string name="donacion">Donación</string>
+    <string name="lodge">Alojamiento</string>
+    <string name="donation">Donación</string>
     <string name="formulario_donacion">Formulari donació:</string>
     <string name="lugar_recogida_donacion">Lloc de recollida(*):</string>
     <string name="franja_horaria_donacion">Hora de recollida:</string>
@@ -76,23 +82,31 @@
     <string name="requisitos_curso_educativo">Requisits previs(*):</string>
     <string name="ambito_curso_educativo">Àmbit(*):</string>
     <string name="horario_curso_educativo">Horari(*):</string>
-    <string name="precio">Preu:</string>
+    <string name="price">Preu:</string>
     <string name="email_usuario_login">Correu</string>
     <string name="password_usuario_login">Contrasenya</string>
-    <string name="go_to_signup"><b><u>Encara no tens compte? Crea un</u></b></string>
+    <string name="go_to_signup">
+        <b>
+            <u>Encara no tens compte? Crea un</u>
+        </b>
+    </string>
     <string name="url_server">http://10.4.41.147:8080</string>
     <string name="registrado_correctamente">Registrat correctament!</string>
     <string name="registro_fallido">La inscripció ha fallat!</string>
     <string name="servicio_alojamiento_creado_correctamente">Servei de allotjament creat
-        correctament!</string>
+        correctament!
+    </string>
     <string name="servicio_alojamiento_fallido">Ha fallat la creació del servei de
-        allotjament!</string>
+        allotjament!
+    </string>
     <string name="curso_educativo_creado_correctamente">Curs educatiu creat correctament!</string>
     <string name="curso_educativo_fallido">Ha fallat la creació del curs educatiu!</string>
     <string name="donacion_creada_correctamente">Donació creada correctament!</string>
     <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
     <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
+    <string name="reporte_creado_correctamente">Report creat correctament!</string>
+    <string name="reporte_fallido">Ha fallat la creació del report!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Configuració</string>
@@ -122,7 +136,8 @@
     <string name="telefonoUsuario_numeros">El telèfon només pot contenir dígits</string>
     <string name="telefonoUsuario_largo">Telèfon massa llarg, màxim 40 dígits</string>
     <string name="procedencia_letras">El nom del país d\'origen només pot contenir lletres</string>
-    <string name="procedencia_largo">El nom del país d\'origen és massa llarg, màxim 20 lletres</string>
+    <string name="procedencia_largo">El nom del país d\'origen és massa llarg, màxim 20 lletres
+    </string>
     <string name="pueblo_largo">El nom del poble és massa llarg, màxim 40 lletres</string>
     <string name="pueblo_letras">El nom del poble només pot contenir lletres</string>
     <string name="etnia_largo">El nom de l\'ètnia és massa llarg, màxim 20 lletres</string>
@@ -136,13 +151,21 @@
     <string name="descricpion_larga">La descripció és massa llarga, màxim 300 lletres</string>
     <string name="descripcion_letras">La descripció només pot contenir lletres</string>
     <string name="puestoTrabajo_obligatorio">Lloc de treball obligatori</string>
-    <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50 caràcters</string>
+    <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50
+        caràcters
+    </string>
     <string name="requisitos_obligatorios">Requisits obligatoris</string>
-    <string name="requisitos_largo">La descripció dels requisits és massa llarga, màxim 100 caràcters</string>
+    <string name="requisitos_largo">La descripció dels requisits és massa llarga, màxim 100
+        caràcters
+    </string>
     <string name="enviar_correo">Enviar correu</string>
     <string name="code_request">Demanar codi de recuperació</string>
 
-    <string name="back_to_login"><b><u>Tornar a la pantalla anterior</u></b></string>
+    <string name="back_to_login">
+        <b>
+            <u>Tornar a la pantalla anterior</u>
+        </b>
+    </string>
     <string name="introducir_codigo">Codi(*):</string>
 
     <string name="titulo_mis_servicios">Els meus serveiss</string>
@@ -163,6 +186,19 @@
     <string name="editar_donacion">Editar donación</string>
     <string name="editar_empleo">Editar feina:</string>
     <string name="editar_curso">Editar curs educatiu:</string>
+
+    <string name="searchService">Cercar serveis</string>
+    <string name="no_permission">L\'aplicació no te permissos d\'ubicació</string>
+    <string name="myLocation"></string>
+    <string name="plazas_aumento">No es possible disminuir el número de plaçes/sol·licituts, sol es
+        pot incrementar
+    </string>
+
+
+    <string name="title_about">Sobre Rekindle App</string>
+    <string name="version">Versión 0.3</string>
+    <string name="company">2018-2018 Rekindle Team</string>
+    <string name="rights">Todos los derechos reservados</string>
 
     <string-array name="clic_servicio">
         <item>Editar</item>
@@ -209,7 +245,205 @@
         <item>Espanyol</item>
     </string-array>
 
+    <string name="texto_help">
+        <b>
+            <u>Log In \n</u>
+        </b>
+        Pantalla on podrà iniciar
+        sesió en cas que ja s hagi registrat anteriorment. Per a iniciar sesió necessita
+        introduir el correu amb que es va registrar, la contrasenya associada, i despres
+        premmer en \"Iniciar sesió\". En cas de no estar registrat pot pulsar en \"No tens
+        compte encara? Crea una\" per a registrar-te com a refugiat o com a voluntari. En cas
+        de no recordar la contrasenya associada al seu email de inici de sesió pot pulsar en
+        \"Recuperar contrasenya\".\n \n
+
+        <b>
+            <u>Registre \n</u>
+        </b>
+        Aquí podrà registrar-se com a refugiat, o be com a
+        voluntari, seleccionant el valor desitjat mitjantçant els botons \"Refugiat\" i
+        \"Voluntari\" situats en la part superior de la pantalla. Per a completar el registre
+        introdueixi como a mínim tots els camps obligatoris (marcats amb un \"*\" al final
+        de camp). Per a enviar la solicitut de registre prem \"Enviar\". \n \n
+
+        <b>
+            <u>Demanar codi de recuperació \n</u>
+        </b>
+        Introdueixi el correu associado al seu
+        compte y premmi \"Enviar Correu\", a continuació se li enviará un codi de recuperació
+        que será necesari per a la següent operació. \n \n
+
+        <b>
+            <u>Cambiar contrasenya amb codi \n</u>
+        </b>
+        Introdueixi el codi rebut per
+        correu electrònic e introdueixi la nova contrasenya desitjada i la seva confirmació.
+        En cas de no voler canviar la contrasenya o canviar la direcció de correu, pot tornar a
+        la pantalla anterior polsant \"Tornar a la pantalla anterior\" situat en la cantonada
+        inferior esquerre. \n \n
+
+        <b>
+            <u>Menú principal \n</u>
+        </b>
+        Una vegada iniciada la sessió aquest serà el seu menu
+        principal, on tindrà botons al centre de la pantalla on podrà veure les accions
+        principals del sistema. Fent una pulsació en la part esquerre de la pantalla i
+        lliscant el movimient cap a la dreta podrà accedir al menú lateral on haurà
+        opcions com Veure Perfil, Ajustos, Ajuda, About, Tancar sesió, etc. \n \n
+
+        <b>
+            <u>Llistar serveis \n</u>
+        </b>
+        Llista on apareixeran tots els serveis
+        disponibles en aquest moment. Fent clic a la barra superior podrà escriure, filtrant el
+        llistat fent que només apareguin aquells serveis que coincideixin amb el text
+        introduït. Per ajudar al filtrat per tipus disposa de quatre botons sobre del
+        llistat de serveis, si tots estan actius, vol dir que la llista està mostrant tots
+        els tipus de servei, quan un botó és clicat s altera el filtrat, és a dir, si un
+        botó es mostra amb un color gris, vol dir que aquest tipus de servei no es mostrarà a la
+        llista, més d un botó pot ser premut. Per tornar a activar el tipus de servei de
+        simplement ha de tornar a prémer el botó del servei. A més disposa d un botó
+        d ajustos que li permetrà ajustar la recerca de manera més precisa, disposant de
+        diversos atributs per cada tipus de servei com ara preu, distància, idioma,
+        etc. En prémer en un servei, es mostrarà tota la seva informació. \n \n
+
+        <b>
+            <u>Mostrar servei \n</u>
+        </b>
+        En aquesta pantalla es mostra tota la informació
+        associada al servei, incloent un mapa amb la localització del servei. Clicar al
+        marcador vermell li permetrà traçar una ruta des de la seva localització actual fins al
+        servei
+        o obrir l aplicació GoogleMaps per a més opcions. Si té qualsevol dubte amb el
+        servei, pot contactar amb el voluntari prement en \"Xat\" i iniciarà una
+        conversa amb ell. Si altres usuaris han fet ús d aquest servei anteriorment i han
+        donat la seva valoració, podrà veure-prement \"Opinions\". I finalment per inscriure al
+        servei només ha de prémer a \"Inscriure\".
+
+        <b>
+            <u>(Voluntari) Els meus serveis \n</u>
+        </b>
+        Aquí podrà veure la llista de serveis
+        que ha creat. Fent una polsada curta pot obtenir una llista de tots els usuaris
+        que s han inscrit en ella. Realitzar una pulsació llarga seleccionant un servei li
+        permetrà editar aquest servei o eliminar-lo \n \n
+
+        <b>
+            <u>(Refugiat) Els meus serveis \n</u>
+        </b>
+        Aquí podrà veure la llista de serveis en
+        què s ha inscrit, cliqueu en un d ells mostrarà de nou la seva informació, i
+        realitzar una pulsació llarga li permetrà donar-se de baixa del servei. \n \n
+
+        <b>
+            <u>(Només voluntaris) Crear servei \n</u>
+        </b>
+        Formulari on se li demanarà
+        introduir uns certes dades, dependietes del tipus de servei seleccionat mitjançant els
+        quatre botons situats a la part superior de la pantalla. Cal prémer a "Enviar" donarà de
+        alta el seu servei. \n \n
+
+        <b>
+            <u>(Només refugees) Buscar personas \n</u>
+        </b>
+        Formulario donde introduciendo
+        ciertos datos podrá realizar una búsqueda de otros refugees con tal de mantener una
+        comunicación con ellos. \n \n
+
+        <b>
+            <u>Veure perfil \n</u>
+        </b>
+        A partir del menú lateral podrà accedir al seu perfil i
+        veure la seva informació associada. Des d aquesta pantalla també podrà accedir a "Edita
+        perfil".
+        \n \n
+
+        <b>
+            <u>Editar perfil \n</u>
+        </b>
+        Pantalla on podrà modificar la seva informació de
+        perfil així com la seva contrasenya. \n \n
+
+        <b>
+            <u>Cambiar contrasenya \n</u>
+        </b>
+        Podrà canviar la contrasenya actual per una de nova. \n \n
+
+        <b>
+            <u>Ajustos \n</u>
+        </b>
+        A partir del menú lateral podrà accedir a ajustos, on
+        podrà seleccionar idioma, distància màxima de cerca de serveis, etc.
+        \n \n
+
+        <b>
+            <u>About \n</u>
+        </b>
+        Pantalla per conèixer més sobre nosaltres.
+
+    </string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="home">Inici</string>
+    <string name="menuLateral">Menú Lateral</string>
+    <string name="search">Buscar</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="showService">Mostrar Servei</string>
+    <string name="listRefugee">Llistar Refugiats</string>
+    <string name="showRefugee">Mostrar Refugiat</string>
+    <string name="listChat">Llistar Chats</string>
+    <string name="showChat">Mostrar Chat</string>
+    <string name="editProfile">Editar Perfil</string>
+    <string name="myLocation_maps">La meva ubicació</string>
+    <string name="noLocation">No podem determinar la teva ubicació, prova-ho més tard</string>
+    <string name="serviceLocation">Ubicació servei:</string>
+    <string name="select_option">Selecciona una opció</string>
+    <string name="unsubscribe">Desinscriure</string>
+    <string name="unsubscribe_confirmation">Estar segur de que vols desinscriure\'t?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="unsubscribed_successfully">Desinscrit correctament!</string>
+    <string name="service_deleted_successfully">Servei eliminat correctament!</string>
+    <string name="delete_service_confirmation">Estàs segur que vols eliminar aquest servei?</string>
+    <string name="not_available">No disponible</string>
+    <string name="change_photo">Cambiar foto</string>
+
+    <string name="titleListReports">Reports</string>
+
+    <string name="informer_user">Usuari informador</string>
+    <string name="reported_user">Usuari reportat</string>
+    <string name="motive">Motiu del report</string>
+    <string name="report_form">Formulari de report</string>
+    <string name="explanation_motive">Escriu el motiu del teu report</string>
+    <string name="send_report">Enviar report</string>
+
+    <string name="map">Mapa</string>
+
+    <string name="noServices">No hay servicios disponibles</string>
+    <string name="links">Enllaços de ajuda</string>
+    <string name="delete_link_confirmation">Estàs segur que vols eliminar aquest enllaç?</string>
+    <string name="link_deleted_successfully">Enllaç eliminat correctament!</string>
+    <string name="link_form">Formulari link</string>
+    <string name="link_url">Url:</string>
+    <string name="link_description">Descripció:</string>
+    <string name="send_link">Enviar enllaç</string>
+    <string-array name="list_type_links">
+        <item>Legal</item>
+        <item>Sanitat</item>
+        <item>Educació</item>
+    </string-array>
+    <string name="link_created_successfully">Enllaç creat correctament!</string>
+    <string name="link_updated_successfully">Enllaç actualitzat correctament!</string>
+    <string name="createLink">Crear enllaç</string>
+    <string name="descriptionEventUpdatedService">El servei se ha actualitzat!</string>
+    <string name="descriptionEventDeletedService">El servei se ha eliminat!</string>
+    <string name="titulo_evaluate_services">Valorar servei</string>
+    <string name="evaluate">Valorar</string>
+    <string name="value_services">Valorar serveis</string>
+
+    <string name="endService">Tancar Servei</string>
+    <string name="closedService">Servei Tancat</string>
 
 </resources>

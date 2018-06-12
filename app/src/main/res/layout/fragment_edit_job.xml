@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.services.edit.JobEdit">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="?android:actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titulo_formulario_oferta_empleo"
+                style="@style/text_view"
+                android:layout_marginStart="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/editar_empleo"
+            />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/nombre_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/texto_nombre_formulario"
+                    android:inputType="textCapWords"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/telefono_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/telefono"
+                    android:inputType="phone"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/direccion_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/direccion"
+                    android:inputType="text"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/puesto_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/puesto_oferta_empleo"
+                    android:inputType="textCapSentences"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/requisitos_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/requisitos_oferta_empleo"
+                    android:inputType="textMultiLine"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/jornada_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/jornada_oferta_empleo"
+                    android:inputType="textMultiLine"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/horas_semanales_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/horas_semanales_oferta_empleo"
+                    android:inputType="number"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/duracion_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/duracion_oferta_empleo"
+                    android:inputType="textCapSentences"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/plazas_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/plazas_oferta_empleo"
+                    android:inputType="number"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/sueldo_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/sueldo_oferta_empleo"
+                    android:inputType="number"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/descripcion_oferta_empleo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/descripcion"
+                    android:inputType="textMultiLine"
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/enviar_editar_oferta_empleo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/enviar"
+            />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
