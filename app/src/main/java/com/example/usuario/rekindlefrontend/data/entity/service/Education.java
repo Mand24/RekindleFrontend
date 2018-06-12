@@ -22,8 +22,9 @@ public class Education extends Service {
 
     public Education(int id, String email, String name, String description, String adress,
             String ambit, String requirements, String schedule, String placesLimit, String price,
-            String phoneNumber) {
-        super(id, "Education", email, name, description, adress, phoneNumber);
+            String phoneNumber, Boolean
+            ended) {
+        super(id, "Education", email, name, description, adress, phoneNumber, ended);
         this.ambit = ambit;
         this.requirements = requirements;
         this.schedule = schedule;

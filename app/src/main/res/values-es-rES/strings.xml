@@ -462,4 +462,7 @@
     <string name="evaluate">Valorar</string>
     <string name="value_services">Valorar servicios</string>
 
+    <string name="endService">Cerrar Servicio</string>
+    <string name="closedService">Servicio Cerrado</string>
+
 </resources>

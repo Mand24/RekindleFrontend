@@ -441,4 +441,7 @@
     <string name="evaluate">Valorar</string>
     <string name="value_services">Valorar serveis</string>
 
+    <string name="endService">Tancar Servei</string>
+    <string name="closedService">Servei Tancat</string>
+
 </resources>

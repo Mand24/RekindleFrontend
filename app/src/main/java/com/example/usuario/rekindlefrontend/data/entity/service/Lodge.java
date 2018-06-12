@@ -12,8 +12,9 @@ public class Lodge extends Service {
     private String dateLimit;
 
     public Lodge(int id, String email, String name, String description, String
-            adress, String placesLimit, String dateLimit, String phoneNumber) {
-        super(id, "Lodge", email, name, description, adress, phoneNumber);
+            adress, String placesLimit, String dateLimit, String phoneNumber, Boolean
+            ended) {
+        super(id, "Lodge", email, name, description, adress, phoneNumber, ended);
         this.placesLimit = placesLimit;
         this.dateLimit = dateLimit;
     }
