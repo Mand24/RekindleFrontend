@@ -219,6 +219,9 @@ public class Comm {
                         Channel channel = pusher.subscribe(service.getServiceType() + Integer.toString(service.getId()));
                         channelsService.put(service.getId(), channel);
                         Comm.setChannelNotificationService(act, service.getId());
+                        if (service.getServiceType().equals("Donation")) {
+                            Comm.setNotificationDonation(act, service);
+                        }
                     }
                 });
             }
@@ -350,6 +353,48 @@ public class Comm {
         notificationManager.notify(notificationId, notification);
 
     }
+
+    public static void setNotificationDonation(Activity act, Service service){
+
+        Intent intent = new Intent(act.getApplicationContext(), MyServicesRefugee.class);
+
+        // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+        final int pendingIntentId = 0;
+        PendingIntent contentIntent =
+                PendingIntent.getActivity(act.getApplicationContext(),
+                        pendingIntentId, intent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Instantiate the builder and set notification elements:
+        Notification notification;
+        Notification.Builder builder = new Notification.Builder(act.getApplicationContext());
+        builder.setCategory(Notification.CATEGORY_PROMO);
+        builder.setContentTitle(service.getName());
+        builder.setContentText(act.getResources().getString(R
+                .string.accepted_request));
+        builder.setSmallIcon(R.drawable.logo_r);
+        builder.setAutoCancel(true);
+        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+        builder.addAction(android.R.drawable.ic_menu_view, "View details",
+                contentIntent);
+        builder.setContentIntent(contentIntent);
+        builder.setPriority(Notification.PRIORITY_HIGH);
+        builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
+
+        notification = builder.build();
+
+        // Get the notification manager:
+        NotificationManager notificationManager =
+                (NotificationManager) act.getApplicationContext().getSystemService(
+                        NOTIFICATION_SERVICE);
+
+        // Publish the notification:
+        final int notificationId = 0;
+        notificationManager.notify(notificationId, notification);
+
+    }
+
+
 
     public static void connectPusher(){
         pusher.connect();

@@ -465,5 +465,6 @@
     <string name="value_services">Valorar servicios</string>
     <string name="endService">Cerrar Servicio</string>
     <string name="closedService">Servicio Cerrado</string>
+    <string name="accepted_request">Solicitud aceptada!</string>
 
 </resources>
