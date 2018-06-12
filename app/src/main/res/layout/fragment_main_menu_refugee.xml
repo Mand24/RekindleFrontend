@@ -25,19 +25,31 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginTop="@dimen/dim20"
         android:text="@string/mis_servicios"
     />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/buscar_personas_MenuPrincipalRefugiado"
+        android:id="@+id/valorations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/mis_servicios_MenuPrincipalRefugiado"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginTop="@dimen/dim20"
+        android:text="@string/value_services"
+    />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/buscar_personas_MenuPrincipalRefugiado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/valorations"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dim20"
+        android:layout_marginRight="@dimen/dim20"
+        android:layout_marginTop="@dimen/dim20"
         android:text="@string/buscar_personas"
     />
 
@@ -49,7 +61,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginTop="@dimen/dim20"
         android:text="@string/chat"
     />
 
@@ -61,7 +73,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/dim20"
         android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
+        android:layout_marginTop="@dimen/dim20"
         android:text="@string/links"
     />
 

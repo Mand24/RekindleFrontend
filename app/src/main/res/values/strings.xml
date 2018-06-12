@@ -469,6 +469,9 @@
     <string name="link_created_successfully">Link created successfully!</string>
     <string name="link_updated_successfully">Link updated successfully!</string>
     <string name="createLink">Create link</string>
+    <string name="titulo_evaluate_services">Evaluate service</string>
+    <string name="evaluate">Evaluate</string>
+    <string name="value_services">Value services</string>
 
 </resources>
 
