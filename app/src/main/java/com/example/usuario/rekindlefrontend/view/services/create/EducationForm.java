@@ -138,7 +138,7 @@ public class EducationForm extends AbstractFormatChecker {
                 eDescription.getText().toString(), eAdress.getText().toString(), eAmbit
                 .getText().toString(), eRequirements.getText().toString(), eSchedule.getText()
                 .toString(), ePlacesLimit.getText().toString(), ePrice.getText().toString(),
-                ePhoneNumber.getText().toString());
+                ePhoneNumber.getText().toString(), false);
 
     }
 

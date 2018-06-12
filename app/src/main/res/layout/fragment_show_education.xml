@@ -10,6 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true">
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/endButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/endService"/>
+
+        </android.support.constraint.ConstraintLayout>
+
         <LinearLayout
             android:id="@+id/info_curso_educativo"
             android:layout_width="match_parent"
@@ -67,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="@dimen/dim6"
-                app:layout_constraintDimensionRatio="1:1"/>
+                app:layout_constraintDimensionRatio="1:1"
+                tools:layout="@layout/fragment_show_education"/>
 
         </android.support.constraint.ConstraintLayout>
 
