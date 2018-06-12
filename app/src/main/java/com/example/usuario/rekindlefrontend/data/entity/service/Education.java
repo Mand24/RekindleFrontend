@@ -13,7 +13,7 @@ public class Education extends Service {
     @SerializedName("schedule")
     @Expose
     private String schedule;
-    @SerializedName("placesLimit")
+    @SerializedName("places")
     @Expose
     private String placesLimit;
     @SerializedName("price")

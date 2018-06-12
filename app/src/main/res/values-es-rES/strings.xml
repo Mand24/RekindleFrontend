@@ -458,10 +458,11 @@
     <string name="link_created_successfully">Enlace creado correctamente!</string>
     <string name="link_updated_successfully">Enlace actualizado correctamente!</string>
     <string name="createLink">Crear enlace</string>
+    <string name="descriptionEventUpdatedService">El servicio se ha actualitzado!</string>
+    <string name="descriptionEventDeletedService">El servicio se ha eliminado!</string>
     <string name="titulo_evaluate_services">Valorar servicio</string>
     <string name="evaluate">Valorar</string>
     <string name="value_services">Valorar servicios</string>
-
     <string name="endService">Cerrar Servicio</string>
     <string name="closedService">Servicio Cerrado</string>
 

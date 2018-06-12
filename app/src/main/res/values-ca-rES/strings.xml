@@ -437,6 +437,8 @@
     <string name="link_created_successfully">Enllaç creat correctament!</string>
     <string name="link_updated_successfully">Enllaç actualitzat correctament!</string>
     <string name="createLink">Crear enllaç</string>
+    <string name="descriptionEventUpdatedService">El servei se ha actualitzat!</string>
+    <string name="descriptionEventDeletedService">El servei se ha eliminat!</string>
     <string name="titulo_evaluate_services">Valorar servei</string>
     <string name="evaluate">Valorar</string>
     <string name="value_services">Valorar serveis</string>

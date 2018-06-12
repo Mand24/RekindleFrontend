@@ -52,6 +52,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
     private Chat newChat;
+
     public LodgeShow() {
         // Required empty public constructor
     }
@@ -110,6 +111,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                     new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                            System.out.println("CODIGOissubscribe? " + response.code());
                             if (response.isSuccessful()) {
                                 enroll.setClickable(true);
                                 if (response.body()) {
@@ -143,6 +145,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                 service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
+                                System.out.println("CODIGOsubscribe " + response.code());
                                 if (response.isSuccessful()) {
                                     enroll.setText(R.string.unsubscribe);
                                 } else {
