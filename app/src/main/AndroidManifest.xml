@@ -35,6 +35,7 @@
         <activity android:name=".view.menu.login.CodePasswordRequest" />
         <activity android:name=".view.services.list.MyServicesRefugee" />
         <activity android:name=".view.services.list.MyServicesVolunteer" />
+        <activity android:name=".view.services.list.MyServicesRefugeeEnded" />
         <activity android:name=".view.services.SearchService" />
         <activity android:name=".view.users.search.SearchRefugee" />
         <activity android:name=".view.menu.lateralMenu.Settings" />
