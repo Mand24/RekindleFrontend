@@ -184,10 +184,10 @@ public interface APIService {
     Call<Void> createDonationRequest(@Body DonationRequest donationRequest);
 
     @GET("/solicituddonacion")
-    Call<ArrayList<Report>> getDonationRequests();
+    Call<ArrayList<DonationRequest>> getDonationRequests();
 
     @GET("/solicituddonacion/{id}")
-    Call<Report> getDonationRequest(@Path("id") int id);
+    Call<Boolean> donationIsRequested(@Path("id") int id,  @Query("mail") String mail);
 
     //LLAMADAS RELACIONADAS CON LINKS
 

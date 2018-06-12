@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
-import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 
 public class ShowDonationRequest extends AppCompatActivity {

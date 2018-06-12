@@ -223,6 +223,9 @@
     <string name="explanation_request_motive">Write the motive for your request</string>
     <string name="send_request">Send request</string>
 
+    <string name="aceptar">Accept</string>
+    <string name="rechazar">Reject</string>
+
     <string name="titulo_busqueda">Search people</string>
     <string name="subtitulo_busqueda">Please, fill all the info you know about the person
         that you are looking for

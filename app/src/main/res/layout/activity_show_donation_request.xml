@@ -75,6 +75,25 @@
                 android:layout_marginTop="@dimen/dim10"
             />
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/accept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/aceptar"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/reject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/rechazar"
+            />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

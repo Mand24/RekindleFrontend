@@ -12,6 +12,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.helpLinks.CreateHelpLink;
 import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinks;
 import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinksAdmin;
+import com.example.usuario.rekindlefrontend.view.moderate.ListDonationRequests;
 import com.example.usuario.rekindlefrontend.view.moderate.ListReports;
 
 public class MainMenuAdmin extends Fragment {
@@ -55,7 +56,7 @@ public class MainMenuAdmin extends Fragment {
             }
         });
 
-        button_list_users_requests.setOnClickListener(new View.OnClickListener() {
+        /*button_list_users_requests.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -63,7 +64,7 @@ public class MainMenuAdmin extends Fragment {
                         .class);
                 startActivity(i);
             }
-        });
+        });*/
 
         button_links.setOnClickListener(new View.OnClickListener() {
 

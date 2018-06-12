@@ -25,6 +25,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.Maps;
 import com.example.usuario.rekindlefrontend.view.chat.ShowChat;
+import com.example.usuario.rekindlefrontend.view.moderate.CreateDonationRequest;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -95,7 +96,6 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
         if (type.equals("Refugee")) {
 
-
             chat.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -112,7 +112,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                             if (response.isSuccessful()) {
                                 enroll.setClickable(true);
                                 if (response.body()) {
-                                    enroll.setText(R.string.unsubscribe);
+                                    enroll.setVisibility(View.INVISIBLE);
                                 } else {
                                     enroll.setText(R.string.inscribir);
 
@@ -134,73 +134,10 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 @Override
                 public void onClick(final View view) {
 
-                    if (enroll.getText().toString().equals(getResources().getString(R
-                            .string.inscribir))) {
-
-                        mAPIService.subscribeService(mail,
-
-                                service.getId(), TYPE).enqueue(new Callback<Void>() {
-                            @Override
-                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                if (response.isSuccessful()) {
-                                    enroll.setText(R.string.unsubscribe);
-                                } else {
-                                    failure();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<Void> call, Throwable t) {
-                                failure();
-                            }
-                        });
-
-                    } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(
-                                view.getContext());
-
-                        builder.setMessage(R.string.unsubscribe_confirmation);
-                        builder.setCancelable(false);
-                        builder.setPositiveButton(R.string.yes,
-                                new DialogInterface.OnClickListener() {
-
-                                    public void onClick(DialogInterface dialog,
-                                            int which) {
-
-                                        mAPIService.unsubscribeService(mail, service.getId(),
-                                                TYPE).enqueue(new Callback<Void>() {
-                                            @Override
-                                            public void onResponse(Call<Void> call,
-                                                    Response<Void> response) {
-                                                if (response.isSuccessful()) {
-                                                    enroll.setText(R.string.inscribir);
-                                                } else {
-                                                    failure();
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onFailure(Call<Void> call, Throwable t) {
-                                                failure();
-                                            }
-                                        });
-
-                                    }
-                                });
-
-                        builder.setNegativeButton(R.string.no,
-                                new DialogInterface.OnClickListener() {
-
-                                    public void onClick(DialogInterface dialog,
-                                            int which) {
-                                        dialog.cancel();
-                                    }
-                                });
-
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                        enroll.setText(R.string.inscribir);
-                    }
+                    Intent i = new Intent (getActivity().getApplicationContext(),
+                            CreateDonationRequest.class);
+                    i.putExtra("Donation", service);
+                    startActivity(i);
                 }
             });
 

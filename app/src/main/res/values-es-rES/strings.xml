@@ -452,6 +452,9 @@
     <string name="explanation_request_motive">Escribe el motivo de tu solicitud</string>
     <string name="send_request">Enviar solicitud</string>
 
+    <string name="aceptar">Aceptar</string>
+    <string name="rechazar">Rechazar</string>
+
     <string name="map">Mapa</string>
     <string name="noServices">No hi ha serveis disponibles</string>
     <string name="links">Enlaces de ayuda</string>
