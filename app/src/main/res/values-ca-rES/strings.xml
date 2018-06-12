@@ -111,6 +111,8 @@
     <string name="solicitud_fallida">Ha fallat la creació de la sol·licitud!</string>
     <string name="reporte_creado_correctamente">Report creat correctament!</string>
     <string name="reporte_fallido">Ha fallat la creació del report!</string>
+    <string name="solicitud_gestionada_correctamente">Sol·licitut gestionada correctament!</string>
+    <string name="solicitud_gestion_fallida">Ha fallat la gestió de la sol·licitud!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Configuració</string>

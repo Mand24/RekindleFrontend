@@ -113,6 +113,8 @@
     <string name="solicitud_fallida">Ha fallado la creación de la solicitud!</string>
     <string name="reporte_creado_correctamente">Reporte creado correctamente!</string>
     <string name="reporte_fallido">Ha fallado la creación del reporte!</string>
+    <string name="solicitud_gestionada_correctamente">Solicitud gestionada correctamente!</string>
+    <string name="solicitud_gestion_fallida">Ha fallado la gestión de la solicitud!</string>
     <string name="guardado_correctamente">Guardado correctamente!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Ajustes</string>

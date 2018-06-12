@@ -21,9 +21,9 @@ public class DonationRequest implements Parcelable {
             return new DonationRequest[size];
         }
     };
-    @SerializedName("user")
+    @SerializedName("refugeeMail")
     @Expose
-    private User user;
+    private String refugeeMail;
     @SerializedName("donation")
     @Expose
     private Donation donation;
@@ -36,18 +36,18 @@ public class DonationRequest implements Parcelable {
     }
 
     public DonationRequest(User user, Donation donation, String motive) {
-        this.user = user;
+        this.refugeeMail = user.getMail();
         this.donation = donation;
         this.motive = motive;
     }
 
     protected DonationRequest(Parcel in) {
-        user = in.readParcelable(User.class.getClassLoader());
+        refugeeMail = in.readString();
         donation = in.readParcelable(Donation.class.getClassLoader());
         motive = in.readString();
     }
 
-    public User getUser() { return this.user; }
+    public String getRefugeeMail() { return this.refugeeMail; }
 
     public Donation getDonation() { return this.donation; }
 
@@ -60,7 +60,7 @@ public class DonationRequest implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(user, flags);
+        dest.writeString(refugeeMail);
         dest.writeSerializable(donation);
         dest.writeString(motive);
     }
@@ -68,7 +68,7 @@ public class DonationRequest implements Parcelable {
     @Override
     public String toString() {
         return "Report{" +
-                ", user=" + user +
+                ", refugeeMail=" + refugeeMail +
                 ", donation=" + donation +
                 ", motive='" + motive + '\'' +
                 '}';

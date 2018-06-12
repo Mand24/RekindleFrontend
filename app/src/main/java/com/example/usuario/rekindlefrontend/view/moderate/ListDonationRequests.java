@@ -167,8 +167,8 @@ public class ListDonationRequests extends AppBaseActivity implements Filterable 
                 for (DonationRequest s : donationRequests) {
 
                     if (!charString.isEmpty()) {
-                        if ((s.getUser().getMail() != null
-                                && s.getUser().getMail().toLowerCase().contains
+                        if ((s.getRefugeeMail() != null
+                                && s.getRefugeeMail().toLowerCase().contains
                                 (charString)
                         ) || (s.getDonation().getName() != null
                                 && s.getDonation().getName().toLowerCase()

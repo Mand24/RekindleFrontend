@@ -189,6 +189,12 @@ public interface APIService {
     @GET("/solicituddonacion/{idDonation}")
     Call<Boolean> donationIsRequested(@Path("idDonation") int id,  @Query("mail") String mail);
 
+    @PUT("/solicituddonacion/accept/{idDonation}")
+    Call<Void> acceptDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
+
+    @PUT("/solicituddonacion/reject/{idDonation}")
+    Call<Void> rejectDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
+
     //LLAMADAS RELACIONADAS CON LINKS
 
     @GET("/links")

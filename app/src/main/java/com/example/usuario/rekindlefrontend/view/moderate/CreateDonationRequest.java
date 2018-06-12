@@ -79,7 +79,7 @@ public class CreateDonationRequest extends AppCompatActivity {
             System.out.println("donationRequest " + request.toString());
         }
         else {
-            throw new Exception("Report Emtpy");
+            throw new Exception("Report Empty");
         }
     }
 
