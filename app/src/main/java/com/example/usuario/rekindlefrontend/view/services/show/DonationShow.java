@@ -205,14 +205,56 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-        } else if(type.equals("Volunteer")){
+        } else if(type.equals("Volunteer") && currentUser.getMail().equals(service.getEmail())){
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
 
-            
+            endButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    service.setEnded(true);
+                    endButton.setText(R.string.closedService);
+                    sendEditService(service);
+
+                }
+
+            });
+        }
+        else {
+            enroll.setVisibility(View.INVISIBLE);
+            chat.setVisibility(View.INVISIBLE);
+            endButton.setVisibility(View.INVISIBLE);
         }
 
         return view;
+    }
+
+    public void sendEditService(Donation service){
+
+        mAPIService.editarDonacion(service.getId(),service).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+        );
     }
 
     public void sendGetChat() {

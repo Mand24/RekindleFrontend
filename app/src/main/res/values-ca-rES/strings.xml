@@ -439,5 +439,6 @@
     <string name="createLink">Crear enllaç</string>
 
     <string name="endService">Tancar Servei</string>
+    <string name="closedService">Servei Tancat</string>
 
 </resources>

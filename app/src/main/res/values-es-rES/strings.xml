@@ -460,5 +460,6 @@
     <string name="createLink">Crear enlace</string>
 
     <string name="endService">Cerrar Servicio</string>
+    <string name="closedService">Servicio Cerrado</string>
 
 </resources>
