@@ -27,12 +27,15 @@ public class Service implements Serializable {
     @SerializedName("phoneNumber")
     @Expose
     private String phoneNumber;
+    @SerializedName("ended")
+    @Expose
+    private Boolean ended;
 
     private int image;
 
 
     public Service(int id, String serviceType, String email, String name, String description, String
-            adress, String phoneNumber) {
+            adress, String phoneNumber, Boolean ended) {
         this.id = id;
         this.serviceType = serviceType;
         this.volunteer = email;
@@ -40,6 +43,7 @@ public class Service implements Serializable {
         this.description = description;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
+        this.ended = ended;
     }
 
     public int getId() {
@@ -106,6 +110,14 @@ public class Service implements Serializable {
         this.image = image;
     }
 
+    public Boolean getEnded() {
+        return ended;
+    }
+
+    public void setEnded(Boolean ended) {
+        this.ended = ended;
+    }
+
     @Override
     public String toString() {
         return "Service{" +
@@ -116,6 +128,7 @@ public class Service implements Serializable {
                 ", description='" + description + '\'' +
                 ", adress='" + adress + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", ended=" + ended +
                 ", image=" + image +
                 '}';
     }

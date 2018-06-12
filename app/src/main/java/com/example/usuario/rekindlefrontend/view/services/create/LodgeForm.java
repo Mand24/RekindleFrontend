@@ -136,7 +136,7 @@ public class LodgeForm extends AbstractFormatChecker {
         mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
                 .getText().toString(), eDeadline.getText().toString(), ePhoneNumber.getText()
-                .toString());
+                .toString(), false);
 
 
     }

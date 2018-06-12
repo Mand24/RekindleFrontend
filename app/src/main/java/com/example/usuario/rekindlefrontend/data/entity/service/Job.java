@@ -28,8 +28,9 @@ public class Job extends Service {
 
     public Job(int id, String email, String name, String description, String adress, String charge,
             String requirements, String hoursDay, String hoursWeek, String contractDuration, String
-            placesLimit, String salary, String phoneNumber) {
-        super(id, "Job", email, name, description, adress, phoneNumber);
+            placesLimit, String salary, String phoneNumber, Boolean
+            ended) {
+        super(id, "Job", email, name, description, adress, phoneNumber, ended);
         this.charge = charge;
         this.requirements = requirements;
         this.hoursDay = hoursDay;

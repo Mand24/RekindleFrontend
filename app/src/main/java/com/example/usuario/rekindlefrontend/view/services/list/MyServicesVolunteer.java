@@ -28,7 +28,7 @@ public class MyServicesVolunteer extends ListServices {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
-        mMapButton.setVisibility(View.INVISIBLE);
+        mMapButton.setVisibility(View.GONE);
     }
 
     @Override
@@ -125,7 +125,7 @@ public class MyServicesVolunteer extends ListServices {
     @Override
     protected void initializeData() {
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
-                (this).getUserType())
+                (this).getUserType(), false)
                 .enqueue(new Callback<ArrayList<Service>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Service>> call,

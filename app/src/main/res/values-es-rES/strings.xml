@@ -115,7 +115,7 @@
     <string name="ayuda">Ayuda</string>
     <string name="about">Acerca de Rekindle</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
-    <string name="mis_servicios">Mis services</string>
+    <string name="mis_servicios">Mis servicios</string>
     <string name="buscar_personas">Buscar personas</string>
     <string name="ajustes_generales">Ajustes generales</string>
     <string name="idioma">Idioma:</string>
@@ -460,5 +460,10 @@
     <string name="createLink">Crear enlace</string>
     <string name="descriptionEventUpdatedService">El servicio se ha actualitzado!</string>
     <string name="descriptionEventDeletedService">El servicio se ha eliminado!</string>
+    <string name="titulo_evaluate_services">Valorar servicio</string>
+    <string name="evaluate">Valorar</string>
+    <string name="value_services">Valorar servicios</string>
+    <string name="endService">Cerrar Servicio</string>
+    <string name="closedService">Servicio Cerrado</string>
 
 </resources>
