@@ -3,7 +3,14 @@ package com.example.usuario.rekindlefrontend.data.entity.user;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Volunteer extends User {
+
+    @SerializedName("averageValoration")
+    @Expose
+    private double averageValoration;
 
     public static final Parcelable.Creator<Volunteer> CREATOR =
             new Parcelable.Creator<Volunteer>() {
@@ -29,6 +36,15 @@ public class Volunteer extends User {
 
     protected Volunteer(Parcel in) {
         super(in);
+        this.averageValoration = in.readDouble();
+    }
+
+    public double getAverageValoration() {
+        return averageValoration;
+    }
+
+    public void setAverageValoration(double averageValoration) {
+        this.averageValoration = averageValoration;
     }
 
     @Override
@@ -39,5 +55,20 @@ public class Volunteer extends User {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
+        dest.writeDouble(this.averageValoration);
+    }
+
+    @Override
+    public String toString() {
+        return "Volunteer{" +
+                "tipo='" + getUserType() + '\'' +
+                ", mail='" + getMail() + '\'' +
+                ", password='" + getPassword() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", surname1='" + getSurname1() + '\'' +
+                ", surname2='" + getSurname2() + '\'' +
+                ", photo='" + getPhoto() + '\'' +
+                ", averageValoration=" + averageValoration +
+                '}';
     }
 }
