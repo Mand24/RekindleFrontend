@@ -12,13 +12,15 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/end"
-            android:layout_width="match_parent" android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true">
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/endButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+
             android:text="@string/endService"/>
 
         </android.support.constraint.ConstraintLayout>
