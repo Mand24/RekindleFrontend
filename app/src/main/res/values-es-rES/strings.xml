@@ -459,4 +459,6 @@
     <string name="link_updated_successfully">Enlace actualizado correctamente!</string>
     <string name="createLink">Crear enlace</string>
 
+    <string name="endService">Cerrar Servicio</string>
+
 </resources>

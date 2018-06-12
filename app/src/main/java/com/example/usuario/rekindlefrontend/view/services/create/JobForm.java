@@ -148,7 +148,7 @@ public class JobForm extends AbstractFormatChecker {
                 .toString(), eHoursWeek.getText().toString(),
                 eContractDuration.getText().toString(), ePlacesLimit
                 .getText().toString(), eSalary.getText().toString(), ePhoneNumber.getText().toString
-                ());
+                (), false);
 
     }
 

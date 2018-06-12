@@ -135,7 +135,7 @@ public class DonationForm extends AbstractFormatChecker {
         mDonation = new Donation(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
                 .getText().toString(), editStartingTime.getText().toString(), editEndingTime
-                .getText().toString(), ePhoneNumber.getText().toString());
+                .getText().toString(), ePhoneNumber.getText().toString(), false);
 
     }
 

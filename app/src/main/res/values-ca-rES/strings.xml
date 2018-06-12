@@ -438,4 +438,6 @@
     <string name="link_updated_successfully">Enllaç actualitzat correctament!</string>
     <string name="createLink">Crear enllaç</string>
 
+    <string name="endService">Tancar Servei</string>
+
 </resources>

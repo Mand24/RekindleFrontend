@@ -47,7 +47,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
     public GoogleMap mGoogleMap;
     public Marker myMarker;
     TextView title, description, adress, startTime, endTime, phoneNumber;
-    AppCompatButton chat, enroll;
+    AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
     private Chat newChat;
@@ -77,6 +77,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
         phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.inscribirse);
+        endButton = view.findViewById(R.id.endButton);
 
         title.setText(service.getName());
         description.setText(service.getDescription());
@@ -88,6 +89,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
         mMapView.getMapAsync(this);
 
         enroll.setClickable(false);
+        endButton.setClickable(false);
 
         currentUser = Consistency.getUser(container.getContext());
         final String mail = currentUser.getMail();
@@ -95,7 +97,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
         if (type.equals("Refugee")) {
 
-
+            endButton.setVisibility(View.INVISIBLE);
             chat.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -103,7 +105,6 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                     sendGetChat();
                 }
             });
-
             mAPIService.isUserSubscribed(mail, service.getId(), TYPE).enqueue(
 
                     new Callback<Boolean>() {
@@ -204,9 +205,11 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-        } else {
+        } else if(type.equals("Volunteer")){
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
+
+            
         }
 
         return view;
