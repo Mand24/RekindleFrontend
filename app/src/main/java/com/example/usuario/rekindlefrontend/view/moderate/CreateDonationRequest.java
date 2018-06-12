@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,8 +50,13 @@ public class CreateDonationRequest extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                createRequest();
-                sendRequest();
+                try{
+                    createRequest();
+                    sendRequest();
+                } catch (Exception e){
+                    motive.setError("Field is empty");
+                }
+
             }
 
         });
@@ -66,10 +72,15 @@ public class CreateDonationRequest extends AppCompatActivity {
         donationName.setText(donation.getName());
     }
 
-    void createRequest(){
+    void createRequest() throws Exception{
         User user = getUser(getApplicationContext());
-        request = new DonationRequest(user, donation, motive.getText().toString());
-        System.out.println("donationRequest " + request.toString());
+        if(!TextUtils.isEmpty(motive.getText().toString())) {
+            request = new DonationRequest(user, donation, motive.getText().toString());
+            System.out.println("donationRequest " + request.toString());
+        }
+        else {
+            throw new Exception("Report Emtpy");
+        }
     }
 
     void sendRequest(){

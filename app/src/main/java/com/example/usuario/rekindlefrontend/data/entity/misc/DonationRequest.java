@@ -21,9 +21,6 @@ public class DonationRequest implements Parcelable {
             return new DonationRequest[size];
         }
     };
-    @SerializedName("idRequest")
-    @Expose
-    private int idRequest;
     @SerializedName("user")
     @Expose
     private User user;
@@ -45,7 +42,6 @@ public class DonationRequest implements Parcelable {
     }
 
     protected DonationRequest(Parcel in) {
-        idRequest = in.readInt();
         user = in.readParcelable(User.class.getClassLoader());
         donation = in.readParcelable(Donation.class.getClassLoader());
         motive = in.readString();
@@ -64,7 +60,6 @@ public class DonationRequest implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(idRequest);
         dest.writeParcelable(user, flags);
         dest.writeSerializable(donation);
         dest.writeString(motive);
@@ -73,7 +68,6 @@ public class DonationRequest implements Parcelable {
     @Override
     public String toString() {
         return "Report{" +
-                "idRequest=" + idRequest +
                 ", user=" + user +
                 ", donation=" + donation +
                 ", motive='" + motive + '\'' +

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,10 +50,13 @@ public class CreateReport extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                createReport();
-                sendReport();
+                try{
+                    createReport();
+                    sendReport();
+                } catch (Exception e){
+                    motive.setError("Field is empty");
+                }
             }
-
         });
     }
 
@@ -66,10 +70,15 @@ public class CreateReport extends AppCompatActivity {
         reportedUser.setText(refugee.getMail());
     }
 
-    public void createReport() {
+    public void createReport() throws Exception{
         User user = getUser(getApplicationContext());
-        report = new Report(user, refugee, motive.getText().toString());
-        System.out.println("reporte " + report.toString());
+        if(!TextUtils.isEmpty(motive.getText().toString())){
+            report = new Report(user, refugee, motive.getText().toString());
+            System.out.println("reporte " + report.toString());
+        }
+        else{
+            throw new Exception("Report Empty");
+        }
     }
 
     public void sendReport() {

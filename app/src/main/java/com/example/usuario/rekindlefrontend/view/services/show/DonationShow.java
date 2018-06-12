@@ -104,7 +104,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-            mAPIService.isUserSubscribed(mail, service.getId(), TYPE).enqueue(
+            mAPIService.donationIsRequested(service.getId(), mail).enqueue(
 
                     new Callback<Boolean>() {
                         @Override

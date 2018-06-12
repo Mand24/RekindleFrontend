@@ -186,8 +186,8 @@ public interface APIService {
     @GET("/solicituddonacion")
     Call<ArrayList<DonationRequest>> getDonationRequests();
 
-    @GET("/solicituddonacion/{id}")
-    Call<Boolean> donationIsRequested(@Path("id") int id,  @Query("mail") String mail);
+    @GET("/solicituddonacion/{idDonation}")
+    Call<Boolean> donationIsRequested(@Path("idDonation") int id,  @Query("mail") String mail);
 
     //LLAMADAS RELACIONADAS CON LINKS
 
