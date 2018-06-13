@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.adapters.ReportsAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
+import com.example.usuario.rekindlefrontend.adapters.DonationRequestsAdapter;
+import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
@@ -30,25 +30,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListReports extends AppBaseActivity implements Filterable {
+public class ListDonationRequests extends AppBaseActivity implements Filterable {
 
     protected SearchView searchView;
-    protected List<Report> reports = new ArrayList<>();
-    protected List<Report> filteredReports = new ArrayList<>();
+    protected List<DonationRequest> donationRequests = new ArrayList<>();
+    protected List<DonationRequest> filteredDonationRequests = new ArrayList<>();
     protected RecyclerView recyclerView;
     protected APIService mAPIService;
-    protected ReportsAdapter mAdapter;
+    protected DonationRequestsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_reports);
+        setContentView(R.layout.activity_list_donation_requests);
 
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
-
-        getSupportActionBar().setTitle("ListaReportes");
+        getSupportActionBar().setTitle("ListaSolicitudes");
         initializeData();
 
         RecyclerView.LayoutManager mLayoutManager =
@@ -63,12 +62,12 @@ public class ListReports extends AppBaseActivity implements Filterable {
     }
 
     protected void setAdapterListener() {
-        mAdapter = new ReportsAdapter(getApplicationContext(), filteredReports,
+        mAdapter = new DonationRequestsAdapter(getApplicationContext(), filteredDonationRequests,
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        Intent intent = new Intent(getApplicationContext(), ShowReport.class);
-                        intent.putExtra("Report", filteredReports.get(position));
+                        Intent intent = new Intent(getApplicationContext(), ShowDonationRequest.class);
+                        intent.putExtra("Request", filteredDonationRequests.get(position));
                         startActivity(intent);
                     }
 
@@ -80,10 +79,10 @@ public class ListReports extends AppBaseActivity implements Filterable {
 
     private void initializeData() {
 
-        mAPIService.getReports().enqueue(new Callback<ArrayList<Report>>() {
+        mAPIService.getDonationRequests().enqueue(new Callback<ArrayList<DonationRequest>>() {
             @Override
-            public void onResponse(Call<ArrayList<Report>> call,
-                    Response<ArrayList<Report>> response) {
+            public void onResponse(Call<ArrayList<DonationRequest>> call,
+                    Response<ArrayList<DonationRequest>> response) {
                 if (response.isSuccessful()) {
                     manageResult(response.body());
                 } else {
@@ -93,7 +92,7 @@ public class ListReports extends AppBaseActivity implements Filterable {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Report>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<DonationRequest>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R
                         .string.error), Toast.LENGTH_SHORT).show();
             }
@@ -101,14 +100,14 @@ public class ListReports extends AppBaseActivity implements Filterable {
 
     }
 
-    private void manageResult(ArrayList<Report> listReports) {
-        reports = listReports;
-        filteredReports = reports;
+    private void manageResult(ArrayList<DonationRequest> listDonationRequests) {
+        donationRequests = listDonationRequests;
+        filteredDonationRequests = donationRequests;
         refreshItems();
     }
 
     private void refreshItems() {
-        mAdapter.setReports(filteredReports);
+        mAdapter.setDonationRequests(filteredDonationRequests);
         mAdapter.notifyDataSetChanged();
     }
 
@@ -138,9 +137,9 @@ public class ListReports extends AppBaseActivity implements Filterable {
         }
     }
 
-    private void search(SearchView searchView) {
+    private void search(android.support.v7.widget.SearchView searchView) {
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
@@ -163,16 +162,16 @@ public class ListReports extends AppBaseActivity implements Filterable {
 
                 String charString = charSequence.toString();
 
-                ArrayList<Report> filteredList = new ArrayList<>();
+                ArrayList<DonationRequest> filteredList = new ArrayList<>();
 
-                for (Report s : reports) {
+                for (DonationRequest s : donationRequests) {
 
                     if (!charString.isEmpty()) {
-                        if ((s.getInformerUserMail() != null
-                                && s.getInformerUserMail().toLowerCase().contains
+                        if ((s.getRefugeeMail() != null
+                                && s.getRefugeeMail().toLowerCase().contains
                                 (charString)
-                        ) || (s.getReportedUserMail() != null
-                                && s.getReportedUserMail().toLowerCase()
+                        ) || (s.getDonation().getName() != null
+                                && s.getDonation().getName().toLowerCase()
                                 .contains
                                         (charString))) {
 
@@ -184,20 +183,21 @@ public class ListReports extends AppBaseActivity implements Filterable {
 
                 }
 
-                filteredReports = filteredList;
+                filteredDonationRequests = filteredList;
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = filteredReports;
+                filterResults.values = filteredDonationRequests;
                 return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filteredReports = (ArrayList<Report>) filterResults.values;
+                filteredDonationRequests = (ArrayList<DonationRequest>) filterResults.values;
                 refreshItems();
             }
         };
     }
+
 
     public void onBackPressed() {
         finish();

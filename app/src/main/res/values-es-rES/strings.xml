@@ -38,6 +38,8 @@
     <string name="crear_servicio">Crear Servicio</string>
     <string name="ver_perfil">Ver Perfil</string>
     <string name="listar_reportes">Listar Reportes</string>
+    <string name="listar_solicitudes_donaciones">Listar solicitudes donaciones</string>
+    <string name="listar_solicitudes_usuarios">Listar solicitudes usuarios</string>
     <string name="nombre_usuario_perfil">Nombre:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
@@ -107,8 +109,12 @@
     <string name="donacion_fallida">Ha fallado la creación de la donación!</string>
     <string name="oferta_empleo_correctamente">Oferta de empleo creada correctamente!</string>
     <string name="oferta_empleo_fallida">Ha fallado la creación de la oferta de empleo!</string>
+    <string name="solicitud_creada_correctamente">Solicitud creada correctamente!</string>
+    <string name="solicitud_fallida">Ha fallado la creación de la solicitud!</string>
     <string name="reporte_creado_correctamente">Reporte creado correctamente!</string>
     <string name="reporte_fallido">Ha fallado la creación del reporte!</string>
+    <string name="solicitud_gestionada_correctamente">Solicitud gestionada correctamente!</string>
+    <string name="solicitud_gestion_fallida">Ha fallado la gestión de la solicitud!</string>
     <string name="guardado_correctamente">Guardado correctamente!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Ajustes</string>
@@ -440,6 +446,16 @@
     <string name="report_form">Formulario de reporte</string>
     <string name="explanation_motive">Escribe el motivo de tu reporte</string>
     <string name="send_report">Enviar reporte</string>
+
+    <string name="requester_user">Usuario solicitante</string>
+    <string name="requested_donation">Donación solicitada</string>
+    <string name="request_motive">Motivo de la solicitud</string>
+    <string name="request_form">Formulario de solicitud</string>
+    <string name="explanation_request_motive">Escribe el motivo de tu solicitud</string>
+    <string name="send_request">Enviar solicitud</string>
+
+    <string name="aceptar">Aceptar</string>
+    <string name="rechazar">Rechazar</string>
 
     <string name="map">Mapa</string>
     <string name="noServices">No hi ha serveis disponibles</string>

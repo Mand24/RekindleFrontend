@@ -38,6 +38,8 @@
     <string name="crear_servicio">Crear Servei</string>
     <string name="ver_perfil">Veure Perfil</string>
     <string name="listar_reportes">Llistar Reports</string>
+    <string name="listar_solicitudes_donaciones">Llistar sol·licituds donacions</string>
+    <string name="listar_solicitudes_usuarios">Llistar sol·licituds usuaris</string>
     <string name="nombre_usuario_perfil">Nom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
@@ -105,8 +107,12 @@
     <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
     <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
+    <string name="solicitud_creada_correctamente">Sol·licitud creada correctament!</string>
+    <string name="solicitud_fallida">Ha fallat la creació de la sol·licitud!</string>
     <string name="reporte_creado_correctamente">Report creat correctament!</string>
     <string name="reporte_fallido">Ha fallat la creació del report!</string>
+    <string name="solicitud_gestionada_correctamente">Sol·licitut gestionada correctament!</string>
+    <string name="solicitud_gestion_fallida">Ha fallat la gestió de la sol·licitud!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Configuració</string>
@@ -264,7 +270,7 @@
         voluntari, seleccionant el valor desitjat mitjantçant els botons \"Refugiat\" i
         \"Voluntari\" situats en la part superior de la pantalla. Per a completar el registre
         introdueixi como a mínim tots els camps obligatoris (marcats amb un \"*\" al final
-        de camp). Per a enviar la solicitut de registre prem \"Enviar\". \n \n
+        de camp). Per a enviar la sol·licitut de registre prem \"Enviar\". \n \n
 
         <b>
             <u>Demanar codi de recuperació \n</u>
@@ -418,6 +424,17 @@
     <string name="report_form">Formulari de report</string>
     <string name="explanation_motive">Escriu el motiu del teu report</string>
     <string name="send_report">Enviar report</string>
+
+
+    <string name="requester_user">Usuari sol·licitant</string>
+    <string name="requested_donation">Donació sol·licitada</string>
+    <string name="request_motive">Motiu de la sol·licitud</string>
+    <string name="request_form">Formulari de sol·licitud</string>
+    <string name="explanation_request_motive">Escriu el motiu de la teva sol·licitud</string>
+    <string name="send_request">Enviar sol·licitud</string>
+
+    <string name="aceptar">Aceptar</string>
+    <string name="rechazar">Rebutjar</string>
 
     <string name="map">Mapa</string>
 

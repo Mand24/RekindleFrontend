@@ -1,4 +1,4 @@
-package com.example.usuario.rekindlefrontend.data.entity.reports;
+package com.example.usuario.rekindlefrontend.data.entity.misc;
 
 
 import android.os.Parcel;
@@ -9,17 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Report implements Parcelable {
-    public static final Creator<Report> CREATOR = new Creator<Report>() {
-        @Override
-        public Report createFromParcel(Parcel in) {
-            return new Report(in);
-        }
 
-        @Override
-        public Report[] newArray(int size) {
-            return new Report[size];
-        }
-    };
     @SerializedName("idReport")
     @Expose
     private int idReport;
@@ -73,6 +63,18 @@ public class Report implements Parcelable {
         dest.writeParcelable(reportedUser, flags);
         dest.writeString(motive);
     }
+
+    public static final Creator<Report> CREATOR = new Creator<Report>() {
+        @Override
+        public Report createFromParcel(Parcel in) {
+            return new Report(in);
+        }
+
+        @Override
+        public Report[] newArray(int size) {
+            return new Report[size];
+        }
+    };
 
     @Override
     public String toString() {

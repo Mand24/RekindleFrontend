@@ -3,7 +3,8 @@ package com.example.usuario.rekindlefrontend.data.remote;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.link.Link;
-import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
+import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
@@ -176,6 +177,23 @@ public interface APIService {
 
     @GET("/reportes/{id}")
     Call<Report> getReport(@Path("id") int id);
+
+    //LLAMADAS RELACIONADAS CON SOLICITUDES DE DONACION
+
+    @POST("/solicituddonacion")
+    Call<Void> createDonationRequest(@Body DonationRequest donationRequest);
+
+    @GET("/solicituddonacion")
+    Call<ArrayList<DonationRequest>> getDonationRequests();
+
+    @GET("/solicituddonacion/{idDonation}")
+    Call<Boolean> donationIsRequested(@Path("idDonation") int id,  @Query("mail") String mail);
+
+    @PUT("/solicituddonacion/accept/{idDonation}")
+    Call<Void> acceptDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
+
+    @PUT("/solicituddonacion/reject/{idDonation}")
+    Call<Void> rejectDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
 
     //LLAMADAS RELACIONADAS CON LINKS
 

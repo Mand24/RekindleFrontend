@@ -39,6 +39,8 @@
     <string name="crear_servicio">Create Service</string>
     <string name="ver_perfil">See Profile</string>
     <string name="listar_reportes">List Reports</string>
+    <string name="listar_solicitudes_donaciones">List Donation Requests</string>
+    <string name="listar_solicitudes_usuarios">List Users Requests</string>
     <string name="nombre_usuario_perfil">Name:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
@@ -110,9 +112,13 @@
         successfully!
     </string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
+    <string name="solicitud_creada_correctamente">Request created successfully!</string>
+    <string name="solicitud_fallida">Request failed!</string>
     <string name="reporte_creado_correctamente">Report created succesfully!
     </string>
     <string name="reporte_fallido">Report failed!</string>
+    <string name="solicitud_gestionada_correctamente">Request managed successfully!</string>
+    <string name="solicitud_gestion_fallida">Request management failed!</string>
     <string name="guardado_correctamente">Save successfully!</string>
     <string name="guardado_fallido">Save failed!</string>
     <string name="ajustes">Settings</string>
@@ -211,6 +217,16 @@
     <string name="report_form">Report form</string>
     <string name="explanation_motive">Write the motive for your report</string>
     <string name="send_report">Send report</string>
+
+    <string name="requester_user">Requester user</string>
+    <string name="requested_donation">Requested donation</string>
+    <string name="request_motive">Request motive</string>
+    <string name="request_form">Request form</string>
+    <string name="explanation_request_motive">Write the motive for your request</string>
+    <string name="send_request">Send request</string>
+
+    <string name="aceptar">Accept</string>
+    <string name="rechazar">Reject</string>
 
     <string name="titulo_busqueda">Search people</string>
     <string name="subtitulo_busqueda">Please, fill all the info you know about the person

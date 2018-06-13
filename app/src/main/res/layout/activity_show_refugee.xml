@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10"
+                android:layout_marginTop="@dimen/dim20"
                 android:text="@string/reportar"/>
 
             <ImageView
