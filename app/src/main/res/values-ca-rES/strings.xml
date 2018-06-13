@@ -475,5 +475,8 @@
     <string name="endService">Tancar Servei</string>
     <string name="closedService">Servei Tancat</string>
     <string name="URL_format">Format URL incorrecte, te que comencar amb https:// o http://</string>
-
+    <string name="habilitar">Habilitar</string>
+    <string name="deshabilitar">Deshabilitar</string>
+    <string name="disable_motive">Redacta el motiu pel qual l'usuari és deshabilitat:</string>
+    <string name="apellido1_usuario_perfil">Primer cognom:</string>
 </resources>

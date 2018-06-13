@@ -494,5 +494,8 @@
     <string name="kilometers">kilometros</string>
     <string name="your_location">Tu localización</string>
     <string name="radius">Radio</string>
-
+    <string name="apellido1_usuario_perfil">Primer apellido:</string>
+    <string name="habilitar">Habilitar</string>
+    <string name="deshabilitar">Deshabilitar</string>
+    <string name="disable_motive">Redacta el motivo por el qual el usuario es deshabilitado:</string>
 </resources>
