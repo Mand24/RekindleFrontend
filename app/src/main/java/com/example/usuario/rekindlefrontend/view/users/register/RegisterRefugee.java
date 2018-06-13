@@ -17,7 +17,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
@@ -31,7 +31,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterRefugee extends AbstractFormatChecker {
+public class RegisterRefugee extends Fragment {
 
     private EditText eName;
     private EditText eEmail;
@@ -51,6 +51,7 @@ public class RegisterRefugee extends AbstractFormatChecker {
 
     private APIService mAPIService;
     private Refugee mRefugee;
+    private FormatChecker fc;
 
     public RegisterRefugee() {
         // Required empty public constructor
@@ -66,6 +67,9 @@ public class RegisterRefugee extends AbstractFormatChecker {
         //establecer las vistas
         setViews(view);
 
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(R.id
                 .enviar_registro_refugiado);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -74,15 +78,12 @@ public class RegisterRefugee extends AbstractFormatChecker {
             public void onClick(View v) {
 
                 try {
-                    System.out.println("dentro try");
                     checkFields(view);
-
                     getParams();
-                    System.out.println("final try");
+                    sendCreateRefugee();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCreateRefugee();
             }
         });
 
@@ -140,17 +141,16 @@ public class RegisterRefugee extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkName(eName.getText().toString());
-        checkEmail(eEmail.getText().toString());
-        checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
-                ());
-        checkSurname1(eSurname1.getText().toString());
-        checkSurname2(eSurname2.getText().toString());
-        checkPhoneNumber(ePhoneNumber.getText().toString());
-        checkCountry(eCountry.getText().toString());
-        checkTown(eTown.getText().toString());
-        checkEthnic(eEthnic.getText().toString());
-        checkBiography(eBiography.getText().toString());
+        fc.checkName(eName.getText().toString());
+        fc.checkEmail(eEmail.getText().toString());
+        fc.checkPassword(ePassword.getText().toString(), eRPassword.getText().toString());
+        fc.checkSurname1(eSurname1.getText().toString());
+        fc.checkSurname2(eSurname2.getText().toString());
+        fc.checkPhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkCountry(eCountry.getText().toString());
+        fc.checkTown(eTown.getText().toString());
+        fc.checkEthnic(eEthnic.getText().toString());
+        fc.checkBiography(eBiography.getText().toString());
     }
 
     public void getParams() {
