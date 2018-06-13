@@ -162,7 +162,7 @@ public class User implements Parcelable {
     public String toString() {
         return "User{" +
                 "userType='" + userType + '\'' +
-                ", enabled=" + enabled +
+                ", enabled=" + enabled + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

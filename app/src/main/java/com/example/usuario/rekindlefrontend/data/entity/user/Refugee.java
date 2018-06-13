@@ -145,6 +145,7 @@ public class Refugee extends User {
     public String toString() {
         return "Refugee{" +
                 "tipo='" + getUserType() + '\'' +
+                ", enabled=" + getEnabled() + '\'' +
                 ", mail='" + getMail() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", name='" + getName() + '\'' +

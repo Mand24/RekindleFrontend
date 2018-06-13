@@ -50,6 +50,7 @@ public class Volunteer extends User {
     public String toString() {
         return "Volunteer{" +
                 "tipo='" + getUserType() + '\'' +
+                ", enabled=" + getEnabled() + '\'' +
                 ", mail='" + getMail() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", name='" + getName() + '\'' +

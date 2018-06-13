@@ -88,9 +88,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
             photo = (ImageView) itemView.findViewById(R.id.photo_cardView);
-            name = (TextView) itemView.findViewById(R.id.nombre_cv);
-            surname1 = (TextView) itemView.findViewById(R.id.apellido1_cv);
-            surname2 = (TextView) itemView.findViewById(R.id.apellido2_cv);
+            name = (TextView) itemView.findViewById(R.id.name_cv);
+            surname1 = (TextView) itemView.findViewById(R.id.surname1_cv);
+            surname2 = (TextView) itemView.findViewById(R.id.surname2_cv);
             userType = (TextView) itemView.findViewById(R.id.userType_cv);
         }
     }
