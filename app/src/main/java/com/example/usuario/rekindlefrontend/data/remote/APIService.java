@@ -51,10 +51,8 @@ public interface APIService {
     @GET("/usuarios/{mail}/chats")
     Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
 
-    @GET("/usuarios/{mail}/chat")
-    Call<Chat> getChat(@Path("mail") String mail, @Query("mail1") String mail1, @Query("mail2")
-            String
-            mail2);
+    @GET("/usuarios/{mail1}/chats/{mail2}")
+    Call<Chat> getChat(@Path("mail1") String mail, @Path("mail2") String mail2);
 
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);//back se encarga de mirar si existe!!!
@@ -110,6 +108,12 @@ public interface APIService {
 */
     @GET("/servicios")
     Call<ArrayList<Service>> obtenerServicios();
+
+    @GET("/servicios/filtrar")
+    Call<ArrayList<Service>> getServicesFiltered(@Query("fromDate") String fromDate, @Query
+            ("toDate") String toDate, @Query("minimumRating") Double minimumRating, @Query
+            ("positionLat") Double latitude, @Query("positionLng") Double longitude, @Query
+            ("distance") Double distance);
 
     @GET("/servicios/{mail}/{tipo}")
     Call<ArrayList<Service>> obtenerMisServicios(@Path("mail") String mail, @Path

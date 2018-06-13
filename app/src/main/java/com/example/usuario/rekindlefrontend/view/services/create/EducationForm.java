@@ -22,7 +22,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -38,7 +38,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EducationForm extends AbstractFormatChecker {
+public class EducationForm extends Fragment {
 
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -53,6 +53,7 @@ public class EducationForm extends AbstractFormatChecker {
     private EditText eDescription;
     private Education mEducation;
     private APIService mAPIService;
+    private FormatChecker fc;
 
     public EducationForm() {
         // Required empty public constructor
@@ -68,6 +69,9 @@ public class EducationForm extends AbstractFormatChecker {
 
         //establecer las vistas
         setViews(view);
+
+        //init format Checker
+        fc = new FormatChecker(getResources());
 
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_formulario_curso_educativo);
@@ -120,13 +124,13 @@ public class EducationForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkServiceName(eName.getText().toString());
-        checkServicePhoneNumber(ePhoneNumber.getText().toString());
-        checkServiceAmbit(eAmbit.getText().toString());
-        checkServiceRequirements(eRequirements.getText().toString());
-        checkServiceSchedule(eSchedule.getText().toString());
-        checkServicePlaces(ePlacesLimit.getText().toString());
-        checkServiceDescription(eDescription.getText().toString());
+        fc.checkServiceName(eName.getText().toString());
+        fc.checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkServiceAmbit(eAmbit.getText().toString());
+        fc.checkServiceRequirements(eRequirements.getText().toString());
+        fc.checkServiceSchedule(eSchedule.getText().toString());
+        fc.checkServicePlaces(ePlacesLimit.getText().toString());
+        fc.checkServiceDescription(eDescription.getText().toString());
 
     }
 

@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.services.edit;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
@@ -17,7 +18,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -29,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EducationEdit extends AbstractFormatChecker {
+public class EducationEdit extends Fragment {
 
     private Education servicio;
     private EditText eAdress;
@@ -46,6 +47,7 @@ public class EducationEdit extends AbstractFormatChecker {
     private EditText eDescription;
 
     private APIService mAPIService;
+    private FormatChecker fc;
 
     public EducationEdit() {
     }
@@ -58,6 +60,9 @@ public class EducationEdit extends AbstractFormatChecker {
         servicio = (Education) getArguments().getSerializable("Education");
 
         setViews(view);
+
+        //init format Checker
+        fc = new FormatChecker(getResources());
 
         initializeFields();
 
@@ -123,14 +128,14 @@ public class EducationEdit extends AbstractFormatChecker {
 
     public void checkFields() throws Exception {
 
-        checkServiceName(eName.getText().toString());
-        checkServicePhoneNumber(ePhoneNumber.getText().toString());
-        checkServiceAmbit(eAmbit.getText().toString());
-        checkServiceRequirements(eRequirements.getText().toString());
-        checkServiceSchedule(eSchedule.getText().toString());
-        checkServicePlaces(ePlacesLimit.getText().toString());
-        checkServiceIncreasePlaces(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
-        checkServiceDescription(eDescription.getText().toString());
+        fc.checkServiceName(eName.getText().toString());
+        fc.checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkServiceAmbit(eAmbit.getText().toString());
+        fc.checkServiceRequirements(eRequirements.getText().toString());
+        fc.checkServiceSchedule(eSchedule.getText().toString());
+        fc.checkServicePlaces(ePlacesLimit.getText().toString());
+        fc.checkServiceIncreasePlaces(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
+        fc.checkServiceDescription(eDescription.getText().toString());
     }
 
     public void getParams() {

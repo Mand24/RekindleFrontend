@@ -87,5 +87,3 @@
         <activity android:name=".view.moderate.EnableUser">
         </activity>
     </application>
-
-</manifest>

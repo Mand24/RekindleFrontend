@@ -211,6 +211,7 @@
     </string>
     <string name="texto_biografia_refugiado">Biography:</string>
     <string name="biografia_largo">The biography is too long, maximum 300 letters</string>
+    <string name="distancia_numeros">Distance can only contain digits</string>
 
     <string name="informer_user">Informer User</string>
     <string name="reported_user">Reported User</string>
@@ -497,6 +498,18 @@
     <string name="value_services">Value services</string>
     <string name="endService">End Service</string>
     <string name="closedService">Closed Service</string>
+    <string name="URL_format">URL format incorrect, must starts with http:// or https://</string>
+    <string name="date_title">Date</string>
+    <string name="start_date">From date</string>
+    <string name="end_date">To date</string>
+    <string name="minimumRating">Minimum rating</string>
+    <string name="distance">Distance</string>
+    <string name="custom_location">Choose location</string>
+    <string name="reset_all">Reset</string>
+    <string name="meters">meters</string>
+    <string name="kilometers">kilometers</string>
+    <string name="your_location">Your location</string>
+    <string name="radius">Radius</string>
 
 </resources>
 

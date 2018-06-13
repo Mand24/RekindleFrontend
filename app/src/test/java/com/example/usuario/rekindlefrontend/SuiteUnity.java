@@ -10,8 +10,15 @@ import org.junit.runners.Suite;
 // Runs all unit tests.
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        UnityAbstractFormatChecker.class,
-        UnityMaps.class
+        AbstractFormatCheckerUnity.class,
+        ChatsAdapterUnity.class,
+        LinksAdapterUnity.class,
+        MessageAdapterUnity.class,
+        RefugeeAdapterUnity.class,
+        ReportsAdapterUnity.class,
+        ServiceAdapterUnity.class,
+        CodeGeneratorUnity.class,
+        GMailUnity.class
 })
 public class SuiteUnity {
 }

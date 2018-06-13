@@ -3,11 +3,10 @@ package com.example.usuario.rekindlefrontend;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
-
 import org.junit.Test;
 
-public class UnityAbstractFormatChecker extends AbstractFormatChecker {
+public class AbstractFormatCheckerUnity extends
+        com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker {
 
     @Test
     public void check_letras() {
@@ -153,11 +152,6 @@ public class UnityAbstractFormatChecker extends AbstractFormatChecker {
     @Test(expected = java.lang.Exception.class)
     public void nombreServioio_obli() throws Exception {
         checkServiceName("");
-    }
-
-    @Test(expected = java.lang.Exception.class)
-    public void nombreServioio_letras() throws Exception {
-        checkServiceName("cdsv234");
     }
 
     @Test(expected = java.lang.Exception.class)

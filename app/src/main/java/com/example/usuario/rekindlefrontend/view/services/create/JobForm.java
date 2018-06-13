@@ -22,7 +22,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -38,7 +38,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class JobForm extends AbstractFormatChecker {
+public class JobForm extends Fragment {
 
     private EditText eAdress;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
@@ -56,6 +56,7 @@ public class JobForm extends AbstractFormatChecker {
 
     private Job mJob;
     private APIService mAPIService;
+    private FormatChecker fc;
 
     public JobForm() {
         // Required empty public constructor
@@ -72,6 +73,9 @@ public class JobForm extends AbstractFormatChecker {
         //establecer las vistas
         setViews(view);
 
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_formulario_oferta_empleo);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -81,10 +85,11 @@ public class JobForm extends AbstractFormatChecker {
                 try {
                     checkFields(view);
                     getParams();
+                    sendCreateJob();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCreateJob();
+
             }
         });
 
@@ -125,16 +130,16 @@ public class JobForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkServiceName(eName.getText().toString());
-        checkServicePhoneNumber(ePhoneNumber.getText().toString());
-        checkServiceCharge(eCharge.getText().toString());
-        checkServiceRequirements(eRequirements.getText().toString());
-        checkServiceHoursDay(eHoursDay.getText().toString());
-        checkServiceHoursWeek(eHoursWeek.getText().toString());
-        checkServiceContractDuration(eContractDuration.getText().toString());
-        checkServiceSalary(eSalary.getText().toString());
-        checkServicePlaces(ePlacesLimit.getText().toString());
-        checkServiceDescription(eDescription.getText().toString());
+        fc.checkServiceName(eName.getText().toString());
+        fc.checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkServiceCharge(eCharge.getText().toString());
+        fc.checkServiceRequirements(eRequirements.getText().toString());
+        fc.checkServiceHoursDay(eHoursDay.getText().toString());
+        fc.checkServiceHoursWeek(eHoursWeek.getText().toString());
+        fc.checkServiceContractDuration(eContractDuration.getText().toString());
+        fc.checkServiceSalary(eSalary.getText().toString());
+        fc.checkServicePlaces(ePlacesLimit.getText().toString());
+        fc.checkServiceDescription(eDescription.getText().toString());
 
     }
 
