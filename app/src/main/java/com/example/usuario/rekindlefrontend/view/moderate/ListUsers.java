@@ -112,8 +112,8 @@ public class ListUsers extends AppBaseActivity  implements Filterable {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(),
-                                X.class);
-                        intent.putExtra("Refugee", mRefugees.get(position));
+                                EnableUser.class);
+                        intent.putExtra("User", mUsers.get(position));
                         startActivity(intent);
 
                     }

@@ -34,7 +34,7 @@
         />
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/list_users_requests"
+            android:id="@+id/list_users"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/list_donation_requests"
@@ -42,14 +42,14 @@
             android:layout_marginLeft="@dimen/dim20"
             android:layout_marginRight="@dimen/dim20"
             android:layout_marginTop="@dimen/dim50"
-            android:text="@string/listar_solicitudes_usuarios"
+            android:text="@string/listUsers"
         />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/createLink"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/list_users_requests"
+            android:layout_below="@id/list_users"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/dim20"
             android:layout_marginRight="@dimen/dim20"

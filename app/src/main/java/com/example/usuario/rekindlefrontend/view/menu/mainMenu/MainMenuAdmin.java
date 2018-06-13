@@ -14,12 +14,13 @@ import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinks;
 import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinksAdmin;
 import com.example.usuario.rekindlefrontend.view.moderate.ListDonationRequests;
 import com.example.usuario.rekindlefrontend.view.moderate.ListReports;
+import com.example.usuario.rekindlefrontend.view.moderate.ListUsers;
 
 public class MainMenuAdmin extends Fragment {
 
     private AppCompatButton button_list_reports;
     private AppCompatButton button_list_donation_requests;
-    private AppCompatButton button_list_users_requests;
+    private AppCompatButton button_list_users;
     private AppCompatButton button_links;
     private AppCompatButton button_create_link;
 
@@ -56,15 +57,14 @@ public class MainMenuAdmin extends Fragment {
             }
         });
 
-        /*button_list_users_requests.setOnClickListener(new View.OnClickListener() {
+        button_list_users.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), ListUsersRequests
-                        .class);
+                Intent i = new Intent(getActivity().getApplicationContext(), ListUsers.class);
                 startActivity(i);
             }
-        });*/
+        });
 
         button_links.setOnClickListener(new View.OnClickListener() {
 
@@ -91,7 +91,7 @@ public class MainMenuAdmin extends Fragment {
     public void setViews(View view) {
         button_list_reports = view.findViewById(R.id.listar_reportes_MenuPrincipalAdministrador);
         button_list_donation_requests = view.findViewById(R.id.list_donation_requests);
-        button_list_users_requests = view.findViewById(R.id.list_users_requests);
+        button_list_users = view.findViewById(R.id.list_users);
         button_links = view.findViewById(R.id.links);
         button_create_link = view.findViewById(R.id.createLink);
     }

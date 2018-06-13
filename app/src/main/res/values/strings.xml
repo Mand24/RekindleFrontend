@@ -40,7 +40,6 @@
     <string name="ver_perfil">See Profile</string>
     <string name="listar_reportes">List Reports</string>
     <string name="listar_solicitudes_donaciones">List Donation Requests</string>
-    <string name="listar_solicitudes_usuarios">List Users Requests</string>
     <string name="nombre_usuario_perfil">Name:</string>
     <string name="apellido1_usuario_perfil">First surname:</string>
     <string name="email_usuario_perfil">Email:</string>

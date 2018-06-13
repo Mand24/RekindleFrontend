@@ -39,7 +39,6 @@
     <string name="ver_perfil">Veure Perfil</string>
     <string name="listar_reportes">Llistar Reports</string>
     <string name="listar_solicitudes_donaciones">Llistar sol·licituds donacions</string>
-    <string name="listar_solicitudes_usuarios">Llistar sol·licituds usuaris</string>
     <string name="nombre_usuario_perfil">Nom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
