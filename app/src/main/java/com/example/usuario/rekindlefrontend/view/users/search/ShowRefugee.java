@@ -139,8 +139,15 @@ public class ShowRefugee extends AppBaseActivity {
     }
 
     public void sendGetChat() {
-        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(),
-                refugee.getMail()).enqueue(
+        String mail1, mail2;
+        if (currentUser.getMail().compareToIgnoreCase(refugee.getMail()) <= 0 ){
+            mail1 = currentUser.getMail();
+            mail2 = refugee.getMail();
+        }else {
+            mail1 = refugee.getMail();
+            mail2 = currentUser.getMail();
+        }
+        mAPIService.getChat(mail1, mail2).enqueue(
                 new Callback<Chat>() {
                     @Override
                     public void onResponse(Call<Chat> call, Response<Chat> response) {

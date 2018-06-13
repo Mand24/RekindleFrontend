@@ -198,8 +198,15 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
     }
 
     public void sendGetChat() {
-        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), service.getEmail())
-                .enqueue(
+        String mail1, mail2;
+        if (currentUser.getMail().compareToIgnoreCase(service.getEmail()) <= 0 ){
+            mail1 = currentUser.getMail();
+            mail2 = service.getEmail();
+        }else {
+            mail1 = service.getEmail();
+            mail2 = currentUser.getMail();
+        }
+        mAPIService.getChat(mail1, mail2).enqueue(
                         new Callback<Chat>() {
                             @Override
                             public void onResponse(Call<Chat> call, Response<Chat> response) {
