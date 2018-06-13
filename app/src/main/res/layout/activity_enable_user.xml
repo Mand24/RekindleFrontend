@@ -17,17 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/enable_disable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/dim10"
-                android:layout_marginTop="@dimen/dim10"/>
-
             <ImageView
-                android:id="@+id/foto_perfil_voluntario"
+                android:id="@+id/foto"
                 android:layout_width="@dimen/dim100"
                 android:layout_height="@dimen/dim100"
                 android:layout_alignParentRight="true"
@@ -37,114 +28,137 @@
                 android:src="@drawable/foto_perfil"/>
 
             <TextView
-                android:id="@+id/label_tipo_usuario_perfil_voluntario"
+                android:id="@+id/label_tipo_usuario"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/enable_disable"
+                android:layout_below="@id/foto"
                 android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim50"
+                android:layout_marginTop="@dimen/dim10"
                 android:text="@string/tipo_usuario"/>
 
             <TextView
-                android:id="@+id/tipo_usuario_perfil_voluntario"
+                android:id="@+id/tipo_usuario"
                 style="@style/text_view"
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_tipo_usuario_perfil_voluntario"
+                android:layout_below="@id/label_tipo_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:background="@drawable/back"
-                android:padding="@dimen/dim6"
-                android:text="Obtener serviceType()"/>
+                android:padding="@dimen/dim6"/>
 
             <TextView
-                android:id="@+id/label_nombre_usuario_perfil_voluntario"
+                android:id="@+id/label_nombre_usuario"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/tipo_usuario_perfil_voluntario"
+                android:layout_below="@id/tipo_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/nombre_usuario_perfil"/>
 
             <TextView
-                android:id="@+id/nombre_usuario_perfil_voluntario"
+                android:id="@+id/nombre_usuario"
                 style="@style/text_view"
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_nombre_usuario_perfil_voluntario"
+                android:layout_below="@id/label_nombre_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:background="@drawable/back"
-                android:padding="@dimen/dim6"
-                android:text="Obtener nombre()"/>
+                android:padding="@dimen/dim6"/>
 
             <TextView
-                android:id="@+id/label_apellido1_usuario_perfil_voluntario"
+                android:id="@+id/label_apellido1_usuario"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/nombre_usuario_perfil_voluntario"
+                android:layout_below="@id/nombre_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
-                android:text="@string/texto_1apellido_formulario"/>
+                android:text="@string/apellido1_usuario_perfil"/>
 
             <TextView
-                android:id="@+id/apellido1_usuario_perfil_voluntario"
+                android:id="@+id/apellido1_usuario"
                 style="@style/text_view"
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_apellido1_usuario_perfil_voluntario"
+                android:layout_below="@id/label_apellido1_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:background="@drawable/back"
-                android:padding="@dimen/dim6"
-                android:text="Obtener apellido1()"/>
+                android:padding="@dimen/dim6"/>
 
             <TextView
-                android:id="@+id/label_apellido2_usuario_perfil_voluntario"
+                android:id="@+id/label_apellido2_usuario"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/apellido1_usuario_perfil_voluntario"
+                android:layout_below="@id/apellido1_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/texto_2apellido_formulario"/>
 
             <TextView
-                android:id="@+id/apellido2_usuario_perfil_voluntario"
+                android:id="@+id/apellido2_usuario"
                 style="@style/text_view"
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_apellido2_usuario_perfil_voluntario"
+                android:layout_below="@id/label_apellido2_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:background="@drawable/back"
-                android:padding="@dimen/dim6"
-                android:text="Obtener apellido2()"/>
+                android:padding="@dimen/dim6"/>
 
             <TextView
-                android:id="@+id/label_email_usuario_perfil_voluntario"
+                android:id="@+id/label_email_usuario"
                 style="@style/text_view"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/apellido2_usuario_perfil_voluntario"
+                android:layout_below="@id/apellido2_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim20"
                 android:text="@string/email_usuario_perfil"/>
 
             <TextView
-                android:id="@+id/email_usuario_perfil_voluntario"
+                android:id="@+id/email_usuario"
                 style="@style/text_view"
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@id/label_email_usuario_perfil_voluntario"
+                android:layout_below="@id/label_email_usuario"
                 android:layout_marginLeft="@dimen/dim20"
                 android:layout_marginRight="@dimen/dim20"
                 android:layout_marginTop="@dimen/dim6"
                 android:background="@drawable/back"
-                android:padding="@dimen/dim6"
-                android:text="Obtener email()"/>
+                android:padding="@dimen/dim6"/>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/enable_disable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email_usuario"
+                android:layout_centerLeft="true"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim10"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/enable_disable"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/motive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:hint="@string/disable_motive"
+                    android:inputType="textCapSentences"/>
+            </android.support.design.widget.TextInputLayout>
 
 
         </RelativeLayout>

@@ -59,6 +59,15 @@ public interface APIService {
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);//back se encarga de mirar si existe!!!
 
+    @GET("/usuarios/{mail}/enabled")
+    Call<Integer> isUserEnabled(@Path("mail") String mail);
+
+    @PUT("/usuarios/{mail}/enable")
+    Call<Void> enableUser(@Path("mail") String mail);
+
+    @PUT("/usuarios/{mail}disable")
+    Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);
+
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
     Call<ArrayList<Refugee>> buscarRefugiados(

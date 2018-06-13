@@ -41,6 +41,7 @@
     <string name="listar_solicitudes_donaciones">Listar solicitudes donaciones</string>
     <string name="listar_solicitudes_usuarios">Listar solicitudes usuarios</string>
     <string name="nombre_usuario_perfil">Nombre:</string>
+    <string name="apellido1_usuario_perfil">Primer apellido:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
@@ -453,6 +454,10 @@
     <string name="request_form">Formulario de solicitud</string>
     <string name="explanation_request_motive">Escribe el motivo de tu solicitud</string>
     <string name="send_request">Enviar solicitud</string>
+
+    <string name="habilitar">Habilitar</string>
+    <string name="deshabilitar">Deshabilitar</string>
+    <string name="disable_motive">Redacta el motivo por el qual el usuario es deshabilitado:</string>
 
     <string name="aceptar">Aceptar</string>
     <string name="rechazar">Rechazar</string>

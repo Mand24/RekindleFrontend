@@ -41,6 +41,7 @@
     <string name="listar_solicitudes_donaciones">Llistar sol·licituds donacions</string>
     <string name="listar_solicitudes_usuarios">Llistar sol·licituds usuaris</string>
     <string name="nombre_usuario_perfil">Nom:</string>
+    <string name="apellido1_usuario_perfil">Primer cognom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
@@ -432,6 +433,10 @@
     <string name="request_form">Formulari de sol·licitud</string>
     <string name="explanation_request_motive">Escriu el motiu de la teva sol·licitud</string>
     <string name="send_request">Enviar sol·licitud</string>
+
+    <string name="habilitar">Habilitar</string>
+    <string name="deshabilitar">Deshabilitar</string>
+    <string name="disable_motive">Redacta el motiu pel qual l'usuari és deshabilitat:</string>
 
     <string name="aceptar">Aceptar</string>
     <string name="rechazar">Rebutjar</string>
