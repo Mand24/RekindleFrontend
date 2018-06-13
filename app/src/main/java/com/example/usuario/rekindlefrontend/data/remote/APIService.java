@@ -10,6 +10,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Valoration;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
@@ -103,7 +104,7 @@ public interface APIService {
 
     @GET("/servicios/{mail}/{tipo}")
     Call<ArrayList<Service>> obtenerMisServicios(@Path("mail") String mail, @Path
-            ("tipo") String tipo);
+            ("tipo") String tipo, @Query("ended") Boolean ended);
 
     @GET("/alojamientos/{id}")
     Call<Lodge> getAlojamiento(@Path("id") int id);
@@ -141,8 +142,13 @@ public interface APIService {
     @POST("/cursos")
     Call<Void> crearEducacion(@Body Education educacion);
 
+    @POST("/servicios/{id}/{tipo}/valoraciones")
+    Call<Void> createValoration(@Path("id") int id, @Path("tipo") String tipo, @Body Valoration
+            valoration);
+
     @DELETE("/servicios/{id}/{tipo}")
     Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
+
 
     @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
     Call<Boolean> isUserSubscribed(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
@@ -165,7 +171,6 @@ public interface APIService {
     @POST("/usuarios/{mail}/chats/{idChat}/messages")
     Call<Void> sendMessage(@Path("mail") String mail, @Path("idChat") int idChat, @Body Message
             message);
-
 
     //LLAMADAS RELACIONADAS CON REPORTES
 

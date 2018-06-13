@@ -48,10 +48,11 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     public GoogleMap mGoogleMap;
     public Marker myMarker;
     TextView title, description, adress, date, phoneNumber;
-    AppCompatButton chat, enroll;
+    AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
     private Chat newChat;
+
     public LodgeShow() {
         // Required empty public constructor
     }
@@ -76,6 +77,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.inscribirse);
+        endButton = view.findViewById(R.id.endButton);
 
         title.setText(service.getName());
         description.setText(service.getDescription());
@@ -86,6 +88,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         mMapView.getMapAsync(this);
 
         enroll.setClickable(false);
+        endButton.setClickable(false);
 
         currentUser = Consistency.getUser(container.getContext());
         final String mail = currentUser.getMail();
@@ -108,6 +111,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                     new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                            System.out.println("CODIGOissubscribe? " + response.code());
                             if (response.isSuccessful()) {
                                 enroll.setClickable(true);
                                 if (response.body()) {
@@ -141,6 +145,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                 service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
+                                System.out.println("CODIGOsubscribe " + response.code());
                                 if (response.isSuccessful()) {
                                     enroll.setText(R.string.unsubscribe);
                                 } else {
@@ -206,13 +211,56 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-        } else {
+        } else if(type.equals("Volunteer") && currentUser.getMail().equals(service.getEmail())){
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
 
+            endButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    service.setEnded(true);
+                    endButton.setText(R.string.closedService);
+                    sendEditService(service);
+
+                }
+
+            });
+        }
+        else {
+            enroll.setVisibility(View.INVISIBLE);
+            chat.setVisibility(View.INVISIBLE);
+            endButton.setVisibility(View.INVISIBLE);
         }
 
         return view;
+    }
+
+    public void sendEditService(Lodge service){
+
+        mAPIService.editarAlojamiento(service.getId(),service).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+        );
     }
 
     public void sendGetChat() {

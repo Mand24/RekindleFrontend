@@ -3,8 +3,15 @@ package com.example.usuario.rekindlefrontend.view.menu.login;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.connectPusher;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setAllChannelsNotifications;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUser;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm
+        .setAllChannelsNotificationsChats;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm
+        .setAllChannelsNotificationsServices;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUserChat;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setChannelUserService;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelUser;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelsChats;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelsServices;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
@@ -27,6 +34,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -59,7 +67,6 @@ public class Login extends AppCompatActivity {
     private int backpress = 0;
     private APIService mAPIService;
     private User mUser;
-    private ArrayList<Chat> chats;
 
     private void bind() {
         _loginButton = (Button) findViewById(R.id.btn_login);
@@ -202,7 +209,9 @@ public class Login extends AppCompatActivity {
     public void onLoginSuccess() {
 
         saveUser(mUser, this);
-        sendGetChats();
+        if (!mUser.getUserType().equals("Admin")){
+            setComm();
+        }
         /*try{
             Thread.sleep(1000);
         }catch (Exception e){
@@ -218,32 +227,74 @@ public class Login extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void setComm(){
+        setUpPusher();
+        setUpChannelUser(this);
+        setChannelUserChat(this);
+        sendGetChats();
+        if (mUser.getUserType().equals("Refugee")){
+            setChannelUserService(this);
+            sendGetMyServicesRefugee();
+        }
+        connectPusher();
+    }
+
     public void sendGetChats(){
         mAPIService.getChats(mUser.getMail()).enqueue(new Callback<ArrayList<Chat>>() {
             @Override
             public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
                 if (response.isSuccessful()){
-                    manageResult(true, response.body());
+                    manageResultGetChats(true, response.body());
                 }
                 else {
-                    manageResult(false, null);
+                    manageResultGetChats(false, null);
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Chat>> call, Throwable t) {
-                manageResult(false, null);
+                manageResultGetChats(false, null);
             }
         });
     }
 
-    public void manageResult(boolean result, ArrayList<Chat> listChats){
+    public void manageResultGetChats(boolean result, ArrayList<Chat> listChats){
         if (result){
-            chats = listChats;
-            setUpPusher(this, chats);
-            setAllChannelsNotifications(this);
-            setChannelUser(this);
-            connectPusher();
+            setUpChannelsChats(this, listChats);
+            setAllChannelsNotificationsChats(this);
+        }
+        else {
+            Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
+                    .show();
+        }
+    }
+
+    public void sendGetMyServicesRefugee(){
+        mAPIService.obtenerMisServicios(mUser.getMail(), mUser.getUserType()).enqueue(
+                new Callback<ArrayList<Service>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Service>> call,
+                            Response<ArrayList<Service>> response) {
+                        if (response.isSuccessful()){
+                            manageResultGetServices(true, response.body());
+                        }
+                        else {
+                            manageResultGetServices(false, null);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Service>> call, Throwable t) {
+                        manageResultGetServices(false, null);
+                    }
+                });
+    }
+
+    public void manageResultGetServices(boolean result, ArrayList<Service> listServices){
+        if (result){
+            setUpChannelsServices(listServices);
+            setAllChannelsNotificationsServices(this);
         }
         else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)

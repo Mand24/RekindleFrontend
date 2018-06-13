@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Donation extends Service {
-    @SerializedName("placesLimit")
+    @SerializedName("places")
     @Expose
     private String placesLimit;
     @SerializedName("startTime")
@@ -16,8 +16,9 @@ public class Donation extends Service {
 
 
     public Donation(int id, String email, String name, String description, String adress,
-            String placesLimit, String startTime, String endTime, String phoneNumber) {
-        super(id, "Donation", email, name, description, adress, phoneNumber);
+            String placesLimit, String startTime, String endTime, String phoneNumber, Boolean
+            ended) {
+        super(id, "Donation", email, name, description, adress, phoneNumber, ended);
         this.placesLimit = placesLimit;
         this.startTime = startTime;
         this.endTime = endTime;

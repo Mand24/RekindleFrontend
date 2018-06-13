@@ -96,7 +96,7 @@ public class ShowChat extends AppBaseActivity {
 //        Pusher pusher = getPusher();
         Channel channel = getChannel(chat.getIdChat());
 
-        channel.bind("my-event", new SubscriptionEventListener() {
+        channel.bind("new-message", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
                 runOnUiThread(new Runnable() {

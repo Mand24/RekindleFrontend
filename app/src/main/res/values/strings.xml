@@ -485,6 +485,13 @@
     <string name="link_created_successfully">Link created successfully!</string>
     <string name="link_updated_successfully">Link updated successfully!</string>
     <string name="createLink">Create link</string>
+    <string name="descriptionEventUpdatedService">The service has been updated!</string>
+    <string name="descriptionEventDeletedService">The service has been deleted!</string>
+    <string name="titulo_evaluate_services">Evaluate service</string>
+    <string name="evaluate">Evaluate</string>
+    <string name="value_services">Value services</string>
+    <string name="endService">End Service</string>
+    <string name="closedService">Closed Service</string>
 
 </resources>
 
