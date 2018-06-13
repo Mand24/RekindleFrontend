@@ -66,6 +66,9 @@ public interface APIService {
     @PUT("/usuarios/{mail}disable")
     Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);
 
+    @GET("/usuarios")
+    Call<ArrayList<User>> getUsers();
+
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
     Call<ArrayList<Refugee>> buscarRefugiados(

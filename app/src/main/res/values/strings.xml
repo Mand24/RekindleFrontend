@@ -510,6 +510,7 @@
     <string name="kilometers">kilometers</string>
     <string name="your_location">Your location</string>
     <string name="radius">Radius</string>
+    <string name="listUsers">List users</string>
 
 </resources>
 
