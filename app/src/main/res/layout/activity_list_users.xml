@@ -17,34 +17,25 @@
         android:orientation="vertical">
 
         <LinearLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.AppCompatButton
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+        >
+            <ImageButton
                 android:id="@+id/enabled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10"
-                android:text="@string/map"
-            />
+                android:layout_width="@dimen/dim70"
+                android:layout_height="@dimen/dim70"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_enabled"/>
 
-            <android.support.v7.widget.AppCompatButton
+            <ImageButton
                 android:id="@+id/disabled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/dim20"
-                android:layout_marginRight="@dimen/dim20"
-                android:layout_marginTop="@dimen/dim10"
-                android:text="@string/map"
-            />
-
-
-
+                android:layout_width="@dimen/dim70"
+                android:layout_height="@dimen/dim70"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_disabled"/>
         </LinearLayout>
 
 

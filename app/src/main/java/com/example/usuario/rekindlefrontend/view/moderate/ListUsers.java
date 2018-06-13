@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
@@ -25,13 +27,14 @@ import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListUsers extends AppBaseActivity {
+public class ListUsers extends AppBaseActivity  implements Filterable {
 
     protected List<User> mUsers = new ArrayList<>();
     protected List<User> mUsersFiltered = new ArrayList<>();
@@ -39,12 +42,16 @@ public class ListUsers extends AppBaseActivity {
     protected UsersAdapter mAdapter;
     protected SearchView searchView;
     protected APIService mAPIService;
+    protected ImageButton enabledFilter, disabledFilter;
+    protected HashMap<String, Boolean> filters = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_users);
 
+        filters.put("Enable", true);
+        filters.put("Disable", true);
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
         getSupportActionBar().setTitle(R.string.listUsers);
@@ -60,6 +67,43 @@ public class ListUsers extends AppBaseActivity {
         setAdapterListener();
 
         recyclerView.setAdapter(mAdapter);
+
+        enabledFilter = findViewById(R.id.enabled);
+
+        enabledFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toggle imagen; filtrar()
+                if (filters.get("Enable")) {
+                    filters.put("Enable", false);
+                    enabledFilter.setBackgroundColor(
+                            getResources().getColor(R.color.colorIron));
+                } else {
+                    filters.put("Enable", true);
+                    enabledFilter.setBackgroundColor(
+                            getResources().getColor(R.color.colorPrimaryDarker));
+                }
+                getFilter().filter(searchView.getQuery());
+            }
+        });
+
+        disabledFilter = findViewById(R.id.disabled);
+
+        disabledFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toggle imagen; filtrar()
+                if (filters.get("Disable")) {
+                    filters.put("Disable", false);
+                    disabledFilter.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                } else {
+                    filters.put("Disable", true);
+                    disabledFilter.setBackgroundColor(
+                            getResources().getColor(R.color.colorPrimaryDarker));
+                }
+                getFilter().filter(searchView.getQuery());
+            }
+        });
     }
 
     protected void setAdapterListener() {
@@ -186,19 +230,20 @@ public class ListUsers extends AppBaseActivity {
                 ArrayList<User> filteredList = new ArrayList<>();
 
                 for (User s : mUsers) {
-                    if (!charString.isEmpty()) {
-                        if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
-                        ) || (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
-                                (charString)) || (s.getSurname2() != null && s
-                                .getSurname2().toLowerCase().contains(charString)) || (s.getUserType()
-                                != null && s.getUserType().toLowerCase().contains(charString))) {
+                    if (filters.get(s.getUserType())) {
+                        if (!charString.isEmpty()) {
+                            if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
+                            ) || (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
+                                    (charString)) || (s.getSurname2() != null && s
+                                    .getSurname2().toLowerCase().contains(charString)) || (s.getUserType()
+                                    != null && s.getUserType().toLowerCase().contains(charString))) {
 
+                                filteredList.add(s);
+                            }
+                        } else {
                             filteredList.add(s);
                         }
-                    } else {
-                        filteredList.add(s);
                     }
-
                 }
 
                 mUsersFiltered = filteredList;
