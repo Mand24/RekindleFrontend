@@ -14,7 +14,7 @@ import java.net.URL;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ServerOkTest {
+public class ServerAliveIntegration {
     @Test
     public void ContactServer() throws Exception {
 
