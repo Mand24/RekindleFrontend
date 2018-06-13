@@ -270,7 +270,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void sendGetMyServicesRefugee(){
-        mAPIService.obtenerMisServicios(mUser.getMail(), mUser.getUserType()).enqueue(
+        mAPIService.obtenerMisServicios(mUser.getMail(), mUser.getUserType(), false).enqueue(
                 new Callback<ArrayList<Service>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Service>> call,
