@@ -3,6 +3,9 @@ package com.example.usuario.rekindlefrontend;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -24,13 +27,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.pusher.Comm;
 import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.About;
 import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Help;
 import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Settings;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
+import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugee;
 import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
+
+import java.lang.reflect.Type;
+import java.util.Map;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
@@ -70,6 +83,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         setDataUser(user);
 
+        setChannel();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
@@ -115,6 +129,69 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 }
                 return true;
 
+            }
+        });
+    }
+
+    protected void setChannel() {
+        Channel channelUser = Comm.getChannelUser();
+        channelUser.bind("ban", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Type mapType = new TypeToken<Map<String, String>>() {
+                        }.getType();
+                        Map<String, String> map = gson.fromJson(data, mapType);
+                        String reason = map.get("reason");
+
+                        Intent intent = new Intent(getApplicationContext(), Login
+                                .class);
+
+                        // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+                        final int pendingIntentId = 0;
+                        PendingIntent contentIntent =
+                                PendingIntent.getActivity(getApplicationContext(),
+                                        pendingIntentId, intent,
+                                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        // Instantiate the builder and set notification elements:
+                        Notification notification;
+                        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+                        builder.setCategory(Notification.CATEGORY_PROMO);
+                        builder.setContentTitle(getString(R.string.banned));
+                        builder.setSmallIcon(R.drawable.logo_r);
+                        builder.setAutoCancel(true);
+                        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+                        builder.addAction(android.R.drawable.ic_menu_view, "View details",
+                                contentIntent);
+                        builder.setContentIntent(contentIntent);
+                        builder.setPriority(Notification.PRIORITY_HIGH);
+                        builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
+
+                        builder.setContentText(reason);
+
+                        notification = builder.build();
+
+                        // Get the notification manager:
+                        NotificationManager notificationManager =
+                                (NotificationManager) getApplicationContext().getSystemService(
+                                        NOTIFICATION_SERVICE);
+
+                        // Publish the notification:
+                        final int notificationId = 0;
+                        notificationManager.notify(notificationId, notification);
+
+                        saveUser(null, getApplicationContext());
+                        Comm.disconnectPusher();
+                        Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
+                                .LENGTH_SHORT)
+                                .show();
+                        gotoLaunch();
+                    }
+                });
             }
         });
     }

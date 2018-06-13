@@ -494,5 +494,7 @@
     <string name="closedService">Closed Service</string>
     <string name="URL_format">URL format incorrect, must starts with http:// or https://</string>
 
+    <string name="banned">Your account have been banned</string>
+
 </resources>
 

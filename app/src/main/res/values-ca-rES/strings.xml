@@ -464,4 +464,6 @@
     <string name="closedService">Servei Tancat</string>
     <string name="URL_format">Format URL incorrecte, te que comencar amb https:// o http://</string>
 
+    <string name="banned">El teu compte ha estat suspés</string>
+
 </resources>

@@ -483,4 +483,6 @@
     <string name="closedService">Servicio Cerrado</string>
     <string name="URL_format">Formato URL incorrecto, debe empezar con http:// o https://</string>
 
+    <string name="banned">Tu cuenta ha sido suspendida</string>
+
 </resources>

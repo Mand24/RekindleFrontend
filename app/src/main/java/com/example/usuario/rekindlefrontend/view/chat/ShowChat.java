@@ -1,8 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.chat;
 
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
+import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannelChat;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
@@ -25,7 +23,6 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.pusher.client.Pusher;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
@@ -94,7 +91,7 @@ public class ShowChat extends AppBaseActivity {
     public void setChannel() {
 
 //        Pusher pusher = getPusher();
-        Channel channel = getChannel(chat.getIdChat());
+        Channel channel = getChannelChat(chat.getIdChat());
 
         channel.bind("new-message", new SubscriptionEventListener() {
             @Override
