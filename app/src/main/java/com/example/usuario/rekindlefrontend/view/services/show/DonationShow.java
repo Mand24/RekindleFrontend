@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -276,7 +277,15 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
     public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
         if (result) {
-            newChat = new Chat(currentUser, volunteer);
+            User user1, user2;
+            if (currentUser.getMail().compareToIgnoreCase(volunteer.getMail()) <= 0){
+                user1 = currentUser;
+                user2 = volunteer;
+            }else {
+                user1 = volunteer;
+                user2 = currentUser;
+            }
+            newChat = new Chat(user1, user2);
             sendNewChat(newChat);
         } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R

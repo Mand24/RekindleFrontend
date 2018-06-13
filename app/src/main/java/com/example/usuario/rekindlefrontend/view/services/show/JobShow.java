@@ -342,7 +342,15 @@ public class JobShow extends Maps implements OnMapReadyCallback {
 
     public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
         if (result) {
-            newChat = new Chat(currentUser, volunteer);
+            User user1, user2;
+            if (currentUser.getMail().compareToIgnoreCase(volunteer.getMail()) <= 0){
+                user1 = currentUser;
+                user2 = volunteer;
+            }else {
+                user1 = volunteer;
+                user2 = currentUser;
+            }
+            newChat = new Chat(user1, user2);
             sendNewChat(newChat);
         } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R
