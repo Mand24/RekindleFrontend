@@ -22,7 +22,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -39,7 +39,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DonationForm extends AbstractFormatChecker {
+public class DonationForm extends Fragment {
 
 
     private EditText editStartingTime, editEndingTime;
@@ -52,6 +52,7 @@ public class DonationForm extends AbstractFormatChecker {
 
     private Donation mDonation;
     private APIService mAPIService;
+    private FormatChecker fc;
 
     public DonationForm() {
         // Required empty public constructor
@@ -68,6 +69,9 @@ public class DonationForm extends AbstractFormatChecker {
         //establecer las vistas
         setViews(view);
 
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_formulario_donacion);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +81,10 @@ public class DonationForm extends AbstractFormatChecker {
                 try {
                     checkFields(view);
                     getParams();
+                    sendCreateDonation();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCreateDonation();
             }
         });
 
@@ -121,10 +125,10 @@ public class DonationForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkServiceName(eName.getText().toString());
-        checkServicePhoneNumber(ePhoneNumber.getText().toString());
-        checkServicePlaces(ePlacesLimit.getText().toString());
-        checkServiceDescription(eDescription.getText().toString());
+        fc.checkServiceName(eName.getText().toString());
+        fc.checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkServicePlaces(ePlacesLimit.getText().toString());
+        fc.checkServiceDescription(eDescription.getText().toString());
 
     }
 

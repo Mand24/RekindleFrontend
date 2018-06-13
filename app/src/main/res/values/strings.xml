@@ -492,6 +492,7 @@
     <string name="value_services">Value services</string>
     <string name="endService">End Service</string>
     <string name="closedService">Closed Service</string>
+    <string name="URL_format">URL format incorrect, must starts with http:// or https://</string>
 
 </resources>
 
