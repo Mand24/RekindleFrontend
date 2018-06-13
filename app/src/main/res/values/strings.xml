@@ -492,6 +492,7 @@
     <string name="value_services">Value services</string>
     <string name="endService">End Service</string>
     <string name="closedService">Closed Service</string>
+    <string name="listUsers">List users</string>
 
 </resources>
 

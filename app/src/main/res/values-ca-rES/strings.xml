@@ -462,5 +462,6 @@
 
     <string name="endService">Tancar Servei</string>
     <string name="closedService">Servei Tancat</string>
+    <string name="listUsers">Llistar usuaris</string>
 
 </resources>
