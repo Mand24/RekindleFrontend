@@ -185,7 +185,15 @@ public class ShowRefugee extends AppBaseActivity {
             i.putExtra("Chat", chat);
             startActivity(i);
         } else {
-            newChat = new Chat(currentUser, refugee);
+            User user1, user2;
+            if (currentUser.getMail().compareToIgnoreCase(refugee.getMail()) <= 0){
+                user1 = currentUser;
+                user2 = refugee;
+            }else {
+                user1 = refugee;
+                user2 = currentUser;
+            }
+            newChat = new Chat(user1, user2);
             sendNewChat(newChat);
         }
     }
