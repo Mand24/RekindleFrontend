@@ -14,6 +14,9 @@ public class User implements Parcelable {
     @SerializedName("userType")
     @Expose
     private String userType;
+    @SerializedName("enabled")
+    @Expose
+    private int enabled;
     @SerializedName("mail")
     @Expose
     private String mail;
@@ -46,10 +49,12 @@ public class User implements Parcelable {
         this.surname1 = surname1;
         this.surname2 = surname2;
         this.photo = photo;
+        this.enabled = 1;
     }
 
     protected User(Parcel in) {
         userType = in.readString();
+        enabled = in.readInt();
         mail = in.readString();
         password = in.readString();
         name = in.readString();
@@ -66,6 +71,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userType);
+        dest.writeInt(enabled);
         dest.writeString(mail);
         dest.writeString(password);
         dest.writeString(name);
@@ -92,6 +98,14 @@ public class User implements Parcelable {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public int isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
     }
 
     public String getMail() {
@@ -152,6 +166,7 @@ public class User implements Parcelable {
     public String toString() {
         return "User{" +
                 "userType='" + userType + '\'' +
+                ", enabled=" + enabled +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
