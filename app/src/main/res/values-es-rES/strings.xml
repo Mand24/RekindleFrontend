@@ -160,7 +160,8 @@
     <string name="telefonoServicio_obligatorio">Teléfono obligatorio</string>
     <string name="solicitudes_numeros">El límite de solicitudes debe ser un número</string>
     <string name="descripcion_obligatoria">Descripción es obligatoria</string>
-    <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letrass</string>
+    <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letras</string>
+    <string name="distancia_numeros">Distancia solo puede contener dígitos</string>
     <string name="descripcion_letras">La descripción sólo puede contener letras</string>
     <string name="puestoTrabajo_obligatorio">Puesto de trabajo obligatorio</string>
     <string name="puestoTrabajo_largo">El nombre del charge de trabajo es demasiado largo, máximo 50
@@ -482,5 +483,16 @@
     <string name="endService">Cerrar Servicio</string>
     <string name="closedService">Servicio Cerrado</string>
     <string name="URL_format">Formato URL incorrecto, debe empezar con http:// o https://</string>
+    <string name="date_title">Fecha</string>
+    <string name="start_date">A partir del día</string>
+    <string name="end_date">Hasta el día</string>
+    <string name="minimumRating">Valoración mínima</string>
+    <string name="distance">Distancia</string>
+    <string name="custom_location">Posición a elegir</string>
+    <string name="reset_all">Resetear</string>
+    <string name="meters">metros</string>
+    <string name="kilometers">kilometros</string>
+    <string name="your_location">Tu localización</string>
+    <string name="radius">Radio</string>
 
 </resources>

@@ -155,6 +155,7 @@
     <string name="solicitudes_numeros">El límit de sol·licituds ha de ser un nombre</string>
     <string name="descripcion_obligatoria">Descripció obligatoria</string>
     <string name="descricpion_larga">La descripció és massa llarga, màxim 300 lletres</string>
+    <string name="distancia_numeros">Distancia només pot contenir dígits</string>
     <string name="descripcion_letras">La descripció només pot contenir lletres</string>
     <string name="puestoTrabajo_obligatorio">Lloc de treball obligatori</string>
     <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50
@@ -459,6 +460,17 @@
     <string name="titulo_evaluate_services">Valorar servei</string>
     <string name="evaluate">Valorar</string>
     <string name="value_services">Valorar serveis</string>
+    <string name="date_title">Data</string>
+    <string name="start_date">Des del día</string>
+    <string name="end_date">Fins al día</string>
+    <string name="minimumRating">Valoració mínima</string>
+    <string name="distance">Distància</string>
+    <string name="custom_location">Posició a triar</string>
+    <string name="reset_all">Resetejar</string>
+    <string name="meters">metres</string>
+    <string name="kilometers">kilometres</string>
+    <string name="your_location">La teva localització</string>
+    <string name="radius">Radi</string>
 
     <string name="endService">Tancar Servei</string>
     <string name="closedService">Servei Tancat</string>

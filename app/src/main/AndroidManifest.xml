@@ -83,6 +83,9 @@
             android:enabled="true"
             android:exported="false"/>
 
+        <activity android:name=".view.services.list.FilterServices"
+                  android:excludeFromRecents="true"
+                  android:theme="@style/AppTheme.Dark.Dialog"/>
     </application>
 
 </manifest>
