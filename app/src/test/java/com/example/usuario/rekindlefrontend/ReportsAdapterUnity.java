@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 import android.content.Context;
 
 import com.example.usuario.rekindlefrontend.adapters.ReportsAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import org.junit.Before;

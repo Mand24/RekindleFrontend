@@ -27,9 +27,9 @@ public class ServiceAdapterUnity {
     public void before() {
         services = new ArrayList<Service>();
         Service s1 = new Service(1,"Lodge", "email@email.com", "service lodge", "decription",
-                "carrer", "12134");
+                "carrer", "12134", false);
         Service s2 = new Service(2,"Lodge", "email2@email.com", "service lodge2", "decription",
-                "carrer dos", "1211234");
+                "carrer dos", "1211234", false);
 
         services.add(s1);
         services.add(s2);
