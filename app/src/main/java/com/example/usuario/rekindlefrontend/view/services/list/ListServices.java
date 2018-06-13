@@ -203,29 +203,39 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
     protected void initializeData(Bundle extras) {
 
-        String startDate = (String) extras.get("startDate");
-        String endDate = (String) extras.get("endDate");
-        Double minimumRating = new Double((double) extras.get("minimumRating"));
-        String location = (String) extras.get("location");
-        Integer distance = (Integer) extras.get("distance");
+        String startDate = null;
+        String endDate = null;
+        Double minimumRating = null;
+        String location;
+        Double distance = null;
 
         Geocoder geo = new Geocoder(getApplicationContext());
         Address locationAddress = null;
         Double latitude = null;
         Double longitude = null;
-        try {
-            List<Address> addresses = geo.getFromLocationName(location, 1);
-            if (addresses.size() > 0) {
-                locationAddress = addresses.get(0);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (locationAddress != null) {
-            latitude = locationAddress.getLatitude();
-            longitude = locationAddress.getLongitude();
-        }
 
+        if (extras!= null) {
+            startDate = (String) extras.get("startDate");
+            endDate = (String) extras.get("endDate");
+            minimumRating = new Double((double) extras.get("minimumRating"));
+            location = (String) extras.get("location");
+            distance = (Double) extras.get("distance");
+
+            try {
+                List<Address> addresses = geo.getFromLocationName(location, 1);
+                if (addresses.size() > 0) {
+                    locationAddress = addresses.get(0);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (locationAddress != null) {
+                latitude = locationAddress.getLatitude();
+                longitude = locationAddress.getLongitude();
+            }
+        }
+        System.out.println(mAPIService.getServicesFiltered(startDate, endDate, minimumRating,
+                latitude, longitude, distance).request().toString());
         mAPIService.getServicesFiltered(startDate, endDate, minimumRating, latitude, longitude,
                 distance)
                 .enqueue(new Callback<ArrayList<Service>>

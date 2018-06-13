@@ -104,7 +104,7 @@ public interface APIService {
     Call<ArrayList<Service>> getServicesFiltered(@Query("fromDate") String fromDate, @Query
             ("toDate") String toDate, @Query("minimumRating") Double minimumRating, @Query
             ("positionLat") Double latitude, @Query("positionLng") Double longitude, @Query
-            ("distance") Integer distance);
+            ("distance") Double distance);
 
     @GET("/servicios/{mail}/{tipo}")
     Call<ArrayList<Service>> obtenerMisServicios(@Path("mail") String mail, @Path

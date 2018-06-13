@@ -154,7 +154,8 @@
     <string name="telefonoServicio_obligatorio">Teléfono obligatorio</string>
     <string name="solicitudes_numeros">El límite de solicitudes debe ser un número</string>
     <string name="descripcion_obligatoria">Descripción es obligatoria</string>
-    <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letrass</string>
+    <string name="descricpion_larga">La descripción es demasiado larga, máximo 300 letras</string>
+    <string name="distancia_numeros">Distancia solo puede contener dígitos</string>
     <string name="descripcion_letras">La descripción sólo puede contener letras</string>
     <string name="puestoTrabajo_obligatorio">Puesto de trabajo obligatorio</string>
     <string name="puestoTrabajo_largo">El nombre del charge de trabajo es demasiado largo, máximo 50
@@ -468,5 +469,6 @@
     <string name="meters">metros</string>
     <string name="kilometers">kilometros</string>
     <string name="your_location">Tu localización</string>
+    <string name="radius">Radio</string>
 
 </resources>

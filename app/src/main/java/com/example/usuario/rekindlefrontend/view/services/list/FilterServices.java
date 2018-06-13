@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -61,16 +62,16 @@ public class FilterServices extends AppCompatActivity {
         mReset = findViewById(R.id.reset);
         mSend = findViewById(R.id.send);
 
-        SetDate fromDate = new SetDate(mStartDate, getApplicationContext());
-        SetDate toDate = new SetDate(mEndDate, getApplicationContext());
+        SetDate fromDate = new SetDate(mStartDate, FilterServices.this);
+        SetDate toDate = new SetDate(mEndDate, FilterServices.this);
 
         mGPSLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(FilterServices.this.getApplicationContext(), Manifest.permission
+                if (ActivityCompat.checkSelfPermission(FilterServices.this, Manifest.permission
                         .ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.no_permission), Toast
+                    Toast.makeText(FilterServices.this, getString(R.string.no_permission), Toast
                             .LENGTH_LONG).show();
                 } else {
                     try {
@@ -80,22 +81,22 @@ public class FilterServices extends AppCompatActivity {
                         Location myLocation = locationManager.getLastKnownLocation(
                                 LocationManager.GPS_PROVIDER);
 
-                        Geocoder geo = new Geocoder(getApplicationContext());
-                        if(myLocation != null) {
+                        Geocoder geo = new Geocoder(FilterServices.this);
+                        if (myLocation != null) {
                             List<Address> addresses = geo.getFromLocation(myLocation.getLatitude(),
                                     myLocation
                                             .getLongitude(), 1);
                             if (addresses.size() > 0) {
                                 mGPSLocation.setText(addresses.get(0).getFeatureName());
                             }
-                        }else{
-                            Toast.makeText(FilterServices.this.getApplicationContext(),
+                        } else {
+                            Toast.makeText(FilterServices.this,
                                     getResources().getString(R.string
-                                    .error), Toast.LENGTH_SHORT).show();
+                                            .error), Toast.LENGTH_SHORT).show();
                         }
 
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), getString(R.string.noLocation), Toast
+                        Toast.makeText(FilterServices.this, getString(R.string.noLocation), Toast
                                 .LENGTH_LONG).show();
                     }
                 }
@@ -107,7 +108,7 @@ public class FilterServices extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     Intent intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete
-                            .MODE_OVERLAY).build((Activity) getApplicationContext());
+                            .MODE_OVERLAY).build(FilterServices.this);
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -121,8 +122,10 @@ public class FilterServices extends AppCompatActivity {
                 mRatingBar.setNumStars(0);
                 mStartDate.setText(null);
                 mEndDate.setText(null);
-                mGPSLocation.setChecked(true);
-                mKilometers.setChecked(true);
+                mGPSLocation.setChecked(false);
+                mCustomLocation.setChecked(false);
+                mKilometers.setChecked(false);
+                mMeters.setChecked(false);
             }
         });
 
@@ -130,20 +133,29 @@ public class FilterServices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(), ListServices.class);
+                Intent i = new Intent(FilterServices.this, ListServices.class);
                 i.putExtra("startDate", mStartDate.getText().toString());
                 i.putExtra("endDate", mEndDate.getText().toString());
                 i.putExtra("minimumRating", (double) mRatingBar.getRating());
-                if(mGPSLocation.isChecked()){
-                    i.putExtra("location",mGPSLocation.getText().toString());
-                }else{
-                    i.putExtra("location",mCustomLocation.getText().toString());
+                if (mGPSLocation.isChecked()) {
+                    i.putExtra("location", mGPSLocation.getText().toString());
+                } else {
+                    i.putExtra("location", mCustomLocation.getText().toString());
                 }
-                if(mMeters.isChecked()){
-                    i.putExtra("distance",mDistance.getText().toString());
-                }else{
-                    i.putExtra("distance",Double.toString(Double.parseDouble(mDistance.getText
-                            ().toString()) *1000));
+                if (mDistance.getText().toString().length() > 0) {
+                    if (android.text.TextUtils.isDigitsOnly(mDistance.getText().toString())) {
+                        if (mMeters.isChecked()) {
+                            i.putExtra("distance",
+                                    Double.parseDouble(mDistance.getText().toString()));
+                        } else {
+                            i.putExtra("distance", Double.parseDouble(mDistance.getText
+                                    ().toString()) * 1000);
+                        }
+                    } else {
+                        mDistance.setError(getText(R.string.distancia_numeros));
+                    }
+                } else {
+                    i.putExtra("distance", Double.MAX_VALUE);
                 }
                 startActivity(i);
             }
@@ -155,10 +167,10 @@ public class FilterServices extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                Place place = PlaceAutocomplete.getPlace(getApplicationContext(), data);
+                Place place = PlaceAutocomplete.getPlace(FilterServices.this, data);
                 mCustomLocation.setText(place.getAddress());
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                Status status = PlaceAutocomplete.getStatus(getApplicationContext(), data);
+                Status status = PlaceAutocomplete.getStatus(FilterServices.this, data);
                 Log.i("==================", status.getStatusMessage());
             }
         }
