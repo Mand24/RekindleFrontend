@@ -144,6 +144,7 @@ public class DonationForm extends Fragment {
     }
 
     public void sendCreateDonation() {
+        System.out.println("Donacion--------------"+mDonation.toString());
         mAPIService.crearDonacion(mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
