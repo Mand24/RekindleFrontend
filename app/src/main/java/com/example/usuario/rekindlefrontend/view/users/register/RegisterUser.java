@@ -28,6 +28,8 @@ public class RegisterUser extends AppCompatActivity {
         menu("Refugee");
     }
 
+    public HashMap<String, Fragment> getFragment () { return registerTypes; }
+
     public void menu(String type) {
 
         FragmentManager manager = getFragmentManager();

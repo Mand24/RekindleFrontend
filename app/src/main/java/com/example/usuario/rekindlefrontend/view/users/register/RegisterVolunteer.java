@@ -46,6 +46,8 @@ public class RegisterVolunteer extends Fragment {
     }
 
 
+    public Volunteer getVolunteer() { return mVolunteer; }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {

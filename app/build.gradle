@@ -59,21 +59,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     //androidTestImplementation 'com.android.support.test:rules:1.0.1'
-    //androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
     /*androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })*/
     // tests: mockito
-    //testImplementation "org.mockito:mockito-all:1.10.8"
-    //testImplementation 'org.mockito:mockito-core:2.18.0'
-    //androidTestImplementation 'org.mockito:mockito-android:2.18.0'
-    //androidTestImplementation 'org.powermock:powermock-api-mockito-common:1.6.5'
-    //testImplementation 'org.powermock:powermock:1.6.2'
-    //testImplementation 'org.powermock:powermock-api-mockito:1.6.2'
-    //testImplementation 'org.powermock:powermock-api-support:1.4.11'
-    //androidTestImplementation 'org.powermock:powermock-module-junit4-rule-agent:1.6.4'
-    //androidTestImplementation 'org.powermock:powermock-module-junit4-rule:1.6.4'
-    //testImplementation 'org.powermock:powermock-module-junit4:1.6.2'
+    testImplementation "org.mockito:mockito-all:1.10.8"
 }

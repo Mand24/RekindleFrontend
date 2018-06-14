@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
 // Runs all unit tests.
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AbstractFormatCheckerUnity.class,
+        FormatCheckerUnity.class,
         ChatsAdapterUnity.class,
         LinksAdapterUnity.class,
         MessageAdapterUnity.class,
@@ -18,7 +18,21 @@ import org.junit.runners.Suite;
         ReportsAdapterUnity.class,
         ServiceAdapterUnity.class,
         CodeGeneratorUnity.class,
-        GMailUnity.class
+        GMailUnity.class,
+        ChatUnity.class,
+        MessageUnity.class,
+        LinkUnity.class,
+        DonationRequestUnity.class,
+        ReportUnity.class,
+        DonationUnity.class,
+        EducationUnity.class,
+        JobUnity.class,
+        LodgeUnity.class,
+        ServiceUnity.class,
+        ValorationUnity.class,
+        RefugeeUnity.class,
+        UserUnity.class,
+        VolunteerUnity.class
 })
 public class SuiteUnity {
 }
