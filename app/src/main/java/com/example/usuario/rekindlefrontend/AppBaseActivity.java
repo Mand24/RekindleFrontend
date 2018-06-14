@@ -145,7 +145,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         Type mapType = new TypeToken<Map<String, String>>() {
                         }.getType();
                         Map<String, String> map = gson.fromJson(data, mapType);
-                        String reason = map.get("reason");
+                        String reason = map.get("message");
 
                         Intent intent = new Intent(getApplicationContext(), Login
                                 .class);
