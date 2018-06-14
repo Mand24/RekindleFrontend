@@ -25,8 +25,8 @@
 
                 <ImageView
                     android:id="@+id/photo_cardView"
-                    android:layout_width="@dimen/dim70"
-                    android:layout_height="@dimen/dim70"
+                    android:layout_width="@dimen/dim50"
+                    android:layout_height="@dimen/dim50"
                     android:layout_gravity="center"
                     android:layout_marginEnd="16dp"
                     android:scaleType="fitCenter"/>
@@ -34,23 +34,32 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/photo_layout"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_centerVertical="true">
 
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="horizontal"
+                >
 
-                <TextView
+                    <TextView
                     android:id="@+id/nombre_cv"
                     style="@style/text_view"/>
 
-                <TextView
-                    android:id="@+id/apellido1_cv"
-                    style="@style/text_view"/>
+                    <TextView
+                        android:id="@+id/apellido1_cv"
+                        style="@style/text_view"
+                        android:layout_marginLeft="@dimen/dim4"/>
 
-                <TextView
-                    android:id="@+id/apellido2_cv"
-                    style="@style/text_view"/>
+                    <TextView
+                        android:id="@+id/apellido2_cv"
+                        style="@style/text_view"
+                        android:layout_marginLeft="@dimen/dim4"/>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/sexo_cv"
