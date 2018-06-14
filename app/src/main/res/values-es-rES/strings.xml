@@ -512,4 +512,7 @@
     <string name="hours_day_show">%1$s horas al día</string>
     <string name="hours_week_show">%1$s horas a la semana</string>
     <string name="contract_duration_show">Duración del contrato: %1$s meses</string>
+    <string name="ambit_show">Ámbito: %1$s</string>
+    <string name="schedule_show">Horario: %1$s</string>
+    <string name="price_show">Precio: %1$s €</string>
 </resources>

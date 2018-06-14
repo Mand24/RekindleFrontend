@@ -82,12 +82,12 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
 
         title.setText(service.getName());
         description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        ambit.setText(service.getAmbit());
-        requirements.setText(service.getRequirements());
-        schedule.setText(service.getSchedule());
-        price.setText(service.getPrice());
-        phoneNumber.setText(service.getPhoneNumber());
+        adress.setText(getString(R.string.address_show, service.getAdress()));
+        ambit.setText(getString(R.string.ambit_show, service.getAmbit()));
+        requirements.setText(getString(R.string.requirements_show, service.getRequirements()));
+        schedule.setText(getString(R.string.schedule_show, service.getSchedule()));
+        price.setText(getString(R.string.price_show, service.getPrice()));
+        phoneNumber.setText(getString(R.string.phone_show, service.getPhoneNumber()));
 
         mMapView.getMapAsync(this);
 

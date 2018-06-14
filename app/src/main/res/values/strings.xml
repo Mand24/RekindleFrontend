@@ -524,6 +524,8 @@
     <string name="hours_day_show">%1$s hours per day</string>
     <string name="hours_week_show">%1$s hours per week</string>
     <string name="contract_duration_show">Contract duration: %1$s months</string>
-
+    <string name="ambit_show">Field: %1$s</string>
+    <string name="schedule_show">Schedule: %1$s</string>
+    <string name="price_show">Price: %1$s €</string>
 </resources>
 
