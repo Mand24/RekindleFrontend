@@ -184,8 +184,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         final int notificationId = 0;
                         notificationManager.notify(notificationId, notification);
 
-                        saveUser(null, getApplicationContext());
                         Comm.disconnectPusher();
+                        saveUser(null, getApplicationContext());
                         Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
                                 .LENGTH_SHORT)
                                 .show();
@@ -216,10 +216,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-
-                        saveUser(null, getApplicationContext());
                         if (!getUser(getApplicationContext()).getUserType().equals("Admin")) Comm.disconnectPusher();
+                        saveUser(null, getApplicationContext());
                         Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
                                 .LENGTH_SHORT)
                                 .show();
