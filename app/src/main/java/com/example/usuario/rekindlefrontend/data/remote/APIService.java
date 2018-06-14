@@ -199,6 +199,9 @@ public interface APIService {
     @GET("/reportes/{id}")
     Call<Report> getReport(@Path("id") int id);
 
+    @DELETE("/reportes/{id}")
+    Call<Void> deleteReport(@Path("id") int id);
+
     //LLAMADAS RELACIONADAS CON SOLICITUDES DE DONACION
 
     @POST("/solicituddonacion")

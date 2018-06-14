@@ -81,9 +81,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
         title.setText(service.getName());
         description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        date.setText(service.getDateLimit());
-        phoneNumber.setText(service.getPhoneNumber());
+        adress.setText(getString(R.string.address_show, service.getAdress()));
+        date.setText(getString(R.string.date_show, service.getDateLimit()));
+        phoneNumber.setText(getString(R.string.phone_show,service.getPhoneNumber()));
 
         mMapView.getMapAsync(this);
 

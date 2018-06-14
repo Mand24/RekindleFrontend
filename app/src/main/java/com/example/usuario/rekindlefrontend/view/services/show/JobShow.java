@@ -85,13 +85,14 @@ public class JobShow extends Maps implements OnMapReadyCallback {
 
         title.setText(service.getName());
         description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        charge.setText(service.getCharge());
-        requirements.setText(service.getRequirements());
-        hoursDay.setText(service.getHoursDay());
-        hoursWeek.setText(service.getHoursWeek());
-        contractDuration.setText(service.getContractDuration());
-        phoneNumber.setText(service.getPhoneNumber());
+        adress.setText(getString(R.string.address_show, service.getAdress()));
+        charge.setText(getString(R.string.charge_show,service.getCharge()));
+        requirements.setText(getString(R.string.requirements_show, service.getRequirements()));
+        hoursDay.setText(getString(R.string.hours_day_show,service.getHoursDay()));
+        hoursWeek.setText(getString(R.string.hours_week_show,service.getHoursWeek()));
+        contractDuration.setText(getString(R.string.contract_duration_show,service
+                .getContractDuration()));
+        phoneNumber.setText(getString(R.string.phone_show,service.getPhoneNumber()));
 
         mMapView.getMapAsync(this);
 

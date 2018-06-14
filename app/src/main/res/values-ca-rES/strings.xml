@@ -476,10 +476,26 @@
     <string name="URL_format">Format URL incorrecte, te que comencar amb https:// o http://</string>
     <string name="habilitar">Habilitar</string>
     <string name="deshabilitar">Deshabilitar</string>
-    <string name="disable_motive">Redacta el motiu pel qual l'usuari és deshabilitat:</string>
+    <string name="disable_motive">Redacta el motiu pel qual lusuari és deshabilitat:</string>
     <string name="apellido1_usuario_perfil">Primer cognom:</string>
     <string name="listUsers">Llistar usuaris</string>
 
     <string name="banned">El teu compte ha estat suspés</string>
     <string name="close_service_confirmation">Estas segur de que vols tancar el servei?</string>
+    <string name="reporte_eliminado_correctamente">Report borrat correctament!</string>
+    <string name="reporte_eliminado_fallido">Esborrat de report ha fallat!</string>
+    <string name="delete_report">Eliminar report</string>
+    <string name="address_show">Direcció: %1$s</string>
+    <string name="phone_show">Telèfon: %1$s</string>
+    <string name="date_show">Data de finalització: %1$s</string>
+    <string name="charge_show">Lloc de treball: %1$s</string>
+    <string name="requirements_show">Requisits: %1$s</string>
+    <string name="hours_day_show">%1$s hores al dia</string>
+    <string name="hours_week_show">%1$s hores a la setmana</string>
+    <string name="contract_duration_show">Duració del contracte: %1$s mesos</string>
+    <string name="ambit_show">Àmbit: %1$s</string>
+    <string name="schedule_show">Horari: %1$s</string>
+    <string name="price_show">Preu: %1$s €</string>
+    <string name="start_time_show">Hora inici: %1$s</string>
+    <string name="end_time_show">Hora fi: %1$s</string>
 </resources>

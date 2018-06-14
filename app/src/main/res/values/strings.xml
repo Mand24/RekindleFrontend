@@ -513,5 +513,21 @@
 
     <string name="banned">Your account have been banned</string>
     <string name="close_service_confirmation">Are you Sure you want to close the service?</string>
+    <string name="reporte_eliminado_correctamente">Report deleted successfully!</string>
+    <string name="reporte_eliminado_fallido">Error deleting report!</string>
+    <string name="delete_report">Delete report</string>
+    <string name="address_show">Address: %1$s</string>
+    <string name="phone_show">Phone: %1$s</string>
+    <string name="date_show">Finish date: %1$s</string>
+    <string name="charge_show">Job position: %1$s</string>
+    <string name="requirements_show">Requirements: %1$s</string>
+    <string name="hours_day_show">%1$s hours per day</string>
+    <string name="hours_week_show">%1$s hours per week</string>
+    <string name="contract_duration_show">Contract duration: %1$s months</string>
+    <string name="ambit_show">Field: %1$s</string>
+    <string name="schedule_show">Schedule: %1$s</string>
+    <string name="price_show">Price: %1$s €</string>
+    <string name="start_time_show">Start time: %1$s</string>
+    <string name="end_time_show">End time: %1$s</string>
 </resources>
 
