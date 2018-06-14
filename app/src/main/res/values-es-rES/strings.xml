@@ -499,4 +499,6 @@
     <string name="disable_motive">Redacta el motivo por el qual el usuario es deshabilitado:</string>
     <string name="listUsers">Listar usuarios</string>
 
+    <string name="banned">Tu cuenta ha sido suspendida</string>
+
 </resources>

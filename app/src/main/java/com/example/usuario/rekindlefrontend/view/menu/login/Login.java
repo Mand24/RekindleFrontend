@@ -1,8 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.menu.login;
 
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.connectPusher;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getChannel;
-import static com.example.usuario.rekindlefrontend.data.pusher.Comm.getPusher;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm
         .setAllChannelsNotificationsChats;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm
@@ -13,12 +11,8 @@ import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannel
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelsChats;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpChannelsServices;
 import static com.example.usuario.rekindlefrontend.data.pusher.Comm.setUpPusher;
-import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,24 +27,16 @@ import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
-import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.view.chat.ListChats;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.example.usuario.rekindlefrontend.view.users.register.RegisterUser;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.pusher.client.Pusher;
-import com.pusher.client.channel.Channel;
-import com.pusher.client.channel.SubscriptionEventListener;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,7 +102,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void checkLogin() {
-        //TODO sharepreference consistencyutils?
         SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(
                 getApplicationContext());
         Gson gson = new Gson();
@@ -304,7 +289,7 @@ public class Login extends AppCompatActivity {
 
     /*public void runPusher() {
         Pusher pusher = getPusher();
-        Channel channel = getChannel();
+        Channel channel = getChannelChat();
 
 
         channel.bind("my-event", new SubscriptionEventListener() {

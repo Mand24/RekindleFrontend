@@ -7,6 +7,7 @@ package com.example.usuario.rekindlefrontend.data.pusher;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -15,8 +16,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
@@ -359,8 +363,12 @@ public class Comm {
         pusher.disconnect();
     }
 
-    public static Channel getChannel(int idChat) {
+    public static Channel getChannelChat(int idChat) {
         return channelsChat.get(idChat);
+    }
+
+    public static Channel getChannelUser() {
+        return channelUser;
     }
 
     public static Pusher getPusher() {
@@ -374,7 +382,7 @@ public class Comm {
 
 
 
-    /*public static Channel getChannel() {
+    /*public static Channel getChannelChat() {
         System.out.println("getchannel: " + channel.getName());
         return channel;
     }

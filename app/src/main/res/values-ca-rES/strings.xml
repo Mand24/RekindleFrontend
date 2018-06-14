@@ -480,4 +480,6 @@
     <string name="apellido1_usuario_perfil">Primer cognom:</string>
     <string name="listUsers">Llistar usuaris</string>
 
+    <string name="banned">El teu compte ha estat suspés</string>
+
 </resources>
