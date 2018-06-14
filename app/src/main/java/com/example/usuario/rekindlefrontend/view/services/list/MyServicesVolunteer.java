@@ -28,7 +28,7 @@ public class MyServicesVolunteer extends ListServices {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
-        mMapButton.setVisibility(View.GONE);
+        map_and_filter.setVisibility(View.GONE);
     }
 
     @Override

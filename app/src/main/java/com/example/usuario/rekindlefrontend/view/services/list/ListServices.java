@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
     protected RecyclerView recyclerView;
     protected ServicesAdapter mAdapter;
     protected SearchView searchView;
+    protected LinearLayout map_and_filter;
 
     protected APIService mAPIService;
 
@@ -73,6 +75,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
         initializeData(extras);
 
+        map_and_filter = findViewById(R.id.map_and_filter);
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -234,8 +237,8 @@ public class ListServices extends AppBaseActivity implements Filterable {
                 longitude = locationAddress.getLongitude();
             }
         }
-        System.out.println(mAPIService.getServicesFiltered(startDate, endDate, minimumRating,
-                latitude, longitude, distance).request().toString());
+//        System.out.println(mAPIService.getServicesFiltered(startDate, endDate, minimumRating,
+//               latitude, longitude, distance).request().toString());
         mAPIService.getServicesFiltered(startDate, endDate, minimumRating, latitude, longitude,
                 distance)
                 .enqueue(new Callback<ArrayList<Service>>

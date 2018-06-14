@@ -58,7 +58,7 @@
         <activity android:name=".view.moderate.ShowDonationRequest"/>
         <activity android:name=".view.moderate.ListDonationRequests"/>
         <activity android:name=".view.services.EvaluateService"/>
-        <activity android:name=".view.moderate.ListUsers"></activity>
+        <activity android:name=".view.moderate.ListUsers"/>
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
@@ -75,6 +75,11 @@
 
         <activity android:name=".view.moderate.EnableUser">
         </activity>
+
+        <activity android:name=".view.services.list.FilterServices"
+                  android:excludeFromRecents="true"
+                  android:theme="@style/AppTheme.Dark.Dialog"/>
+
     </application>
 </manifest>
 
