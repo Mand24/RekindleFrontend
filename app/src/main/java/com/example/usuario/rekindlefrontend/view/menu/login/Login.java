@@ -118,7 +118,7 @@ public class Login extends AppCompatActivity {
     public void login() {
 
         if (!validate()) {
-            onLoginFailed();
+            onLoginFailed(0);
             return;
         }
 
