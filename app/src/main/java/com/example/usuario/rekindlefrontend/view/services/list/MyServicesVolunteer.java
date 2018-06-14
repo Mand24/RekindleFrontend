@@ -54,10 +54,10 @@ public class MyServicesVolunteer extends ListServices {
                                             Intent intent = new Intent(getApplicationContext(),
                                                     ServiceEdit
                                                             .class);
-                                            intent.putExtra("typeService", mServices.get
+                                            intent.putExtra("typeService", mServiciosFiltrados.get
                                                     (position).getServiceType());
                                             intent.putExtra("Service",
-                                                    mServices.get(position));
+                                                    mServiciosFiltrados.get(position));
                                             startActivity(intent);
                                         } else if (which == 1) {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -71,7 +71,7 @@ public class MyServicesVolunteer extends ListServices {
 
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
-                                                            sendDeleteService(mServices.get
+                                                            sendDeleteService(mServiciosFiltrados.get
                                                                     (position));
                                                             Intent refresh = new Intent
                                                                     (getApplicationContext(), MyServicesVolunteer
