@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.moderate;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -78,24 +79,30 @@ public class EnableUser extends AppCompatActivity {
 
                 if (disable.getText().toString().equals(getResources().getString(R
                         .string.deshabilitar))) {
-                    mAPIService.disableUser(user.getMail(), motive.getText().toString()).enqueue
-                            (new Callback<Void>() {
-                        @Override
-                        public void onResponse(Call<Void> call, Response<Void> response) {
-                            System.out.println("CODIGOdisable " + response.code());
-                            if (response.isSuccessful()) {
-                                disable.setText(R.string.habilitar);
-                                motive.setVisibility(View.INVISIBLE);
-                            } else {
-                                failure();
-                            }
-                        }
+                    if(!TextUtils.isEmpty(motive.getText().toString())){
+                        mAPIService.disableUser(user.getMail(), motive.getText().toString()).enqueue
+                                (new Callback<Void>() {
+                                    @Override
+                                    public void onResponse(Call<Void> call, Response<Void> response) {
+                                        System.out.println("CODIGOdisable " + response.code());
+                                        if (response.isSuccessful()) {
+                                            disable.setText(R.string.habilitar);
+                                            motive.setVisibility(View.INVISIBLE);
+                                        } else {
+                                            failure();
+                                        }
+                                    }
 
-                        @Override
-                        public void onFailure(Call<Void> call, Throwable t) {
-                            failure();
-                        }
-                    });
+                                    @Override
+                                    public void onFailure(Call<Void> call, Throwable t) {
+                                        failure();
+                                    }
+                                });
+
+                    }
+                    else {
+                        motive.setError("Field is empty");
+                    }
                 } else {
                     mAPIService.enableUser(user.getMail()).enqueue(new Callback<Void>() {
                         @Override
