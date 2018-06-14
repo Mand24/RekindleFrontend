@@ -78,15 +78,15 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
         mMapView = (MapFragment) getChildFragmentManager().findFragmentById(R.id.google_mapView);
         phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
-        enroll = view.findViewById(R.id.inscribirse);
+        enroll = view.findViewById(R.id.solicitud);
         endButton = view.findViewById(R.id.endButton);
 
         title.setText(service.getName());
         description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        startTime.setText(service.getStartTime());
-        endTime.setText(service.getEndTime());
-        phoneNumber.setText(service.getPhoneNumber());
+        adress.setText(getString(R.string.address_show, service.getAdress()));
+        startTime.setText(getString(R.string.start_time_show, service.getStartTime()));
+        endTime.setText(getString(R.string.end_time_show, service.getEndTime()));
+        phoneNumber.setText(getString(R.string.phone_show, service.getPhoneNumber()));
 
         mMapView.getMapAsync(this);
 
