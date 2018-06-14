@@ -19,6 +19,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -44,6 +45,7 @@ public class DonationEdit extends Fragment {
     private EditText ePhoneNumber;
     private EditText ePlacesLimit;
     private EditText eDescription;
+    private EditText eExpiresOn;
 
     private APIService mAPIService;
     private FormatChecker fc;
@@ -67,6 +69,9 @@ public class DonationEdit extends Fragment {
         editStartingTime = (EditText) view.findViewById(R.id.franja_horaria_inicio_donacion);
         SetTime fromTime = new SetTime(editStartingTime, container.getContext());
         SetTime toTime = new SetTime(editEndingTime, container.getContext());
+
+        eExpiresOn = (EditText) view.findViewById(R.id.edit_donation_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         initializeFields();
 
@@ -126,6 +131,7 @@ public class DonationEdit extends Fragment {
         editStartingTime.setText(servicio.getStartTime());
         editEndingTime.setText(servicio.getEndTime());
         eDescription.setText(servicio.getDescription());
+        eExpiresOn.setText(servicio.getExpiresOn());
     }
 
     public void checkFields() throws Exception {
@@ -147,6 +153,7 @@ public class DonationEdit extends Fragment {
         servicio.setStartTime(editStartingTime.getText().toString());
         servicio.setEndTime(editEndingTime.getText().toString());
         servicio.setDescription(eDescription.getText().toString());
+        servicio.setExpiresOn(eExpiresOn.getText().toString());
     }
 
     public void sendUpdateService() {

@@ -49,11 +49,12 @@ public class LodgeForm extends Fragment {
     private EditText ePhoneNumber;
     private EditText eAdress;
     private EditText ePlacesLimit;
-    private EditText eDeadline;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
     private EditText eDescription;
+    private EditText eExpiresOn;
+
     private Lodge mLodge;
     private APIService mAPIService;
     private FormatChecker fc;
@@ -71,6 +72,9 @@ public class LodgeForm extends Fragment {
                 false);
 
         setViews(view);
+
+        eExpiresOn = (EditText) view.findViewById(R.id.lodge_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         //init format Checker
         fc = new FormatChecker(getResources());
@@ -105,10 +109,6 @@ public class LodgeForm extends Fragment {
             }
         });
 
-
-        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
-        SetDate setDate = new SetDate(eDeadline, container.getContext());
-
         return view;
     }
 
@@ -118,7 +118,6 @@ public class LodgeForm extends Fragment {
         ePhoneNumber = view.findViewById(R.id.telefono_alojamiento);
         eAdress = view.findViewById(R.id.direccion_alojamiento);
         ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
-        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         eDescription = view.findViewById(R.id.descripcion_alojamiento);
 
         mAPIService = APIUtils.getAPIService();
@@ -139,8 +138,9 @@ public class LodgeForm extends Fragment {
 
         mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
-                .getText().toString(), eDeadline.getText().toString(), ePhoneNumber.getText()
-                .toString(), false);
+                .getText().toString(), eExpiresOn.getText().toString(), ePhoneNumber.getText()
+                .toString(), false, eExpiresOn
+                .getText().toString());
 
 
     }

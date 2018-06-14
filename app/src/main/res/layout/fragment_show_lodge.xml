@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/fecha_limite_alojamiento"
+                android:id="@+id/show_expiration_lodge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

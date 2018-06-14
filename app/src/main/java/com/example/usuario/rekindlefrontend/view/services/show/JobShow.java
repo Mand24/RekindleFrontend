@@ -47,7 +47,7 @@ public class JobShow extends Maps implements OnMapReadyCallback {
     public GoogleMap mGoogleMap;
     public Marker myMarker;
     TextView title, description, adress, phoneNumber, charge, requirements, hoursDay, hoursWeek,
-            contractDuration;
+            contractDuration, expirationDate;
     AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
@@ -82,16 +82,24 @@ public class JobShow extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.inscribirse);
         endButton = view.findViewById(R.id.endButton);
+        expirationDate = view.findViewById(R.id.show_expiration_job);
 
         title.setText(service.getName());
-        description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        charge.setText(service.getCharge());
-        requirements.setText(service.getRequirements());
-        hoursDay.setText(service.getHoursDay());
-        hoursWeek.setText(service.getHoursWeek());
-        contractDuration.setText(service.getContractDuration());
-        phoneNumber.setText(service.getPhoneNumber());
+        description.setText(
+                String.format("%s%s", getText(R.string.description), service.getDescription()));
+        adress.setText(String.format("%s%s", getText(R.string.address), service.getAdress()));
+        charge.setText(String.format("%s%s", getText(R.string.job_position), service.getCharge()));
+        requirements.setText(
+                String.format("%s%s", getText(R.string.requeriments), service.getRequirements()));
+        hoursDay.setText(String.format("%s%s", getText(R.string.workday), service.getHoursDay()));
+        hoursWeek.setText(
+                String.format("%s%s", getText(R.string.weekly_hours), service.getHoursWeek()));
+        contractDuration.setText(String.format("%s%s", getText(R.string.contract_duration),
+                service.getContractDuration()));
+        phoneNumber.setText(
+                String.format("%s%s", getText(R.string.contact_number), service.getPhoneNumber()));
+        expirationDate.setText(
+                String.format("%s%s", getText(R.string.expiration_date), service.getExpiresOn()));
 
         mMapView.getMapAsync(this);
 

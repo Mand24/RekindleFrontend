@@ -513,5 +513,20 @@
 
     <string name="banned">Your account have been banned</string>
     <string name="close_service_confirmation">Are you Sure you want to close the service?</string>
+    <string name="expires_on_date">Expires on the date</string>
+
+    <string name="description">Description: </string>
+    <string name="address">Address: </string>
+    <string name="starting_time">Starting time: </string>
+    <string name="ending_time">Ending time: </string>
+    <string name="contact_number">Contact number: </string>
+    <string name="expiration_date">Expires on the date: </string>
+    <string name="ambit">Ambit: </string>
+    <string name="requeriments">Requirements: </string>
+    <string name="schedule">Schedule: </string>
+    <string name="job_position">Job position: </string>
+    <string name="workday">Workday: </string>
+    <string name="weekly_hours">Hours per week: </string>
+    <string name="contract_duration">Contract duration: </string>
 </resources>
 

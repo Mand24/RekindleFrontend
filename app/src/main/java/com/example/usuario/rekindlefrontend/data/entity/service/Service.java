@@ -33,9 +33,12 @@ public class Service implements Serializable {
 
     private int image;
 
+    @SerializedName("expiresOn")
+    @Expose
+    private String expiresOn;
 
     public Service(int id, String serviceType, String email, String name, String description, String
-            adress, String phoneNumber, Boolean ended) {
+            adress, String phoneNumber, Boolean ended, String expiresOn) {
         this.id = id;
         this.serviceType = serviceType;
         this.volunteer = email;
@@ -44,6 +47,7 @@ public class Service implements Serializable {
         this.adress = adress;
         this.phoneNumber = phoneNumber;
         this.ended = ended;
+        this.expiresOn = expiresOn;
     }
 
     public int getId() {
@@ -118,6 +122,14 @@ public class Service implements Serializable {
         this.ended = ended;
     }
 
+    public String getExpiresOn(){
+        return expiresOn;
+    }
+
+    public void setExpiresOn(String expiresOn){
+        this.expiresOn = expiresOn;
+    }
+
     @Override
     public String toString() {
         return "Service{" +
@@ -130,6 +142,7 @@ public class Service implements Serializable {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", ended=" + ended +
                 ", image=" + image +
+                ", expiresOn=" + expiresOn +
                 '}';
     }
 }

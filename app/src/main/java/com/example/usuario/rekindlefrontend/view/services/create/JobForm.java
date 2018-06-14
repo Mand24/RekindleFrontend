@@ -23,6 +23,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -53,6 +54,7 @@ public class JobForm extends Fragment {
     private EditText eSalary;
     private EditText ePlacesLimit;
     private EditText eDescription;
+    private EditText eExpiresOn;
 
     private Job mJob;
     private APIService mAPIService;
@@ -72,6 +74,9 @@ public class JobForm extends Fragment {
 
         //establecer las vistas
         setViews(view);
+
+        eExpiresOn = (EditText) view.findViewById(R.id.job_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         //init format Checker
         fc = new FormatChecker(getResources());
@@ -153,7 +158,8 @@ public class JobForm extends Fragment {
                 .toString(), eHoursWeek.getText().toString(),
                 eContractDuration.getText().toString(), ePlacesLimit
                 .getText().toString(), eSalary.getText().toString(), ePhoneNumber.getText().toString
-                (), false);
+                (), false, eExpiresOn
+                .getText().toString());
 
     }
 

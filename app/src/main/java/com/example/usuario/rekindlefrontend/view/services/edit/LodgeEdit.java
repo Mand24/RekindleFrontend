@@ -43,12 +43,12 @@ public class LodgeEdit extends Fragment {
     private EditText ePhoneNumber;
     private EditText eAdress;
     private EditText ePlacesLimit;
-    private EditText eDeadline;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
 
     private EditText eDescription;
+    private EditText eExpiresOn;
 
     private APIService mAPIService;
     private FormatChecker fc;
@@ -70,8 +70,8 @@ public class LodgeEdit extends Fragment {
 
         servicio = (Lodge) getArguments().getSerializable("Lodge");
 
-        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
-        SetDate setDate = new SetDate(eDeadline, container.getContext());
+        eExpiresOn = (EditText) view.findViewById(R.id.edit_lodge_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         initializeFields();
 
@@ -117,7 +117,6 @@ public class LodgeEdit extends Fragment {
         ePhoneNumber = view.findViewById(R.id.telefono_alojamiento);
         eAdress = view.findViewById(R.id.direccion_alojamiento);
         ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
-        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         eDescription = view.findViewById(R.id.descripcion_alojamiento);
 
         mAPIService = APIUtils.getAPIService();
@@ -129,8 +128,8 @@ public class LodgeEdit extends Fragment {
         ePhoneNumber.setText(servicio.getPhoneNumber());
         eAdress.setText(servicio.getAdress());
         ePlacesLimit.setText(servicio.getPlacesLimit());
-        eDeadline.setText(servicio.getDateLimit());
         eDescription.setText(servicio.getDescription());
+        eExpiresOn.setText(servicio.getExpiresOn());
     }
 
     public void checkFields() throws Exception {
@@ -148,8 +147,9 @@ public class LodgeEdit extends Fragment {
         servicio.setPhoneNumber(ePhoneNumber.getText().toString());
         servicio.setAdress(eAdress.getText().toString());
         servicio.setPlacesLimit(ePlacesLimit.getText().toString());
-        servicio.setDateLimit(eDeadline.getText().toString());
+        servicio.setDateLimit(eExpiresOn.getText().toString());
         servicio.setDescription(eDescription.getText().toString());
+        servicio.setExpiresOn(eExpiresOn.getText().toString());
     }
 
     public void sendUpdateService() {

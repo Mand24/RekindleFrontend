@@ -23,6 +23,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -51,6 +52,7 @@ public class EducationForm extends Fragment {
     private EditText ePlacesLimit;
     private EditText ePrice;
     private EditText eDescription;
+    private EditText eExpiresOn;
     private Education mEducation;
     private APIService mAPIService;
     private FormatChecker fc;
@@ -69,6 +71,9 @@ public class EducationForm extends Fragment {
 
         //establecer las vistas
         setViews(view);
+
+        eExpiresOn = (EditText) view.findViewById(R.id.education_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         //init format Checker
         fc = new FormatChecker(getResources());
@@ -142,7 +147,8 @@ public class EducationForm extends Fragment {
                 eDescription.getText().toString(), eAdress.getText().toString(), eAmbit
                 .getText().toString(), eRequirements.getText().toString(), eSchedule.getText()
                 .toString(), ePlacesLimit.getText().toString(), ePrice.getText().toString(),
-                ePhoneNumber.getText().toString(), false);
+                ePhoneNumber.getText().toString(), false, eExpiresOn
+                .getText().toString());
 
     }
 

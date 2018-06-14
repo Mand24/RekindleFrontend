@@ -19,6 +19,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -47,6 +48,7 @@ public class JobEdit extends Fragment {
     private EditText eSalary;
     private EditText ePlacesLimit;
     private EditText eDescription;
+    private EditText eExpiresOn;
 
     private APIService mAPIService;
     private FormatChecker fc;
@@ -65,6 +67,9 @@ public class JobEdit extends Fragment {
 
         //init format Checker
         fc = new FormatChecker(getResources());
+
+        eExpiresOn = (EditText) view.findViewById(R.id.edit_job_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         initializeFields();
 
@@ -132,6 +137,7 @@ public class JobEdit extends Fragment {
         eCharge.setText(servicio.getCharge());
         ePlacesLimit.setText(servicio.getPlacesLimit());
         eDescription.setText(servicio.getDescription());
+        eExpiresOn.setText(servicio.getExpiresOn());
     }
 
     public void checkFields() throws Exception {
@@ -159,6 +165,7 @@ public class JobEdit extends Fragment {
         servicio.setSalary(eSalary.getText().toString());
         servicio.setPlacesLimit(ePlacesLimit.getText().toString());
         servicio.setDescription(eDescription.getText().toString());
+        servicio.setExpiresOn(eExpiresOn.getText().toString());
     }
 
     public void sendUpdateService() {

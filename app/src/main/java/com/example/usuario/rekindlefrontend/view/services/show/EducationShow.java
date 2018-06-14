@@ -46,7 +46,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
-    TextView title, description, adress, ambit, requirements, schedule, price, phoneNumber;
+    TextView title, description, adress, ambit, requirements, schedule, price, phoneNumber, expirationDate;
     AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
@@ -79,15 +79,21 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.inscribirse);
         endButton = view.findViewById(R.id.endButton);
+        expirationDate = view.findViewById(R.id.show_expiration_education);
 
         title.setText(service.getName());
-        description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        ambit.setText(service.getAmbit());
-        requirements.setText(service.getRequirements());
-        schedule.setText(service.getSchedule());
-        price.setText(service.getPrice());
-        phoneNumber.setText(service.getPhoneNumber());
+        description.setText(
+                String.format("%s%s", getText(R.string.description), service.getDescription()));
+        adress.setText(String.format("%s%s", getText(R.string.address), service.getAdress()));
+        ambit.setText(String.format("%s%s", getText(R.string.ambit), service.getAmbit()));
+        requirements.setText(
+                String.format("%s%s", getText(R.string.requeriments), service.getRequirements()));
+        schedule.setText(String.format("%s%s", getText(R.string.schedule), service.getSchedule()));
+        price.setText(String.format("%s%s", getText(R.string.price), service.getPrice()));
+        phoneNumber.setText(
+                String.format("%s%s", getText(R.string.contact_number), service.getPhoneNumber()));
+        expirationDate.setText(
+                String.format("%s%s", getText(R.string.expiration_date), service.getExpiresOn()));
 
         mMapView.getMapAsync(this);
 
