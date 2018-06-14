@@ -39,6 +39,8 @@ public class Report implements Parcelable {
         motive = in.readString();
     }
 
+    public int getIdReport() { return this.idReport; }
+
     public String getInformerUserMail() {
         return this.informerUser.getMail();
     }

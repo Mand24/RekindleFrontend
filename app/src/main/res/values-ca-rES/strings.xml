@@ -482,4 +482,7 @@
 
     <string name="banned">El teu compte ha estat suspés</string>
     <string name="close_service_confirmation">Estas segur de que vols tancar el servei?</string>
+    <string name="reporte_eliminado_correctamente">Report borrat correctament!</string>
+    <string name="reporte_eliminado_fallido">Esborrat de report ha fallat!</string>
+    <string name="delete_report">Eliminar report</string>
 </resources>

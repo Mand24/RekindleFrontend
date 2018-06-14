@@ -513,5 +513,10 @@
 
     <string name="banned">Your account have been banned</string>
     <string name="close_service_confirmation">Are you Sure you want to close the service?</string>
+    <string name="reporte_eliminado_correctamente">Report deleted successfully!</string>
+    <string name="reporte_eliminado_fallido">Error deleting report!</string>
+    <string name="delete_report">Delete report</string>
+
+
 </resources>
 

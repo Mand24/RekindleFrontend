@@ -501,4 +501,7 @@
 
     <string name="banned">Tu cuenta ha sido suspendida</string>
     <string name="close_service_confirmation">Estas seguro de que quieres cerrar el servicio?</string>
+    <string name="reporte_eliminado_correctamente">Reporte borrado correctamente!</string>
+    <string name="reporte_eliminado_fallido">Error al borrar el reporte!</string>
+    <string name="delete_report">Eliminar reporte</string>
 </resources>
