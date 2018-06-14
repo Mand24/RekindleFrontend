@@ -519,6 +519,11 @@
     <string name="address_show">Address: %1$s</string>
     <string name="phone_show">Phone: %1$s</string>
     <string name="date_show">Finish date: %1$s</string>
+    <string name="charge_show">Job position: %1$s</string>
+    <string name="requirements_show">Requirements: %1$s</string>
+    <string name="hours_day_show">%1$s hours per day</string>
+    <string name="hours_week_show">%1$s hours per week</string>
+    <string name="contract_duration_show">Contract duration: %1$s months</string>
 
 </resources>
 

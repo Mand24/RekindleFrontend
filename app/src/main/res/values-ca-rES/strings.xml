@@ -488,4 +488,9 @@
     <string name="address_show">Direcció: %1$s</string>
     <string name="phone_show">Telèfon: %1$s</string>
     <string name="date_show">Data de finalització: %1$s</string>
+    <string name="charge_show">Lloc de treball: %1$s</string>
+    <string name="requirements_show">Requisits: %1$s</string>
+    <string name="hours_day_show">%1$s hores al dia</string>
+    <string name="hours_week_show">%1$s hores a la setmana</string>
+    <string name="contract_duration_show">Duració del contracte: %1$s mesos</string>
 </resources>
