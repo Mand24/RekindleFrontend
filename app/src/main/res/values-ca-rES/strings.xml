@@ -485,4 +485,7 @@
     <string name="reporte_eliminado_correctamente">Report borrat correctament!</string>
     <string name="reporte_eliminado_fallido">Esborrat de report ha fallat!</string>
     <string name="delete_report">Eliminar report</string>
+    <string name="address_show">Direcció: %1$s</string>
+    <string name="phone_show">Telèfon: %1$s</string>
+    <string name="date_show">Data de finalització: %1$s</string>
 </resources>

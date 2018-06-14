@@ -504,4 +504,7 @@
     <string name="reporte_eliminado_correctamente">Reporte borrado correctamente!</string>
     <string name="reporte_eliminado_fallido">Error al borrar el reporte!</string>
     <string name="delete_report">Eliminar reporte</string>
+    <string name="address_show">Dirección: %1$s</string>
+    <string name="phone_show">Teléfono: %1$s</string>
+    <string name="date_show">Fecha de finalización: %1$s</string>
 </resources>

@@ -10,21 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true">
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/endButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="@string/endService"/>
-
-        </android.support.constraint.ConstraintLayout>
-
         <LinearLayout
             android:id="@+id/info_alojamiento"
             android:layout_width="match_parent"
@@ -84,12 +69,27 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_vertical"/>
 
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/chat"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/chat"/>
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/endButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/endService"/>
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/chat"/>
+
+            </android.support.constraint.ConstraintLayout>
 
         </RelativeLayout>
 
