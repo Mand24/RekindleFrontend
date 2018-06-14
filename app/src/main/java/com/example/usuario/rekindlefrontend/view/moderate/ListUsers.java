@@ -230,7 +230,11 @@ public class ListUsers extends AppBaseActivity  implements Filterable {
                 ArrayList<User> filteredList = new ArrayList<>();
 
                 for (User s : mUsers) {
-                    if (filters.get(s.getUserType())) {
+                    String enable;
+                    System.out.println("enabled? "+ s.getEnabled());
+                    if (s.getEnabled() == 1) enable = "Enable";
+                    else enable = "Disable";
+                    if (filters.get(enable)) {
                         if (!charString.isEmpty()) {
                             if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
                             ) || (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
