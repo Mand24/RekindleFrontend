@@ -63,7 +63,7 @@ public interface APIService {
     @PUT("/usuarios/{mail}/enable")
     Call<Void> enableUser(@Path("mail") String mail);
 
-    @PUT("/usuarios/{mail}disable")
+    @PUT("/usuarios/{mail}/disable")
     Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);
 
     @GET("/usuarios")

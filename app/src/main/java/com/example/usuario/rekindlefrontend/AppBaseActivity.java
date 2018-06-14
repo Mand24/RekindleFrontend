@@ -83,7 +83,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         setDataUser(user);
 
-        setChannel();
+        if (!user.getUserType().equals("Admin")) setChannel();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
