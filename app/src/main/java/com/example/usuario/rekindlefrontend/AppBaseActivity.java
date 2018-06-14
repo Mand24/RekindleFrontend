@@ -219,7 +219,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
 
                         saveUser(null, getApplicationContext());
-                        Comm.disconnectPusher();
+                        if (!getUser(getApplicationContext()).getUserType().equals("Admin")) Comm.disconnectPusher();
                         Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
                                 .LENGTH_SHORT)
                                 .show();
