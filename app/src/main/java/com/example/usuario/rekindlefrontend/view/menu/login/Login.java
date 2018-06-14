@@ -159,7 +159,7 @@ public class Login extends AppCompatActivity {
                     System.out.println("tipo: " + mUser.getUserType());
                     onLoginSuccess();
                 } else {
-                    onLoginFailed();
+                    onLoginFailed(response.code());
                 }
             }
 
@@ -355,9 +355,13 @@ public class Login extends AppCompatActivity {
     }*/
 
 
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), getString(R.string.login_fail), Toast.LENGTH_LONG).show();
+    public void onLoginFailed(int code) {
 
+        if (code == 403){
+            Toast.makeText(getBaseContext(), getString(R.string.banned), Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(getBaseContext(), getString(R.string.login_fail), Toast.LENGTH_LONG).show();
+        }
         _loginButton.setEnabled(true);
     }
 
