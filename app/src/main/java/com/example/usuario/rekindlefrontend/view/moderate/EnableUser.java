@@ -88,6 +88,7 @@ public class EnableUser extends AppCompatActivity {
                                         if (response.isSuccessful()) {
                                             disable.setText(R.string.habilitar);
                                             motive.setVisibility(View.INVISIBLE);
+                                            motive.setText("");
                                         } else {
                                             failure();
                                         }
