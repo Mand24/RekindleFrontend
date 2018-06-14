@@ -113,7 +113,7 @@ public class ListUsers extends AppBaseActivity  implements Filterable {
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(),
                                 EnableUser.class);
-                        intent.putExtra("User", mUsers.get(position));
+                        intent.putExtra("User", mUsersFiltered.get(position));
                         startActivity(intent);
 
                     }

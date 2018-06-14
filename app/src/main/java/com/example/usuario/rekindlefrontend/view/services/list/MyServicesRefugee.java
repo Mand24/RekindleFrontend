@@ -38,7 +38,7 @@ public class MyServicesRefugee extends ListServices {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(), ShowService.class);
-                        intent.putExtra("Service", mServices.get(position));
+                        intent.putExtra("Service", mServiciosFiltrados.get(position));
                         startActivity(intent);
                     }
 
