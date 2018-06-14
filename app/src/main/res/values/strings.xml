@@ -512,6 +512,6 @@
     <string name="listUsers">List users</string>
 
     <string name="banned">Your account have been banned</string>
-
+    <string name="close_service_confirmation">Are you Sure you want to close the service?</string>
 </resources>
 

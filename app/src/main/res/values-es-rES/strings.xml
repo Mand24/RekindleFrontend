@@ -500,5 +500,5 @@
     <string name="listUsers">Listar usuarios</string>
 
     <string name="banned">Tu cuenta ha sido suspendida</string>
-
+    <string name="close_service_confirmation">Estas seguro de que quieres cerrar el servicio?</string>
 </resources>

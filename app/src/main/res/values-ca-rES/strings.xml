@@ -481,5 +481,5 @@
     <string name="listUsers">Llistar usuaris</string>
 
     <string name="banned">El teu compte ha estat suspés</string>
-
+    <string name="close_service_confirmation">Estas segur de que vols tancar el servei?</string>
 </resources>

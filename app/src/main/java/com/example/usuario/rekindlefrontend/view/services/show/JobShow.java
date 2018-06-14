@@ -217,9 +217,35 @@ public class JobShow extends Maps implements OnMapReadyCallback {
             endButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
-                    service.setEnded(true);
-                    endButton.setText(R.string.closedService);
-                    sendEditService(service);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            view.getContext());
+
+                    builder.setMessage(R.string.close_service_confirmation);
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(R.string.yes,
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                        int which) {
+                                    service.setEnded(true);
+                                    endButton.setText(R.string.closedService);
+                                    endButton.setClickable(false);
+                                    endButton.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                                    sendEditService(service);
+                                }
+                            });
+
+                    builder.setNegativeButton(R.string.no,
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                        int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
 
                 }
 
