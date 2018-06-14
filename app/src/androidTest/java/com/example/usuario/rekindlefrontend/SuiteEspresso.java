@@ -11,7 +11,9 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         EspressoLogin.class,
-        EspressoRegistroUser.class, // testea registro voluntario y refugiado
+        EspressoRegistroRefugee.class,
+        EspressoRegistroVolunteer.class,
+        EspressoRecoverPassword.class
 })
 public class SuiteEspresso {
 }
