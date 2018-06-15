@@ -132,10 +132,10 @@
     <string name="email_largo">Email demasiado largo, máximo 30 caracteres</string>
     <string name="email_formato">El format del email es incorrecto; formato correcto = x@x.x
     </string>
-    <string name="contraseña_obligatoria">Contraseña obligatoria</string>
-    <string name="contraseña_larga">Contraseña demasiado larga, máximo 15 caracteres</string>
-    <string name="contraseña_corta">Contrasenya massa curta, mínimo 4 caracteres</string>
-    <string name="contraseña_distinta">Las contraseñas no coinciden</string>
+    <string name="password_obligatoria">Contraseña obligatoria</string>
+    <string name="password_larga">Contraseña demasiado larga, máximo 15 caracteres</string>
+    <string name="short_password">Contrasenya massa curta, mínimo 4 caracteres</string>
+    <string name="password_distinta">Las contraseñas no coinciden</string>
     <string name="apellido1_obligatorio">Primer apellido obligatorio</string>
     <string name="apellido1_largo">Primer apellido demasiado largo, máximo 20 letras</string>
     <string name="apellido1_letras">El segundo apellido sólo puede contener letras</string>
@@ -209,8 +209,8 @@
     <string name="conversation_fail">Problema de conversación, informe al administrador</string>
     <string name="back_exit">Pulse atrás otra vez para cerrar Rekindle</string>
     <string name="login_fail">Fallo en iniciar sesión</string>
-    <string name="contraseña_actualizada">Contraseña actualizada</string>
-    <string name="contraseña_fail">No se ha podido actualizar la contraseña</string>
+    <string name="password_actualizada">Contraseña actualizada</string>
+    <string name="password_fail">No se ha podido actualizar la contraseña</string>
     <string name="wrong_code">Código equivocaddo</string>
 
     <string name="editar_alojamiento">Editar lodge:</string>

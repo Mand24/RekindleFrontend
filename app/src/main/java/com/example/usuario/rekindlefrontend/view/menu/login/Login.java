@@ -379,7 +379,7 @@ public class Login extends AppCompatActivity {
         }
 
         if (password.isEmpty() || password.length() < 4) {
-            _passwordText.setError(getString(R.string.contraseña_corta));
+            _passwordText.setError(getString(R.string.short_password));
             valid = false;
         } else {
             _passwordText.setError(null);

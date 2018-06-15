@@ -56,14 +56,14 @@ public class FormatChecker {
 
     public void checkPassword(String text, String aux) throws Exception {
         if (text.length() == 0) {
-            throw new Exception(res.getString(R.string.contraseña_obligatoria));
+            throw new Exception(res.getString(R.string.password_obligatoria));
         } else if (text.length() > 15) {
-            throw new Exception(res.getString(R.string.contraseña_larga));
+            throw new Exception(res.getString(R.string.password_larga));
         } else if (text.length() < 4) {
-            throw new Exception(res.getString(R.string.contraseña_corta));
+            throw new Exception(res.getString(R.string.short_password));
         } else if (!text.equals(aux)) {
             throw new Exception(res.getString(R.string
-                    .contraseña_distinta));
+                    .password_distinta));
         }
     }
 

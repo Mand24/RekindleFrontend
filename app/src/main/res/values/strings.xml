@@ -158,10 +158,10 @@
     <string name="email_obligatorio">Email required</string>
     <string name="email_largo">Email is too long, maximum 30 characters</string>
     <string name="email_formato">Email format is incorrect; correct format = x@x.x</string>
-    <string name="contraseña_obligatoria">Password is required</string>
-    <string name="contraseña_larga">Password is too long, maximum 15 characters</string>
-    <string name="contraseña_corta">Password too short, minimum 4 characters</string>
-    <string name="contraseña_distinta">Passwords do not match</string>
+    <string name="password_obligatoria">Password is required</string>
+    <string name="password_larga">Password is too long, maximum 15 characters</string>
+    <string name="short_password">Password too short, minimum 4 characters</string>
+    <string name="password_distinta">Passwords do not match</string>
     <string name="apellido1_obligatorio">First last name required</string>
     <string name="apellido1_largo">First last name too long, maximum 20 letters</string>
     <string name="apellido1_letras">First last name can only contains letters</string>
@@ -250,8 +250,8 @@
     <string name="conversation_fail">Conversation problem, inform the administrator</string>
     <string name="back_exit">Press back again to close Rekindle</string>
     <string name="login_fail">Login failed</string>
-    <string name="contraseña_actualizada">Password changed</string>
-    <string name="contraseña_fail">Could not change password</string>
+    <string name="password_actualizada">Password changed</string>
+    <string name="password_fail">Could not change password</string>
     <string name="wrong_code">Wrong code</string>
 
     <string name="editar_alojamiento">Edit housing:</string>

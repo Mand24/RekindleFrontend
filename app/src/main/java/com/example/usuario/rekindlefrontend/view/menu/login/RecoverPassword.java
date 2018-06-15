@@ -62,7 +62,7 @@ public class RecoverPassword extends AppCompatActivity {
                 if (!code.isEmpty() && codeSystem.equals(code)) {
                     if (!password.equals(confirmPassword)) {
                         Toast.makeText(getApplicationContext(),
-                                getString(R.string.contraseña_distinta),
+                                getString(R.string.password_distinta),
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         sendRecoverPassword(email, password);
@@ -109,12 +109,12 @@ public class RecoverPassword extends AppCompatActivity {
             public void manageResultRequest(boolean result) {
                 if (result) {
                     Toast.makeText(getApplicationContext(),
-                            getString(R.string.contraseña_actualizada),
+                            getString(R.string.password_actualizada),
                             Toast.LENGTH_SHORT).show();
                     sendLogin(email, _passwordText.getText().toString());
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            getString(R.string.contraseña_fail),
+                            getString(R.string.password_fail),
                             Toast.LENGTH_SHORT).show();
                 }
             }

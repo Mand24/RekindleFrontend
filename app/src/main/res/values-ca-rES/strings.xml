@@ -129,10 +129,10 @@
     <string name="email_obligatorio">Email obligatori</string>
     <string name="email_largo">Email massa llarg, màxim 30 caràcters</string>
     <string name="email_formato">El format del email és incorrecte; format correcte = x@x.x</string>
-    <string name="contraseña_obligatoria">Contrasenya obligatoria</string>
-    <string name="contraseña_larga">Contrasenya massa llarga, máxim 15 caràcters</string>
-    <string name="contraseña_corta">Contrasenya massa curta, mínim 4 caràcters</string>
-    <string name="contraseña_distinta">Les contrasenyas no coincideixen</string>
+    <string name="password_obligatoria">Contrasenya obligatoria</string>
+    <string name="password_larga">Contrasenya massa llarga, máxim 15 caràcters</string>
+    <string name="short_password">Contrasenya massa curta, mínim 4 caràcters</string>
+    <string name="password_distinta">Les contrasenyas no coincideixen</string>
     <string name="apellido1_obligatorio">Primer cognom obligatori</string>
     <string name="apellido1_largo">Primer cognom massa llarg, màxim 20 lletres</string>
     <string name="apellido1_letras">El primer cognom només pot contenir lletres</string>
@@ -184,8 +184,8 @@
     <string name="conversation_fail">Problema de conversació, informi al administrador</string>
     <string name="back_exit">Premi enrere una altre vegada per tancar Rekindle</string>
     <string name="login_fail">Fallida en iniciar sessió</string>
-    <string name="contraseña_actualizada">Contrasenya actualitzada</string>
-    <string name="contraseña_fail">No s\'ha pogut actualitzar la contrasenya</string>
+    <string name="password_actualizada">Contrasenya actualitzada</string>
+    <string name="password_fail">No s\'ha pogut actualitzar la contrasenya</string>
     <string name="wrong_code">Codi equivocat</string>
 
     <string name="editar_alojamiento">Editar allotjament:</string>
