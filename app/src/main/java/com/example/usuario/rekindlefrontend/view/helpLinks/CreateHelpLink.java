@@ -38,7 +38,7 @@ public class CreateHelpLink extends AppBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_help_link);
-
+        getSupportActionBar().setTitle(R.string.createLink);
         setViews();
 
         AppCompatButton send_link = findViewById(R.id.send_link);
@@ -120,5 +120,10 @@ public class CreateHelpLink extends AppBaseActivity {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.error), Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
     }
 }

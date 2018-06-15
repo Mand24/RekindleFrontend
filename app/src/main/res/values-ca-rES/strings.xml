@@ -500,12 +500,24 @@
     <string name="end_time_show">Hora fi: %1$s</string>
 
     <string name="ver_perfil_error">Error al mostrar perfil</string>
+    <string name="logout">Tancar sessió</string>
+    <string name="logout_message">Estas segur que vols tancar la sessió?</string>
+    <string name="view_details">Veure detalls</string>
+    <string name="editLink">Editar enllaç</string>
+    <string name="titulo_help">Ajuda</string>
+    <string name="new_request">Nova Sol·licitut</string>
+    <string name="new_report">Nou Report</string>
+    <string name="list_requests">Llistar Sol·licituts</string>
+    <string name="report">Report</string>
+    <string name="donation_request">Sol·licitudDonació</string>
+    <string name="title_activity_editar_servicio">Editar Servei</string>
+
     <string name="hours_day">Indica les hores del dia</string>
     <string name="hours_day_format">"Format incorrecte; format correcte = 10 digits màxim amb una
-        precisió màxima de dos deciamales, ús del punt com a separador "
-    </string>
+        precisió màxima de dos deciamales, ús del punt com a separador "</string>
     <string name="hours_week">Indicar hores setamanals</string>
     <string name="contract_time">Indicar durada del contracte</string>
     <string name="contract_format">La duració del contracte sol pot contenir dígits</string>
     <string name="contract_large">La duració del contracte és massa llarga, màxim 3 dígits</string>
+
 </resources>

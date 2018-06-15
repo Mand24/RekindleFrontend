@@ -38,6 +38,7 @@ public class ShowReport extends AppBaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_show_report);
+        getSupportActionBar().setTitle(R.string.report);
 
         setViews();
 

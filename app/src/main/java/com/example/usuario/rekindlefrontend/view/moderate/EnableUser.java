@@ -169,4 +169,9 @@ public class EnableUser extends AppCompatActivity {
         Toast.makeText(this, getResources().getString(R
                 .string.error), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

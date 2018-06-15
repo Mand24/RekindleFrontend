@@ -47,7 +47,7 @@ public class ListDonationRequests extends AppBaseActivity implements Filterable 
         mAPIService = APIUtils.getAPIService();
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
-        getSupportActionBar().setTitle("ListaSolicitudes");
+        getSupportActionBar().setTitle(R.string.list_requests);
         initializeData();
 
         RecyclerView.LayoutManager mLayoutManager =
@@ -200,7 +200,8 @@ public class ListDonationRequests extends AppBaseActivity implements Filterable 
 
 
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
     }
 
     @Override

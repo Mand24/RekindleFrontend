@@ -39,6 +39,7 @@ public class CreateReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_report);
+        getSupportActionBar().setTitle(R.string.new_report);
 
         user = getUser(this);
 
@@ -127,5 +128,10 @@ public class CreateReport extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.reporte_fallido), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

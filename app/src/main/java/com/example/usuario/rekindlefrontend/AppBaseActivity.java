@@ -92,7 +92,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         setDataUser(user);
 
-        if (!user.getUserType().equals("Admin")) setChannel();
+        if (!user.getUserType().equals("Admin")) setChannelBanned();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
@@ -142,7 +142,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         });
     }
 
-    protected void setChannel() {
+    protected void setChannelBanned() {
         Channel channelUser = Comm.getChannelUser();
         channelUser.bind("ban", new SubscriptionEventListener() {
             @Override
@@ -174,7 +174,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                         builder.setSmallIcon(R.drawable.logo_r);
                         builder.setAutoCancel(true);
                         builder.setVisibility(Notification.VISIBILITY_PUBLIC);
-                        builder.addAction(android.R.drawable.ic_menu_view, "View details",
+                        builder.addAction(android.R.drawable.ic_menu_view, getString(R.string
+                                        .view_details),
                                 contentIntent);
                         builder.setContentIntent(contentIntent);
                         builder.setPriority(Notification.PRIORITY_HIGH);
@@ -195,9 +196,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
                         Comm.disconnectPusher();
                         saveUser(null, getApplicationContext());
-                        Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
-                                .LENGTH_SHORT)
-                                .show();
                         gotoLaunch();
                     }
                 });
@@ -219,22 +217,18 @@ public abstract class AppBaseActivity extends AppCompatActivity {
     private void openDialog() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                //TODO pasar todos estos a Strings
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setTitle(getString(R.string.logout))
+                .setMessage(getString(R.string.logout_message))
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (!getUser(getApplicationContext()).getUserType().equals("Admin")) Comm.disconnectPusher();
                         saveUser(null, getApplicationContext());
-                        Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
-                                .LENGTH_SHORT)
-                                .show();
                         gotoLaunch();
                     }
 
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 

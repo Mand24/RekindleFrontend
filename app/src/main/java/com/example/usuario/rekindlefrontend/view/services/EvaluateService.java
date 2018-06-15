@@ -101,4 +101,9 @@ public class EvaluateService extends AppBaseActivity {
         Intent i = new Intent(this, Login.class);
         startActivity(i);    }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 }

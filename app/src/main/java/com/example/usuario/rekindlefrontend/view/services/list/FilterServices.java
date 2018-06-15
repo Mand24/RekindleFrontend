@@ -178,6 +178,7 @@ public class FilterServices extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, ListServices.class);
+        startActivity(i);
     }
 }
