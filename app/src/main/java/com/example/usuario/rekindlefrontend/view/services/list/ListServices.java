@@ -208,34 +208,35 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
         String startDate = "1900-01-01";
         String endDate = "2100-01-01";
-        Double minimumRating = 0.0;
+        double minimumRating = 0.0;
         String location;
-        Double distance = Double.MAX_VALUE;
+        double distance = Double.MAX_VALUE;
         String order = "distance, rating, date";
 
         Geocoder geo = new Geocoder(getApplicationContext());
         Address locationAddress = null;
-        Double latitude = 86.0;
-        Double longitude = 181.0;
+        double latitude = 86.0;
+        double longitude = 181.0;
 
-        if (extras!= null) {
+        if (extras != null) {
             startDate = (String) extras.get("startDate");
             endDate = (String) extras.get("endDate");
-            minimumRating = Double.valueOf((double) extras.get("minimumRating"));
+            minimumRating = (double) extras.get("minimumRating");
             location = (String) extras.get("location");
-            distance = (Double) extras.get("distance");
+            distance = (double) extras.get("distance");
             order = (String) extras.get("order");
-            if(!order.contains("distance")){
-                order+=", distance";
+
+            if (!order.contains("distance")) {
+                order += ", distance";
             }
-            if(!order.contains("rating")){
-                order+=", rating";
+            if (!order.contains("rating")) {
+                order += ", rating";
             }
-            if(!order.contains("date")){
-                order+=", date";
+            if (!order.contains("date")) {
+                order += ", date";
             }
 
-            if(location != null && !location.isEmpty()) {
+            if (location != null && !location.isEmpty()) {
                 try {
                     List<Address> addresses = geo.getFromLocationName(location, 1);
                     if (addresses.size() > 0) {

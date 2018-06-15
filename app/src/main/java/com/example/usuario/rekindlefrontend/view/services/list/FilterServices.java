@@ -253,7 +253,7 @@ public class FilterServices extends AppCompatActivity {
 
                 if (mDistance.getText().toString().length() > 0) {
                     if (android.text.TextUtils.isDigitsOnly(mDistance.getText().toString())) {
-                        Double distanceValue = Double.parseDouble(mDistance.getText().toString());
+                        double distanceValue = Double.parseDouble(mDistance.getText().toString());
                         if (distanceValue > (Double.MAX_VALUE / 1000)) {
                             mDistance.setError(getText(R.string.value_too_high));
                         }
