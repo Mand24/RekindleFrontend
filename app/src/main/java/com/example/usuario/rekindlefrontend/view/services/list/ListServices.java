@@ -235,17 +235,19 @@ public class ListServices extends AppBaseActivity implements Filterable {
                 order+=", date";
             }
 
-            try {
-                List<Address> addresses = geo.getFromLocationName(location, 1);
-                if (addresses.size() > 0) {
-                    locationAddress = addresses.get(0);
+            if(location != null && !location.isEmpty()) {
+                try {
+                    List<Address> addresses = geo.getFromLocationName(location, 1);
+                    if (addresses.size() > 0) {
+                        locationAddress = addresses.get(0);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (locationAddress != null) {
-                latitude = locationAddress.getLatitude();
-                longitude = locationAddress.getLongitude();
+                if (locationAddress != null) {
+                    latitude = locationAddress.getLatitude();
+                    longitude = locationAddress.getLongitude();
+                }
             }
         }
 //        System.out.println(mAPIService.getServicesFiltered(startDate, endDate, minimumRating,
