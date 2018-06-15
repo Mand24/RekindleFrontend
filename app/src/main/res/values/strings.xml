@@ -39,7 +39,9 @@
     <string name="crear_servicio">Create Service</string>
     <string name="ver_perfil">See Profile</string>
     <string name="listar_reportes">List Reports</string>
+    <string name="listar_solicitudes_donaciones">List Donation Requests</string>
     <string name="nombre_usuario_perfil">Name:</string>
+    <string name="apellido1_usuario_perfil">First surname:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Save</string>
     <string name="editar">Edit</string>
@@ -110,9 +112,13 @@
         successfully!
     </string>
     <string name="oferta_empleo_fallida">Job offer failed!</string>
+    <string name="solicitud_creada_correctamente">Request created successfully!</string>
+    <string name="solicitud_fallida">Request failed!</string>
     <string name="reporte_creado_correctamente">Report created succesfully!
     </string>
     <string name="reporte_fallido">Report failed!</string>
+    <string name="solicitud_gestionada_correctamente">Request managed successfully!</string>
+    <string name="solicitud_gestion_fallida">Request management failed!</string>
     <string name="guardado_correctamente">Save successfully!</string>
     <string name="guardado_fallido">Save failed!</string>
     <string name="ajustes">Settings</string>
@@ -204,6 +210,7 @@
     </string>
     <string name="texto_biografia_refugiado">Biography:</string>
     <string name="biografia_largo">The biography is too long, maximum 300 letters</string>
+    <string name="distancia_numeros">Distance can only contain digits</string>
 
     <string name="informer_user">Informer User</string>
     <string name="reported_user">Reported User</string>
@@ -211,6 +218,20 @@
     <string name="report_form">Report form</string>
     <string name="explanation_motive">Write the motive for your report</string>
     <string name="send_report">Send report</string>
+
+    <string name="requester_user">Requester user</string>
+    <string name="requested_donation">Requested donation</string>
+    <string name="request_motive">Request motive</string>
+    <string name="request_form">Request form</string>
+    <string name="explanation_request_motive">Write the motive for your request</string>
+    <string name="send_request">Send request</string>
+
+    <string name="habilitar">Enable</string>
+    <string name="deshabilitar">Disable</string>
+    <string name="disable_motive">Write the reason why the user is disabled:</string>
+
+    <string name="aceptar">Accept</string>
+    <string name="rechazar">Reject</string>
 
     <string name="titulo_busqueda">Search people</string>
     <string name="subtitulo_busqueda">Please, fill all the info you know about the person
@@ -469,6 +490,44 @@
     <string name="link_created_successfully">Link created successfully!</string>
     <string name="link_updated_successfully">Link updated successfully!</string>
     <string name="createLink">Create link</string>
+    <string name="descriptionEventUpdatedService">The service has been updated!</string>
+    <string name="descriptionEventDeletedService">The service has been deleted!</string>
+    <string name="titulo_evaluate_services">Evaluate service</string>
+    <string name="evaluate">Evaluate</string>
+    <string name="value_services">Value services</string>
+    <string name="endService">End Service</string>
+    <string name="closedService">Closed Service</string>
+    <string name="URL_format">URL format incorrect, must starts with http:// or https://</string>
+    <string name="date_title">Date</string>
+    <string name="start_date">From date</string>
+    <string name="end_date">To date</string>
+    <string name="minimumRating">Minimum rating</string>
+    <string name="distance">Distance</string>
+    <string name="custom_location">Choose location</string>
+    <string name="reset_all">Reset</string>
+    <string name="meters">meters</string>
+    <string name="kilometers">kilometers</string>
+    <string name="your_location">Your location</string>
+    <string name="radius">Radius</string>
+    <string name="listUsers">List users</string>
 
+    <string name="banned">Your account have been banned</string>
+    <string name="close_service_confirmation">Are you Sure you want to close the service?</string>
+    <string name="reporte_eliminado_correctamente">Report deleted successfully!</string>
+    <string name="reporte_eliminado_fallido">Error deleting report!</string>
+    <string name="delete_report">Delete report</string>
+    <string name="address_show">Address: %1$s</string>
+    <string name="phone_show">Phone: %1$s</string>
+    <string name="date_show">Finish date: %1$s</string>
+    <string name="charge_show">Job position: %1$s</string>
+    <string name="requirements_show">Requirements: %1$s</string>
+    <string name="hours_day_show">%1$s hours per day</string>
+    <string name="hours_week_show">%1$s hours per week</string>
+    <string name="contract_duration_show">Contract duration: %1$s months</string>
+    <string name="ambit_show">Field: %1$s</string>
+    <string name="schedule_show">Schedule: %1$s</string>
+    <string name="price_show">Price: %1$s €</string>
+    <string name="start_time_show">Start time: %1$s</string>
+    <string name="end_time_show">End time: %1$s</string>
 </resources>
 

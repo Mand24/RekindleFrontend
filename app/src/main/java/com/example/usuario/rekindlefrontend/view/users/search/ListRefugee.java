@@ -59,8 +59,8 @@ public class ListRefugee extends AppBaseActivity implements Filterable {
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(),
                                 ShowRefugee.class);
-                        intent.putExtra("Refugee", mRefugees.get(position));
-                        System.out.println(mRefugees.get(position).toString());
+                        intent.putExtra("Refugee", mRefugeesFiltered.get(position));
+                        System.out.println(mRefugeesFiltered.get(position).toString());
                         startActivity(intent);
 
                     }

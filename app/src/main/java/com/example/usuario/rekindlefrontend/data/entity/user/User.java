@@ -17,6 +17,9 @@ public class User implements Parcelable {
     @SerializedName("apiKey")
     @Expose
     private String apiKey;
+    @SerializedName("enabled")
+    @Expose
+    private int enabled;
     @SerializedName("mail")
     @Expose
     private String mail;
@@ -49,11 +52,13 @@ public class User implements Parcelable {
         this.surname1 = surname1;
         this.surname2 = surname2;
         this.photo = photo;
+        this.enabled = 1;
     }
 
     protected User(Parcel in) {
         userType = in.readString();
         apiKey = in.readString();
+        enabled = in.readInt();
         mail = in.readString();
         password = in.readString();
         name = in.readString();
@@ -71,6 +76,7 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userType);
         dest.writeString(apiKey);
+        dest.writeInt(enabled);
         dest.writeString(mail);
         dest.writeString(password);
         dest.writeString(name);
@@ -98,6 +104,10 @@ public class User implements Parcelable {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+
+    public int getEnabled() { return enabled; }
+
+    public void setEnabled(int enabled) { this.enabled = enabled; }
 
     public String getMail() {
         return mail;
@@ -166,6 +176,7 @@ public class User implements Parcelable {
         return "User{" +
                 "userType='" + userType + '\'' +
                 ", apiKey='" + apiKey + '\'' +
+                ", enabled=" + enabled + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

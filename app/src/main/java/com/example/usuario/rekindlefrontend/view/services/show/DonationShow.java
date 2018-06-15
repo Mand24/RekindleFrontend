@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
+import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -25,6 +26,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.Maps;
 import com.example.usuario.rekindlefrontend.view.chat.ShowChat;
+import com.example.usuario.rekindlefrontend.view.moderate.CreateDonationRequest;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -47,7 +49,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
     public GoogleMap mGoogleMap;
     public Marker myMarker;
     TextView title, description, adress, startTime, endTime, phoneNumber;
-    AppCompatButton chat, enroll;
+    AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
     private Chat newChat;
@@ -76,18 +78,20 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
         mMapView = (MapFragment) getChildFragmentManager().findFragmentById(R.id.google_mapView);
         phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
-        enroll = view.findViewById(R.id.inscribirse);
+        enroll = view.findViewById(R.id.solicitud);
+        endButton = view.findViewById(R.id.endButton);
 
         title.setText(service.getName());
         description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        startTime.setText(service.getStartTime());
-        endTime.setText(service.getEndTime());
-        phoneNumber.setText(service.getPhoneNumber());
+        adress.setText(getString(R.string.address_show, service.getAdress()));
+        startTime.setText(getString(R.string.start_time_show, service.getStartTime()));
+        endTime.setText(getString(R.string.end_time_show, service.getEndTime()));
+        phoneNumber.setText(getString(R.string.phone_show, service.getPhoneNumber()));
 
         mMapView.getMapAsync(this);
 
         enroll.setClickable(false);
+        endButton.setClickable(false);
 
         currentUser = Consistency.getUser(container.getContext());
         final String mail = currentUser.getMail();
@@ -95,6 +99,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
         if (type.equals("Refugee")) {
 
+            endButton.setVisibility(View.INVISIBLE);
 
             chat.setOnClickListener(new View.OnClickListener() {
 
@@ -104,7 +109,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-            mAPIService.isUserSubscribed(mail, service.getId(), TYPE).enqueue(
+            mAPIService.donationIsRequested(service.getId(), mail).enqueue(
 
                     new Callback<Boolean>() {
                         @Override
@@ -112,7 +117,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                             if (response.isSuccessful()) {
                                 enroll.setClickable(true);
                                 if (response.body()) {
-                                    enroll.setText(R.string.unsubscribe);
+                                    enroll.setVisibility(View.INVISIBLE);
                                 } else {
                                     enroll.setText(R.string.inscribir);
 
@@ -134,89 +139,100 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                 @Override
                 public void onClick(final View view) {
 
-                    if (enroll.getText().toString().equals(getResources().getString(R
-                            .string.inscribir))) {
-
-                        mAPIService.subscribeService(currentUser.getApiKey(), mail,
-
-                                service.getId(), TYPE).enqueue(new Callback<Void>() {
-                            @Override
-                            public void onResponse(Call<Void> call, Response<Void> response) {
-                                if (response.isSuccessful()) {
-                                    enroll.setText(R.string.unsubscribe);
-                                } else {
-                                    failure();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<Void> call, Throwable t) {
-                                failure();
-                            }
-                        });
-
-                    } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(
-                                view.getContext());
-
-                        builder.setMessage(R.string.unsubscribe_confirmation);
-                        builder.setCancelable(false);
-                        builder.setPositiveButton(R.string.yes,
-                                new DialogInterface.OnClickListener() {
-
-                                    public void onClick(DialogInterface dialog,
-                                            int which) {
-
-                                        mAPIService.unsubscribeService(currentUser.getApiKey(),
-                                                mail, service
-                                                        .getId(),
-                                                TYPE).enqueue(new Callback<Void>() {
-                                            @Override
-                                            public void onResponse(Call<Void> call,
-                                                    Response<Void> response) {
-                                                if (response.isSuccessful()) {
-                                                    enroll.setText(R.string.inscribir);
-                                                } else {
-                                                    failure();
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onFailure(Call<Void> call, Throwable t) {
-                                                failure();
-                                            }
-                                        });
-
-                                    }
-                                });
-
-                        builder.setNegativeButton(R.string.no,
-                                new DialogInterface.OnClickListener() {
-
-                                    public void onClick(DialogInterface dialog,
-                                            int which) {
-                                        dialog.cancel();
-                                    }
-                                });
-
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                        enroll.setText(R.string.inscribir);
-                    }
+                    Intent i = new Intent (getActivity().getApplicationContext(),
+                            CreateDonationRequest.class);
+                    i.putExtra("Donation", service);
+                    startActivity(i);
                 }
             });
 
-        } else {
+        } else if(type.equals("Volunteer") && currentUser.getMail().equals(service.getEmail())){
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
+
+            endButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            view.getContext());
+
+                    builder.setMessage(R.string.close_service_confirmation);
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(R.string.yes,
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                        int which) {
+                                    service.setEnded(true);
+                                    endButton.setText(R.string.closedService);
+                                    endButton.setClickable(false);
+                                    endButton.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                                    sendEditService(service);
+                                }
+                            });
+
+                    builder.setNegativeButton(R.string.no,
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                        int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+
+            });
+        }
+        else {
+            enroll.setVisibility(View.INVISIBLE);
+            chat.setVisibility(View.INVISIBLE);
+            endButton.setVisibility(View.INVISIBLE);
         }
 
         return view;
     }
 
+    public void sendEditService(Donation service){
+
+        mAPIService.editarDonacion(service.getId(),service).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+        );
+    }
+
     public void sendGetChat() {
-        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), service.getEmail())
-                .enqueue(
+        String mail1, mail2;
+        if (currentUser.getMail().compareToIgnoreCase(service.getEmail()) <= 0 ){
+            mail1 = currentUser.getMail();
+            mail2 = service.getEmail();
+        }else {
+            mail1 = service.getEmail();
+            mail2 = currentUser.getMail();
+        }
+        mAPIService.getChat(mail1, mail2).enqueue(
                         new Callback<Chat>() {
                             @Override
                             public void onResponse(Call<Chat> call, Response<Chat> response) {
@@ -286,7 +302,15 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
     public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
         if (result) {
-            newChat = new Chat(currentUser, volunteer);
+            User user1, user2;
+            if (currentUser.getMail().compareToIgnoreCase(volunteer.getMail()) <= 0){
+                user1 = currentUser;
+                user2 = volunteer;
+            }else {
+                user1 = volunteer;
+                user2 = currentUser;
+            }
+            newChat = new Chat(user1, user2);
             sendNewChat(newChat);
         } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R

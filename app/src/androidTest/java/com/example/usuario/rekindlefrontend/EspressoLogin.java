@@ -16,7 +16,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.example.usuario.rekindlefrontend.view.users.register.RegisterUser;
 
 import org.junit.AfterClass;
@@ -53,18 +52,6 @@ public class EspressoLogin {
                 .closeSoftKeyboard()).check(matches(withText("testPassword")));
     }
 
-    @Test
-    public void testBotonLogin() {
-
-        onView(withId(R.id.input_email)).perform(typeText("dummy@voluntario.com"), ViewActions
-                .closeSoftKeyboard());
-
-        onView(withId(R.id.input_password)).perform(typeText("1234"), ViewActions
-                .closeSoftKeyboard());
-
-        onView(withId(R.id.btn_login)).perform(click());
-        intended(hasComponent(MainMenu.class.getName()));
-    }
 
     @Test
     public void testBotonLoginFail() {

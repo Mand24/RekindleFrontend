@@ -13,17 +13,6 @@ import java.util.Locale;
 
 public class Message implements Parcelable {
 
-    public static final Creator<Message> CREATOR = new Creator<Message>() {
-        @Override
-        public Message createFromParcel(Parcel in) {
-            return new Message(in);
-        }
-
-        @Override
-        public Message[] newArray(int size) {
-            return new Message[size];
-        }
-    };
     @SerializedName("id")
     @Expose
     private int idMessage;
@@ -86,6 +75,18 @@ public class Message implements Parcelable {
         dest.writeString(timestamp);
         dest.writeString(content);
     }
+
+    public static final Creator<Message> CREATOR = new Creator<Message>() {
+        @Override
+        public Message createFromParcel(Parcel in) {
+            return new Message(in);
+        }
+
+        @Override
+        public Message[] newArray(int size) {
+            return new Message[size];
+        }
+    };
 
     public int getIdMessage() {
         return idMessage;

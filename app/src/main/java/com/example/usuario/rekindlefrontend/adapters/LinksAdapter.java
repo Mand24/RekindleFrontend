@@ -29,6 +29,8 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinkViewHold
         this.listener = listener;
     }
 
+    public List<Link> getLinks() { return mLinks; }
+
     public void setLinks(List<Link> lists) {
         this.mLinks = lists;
     }

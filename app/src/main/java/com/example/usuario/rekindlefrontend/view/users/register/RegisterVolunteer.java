@@ -15,7 +15,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterVolunteer extends AbstractFormatChecker {
+public class RegisterVolunteer extends Fragment {
 
     private EditText eName;
     private EditText eEmail;
@@ -39,11 +39,14 @@ public class RegisterVolunteer extends AbstractFormatChecker {
 
     private APIService mAPIService;
     private Volunteer mVolunteer;
+    private FormatChecker fc;
 
     public RegisterVolunteer() {
         // Required empty public constructor
     }
 
+
+    public Volunteer getVolunteer() { return mVolunteer; }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,6 +57,9 @@ public class RegisterVolunteer extends AbstractFormatChecker {
 
         setViews(view);
 
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_registro_voluntario);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -63,10 +69,10 @@ public class RegisterVolunteer extends AbstractFormatChecker {
                 try {
                     checkFields(view);
                     getParams();
+                    sendCreateVolunteer();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCreateVolunteer();
             }
         });
 
@@ -88,12 +94,12 @@ public class RegisterVolunteer extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkName(eName.getText().toString());
-        checkEmail(eEmail.getText().toString());
-        checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
+        fc.checkName(eName.getText().toString());
+        fc.checkEmail(eEmail.getText().toString());
+        fc.checkPassword(ePassword.getText().toString(), eRPassword.getText().toString
                 ());
-        checkSurname1(eSurname1.getText().toString());
-        checkSurname2(eSurname2.getText().toString());
+        fc.checkSurname1(eSurname1.getText().toString());
+        fc.checkSurname2(eSurname2.getText().toString());
 
     }
 

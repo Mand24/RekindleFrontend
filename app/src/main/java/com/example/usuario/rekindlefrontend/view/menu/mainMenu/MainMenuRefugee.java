@@ -15,6 +15,7 @@ import com.example.usuario.rekindlefrontend.view.chat.ListChats;
 import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinks;
 import com.example.usuario.rekindlefrontend.view.services.list.ListServices;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugee;
+import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugeeEnded;
 import com.example.usuario.rekindlefrontend.view.users.search.SearchRefugee;
 
 /**
@@ -24,6 +25,7 @@ public class MainMenuRefugee extends Fragment {
 
     private AppCompatButton button_list_services;
     private AppCompatButton button_my_services;
+    private AppCompatButton button_valorations;
     private AppCompatButton button_search_people;
     private AppCompatButton button_chat;
     private AppCompatButton button_links;
@@ -57,6 +59,16 @@ public class MainMenuRefugee extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity().getApplicationContext(),
                         MyServicesRefugee.class);
+                startActivity(i);
+            }
+        });
+
+        button_valorations.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity().getApplicationContext(),
+                        MyServicesRefugeeEnded.class);
                 startActivity(i);
             }
         });
@@ -98,6 +110,7 @@ public class MainMenuRefugee extends Fragment {
     public void setViews(View view) {
         button_list_services = view.findViewById(R.id.listar_servicios_MenuPrincipalRefugiado);
         button_my_services = view.findViewById(R.id.mis_servicios_MenuPrincipalRefugiado);
+        button_valorations = view.findViewById(R.id.valorations);
         button_search_people = view.findViewById(R.id.buscar_personas_MenuPrincipalRefugiado);
         button_chat = view.findViewById(R.id.chat);
         button_links = view.findViewById(R.id.links);

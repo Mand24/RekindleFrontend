@@ -13,12 +13,10 @@
         android:name="android.permission.MAPS_RECEIVE"
         android:protectionLevel="signature"/>
 
-    <application
-        android:allowBackup="true" android:icon="@mipmap/ic_launcher"
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true" android:theme="@style/AppTheme.Dark"
         android:windowSoftInputMode="adjustPan">
-
         <activity android:name=".view.menu.login.Login" android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -38,6 +36,7 @@
         <activity android:name=".view.menu.login.CodePasswordRequest"/>
         <activity android:name=".view.services.list.MyServicesRefugee"/>
         <activity android:name=".view.services.list.MyServicesVolunteer"/>
+        <activity android:name=".view.services.list.MyServicesRefugeeEnded"/>
         <activity android:name=".view.services.SearchService"/>
         <activity android:name=".view.users.search.SearchRefugee"/>
         <activity android:name=".view.menu.lateralMenu.Settings"/>
@@ -51,24 +50,36 @@
         <activity android:name=".view.moderate.CreateReport"/>
         <activity android:name=".view.moderate.ShowReport"/>
         <activity android:name=".view.services.edit.ServiceEdit"/>
-
-        <meta-data android:name="com.google.android.geo.API_KEY"
-                   android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
-        <meta-data android:name="com.google.android.gms.version"
-                   android:value="@integer/google_play_services_version"/>
-        <meta-data android:name="com.google.android.geo.API_KEY"
-                   android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA"/>
-        <meta-data android:name="com.google.android.gms.version"
-                   android:value="@integer/google_play_services_version"/>
-
-        <provider android:name=".utils.DatabaseContentProvider"
-                  android:authorities="com.example.usuario.rekindlefrontend" android:enabled="true"
-                  android:exported="false"/>
-
         <activity android:name=".view.helpLinks.ListHelpLinks"/>
         <activity android:name=".view.helpLinks.ListHelpLinksAdmin"/>
         <activity android:name=".view.helpLinks.CreateHelpLink"/>
         <activity android:name=".view.helpLinks.EditHelpLink"/>
-    </application>
+        <activity android:name=".view.moderate.CreateDonationRequest"/>
+        <activity android:name=".view.moderate.ShowDonationRequest"/>
+        <activity android:name=".view.moderate.ListDonationRequests"/>
+        <activity android:name=".view.services.EvaluateService"/>
+        <activity android:name=".view.moderate.ListUsers"/>
 
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCA1BiZ-3Ia_uuhYOsQqphKE8hIq32ubeA" />
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <provider android:name=".utils.DatabaseContentProvider"
+            android:authorities="com.example.usuario.rekindlefrontend" android:enabled="true"
+            android:exported="false" />
+
+        <activity android:name=".view.moderate.EnableUser">
+        </activity>
+
+        <activity android:name=".view.services.list.FilterServices"
+                  android:excludeFromRecents="true"
+                  android:theme="@style/AppTheme.Dark.Dialog"/>
+
+    </application>
 </manifest>
+

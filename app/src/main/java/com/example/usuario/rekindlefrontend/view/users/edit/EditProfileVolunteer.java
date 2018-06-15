@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.users.edit;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,8 +28,8 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
 
 import java.io.ByteArrayOutputStream;
@@ -43,7 +44,7 @@ import retrofit2.Response;
  * Created by ORION on 27/04/2018.
  */
 
-public class EditProfileVolunteer extends AbstractFormatChecker {
+public class EditProfileVolunteer extends Fragment {
 
     private static final int TAKE_PICTURE = 1;
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -57,6 +58,7 @@ public class EditProfileVolunteer extends AbstractFormatChecker {
     private AppCompatButton mPhotoButton;
     private APIService mAPIService;
     private Uri imageUri;
+    private FormatChecker fc;
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -67,6 +69,8 @@ public class EditProfileVolunteer extends AbstractFormatChecker {
 
 
         setViews(view);
+
+        fc = new FormatChecker(getResources());
 
         mVolunteer = (Volunteer) getActivity().getIntent().getParcelableExtra("Volunteer");
 
@@ -84,10 +88,10 @@ public class EditProfileVolunteer extends AbstractFormatChecker {
                 try {
                     checkFields(view);
                     getFields();
+                    sendUpdateVolunteer();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendUpdateVolunteer();
             }
 
         });
@@ -147,10 +151,9 @@ public class EditProfileVolunteer extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkName(eName.getText().toString());
-        ;
-        checkSurname1(eSurname1.getText().toString());
-        checkSurname2(eSurname2.getText().toString());
+        fc.checkName(eName.getText().toString());
+        fc.checkSurname1(eSurname1.getText().toString());
+        fc.checkSurname2(eSurname2.getText().toString());
 
     }
 

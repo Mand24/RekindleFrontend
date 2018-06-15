@@ -48,10 +48,11 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     public GoogleMap mGoogleMap;
     public Marker myMarker;
     TextView title, description, adress, date, phoneNumber;
-    AppCompatButton chat, enroll;
+    AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
     private Chat newChat;
+
     public LodgeShow() {
         // Required empty public constructor
     }
@@ -76,16 +77,18 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.inscribirse);
+        endButton = view.findViewById(R.id.endButton);
 
         title.setText(service.getName());
         description.setText(service.getDescription());
-        adress.setText(service.getAdress());
-        date.setText(service.getDateLimit());
-        phoneNumber.setText(service.getPhoneNumber());
+        adress.setText(getString(R.string.address_show, service.getAdress()));
+        date.setText(getString(R.string.date_show, service.getDateLimit()));
+        phoneNumber.setText(getString(R.string.phone_show,service.getPhoneNumber()));
 
         mMapView.getMapAsync(this);
 
         enroll.setClickable(false);
+        endButton.setClickable(false);
 
         currentUser = Consistency.getUser(container.getContext());
         final String mail = currentUser.getMail();
@@ -108,6 +111,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                     new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                            System.out.println("CODIGOissubscribe? " + response.code());
                             if (response.isSuccessful()) {
                                 enroll.setClickable(true);
                                 if (response.body()) {
@@ -141,6 +145,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                 service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
+                                System.out.println("CODIGOsubscribe " + response.code());
                                 if (response.isSuccessful()) {
                                     enroll.setText(R.string.unsubscribe);
                                 } else {
@@ -208,17 +213,94 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-        } else {
+        } else if(type.equals("Volunteer") && currentUser.getMail().equals(service.getEmail())){
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
 
+            endButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            view.getContext());
+
+                    builder.setMessage(R.string.close_service_confirmation);
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(R.string.yes,
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                        int which) {
+                                    service.setEnded(true);
+                                    endButton.setText(R.string.closedService);
+                                    endButton.setClickable(false);
+                                    endButton.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                                    sendEditService(service);
+                                }
+                            });
+
+                    builder.setNegativeButton(R.string.no,
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,
+                                        int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
+
+                }
+
+            });
+        }
+        else {
+            enroll.setVisibility(View.INVISIBLE);
+            chat.setVisibility(View.INVISIBLE);
+            endButton.setVisibility(View.INVISIBLE);
         }
 
         return view;
     }
 
+    public void sendEditService(Lodge service){
+
+        mAPIService.editarAlojamiento(service.getId(),service).enqueue(
+                new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if (t instanceof IOException) {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "this is an actual network failure"
+                                            + " :( inform "
+                                            + "the user and "
+                                            + "possibly retry", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(),
+                                    "conversion issue! big problems :(", Toast
+                                            .LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+        );
+    }
+
     public void sendGetChat() {
-        mAPIService.getChat(currentUser.getMail(), currentUser.getMail(), service.getEmail())
+        String mail1, mail2;
+        if (currentUser.getMail().compareToIgnoreCase(service.getEmail()) <= 0 ){
+            mail1 = currentUser.getMail();
+            mail2 = service.getEmail();
+        }else {
+            mail1 = service.getEmail();
+            mail2 = currentUser.getMail();
+        }
+        mAPIService.getChat(mail1, mail2)
                 .enqueue(
                         new Callback<Chat>() {
                             @Override
@@ -289,7 +371,15 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
     public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
         if (result) {
-            newChat = new Chat(currentUser, volunteer);
+            User user1, user2;
+            if (currentUser.getMail().compareToIgnoreCase(volunteer.getMail()) <= 0){
+                user1 = currentUser;
+                user2 = volunteer;
+            }else {
+                user1 = volunteer;
+                user2 = currentUser;
+            }
+            newChat = new Chat(user1, user2);
             sendNewChat(newChat);
         } else {
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R

@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
@@ -52,10 +53,13 @@ public class CreateReport extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                createReport();
-                sendReport();
+                try{
+                    createReport();
+                    sendReport();
+                } catch (Exception e){
+                    motive.setError("Field is empty");
+                }
             }
-
         });
     }
 
@@ -69,9 +73,15 @@ public class CreateReport extends AppCompatActivity {
         reportedUser.setText(refugee.getMail());
     }
 
-    public void createReport() {
-        report = new Report(user, refugee, motive.getText().toString());
-        System.out.println("reporte " + report.toString());
+    public void createReport() throws Exception{
+        User user = getUser(getApplicationContext());
+        if(!TextUtils.isEmpty(motive.getText().toString())){
+            report = new Report(user, refugee, motive.getText().toString());
+            System.out.println("reporte " + report.toString());
+        }
+        else{
+            throw new Exception("Report Empty");
+        }
     }
 
     public void sendReport() {

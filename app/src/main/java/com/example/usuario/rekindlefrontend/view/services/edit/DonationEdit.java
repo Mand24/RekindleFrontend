@@ -2,6 +2,7 @@ package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
+import android.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -32,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class DonationEdit extends AbstractFormatChecker {
+public class DonationEdit extends Fragment {
 
     private Donation servicio;
 
@@ -46,6 +48,7 @@ public class DonationEdit extends AbstractFormatChecker {
     private EditText eDescription;
 
     private APIService mAPIService;
+    private FormatChecker fc;
 
     public DonationEdit() {
 
@@ -57,6 +60,10 @@ public class DonationEdit extends AbstractFormatChecker {
         final View view = inflater.inflate(R.layout.fragment_edit_donation, container, false);
 
         setViews(view);
+
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
         servicio = (Donation) getArguments().getSerializable("Donation");
 
         editStartingTime = (EditText) view.findViewById(R.id.franja_horaria_inicio_donacion);
@@ -75,7 +82,6 @@ public class DonationEdit extends AbstractFormatChecker {
                     checkFields();
                     getParams();
                     sendUpdateService();
-
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -126,11 +132,11 @@ public class DonationEdit extends AbstractFormatChecker {
 
     public void checkFields() throws Exception {
 
-        checkServiceName(eName.getText().toString());
-        checkServicePhoneNumber(ePhoneNumber.getText().toString());
-        checkServicePlaces(ePlacesLimit.getText().toString());
-        checkServiceIncreasePlaces(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
-        checkServiceDescription(eDescription.getText().toString());
+        fc.checkServiceName(eName.getText().toString());
+        fc.checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkServicePlaces(ePlacesLimit.getText().toString());
+        fc.checkServiceIncreasePlaces(ePlacesLimit.getText().toString(), servicio.getPlacesLimit());
+        fc.checkServiceDescription(eDescription.getText().toString());
 
     }
 
@@ -152,6 +158,7 @@ public class DonationEdit extends AbstractFormatChecker {
                                                                                            Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println("codigo "+response.code());
                 if (response.isSuccessful()) {
                     manageResult(true);
                 } else {

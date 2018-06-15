@@ -28,7 +28,7 @@ public class MyServicesVolunteer extends ListServices {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         getSupportActionBar().setTitle(R.string.mis_servicios);
-        mMapButton.setVisibility(View.GONE);
+        map_and_filter.setVisibility(View.GONE);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class MyServicesVolunteer extends ListServices {
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(), ShowService.class);
-                        intent.putExtra("Service", mServices.get(position));
+                        intent.putExtra("Service", mServiciosFiltrados.get(position));
                         startActivity(intent);
                     }
 
@@ -54,10 +54,10 @@ public class MyServicesVolunteer extends ListServices {
                                             Intent intent = new Intent(getApplicationContext(),
                                                     ServiceEdit
                                                             .class);
-                                            intent.putExtra("typeService", mServices.get
+                                            intent.putExtra("typeService", mServiciosFiltrados.get
                                                     (position).getServiceType());
                                             intent.putExtra("Service",
-                                                    mServices.get(position));
+                                                    mServiciosFiltrados.get(position));
                                             startActivity(intent);
                                         } else if (which == 1) {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -71,7 +71,7 @@ public class MyServicesVolunteer extends ListServices {
 
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
-                                                            sendDeleteService(mServices.get
+                                                            sendDeleteService(mServiciosFiltrados.get
                                                                     (position));
                                                             Intent refresh = new Intent
                                                                     (getApplicationContext(), MyServicesVolunteer
@@ -126,9 +126,9 @@ public class MyServicesVolunteer extends ListServices {
     }
 
     @Override
-    protected void initializeData() {
+    protected void initializeData(Bundle savedInstance) {
         mAPIService.obtenerMisServicios(Consistency.getUser(this).getMail(), Consistency.getUser
-                (this).getUserType())
+                (this).getUserType(), false)
                 .enqueue(new Callback<ArrayList<Service>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Service>> call,

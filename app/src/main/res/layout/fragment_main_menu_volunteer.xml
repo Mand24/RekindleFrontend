@@ -6,52 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".view.menu.mainMenu.MainMenuVolunteer">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/listar_servicios_MenuPrincipalVoluntario"
-        android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/dim20"
-        android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
-        android:text="@string/listar_servicios"
-    />
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/crear_servicio_MenuPrincipalVoluntario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/listar_servicios_MenuPrincipalVoluntario"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/dim20"
-        android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
-        android:text="@string/crear_servicio"
-    />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/listar_servicios_MenuPrincipalVoluntario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:text="@string/listar_servicios"
+        />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/mis_servicios_MenuPrincipalVoluntario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/crear_servicio_MenuPrincipalVoluntario"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/dim20"
-        android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
-        android:text="@string/mis_servicios"
-    />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/crear_servicio_MenuPrincipalVoluntario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listar_servicios_MenuPrincipalVoluntario"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim50"
+            android:text="@string/crear_servicio"
+        />
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/chat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mis_servicios_MenuPrincipalVoluntario"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/dim20"
-        android:layout_marginRight="@dimen/dim20"
-        android:layout_marginTop="@dimen/dim50"
-        android:text="@string/chat"
-    />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/mis_servicios_MenuPrincipalVoluntario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/crear_servicio_MenuPrincipalVoluntario"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim50"
+            android:text="@string/mis_servicios"
+        />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mis_servicios_MenuPrincipalVoluntario"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dim20"
+            android:layout_marginRight="@dimen/dim20"
+            android:layout_marginTop="@dimen/dim50"
+            android:text="@string/chat"
+        />
+
+    </LinearLayout>
 
 </RelativeLayout>

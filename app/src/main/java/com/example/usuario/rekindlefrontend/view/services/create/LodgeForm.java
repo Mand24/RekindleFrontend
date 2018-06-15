@@ -23,7 +23,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -43,7 +43,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LodgeForm extends AbstractFormatChecker {
+public class LodgeForm extends Fragment {
 
     private EditText eName;
     private EditText ePhoneNumber;
@@ -57,6 +57,7 @@ public class LodgeForm extends AbstractFormatChecker {
     private Lodge mLodge;
     private APIService mAPIService;
     private User user;
+    private FormatChecker fc;
 
     public LodgeForm() {
         // Required empty public constructor
@@ -74,6 +75,9 @@ public class LodgeForm extends AbstractFormatChecker {
 
         setViews(view);
 
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
         AppCompatButton button_send = (AppCompatButton) view.findViewById(
                 R.id.enviar_formulario_alojamiento);
         button_send.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +87,10 @@ public class LodgeForm extends AbstractFormatChecker {
                 try {
                     checkFields(view);
                     getParams();
+                    sendCreateLodge();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                sendCreateLodge();
             }
         });
 
@@ -125,10 +129,10 @@ public class LodgeForm extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkServiceName(eName.getText().toString());
-        checkServicePhoneNumber(ePhoneNumber.getText().toString());
-        checkServicePlaces(ePlacesLimit.getText().toString());
-        checkServiceDescription(eDescription.getText().toString());
+        fc.checkServiceName(eName.getText().toString());
+        fc.checkServicePhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkServicePlaces(ePlacesLimit.getText().toString());
+        fc.checkServiceDescription(eDescription.getText().toString());
 
     }
 
@@ -137,7 +141,7 @@ public class LodgeForm extends AbstractFormatChecker {
         mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
                 .getText().toString(), eDeadline.getText().toString(), ePhoneNumber.getText()
-                .toString());
+                .toString(), false);
 
 
     }

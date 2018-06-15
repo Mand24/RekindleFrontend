@@ -1,6 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.users.edit;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,8 +30,8 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
-import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
 
@@ -46,7 +47,7 @@ import retrofit2.Response;
  * Created by ORION on 27/04/2018.
  */
 
-public class EditProfileRefugee extends AbstractFormatChecker {
+public class EditProfileRefugee extends Fragment {
 
     private static final int TAKE_PICTURE = 1;
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -70,6 +71,7 @@ public class EditProfileRefugee extends AbstractFormatChecker {
     private ImageView ePhoto;
     private APIService mAPIService;
     private Uri imageUri;
+    private FormatChecker fc;
 
 
     @Override
@@ -80,6 +82,10 @@ public class EditProfileRefugee extends AbstractFormatChecker {
                 false);
 
         setViews(view);
+
+        //init format Checker
+        fc = new FormatChecker(getResources());
+
 
         mRefugee = (Refugee) getActivity().getIntent().getParcelableExtra("Refugee");
 
@@ -97,12 +103,10 @@ public class EditProfileRefugee extends AbstractFormatChecker {
                 try {
                     checkFields(view);
                     getFields();
+                    sendUpdateRefugee();
                 } catch (Exception e) {
                     Toast.makeText(v.getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
-                sendUpdateRefugee();
-
             }
 
         });
@@ -217,14 +221,14 @@ public class EditProfileRefugee extends AbstractFormatChecker {
 
     public void checkFields(View view) throws Exception {
 
-        checkName(eName.getText().toString());
-        checkSurname1(eSurname1.getText().toString());
-        checkSurname2(eSurname2.getText().toString());
-        checkPhoneNumber(ePhoneNumber.getText().toString());
-        checkCountry(eCountry.getText().toString());
-        checkTown(eTown.getText().toString());
-        checkEthnic(eEthnic.getText().toString());
-        checkBiography(eBiography.getText().toString());
+        fc.checkName(eName.getText().toString());
+        fc.checkSurname1(eSurname1.getText().toString());
+        fc.checkSurname2(eSurname2.getText().toString());
+        fc.checkPhoneNumber(ePhoneNumber.getText().toString());
+        fc.checkCountry(eCountry.getText().toString());
+        fc.checkTown(eTown.getText().toString());
+        fc.checkEthnic(eEthnic.getText().toString());
+        fc.checkBiography(eBiography.getText().toString());
     }
 
     public void getFields() {

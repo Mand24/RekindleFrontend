@@ -31,6 +31,10 @@ public class RecoverPassword extends AppCompatActivity {
     EditText _codeText;
     TextView _back;
 
+    private String code;
+    private String password;
+    private String confirmPassword;
+
     private APIService mAPIService;
 
     @Override
@@ -52,9 +56,8 @@ public class RecoverPassword extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                String code = _codeText.getText().toString();
-                String password = _passwordText.getText().toString();
-                String confirmPassword = _confirmPasswordText.getText().toString();
+
+                setParams();
 
                 if (!code.isEmpty() && codeSystem.equals(code)) {
                     if (!password.equals(confirmPassword)) {
@@ -176,6 +179,16 @@ public class RecoverPassword extends AppCompatActivity {
             }
         });
     }
+
+    public void setParams() {
+        code = _codeText.getText().toString();
+        password = _passwordText.getText().toString();
+        confirmPassword = _confirmPasswordText.getText().toString();
+    }
+
+    public String getCode () { return code; }
+    public String getPassword () { return password; }
+    public String getConfirmPassword () { return confirmPassword; }
 
     @Override
     public void onBackPressed() {

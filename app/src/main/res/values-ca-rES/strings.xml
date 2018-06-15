@@ -38,6 +38,7 @@
     <string name="crear_servicio">Crear Servei</string>
     <string name="ver_perfil">Veure Perfil</string>
     <string name="listar_reportes">Llistar Reports</string>
+    <string name="listar_solicitudes_donaciones">Llistar sol·licituds donacions</string>
     <string name="nombre_usuario_perfil">Nom:</string>
     <string name="email_usuario_perfil">Email:</string>
     <string name="guardar">Guardar</string>
@@ -105,8 +106,12 @@
     <string name="donacion_fallida">Ha fallat la creació de la donació!</string>
     <string name="oferta_empleo_correctamente">Oferta de feina creada correctament!</string>
     <string name="oferta_empleo_fallida">Ha fallat la creació de la oferta de feina!</string>
+    <string name="solicitud_creada_correctamente">Sol·licitud creada correctament!</string>
+    <string name="solicitud_fallida">Ha fallat la creació de la sol·licitud!</string>
     <string name="reporte_creado_correctamente">Report creat correctament!</string>
     <string name="reporte_fallido">Ha fallat la creació del report!</string>
+    <string name="solicitud_gestionada_correctamente">Sol·licitut gestionada correctament!</string>
+    <string name="solicitud_gestion_fallida">Ha fallat la gestió de la sol·licitud!</string>
     <string name="guardado_correctamente">Guardat correctement!</string>
     <string name="guardado_fallido">Error al guardar!</string>
     <string name="ajustes">Configuració</string>
@@ -149,6 +154,7 @@
     <string name="solicitudes_numeros">El límit de sol·licituds ha de ser un nombre</string>
     <string name="descripcion_obligatoria">Descripció obligatoria</string>
     <string name="descricpion_larga">La descripció és massa llarga, màxim 300 lletres</string>
+    <string name="distancia_numeros">Distancia només pot contenir dígits</string>
     <string name="descripcion_letras">La descripció només pot contenir lletres</string>
     <string name="puestoTrabajo_obligatorio">Lloc de treball obligatori</string>
     <string name="puestoTrabajo_largo">El nom del lloc de treball és massa llarg, màxim 50
@@ -264,7 +270,7 @@
         voluntari, seleccionant el valor desitjat mitjantçant els botons \"Refugiat\" i
         \"Voluntari\" situats en la part superior de la pantalla. Per a completar el registre
         introdueixi como a mínim tots els camps obligatoris (marcats amb un \"*\" al final
-        de camp). Per a enviar la solicitut de registre prem \"Enviar\". \n \n
+        de camp). Per a enviar la sol·licitut de registre prem \"Enviar\". \n \n
 
         <b>
             <u>Demanar codi de recuperació \n</u>
@@ -419,6 +425,17 @@
     <string name="explanation_motive">Escriu el motiu del teu report</string>
     <string name="send_report">Enviar report</string>
 
+
+    <string name="requester_user">Usuari sol·licitant</string>
+    <string name="requested_donation">Donació sol·licitada</string>
+    <string name="request_motive">Motiu de la sol·licitud</string>
+    <string name="request_form">Formulari de sol·licitud</string>
+    <string name="explanation_request_motive">Escriu el motiu de la teva sol·licitud</string>
+    <string name="send_request">Enviar sol·licitud</string>
+
+    <string name="aceptar">Aceptar</string>
+    <string name="rechazar">Rebutjar</string>
+
     <string name="map">Mapa</string>
 
     <string name="noServices">No hay servicios disponibles</string>
@@ -437,5 +454,48 @@
     <string name="link_created_successfully">Enllaç creat correctament!</string>
     <string name="link_updated_successfully">Enllaç actualitzat correctament!</string>
     <string name="createLink">Crear enllaç</string>
+    <string name="descriptionEventUpdatedService">El servei se ha actualitzat!</string>
+    <string name="descriptionEventDeletedService">El servei se ha eliminat!</string>
+    <string name="titulo_evaluate_services">Valorar servei</string>
+    <string name="evaluate">Valorar</string>
+    <string name="value_services">Valorar serveis</string>
+    <string name="date_title">Data</string>
+    <string name="start_date">Des del día</string>
+    <string name="end_date">Fins al día</string>
+    <string name="minimumRating">Valoració mínima</string>
+    <string name="distance">Distància</string>
+    <string name="custom_location">Posició a triar</string>
+    <string name="reset_all">Resetejar</string>
+    <string name="meters">metres</string>
+    <string name="kilometers">kilometres</string>
+    <string name="your_location">La teva localització</string>
+    <string name="radius">Radi</string>
 
+    <string name="endService">Tancar Servei</string>
+    <string name="closedService">Servei Tancat</string>
+    <string name="URL_format">Format URL incorrecte, te que comencar amb https:// o http://</string>
+    <string name="habilitar">Habilitar</string>
+    <string name="deshabilitar">Deshabilitar</string>
+    <string name="disable_motive">Redacta el motiu pel qual lusuari és deshabilitat:</string>
+    <string name="apellido1_usuario_perfil">Primer cognom:</string>
+    <string name="listUsers">Llistar usuaris</string>
+
+    <string name="banned">El teu compte ha estat suspés</string>
+    <string name="close_service_confirmation">Estas segur de que vols tancar el servei?</string>
+    <string name="reporte_eliminado_correctamente">Report borrat correctament!</string>
+    <string name="reporte_eliminado_fallido">Esborrat de report ha fallat!</string>
+    <string name="delete_report">Eliminar report</string>
+    <string name="address_show">Direcció: %1$s</string>
+    <string name="phone_show">Telèfon: %1$s</string>
+    <string name="date_show">Data de finalització: %1$s</string>
+    <string name="charge_show">Lloc de treball: %1$s</string>
+    <string name="requirements_show">Requisits: %1$s</string>
+    <string name="hours_day_show">%1$s hores al dia</string>
+    <string name="hours_week_show">%1$s hores a la setmana</string>
+    <string name="contract_duration_show">Duració del contracte: %1$s mesos</string>
+    <string name="ambit_show">Àmbit: %1$s</string>
+    <string name="schedule_show">Horari: %1$s</string>
+    <string name="price_show">Preu: %1$s €</string>
+    <string name="start_time_show">Hora inici: %1$s</string>
+    <string name="end_time_show">Hora fi: %1$s</string>
 </resources>

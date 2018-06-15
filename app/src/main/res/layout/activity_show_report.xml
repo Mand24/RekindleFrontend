@@ -78,6 +78,15 @@
                 android:textSize="18sp"
             />
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dim20"
+                android:layout_marginRight="@dimen/dim20"
+                android:layout_marginTop="@dimen/dim20"
+                android:text="@string/delete_report"/>
+
         </LinearLayout>
 
     </ScrollView>

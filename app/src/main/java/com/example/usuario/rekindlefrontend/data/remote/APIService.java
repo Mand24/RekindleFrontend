@@ -3,12 +3,14 @@ package com.example.usuario.rekindlefrontend.data.remote;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Message;
 import com.example.usuario.rekindlefrontend.data.entity.link.Link;
-import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
+import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.entity.service.Job;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
+import com.example.usuario.rekindlefrontend.data.entity.service.Valoration;
 import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
@@ -50,14 +52,24 @@ public interface APIService {
     @GET("/usuarios/{mail}/chats")
     Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
 
-    @GET("/usuarios/{mail}/chat")
-    Call<Chat> getChat(@Path("mail") String mail, @Query("mail1") String mail1, @Query("mail2")
-            String
-            mail2);
+    @GET("/usuarios/{mail1}/chats/{mail2}")
+    Call<Chat> getChat(@Path("mail1") String mail, @Path("mail2") String mail2);
 
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Header("apiKey") String apiKey, @Path("mail") String mail,
             @Body Chat chat);//back se encarga de mirar si existe!!!
+
+    @GET("/usuarios/{mail}/enabled")
+    Call<Integer> isUserEnabled(@Path("mail") String mail);
+
+    @PUT("/usuarios/{mail}/enable")
+    Call<Void> enableUser(@Path("mail") String mail);
+
+    @PUT("/usuarios/{mail}/disable")
+    Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);
+
+    @GET("/usuarios")
+    Call<ArrayList<User>> getUsers();
 
     //LLAMADAS RELACIONADAS CON USUARIOS REFUGIADOS
     @GET("/refugiados")
@@ -104,9 +116,15 @@ public interface APIService {
     @GET("/servicios")
     Call<ArrayList<Service>> obtenerServicios();
 
+    @GET("/servicios/filtrar")
+    Call<ArrayList<Service>> getServicesFiltered(@Query("fromDate") String fromDate, @Query
+            ("toDate") String toDate, @Query("minimumRating") Double minimumRating, @Query
+            ("positionLat") Double latitude, @Query("positionLng") Double longitude, @Query
+            ("distance") Double distance);
+
     @GET("/servicios/{mail}/{tipo}")
     Call<ArrayList<Service>> obtenerMisServicios(@Path("mail") String mail, @Path
-            ("tipo") String tipo);
+            ("tipo") String tipo, @Query("ended") Boolean ended);
 
     @GET("/alojamientos/{id}")
     Call<Lodge> getAlojamiento(@Path("id") int id);
@@ -147,8 +165,13 @@ public interface APIService {
     @POST("/cursos")
     Call<Void> crearEducacion(@Header("apiKey") String apiKey, @Body Education educacion);
 
+    @POST("/servicios/{id}/{tipo}/valoraciones")
+    Call<Void> createValoration(@Path("id") int id, @Path("tipo") String tipo, @Body Valoration
+            valoration);
+
     @DELETE("/servicios/{id}/{tipo}")
     Call<Void> eliminarServicio(@Header("apiKey") String apiKey, @Path("id") int id, @Path("tipo") String tipo);
+
 
     @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
     Call<Boolean> isUserSubscribed(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
@@ -172,7 +195,6 @@ public interface APIService {
     Call<Void> sendMessage(@Header("apiKey") String apiKey, @Path("mail") String mail, @Path("idChat") int idChat, @Body Message
             message);
 
-
     //LLAMADAS RELACIONADAS CON REPORTES
 
     @POST("/reportes")
@@ -183,6 +205,26 @@ public interface APIService {
 
     @GET("/reportes/{id}")
     Call<Report> getReport(@Path("id") int id);
+
+    @DELETE("/reportes/{id}")
+    Call<Void> deleteReport(@Path("id") int id);
+
+    //LLAMADAS RELACIONADAS CON SOLICITUDES DE DONACION
+
+    @POST("/solicituddonacion")
+    Call<Void> createDonationRequest(@Body DonationRequest donationRequest);
+
+    @GET("/solicituddonacion")
+    Call<ArrayList<DonationRequest>> getDonationRequests();
+
+    @GET("/solicituddonacion/{idDonation}")
+    Call<Boolean> donationIsRequested(@Path("idDonation") int id,  @Query("mail") String mail);
+
+    @PUT("/solicituddonacion/accept/{idDonation}")
+    Call<Void> acceptDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
+
+    @PUT("/solicituddonacion/reject/{idDonation}")
+    Call<Void> rejectDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
 
     //LLAMADAS RELACIONADAS CON LINKS
 

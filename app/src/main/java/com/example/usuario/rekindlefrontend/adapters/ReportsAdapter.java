@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.usuario.rekindlefrontend.R;
-import com.example.usuario.rekindlefrontend.data.entity.reports.Report;
+import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 
 import java.util.List;
@@ -28,6 +28,8 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportVi
         this.reports = reports;
         this.listener = listener;
     }
+
+    public List<Report> getReports() { return reports; }
 
     public void setReports(List<Report> reports) {
         this.reports = reports;
