@@ -206,11 +206,11 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
     protected void initializeData(Bundle extras) {
 
-        String startDate = null;
-        String endDate = null;
-        Double minimumRating = null;
+        String startDate = "1900-01-01";
+        String endDate = "2100-01-01";
+        Double minimumRating = 0.0;
         String location;
-        Double distance = null;
+        Double distance = Double.MAX_VALUE;
         String order = "distance, rating, date";
 
         Geocoder geo = new Geocoder(getApplicationContext());
