@@ -182,33 +182,27 @@ public class FormatChecker {
 
     public void checkServiceHoursDay(String text) throws Exception {
         if (text.length() == 0) {
-            throw new Exception("Indicar horas de la joranada");
+            throw new Exception (res.getString(R.string.hours_day));
         } else if (!numbers(text) && text.length() > 0) {
-            throw new Exception("Formato incorrecto; "
-                    + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
-                    + "deciamales, uso del punto como separador");
+            throw new Exception(res.getString(R.string.hours_day_format));
         }
     }
 
     public void checkServiceHoursWeek(String text) throws Exception {
         if (text.length() == 0) {
-            throw new Exception("Indicar horas semanales");
+            throw new Exception(res.getString(R.string.hours_week));
         } else if (!numbers(text) && text.length() > 0) {
-            throw new Exception("Formato incorrecto; "
-                    + "formato correcto = 10 digitos máximo con una precisión máxima de dos "
-                    + "deciamales, uso del punto como separador");
+            throw new Exception(res.getString(R.string.hours_day_format));
         }
     }
 
     public void checkServiceContractDuration(String text) throws Exception {
         if (text.length() == 0) {
-            throw new Exception("Indicar duración del contrato");
+            throw new Exception(res.getString(R.string.contract_time));
         } else if (!numbers(text) && text.length() > 0) {
-            throw new Exception("Duración solo puede "
-                    + "contener dígitos");
+            throw new Exception(res.getString(R.string.contract_format));
         } else if (text.length() > 3) {
-            throw new Exception("Duración demasiado larga, máximo 3 "
-                    + "números");
+            throw new Exception(res.getString(R.string.contract_large));
         }
     }
 

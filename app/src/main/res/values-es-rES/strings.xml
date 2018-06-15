@@ -519,4 +519,13 @@
     <string name="end_time_show">Hora de finalización: %1$s</string>
 
     <string name="ver_perfil_error">Error al mostrar perfil</string>
+    <string name="hours_day">Indicar horas de la joranada</string>
+    <string name="hours_day_format">Formato incorrecto; formato correcto = 10 digitos máximo con una
+        precisión máxima de dos deciamales, uso del punto como separador
+    </string>
+    <string name="hours_week">Indicar horas semanales</string>
+    <string name="contract_time">Indicar duración del contrato</string>
+    <string name="contract_format">La duración del contrato solo puede contener digitos</string>
+    <string name="contract_large">La duración del contrato es demasiado larga, máximo 3 dígitos
+    </string>
 </resources>
