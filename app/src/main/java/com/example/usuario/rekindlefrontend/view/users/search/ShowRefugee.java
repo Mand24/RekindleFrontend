@@ -236,6 +236,7 @@ public class ShowRefugee extends AppBaseActivity {
         if (result) {
             Intent i = new Intent(this, ShowChat.class);
             i.putExtra("Chat", chat);
+            System.out.println("chatnew "+chat.toString());
             startActivity(i);
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R

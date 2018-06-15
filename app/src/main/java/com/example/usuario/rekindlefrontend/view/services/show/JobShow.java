@@ -265,7 +265,7 @@ public class JobShow extends Maps implements OnMapReadyCallback {
 
     public void sendEditService(Job service){
 
-        mAPIService.editarEmpleo(service.getId(),service).enqueue(
+        mAPIService.editarEmpleo(currentUser.getApiKey(), service.getId(), service).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -388,6 +388,7 @@ public class JobShow extends Maps implements OnMapReadyCallback {
     }
 
     public void sendNewChat(Chat chat) {
+
         mAPIService.newChat(currentUser.getApiKey(), currentUser.getMail(), chat).enqueue(new
                                                                                                  Callback<Chat>() {
             @Override

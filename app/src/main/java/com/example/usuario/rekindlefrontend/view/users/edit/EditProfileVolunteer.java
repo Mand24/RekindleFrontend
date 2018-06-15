@@ -167,11 +167,12 @@ public class EditProfileVolunteer extends Fragment {
         } else {
             mVolunteer.setPhoto(null);
         }
-        Consistency.saveUser(mVolunteer, getActivity());
     }
 
     public void sendUpdateVolunteer() {
-        mAPIService.actualizarVoluntario(mVolunteer.getApiKey(), mVolunteer.getMail(), mVolunteer)
+        mAPIService.actualizarVoluntario(Consistency.getUser(getActivity().getApplicationContext
+                ()).getApiKey(), mVolunteer.getMail
+                (), mVolunteer)
                 .enqueue(
                 new Callback<Void>() {
                     @Override
@@ -203,6 +204,11 @@ public class EditProfileVolunteer extends Fragment {
     public void manageResult(boolean result) {
 
         if (result) {
+            String apiKey = Consistency.getUser(getActivity().getApplicationContext())
+                    .getApiKey();
+            mVolunteer.setApiKey(apiKey);
+
+            Consistency.saveUser(mVolunteer, getActivity());
 
             Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
                     Toast

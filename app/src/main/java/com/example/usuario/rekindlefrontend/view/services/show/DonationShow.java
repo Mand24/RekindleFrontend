@@ -197,7 +197,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
     public void sendEditService(Donation service){
 
-        mAPIService.editarDonacion(service.getId(),service).enqueue(
+        mAPIService.editarDonacion(currentUser.getApiKey(), service.getId(),service).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

@@ -14,6 +14,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.io.IOException;
@@ -50,11 +51,11 @@ public class ChangePassword extends AppBaseActivity {
         if (userType.equals("Refugee")) {
             mRefugee = (Refugee) getIntent().getParcelableExtra("Refugee");
             email = mRefugee.getMail();
-            apiKey = mRefugee.getApiKey();
+            apiKey = Consistency.getUser(this).getApiKey();
         } else {
             mVolunteer = (Volunteer) getIntent().getParcelableExtra("Volunteer");
             email = mVolunteer.getMail();
-            apiKey = mRefugee.getApiKey();
+            apiKey = Consistency.getUser(this).getApiKey();
         }
 
 

@@ -250,14 +250,18 @@ public class EditProfileRefugee extends Fragment {
         } else {
             mRefugee.setPhoto(null);
         }
-        Consistency.saveUser(mRefugee, getActivity());
+
     }
 
     public void sendUpdateRefugee() {
-        mAPIService.actualizarRefugiado(mRefugee.getApiKey(), mRefugee.getMail(), mRefugee).enqueue(
+        System.out.println("apiKey "+Consistency.getUser(getActivity().getApplicationContext())
+                .getApiKey());
+        mAPIService.actualizarRefugiado(Consistency.getUser(getActivity().getApplicationContext())
+                .getApiKey(), mRefugee.getMail(), mRefugee).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
+                        System.out.println("code "+response.code());
                         if (response.isSuccessful()) {
                             manageResult(true);
                         } else {
@@ -285,6 +289,12 @@ public class EditProfileRefugee extends Fragment {
     public void manageResult(boolean result) {
 
         if (result) {
+
+            String apiKey = Consistency.getUser(getActivity().getApplicationContext())
+                    .getApiKey();
+            mRefugee.setApiKey(apiKey);
+
+            Consistency.saveUser(mRefugee, getActivity());
 
             Toast.makeText(getActivity().getApplicationContext(), "Actualizado correctamente",
                     Toast

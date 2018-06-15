@@ -156,7 +156,7 @@ public class Login extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     mUser = response.body();
-                    System.out.println("tipo: " + mUser.getUserType());
+                    System.out.println(mUser.toString());
                     onLoginSuccess();
                 } else {
                     onLoginFailed(response.code());
@@ -192,7 +192,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-
+        System.out.println(mUser.toString());
         saveUser(mUser, this);
         if (!mUser.getUserType().equals("Admin")){
             setComm();

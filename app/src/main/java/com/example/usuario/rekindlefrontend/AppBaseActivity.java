@@ -83,7 +83,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         setDataUser(user);
 
-        if (!user.getUserType().equals("Admin")) setChannel();
+        if (!user.getUserType().equals("Admin")) setChannelBanned();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
@@ -133,7 +133,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         });
     }
 
-    protected void setChannel() {
+    protected void setChannelBanned() {
         Channel channelUser = Comm.getChannelUser();
         channelUser.bind("ban", new SubscriptionEventListener() {
             @Override

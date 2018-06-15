@@ -265,7 +265,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
     public void sendEditService(Lodge service){
 
-        mAPIService.editarAlojamiento(service.getId(),service).enqueue(
+        mAPIService.editarAlojamiento(currentUser.getApiKey(), service.getId(), service).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

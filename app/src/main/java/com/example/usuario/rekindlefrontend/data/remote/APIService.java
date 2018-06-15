@@ -53,7 +53,7 @@ public interface APIService {
     Call<ArrayList<Chat>> getChats(@Path("mail") String mail);
 
     @GET("/usuarios/{mail1}/chats/{mail2}")
-    Call<Chat> getChat(@Path("mail1") String mail, @Path("mail2") String mail2);
+    Call<Chat> getChat(@Path("mail1") String mail1, @Path("mail2") String mail2);
 
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Header("apiKey") String apiKey, @Path("mail") String mail,
@@ -63,10 +63,11 @@ public interface APIService {
     Call<Integer> isUserEnabled(@Path("mail") String mail);
 
     @PUT("/usuarios/{mail}/enable")
-    Call<Void> enableUser(@Path("mail") String mail);
+    Call<Void> enableUser(@Path("mail") String mail);//api key mail admin
 
     @PUT("/usuarios/{mail}/disable")
-    Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);
+    Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);//api key
+    // mail admin
 
     @GET("/usuarios")
     Call<ArrayList<User>> getUsers();
@@ -167,10 +168,11 @@ public interface APIService {
 
     @POST("/servicios/{id}/{tipo}/valoraciones")
     Call<Void> createValoration(@Path("id") int id, @Path("tipo") String tipo, @Body Valoration
-            valoration);
+            valoration);//apikey
 
     @DELETE("/servicios/{id}/{tipo}")
-    Call<Void> eliminarServicio(@Header("apiKey") String apiKey, @Path("id") int id, @Path("tipo") String tipo);
+    Call<Void> eliminarServicio(@Header("apiKey") String apiKey, @Path("id") int id, @Path
+            ("tipo") String tipo);//mailuser
 
 
     @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
@@ -207,12 +209,12 @@ public interface APIService {
     Call<Report> getReport(@Path("id") int id);
 
     @DELETE("/reportes/{id}")
-    Call<Void> deleteReport(@Path("id") int id);
+    Call<Void> deleteReport(@Path("id") int id);//apikey mailuser
 
     //LLAMADAS RELACIONADAS CON SOLICITUDES DE DONACION
 
     @POST("/solicituddonacion")
-    Call<Void> createDonationRequest(@Body DonationRequest donationRequest);
+    Call<Void> createDonationRequest(@Body DonationRequest donationRequest);//apikey
 
     @GET("/solicituddonacion")
     Call<ArrayList<DonationRequest>> getDonationRequests();
@@ -222,9 +224,11 @@ public interface APIService {
 
     @PUT("/solicituddonacion/accept/{idDonation}")
     Call<Void> acceptDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
+    //apikey
 
     @PUT("/solicituddonacion/reject/{idDonation}")
     Call<Void> rejectDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
+    //apiKey
 
     //LLAMADAS RELACIONADAS CON LINKS
 
@@ -232,12 +236,13 @@ public interface APIService {
     Call<ArrayList<Link>> getLinks();
 
     @POST("/links")
-    Call<Void> createLink(@Header("apiKey") String apiKey, @Body Link link);
+    Call<Void> createLink(@Header("apiKey") String apiKey, @Body Link link);//mailuser
 
     @PUT("/links/{id}")
     Call<Void> updateLink(@Header("apiKey") String apiKey, @Path("id") int id, @Body Link link);
+    //mailuser
 
     @DELETE("/links/{id}")
-    Call<Void> deleteLink(@Header("apiKey") String apiKey, @Path("id") int id);
+    Call<Void> deleteLink(@Header("apiKey") String apiKey, @Path("id") int id);//mailuser
 
 }
