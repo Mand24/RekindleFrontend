@@ -498,4 +498,12 @@
     <string name="price_show">Preu: %1$s €</string>
     <string name="start_time_show">Hora inici: %1$s</string>
     <string name="end_time_show">Hora fi: %1$s</string>
+    <string name="location_error">Error! Selecciona una altra direcció si us plau</string>
+    <string name="value_too_high">Valor massa gran</string>
+    <string name="date">Data</string>
+    <string name="rating">Valoració</string>
+    <string name="sort_by">Ordenar per: (clica distancia, valoració i data en l\'ordre que
+        vols filtrar els resultats. L\'ordre per defecto es distancia, valoració, data)</string>
+    <string name="reset_order_list">Resetejar ordre</string>
+    <string name="reset_confirmation">¿Estàs segur?</string>
 </resources>

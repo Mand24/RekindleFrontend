@@ -2,9 +2,12 @@ package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
+
 import android.app.Fragment;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
@@ -27,6 +30,9 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+
+import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -140,36 +146,56 @@ public class DonationEdit extends Fragment {
     }
 
     public void getParams() {
+        Geocoder geo = new Geocoder(getActivity().getApplicationContext());
+        List<Address> addresses = null;
+        Address locationAddress = null;
+        try {
+            addresses = geo.getFromLocationName(eAdress.getText().toString(), 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (addresses != null && addresses.size() > 0) {
+            locationAddress = addresses.get(0);
+        }
 
-        servicio.setName(eName.getText().toString());
-        servicio.setPhoneNumber(ePhoneNumber.getText().toString());
-        servicio.setAdress(eAdress.getText().toString());
-        servicio.setPlacesLimit(ePlacesLimit.getText().toString());
-        servicio.setStartTime(editStartingTime.getText().toString());
-        servicio.setEndTime(editEndingTime.getText().toString());
-        servicio.setDescription(eDescription.getText().toString());
+        if (locationAddress != null) {
+            Double latitude = locationAddress.getLatitude();
+            Double longitude = locationAddress.getLongitude();
+            servicio.setName(eName.getText().toString());
+            servicio.setPhoneNumber(ePhoneNumber.getText().toString());
+            servicio.setAdress(eAdress.getText().toString());
+            servicio.setPlacesLimit(ePlacesLimit.getText().toString());
+            servicio.setStartTime(editStartingTime.getText().toString());
+            servicio.setEndTime(editEndingTime.getText().toString());
+            servicio.setDescription(eDescription.getText().toString());
+            servicio.setPositionLat(latitude);
+            servicio.setPositionLng(longitude);
+        } else {
+            eAdress.setError(getString(R.string.location_error));
+        }
     }
 
     public void sendUpdateService() {
         mAPIService.editarDonacion(Consistency.getUser(getActivity().getApplicationContext())
                 .getApiKey(), servicio.getId(), servicio)
                 .enqueue(new
-                                                                                           Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("codigo "+response.code());
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    manageResult(false);
-                }
-            }
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         System.out.println("codigo " + response.code());
+                                         if (response.isSuccessful()) {
+                                             manageResult(true);
+                                         } else {
+                                             manageResult(false);
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false);
-            }
-        });
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
+                                         manageResult(false);
+                                     }
+                                 });
     }
 
     public void manageResult(boolean result) {

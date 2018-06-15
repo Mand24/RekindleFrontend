@@ -15,10 +15,12 @@ public class Donation extends Service {
     private String endTime;
 
 
-    public Donation(int id, String email, String name, String description, String adress,
+    public Donation(int id, String email, String name, String description, String adress, Double
+            positionLat, Double positionLng,
             String placesLimit, String startTime, String endTime, String phoneNumber, Boolean
             ended) {
-        super(id, "Donation", email, name, description, adress, phoneNumber, ended);
+        super(id, "Donation", email, name, description, adress, positionLat, positionLng, phoneNumber,
+                ended);
         this.placesLimit = placesLimit;
         this.startTime = startTime;
         this.endTime = endTime;

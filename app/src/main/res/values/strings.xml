@@ -529,5 +529,13 @@
     <string name="price_show">Price: %1$s €</string>
     <string name="start_time_show">Start time: %1$s</string>
     <string name="end_time_show">End time: %1$s</string>
+    <string name="location_error">Error! Please select another address</string>
+    <string name="value_too_high">Value too high</string>
+    <string name="date">Date</string>
+    <string name="rating">Rating</string>
+    <string name="sort_by">Sort by: (clic distance, rating and data in the order you want
+        your results to be filtered. The order is distance, rating, data as default)</string>
+    <string name="reset_order_list">Reset order</string>
+    <string name="reset_confirmation">Are you sure?</string>
 </resources>
 

@@ -3,6 +3,7 @@ package com.example.usuario.rekindlefrontend.view.services.list;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -11,14 +12,18 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
@@ -30,14 +35,21 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class FilterServices extends AppCompatActivity {
 
-    RatingBar mRatingBar;
-    EditText mStartDate, mEndDate, mDistance;
-    RadioButton mGPSLocation, mCustomLocation, mMeters, mKilometers;
-    AppCompatButton mReset, mSend;
+    private RatingBar mRatingBar;
+    private EditText mStartDate, mEndDate, mDistance;
+    private RadioButton mGPSLocation, mCustomLocation, mMeters, mKilometers;
+    private AppCompatButton mReset, mSend, mResetOrderingList;
+    private TextView mSortDistance, mSortRating, mSortDate, mOrderTextView;
+
+    private List<String> listToSend = new ArrayList<>();
+    private String stringToSend = "distance, rating, date";
+    private List<String> mOrderList = new ArrayList<>();
 
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
@@ -64,6 +76,7 @@ public class FilterServices extends AppCompatActivity {
 
         SetDate fromDate = new SetDate(mStartDate, FilterServices.this);
         SetDate toDate = new SetDate(mEndDate, FilterServices.this);
+        mRatingBar.setRating(0.0f);
 
         mGPSLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,16 +129,99 @@ public class FilterServices extends AppCompatActivity {
             }
         });
 
+        mOrderTextView = findViewById(R.id.orderTextView);
+        mOrderTextView.setText(
+                String.format("%s%s%s", getString(R.string.distance), getString(R.string.rating),
+                        getString(R.string.date)));
+
+        mSortDistance = findViewById(R.id.sort_distance);
+        mSortDistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!mOrderList.contains(mSortDistance.getText().toString())){
+                    mOrderList.add(mSortDistance.getText().toString());
+                    stringToSend = "";
+                    listToSend.add("distance");
+                    stringToSend = TextUtils.join(", ", listToSend);
+                    String listString = TextUtils.join(", ", mOrderList);
+                    mOrderTextView.setText(listString);
+                }
+            }
+        });
+
+        mSortRating = findViewById(R.id.sort_rating);
+        mSortRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!mOrderList.contains(mSortRating.getText().toString())){
+                    mOrderList.add(mSortRating.getText().toString());
+                    stringToSend = "";
+                    listToSend.add("rating");
+                    stringToSend = TextUtils.join(", ", listToSend);
+                    String listString = TextUtils.join(", ", mOrderList);
+                    mOrderTextView.setText(listString);
+                }
+            }
+        });
+
+        mSortDate = findViewById(R.id.sort_date);
+        mSortDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!mOrderList.contains(mSortDate.getText().toString())){
+                    mOrderList.add(mSortDate.getText().toString());
+                    stringToSend = "";
+                    listToSend.add("date");
+                    stringToSend = TextUtils.join(", ", listToSend);
+                    String listString = TextUtils.join(", ", mOrderList);
+                    mOrderTextView.setText(listString);
+                }
+            }
+        });
+
+        mResetOrderingList = findViewById(R.id.reset_order_list);
+        mResetOrderingList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOrderList = new ArrayList<>();
+                listToSend = mOrderList;
+                stringToSend = "distance, rating, date";
+                stringToSend = TextUtils.join(", ", listToSend);
+                String listString = TextUtils.join(", ", mOrderList);
+                mOrderTextView.setText(listString);
+            }
+        });
+
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mRatingBar.setNumStars(0);
-                mStartDate.setText(null);
-                mEndDate.setText(null);
-                mGPSLocation.setChecked(false);
-                mCustomLocation.setChecked(false);
-                mKilometers.setChecked(false);
-                mMeters.setChecked(false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        FilterServices.this);
+
+                builder.setMessage(R.string
+                        .reset_confirmation);
+                builder.setCancelable(false);
+                builder.setPositiveButton(R.string.yes,
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                resetOptions();
+
+                            }
+                        });
+
+                builder.setNegativeButton(R.string.no,
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog,
+                                    int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 
@@ -134,22 +230,37 @@ public class FilterServices extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent i = new Intent(FilterServices.this, ListServices.class);
-                i.putExtra("startDate", mStartDate.getText().toString());
-                i.putExtra("endDate", mEndDate.getText().toString());
+
+                if (mStartDate.getText().toString().isEmpty()) {
+                    i.putExtra("startDate", "1900-01-01");
+                } else {
+                    i.putExtra("startDate", mStartDate.getText().toString());
+                }
+
+                if (mEndDate.getText().toString().isEmpty()) {
+                    i.putExtra("endDate", "2100-01-01");
+                } else {
+                    i.putExtra("endDate", mEndDate.getText().toString());
+                }
+
                 i.putExtra("minimumRating", (double) mRatingBar.getRating());
+
                 if (mGPSLocation.isChecked()) {
                     i.putExtra("location", mGPSLocation.getText().toString());
                 } else {
                     i.putExtra("location", mCustomLocation.getText().toString());
                 }
+
                 if (mDistance.getText().toString().length() > 0) {
                     if (android.text.TextUtils.isDigitsOnly(mDistance.getText().toString())) {
+                        Double distanceValue = Double.parseDouble(mDistance.getText().toString());
+                        if (distanceValue > (Double.MAX_VALUE / 1000)) {
+                            mDistance.setError(getText(R.string.value_too_high));
+                        }
                         if (mMeters.isChecked()) {
-                            i.putExtra("distance",
-                                    Double.parseDouble(mDistance.getText().toString()));
-                        } else {
-                            i.putExtra("distance", Double.parseDouble(mDistance.getText
-                                    ().toString()) * 1000);
+                            i.putExtra("distance", distanceValue);
+                        } else if (mKilometers.isChecked()) {
+                            i.putExtra("distance", distanceValue * 1000);
                         }
                     } else {
                         mDistance.setError(getText(R.string.distancia_numeros));
@@ -157,10 +268,23 @@ public class FilterServices extends AppCompatActivity {
                 } else {
                     i.putExtra("distance", Double.MAX_VALUE);
                 }
+
+                i.putExtra("order", TextUtils.join(", ", listToSend));
+
                 startActivity(i);
             }
         });
 
+    }
+
+    private void resetOptions(){
+        mRatingBar.setRating(0.0f);
+        mStartDate.setText(null);
+        mEndDate.setText(null);
+        mGPSLocation.setChecked(false);
+        mCustomLocation.setChecked(false);
+        mKilometers.setChecked(false);
+        mMeters.setChecked(false);
     }
 
     @Override

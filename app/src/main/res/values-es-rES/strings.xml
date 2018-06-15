@@ -517,4 +517,12 @@
     <string name="price_show">Precio: %1$s €</string>
     <string name="start_time_show">Hora de inicio: %1$s</string>
     <string name="end_time_show">Hora de finalización: %1$s</string>
+    <string name="location_error">Error! Selecciona otra dirección por favor</string>
+    <string name="value_too_high">Valor demasiado grande</string>
+    <string name="date">Fecha</string>
+    <string name="rating">Valoración</string>
+    <string name="sort_by">Ordenar por: (clica distancia, valoración y fecha en el orden que
+        quieres filtrar los resultados. El orden por defecto es distancia, valoracion, fecha</string>
+    <string name="reset_order_list">Resetear orden</string>
+    <string name="reset_confirmation">¿Estás seguro?</string>
 </resources>

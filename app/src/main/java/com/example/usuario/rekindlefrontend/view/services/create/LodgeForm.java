@@ -9,6 +9,8 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
@@ -34,6 +36,7 @@ import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -138,10 +141,30 @@ public class LodgeForm extends Fragment {
 
     public void getParams() {
 
-        mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
-                eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
-                .getText().toString(), eDeadline.getText().toString(), ePhoneNumber.getText()
-                .toString(), false);
+        Geocoder geo = new Geocoder(getActivity().getApplicationContext());
+        List<Address> addresses = null;
+        Address locationAddress = null;
+        try {
+            addresses = geo.getFromLocationName(eAdress.getText().toString(), 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (addresses != null && addresses.size() > 0) {
+            locationAddress = addresses.get(0);
+        }
+        if (locationAddress != null) {
+            Double latitude = locationAddress.getLatitude();
+            Double longitude = locationAddress.getLongitude();
+            mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
+                    eDescription.getText().toString(), eAdress.getText().toString(), latitude,
+                    longitude,
+                    ePlacesLimit
+                            .getText().toString(), eDeadline.getText().toString(),
+                    ePhoneNumber.getText()
+                            .toString(), false);
+        } else {
+            eAdress.setError(getString(R.string.location_error));
+        }
 
 
     }

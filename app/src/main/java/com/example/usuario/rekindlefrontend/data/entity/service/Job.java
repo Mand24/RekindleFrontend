@@ -26,11 +26,12 @@ public class Job extends Service {
     @Expose
     public String salary;
 
-    public Job(int id, String email, String name, String description, String adress, String charge,
+    public Job(int id, String email, String name, String description, String adress, Double
+            positionLat, Double positionLng, String charge,
             String requirements, String hoursDay, String hoursWeek, String contractDuration, String
             placesLimit, String salary, String phoneNumber, Boolean
             ended) {
-        super(id, "Job", email, name, description, adress, phoneNumber, ended);
+        super(id, "Job", email, name, description, adress, positionLat, positionLng, phoneNumber, ended);
         this.charge = charge;
         this.requirements = requirements;
         this.hoursDay = hoursDay;

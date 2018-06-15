@@ -30,18 +30,26 @@ public class Service implements Serializable {
     @SerializedName("ended")
     @Expose
     private Boolean ended;
+    @SerializedName("positionLat")
+    @Expose
+    private Double positionLat;
+    @SerializedName("positionLng")
+    @Expose
+    private Double positionLng;
 
     private int image;
 
 
     public Service(int id, String serviceType, String email, String name, String description, String
-            adress, String phoneNumber, Boolean ended) {
+            adress, Double positionLat, Double positionLng, String phoneNumber, Boolean ended) {
         this.id = id;
         this.serviceType = serviceType;
         this.volunteer = email;
         this.name = name;
         this.description = description;
         this.adress = adress;
+        this.positionLat = positionLat;
+        this.positionLng = positionLng;
         this.phoneNumber = phoneNumber;
         this.ended = ended;
     }
@@ -94,6 +102,22 @@ public class Service implements Serializable {
         this.adress = adress;
     }
 
+    public Double getPositionLat(){
+        return positionLat;
+    }
+
+    public void setPositionLat(Double positionLat){
+        this.positionLat = positionLat;
+    }
+
+    public Double getPositionLng(){
+        return positionLng;
+    }
+
+    public void setPositionLng(Double positionLng){
+        this.positionLng = positionLng;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -127,6 +151,8 @@ public class Service implements Serializable {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", adress='" + adress + '\'' +
+                ", positionLat'"+ positionLat + '\'' +
+                ", positionLng'"+ positionLng + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", ended=" + ended +
                 ", image=" + image +

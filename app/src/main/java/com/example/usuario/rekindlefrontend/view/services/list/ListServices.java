@@ -211,18 +211,29 @@ public class ListServices extends AppBaseActivity implements Filterable {
         Double minimumRating = null;
         String location;
         Double distance = null;
+        String order = "distance, rating, date";
 
         Geocoder geo = new Geocoder(getApplicationContext());
         Address locationAddress = null;
-        Double latitude = null;
-        Double longitude = null;
+        Double latitude = 86.0;
+        Double longitude = 181.0;
 
         if (extras!= null) {
             startDate = (String) extras.get("startDate");
             endDate = (String) extras.get("endDate");
-            minimumRating = new Double((double) extras.get("minimumRating"));
+            minimumRating = Double.valueOf((double) extras.get("minimumRating"));
             location = (String) extras.get("location");
             distance = (Double) extras.get("distance");
+            order = (String) extras.get("order");
+            if(!order.contains("distance")){
+                order+=", distance";
+            }
+            if(!order.contains("rating")){
+                order+=", rating";
+            }
+            if(!order.contains("date")){
+                order+=", date";
+            }
 
             try {
                 List<Address> addresses = geo.getFromLocationName(location, 1);
@@ -240,7 +251,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
 //        System.out.println(mAPIService.getServicesFiltered(startDate, endDate, minimumRating,
 //               latitude, longitude, distance).request().toString());
         mAPIService.getServicesFiltered(startDate, endDate, minimumRating, latitude, longitude,
-                distance)
+                distance, order)
                 .enqueue(new Callback<ArrayList<Service>>
                         () {
                     @Override
