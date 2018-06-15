@@ -97,7 +97,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
         if (type.equals("Refugee")) {
 
-
+            endButton.setVisibility(View.INVISIBLE);
             chat.setOnClickListener(new View.OnClickListener() {
 
                 @Override
