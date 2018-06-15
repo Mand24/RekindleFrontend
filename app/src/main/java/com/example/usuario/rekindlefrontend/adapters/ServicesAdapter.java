@@ -86,7 +86,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
 
     public class ServiceViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
-        TextView serviceName, serviceAddress, expirationDate;
+        TextView serviceName, serviceAddress, expirationDate, distance, rating;
         ImageView serviceType;
 
         ServiceViewHolder(View itemView) {
@@ -95,6 +95,9 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
             serviceName = (TextView) itemView.findViewById(R.id.titulo_servicio);
             serviceAddress = (TextView) itemView.findViewById(R.id.direccion_servicio);
             serviceType = (ImageView) itemView.findViewById(R.id.photo_cardView);
+           /* expirationDate = (TextView) itemView.findViewById(R.id.fecha_limite_servicio);
+            distance = (TextView) itemView.findViewById(R.id.service_distance);
+            rating = (TextView) itemView.findViewById(R.id.service_rating);*/
         }
     }
 }
