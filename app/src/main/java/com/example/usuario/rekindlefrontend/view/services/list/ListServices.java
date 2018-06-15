@@ -47,7 +47,6 @@ public class ListServices extends AppBaseActivity implements Filterable {
     protected RecyclerView recyclerView;
     protected ServicesAdapter mAdapter;
     protected SearchView searchView;
-    protected LinearLayout map_and_filter;
 
     protected APIService mAPIService;
 
@@ -72,7 +71,6 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
         initializeData();
 
-        map_and_filter = findViewById(R.id.map_and_filter);
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(this.getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
