@@ -1,177 +1,251 @@
 package com.example.usuario.rekindlefrontend;
 
+import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
+import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.usuario.Usuario;
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.About;
-import com.example.usuario.rekindlefrontend.view.menu.menuLateral.Ajustes;
-import com.example.usuario.rekindlefrontend.view.usuarios.verPerfil.VerPerfil;
+import com.example.usuario.rekindlefrontend.data.entity.user.User;
+import com.example.usuario.rekindlefrontend.data.pusher.Comm;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.About;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Help;
+import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Settings;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
+import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
 import com.google.gson.Gson;
-import com.example.usuario.rekindlefrontend.view.Help;
+import com.google.gson.reflect.TypeToken;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
+
+import java.lang.reflect.Type;
+import java.util.Map;
 
 public abstract class AppBaseActivity extends AppCompatActivity {
 
-//    private ListView listView;
-//    private String[] opciones = { "Opción 1", "Opción 2", "Opción 3", "Opción 4" };
-
     protected RelativeLayout view_stub; //This is the framelayout to keep your content view
-    protected NavigationView navigationView; // The new navigation view from Android Design Library. Can inflate menu resources. Easy
+    protected NavigationView navigationView;
+    // The new navigation view from Android Design Library. Can inflate menu resources. Easy
     protected DrawerLayout drawerLayout;
-    private TextView nombreUsuario;
-    private TextView emailUsuario;
+    protected Toolbar mToolbar;
+    private TextView userName;
+    private TextView userEmail;
+    private ImageView userPhoto;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_app_base);// The base layout that contains your navigation drawer.
-//      listView = (ListView) findViewById(R.id.list_view);
+        super.setContentView(
+                R.layout.activity_app_base);// The base layout that contains your navigation drawer.
+
         view_stub = (RelativeLayout) findViewById(R.id.view_stub);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation);
 
+        User user = getUser(this);
+
+        if (user.getUserType().equals("Admin")) {
+            navigationView.inflateMenu(R.menu.lateral_menu_admin);
+        } else {
+            navigationView.inflateMenu(R.menu.lateral_menu);
+        }
+
+
+        setSupportActionBar(mToolbar);
+
         View headerView = navigationView.getHeaderView(0);
 
-        nombreUsuario = (TextView) headerView.findViewById(R.id.nombre_header);
-        emailUsuario = (TextView) headerView.findViewById(R.id.email_header);
+        drawerToggle = setupDrawerToggle();
+        drawerLayout.addDrawerListener(drawerToggle);
 
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = datos.getString("usuario", "");
-        Usuario usuario = gson.fromJson(json, Usuario.class);
-        nombreUsuario.setText(usuario.getName() + " " + usuario.getSurname1());
-        emailUsuario.setText(usuario.getMail());
-        
+        userName = (TextView) headerView.findViewById(R.id.nombre_header);
+        userEmail = (TextView) headerView.findViewById(R.id.email_header);
+        userPhoto = (ImageView) headerView.findViewById(R.id.profile_image);
 
+
+        setDataUser(user);
+
+        if (!user.getUserType().equals("Admin")) setChannelBanned();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.isChecked()) menuItem.setChecked(false);
-                else menuItem.setChecked(true);
+                if (menuItem.isChecked()) {
+                    menuItem.setChecked(false);
+                } else {
+                    menuItem.setChecked(true);
+                }
 
                 drawerLayout.closeDrawers();
 
                 Intent i;
 
-                switch (menuItem.getItemId())
-                {
-                    /*Se define la lógica de casos que puedan producirse al seleccionar cualquier elemento del menú.*/
+                switch (menuItem.getItemId()) {
+
                     case R.id.ver_perfil:
-                        i = new Intent(getApplicationContext(), VerPerfil.class);
-                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        Gson gson = new Gson();
-                        String json = datos.getString("usuario", "");
-                        Usuario usuario = gson.fromJson(json, Usuario.class);
-                        i.putExtra("tipo", usuario.getTipo());
-                        System.out.println("tipo app: "+ usuario.getTipo());
+                        i = new Intent(getApplicationContext(), ShowProfile.class);
                         startActivity(i);
                         break;
                     case R.id.configuracion:
-//                        Toast.makeText(getApplicationContext(), "configuracion!", Toast
-//                                .LENGTH_SHORT)
-//                                .show();
-                        i = new Intent(getApplicationContext(), Ajustes.class);
+
+                        i = new Intent(getApplicationContext(), Settings.class);
                         startActivity(i);
                         break;
 
                     case R.id.ayuda:
-//                        Toast.makeText(getApplicationContext(), "help!", Toast
-//                                .LENGTH_SHORT)
-//                                .show();
+
                         i = new Intent(getApplicationContext(), Help.class);
                         startActivity(i);
                         break;
                     case R.id.about:
-//                      Toast.makeText(getApplicationContext(), "about!", Toast.LENGTH_SHORT)
-//                                .show();
+
                         i = new Intent(getApplicationContext(), About.class);
                         startActivity(i);
                         break;
                     case R.id.cerrar_sesion:
                         openDialog();
                         break;
+                    default:
+                        break;
                 }
                 return true;
 
             }
         });
+    }
 
-//        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-//                android.R.id.text1,opciones));
-//
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//                    long arg3) {
-//                Toast.makeText(getApplicationContext(), "Item: " + opciones[arg2],
-//                        Toast.LENGTH_SHORT).show();
-//                drawerLayout.closeDrawers();
-//            }
-//        });
+    protected void setChannelBanned() {
+        Channel channelUser = Comm.getChannelUser();
+        channelUser.bind("ban", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Gson gson = new Gson();
+                        Type mapType = new TypeToken<Map<String, String>>() {
+                        }.getType();
+                        Map<String, String> map = gson.fromJson(data, mapType);
+                        String reason = map.get("message");
 
-                // Mostramos el botón en la barra de la aplicación
-                //getActionBar().setDisplayHomeAsUpEnabled(true);
-        // and so on...
+                        Intent intent = new Intent(getApplicationContext(), Login
+                                .class);
+
+                        // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
+                        final int pendingIntentId = 0;
+                        PendingIntent contentIntent =
+                                PendingIntent.getActivity(getApplicationContext(),
+                                        pendingIntentId, intent,
+                                        PendingIntent.FLAG_UPDATE_CURRENT);
+
+                        // Instantiate the builder and set notification elements:
+                        Notification notification;
+                        Notification.Builder builder = new Notification.Builder(
+                                getApplicationContext());
+                        builder.setCategory(Notification.CATEGORY_PROMO);
+                        builder.setContentTitle(getString(R.string.banned));
+                        builder.setSmallIcon(R.drawable.logo_r);
+                        builder.setAutoCancel(true);
+                        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+                        builder.addAction(android.R.drawable.ic_menu_view, getString(R.string
+                                        .view_details),
+                                contentIntent);
+                        builder.setContentIntent(contentIntent);
+                        builder.setPriority(Notification.PRIORITY_HIGH);
+                        builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
+
+                        builder.setContentText(reason);
+
+                        notification = builder.build();
+
+                        // Get the notification manager:
+                        NotificationManager notificationManager =
+                                (NotificationManager) getApplicationContext().getSystemService(
+                                        NOTIFICATION_SERVICE);
+
+                        // Publish the notification:
+                        final int notificationId = 0;
+                        notificationManager.notify(notificationId, notification);
+
+                        Comm.disconnectPusher();
+                        saveUser(null, getApplicationContext());
+                        gotoLaunch();
+                    }
+                });
+            }
+        });
+    }
+
+    protected void setDataUser(User user) {
+        userName.setText(user.getName() + " " + user.getSurname1());
+        userEmail.setText(user.getMail());
+
+        if (user.getPhoto() != null) {
+            userPhoto.setImageBitmap(user.getDecodedPhoto());
+        } else {
+            userPhoto.setImageResource(R.drawable.ic_usuario);
+        }
     }
 
     private void openDialog() {
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to log out?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
+                .setTitle(getString(R.string.logout))
+                .setMessage(getString(R.string.logout_message))
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        SharedPreferences.Editor miEditor = datos.edit();
-                        miEditor.putString("usuario","");
-                        miEditor.apply();
-                        Toast.makeText(getApplicationContext(), "cerrar sesion!", Toast
-                                .LENGTH_SHORT)
-                                .show();
-                        gotoInicio();
+                        if (!getUser(getApplicationContext()).getUserType().equals("Admin")) {
+                            Comm.disconnectPusher();
+                        }
+                        saveUser(null, getApplicationContext());
+                        gotoLaunch();
                     }
 
                 })
-                .setNegativeButton("No", null)
+                .setNegativeButton(getString(R.string.no), null)
                 .show();
     }
 
-    protected abstract void gotoInicio();
+    protected abstract void gotoLaunch();
 
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /* Override all setContentView methods to put the content view to the FrameLayout view_stub
-     * so that, we can make other activity implementations looks like normal activity subclasses.
-     */
     @Override
     public void setContentView(int layoutResID) {
         if (view_stub != null) {
@@ -201,20 +275,30 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         }
     }
 
-    //    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                if (drawerLayout.isDrawerOpen(listView)) {
-//                    drawerLayout.closeDrawers();
-//                } else {
-//                    drawerLayout.openDrawer(listView);
-//                }
-//                return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.home:
+                Intent i = new Intent(this, MainMenu.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public ActionBarDrawerToggle setupDrawerToggle() {
+        return new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.drawer_open,
+                R.string
+                        .drawer_close);
+    }
 
 }

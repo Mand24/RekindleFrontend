@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fondo"
+                tools:context=".view.users.register.RegisterUser">
+
+    <fragment
+        android:id="@+id/eleccion_usuario"
+        android:name="com.example.usuario.rekindlefrontend.view.users.register.UserTypeSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/dim1"
+        tools:layout="@layout/fragment_selection_user_type">
+
+    </fragment>
+
+    <RelativeLayout
+        android:id="@+id/formulario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/eleccion_usuario">
+
+    </RelativeLayout>
+
+</RelativeLayout>

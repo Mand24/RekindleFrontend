@@ -9,7 +9,7 @@
 
             </solid>
             <stroke android:width="@dimen/dim1"
-                android:color="#ffffff">
+                    android:color="#ffffff">
             </stroke>
             <corners android:radius="@dimen/dim6">
 
@@ -22,11 +22,11 @@
     <item>
         <shape>
 
-            <gradient android:startColor="#ffea00"
-                android:endColor="#ffea00"
-                android:angle="270"></gradient>
+            <gradient android:angle="270"
+                      android:endColor="#ffea00"
+                      android:startColor="#ffea00"></gradient>
             <stroke android:width="@dimen/dim1"
-                android:color="#f30d2d">
+                    android:color="#f30d2d">
             </stroke>
             <corners android:radius="@dimen/dim6"></corners>
 

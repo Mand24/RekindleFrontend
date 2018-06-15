@@ -35,9 +35,9 @@ public class CodePasswordRequest extends AppCompatActivity {
         });
     }
 
-    private void sendEmail(){
-        String email =  _email.getText().toString();
-        if(!email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher
+    private void sendEmail() {
+        String email = _email.getText().toString();
+        if (!email.isEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher
                 (email).matches()) {
             CodeGenerator code = new CodeGenerator(5);
             String codeString = code.getCode();
@@ -48,20 +48,18 @@ public class CodePasswordRequest extends AppCompatActivity {
                     "12rekindle34", email, "Password recovery code", "Your password recovery code"
                             + " is: " + codeString);
 
-            Intent i = new Intent(getApplicationContext(), RecuperarPassword.class);
+            Intent i = new Intent(getApplicationContext(), RecoverPassword.class);
             i.putExtra("email", email);
             i.putExtra("code", codeString);
             startActivity(i);
 
-        }
-        else{
+        } else {
             _email.setError("Enter a valid email address");
         }
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), Login.class);
-        startActivity(i);
+        finish();
     }
 }

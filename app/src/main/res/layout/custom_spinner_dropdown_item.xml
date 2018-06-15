@@ -2,6 +2,6 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/text_view"
-    android:textColor="@color/colorWhite"
     android:layout_width="match_parent"
+    android:textColor="@color/colorWhite"
 />
