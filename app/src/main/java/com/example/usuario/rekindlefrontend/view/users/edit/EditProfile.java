@@ -14,6 +14,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.entity.user.Volunteer;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
 
 import java.util.HashMap;
 
@@ -71,7 +72,8 @@ public class EditProfile extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, ShowProfile.class);
+        startActivity(i);
     }
 
     @Override

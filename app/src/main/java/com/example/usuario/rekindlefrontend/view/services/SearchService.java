@@ -118,7 +118,8 @@ public class SearchService extends AppBaseActivity implements OnMapReadyCallback
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, ListServices.class);
+        startActivity(i);
     }
 
     @Override
