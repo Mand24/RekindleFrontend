@@ -68,6 +68,15 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation);
 
+        User user = getUser(this);
+
+        if (user.getUserType().equals("Admin")){
+            navigationView.inflateMenu(R.menu.lateral_menu_admin);
+        }else {
+            navigationView.inflateMenu(R.menu.lateral_menu);
+        }
+
+
         setSupportActionBar(mToolbar);
 
         View headerView = navigationView.getHeaderView(0);
@@ -79,11 +88,11 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         userEmail = (TextView) headerView.findViewById(R.id.email_header);
         userPhoto = (ImageView) headerView.findViewById(R.id.profile_image);
 
-        User user = getUser(this);
+
 
         setDataUser(user);
 
-        if (!user.getUserType().equals("Admin")) setChannelBanned();
+        if (!user.getUserType().equals("Admin")) setChannel();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView
                 .OnNavigationItemSelectedListener() {
@@ -133,7 +142,7 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         });
     }
 
-    protected void setChannelBanned() {
+    protected void setChannel() {
         Channel channelUser = Comm.getChannelUser();
         channelUser.bind("ban", new SubscriptionEventListener() {
             @Override
