@@ -246,7 +246,8 @@ public class ShowRefugee extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, ListRefugee.class);
+        startActivity(i);
     }
 
     @Override

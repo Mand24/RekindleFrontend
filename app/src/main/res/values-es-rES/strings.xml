@@ -519,4 +519,15 @@
     <string name="end_time_show">Hora de finalización: %1$s</string>
 
     <string name="ver_perfil_error">Error al mostrar perfil</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="logout_message">Estas seguro de que quieres cerrar la sesión?</string>
+    <string name="view_details">Ver detalles</string>
+    <string name="editLink">Editar enlace</string>
+    <string name="titulo_help">Ayuda</string>
+    <string name="new_request">Nueva Solicitud</string>
+    <string name="new_report">Nuevo Reporte</string>
+    <string name="list_requests">Listar Solicitudes</string>
+    <string name="report">Reporte</string>
+    <string name="donation_request">SolicitudDonación</string>
+    <string name="title_activity_editar_servicio">Editar Servicio</string>
 </resources>

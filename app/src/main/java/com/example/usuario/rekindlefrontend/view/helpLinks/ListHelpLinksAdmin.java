@@ -12,6 +12,7 @@ import com.example.usuario.rekindlefrontend.adapters.LinksAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.link.Link;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -118,5 +119,10 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
+    }
 
 }

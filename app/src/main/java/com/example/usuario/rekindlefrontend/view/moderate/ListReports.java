@@ -48,7 +48,7 @@ public class ListReports extends AppBaseActivity implements Filterable {
         recyclerView = (RecyclerView) findViewById(R.id.rv);
 
 
-        getSupportActionBar().setTitle("ListaReportes");
+        getSupportActionBar().setTitle(R.string.listar_reportes);
         initializeData();
 
         RecyclerView.LayoutManager mLayoutManager =
@@ -200,7 +200,8 @@ public class ListReports extends AppBaseActivity implements Filterable {
     }
 
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
     }
 
     @Override

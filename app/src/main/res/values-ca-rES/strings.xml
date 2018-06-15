@@ -500,4 +500,15 @@
     <string name="end_time_show">Hora fi: %1$s</string>
 
     <string name="ver_perfil_error">Error al mostrar perfil</string>
+    <string name="logout">Tancar sessió</string>
+    <string name="logout_message">Estas segur que vols tancar la sessió?</string>
+    <string name="view_details">Veure detalls</string>
+    <string name="editLink">Editar enllaç</string>
+    <string name="titulo_help">Ajuda</string>
+    <string name="new_request">Nova Sol·licitut</string>
+    <string name="new_report">Nou Report</string>
+    <string name="list_requests">Llistar Sol·licituts</string>
+    <string name="report">Report</string>
+    <string name="donation_request">Sol·licitudDonació</string>
+    <string name="title_activity_editar_servicio">Editar Servei</string>
 </resources>

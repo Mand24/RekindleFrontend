@@ -39,6 +39,7 @@ public class CreateDonationRequest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_donation_request);
+        getSupportActionBar().setTitle(R.string.new_request);
 
         setViews();
 
@@ -129,5 +130,10 @@ public class CreateDonationRequest extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.solicitud_fallida), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

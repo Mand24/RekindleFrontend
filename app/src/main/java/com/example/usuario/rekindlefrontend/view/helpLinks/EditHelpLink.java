@@ -35,7 +35,7 @@ public class EditHelpLink extends AppBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_help_link);
-
+        getSupportActionBar().setTitle(R.string.editLink);
         link = getIntent().getParcelableExtra("Link");
 
         setViews();
@@ -117,7 +117,7 @@ public class EditHelpLink extends AppBaseActivity {
 
         if (result) {
             Toast.makeText(getApplicationContext(), getResources().getString(R
-                    .string.link_created_successfully), Toast.LENGTH_SHORT).show();
+                    .string.link_updated_successfully), Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), ListHelpLinksAdmin.class);
             startActivity(i);
 

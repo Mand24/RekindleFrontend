@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import java.util.HashMap;
 
@@ -47,7 +48,8 @@ public class CreateService extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
     }
 
     @Override

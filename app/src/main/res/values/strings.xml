@@ -531,5 +531,14 @@
     <string name="end_time_show">End time: %1$s</string>
 
     <string name="ver_perfil_error">Show profile error</string>
+    <string name="logout">Logout</string>
+    <string name="logout_message">Are you sure you want to log out?</string>
+    <string name="view_details">View details</string>
+    <string name="editLink">Edit link</string>
+    <string name="new_request">New Request</string>
+    <string name="new_report">New Report</string>
+    <string name="list_requests">List Requests</string>
+    <string name="report">Report</string>
+    <string name="donation_request">DonationRequest</string>
 </resources>
 

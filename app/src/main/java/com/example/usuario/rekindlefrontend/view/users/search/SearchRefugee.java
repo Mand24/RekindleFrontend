@@ -19,6 +19,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
+import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import java.util.ArrayList;
 
@@ -216,7 +217,8 @@ public class SearchRefugee extends AppBaseActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
     }
 
     @Override
