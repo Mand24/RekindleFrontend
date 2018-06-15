@@ -14,6 +14,9 @@ public class User implements Parcelable {
     @SerializedName("userType")
     @Expose
     private String userType;
+    @SerializedName("apiKey")
+    @Expose
+    private String apiKey;
     @SerializedName("enabled")
     @Expose
     private int enabled;
@@ -54,6 +57,7 @@ public class User implements Parcelable {
 
     protected User(Parcel in) {
         userType = in.readString();
+        apiKey = in.readString();
         enabled = in.readInt();
         mail = in.readString();
         password = in.readString();
@@ -71,6 +75,7 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userType);
+        dest.writeString(apiKey);
         dest.writeInt(enabled);
         dest.writeString(mail);
         dest.writeString(password);
@@ -152,6 +157,14 @@ public class User implements Parcelable {
         this.photo = photo;
     }
 
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
     public Bitmap getDecodedPhoto() {
         byte[] decodedString = Base64.decode(getPhoto(), Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(decodedString, 0,
@@ -162,6 +175,7 @@ public class User implements Parcelable {
     public String toString() {
         return "User{" +
                 "userType='" + userType + '\'' +
+                ", apiKey='" + apiKey + '\'' +
                 ", enabled=" + enabled + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +

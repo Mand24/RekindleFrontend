@@ -18,6 +18,8 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
@@ -150,7 +152,10 @@ public class DonationEdit extends Fragment {
     }
 
     public void sendUpdateService() {
-        mAPIService.editarDonacion(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+        mAPIService.editarDonacion(Consistency.getUser(getActivity().getApplicationContext())
+                .getApiKey(), servicio.getId(), servicio)
+                .enqueue(new
+                                                                                           Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("codigo "+response.code());

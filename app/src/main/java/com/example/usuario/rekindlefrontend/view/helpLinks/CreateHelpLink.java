@@ -16,6 +16,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.link.Link;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
@@ -86,7 +87,8 @@ public class CreateHelpLink extends AppBaseActivity {
     }
 
     public void sendLink() {
-        mAPIService.createLink(link).enqueue(new Callback<Void>() {
+        mAPIService.createLink(Consistency.getUser(this).getApiKey(), link).enqueue(new
+                                                                                           Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

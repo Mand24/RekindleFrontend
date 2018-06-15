@@ -182,7 +182,6 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
 
                     AlertDialog alert = builder.create();
                     alert.show();
-
                 }
 
             });
@@ -320,7 +319,9 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
     }
 
     public void sendNewChat(Chat chat) {
-        mAPIService.newChat(currentUser.getMail(), chat).enqueue(new Callback<Chat>() {
+        mAPIService.newChat(currentUser.getApiKey(), currentUser.getMail(), chat).enqueue(new
+                                                                                                 Callback<Chat>
+                () {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 System.out.println("newchat code: " + response.code());

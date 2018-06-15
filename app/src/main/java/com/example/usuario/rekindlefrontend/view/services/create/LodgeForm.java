@@ -56,6 +56,7 @@ public class LodgeForm extends Fragment {
     private EditText eDescription;
     private Lodge mLodge;
     private APIService mAPIService;
+    private User user;
     private FormatChecker fc;
 
     public LodgeForm() {
@@ -69,6 +70,8 @@ public class LodgeForm extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_lodge_form, container,
                 false);
+
+        user = getUser(getActivity().getApplicationContext());
 
         setViews(view);
 
@@ -135,8 +138,6 @@ public class LodgeForm extends Fragment {
 
     public void getParams() {
 
-        User user = getUser(getActivity().getApplicationContext());
-
         mLodge = new Lodge(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), ePlacesLimit
                 .getText().toString(), eDeadline.getText().toString(), ePhoneNumber.getText()
@@ -146,7 +147,7 @@ public class LodgeForm extends Fragment {
     }
 
     public void sendCreateLodge() {
-        mAPIService.crearAlojamiento(mLodge).enqueue(new Callback<Void>() {
+        mAPIService.crearAlojamiento(user.getApiKey(), mLodge).enqueue(new Callback<Void>() {
 
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

@@ -11,6 +11,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.LinksAdapter;
 import com.example.usuario.rekindlefrontend.data.entity.link.Link;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -93,7 +94,9 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
     }
 
     public void sendDeleteLink(Link link){
-        mAPIService.deleteLink(link.getIdLink()).enqueue(new Callback<Void>() {
+        mAPIService.deleteLink(Consistency.getUser(this).getApiKey(), link.getIdLink()).enqueue
+                (new
+                                                                                           Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()){

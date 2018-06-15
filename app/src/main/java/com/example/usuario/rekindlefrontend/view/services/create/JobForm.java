@@ -58,6 +58,8 @@ public class JobForm extends Fragment {
     private APIService mAPIService;
     private FormatChecker fc;
 
+    private User user;
+
     public JobForm() {
         // Required empty public constructor
     }
@@ -69,6 +71,8 @@ public class JobForm extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_job_form, container,
                 false);
+
+        user = getUser(getActivity().getApplicationContext());
 
         //establecer las vistas
         setViews(view);
@@ -145,8 +149,6 @@ public class JobForm extends Fragment {
 
     public void getParams() {
 
-        User user = getUser(getActivity().getApplicationContext());
-
         mJob = new Job(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), eCharge
                 .getText().toString(), eRequirements.getText().toString(), eHoursDay.getText()
@@ -158,7 +160,7 @@ public class JobForm extends Fragment {
     }
 
     public void sendCreateJob() {
-        mAPIService.crearOferta(mJob).enqueue(new Callback<Void>() {
+        mAPIService.crearOferta(user.getApiKey(), mJob).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

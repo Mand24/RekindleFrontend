@@ -254,7 +254,7 @@ public class EditProfileRefugee extends Fragment {
     }
 
     public void sendUpdateRefugee() {
-        mAPIService.actualizarRefugiado(mRefugee.getMail(), mRefugee).enqueue(
+        mAPIService.actualizarRefugiado(mRefugee.getApiKey(), mRefugee.getMail(), mRefugee).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

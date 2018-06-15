@@ -100,7 +100,10 @@ public class MyServicesVolunteer extends ListServices {
     }
 
     public void sendDeleteService(Service service) {
-        mAPIService.eliminarServicio(service.getId(), service.getServiceType()).enqueue(
+        mAPIService.eliminarServicio(Consistency.getUser(this).getApiKey(), service.getId(),
+                service
+                .getServiceType())
+                .enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

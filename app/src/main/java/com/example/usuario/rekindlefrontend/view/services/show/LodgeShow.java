@@ -140,7 +140,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
 
                     if (enroll.getText().toString().equals(getResources().getString(R
                             .string.inscribir))) {
-                        mAPIService.subscribeService(mail,
+                        mAPIService.subscribeService(currentUser.getApiKey(), mail,
 
                                 service.getId(), TYPE).enqueue(new Callback<Void>() {
                             @Override
@@ -170,7 +170,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
                                     public void onClick(DialogInterface dialog,
                                             int which) {
 
-                                        mAPIService.unsubscribeService(mail, service.getId(),
+                                        mAPIService.unsubscribeService(currentUser.getApiKey(),
+                                                mail, service
+                                                        .getId(),
                                                 TYPE).enqueue(new Callback<Void>() {
                                             @Override
                                             public void onResponse(Call<Void> call,
@@ -386,7 +388,9 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     }
 
     public void sendNewChat(Chat chat) {
-        mAPIService.newChat(currentUser.getMail(), chat).enqueue(new Callback<Chat>() {
+        mAPIService.newChat(currentUser.getApiKey(), currentUser.getMail(), chat).enqueue(new
+                                                                                                 Callback<Chat>
+                () {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 System.out.println("newchat code: " + response.code());

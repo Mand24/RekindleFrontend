@@ -84,7 +84,10 @@ public class MyServicesRefugee extends ListServices {
     }
 
     public void sendUnsubscribeService(Service service) {
-        mAPIService.unsubscribeService(Consistency.getUser(this).getMail(), service.getId(),
+        mAPIService.unsubscribeService(Consistency.getUser(this).getApiKey(), Consistency.getUser
+                        (this)
+                        .getMail(), service
+                        .getId(),
                 service.getServiceType()).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

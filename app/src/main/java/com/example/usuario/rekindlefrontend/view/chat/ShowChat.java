@@ -127,7 +127,9 @@ public class ShowChat extends AppBaseActivity {
     }
 
     public void sendSendMessage() {
-        mAPIService.sendMessage(getUser(this).getMail(), chat.getIdChat(), message)
+        mAPIService.sendMessage(getUser(this).getApiKey(), getUser(this).getMail(), chat
+                        .getIdChat(),
+                message)
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

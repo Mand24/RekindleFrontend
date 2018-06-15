@@ -18,6 +18,8 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Education;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -152,7 +154,10 @@ public class EducationEdit extends Fragment {
     }
 
     public void sendUpdateService() {
-        mAPIService.editarCurso(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+        mAPIService.editarCurso(Consistency.getUser(getActivity().getApplicationContext())
+                .getApiKey(), servicio.getId(), servicio)
+                .enqueue(new
+                                                                                        Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

@@ -19,6 +19,8 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Lodge;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.AbstractFormatChecker;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
 import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
@@ -153,7 +155,11 @@ public class LodgeEdit extends Fragment {
     }
 
     public void sendUpdateService() {
-        mAPIService.editarAlojamiento(servicio.getId(), servicio).enqueue(new Callback<Void>() {
+        mAPIService.editarAlojamiento(Consistency.getUser(getActivity().getApplicationContext()).getApiKey(), servicio
+                        .getId(),
+                servicio)
+                .enqueue(new
+                                                                                           Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

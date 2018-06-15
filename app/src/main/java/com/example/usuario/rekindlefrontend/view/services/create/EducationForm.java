@@ -53,6 +53,7 @@ public class EducationForm extends Fragment {
     private EditText eDescription;
     private Education mEducation;
     private APIService mAPIService;
+    private User user;
     private FormatChecker fc;
 
     public EducationForm() {
@@ -66,6 +67,8 @@ public class EducationForm extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_education_form, container,
                 false);
+
+        user = getUser(getActivity().getApplicationContext());
 
         //establecer las vistas
         setViews(view);
@@ -136,8 +139,6 @@ public class EducationForm extends Fragment {
 
     public void getParams() {
 
-        User user = getUser(getActivity().getApplicationContext());
-
         mEducation = new Education(0, user.getMail(), eName.getText().toString(),
                 eDescription.getText().toString(), eAdress.getText().toString(), eAmbit
                 .getText().toString(), eRequirements.getText().toString(), eSchedule.getText()
@@ -147,7 +148,7 @@ public class EducationForm extends Fragment {
     }
 
     public void sendCreateEducation() {
-        mAPIService.crearEducacion(mEducation).enqueue(new Callback<Void>() {
+        mAPIService.crearEducacion(user.getApiKey(), mEducation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

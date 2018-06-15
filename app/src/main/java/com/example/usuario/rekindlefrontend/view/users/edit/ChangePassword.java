@@ -31,6 +31,7 @@ public class ChangePassword extends AppBaseActivity {
     private String actual;
     private String new_pass;
     private String email;
+    private String apiKey;
 
     private APIService mAPIService;
 
@@ -49,9 +50,11 @@ public class ChangePassword extends AppBaseActivity {
         if (userType.equals("Refugee")) {
             mRefugee = (Refugee) getIntent().getParcelableExtra("Refugee");
             email = mRefugee.getMail();
+            apiKey = mRefugee.getApiKey();
         } else {
             mVolunteer = (Volunteer) getIntent().getParcelableExtra("Volunteer");
             email = mVolunteer.getMail();
+            apiKey = mRefugee.getApiKey();
         }
 
 
@@ -117,7 +120,7 @@ public class ChangePassword extends AppBaseActivity {
     }
 
     public void sendChangePassword() {
-        mAPIService.cambiarPassword(email, actual, new_pass).enqueue(new Callback<Void>() {
+        mAPIService.cambiarPassword(apiKey, email, actual, new_pass).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {

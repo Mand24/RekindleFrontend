@@ -23,6 +23,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -39,7 +40,7 @@ public interface APIService {
     //LLAMADAS RELACIONADAS CON USUARIOS
     @PUT("/cambiarPassword/{mail}")
     @FormUrlEncoded
-    Call<Void> cambiarPassword(@Path("mail") String mail, @Field("passwordOld") String passwordOld,
+    Call<Void> cambiarPassword(@Header("apiKey") String apiKey, @Path("mail") String mail, @Field("passwordOld") String passwordOld,
             @Field
                     ("passwordNew") String passwordNew);
 
@@ -55,7 +56,8 @@ public interface APIService {
     Call<Chat> getChat(@Path("mail1") String mail, @Path("mail2") String mail2);
 
     @POST("/usuarios/{mail}/chats")
-    Call<Chat> newChat(@Path("mail") String mail, @Body Chat chat);//back se encarga de mirar si existe!!!
+    Call<Chat> newChat(@Header("apiKey") String apiKey, @Path("mail") String mail,
+            @Body Chat chat);//back se encarga de mirar si existe!!!
 
     @GET("/usuarios/{mail}/enabled")
     Call<Integer> isUserEnabled(@Path("mail") String mail);
@@ -91,7 +93,8 @@ public interface APIService {
     Call<Refugee> obtenerRefugiado(@Path("mail") String mail);
 
     @PUT("/refugiados/{mail}")
-    Call<Void> actualizarRefugiado(@Path("mail") String mail, @Body Refugee refugee);
+    Call<Void> actualizarRefugiado(@Header("apiKey") String apiKey, @Path("mail") String mail,
+            @Body Refugee refugee);
 
 
     //LLAMADAS RELACIONADAS CON USUARIOS VOLUNTARIOS
@@ -102,7 +105,8 @@ public interface APIService {
     Call<Volunteer> obtenerVoluntario(@Path("mail") String mail);
 
     @PUT("/voluntarios/{mail}")
-    Call<Void> actualizarVoluntario(@Path("mail") String mail, @Body Volunteer volunteer);
+    Call<Void> actualizarVoluntario(@Header("apiKey") String apiKey, @Path("mail") String mail,
+            @Body Volunteer volunteer);
 
     //LLAMADAS RELACIONADAS CON SERVICIOS
 /*
@@ -135,35 +139,38 @@ public interface APIService {
     Call<Job> getEmpleo(@Path("id") int id);
 
     @PUT("/alojamientos/{id}")
-    Call<Void> editarAlojamiento(@Path("id") int id, @Body Lodge lodge);
+    Call<Void> editarAlojamiento(@Header("apiKey") String apiKey, @Path("id") int id, @Body Lodge
+            lodge);
 
     @PUT("/cursos/{id}")
-    Call<Void> editarCurso(@Path("id") int id, @Body Education curso);
+    Call<Void> editarCurso(@Header("apiKey") String apiKey, @Path("id") int id, @Body Education
+            curso);
 
     @PUT("/donaciones/{id}")
-    Call<Void> editarDonacion(@Path("id") int id, @Body Donation donation);
+    Call<Void> editarDonacion(@Header("apiKey") String apiKey, @Path("id") int id, @Body Donation
+            donation);
 
     @PUT("/empleos/{id}")
-    Call<Void> editarEmpleo(@Path("id") int id, @Body Job empleo);
+    Call<Void> editarEmpleo(@Header("apiKey") String apiKey, @Path("id") int id, @Body Job empleo);
 
     @POST("/alojamientos")
-    Call<Void> crearAlojamiento(@Body Lodge lodge);
+    Call<Void> crearAlojamiento(@Header("apiKey") String apiKey, @Body Lodge lodge);
 
     @POST("/donaciones")
-    Call<Void> crearDonacion(@Body Donation donation);
+    Call<Void> crearDonacion(@Header("apiKey") String apiKey, @Body Donation donation);
 
     @POST("/empleos")
-    Call<Void> crearOferta(@Body Job empleo);
+    Call<Void> crearOferta(@Header("apiKey") String apiKey, @Body Job empleo);
 
     @POST("/cursos")
-    Call<Void> crearEducacion(@Body Education educacion);
+    Call<Void> crearEducacion(@Header("apiKey") String apiKey, @Body Education educacion);
 
     @POST("/servicios/{id}/{tipo}/valoraciones")
     Call<Void> createValoration(@Path("id") int id, @Path("tipo") String tipo, @Body Valoration
             valoration);
 
     @DELETE("/servicios/{id}/{tipo}")
-    Call<Void> eliminarServicio(@Path("id") int id, @Path("tipo") String tipo);
+    Call<Void> eliminarServicio(@Header("apiKey") String apiKey, @Path("id") int id, @Path("tipo") String tipo);
 
 
     @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
@@ -171,11 +178,11 @@ public interface APIService {
             String tipo);
 
     @POST("/usuarios/{mail}/inscripciones/{id}/{tipo}")
-    Call<Void> subscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
+    Call<Void> subscribeService(@Header("apiKey") String apiKey, @Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
     @DELETE("/refugiados/{mail}/inscripciones/{id}/{tipo}")
-    Call<Void> unsubscribeService(@Path("mail") String mail, @Path("id") int id, @Path("tipo")
+    Call<Void> unsubscribeService(@Header("apiKey") String apiKey, @Path("mail") String mail, @Path("id") int id, @Path("tipo")
             String tipo);
 
     @GET("/test2")
@@ -185,13 +192,13 @@ public interface APIService {
     Call<ArrayList<Message>> getMessagesChat(@Path("mail") String mail, @Path("idChat") int idChat);
 
     @POST("/usuarios/{mail}/chats/{idChat}/messages")
-    Call<Void> sendMessage(@Path("mail") String mail, @Path("idChat") int idChat, @Body Message
+    Call<Void> sendMessage(@Header("apiKey") String apiKey, @Path("mail") String mail, @Path("idChat") int idChat, @Body Message
             message);
 
     //LLAMADAS RELACIONADAS CON REPORTES
 
     @POST("/reportes")
-    Call<Void> createReport(@Body Report report);
+    Call<Void> createReport(@Header("apiKey") String apiKey, @Body Report report);
 
     @GET("/reportes")
     Call<ArrayList<Report>> getReports();
@@ -225,12 +232,12 @@ public interface APIService {
     Call<ArrayList<Link>> getLinks();
 
     @POST("/links")
-    Call<Void> createLink(@Body Link link);
+    Call<Void> createLink(@Header("apiKey") String apiKey, @Body Link link);
 
     @PUT("/links/{id}")
-    Call<Void> updateLink(@Path("id") int id, @Body Link link);
+    Call<Void> updateLink(@Header("apiKey") String apiKey, @Path("id") int id, @Body Link link);
 
     @DELETE("/links/{id}")
-    Call<Void> deleteLink(@Path("id") int id);
+    Call<Void> deleteLink(@Header("apiKey") String apiKey, @Path("id") int id);
 
 }

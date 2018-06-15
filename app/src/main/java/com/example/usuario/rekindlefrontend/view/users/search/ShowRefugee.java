@@ -199,7 +199,8 @@ public class ShowRefugee extends AppBaseActivity {
     }
 
     public void sendNewChat(Chat newChat) {
-        mAPIService.newChat(currentUser.getMail(), newChat).enqueue(new Callback<Chat>() {
+        mAPIService.newChat(currentUser.getApiKey(), currentUser.getMail(), newChat).enqueue(new
+                                                                                        Callback<Chat>() {
             @Override
             public void onResponse(Call<Chat> call, Response<Chat> response) {
                 System.out.println("newchat code: " + response.code());
