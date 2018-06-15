@@ -80,8 +80,6 @@ public class MainMenuRefugee extends Fragment {
                 Intent i = new Intent(getActivity().getApplicationContext(),
                         SearchRefugee.class);
                 startActivity(i);
-                Toast.makeText(getActivity().getApplicationContext(), getString(R.string
-                        .buscar_personas), Toast.LENGTH_SHORT).show();
             }
         });
 

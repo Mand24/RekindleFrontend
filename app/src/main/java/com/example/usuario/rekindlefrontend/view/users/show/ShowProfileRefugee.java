@@ -109,7 +109,6 @@ public class ShowProfileRefugee extends Fragment {
                     System.out.println("dentro respuesta");
                     if (response.body() != null) System.out.println("dentro respuesta ok");
                     mRefugee = response.body();
-//                    mRefugee.setServiceType(0);
                     manageResult(true);
                 } else {
                     System.out.println("mRefugee null");
@@ -143,12 +142,9 @@ public class ShowProfileRefugee extends Fragment {
 
             initializeFields();
 
-            Toast.makeText(getActivity().getApplicationContext(), "ver perfil correctamente",
-                    Toast
-                            .LENGTH_SHORT).show();
-
         } else {
-            Toast.makeText(getActivity().getApplicationContext(), "ver perfil fallida", Toast
+            Toast.makeText(getActivity().getApplicationContext(), getString(R.string
+                    .ver_perfil_error), Toast
                     .LENGTH_SHORT).show();
         }
     }

@@ -517,4 +517,6 @@
     <string name="price_show">Precio: %1$s €</string>
     <string name="start_time_show">Hora de inicio: %1$s</string>
     <string name="end_time_show">Hora de finalización: %1$s</string>
+
+    <string name="ver_perfil_error">Error al mostrar perfil</string>
 </resources>

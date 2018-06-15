@@ -277,7 +277,8 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
     @Override
     public void onBackPressed() {
-        finish();
+        Intent i = new Intent(this, MainMenu.class);
+        startActivity(i);
     }
 
     @Override

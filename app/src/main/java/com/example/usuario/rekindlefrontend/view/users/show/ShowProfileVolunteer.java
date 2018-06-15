@@ -126,12 +126,9 @@ public class ShowProfileVolunteer extends Fragment {
 
             initializeFields();
 
-            Toast.makeText(getActivity().getApplicationContext(), "Ver perfil correctamente",
-                    Toast
-                            .LENGTH_SHORT).show();
-
         } else {
-            Toast.makeText(getActivity().getApplicationContext(), "Ver perfil fallida", Toast
+            Toast.makeText(getActivity().getApplicationContext(), getString(R.string
+                    .ver_perfil_error), Toast
                     .LENGTH_SHORT).show();
         }
     }
