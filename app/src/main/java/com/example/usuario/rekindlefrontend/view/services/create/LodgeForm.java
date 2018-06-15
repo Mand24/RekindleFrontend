@@ -52,11 +52,12 @@ public class LodgeForm extends Fragment {
     private EditText ePhoneNumber;
     private EditText eAdress;
     private EditText ePlacesLimit;
-    private EditText eDeadline;
     private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
     private EditText eDescription;
+    private EditText eExpiresOn;
+
     private Lodge mLodge;
     private APIService mAPIService;
     private User user;
@@ -77,6 +78,9 @@ public class LodgeForm extends Fragment {
         user = getUser(getActivity().getApplicationContext());
 
         setViews(view);
+
+        eExpiresOn = (EditText) view.findViewById(R.id.lodge_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         //init format Checker
         fc = new FormatChecker(getResources());
@@ -111,10 +115,6 @@ public class LodgeForm extends Fragment {
             }
         });
 
-
-        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
-        SetDate setDate = new SetDate(eDeadline, container.getContext());
-
         return view;
     }
 
@@ -124,7 +124,6 @@ public class LodgeForm extends Fragment {
         ePhoneNumber = view.findViewById(R.id.telefono_alojamiento);
         eAdress = view.findViewById(R.id.direccion_alojamiento);
         ePlacesLimit = view.findViewById(R.id.solicitudes_alojamiento);
-        eDeadline = view.findViewById(R.id.fecha_limite_alojamiento);
         eDescription = view.findViewById(R.id.descripcion_alojamiento);
 
         mAPIService = APIUtils.getAPIService();
@@ -141,6 +140,7 @@ public class LodgeForm extends Fragment {
 
     public void getParams() {
 
+        User user = getUser(getActivity().getApplicationContext());
         Geocoder geo = new Geocoder(getActivity().getApplicationContext());
         List<Address> addresses = null;
         Address locationAddress = null;
@@ -159,13 +159,12 @@ public class LodgeForm extends Fragment {
                     eDescription.getText().toString(), eAdress.getText().toString(), latitude,
                     longitude,
                     ePlacesLimit
-                            .getText().toString(), eDeadline.getText().toString(),
+                            .getText().toString(), eExpiresOn.getText().toString(),
                     ePhoneNumber.getText()
-                            .toString(), false);
+                            .toString(), false, eExpiresOn.getText().toString());
         } else {
             eAdress.setError(getString(R.string.location_error));
         }
-
 
     }
 

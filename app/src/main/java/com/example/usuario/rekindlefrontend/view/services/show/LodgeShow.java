@@ -47,7 +47,7 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
-    TextView title, description, adress, date, phoneNumber;
+    TextView title, description, adress, date, phoneNumber, expirationDate;
     AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
@@ -72,18 +72,21 @@ public class LodgeShow extends Maps implements OnMapReadyCallback {
         title = view.findViewById(R.id.titulo_alojamiento);
         description = view.findViewById(R.id.descripcion_alojamiento);
         adress = view.findViewById(R.id.direccion_alojamiento);
-        date = view.findViewById(R.id.fecha_limite_alojamiento);
         mMapView = (MapFragment) getChildFragmentManager().findFragmentById(R.id.google_mapView);
         phoneNumber = view.findViewById(R.id.numero_contacto_servicio);
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.inscribirse);
         endButton = view.findViewById(R.id.endButton);
+        expirationDate = view.findViewById(R.id.show_expiration_lodge);
 
         title.setText(service.getName());
-        description.setText(service.getDescription());
-        adress.setText(getString(R.string.address_show, service.getAdress()));
-        date.setText(getString(R.string.date_show, service.getDateLimit()));
-        phoneNumber.setText(getString(R.string.phone_show,service.getPhoneNumber()));
+        description.setText(
+                String.format("%s%s", getText(R.string.description), service.getDescription()));
+        adress.setText(String.format("%s%s", getText(R.string.address), service.getAdress()));
+        phoneNumber.setText(
+                String.format("%s%s", getText(R.string.contact_number), service.getPhoneNumber()));
+        expirationDate.setText(
+                String.format("%s%s", getText(R.string.expiration_date), service.getExpiresOn()));
 
         mMapView.getMapAsync(this);
 

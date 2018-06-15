@@ -501,6 +501,21 @@
 
     <string name="banned">Tu cuenta ha sido suspendida</string>
     <string name="close_service_confirmation">Estas seguro de que quieres cerrar el servicio?</string>
+    <string name="expires_on_date">Expirará el día</string>
+
+    <string name="description">Descripción: </string>
+    <string name="address">Dirección: </string>
+    <string name="starting_time">Hora inicio: </string>
+    <string name="ending_time">Hora fin: </string>
+    <string name="contact_number">Número de contacto: </string>
+    <string name="expiration_date">Expirará el día: </string>
+    <string name="ambit">Ámbito: </string>
+    <string name="requeriments">Requisitos: </string>
+    <string name="schedule">Horario: </string>
+    <string name="job_position">Cargo: </string>
+    <string name="workday">Jornada laboral: </string>
+    <string name="weekly_hours">Horas por semana: </string>
+    <string name="contract_duration">Duración del contrato: </string>
     <string name="reporte_eliminado_correctamente">Reporte borrado correctamente!</string>
     <string name="reporte_eliminado_fallido">Error al borrar el reporte!</string>
     <string name="delete_report">Eliminar reporte</string>

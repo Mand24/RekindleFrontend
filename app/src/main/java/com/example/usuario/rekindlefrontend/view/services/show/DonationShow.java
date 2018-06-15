@@ -48,7 +48,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
     public MapFragment mMapView;
     public GoogleMap mGoogleMap;
     public Marker myMarker;
-    TextView title, description, adress, startTime, endTime, phoneNumber;
+    TextView title, description, adress, startTime, endTime, phoneNumber, expirationDate;
     AppCompatButton chat, enroll, endButton;
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
@@ -80,13 +80,19 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
         chat = view.findViewById(R.id.chat);
         enroll = view.findViewById(R.id.solicitud);
         endButton = view.findViewById(R.id.endButton);
+        expirationDate = view.findViewById(R.id.show_expiration_donation);
 
         title.setText(service.getName());
-        description.setText(service.getDescription());
-        adress.setText(getString(R.string.address_show, service.getAdress()));
-        startTime.setText(getString(R.string.start_time_show, service.getStartTime()));
-        endTime.setText(getString(R.string.end_time_show, service.getEndTime()));
-        phoneNumber.setText(getString(R.string.phone_show, service.getPhoneNumber()));
+        description.setText(
+                String.format("%s%s", getText(R.string.description), service.getDescription()));
+        adress.setText(String.format("%s%s", getText(R.string.address), service.getAdress()));
+        startTime.setText(
+                String.format("%s%s", getText(R.string.starting_time), service.getStartTime()));
+        endTime.setText(String.format("%s%s", getText(R.string.ending_time), service.getEndTime()));
+        phoneNumber.setText(
+                String.format("%s%s", getText(R.string.contact_number), service.getPhoneNumber()));
+        expirationDate.setText(
+                String.format("%s%s", getText(R.string.expiration_date), service.getExpiresOn()));
 
         mMapView.getMapAsync(this);
 

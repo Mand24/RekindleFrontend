@@ -6,32 +6,34 @@ import com.google.gson.annotations.SerializedName;
 public class Job extends Service {
     @SerializedName("charge")
     @Expose
-    public String charge;
+    private String charge;
     @SerializedName("requirements")
     @Expose
-    public String requirements;
+    private String requirements;
     @SerializedName("hoursDay")
     @Expose
-    public String hoursDay;
+    private String hoursDay;
     @SerializedName("hoursWeek")
     @Expose
-    public String hoursWeek;
+    private String hoursWeek;
     @SerializedName("contractDuration")
     @Expose
-    public String contractDuration;
+    private String contractDuration;
     @SerializedName("places")
     @Expose
-    public String placesLimit;
+    private String placesLimit;
     @SerializedName("salary")
     @Expose
-    public String salary;
+    private String salary;
 
     public Job(int id, String email, String name, String description, String adress, Double
             positionLat, Double positionLng, String charge,
             String requirements, String hoursDay, String hoursWeek, String contractDuration, String
-            placesLimit, String salary, String phoneNumber, Boolean
-            ended) {
-        super(id, "Job", email, name, description, adress, positionLat, positionLng, phoneNumber, ended);
+            placesLimit, String salary, String phoneNumber, Boolean ended, String expiresOn) {
+
+        super(id, "Job", email, name, description, adress, positionLat, positionLng,
+                phoneNumber, ended, expiresOn);
+
         this.charge = charge;
         this.requirements = requirements;
         this.hoursDay = hoursDay;

@@ -25,6 +25,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.utils.SetTime;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -54,6 +55,7 @@ public class DonationForm extends Fragment {
     private EditText ePhoneNumber;
     private EditText ePlacesLimit;
     private EditText eDescription;
+    private EditText eExpiresOn;
 
     private Donation mDonation;
     private APIService mAPIService;
@@ -77,6 +79,9 @@ public class DonationForm extends Fragment {
 
         //establecer las vistas
         setViews(view);
+
+        eExpiresOn = (EditText) view.findViewById(R.id.donation_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         //init format Checker
         fc = new FormatChecker(getResources());
@@ -142,6 +147,7 @@ public class DonationForm extends Fragment {
     }
 
     public void getParams() {
+        User user = getUser(getActivity().getApplicationContext());
         Geocoder geo = new Geocoder(getActivity().getApplicationContext());
         List<Address> addresses = null;
         Address locationAddress = null;
@@ -161,7 +167,8 @@ public class DonationForm extends Fragment {
                     eDescription.getText().toString(), eAdress.getText().toString(), latitude,
                     longitude, ePlacesLimit
                     .getText().toString(), editStartingTime.getText().toString(), editEndingTime
-                    .getText().toString(), ePhoneNumber.getText().toString(), false);
+                    .getText().toString(), ePhoneNumber.getText().toString(), false, eExpiresOn
+                    .getText().toString());
         } else {
             eAdress.setError(getString(R.string.location_error));
         }

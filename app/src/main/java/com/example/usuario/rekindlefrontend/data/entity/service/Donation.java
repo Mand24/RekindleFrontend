@@ -18,9 +18,10 @@ public class Donation extends Service {
     public Donation(int id, String email, String name, String description, String adress, Double
             positionLat, Double positionLng,
             String placesLimit, String startTime, String endTime, String phoneNumber, Boolean
-            ended) {
+            ended, String expiresOn) {
         super(id, "Donation", email, name, description, adress, positionLat, positionLng, phoneNumber,
-                ended);
+                ended, expiresOn);
+
         this.placesLimit = placesLimit;
         this.startTime = startTime;
         this.endTime = endTime;

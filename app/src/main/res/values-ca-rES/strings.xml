@@ -476,12 +476,27 @@
     <string name="URL_format">Format URL incorrecte, te que comencar amb https:// o http://</string>
     <string name="habilitar">Habilitar</string>
     <string name="deshabilitar">Deshabilitar</string>
-    <string name="disable_motive">Redacta el motiu pel qual lusuari és deshabilitat:</string>
+    <string name="disable_motive">Redacta el motiu pel qual l\'usuari és deshabilitat:</string>
     <string name="apellido1_usuario_perfil">Primer cognom:</string>
     <string name="listUsers">Llistar usuaris</string>
 
     <string name="banned">El teu compte ha estat suspés</string>
     <string name="close_service_confirmation">Estas segur de que vols tancar el servei?</string>
+    <string name="expires_on_date">Expirará el dia</string>
+
+    <string name="description">Descripció: </string>
+    <string name="address">Direcció: </string>
+    <string name="starting_time">Hora inici: </string>
+    <string name="ending_time">Hora final: </string>
+    <string name="contact_number">Número de contacte: </string>
+    <string name="expiration_date">Expirarà el dia: </string>
+    <string name="ambit">Àmbit: </string>
+    <string name="requeriments">Requisits: </string>
+    <string name="schedule">Horari: </string>
+    <string name="job_position">Càrrec: </string>
+    <string name="workday">Jornada laboral: </string>
+    <string name="weekly_hours">Hores per setmana: </string>
+    <string name="contract_duration">Duració del contrate: </string>
     <string name="reporte_eliminado_correctamente">Report borrat correctament!</string>
     <string name="reporte_eliminado_fallido">Esborrat de report ha fallat!</string>
     <string name="delete_report">Eliminar report</string>

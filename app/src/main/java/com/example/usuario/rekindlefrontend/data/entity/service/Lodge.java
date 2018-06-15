@@ -11,12 +11,10 @@ public class Lodge extends Service {
     @Expose
     private String dateLimit;
 
-    public Lodge(int id, String email, String name, String description, String
-            adress, Double positionLat, Double positionLng, String placesLimit, String dateLimit,
-            String phoneNumber, Boolean
-            ended) {
+    public Lodge(int id, String email, String name, String description, String adress, Double positionLat, Double positionLng, String placesLimit, String dateLimit,
+            String phoneNumber, Boolean ended, String expiresOn) {
         super(id, "Lodge", email, name, description, adress, positionLat, positionLng, phoneNumber,
-                ended);
+                ended, expiresOn);
         this.placesLimit = placesLimit;
         this.dateLimit = dateLimit;
     }

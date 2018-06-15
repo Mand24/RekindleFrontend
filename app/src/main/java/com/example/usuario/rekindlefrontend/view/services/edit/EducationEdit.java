@@ -22,6 +22,7 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.utils.FormatChecker;
+import com.example.usuario.rekindlefrontend.utils.SetDate;
 import com.example.usuario.rekindlefrontend.view.services.list.MyServicesVolunteer;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -51,6 +52,7 @@ public class EducationEdit extends Fragment {
     private EditText ePlacesLimit;
     private EditText ePrice;
     private EditText eDescription;
+    private EditText eExpiresOn;
 
     private APIService mAPIService;
     private FormatChecker fc;
@@ -69,6 +71,9 @@ public class EducationEdit extends Fragment {
 
         //init format Checker
         fc = new FormatChecker(getResources());
+
+        eExpiresOn = (EditText) view.findViewById(R.id.edit_education_expires_on_date);
+        SetDate expiresOn = new SetDate(eExpiresOn, container.getContext());
 
         initializeFields();
 
@@ -130,6 +135,7 @@ public class EducationEdit extends Fragment {
         ePlacesLimit.setText(servicio.getPlacesLimit());
         ePrice.setText(servicio.getPrice());
         eDescription.setText(servicio.getDescription());
+        eExpiresOn.setText(servicio.getExpiresOn());
     }
 
     public void checkFields() throws Exception {
@@ -172,6 +178,7 @@ public class EducationEdit extends Fragment {
             servicio.setDescription(eDescription.getText().toString());
             servicio.setPositionLat(latitude);
             servicio.setPositionLng(longitude);
+            servicio.setExpiresOn(eExpiresOn.getText().toString());
         } else {
             eAdress.setError(getString(R.string.location_error));
         }

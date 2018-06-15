@@ -112,26 +112,6 @@
                 android:layout_marginTop="8dp">
 
                 <EditText
-                    android:id="@+id/fecha_limite_alojamiento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="@dimen/dim20"
-                    android:layout_marginRight="@dimen/dim20"
-                    android:layout_marginTop="@dimen/dim10"
-                    android:clickable="true"
-                    android:focusable="false"
-                    android:hint="@string/fecha_limite"
-                    android:inputType="date"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <EditText
                     android:id="@+id/descripcion_alojamiento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,6 +122,27 @@
                     android:hint="@string/descripcion"
                     android:inputType="textMultiLine"/>
             </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/lodge_expires_on_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/dim20"
+                    android:layout_marginRight="@dimen/dim20"
+                    android:layout_marginTop="@dimen/dim10"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/expires_on_date"
+                />
+            </android.support.design.widget.TextInputLayout>
+
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/enviar_formulario_alojamiento"
