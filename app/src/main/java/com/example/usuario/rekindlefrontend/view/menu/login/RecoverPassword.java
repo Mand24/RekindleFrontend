@@ -186,9 +186,17 @@ public class RecoverPassword extends AppCompatActivity {
         confirmPassword = _confirmPasswordText.getText().toString();
     }
 
-    public String getCode () { return code; }
-    public String getPassword () { return password; }
-    public String getConfirmPassword () { return confirmPassword; }
+    public String getCode() {
+        return code;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
 
     @Override
     public void onBackPressed() {

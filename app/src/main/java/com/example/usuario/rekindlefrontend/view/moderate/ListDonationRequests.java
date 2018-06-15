@@ -66,7 +66,8 @@ public class ListDonationRequests extends AppBaseActivity implements Filterable 
                 new CustomItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        Intent intent = new Intent(getApplicationContext(), ShowDonationRequest.class);
+                        Intent intent = new Intent(getApplicationContext(),
+                                ShowDonationRequest.class);
                         intent.putExtra("Request", filteredDonationRequests.get(position));
                         startActivity(intent);
                     }
@@ -139,19 +140,20 @@ public class ListDonationRequests extends AppBaseActivity implements Filterable 
 
     private void search(android.support.v7.widget.SearchView searchView) {
 
-        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
+        searchView.setOnQueryTextListener(
+                new android.support.v7.widget.SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
 
-                return false;
-            }
+                        return false;
+                    }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                getFilter().filter(newText);
-                return true;
-            }
-        });
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        getFilter().filter(newText);
+                        return true;
+                    }
+                });
     }
 
     @Override

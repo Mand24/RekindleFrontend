@@ -1,8 +1,8 @@
 package com.example.usuario.rekindlefrontend.view.moderate;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.TextView;
@@ -72,48 +72,50 @@ public class ShowDonationRequest extends AppCompatActivity {
         motive.setText(donationRequest.getMotive());
     }
 
-    public void acceptRequest(){
+    public void acceptRequest() {
         mAPIService.acceptDonationRequest(Consistency.getUser(this).getApiKey(), donationRequest
                         .getDonation()
                         .getId(),
                 donationRequest
-                .getRefugeeMail()).enqueue
+                        .getRefugeeMail()).enqueue
                 (new
-                                                                                          Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("llamada " + call.toString());
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    System.out.println("codi " + response.code());
-                    manageResult(false);
-                }
-            }
+                         Callback<Void>() {
+                             @Override
+                             public void onResponse(Call<Void> call, Response<Void> response) {
+                                 System.out.println("llamada " + call.toString());
+                                 if (response.isSuccessful()) {
+                                     manageResult(true);
+                                 } else {
+                                     System.out.println("codi " + response.code());
+                                     manageResult(false);
+                                 }
+                             }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+                             @Override
+                             public void onFailure(Call<Void> call, Throwable t) {
 
-                if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), "this is an actual network failure"
-                            + " :( inform "
-                            + "the user and "
-                            + "possibly retry", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "conversion issue! big problems :(",
-                            Toast.LENGTH_SHORT).show();
+                                 if (t instanceof IOException) {
+                                     Toast.makeText(getApplicationContext(),
+                                             "this is an actual network failure"
+                                                     + " :( inform "
+                                                     + "the user and "
+                                                     + "possibly retry", Toast.LENGTH_SHORT).show();
+                                 } else {
+                                     Toast.makeText(getApplicationContext(),
+                                             "conversion issue! big problems :(",
+                                             Toast.LENGTH_SHORT).show();
 
-                }
-            }
-        });
+                                 }
+                             }
+                         });
     }
 
-    public void rejectRequest(){
+    public void rejectRequest() {
         mAPIService.rejectDonationRequest(Consistency.getUser(this).getApiKey(), donationRequest
                         .getDonation()
                         .getId(),
                 donationRequest
-                .getRefugeeMail()).enqueue(new Callback<Void>() {
+                        .getRefugeeMail()).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("llamada " + call.toString());

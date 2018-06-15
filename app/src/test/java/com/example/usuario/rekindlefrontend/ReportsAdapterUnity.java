@@ -32,12 +32,12 @@ public class ReportsAdapterUnity {
         reports.add(r1);
         reports.add(r2);
 
-        reportsAdapter = new ReportsAdapter (context, reports, listener);
+        reportsAdapter = new ReportsAdapter(context, reports, listener);
     }
 
     @Test
     public void testConstructor() {
-        reportsAdapter = new ReportsAdapter (context, reports, listener);
+        reportsAdapter = new ReportsAdapter(context, reports, listener);
 
         assertNotNull(reportsAdapter);
     }
@@ -51,7 +51,7 @@ public class ReportsAdapterUnity {
 
     @Test
     public void testGetSet() {
-        List<Report> newList = new ArrayList<Report> ();
+        List<Report> newList = new ArrayList<Report>();
         reportsAdapter.setReports(newList);
 
         assertEquals(newList, reportsAdapter.getReports());

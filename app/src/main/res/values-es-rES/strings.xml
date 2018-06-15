@@ -496,11 +496,13 @@
     <string name="apellido1_usuario_perfil">Primer apellido:</string>
     <string name="habilitar">Habilitar</string>
     <string name="deshabilitar">Deshabilitar</string>
-    <string name="disable_motive">Redacta el motivo por el qual el usuario es deshabilitado:</string>
+    <string name="disable_motive">Redacta el motivo por el qual el usuario es deshabilitado:
+    </string>
     <string name="listUsers">Listar usuarios</string>
 
     <string name="banned">Tu cuenta ha sido suspendida</string>
-    <string name="close_service_confirmation">Estas seguro de que quieres cerrar el servicio?</string>
+    <string name="close_service_confirmation">Estas seguro de que quieres cerrar el servicio?
+    </string>
     <string name="reporte_eliminado_correctamente">Reporte borrado correctamente!</string>
     <string name="reporte_eliminado_fallido">Error al borrar el reporte!</string>
     <string name="delete_report">Eliminar reporte</string>
@@ -532,10 +534,12 @@
     <string name="title_activity_editar_servicio">Editar Servicio</string>
     <string name="hours_day">Indicar horas de la joranada</string>
     <string name="hours_day_format">Formato incorrecto; formato correcto = 10 digitos máximo con una
-        precisión máxima de dos deciamales, uso del punto como separador</string>
+        precisión máxima de dos deciamales, uso del punto como separador
+    </string>
     <string name="hours_week">Indicar horas semanales</string>
     <string name="contract_time">Indicar duración del contrato</string>
     <string name="contract_format">La duración del contrato solo puede contener digitos</string>
-    <string name="contract_large">La duración del contrato es demasiado larga, máximo 3 dígitos</string>
+    <string name="contract_large">La duración del contrato es demasiado larga, máximo 3 dígitos
+    </string>
 
 </resources>

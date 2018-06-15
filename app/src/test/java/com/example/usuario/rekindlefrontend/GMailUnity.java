@@ -25,8 +25,7 @@ public class GMailUnity {
 
             assertEquals(mMimeMessage.getSubject(), "subject");
             assertEquals(mMimeMessage.getContent(), "body");
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
         }
     }
 }

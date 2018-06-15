@@ -1,14 +1,12 @@
 package com.example.usuario.rekindlefrontend.view.helpLinks;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
@@ -20,16 +18,14 @@ import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
-import java.io.IOException;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CreateHelpLink extends AppBaseActivity {
 
-    private Spinner type;
     ArrayAdapter<CharSequence> adapter;
+    private Spinner type;
     private EditText url, description;
     private Link link;
     private APIService mAPIService;
@@ -76,7 +72,7 @@ public class CreateHelpLink extends AppBaseActivity {
 
     public void createLink() {
         String linkType;
-        if (type.getSelectedItemPosition() == 0){
+        if (type.getSelectedItemPosition() == 0) {
             linkType = "Legal";
         } else if (type.getSelectedItemPosition() == 1) {
             linkType = "Health";
@@ -90,22 +86,23 @@ public class CreateHelpLink extends AppBaseActivity {
         mAPIService.createLink(Consistency.getUser(this).getApiKey(), link, Consistency.getUser
                 (this).getMail())
                 .enqueue(new
-                                                                                           Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("code "+ response.code());
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    manageResult(false);
-                }
-            }
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         System.out.println("code " + response.code());
+                                         if (response.isSuccessful()) {
+                                             manageResult(true);
+                                         } else {
+                                             manageResult(false);
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false);
-            }
-        });
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
+                                         manageResult(false);
+                                     }
+                                 });
     }
 
     public void manageResult(boolean result) {
@@ -121,6 +118,7 @@ public class CreateHelpLink extends AppBaseActivity {
                     .string.error), Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onBackPressed() {
         Intent i = new Intent(this, MainMenu.class);

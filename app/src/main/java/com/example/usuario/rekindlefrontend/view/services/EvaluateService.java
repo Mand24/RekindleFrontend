@@ -1,11 +1,9 @@
 package com.example.usuario.rekindlefrontend.view.services;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +12,6 @@ import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.service.Valoration;
-import com.example.usuario.rekindlefrontend.data.entity.user.Refugee;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
@@ -42,7 +39,7 @@ public class EvaluateService extends AppBaseActivity {
 
         service = (Service) getIntent().getSerializableExtra("Service");
 
-        setViews ();
+        setViews();
 
         AppCompatButton button_send = (AppCompatButton) findViewById(R.id
                 .evaluateService);
@@ -50,20 +47,21 @@ public class EvaluateService extends AppBaseActivity {
             @Override
             public void onClick(View v) {
                 mValoration = new Valoration(service.getId(), service.getServiceType(),
-                        Consistency.getUser(getApplicationContext()).getMail(), ratingBar.getRating());
+                        Consistency.getUser(getApplicationContext()).getMail(),
+                        ratingBar.getRating());
                 sendCreateValoration();
             }
         });
     }
 
-    private void setViews () {
-        serviceName     = findViewById (R.id.serviceName);
-        ratingBar       = findViewById (R.id.ratingBar);
+    private void setViews() {
+        serviceName = findViewById(R.id.serviceName);
+        ratingBar = findViewById(R.id.ratingBar);
 
-        serviceName.setText (service.getName());
+        serviceName.setText(service.getName());
     }
 
-    private void sendCreateValoration(){
+    private void sendCreateValoration() {
         mAPIService.createValoration(Consistency.getUser(this).getApiKey(), service.getId(),
                 service
                         .getServiceType(),
@@ -71,9 +69,9 @@ public class EvaluateService extends AppBaseActivity {
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             manageResult(true);
-                        }else {
+                        } else {
                             manageResult(false);
                         }
                     }
@@ -85,12 +83,11 @@ public class EvaluateService extends AppBaseActivity {
                 });
     }
 
-    private void manageResult(Boolean result){
-        if (result){
+    private void manageResult(Boolean result) {
+        if (result) {
             Intent i = new Intent(this, MyServicesRefugeeEnded.class);
             startActivity(i);
-        }
-        else {
+        } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R
                     .string.error), Toast.LENGTH_SHORT).show();
         }
@@ -99,7 +96,8 @@ public class EvaluateService extends AppBaseActivity {
     @Override
     protected void gotoLaunch() {
         Intent i = new Intent(this, Login.class);
-        startActivity(i);    }
+        startActivity(i);
+    }
 
     @Override
     public void onBackPressed() {

@@ -8,12 +8,12 @@ import org.junit.Test;
 
 public class JobUnity {
 
-    private Job job = new Job (2, "voluntario@gmail.com", "job", "desc", "Carrer "
+    private Job job = new Job(2, "voluntario@gmail.com", "job", "desc", "Carrer "
             + "Bellesguard, 23-7, 08348 Cabrils, Barcelona", "charge", "requi", "5", "12",
             "50", "120", "1200", "2345", false);
 
     @Test
-    public void testGets () {
+    public void testGets() {
         assertEquals(job.getId(), 2);
         assertEquals(job.getName(), "job");
         assertEquals(job.getEmail(), "voluntario@gmail.com");

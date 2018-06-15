@@ -1,7 +1,5 @@
 package com.example.usuario.rekindlefrontend.data.entity.user;
 
-import com.example.usuario.rekindlefrontend.data.entity.user.User;
-
 public class Admin extends User {
 
     public Admin(String mail, String password, String name, String surname1,

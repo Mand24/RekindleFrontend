@@ -20,8 +20,8 @@ public class FormatCheckerUnity {
     FormatChecker fc = new FormatChecker(r);
 
     @Before
-    public void before(){
-        r =  mock(Resources.class);
+    public void before() {
+        r = mock(Resources.class);
         when(r.getString(any(int.class))).thenReturn("");
     }
 
@@ -273,7 +273,7 @@ public class FormatCheckerUnity {
     }
 
     @Test(expected = java.lang.Exception.class)
-    public void URL_format () throws Exception {
+    public void URL_format() throws Exception {
         fc.checkURL("htt");
     }
 }

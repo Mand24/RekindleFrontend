@@ -28,7 +28,7 @@ public class EspressoRecoverPassword {
 
     @Rule
     public ActivityTestRule<RecoverPassword> pantalla = new ActivityTestRule<RecoverPassword>
-            (RecoverPassword.class){
+            (RecoverPassword.class) {
         @Override
         protected Intent getActivityIntent() {
             Context targetContext = InstrumentationRegistry.getInstrumentation()

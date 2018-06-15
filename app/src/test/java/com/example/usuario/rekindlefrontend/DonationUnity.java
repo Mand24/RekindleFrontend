@@ -18,7 +18,8 @@ public class DonationUnity {
         assertEquals(donation.getName(), "donacion");
         assertEquals(donation.getEmail(), "voluntario@gmail.com");
         assertEquals(donation.getDescription(), "desc");
-        assertEquals(donation.getAdress(), "Carrer Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona");
+        assertEquals(donation.getAdress(),
+                "Carrer Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona");
         assertEquals(donation.getPlacesLimit(), "123");
         assertEquals(donation.getStartTime(), "12:00");
         assertEquals(donation.getEndTime(), "13:00");

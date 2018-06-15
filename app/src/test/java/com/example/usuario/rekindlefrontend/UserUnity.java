@@ -11,6 +11,7 @@ public class UserUnity {
 
     private User user = new User("refugee", "mail@mail.com", "pass", "name", "surname1",
             "surname2", "photo");
+
     @Test
     public void testGets() {
         assertEquals(user.getUserType(), "refugee");

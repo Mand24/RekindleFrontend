@@ -1,7 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.moderate;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.util.Log;
@@ -83,62 +83,66 @@ public class EnableUser extends AppCompatActivity {
 
                 if (disable.getText().toString().equals(getResources().getString(R
                         .string.deshabilitar))) {
-                    if(!TextUtils.isEmpty(motive.getText().toString())){
+                    if (!TextUtils.isEmpty(motive.getText().toString())) {
                         mAPIService.disableUser(currentUser.getApiKey(), user.getMail(), motive
                                 .getText()
                                 .toString(), currentUser.getMail())
                                 .enqueue
-                                (new Callback<Void>() {
-                                    @Override
-                                    public void onResponse(Call<Void> call, Response<Void> response) {
-                                        System.out.println("CODIGOdisable " + response.code());
-                                        if (response.isSuccessful()) {
-                                            disable.setText(R.string.habilitar);
-                                            motive.setVisibility(View.INVISIBLE);
-                                            motive.setText("");
-                                        } else {
-                                            failure();
-                                        }
-                                    }
+                                        (new Callback<Void>() {
+                                            @Override
+                                            public void onResponse(Call<Void> call,
+                                                    Response<Void> response) {
+                                                System.out.println(
+                                                        "CODIGOdisable " + response.code());
+                                                if (response.isSuccessful()) {
+                                                    disable.setText(R.string.habilitar);
+                                                    motive.setVisibility(View.INVISIBLE);
+                                                    motive.setText("");
+                                                } else {
+                                                    failure();
+                                                }
+                                            }
 
-                                    @Override
-                                    public void onFailure(Call<Void> call, Throwable t) {
-                                        failure();
-                                    }
-                                });
+                                            @Override
+                                            public void onFailure(Call<Void> call, Throwable t) {
+                                                failure();
+                                            }
+                                        });
 
-                    }
-                    else {
+                    } else {
                         motive.setError("Field is empty");
                     }
                 } else {
                     mAPIService.enableUser(currentUser.getApiKey(), user
                             .getMail(), currentUser.getMail())
                             .enqueue(new
-                                                                                                   Callback<Void>
-                            () {
-                        @Override
-                        public void onResponse(Call<Void> call, Response<Void> response) {
-                            System.out.println("CODIGOenable " + response.code());
-                            if (response.isSuccessful()) {
-                                disable.setText(R.string.deshabilitar);
-                                motive.setVisibility(View.VISIBLE);
-                            } else {
-                                failure();
-                            }
-                        }
+                                             Callback<Void>
+                                                     () {
+                                                 @Override
+                                                 public void onResponse(Call<Void> call,
+                                                         Response<Void> response) {
+                                                     System.out.println(
+                                                             "CODIGOenable " + response.code());
+                                                     if (response.isSuccessful()) {
+                                                         disable.setText(R.string.deshabilitar);
+                                                         motive.setVisibility(View.VISIBLE);
+                                                     } else {
+                                                         failure();
+                                                     }
+                                                 }
 
-                        @Override
-                        public void onFailure(Call<Void> call, Throwable t) {
-                            failure();
-                        }
-                    });
+                                                 @Override
+                                                 public void onFailure(Call<Void> call,
+                                                         Throwable t) {
+                                                     failure();
+                                                 }
+                                             });
                 }
             }
         });
     }
 
-    void setViews(){
+    void setViews() {
         userType = findViewById(R.id.tipo_usuario);
         name = findViewById(R.id.nombre_usuario);
         surname1 = findViewById(R.id.apellido1_usuario);

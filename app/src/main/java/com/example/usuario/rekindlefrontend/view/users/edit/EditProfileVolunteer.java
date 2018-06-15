@@ -174,31 +174,32 @@ public class EditProfileVolunteer extends Fragment {
                 ()).getApiKey(), mVolunteer.getMail
                 (), mVolunteer)
                 .enqueue(
-                new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()) {
-                            manageResult(true);
-                        } else {
-                            manageResult(false);
-                        }
-                    }
+                        new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()) {
+                                    manageResult(true);
+                                } else {
+                                    manageResult(false);
+                                }
+                            }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        if (t instanceof IOException) {
-                            Toast.makeText(getActivity().getApplicationContext(),
-                                    "this is an actual network failure"
-                                            + " :( inform "
-                                            + "the user and "
-                                            + "possibly retry", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getActivity().getApplicationContext(),
-                                    "conversion issue! big problems :(", Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                if (t instanceof IOException) {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "this is an actual network failure"
+                                                    + " :( inform "
+                                                    + "the user and "
+                                                    + "possibly retry", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "conversion issue! big problems :(",
+                                            Toast.LENGTH_SHORT).show();
 
-                        }
-                    }
-                });
+                                }
+                            }
+                        });
     }
 
     public void manageResult(boolean result) {

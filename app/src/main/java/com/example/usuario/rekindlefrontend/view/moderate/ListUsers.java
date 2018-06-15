@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.moderate;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.adapters.UsersAdapter;
-import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
@@ -34,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListUsers extends AppBaseActivity  implements Filterable {
+public class ListUsers extends AppBaseActivity implements Filterable {
 
     protected List<User> mUsers = new ArrayList<>();
     protected List<User> mUsersFiltered = new ArrayList<>();
@@ -135,10 +133,9 @@ public class ListUsers extends AppBaseActivity  implements Filterable {
         mAPIService.getUsers().enqueue(new Callback<ArrayList<User>>() {
             @Override
             public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manageResult(true, response.body());
-                }
-                else {
+                } else {
                     manageResult(false, null);
                 }
             }
@@ -232,16 +229,22 @@ public class ListUsers extends AppBaseActivity  implements Filterable {
 
                 for (User s : mUsers) {
                     String enable;
-                    System.out.println("enabled? "+ s.getEnabled());
-                    if (s.getEnabled() == 1) enable = "Enable";
-                    else enable = "Disable";
+                    System.out.println("enabled? " + s.getEnabled());
+                    if (s.getEnabled() == 1) {
+                        enable = "Enable";
+                    } else {
+                        enable = "Disable";
+                    }
                     if (filters.get(enable)) {
                         if (!charString.isEmpty()) {
-                            if ((s.getName() != null && s.getName().toLowerCase().contains(charString)
+                            if ((s.getName() != null && s.getName().toLowerCase().contains(
+                                    charString)
                             ) || (s.getSurname1() != null && s.getSurname1().toLowerCase().contains
                                     (charString)) || (s.getSurname2() != null && s
-                                    .getSurname2().toLowerCase().contains(charString)) || (s.getUserType()
-                                    != null && s.getUserType().toLowerCase().contains(charString))) {
+                                    .getSurname2().toLowerCase().contains(charString)) || (
+                                    s.getUserType()
+                                            != null && s.getUserType().toLowerCase().contains(
+                                            charString))) {
 
                                 filteredList.add(s);
                             }

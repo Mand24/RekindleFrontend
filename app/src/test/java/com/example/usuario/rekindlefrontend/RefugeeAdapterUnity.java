@@ -26,7 +26,7 @@ public class RefugeeAdapterUnity {
 
     @Before
     public void before() {
-        refugees =  new ArrayList<Refugee> ();
+        refugees = new ArrayList<Refugee>();
         Refugee r1 = new Refugee();
         Refugee r2 = new Refugee();
 
@@ -37,14 +37,14 @@ public class RefugeeAdapterUnity {
     }
 
     @Test
-    public void testConstructor () {
+    public void testConstructor() {
         refugeeAdapter = new RefugeeAdapter(context, refugees, listener);
 
         assertNotNull(refugeeAdapter);
     }
 
     @Test
-    public void testCount () {
+    public void testCount() {
         int count = refugeeAdapter.getItemCount();
 
         assertEquals("r1 + r2 = 2", count, 2);

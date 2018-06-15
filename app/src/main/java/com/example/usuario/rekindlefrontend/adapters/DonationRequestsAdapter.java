@@ -24,7 +24,7 @@ public class DonationRequestsAdapter extends RecyclerView.Adapter<DonationReques
 
     public DonationRequestsAdapter(Context mContext, List<DonationRequest> donationRequests,
             CustomItemClickListener
-            listener) {
+                    listener) {
         this.mContext = mContext;
         this.donationRequests = donationRequests;
         this.listener = listener;

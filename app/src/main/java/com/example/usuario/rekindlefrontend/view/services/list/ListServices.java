@@ -17,7 +17,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.AppBaseActivity;
@@ -217,7 +216,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
         Double latitude = null;
         Double longitude = null;
 
-        if (extras!= null) {
+        if (extras != null) {
             startDate = (String) extras.get("startDate");
             endDate = (String) extras.get("endDate");
             minimumRating = new Double((double) extras.get("minimumRating"));

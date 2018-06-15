@@ -71,7 +71,7 @@ public class EspressoRegistroRefugee {
                 ());
 
         onView(withId(R.id.p_apellido_refugiado)).perform(typeText
-                ("ap1"),ViewActions.closeSoftKeyboard
+                ("ap1"), ViewActions.closeSoftKeyboard
                 ());
 
         onView(withId(R.id.s_apellido_refugiado)).perform(typeText("ap2"),
@@ -121,7 +121,7 @@ public class EspressoRegistroRefugee {
 
         regRef.getParams();
 
-        Refugee refugee =  regRef.getRefugee();
+        Refugee refugee = regRef.getRefugee();
 
         assertEquals(refugee.getName(), "nombre");
         assertEquals(refugee.getSurname1(), "ap1");

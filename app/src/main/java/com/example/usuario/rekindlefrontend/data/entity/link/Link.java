@@ -6,8 +6,19 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Link implements Parcelable{
+public class Link implements Parcelable {
 
+    public static final Creator<Link> CREATOR = new Creator<Link>() {
+        @Override
+        public Link createFromParcel(Parcel in) {
+            return new Link(in);
+        }
+
+        @Override
+        public Link[] newArray(int size) {
+            return new Link[size];
+        }
+    };
     @SerializedName("id")
     @Expose
     private int idLink;
@@ -36,18 +47,6 @@ public class Link implements Parcelable{
         url = in.readString();
         description = in.readString();
     }
-
-    public static final Creator<Link> CREATOR = new Creator<Link>() {
-        @Override
-        public Link createFromParcel(Parcel in) {
-            return new Link(in);
-        }
-
-        @Override
-        public Link[] newArray(int size) {
-            return new Link[size];
-        }
-    };
 
     @Override
     public int describeContents() {

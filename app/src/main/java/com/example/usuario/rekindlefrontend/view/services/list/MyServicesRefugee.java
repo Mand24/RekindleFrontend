@@ -60,8 +60,9 @@ public class MyServicesRefugee extends ListServices {
 
                                                     public void onClick(DialogInterface dialog,
                                                             int which) {
-                                                        sendUnsubscribeService(mServiciosFiltrados.get
-                                                                (position));
+                                                        sendUnsubscribeService(
+                                                                mServiciosFiltrados.get
+                                                                        (position));
                                                     }
                                                 });
 

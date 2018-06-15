@@ -57,7 +57,9 @@ public class RegisterRefugee extends Fragment {
         // Required empty public constructor
     }
 
-    public Refugee getRefugee () { return mRefugee; }
+    public Refugee getRefugee() {
+        return mRefugee;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,

@@ -10,11 +10,12 @@ import org.junit.Test;
 
 public class DonationRequestUnity {
 
-    private User user_refugee = new User ("Refugee", "refugee@mail.com", "pass123",
+    private User user_refugee = new User("Refugee", "refugee@mail.com", "pass123",
             "userRefugee", "apellidoUno", "apellidoDos", "foto");
 
-    private Donation donation = new Donation (3, "voluntario@gmail.com", "donacion", "desc",
-            "Carrer " + "Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona", "123", "12:00", "13:00",
+    private Donation donation = new Donation(3, "voluntario@gmail.com", "donacion", "desc",
+            "Carrer " + "Torrent de Can Cama, 7-5, 08348 Cabrils, Barcelona", "123", "12:00",
+            "13:00",
             "123445", false);
 
     private DonationRequest donationReq = new DonationRequest(user_refugee, donation, "porque "

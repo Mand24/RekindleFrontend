@@ -12,7 +12,9 @@ public class FormatChecker {
 
     private Resources res;
 
-    public FormatChecker (Resources r) { res = r; }
+    public FormatChecker(Resources r) {
+        res = r;
+    }
 
     public boolean letters(String texto) {
         Pattern patron = Pattern.compile("^[a-zA-Z]+$");
@@ -39,8 +41,10 @@ public class FormatChecker {
         } else if (text.length() > 20) {
             throw new Exception(res.getString(R.string
                     .nombre_largo));
-        } else if (!letters(text)) throw new Exception(res.getString(R.string
-                .nombre_letras));
+        } else if (!letters(text)) {
+            throw new Exception(res.getString(R.string
+                    .nombre_letras));
+        }
     }
 
     public void checkEmail(String text) throws Exception {
@@ -177,12 +181,15 @@ public class FormatChecker {
     public void checkServiceRequirements(String text) throws Exception {
         if (text.length() == 0) {
             throw new Exception(res.getString(R.string.requisitos_obligatorios));
-        } else if (text.length() > 100) throw new Exception(res.getString(R.string.requisitos_largo));
+        } else if (text.length() > 100) {
+            throw new Exception(
+                    res.getString(R.string.requisitos_largo));
+        }
     }
 
     public void checkServiceHoursDay(String text) throws Exception {
         if (text.length() == 0) {
-            throw new Exception (res.getString(R.string.hours_day));
+            throw new Exception(res.getString(R.string.hours_day));
         } else if (!numbers(text) && text.length() > 0) {
             throw new Exception(res.getString(R.string.hours_day_format));
         }
@@ -244,7 +251,7 @@ public class FormatChecker {
         Pattern patron = Pattern.compile("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\"
                 + ".[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)");
         Matcher valid = patron.matcher(URL);
-        if(!valid.matches()) {
+        if (!valid.matches()) {
             throw new Exception(res.getString(R.string
                     .URL_format));
         }

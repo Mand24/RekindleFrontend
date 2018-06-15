@@ -140,10 +140,10 @@ public class ShowRefugee extends AppBaseActivity {
 
     public void sendGetChat() {
         String mail1, mail2;
-        if (currentUser.getMail().compareToIgnoreCase(refugee.getMail()) <= 0 ){
+        if (currentUser.getMail().compareToIgnoreCase(refugee.getMail()) <= 0) {
             mail1 = currentUser.getMail();
             mail2 = refugee.getMail();
-        }else {
+        } else {
             mail1 = refugee.getMail();
             mail2 = currentUser.getMail();
         }
@@ -186,10 +186,10 @@ public class ShowRefugee extends AppBaseActivity {
             startActivity(i);
         } else {
             User user1, user2;
-            if (currentUser.getMail().compareToIgnoreCase(refugee.getMail()) <= 0){
+            if (currentUser.getMail().compareToIgnoreCase(refugee.getMail()) <= 0) {
                 user1 = currentUser;
                 user2 = refugee;
-            }else {
+            } else {
                 user1 = refugee;
                 user2 = currentUser;
             }
@@ -200,35 +200,51 @@ public class ShowRefugee extends AppBaseActivity {
 
     public void sendNewChat(Chat newChat) {
         mAPIService.newChat(currentUser.getApiKey(), currentUser.getMail(), newChat).enqueue(new
-                                                                                        Callback<Chat>() {
-            @Override
-            public void onResponse(Call<Chat> call, Response<Chat> response) {
-                System.out.println("newchat code: " + response.code());
-                if (response.isSuccessful()) {
-                    System.out.println("newchat");
-                    System.out.println(response.body().toString());
-                    manageResultNewChat(true, response.body());
-                } else {
-                    manageResultNewChat(false, null);
-                }
-            }
+             Callback<Chat>() {
+                 @Override
+                 public void onResponse(
+                         Call<Chat> call,
+                         Response<Chat> response) {
+                     System.out.println(
+                             "newchat code: "
+                                     + response.code());
+                     if (response.isSuccessful()) {
+                         System.out.println(
+                                 "newchat");
+                         System.out.println(
+                                 response.body().toString());
+                         manageResultNewChat(
+                                 true,
+                                 response.body());
+                     } else {
+                         manageResultNewChat(
+                                 false,
+                                 null);
+                     }
+                 }
 
-            @Override
-            public void onFailure(Call<Chat> call, Throwable t) {
-                if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(),
-                            "this is an actual network failure"
-                                    + " :( inform "
-                                    + "the user and "
-                                    + "possibly retry", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(),
-                            "newchat!! conversion issue! big problems :(", Toast.LENGTH_SHORT)
-                            .show();
+                 @Override
+                 public void onFailure(
+                         Call<Chat> call,
+                         Throwable t) {
+                     if (t instanceof IOException) {
+                         Toast.makeText(
+                                 getApplicationContext(),
+                                 "this is an actual network failure"
+                                         + " :( inform "
+                                         + "the user and "
+                                         + "possibly retry",
+                                 Toast.LENGTH_SHORT).show();
+                     } else {
+                         Toast.makeText(
+                                 getApplicationContext(),
+                                 "newchat!! conversion issue! big problems :(",
+                                 Toast.LENGTH_SHORT)
+                                 .show();
 
-                }
-            }
-        });
+                     }
+                 }
+             });
 
     }
 
@@ -236,7 +252,7 @@ public class ShowRefugee extends AppBaseActivity {
         if (result) {
             Intent i = new Intent(this, ShowChat.class);
             i.putExtra("Chat", chat);
-            System.out.println("chatnew "+chat.toString());
+            System.out.println("chatnew " + chat.toString());
             startActivity(i);
         } else {
             Toast.makeText(getApplicationContext(), getResources().getString(R

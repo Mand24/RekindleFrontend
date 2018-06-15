@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListHelpLinksAdmin extends ListHelpLinks{
+public class ListHelpLinksAdmin extends ListHelpLinks {
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -32,10 +32,10 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
                     @Override
                     public void onItemClick(View v, int position) {
                         Intent intent = new Intent(getApplicationContext(),
-                                                    EditHelpLink.class);
-                                            intent.putExtra("Link", mFilteredLinks.get
-                                                    (position));
-                                            startActivity(intent);
+                                EditHelpLink.class);
+                        intent.putExtra("Link", mFilteredLinks.get
+                                (position));
+                        startActivity(intent);
                         /*Toast.makeText(getApplicationContext
                                 (), "not implemented!", Toast
                                 .LENGTH_SHORT).show();*/
@@ -67,10 +67,12 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
 
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
-                                                            sendDeleteLink(mFilteredLinks.get(position));
+                                                            sendDeleteLink(
+                                                                    mFilteredLinks.get(position));
                                                             Intent refresh = new Intent
-                                                                    (getApplicationContext(), ListHelpLinksAdmin
-                                                                            .class);
+                                                                    (getApplicationContext(),
+                                                                            ListHelpLinksAdmin
+                                                                                    .class);
                                                             startActivity(refresh);
                                                         }
                                                     });
@@ -94,29 +96,29 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
                 });
     }
 
-    public void sendDeleteLink(Link link){
+    public void sendDeleteLink(Link link) {
         mAPIService.deleteLink(Consistency.getUser(this).getApiKey(), link.getIdLink(),
                 Consistency.getUser(this).getMail())
                 .enqueue
-                (new
-                                                                                           Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), R.string
-                                    .link_deleted_successfully,
-                            Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    manageResult(false, null);
-                }
-            }
+                        (new
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         if (response.isSuccessful()) {
+                                             Toast.makeText(getApplicationContext(), R.string
+                                                             .link_deleted_successfully,
+                                                     Toast.LENGTH_SHORT).show();
+                                         } else {
+                                             manageResult(false, null);
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false, null);
-            }
-        });
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
+                                         manageResult(false, null);
+                                     }
+                                 });
     }
 
     @Override

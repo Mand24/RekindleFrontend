@@ -8,13 +8,13 @@ import org.junit.Test;
 
 public class RefugeeUnity {
 
-    private Refugee refugee = new Refugee ("refugiado@gmail.com", "pass1234", "myname",
-            "refugiadoSurname","refugadioSecondSurname", "photo", "123456789","12-09-2018","Male",
-            "Barcelona","cabrils","ethinc","A+","brown","my life");
+    private Refugee refugee = new Refugee("refugiado@gmail.com", "pass1234", "myname",
+            "refugiadoSurname", "refugadioSecondSurname", "photo", "123456789", "12-09-2018",
+            "Male",
+            "Barcelona", "cabrils", "ethinc", "A+", "brown", "my life");
 
     @Test
-    public void testGets()
-    {
+    public void testGets() {
         assertEquals(refugee.getMail(), "refugiado@gmail.com");
         assertEquals(refugee.getPassword(), "pass1234");
         assertEquals(refugee.getName(), "myname");

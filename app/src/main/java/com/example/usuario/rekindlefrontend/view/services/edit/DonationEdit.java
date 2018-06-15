@@ -2,8 +2,8 @@ package com.example.usuario.rekindlefrontend.view.services.edit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
-import android.app.Fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
@@ -154,22 +154,23 @@ public class DonationEdit extends Fragment {
         mAPIService.editarDonacion(Consistency.getUser(getActivity().getApplicationContext())
                 .getApiKey(), servicio.getId(), servicio)
                 .enqueue(new
-                                                                                           Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("codigo "+response.code());
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    manageResult(false);
-                }
-            }
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         System.out.println("codigo " + response.code());
+                                         if (response.isSuccessful()) {
+                                             manageResult(true);
+                                         } else {
+                                             manageResult(false);
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false);
-            }
-        });
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
+                                         manageResult(false);
+                                     }
+                                 });
     }
 
     public void manageResult(boolean result) {

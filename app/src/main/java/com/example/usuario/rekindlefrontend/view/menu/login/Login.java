@@ -194,17 +194,10 @@ public class Login extends AppCompatActivity {
     public void onLoginSuccess() {
         System.out.println(mUser.toString());
         saveUser(mUser, this);
-        if (!mUser.getUserType().equals("Admin")){
+        if (!mUser.getUserType().equals("Admin")) {
             setComm();
         }
-        /*try{
-            Thread.sleep(1000);
-        }catch (Exception e){
 
-        }*/
-        /*setUpPusher(chats);
-        setAllChannelsNotifications(this);
-        connectPusher();*/
         _loginButton.setEnabled(true);
         Intent i = new Intent(getApplicationContext(), MainMenu.class);
         System.out.println("USUARIOL " + mUser.toString());
@@ -212,26 +205,25 @@ public class Login extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void setComm(){
+    public void setComm() {
         setUpPusher();
         setUpChannelUser(this);
         setChannelUserChat(this);
         sendGetChats();
-        if (mUser.getUserType().equals("Refugee")){
+        if (mUser.getUserType().equals("Refugee")) {
             setChannelUserService(this);
             sendGetMyServicesRefugee();
         }
         connectPusher();
     }
 
-    public void sendGetChats(){
+    public void sendGetChats() {
         mAPIService.getChats(mUser.getMail()).enqueue(new Callback<ArrayList<Chat>>() {
             @Override
             public void onResponse(Call<ArrayList<Chat>> call, Response<ArrayList<Chat>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manageResultGetChats(true, response.body());
-                }
-                else {
+                } else {
                     manageResultGetChats(false, null);
                 }
             }
@@ -243,27 +235,25 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void manageResultGetChats(boolean result, ArrayList<Chat> listChats){
-        if (result){
+    public void manageResultGetChats(boolean result, ArrayList<Chat> listChats) {
+        if (result) {
             setUpChannelsChats(this, listChats);
             setAllChannelsNotificationsChats(this);
-        }
-        else {
+        } else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
                     .show();
         }
     }
 
-    public void sendGetMyServicesRefugee(){
+    public void sendGetMyServicesRefugee() {
         mAPIService.obtenerMisServicios(mUser.getMail(), mUser.getUserType(), false).enqueue(
                 new Callback<ArrayList<Service>>() {
                     @Override
                     public void onResponse(Call<ArrayList<Service>> call,
                             Response<ArrayList<Service>> response) {
-                        if (response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             manageResultGetServices(true, response.body());
-                        }
-                        else {
+                        } else {
                             manageResultGetServices(false, null);
                         }
 
@@ -276,91 +266,23 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-    public void manageResultGetServices(boolean result, ArrayList<Service> listServices){
-        if (result){
+    public void manageResultGetServices(boolean result, ArrayList<Service> listServices) {
+        if (result) {
             setUpChannelsServices(listServices);
             setAllChannelsNotificationsServices(this);
-        }
-        else {
+        } else {
             Toast.makeText(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG)
                     .show();
         }
     }
 
-    /*public void runPusher() {
-        Pusher pusher = getPusher();
-        Channel channel = getChannelChat();
-
-
-        channel.bind("my-event", new SubscriptionEventListener() {
-            @Override
-            public void onEvent(String channelName, String eventName, final String data) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        Gson gson = new Gson();
-                        Type mapType = new TypeToken<Map<String, Message>>() {
-                        }.getType();
-                        Map<String, Message> map = gson.fromJson(data, mapType);
-                        Message message = map.get("message");
-                        User owner = message.getOwner();
-                        if (!getUser(getApplicationContext()).getMail().equals(owner.getMail())) {
-
-                            Intent intent = new Intent(getApplicationContext(), ListChats.class);
-
-                            // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
-                            final int pendingIntentId = 0;
-                            PendingIntent contentIntent =
-                                    PendingIntent.getActivity(getApplicationContext(),
-                                            pendingIntentId, intent,
-                                            PendingIntent.FLAG_UPDATE_CURRENT);
-
-                            // Instantiate the builder and set notification elements:
-
-                            Notification notification = new Notification.Builder(
-                                    getApplicationContext())
-                                    .setCategory(Notification.CATEGORY_PROMO)
-                                    .setContentTitle(owner.getName() + " " + owner.getSurname1())
-                                    .setContentText(message.getContent())
-                                    .setSmallIcon(R.drawable.logo_r)
-                                    .setAutoCancel(true)
-                                    .setVisibility(Notification.VISIBILITY_PUBLIC)
-                                    .addAction(android.R.drawable.ic_menu_view, "View details",
-                                            contentIntent)
-                                    .setContentIntent(contentIntent)
-                                    .setPriority(Notification.PRIORITY_HIGH)
-                                    .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
-
-
-                            // Get the notification manager:
-                            NotificationManager notificationManager =
-                                    (NotificationManager) getApplicationContext().getSystemService(
-                                            NOTIFICATION_SERVICE);
-
-                            // Publish the notification:
-                            final int notificationId = 0;
-                            notificationManager.notify(notificationId, notification);
-                        }
-
-                    }
-
-                });
-
-
-            }
-        });
-
-        pusher.connect();
-    }*/
-
-
     public void onLoginFailed(int code) {
 
-        if (code == 403){
+        if (code == 403) {
             Toast.makeText(getBaseContext(), getString(R.string.banned), Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(getBaseContext(), getString(R.string.login_fail), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getBaseContext(), getString(R.string.login_fail),
+                    Toast.LENGTH_LONG).show();
         }
         _loginButton.setEnabled(true);
     }

@@ -25,9 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.pusher.Comm;
 import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.About;
@@ -35,7 +33,6 @@ import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Help;
 import com.example.usuario.rekindlefrontend.view.menu.lateralMenu.Settings;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
-import com.example.usuario.rekindlefrontend.view.services.list.MyServicesRefugee;
 import com.example.usuario.rekindlefrontend.view.users.show.ShowProfile;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -70,9 +67,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
         User user = getUser(this);
 
-        if (user.getUserType().equals("Admin")){
+        if (user.getUserType().equals("Admin")) {
             navigationView.inflateMenu(R.menu.lateral_menu_admin);
-        }else {
+        } else {
             navigationView.inflateMenu(R.menu.lateral_menu);
         }
 
@@ -87,7 +84,6 @@ public abstract class AppBaseActivity extends AppCompatActivity {
         userName = (TextView) headerView.findViewById(R.id.nombre_header);
         userEmail = (TextView) headerView.findViewById(R.id.email_header);
         userPhoto = (ImageView) headerView.findViewById(R.id.profile_image);
-
 
 
         setDataUser(user);
@@ -168,7 +164,8 @@ public abstract class AppBaseActivity extends AppCompatActivity {
 
                         // Instantiate the builder and set notification elements:
                         Notification notification;
-                        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+                        Notification.Builder builder = new Notification.Builder(
+                                getApplicationContext());
                         builder.setCategory(Notification.CATEGORY_PROMO);
                         builder.setContentTitle(getString(R.string.banned));
                         builder.setSmallIcon(R.drawable.logo_r);
@@ -222,7 +219,9 @@ public abstract class AppBaseActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (!getUser(getApplicationContext()).getUserType().equals("Admin")) Comm.disconnectPusher();
+                        if (!getUser(getApplicationContext()).getUserType().equals("Admin")) {
+                            Comm.disconnectPusher();
+                        }
                         saveUser(null, getApplicationContext());
                         gotoLaunch();
                     }

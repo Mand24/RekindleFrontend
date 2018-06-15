@@ -13,7 +13,7 @@ public class CodeGeneratorUnity {
     private CodeGenerator codeGenerator;
 
     @Test
-    public void testGetCode () {
+    public void testGetCode() {
         int lenght = 5;
         String symbols = "abc";
         Random random = new Random();
@@ -23,9 +23,9 @@ public class CodeGeneratorUnity {
         String res = codeGenerator.getCode();
         char resChar;
         boolean correct = true;
-        for(int i = 0; i < res.length(); i++) {
+        for (int i = 0; i < res.length(); i++) {
             resChar = res.charAt(i);
-            if(resChar != 'a' && resChar != 'b' && resChar != 'c') correct = false;
+            if (resChar != 'a' && resChar != 'b' && resChar != 'c') correct = false;
         }
 
         assertEquals("Lenght incorrect, must be 5", res.length(), lenght);

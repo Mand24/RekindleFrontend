@@ -9,7 +9,7 @@ import org.junit.Test;
 public class LodgeUnity {
 
     private Lodge lodge = new Lodge(1, "voluntario@gmail.com", "lodge",
-            "desc", "Carrer Infern d'en Parera, 2, 08348 Cabrils, Barcelona", "12","12-03-2018",
+            "desc", "Carrer Infern d'en Parera, 2, 08348 Cabrils, Barcelona", "12", "12-03-2018",
             "1234", false);
 
     @Test

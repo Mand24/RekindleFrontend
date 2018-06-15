@@ -7,7 +7,6 @@ package com.example.usuario.rekindlefrontend.data.pusher;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
-import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -16,11 +15,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v7.app.AlertDialog;
-import android.widget.Toast;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.chat.Chat;
@@ -41,8 +36,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.mail.Quota;
-
 public class Comm {
 
     public static final String PusherApiKey = "743a4fb4a1370f0ca9a4";
@@ -52,42 +45,33 @@ public class Comm {
     private static HashMap<Integer, Channel> channelsChat = new HashMap<>();
     private static HashMap<Integer, Channel> channelsService = new HashMap<>();
 
-    /*public static void setUpPusher() {
-
-        PusherOptions options = new PusherOptions();
-        options.setCluster(PusherCluster);
-        pusher = new Pusher(PusherApiKey, options);
-
-        channel = pusher.subscribe("my-channel");
-
-    }*/
-
     public static void setUpPusher() {
         PusherOptions options = new PusherOptions();
         options.setCluster(PusherCluster);
         pusher = new Pusher(PusherApiKey, options);
     }
 
-    public static void setUpChannelUser(Activity act){
+    public static void setUpChannelUser(Activity act) {
         channelUser = pusher.subscribe(getUser(act
                 .getApplicationContext()).getMail());
     }
 
     public static void setUpChannelsChats(Activity act, ArrayList<Chat> chats) {
-        for (Chat chat:chats) {
+        for (Chat chat : chats) {
             Channel channel = pusher.subscribe(Integer.toString(chat.getIdChat()));
             channelsChat.put(chat.getIdChat(), channel);
         }
     }
 
     public static void setUpChannelsServices(ArrayList<Service> services) {
-        for (Service service:services) {
-            Channel channel = pusher.subscribe(service.getServiceType() + Integer.toString(service.getId()));
+        for (Service service : services) {
+            Channel channel = pusher.subscribe(
+                    service.getServiceType() + Integer.toString(service.getId()));
             channelsService.put(service.getId(), channel);
         }
     }
 
-    public static void setAllChannelsNotificationsChats(final Activity act){
+    public static void setAllChannelsNotificationsChats(final Activity act) {
         for (Map.Entry<Integer, Channel> entry : channelsChat.entrySet()) {
             Channel channel = entry.getValue();
 
@@ -108,7 +92,7 @@ public class Comm {
         }
     }
 
-    public static void setChannelNotificationChat(final Activity act, int idChat){
+    public static void setChannelNotificationChat(final Activity act, int idChat) {
         Channel channel = channelsChat.get(idChat);
         channel.bind("new-message", new SubscriptionEventListener() {
             @Override
@@ -123,7 +107,7 @@ public class Comm {
         });
     }
 
-    public static void setAllChannelsNotificationsServices(final Activity act){
+    public static void setAllChannelsNotificationsServices(final Activity act) {
         for (Map.Entry<Integer, Channel> entry : channelsService.entrySet()) {
             Channel channel = entry.getValue();
 
@@ -158,7 +142,7 @@ public class Comm {
         }
     }
 
-    public static void setChannelNotificationService(final Activity act, int idService){
+    public static void setChannelNotificationService(final Activity act, int idService) {
         Channel channel = channelsService.get(idService);
         channel.bind("updated-service", new SubscriptionEventListener() {
             @Override
@@ -166,7 +150,7 @@ public class Comm {
                 act.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Comm.setNotificationService(act, data,"updated-service");
+                        Comm.setNotificationService(act, data, "updated-service");
                     }
                 });
             }
@@ -187,7 +171,7 @@ public class Comm {
         });
     }
 
-    public static void setChannelUserChat(final Activity act){
+    public static void setChannelUserChat(final Activity act) {
         channelUser.bind("new-chat", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
@@ -208,7 +192,7 @@ public class Comm {
         });
     }
 
-    public static void setChannelUserService(final Activity act){
+    public static void setChannelUserService(final Activity act) {
         channelUser.bind("enroll-service", new SubscriptionEventListener() {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
@@ -220,7 +204,8 @@ public class Comm {
                         }.getType();
                         Map<String, Service> map = gson.fromJson(data, mapType);
                         Service service = map.get("message");
-                        Channel channel = pusher.subscribe(service.getServiceType() + Integer.toString(service.getId()));
+                        Channel channel = pusher.subscribe(
+                                service.getServiceType() + Integer.toString(service.getId()));
                         channelsService.put(service.getId(), channel);
                         Comm.setChannelNotificationService(act, service.getId());
                     }
@@ -239,7 +224,8 @@ public class Comm {
                         }.getType();
                         Map<String, Service> map = gson.fromJson(data, mapType);
                         Service service = map.get("message");
-                        pusher.unsubscribe(service.getServiceType() + Integer.toString(service.getId()));
+                        pusher.unsubscribe(
+                                service.getServiceType() + Integer.toString(service.getId()));
                         channelsService.remove(service.getId());
                     }
                 });
@@ -247,14 +233,16 @@ public class Comm {
         });
     }
 
-    public static void setNotificationMessage(Activity act, String data){
+    public static void setNotificationMessage(Activity act, String data) {
 
-        ActivityManager activityManager = (ActivityManager)act.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager activityManager =
+                (ActivityManager) act.getApplicationContext().getSystemService(
+                        Context.ACTIVITY_SERVICE);
         ComponentName cn = activityManager.getRunningTasks(1).get(0).topActivity;
 
         System.out.println("nombre " + cn.getClassName());
         System.out.println("boolean " + cn.getClassName().contains("ShowChat"));
-        if (!cn.getClassName().contains("ShowChat")){
+        if (!cn.getClassName().contains("ShowChat")) {
             Gson gson = new Gson();
             Type mapType = new TypeToken<Map<String, Message>>() {
             }.getType();
@@ -303,7 +291,7 @@ public class Comm {
     }
 
     //Nomes seran notificacions pels refugees que son els qui han de ser informats!!!
-    public static void setNotificationService(Activity act, String data, String eventType){
+    public static void setNotificationService(Activity act, String data, String eventType) {
 
         Gson gson = new Gson();
         Type mapType = new TypeToken<Map<String, Service>>() {
@@ -329,18 +317,17 @@ public class Comm {
         builder.setAutoCancel(true);
         builder.setVisibility(Notification.VISIBILITY_PUBLIC);
         builder.addAction(android.R.drawable.ic_menu_view, "View details",
-                        contentIntent);
+                contentIntent);
         builder.setContentIntent(contentIntent);
         builder.setPriority(Notification.PRIORITY_HIGH);
         builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}).build();
 
-        if (eventType.equals("updated-service")){
+        if (eventType.equals("updated-service")) {
             builder.setContentText(act.getResources().getString(R
                     .string.descriptionEventUpdatedService));
-        }
-        else {
+        } else {
             builder.setContentText(act.getResources().getString(R
-                            .string.descriptionEventDeletedService));
+                    .string.descriptionEventDeletedService));
         }
         notification = builder.build();
 
@@ -355,11 +342,11 @@ public class Comm {
 
     }
 
-    public static void connectPusher(){
+    public static void connectPusher() {
         pusher.connect();
     }
 
-    public static void disconnectPusher(){
+    public static void disconnectPusher() {
         pusher.disconnect();
     }
 
@@ -379,15 +366,4 @@ public class Comm {
         Comm.pusher = pusher;
     }
 
-
-
-
-    /*public static Channel getChannelChat() {
-        System.out.println("getchannel: " + channel.getName());
-        return channel;
-    }
-
-    public static void setChannel(Channel channel) {
-        Comm.channel = channel;
-    }*/
 }

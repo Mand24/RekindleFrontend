@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.view.helpLinks.CreateHelpLink;
-import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinks;
 import com.example.usuario.rekindlefrontend.view.helpLinks.ListHelpLinksAdmin;
 import com.example.usuario.rekindlefrontend.view.moderate.ListDonationRequests;
 import com.example.usuario.rekindlefrontend.view.moderate.ListReports;
@@ -70,7 +69,8 @@ public class MainMenuAdmin extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity().getApplicationContext(), ListHelpLinksAdmin.class);
+                Intent i = new Intent(getActivity().getApplicationContext(),
+                        ListHelpLinksAdmin.class);
                 startActivity(i);
             }
         });

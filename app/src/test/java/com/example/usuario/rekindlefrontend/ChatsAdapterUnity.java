@@ -34,13 +34,13 @@ public class ChatsAdapterUnity {
         chats.add(chat2);
 
         // init: chatsAdapter
-        chatsAdapter = new ChatsAdapter (chats, listener, context);
+        chatsAdapter = new ChatsAdapter(chats, listener, context);
     }
 
     @Test
     public void testConstructor() {
-        chatsAdapter = new ChatsAdapter (chats, listener, context);
-        assertNotNull (chatsAdapter);
+        chatsAdapter = new ChatsAdapter(chats, listener, context);
+        assertNotNull(chatsAdapter);
     }
 
     @Test
@@ -50,9 +50,8 @@ public class ChatsAdapterUnity {
     }
 
     @Test
-    public void testGetSetChats()
-    {
-        List<Chat> newListChat = new ArrayList<Chat> ();
+    public void testGetSetChats() {
+        List<Chat> newListChat = new ArrayList<Chat>();
         chatsAdapter.setChats(newListChat);
 
         assertEquals(newListChat, chatsAdapter.getChats());

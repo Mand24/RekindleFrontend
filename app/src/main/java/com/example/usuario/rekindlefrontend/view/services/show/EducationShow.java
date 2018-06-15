@@ -51,6 +51,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
     private APIService mAPIService = APIUtils.getAPIService();
     private User currentUser;
     private Chat newChat;
+
     public EducationShow() {
         // Required empty public constructor
     }
@@ -211,7 +212,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
                 }
             });
 
-        } else if(type.equals("Volunteer") && currentUser.getMail().equals(service.getEmail())){
+        } else if (type.equals("Volunteer") && currentUser.getMail().equals(service.getEmail())) {
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
 
@@ -231,7 +232,8 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
                                     service.setEnded(true);
                                     endButton.setText(R.string.closedService);
                                     endButton.setClickable(false);
-                                    endButton.setBackgroundColor(getResources().getColor(R.color.colorIron));
+                                    endButton.setBackgroundColor(
+                                            getResources().getColor(R.color.colorIron));
                                     sendEditService(service);
                                 }
                             });
@@ -251,8 +253,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
                 }
 
             });
-        }
-        else {
+        } else {
             enroll.setVisibility(View.INVISIBLE);
             chat.setVisibility(View.INVISIBLE);
             endButton.setVisibility(View.INVISIBLE);
@@ -261,7 +262,7 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
         return view;
     }
 
-    public void sendEditService(Education service){
+    public void sendEditService(Education service) {
 
         mAPIService.editarCurso(currentUser.getApiKey(), service.getId(), service).enqueue(
                 new Callback<Void>() {
@@ -291,10 +292,10 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
 
     public void sendGetChat() {
         String mail1, mail2;
-        if (currentUser.getMail().compareToIgnoreCase(service.getEmail()) <= 0 ){
+        if (currentUser.getMail().compareToIgnoreCase(service.getEmail()) <= 0) {
             mail1 = currentUser.getMail();
             mail2 = service.getEmail();
-        }else {
+        } else {
             mail1 = service.getEmail();
             mail2 = currentUser.getMail();
         }
@@ -370,10 +371,10 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
     public void manageResultGetVolunteer(boolean result, Volunteer volunteer) {
         if (result) {
             User user1, user2;
-            if (currentUser.getMail().compareToIgnoreCase(volunteer.getMail()) <= 0){
+            if (currentUser.getMail().compareToIgnoreCase(volunteer.getMail()) <= 0) {
                 user1 = currentUser;
                 user2 = volunteer;
-            }else {
+            } else {
                 user1 = volunteer;
                 user2 = currentUser;
             }
@@ -387,36 +388,52 @@ public class EducationShow extends Maps implements OnMapReadyCallback {
 
     public void sendNewChat(Chat chat) {
         mAPIService.newChat(currentUser.getApiKey(), currentUser.getMail(), chat).enqueue(new
-                                                                                                 Callback<Chat>
-                () {
-            @Override
-            public void onResponse(Call<Chat> call, Response<Chat> response) {
-                System.out.println("newchat code: " + response.code());
-                if (response.isSuccessful()) {
-                    System.out.println("newchat");
-                    System.out.println(response.body().toString());
-                    manageResultNewChat(true, response.body());
-                } else {
-                    manageResultNewChat(false, null);
-                }
-            }
+              Callback<Chat>
+                      () {
+                  @Override
+                  public void onResponse(
+                          Call<Chat> call,
+                          Response<Chat> response) {
+                      System.out.println(
+                              "newchat code: "
+                                      + response.code());
+                      if (response.isSuccessful()) {
+                          System.out.println(
+                                  "newchat");
+                          System.out.println(
+                                  response.body().toString());
+                          manageResultNewChat(
+                                  true,
+                                  response.body());
+                      } else {
+                          manageResultNewChat(
+                                  false,
+                                  null);
+                      }
+                  }
 
-            @Override
-            public void onFailure(Call<Chat> call, Throwable t) {
-                if (t instanceof IOException) {
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "this is an actual network failure"
-                                    + " :( inform "
-                                    + "the user and "
-                                    + "possibly retry", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "newchat!! conversion issue! big problems :(", Toast.LENGTH_SHORT)
-                            .show();
+                  @Override
+                  public void onFailure(
+                          Call<Chat> call,
+                          Throwable t) {
+                      if (t instanceof IOException) {
+                          Toast.makeText(
+                                  getActivity().getApplicationContext(),
+                                  "this is an actual network failure"
+                                          + " :( inform "
+                                          + "the user and "
+                                          + "possibly retry",
+                                  Toast.LENGTH_SHORT).show();
+                      } else {
+                          Toast.makeText(
+                                  getActivity().getApplicationContext(),
+                                  "newchat!! conversion issue! big problems :(",
+                                  Toast.LENGTH_SHORT)
+                                  .show();
 
-                }
-            }
-        });
+                      }
+                  }
+              });
 
     }
 

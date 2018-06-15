@@ -10,6 +10,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class Report implements Parcelable {
 
+    public static final Creator<Report> CREATOR = new Creator<Report>() {
+        @Override
+        public Report createFromParcel(Parcel in) {
+            return new Report(in);
+        }
+
+        @Override
+        public Report[] newArray(int size) {
+            return new Report[size];
+        }
+    };
     @SerializedName("idReport")
     @Expose
     private int idReport;
@@ -39,7 +50,9 @@ public class Report implements Parcelable {
         motive = in.readString();
     }
 
-    public int getIdReport() { return this.idReport; }
+    public int getIdReport() {
+        return this.idReport;
+    }
 
     public String getInformerUserMail() {
         return this.informerUser.getMail();
@@ -65,18 +78,6 @@ public class Report implements Parcelable {
         dest.writeParcelable(reportedUser, flags);
         dest.writeString(motive);
     }
-
-    public static final Creator<Report> CREATOR = new Creator<Report>() {
-        @Override
-        public Report createFromParcel(Parcel in) {
-            return new Report(in);
-        }
-
-        @Override
-        public Report[] newArray(int size) {
-            return new Report[size];
-        }
-    };
 
     @Override
     public String toString() {

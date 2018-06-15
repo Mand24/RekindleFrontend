@@ -26,9 +26,9 @@ public class ServiceAdapterUnity {
     @Before
     public void before() {
         services = new ArrayList<Service>();
-        Service s1 = new Service(1,"Lodge", "email@email.com", "service lodge", "decription",
+        Service s1 = new Service(1, "Lodge", "email@email.com", "service lodge", "decription",
                 "carrer", "12134", false);
-        Service s2 = new Service(2,"Lodge", "email2@email.com", "service lodge2", "decription",
+        Service s2 = new Service(2, "Lodge", "email2@email.com", "service lodge2", "decription",
                 "carrer dos", "1211234", false);
 
         services.add(s1);
@@ -45,15 +45,14 @@ public class ServiceAdapterUnity {
     }
 
     @Test
-    public void testCount () {
+    public void testCount() {
         int count = serviceAdapter.getItemCount();
 
         assertEquals("s1 + s2", count, serviceAdapter.getItemCount());
     }
 
     @Test
-    public void testGetSet()
-    {
+    public void testGetSet() {
         List<Service> newList = new ArrayList<Service>();
         serviceAdapter.setServices(newList);
 

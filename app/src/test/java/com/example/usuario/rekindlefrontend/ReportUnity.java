@@ -9,14 +9,14 @@ import org.junit.Test;
 
 public class ReportUnity {
 
-    private User user = new User ("Volunteer", "voluntario@mail.com", "pass123",
+    private User user = new User("Volunteer", "voluntario@mail.com", "pass123",
             "userVoluntario", "apellidoUno", "apellidoDos", "foto");
 
 
-    private User user_reported = new User ("reportedUser", "voluntario@mail.com", "pass123",
+    private User user_reported = new User("reportedUser", "voluntario@mail.com", "pass123",
             "userReported", "apellidoUno", "apellidoDos", "foto");
 
-    private Report report= new Report (user, user_reported, "huele mal");
+    private Report report = new Report(user, user_reported, "huele mal");
 
     @Test
     public void testGets() {

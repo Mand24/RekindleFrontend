@@ -2,7 +2,6 @@ package com.example.usuario.rekindlefrontend.view.moderate;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.TextView;
@@ -72,38 +71,42 @@ public class ShowReport extends AppBaseActivity {
         motive.setText(report.getMotive());
     }
 
-    public void deleteReport(){
+    public void deleteReport() {
         mAPIService.deleteReport(Consistency.getUser(this).getApiKey(), report.getIdReport(),
                 Consistency.getUser(this).getMail())
                 .enqueue
-                (new
-                         Callback<Void>() {
-                             @Override
-                             public void onResponse(Call<Void> call, Response<Void> response) {
-                                 System.out.println("llamada " + call.toString());
-                                 if (response.isSuccessful()) {
-                                     manageResult(true);
-                                 } else {
-                                     System.out.println("codi " + response.code());
-                                     manageResult(false);
-                                 }
-                             }
+                        (new
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         System.out.println("llamada " + call.toString());
+                                         if (response.isSuccessful()) {
+                                             manageResult(true);
+                                         } else {
+                                             System.out.println("codi " + response.code());
+                                             manageResult(false);
+                                         }
+                                     }
 
-                             @Override
-                             public void onFailure(Call<Void> call, Throwable t) {
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
 
-                                 if (t instanceof IOException) {
-                                     Toast.makeText(getApplicationContext(), "this is an actual network failure"
-                                             + " :( inform "
-                                             + "the user and "
-                                             + "possibly retry", Toast.LENGTH_SHORT).show();
-                                 } else {
-                                     Toast.makeText(getApplicationContext(), "conversion issue! big problems :(",
-                                             Toast.LENGTH_SHORT).show();
+                                         if (t instanceof IOException) {
+                                             Toast.makeText(getApplicationContext(),
+                                                     "this is an actual network failure"
+                                                             + " :( inform "
+                                                             + "the user and "
+                                                             + "possibly retry",
+                                                     Toast.LENGTH_SHORT).show();
+                                         } else {
+                                             Toast.makeText(getApplicationContext(),
+                                                     "conversion issue! big problems :(",
+                                                     Toast.LENGTH_SHORT).show();
 
-                                 }
-                             }
-                         });
+                                         }
+                                     }
+                                 });
     }
 
     public void manageResult(boolean result) {
@@ -124,7 +127,8 @@ public class ShowReport extends AppBaseActivity {
     @Override
     protected void gotoLaunch() {
         Intent i = new Intent(this, Login.class);
-        startActivity(i);    }
+        startActivity(i);
+    }
 
     @Override
     public void onBackPressed() {

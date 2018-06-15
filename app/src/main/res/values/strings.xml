@@ -543,11 +543,12 @@
 
     <string name="hours_day">Indicate hours of the day</string>
     <string name="hours_day_format">Incorrect format; correct format = 10 digits maximum with a
-        maximum precision of two deciamales, use of the point as separator</string>
+        maximum precision of two deciamales, use of the point as separator
+    </string>
     <string name="hours_week">Indicate weekly hours</string>
     <string name="contract_time">Indicate duration of the contract</string>
     <string name="contract_format">Duration of the contract can only contain digits</string>
     <string name="contract_large">Contract duration too large, maximum 3 digits</string>
-  
+
 </resources>
 

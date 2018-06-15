@@ -55,7 +55,7 @@ public class ShowChat extends AppBaseActivity {
         mAPIService = APIUtils.getAPIService();
 
         chat = getIntent().getParcelableExtra("Chat");
-        System.out.println("chat3 "+chat.toString());
+        System.out.println("chat3 " + chat.toString());
 
         recyclerView = findViewById(R.id.messageList);
         mAdapter = new MessagesAdapter(messages, this);
@@ -91,7 +91,7 @@ public class ShowChat extends AppBaseActivity {
     public void setChannel() {
 
 //        Pusher pusher = getPusher();
-        System.out.println("chat2 "+chat.toString());
+        System.out.println("chat2 " + chat.toString());
         Channel channel = getChannelChat(chat.getIdChat());
 
         channel.bind("new-message", new SubscriptionEventListener() {

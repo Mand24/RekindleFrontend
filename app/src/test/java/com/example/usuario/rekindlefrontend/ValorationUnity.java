@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ValorationUnity {
 
     private Float rating = new Float(2.2);
-    private Valoration valoration = new Valoration (1, "lodge", "refugee@email.com", rating);
+    private Valoration valoration = new Valoration(1, "lodge", "refugee@email.com", rating);
 
     @Test
     public void testGets() {

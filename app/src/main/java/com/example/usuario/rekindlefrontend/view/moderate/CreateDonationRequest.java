@@ -3,8 +3,8 @@ package com.example.usuario.rekindlefrontend.view.moderate;
 import static com.example.usuario.rekindlefrontend.utils.Consistency.getUser;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.view.View;
@@ -52,10 +52,10 @@ public class CreateDonationRequest extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                try{
+                try {
                     createRequest();
                     sendRequest();
-                } catch (Exception e){
+                } catch (Exception e) {
                     motive.setError("Field is empty");
                 }
 
@@ -64,7 +64,7 @@ public class CreateDonationRequest extends AppCompatActivity {
         });
     }
 
-    void setViews(){
+    void setViews() {
         donationName = findViewById(R.id.requested_donation);
         motive = findViewById(R.id.motive);
         mAPIService = APIUtils.getAPIService();
@@ -74,47 +74,48 @@ public class CreateDonationRequest extends AppCompatActivity {
         donationName.setText(donation.getName());
     }
 
-    void createRequest() throws Exception{
+    void createRequest() throws Exception {
         User user = getUser(getApplicationContext());
-        if(!TextUtils.isEmpty(motive.getText().toString())) {
+        if (!TextUtils.isEmpty(motive.getText().toString())) {
             request = new DonationRequest(user, donation, motive.getText().toString());
             System.out.println("donationRequest " + request.toString());
-        }
-        else {
+        } else {
             throw new Exception("Report Empty");
         }
     }
 
-    void sendRequest(){
+    void sendRequest() {
         mAPIService.createDonationRequest(Consistency.getUser(this).getApiKey(), request).enqueue
                 (new
-                                                                                         Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("llamada " + call.toString());
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    System.out.println("codi " + response.code());
-                    manageResult(false);
-                }
-            }
+                         Callback<Void>() {
+                             @Override
+                             public void onResponse(Call<Void> call, Response<Void> response) {
+                                 System.out.println("llamada " + call.toString());
+                                 if (response.isSuccessful()) {
+                                     manageResult(true);
+                                 } else {
+                                     System.out.println("codi " + response.code());
+                                     manageResult(false);
+                                 }
+                             }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+                             @Override
+                             public void onFailure(Call<Void> call, Throwable t) {
 
-                if (t instanceof IOException) {
-                    Toast.makeText(getApplicationContext(), "this is an actual network failure"
-                            + " :( inform "
-                            + "the user and "
-                            + "possibly retry", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "conversion issue! big problems :(",
-                            Toast.LENGTH_SHORT).show();
+                                 if (t instanceof IOException) {
+                                     Toast.makeText(getApplicationContext(),
+                                             "this is an actual network failure"
+                                                     + " :( inform "
+                                                     + "the user and "
+                                                     + "possibly retry", Toast.LENGTH_SHORT).show();
+                                 } else {
+                                     Toast.makeText(getApplicationContext(),
+                                             "conversion issue! big problems :(",
+                                             Toast.LENGTH_SHORT).show();
 
-                }
-            }
-        });
+                                 }
+                             }
+                         });
     }
 
     public void manageResult(boolean result) {

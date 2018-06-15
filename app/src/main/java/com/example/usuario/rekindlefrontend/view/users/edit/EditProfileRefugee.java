@@ -254,14 +254,14 @@ public class EditProfileRefugee extends Fragment {
     }
 
     public void sendUpdateRefugee() {
-        System.out.println("apiKey "+Consistency.getUser(getActivity().getApplicationContext())
+        System.out.println("apiKey " + Consistency.getUser(getActivity().getApplicationContext())
                 .getApiKey());
         mAPIService.actualizarRefugiado(Consistency.getUser(getActivity().getApplicationContext())
                 .getApiKey(), mRefugee.getMail(), mRefugee).enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        System.out.println("code "+response.code());
+                        System.out.println("code " + response.code());
                         if (response.isSuccessful()) {
                             manageResult(true);
                         } else {

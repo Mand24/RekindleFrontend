@@ -29,7 +29,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Servic
         this.listener = listener;
     }
 
-    public List<Service> getServices () { return mServices; }
+    public List<Service> getServices() {
+        return mServices;
+    }
+
     public void setServices(List<Service> services) {
         this.mServices = services;
     }

@@ -29,7 +29,9 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.ReportVi
         this.listener = listener;
     }
 
-    public List<Report> getReports() { return reports; }
+    public List<Report> getReports() {
+        return reports;
+    }
 
     public void setReports(List<Report> reports) {
         this.reports = reports;

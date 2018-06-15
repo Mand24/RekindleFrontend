@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class EducationUnity {
 
-    private Education education = new Education (0, "voluntario@gmail.com",
+    private Education education = new Education(0, "voluntario@gmail.com",
             "education", "descr", "Passatge Passalaigua, 14, 08348 Cabrils, Barcelona",
             "ambit", "requirements", "schedule", "40", "123,2", "12", false);
 

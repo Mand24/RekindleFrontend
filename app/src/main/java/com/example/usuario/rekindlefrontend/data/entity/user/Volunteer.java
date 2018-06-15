@@ -9,6 +9,18 @@ import com.google.gson.annotations.SerializedName;
 public class Volunteer extends User {
 
 
+    public static final Parcelable.Creator<Volunteer> CREATOR =
+            new Parcelable.Creator<Volunteer>() {
+                @Override
+                public Volunteer createFromParcel(Parcel source) {
+                    return new Volunteer(source);
+                }
+
+                @Override
+                public Volunteer[] newArray(int size) {
+                    return new Volunteer[size];
+                }
+            };
     @SerializedName("averageValoration")
     @Expose
     private double averageValoration;
@@ -60,17 +72,4 @@ public class Volunteer extends User {
                 ", averageValoration=" + averageValoration +
                 '}';
     }
-
-    public static final Parcelable.Creator<Volunteer> CREATOR =
-            new Parcelable.Creator<Volunteer>() {
-                @Override
-                public Volunteer createFromParcel(Parcel source) {
-                    return new Volunteer(source);
-                }
-
-                @Override
-                public Volunteer[] newArray(int size) {
-                    return new Volunteer[size];
-                }
-            };
 }

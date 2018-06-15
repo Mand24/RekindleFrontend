@@ -1,7 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.helpLinks;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
@@ -17,7 +16,6 @@ import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
-import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,8 +23,8 @@ import retrofit2.Response;
 
 public class EditHelpLink extends AppBaseActivity {
 
-    private Spinner type;
     ArrayAdapter<CharSequence> adapter;
+    private Spinner type;
     private EditText url, description;
     private Link link;
     private APIService mAPIService;
@@ -69,7 +67,7 @@ public class EditHelpLink extends AppBaseActivity {
         mAPIService = APIUtils.getAPIService();
     }
 
-    public void setFields(){
+    public void setFields() {
         int selectionPosition = adapter.getPosition(link.getType());
         type.setSelection(selectionPosition);
         url.setText(link.getUrl());
@@ -78,7 +76,7 @@ public class EditHelpLink extends AppBaseActivity {
 
     public void updateLink() {
         String linkType;
-        if (type.getSelectedItemPosition() == 0){
+        if (type.getSelectedItemPosition() == 0) {
             linkType = "Legal";
         } else if (type.getSelectedItemPosition() == 1) {
             linkType = "Health";
@@ -95,22 +93,23 @@ public class EditHelpLink extends AppBaseActivity {
         mAPIService.updateLink(Consistency.getUser(this).getApiKey(), link.getIdLink(), link,
                 Consistency.getUser(this).getMail())
                 .enqueue(new
-                                                                                             Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("codi "+ response.code());
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    manageResult(false);
-                }
-            }
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         System.out.println("codi " + response.code());
+                                         if (response.isSuccessful()) {
+                                             manageResult(true);
+                                         } else {
+                                             manageResult(false);
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false);
-            }
-        });
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
+                                         manageResult(false);
+                                     }
+                                 });
     }
 
     public void manageResult(boolean result) {

@@ -73,8 +73,8 @@
                 android:id="@+id/end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true">
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true">
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/endButton"

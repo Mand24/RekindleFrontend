@@ -71,11 +71,13 @@ public class MyServicesVolunteer extends ListServices {
 
                                                         public void onClick(DialogInterface dialog,
                                                                 int which) {
-                                                            sendDeleteService(mServiciosFiltrados.get
-                                                                    (position));
+                                                            sendDeleteService(
+                                                                    mServiciosFiltrados.get
+                                                                            (position));
                                                             Intent refresh = new Intent
-                                                                    (getApplicationContext(), MyServicesVolunteer
-                                                                            .class);
+                                                                    (getApplicationContext(),
+                                                                            MyServicesVolunteer
+                                                                                    .class);
                                                             startActivity(refresh);
                                                         }
                                                     });
@@ -102,30 +104,30 @@ public class MyServicesVolunteer extends ListServices {
     public void sendDeleteService(Service service) {
         mAPIService.eliminarServicio(Consistency.getUser(this).getApiKey(), service.getId(),
                 service
-                .getServiceType(), Consistency.getUser(this).getMail())
+                        .getServiceType(), Consistency.getUser(this).getMail())
                 .enqueue(
-                new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()) {
-                            Intent i = new Intent(getApplicationContext(),
-                                    MyServicesVolunteer.class);
-                            startActivity(i);
-                            Toast.makeText(getApplicationContext(), R.string
-                                            .service_deleted_successfully,
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            System.out.println("CODIGO " + response.code());
-                            manageResult(false, null);
-                        }
-                    }
+                        new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()) {
+                                    Intent i = new Intent(getApplicationContext(),
+                                            MyServicesVolunteer.class);
+                                    startActivity(i);
+                                    Toast.makeText(getApplicationContext(), R.string
+                                                    .service_deleted_successfully,
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    System.out.println("CODIGO " + response.code());
+                                    manageResult(false, null);
+                                }
+                            }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.e("on Failure", t.toString());
-                        manageResult(false, null);
-                    }
-                });
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Log.e("on Failure", t.toString());
+                                manageResult(false, null);
+                            }
+                        });
     }
 
     @Override

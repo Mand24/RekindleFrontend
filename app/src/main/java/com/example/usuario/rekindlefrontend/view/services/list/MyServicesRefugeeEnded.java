@@ -1,9 +1,7 @@
 package com.example.usuario.rekindlefrontend.view.services.list;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 
 import com.example.usuario.rekindlefrontend.R;
@@ -12,7 +10,6 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Service;
 import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.services.EvaluateService;
-import com.example.usuario.rekindlefrontend.view.services.show.ShowService;
 
 import java.util.ArrayList;
 

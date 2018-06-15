@@ -42,7 +42,7 @@ public class MessageAdapterUnity {
     }
 
     @Test
-    public void testCount () {
+    public void testCount() {
         int count = messagesAdapter.getItemCount();
 
         assertEquals("m1 + m2 = 2", count, 2);

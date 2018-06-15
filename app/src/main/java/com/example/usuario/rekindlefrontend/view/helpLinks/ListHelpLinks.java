@@ -2,14 +2,11 @@ package com.example.usuario.rekindlefrontend.view.helpLinks;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +25,6 @@ import com.example.usuario.rekindlefrontend.interfaces.CustomItemClickListener;
 import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,14 +33,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListHelpLinks extends AppBaseActivity implements Filterable{
+public class ListHelpLinks extends AppBaseActivity implements Filterable {
 
-    private List<Link> mLinks = new ArrayList<>();
     protected List<Link> mFilteredLinks = new ArrayList<>();
-    private RecyclerView recyclerView;
     protected LinksAdapter mAdapter;
-    private SearchView searchView;
     protected APIService mAPIService;
+    private List<Link> mLinks = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private SearchView searchView;
     private ImageButton legalFilter, healthFilter, educationFilter;
     private HashMap<String, Boolean> filters = new HashMap<>();
 
@@ -158,11 +154,10 @@ public class ListHelpLinks extends AppBaseActivity implements Filterable{
         mAPIService.getLinks().enqueue(new Callback<ArrayList<Link>>() {
             @Override
             public void onResponse(Call<ArrayList<Link>> call, Response<ArrayList<Link>> response) {
-                if (response.isSuccessful()){
-                    System.out.println("lista "+response.body().toString());
+                if (response.isSuccessful()) {
+                    System.out.println("lista " + response.body().toString());
                     manageResult(true, response.body());
-                }
-                else {
+                } else {
                     manageResult(false, null);
                 }
             }

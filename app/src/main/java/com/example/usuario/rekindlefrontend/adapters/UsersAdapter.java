@@ -29,7 +29,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         this.listener = listener;
     }
 
-    public List<User> getUsers () { return mUsers; }
+    public List<User> getUsers() {
+        return mUsers;
+    }
 
     public void setUsers(List<User> users) {
         this.mUsers = users;

@@ -11,7 +11,7 @@ public class LinkUnity {
     private Link link = new Link("link type", "http://wwww.google.com", "description");
 
     @Test
-    public void testGets () {
+    public void testGets() {
         assertEquals(link.getType(), "link type");
         assertEquals(link.getDescription(), "description");
         assertEquals(link.getUrl(), "http://wwww.google.com");

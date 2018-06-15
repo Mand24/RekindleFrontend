@@ -29,7 +29,9 @@ public class RefugeeAdapter extends RecyclerView.Adapter<RefugeeAdapter.RefugeeV
         this.listener = listener;
     }
 
-    public List<Refugee> getRefugees () { return mRefugees; }
+    public List<Refugee> getRefugees() {
+        return mRefugees;
+    }
 
     public void setRefugees(List<Refugee> refugees) {
         this.mRefugees = refugees;

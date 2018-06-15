@@ -78,7 +78,7 @@ public class EspressoRegistroVolunteer {
 
         regVol.getParams();
 
-        Volunteer volunteer =  regVol.getVolunteer();
+        Volunteer volunteer = regVol.getVolunteer();
 
         assertEquals(volunteer.getName(), "nombre");
         assertEquals(volunteer.getSurname1(), "primer_apellido");

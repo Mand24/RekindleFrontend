@@ -156,21 +156,22 @@ public class EducationEdit extends Fragment {
         mAPIService.editarCurso(Consistency.getUser(getActivity().getApplicationContext())
                 .getApiKey(), servicio.getId(), servicio)
                 .enqueue(new
-                                                                                        Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    manageResult(true);
-                } else {
-                    manageResult(false);
-                }
-            }
+                                 Callback<Void>() {
+                                     @Override
+                                     public void onResponse(Call<Void> call,
+                                             Response<Void> response) {
+                                         if (response.isSuccessful()) {
+                                             manageResult(true);
+                                         } else {
+                                             manageResult(false);
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                manageResult(false);
-            }
-        });
+                                     @Override
+                                     public void onFailure(Call<Void> call, Throwable t) {
+                                         manageResult(false);
+                                     }
+                                 });
     }
 
     public void manageResult(boolean result) {

@@ -9,7 +9,7 @@ import org.junit.Test;
 public class VolunteerUnity {
 
     private Volunteer volunteer = new Volunteer("volunteer@mail.com", "pass123", "name",
-            "surnameOne", "surnameTwo","photo");
+            "surnameOne", "surnameTwo", "photo");
 
     @Test
     public void testGets() {

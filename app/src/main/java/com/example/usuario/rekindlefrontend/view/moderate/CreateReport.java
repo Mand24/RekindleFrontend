@@ -54,10 +54,10 @@ public class CreateReport extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                try{
+                try {
                     createReport();
                     sendReport();
-                } catch (Exception e){
+                } catch (Exception e) {
                     motive.setError("Field is empty");
                 }
             }
@@ -74,13 +74,12 @@ public class CreateReport extends AppCompatActivity {
         reportedUser.setText(refugee.getMail());
     }
 
-    public void createReport() throws Exception{
+    public void createReport() throws Exception {
         User user = getUser(getApplicationContext());
-        if(!TextUtils.isEmpty(motive.getText().toString())){
+        if (!TextUtils.isEmpty(motive.getText().toString())) {
             report = new Report(user, refugee, motive.getText().toString());
             System.out.println("reporte " + report.toString());
-        }
-        else{
+        } else {
             throw new Exception("Report Empty");
         }
     }
