@@ -52,7 +52,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
 
     protected APIService mAPIService;
 
-    protected ImageButton LodgeFilter, DonationFilter, EducationFilter, JobFilter, mFilterButton;
+    protected ImageButton LodgeFilter, DonationFilter, EducationFilter, JobFilter;
     protected AppCompatButton mMapButton;
     protected HashMap<String, Boolean> filters = new HashMap<>();
 
@@ -71,9 +71,7 @@ public class ListServices extends AppBaseActivity implements Filterable {
         mAPIService = APIUtils.getAPIService();
         recyclerView = findViewById(R.id.rv);
 
-        Bundle extras = getIntent().getExtras();
-
-        initializeData(extras);
+        initializeData();
 
         map_and_filter = findViewById(R.id.map_and_filter);
         RecyclerView.LayoutManager mLayoutManager =
@@ -169,14 +167,6 @@ public class ListServices extends AppBaseActivity implements Filterable {
             }
         });
 
-        mFilterButton = findViewById(R.id.filterButton);
-        mFilterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ListServices.this, FilterServices.class);
-                startActivity(i);
-            }
-        });
 
     }
 
@@ -204,43 +194,9 @@ public class ListServices extends AppBaseActivity implements Filterable {
         mAdapter.notifyDataSetChanged();
     }
 
-    protected void initializeData(Bundle extras) {
+    protected void initializeData() {
 
-        String startDate = null;
-        String endDate = null;
-        Double minimumRating = null;
-        String location;
-        Double distance = null;
-
-        Geocoder geo = new Geocoder(getApplicationContext());
-        Address locationAddress = null;
-        Double latitude = null;
-        Double longitude = null;
-
-        if (extras!= null) {
-            startDate = (String) extras.get("startDate");
-            endDate = (String) extras.get("endDate");
-            minimumRating = new Double((double) extras.get("minimumRating"));
-            location = (String) extras.get("location");
-            distance = (Double) extras.get("distance");
-
-            try {
-                List<Address> addresses = geo.getFromLocationName(location, 1);
-                if (addresses.size() > 0) {
-                    locationAddress = addresses.get(0);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (locationAddress != null) {
-                latitude = locationAddress.getLatitude();
-                longitude = locationAddress.getLongitude();
-            }
-        }
-//        System.out.println(mAPIService.getServicesFiltered(startDate, endDate, minimumRating,
-//               latitude, longitude, distance).request().toString());
-        mAPIService.getServicesFiltered(startDate, endDate, minimumRating, latitude, longitude,
-                distance)
+        mAPIService.obtenerServicios()
                 .enqueue(new Callback<ArrayList<Service>>
                         () {
                     @Override
