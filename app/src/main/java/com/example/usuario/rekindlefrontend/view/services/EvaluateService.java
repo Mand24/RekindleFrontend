@@ -64,7 +64,10 @@ public class EvaluateService extends AppBaseActivity {
     }
 
     private void sendCreateValoration(){
-        mAPIService.createValoration(service.getId(), service.getServiceType(), mValoration)
+        mAPIService.createValoration(Consistency.getUser(this).getApiKey(), service.getId(),
+                service
+                        .getServiceType(),
+                mValoration)
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

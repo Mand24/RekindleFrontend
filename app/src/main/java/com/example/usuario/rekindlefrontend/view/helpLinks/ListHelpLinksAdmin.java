@@ -94,7 +94,9 @@ public class ListHelpLinksAdmin extends ListHelpLinks{
     }
 
     public void sendDeleteLink(Link link){
-        mAPIService.deleteLink(Consistency.getUser(this).getApiKey(), link.getIdLink()).enqueue
+        mAPIService.deleteLink(Consistency.getUser(this).getApiKey(), link.getIdLink(),
+                Consistency.getUser(this).getMail())
+                .enqueue
                 (new
                                                                                            Callback<Void>() {
             @Override

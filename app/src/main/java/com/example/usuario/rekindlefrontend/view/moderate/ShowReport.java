@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.misc.Report;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.io.IOException;
 
@@ -19,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShowReport extends AppCompatActivity {
+public class ShowReport extends AppBaseActivity {
 
     private TextView informerUser;
     private TextView reportedUser;
@@ -69,7 +72,9 @@ public class ShowReport extends AppCompatActivity {
     }
 
     public void deleteReport(){
-        mAPIService.deleteReport(report.getIdReport()).enqueue
+        mAPIService.deleteReport(Consistency.getUser(this).getApiKey(), report.getIdReport(),
+                Consistency.getUser(this).getMail())
+                .enqueue
                 (new
                          Callback<Void>() {
                              @Override
@@ -114,6 +119,11 @@ public class ShowReport extends AppCompatActivity {
                     .string.reporte_eliminado_fallido), Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void gotoLaunch() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);    }
 
     @Override
     public void onBackPressed() {

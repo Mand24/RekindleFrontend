@@ -57,17 +57,18 @@ public interface APIService {
 
     @POST("/usuarios/{mail}/chats")
     Call<Chat> newChat(@Header("apiKey") String apiKey, @Path("mail") String mail,
-            @Body Chat chat);//back se encarga de mirar si existe!!!
+            @Body Chat chat);
 
     @GET("/usuarios/{mail}/enabled")
     Call<Integer> isUserEnabled(@Path("mail") String mail);
 
     @PUT("/usuarios/{mail}/enable")
-    Call<Void> enableUser(@Path("mail") String mail);//api key mail admin
+    Call<Void> enableUser(@Header("apiKey") String apiKey, @Path("mail") String mail, @Query
+            ("mailAdmin") String mailAdmin);
 
     @PUT("/usuarios/{mail}/disable")
-    Call<Void> disableUser(@Path("mail") String mail, @Query("motive") String motive);//api key
-    // mail admin
+    Call<Void> disableUser(@Header("apiKey") String apiKey, @Path("mail") String mail, @Query
+            ("motive") String motive, @Query("mailAdmin") String mailAdmin);
 
     @GET("/usuarios")
     Call<ArrayList<User>> getUsers();
@@ -167,12 +168,12 @@ public interface APIService {
     Call<Void> crearEducacion(@Header("apiKey") String apiKey, @Body Education educacion);
 
     @POST("/servicios/{id}/{tipo}/valoraciones")
-    Call<Void> createValoration(@Path("id") int id, @Path("tipo") String tipo, @Body Valoration
-            valoration);//apikey
+    Call<Void> createValoration(@Header("apiKey") String apiKey, @Path("id") int id, @Path("tipo") String tipo, @Body Valoration
+            valoration);
 
     @DELETE("/servicios/{id}/{tipo}")
     Call<Void> eliminarServicio(@Header("apiKey") String apiKey, @Path("id") int id, @Path
-            ("tipo") String tipo);//mailuser
+            ("tipo") String tipo, @Query("mailUser") String mailUser);
 
 
     @GET("/refugiados/{mail}/inscripciones/{id}/{tipo}")
@@ -209,12 +210,14 @@ public interface APIService {
     Call<Report> getReport(@Path("id") int id);
 
     @DELETE("/reportes/{id}")
-    Call<Void> deleteReport(@Path("id") int id);//apikey mailuser
+    Call<Void> deleteReport(@Header("apiKey") String apiKey, @Path("id") int id, @Query("mail")
+            String mail);
 
     //LLAMADAS RELACIONADAS CON SOLICITUDES DE DONACION
 
     @POST("/solicituddonacion")
-    Call<Void> createDonationRequest(@Body DonationRequest donationRequest);//apikey
+    Call<Void> createDonationRequest(@Header("apiKey") String apiKey, @Body DonationRequest
+            donationRequest);
 
     @GET("/solicituddonacion")
     Call<ArrayList<DonationRequest>> getDonationRequests();
@@ -223,12 +226,11 @@ public interface APIService {
     Call<Boolean> donationIsRequested(@Path("idDonation") int id,  @Query("mail") String mail);
 
     @PUT("/solicituddonacion/accept/{idDonation}")
-    Call<Void> acceptDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
-    //apikey
+    Call<Void> acceptDonationRequest(@Header("apiKey") String apiKey, @Path("idDonation") int id,
+            @Query("mail") String mail);
 
     @PUT("/solicituddonacion/reject/{idDonation}")
-    Call<Void> rejectDonationRequest(@Path("idDonation") int id,  @Query("mail") String mail);
-    //apiKey
+    Call<Void> rejectDonationRequest(@Header("apiKey") String apiKey, @Path("idDonation") int id,  @Query("mail") String mail);
 
     //LLAMADAS RELACIONADAS CON LINKS
 
@@ -236,13 +238,15 @@ public interface APIService {
     Call<ArrayList<Link>> getLinks();
 
     @POST("/links")
-    Call<Void> createLink(@Header("apiKey") String apiKey, @Body Link link);//mailuser
+    Call<Void> createLink(@Header("apiKey") String apiKey, @Body Link link, @Query("mail") String
+            mail);
 
     @PUT("/links/{id}")
-    Call<Void> updateLink(@Header("apiKey") String apiKey, @Path("id") int id, @Body Link link);
-    //mailuser
+    Call<Void> updateLink(@Header("apiKey") String apiKey, @Path("id") int id, @Body Link link,
+            @Query("mail") String mail);
 
     @DELETE("/links/{id}")
-    Call<Void> deleteLink(@Header("apiKey") String apiKey, @Path("id") int id);//mailuser
+    Call<Void> deleteLink(@Header("apiKey") String apiKey, @Path("id") int id, @Query("mail")
+            String mail);
 
 }

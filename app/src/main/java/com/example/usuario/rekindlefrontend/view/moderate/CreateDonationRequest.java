@@ -18,6 +18,7 @@ import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import java.io.IOException;
@@ -84,7 +85,9 @@ public class CreateDonationRequest extends AppCompatActivity {
     }
 
     void sendRequest(){
-        mAPIService.createDonationRequest(request).enqueue(new Callback<Void>() {
+        mAPIService.createDonationRequest(Consistency.getUser(this).getApiKey(), request).enqueue
+                (new
+                                                                                         Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 System.out.println("llamada " + call.toString());

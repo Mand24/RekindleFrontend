@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
+import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 
 import java.io.IOException;
 
@@ -60,6 +62,7 @@ public class ShowDonationRequest extends AppCompatActivity {
         requesterUser = findViewById(R.id.informer_user);
         requestedDonation = findViewById(R.id.reported_user);
         motive = findViewById(R.id.motive);
+        mAPIService = APIUtils.getAPIService();
     }
 
     public void initializeFields() {
@@ -69,7 +72,10 @@ public class ShowDonationRequest extends AppCompatActivity {
     }
 
     public void acceptRequest(){
-        mAPIService.acceptDonationRequest(donationRequest.getDonation().getId(), donationRequest
+        mAPIService.acceptDonationRequest(Consistency.getUser(this).getApiKey(), donationRequest
+                        .getDonation()
+                        .getId(),
+                donationRequest
                 .getRefugeeMail()).enqueue
                 (new
                                                                                           Callback<Void>() {
@@ -102,7 +108,10 @@ public class ShowDonationRequest extends AppCompatActivity {
     }
 
     public void rejectRequest(){
-        mAPIService.rejectDonationRequest(donationRequest.getDonation().getId(), donationRequest
+        mAPIService.rejectDonationRequest(Consistency.getUser(this).getApiKey(), donationRequest
+                        .getDonation()
+                        .getId(),
+                donationRequest
                 .getRefugeeMail()).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

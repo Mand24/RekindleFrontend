@@ -92,7 +92,8 @@ public class EditHelpLink extends AppBaseActivity {
 
     public void sendUpdateLink() {
         System.out.println(link.toString());
-        mAPIService.updateLink(Consistency.getUser(this).getApiKey(), link.getIdLink(), link)
+        mAPIService.updateLink(Consistency.getUser(this).getApiKey(), link.getIdLink(), link,
+                Consistency.getUser(this).getMail())
                 .enqueue(new
                                                                                              Callback<Void>() {
             @Override

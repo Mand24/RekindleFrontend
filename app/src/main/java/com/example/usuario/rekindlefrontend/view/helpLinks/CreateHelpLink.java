@@ -87,10 +87,13 @@ public class CreateHelpLink extends AppBaseActivity {
     }
 
     public void sendLink() {
-        mAPIService.createLink(Consistency.getUser(this).getApiKey(), link).enqueue(new
+        mAPIService.createLink(Consistency.getUser(this).getApiKey(), link, Consistency.getUser
+                (this).getMail())
+                .enqueue(new
                                                                                            Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println("code "+ response.code());
                 if (response.isSuccessful()) {
                     manageResult(true);
                 } else {

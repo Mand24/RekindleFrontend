@@ -102,12 +102,15 @@ public class MyServicesVolunteer extends ListServices {
     public void sendDeleteService(Service service) {
         mAPIService.eliminarServicio(Consistency.getUser(this).getApiKey(), service.getId(),
                 service
-                .getServiceType())
+                .getServiceType(), Consistency.getUser(this).getMail())
                 .enqueue(
                 new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
+                            Intent i = new Intent(getApplicationContext(),
+                                    MyServicesVolunteer.class);
+                            startActivity(i);
                             Toast.makeText(getApplicationContext(), R.string
                                             .service_deleted_successfully,
                                     Toast.LENGTH_SHORT).show();

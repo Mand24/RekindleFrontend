@@ -15,6 +15,7 @@ import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
+import com.example.usuario.rekindlefrontend.utils.Consistency;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +34,7 @@ public class EnableUser extends AppCompatActivity {
 
     private APIService mAPIService;
     private User user;
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class EnableUser extends AppCompatActivity {
         setContentView(R.layout.activity_enable_user);
 
         setViews();
+
+        currentUser = Consistency.getUser(this);
 
         user = getIntent().getParcelableExtra("User");
         initializeFields();
@@ -80,7 +84,10 @@ public class EnableUser extends AppCompatActivity {
                 if (disable.getText().toString().equals(getResources().getString(R
                         .string.deshabilitar))) {
                     if(!TextUtils.isEmpty(motive.getText().toString())){
-                        mAPIService.disableUser(user.getMail(), motive.getText().toString()).enqueue
+                        mAPIService.disableUser(currentUser.getApiKey(), user.getMail(), motive
+                                .getText()
+                                .toString(), currentUser.getMail())
+                                .enqueue
                                 (new Callback<Void>() {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -105,7 +112,11 @@ public class EnableUser extends AppCompatActivity {
                         motive.setError("Field is empty");
                     }
                 } else {
-                    mAPIService.enableUser(user.getMail()).enqueue(new Callback<Void>() {
+                    mAPIService.enableUser(currentUser.getApiKey(), user
+                            .getMail(), currentUser.getMail())
+                            .enqueue(new
+                                                                                                   Callback<Void>
+                            () {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             System.out.println("CODIGOenable " + response.code());
