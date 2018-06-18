@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import java.io.IOException;
 
@@ -20,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShowDonationRequest extends AppCompatActivity {
+public class ShowDonationRequest extends AppBaseActivity {
 
     private TextView requesterUser;
     private TextView requestedDonation;
@@ -37,7 +39,7 @@ public class ShowDonationRequest extends AppCompatActivity {
 
         setViews();
 
-        donationRequest = getIntent().getParcelableExtra("DonationRequest");
+        donationRequest = (DonationRequest) getIntent().getSerializableExtra("Request");
         System.out.println(donationRequest.toString());
 
         initializeFields();
@@ -59,9 +61,15 @@ public class ShowDonationRequest extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void gotoLaunch() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
+    }
+
     public void setViews() {
-        requesterUser = findViewById(R.id.informer_user);
-        requestedDonation = findViewById(R.id.reported_user);
+        requesterUser = findViewById(R.id.requester_user);
+        requestedDonation = findViewById(R.id.requested_donation);
         motive = findViewById(R.id.motive);
         mAPIService = APIUtils.getAPIService();
     }
@@ -82,6 +90,7 @@ public class ShowDonationRequest extends AppCompatActivity {
                          Callback<Void>() {
                              @Override
                              public void onResponse(Call<Void> call, Response<Void> response) {
+                                 System.out.println("url accept"+call.request().url());
                                  System.out.println("llamada " + call.toString());
                                  if (response.isSuccessful()) {
                                      manageResult(true);

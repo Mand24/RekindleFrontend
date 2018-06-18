@@ -8,21 +8,10 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DonationRequest implements Parcelable {
+import java.io.Serializable;
 
-    public static final Parcelable.Creator<DonationRequest> CREATOR =
-            new Parcelable.Creator<DonationRequest>
-                    () {
-                @Override
-                public DonationRequest createFromParcel(Parcel in) {
-                    return new DonationRequest(in);
-                }
+public class DonationRequest implements Serializable {
 
-                @Override
-                public DonationRequest[] newArray(int size) {
-                    return new DonationRequest[size];
-                }
-            };
     @SerializedName("refugeeMail")
     @Expose
     private String refugeeMail;
@@ -43,12 +32,6 @@ public class DonationRequest implements Parcelable {
         this.motive = motive;
     }
 
-    protected DonationRequest(Parcel in) {
-        refugeeMail = in.readString();
-        donation = in.readParcelable(Donation.class.getClassLoader());
-        motive = in.readString();
-    }
-
     public String getRefugeeMail() {
         return this.refugeeMail;
     }
@@ -62,21 +45,9 @@ public class DonationRequest implements Parcelable {
     }
 
     @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(refugeeMail);
-        dest.writeSerializable(donation);
-        dest.writeString(motive);
-    }
-
-    @Override
     public String toString() {
-        return "Report{" +
-                ", refugeeMail=" + refugeeMail +
+        return "DonationRequest{" +
+                "refugeeMail='" + refugeeMail + '\'' +
                 ", donation=" + donation +
                 ", motive='" + motive + '\'' +
                 '}';
