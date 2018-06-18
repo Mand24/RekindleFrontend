@@ -5,6 +5,7 @@ import static com.example.usuario.rekindlefrontend.utils.Consistency.saveUser;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -111,7 +112,8 @@ public class RecoverPassword extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.password_actualizada),
                             Toast.LENGTH_SHORT).show();
-                    sendLogin(email, _passwordText.getText().toString());
+                    Intent i = new Intent(getApplicationContext(), Login.class);
+                    startActivity(i);
                 } else {
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.password_fail),
