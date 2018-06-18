@@ -149,6 +149,7 @@ public class DonationForm extends Fragment {
         mAPIService.crearDonacion(user.getApiKey(), mDonation).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                System.out.println("url " + call.request().url());
                 if (response.isSuccessful()) {
                     manageResult(true);
                 } else {

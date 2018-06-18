@@ -1,5 +1,6 @@
 package com.example.usuario.rekindlefrontend.view.moderate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -11,17 +12,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EnableUser extends AppCompatActivity {
+public class EnableUser extends AppBaseActivity {
 
     private TextView userType;
     private TextView name;
@@ -140,6 +143,12 @@ public class EnableUser extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void gotoLaunch() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     void setViews() {
