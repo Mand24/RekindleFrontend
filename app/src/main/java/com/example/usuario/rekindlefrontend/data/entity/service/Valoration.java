@@ -12,7 +12,7 @@ public class Valoration implements Serializable {
     @SerializedName("serviceType")
     @Expose
     private String serviceType;
-    @SerializedName("mailRefugee")
+    @SerializedName("refugeeMail")
     @Expose
     private String mailRefugee;
     @SerializedName("points")

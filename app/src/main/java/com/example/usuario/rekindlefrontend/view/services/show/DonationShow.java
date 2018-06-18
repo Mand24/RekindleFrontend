@@ -114,6 +114,7 @@ public class DonationShow extends Maps implements OnMapReadyCallback {
                     new Callback<Boolean>() {
                         @Override
                         public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                            System.out.println("URL IsRequested: " + call.request().url());
                             if (response.isSuccessful()) {
                                 enroll.setClickable(true);
                                 if (response.body()) {

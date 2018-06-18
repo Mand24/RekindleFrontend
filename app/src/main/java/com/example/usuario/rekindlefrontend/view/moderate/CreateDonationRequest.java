@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.rekindlefrontend.AppBaseActivity;
 import com.example.usuario.rekindlefrontend.R;
 import com.example.usuario.rekindlefrontend.data.entity.misc.DonationRequest;
 import com.example.usuario.rekindlefrontend.data.entity.service.Donation;
@@ -19,6 +20,7 @@ import com.example.usuario.rekindlefrontend.data.entity.user.User;
 import com.example.usuario.rekindlefrontend.data.remote.APIService;
 import com.example.usuario.rekindlefrontend.data.remote.APIUtils;
 import com.example.usuario.rekindlefrontend.utils.Consistency;
+import com.example.usuario.rekindlefrontend.view.menu.login.Login;
 import com.example.usuario.rekindlefrontend.view.menu.mainMenu.MainMenu;
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateDonationRequest extends AppCompatActivity {
+public class CreateDonationRequest extends AppBaseActivity {
 
     private TextView donationName;
     private EditText motive;
@@ -43,12 +45,12 @@ public class CreateDonationRequest extends AppCompatActivity {
 
         setViews();
 
-        donation = getIntent().getParcelableExtra("Donation");
+        donation = (Donation) getIntent().getSerializableExtra("Donation");
 
         fillTextViews();
 
-        AppCompatButton send_report = findViewById(R.id.send_report);
-        send_report.setOnClickListener(new View.OnClickListener() {
+        AppCompatButton send_request = findViewById(R.id.send_request);
+        send_request.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -62,6 +64,12 @@ public class CreateDonationRequest extends AppCompatActivity {
             }
 
         });
+    }
+
+    @Override
+    protected void gotoLaunch() {
+        Intent i = new Intent(this, Login.class);
+        startActivity(i);
     }
 
     void setViews() {

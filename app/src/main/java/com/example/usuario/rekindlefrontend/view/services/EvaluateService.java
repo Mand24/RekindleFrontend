@@ -62,13 +62,16 @@ public class EvaluateService extends AppBaseActivity {
     }
 
     private void sendCreateValoration() {
+
+        System.out.println("apikey " + Consistency.getUser(this).getApiKey());
+        System.out.println("mValoration " + mValoration.toString());
         mAPIService.createValoration(Consistency.getUser(this).getApiKey(), service.getId(),
-                service
-                        .getServiceType(),
-                mValoration)
+                service.getServiceType(), mValoration)
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
+                        System.out.println("Codigo SendCreateValoration: " + response.code());
+                        System.out.println("URL SendCreateValoration: " + call.request().url());
                         if (response.isSuccessful()) {
                             manageResult(true);
                         } else {
